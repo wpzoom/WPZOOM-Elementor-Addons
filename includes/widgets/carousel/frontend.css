@@ -1,0 +1,93 @@
+.zew-slick--carousel .slick-slide {
+	display: inline-block;
+	float: none;
+	vertical-align: middle;
+	border: 0;
+}
+
+.zew-slick--carousel .slick-next,
+.zew-slick--carousel .slick-prev {
+	z-index: 999;
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-ms-flex-align: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	padding: 0;
+	border: 1px solid rgba(255, 255, 255, .8);
+	border-radius: 50%;
+	background-color:rgba(255, 255, 255, .8);
+	color: #8c8c8c;
+	font-size: 12px;
+	opacity: 1;
+}
+
+.zew-slick--carousel .slick-next:focus,
+.zew-slick--carousel .slick-next:hover,
+.zew-slick--carousel .slick-prev:focus,
+.zew-slick--carousel .slick-prev:hover {
+	background-color: #fff;
+	color: #8c8c8c;
+}
+
+.zew-slick--carousel .slick-next:before,
+.zew-slick--carousel .slick-prev:before {
+	display: none;
+	content: "";
+}
+
+.zew-slick--carousel .slick-next > svg,
+.zew-slick--carousel .slick-prev > svg {
+	width: auto;
+	height: 1em;
+	fill: currentColor;
+}
+
+.zew-slick--carousel .slick-disabled {
+	opacity: .7;
+}
+
+.zew-slick--carousel:not(.slick-vertical) .slick-slide {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.zew-slick--carousel.slick-vertical .slick-slide {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.zew-slick--carousel .zew-slick-item {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+}
+
+.zew-slick--carousel .zew-slick-content {
+	position: absolute;
+	bottom: 0;
+	padding: 1.5rem;
+	width: 100%;
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .3));
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .3));
+}
+
+.zew-slick--carousel .zew-slick-title {
+	margin-top: 0;
+	margin-bottom: .2rem;
+	color: #fff;
+	font-size: 20px;
+}
+
+.zew-slick--carousel .zew-slick-subtitle {
+	margin: 0;
+	color: #fff;
+}

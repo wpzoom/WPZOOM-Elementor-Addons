@@ -1,0 +1,12 @@
+.elementor-add-new-section .elementor-add-wpzoom-templates-button {
+    margin-left:5px;
+    background:url(../images/logo.svg) no-repeat center center;
+    background-size: contain;
+}
+.elementor-add-new-section .elementor-add-wpzoom-templates-button .eicon-folder {
+    visibility: hidden;
+}
+
+.wpzoom-elementor-addons-popup-opened div[data-tab="templates/my-templates"] {
+	display: none;
+}

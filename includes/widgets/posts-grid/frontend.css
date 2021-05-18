@@ -1,0 +1,51 @@
+.zew-grid-container .zew-post {
+    overflow: hidden;
+}
+
+.zew-grid-container .zew-post a.read-more-btn {
+	display: block;
+}
+
+.zew-grid-container .post-grid-thumbnail {
+	margin-bottom: 20px;
+}
+
+.zew-grid-container .post-grid-meta {
+	margin-bottom: 10px;
+}
+
+.zew-grid-container .zew-post .post-grid-meta span + span:before {
+    margin-left: 2px;
+    margin-right: 4px;
+}
+
+.grid-meta-bottom .post-grid-text-wrap {
+	border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.grid-meta-bottom .zew-post {
+    padding: 20px 20px 20px 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post,
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post:hover {
+    background: transparent;
+    margin-top: 0;
+}
+
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .title, 
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .title > a {
+    color: #333333;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .post-grid-excerpt p,
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post a.read-more-btn,
+.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .post-grid-meta span {
+    color: #707070; 
+    font-weight: 400;
+}
