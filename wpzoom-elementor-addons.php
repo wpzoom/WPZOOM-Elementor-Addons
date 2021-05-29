@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use \WPZOOM_Elementor_Addons\Manager\WPZOOM_Manager;
+//use \WPZOOM_Elementor_Addons\Manager\WPZOOM_Manager;
 
 define( 'WPZOOM_EL_ADDONS_VER', '1.0.0' );
 
@@ -36,7 +36,7 @@ WPZOOM_Elementor_Addons::instance();
  *
  * @since 1.0.0
  */
-class WPZOOM_Elementor_Addons {
+final class WPZOOM_Elementor_Addons {
 	/**
 	 * Minimum Elementor Version
 	 *
@@ -71,7 +71,7 @@ class WPZOOM_Elementor_Addons {
 	 * @since 1.0.0
 	 * @access public
 	 * @static
-	 * @return Elementor_Test_Extension An instance of the class.
+	 * @return WPZOOM_Elementor_Addons An instance of the class.
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -96,7 +96,8 @@ class WPZOOM_Elementor_Addons {
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'plugin_css' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'plugin_css' ) );
 		
-		add_action( 'elementor/editor/footer', array( $this, 'plugin_scripts' ), 99 );
+		add_action( 'elementor/editor/footer', array( $this, 'plugin_scripts' ) );
+		add_action( 'elementor/editor/footer', array( $this, 'insert_js_templates' ) );
 
 	}
 
@@ -125,52 +126,35 @@ class WPZOOM_Elementor_Addons {
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-elementor-widgets.php';
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-template-manager.php';
 
-		WPZOOM_Manager::instance();
+		//WPZOOM_Manager::instance();
 
 	}
 
-
 	/**
-	 * Set Library
+	 * Get Editor Templates
 	 *
 	 * @return void
 	 */
-	public function get_library() {
-		
-		require_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-template-library.php';
-
-		// Unregister source with closure binding, thank Steve.
-		$unregister_source = function($id) {
-			unset( $this->_registered_sources[ $id ] );
-		};
-
-		$unregister_source->call( \Elementor\Plugin::instance()->templates_manager, 'remote');
-		\Elementor\Plugin::instance()->templates_manager->register_source( 'Elementor\TemplateLibrary\WPZOOM_Source' );
-
+	public function insert_js_templates() {
+		ob_start();
+			require_once WPZOOM_EL_ADDONS_PATH . 'includes/editor-templates/templates.php';
+		ob_end_flush();
 	}
 
 	/**
 	 * Enqueue plugin styles.
 	 */
 	public function plugin_css() {	
-		wp_enqueue_style( 
-			'wpzoom-elementor-addons', 
-			WPZOOM_EL_ADDONS_URL . 'assets/css/wpzoom-elementor-addons.css',
-			WPZOOM_EL_ADDONS_VER
-		);
+		wp_enqueue_style( 'wpzoom-elementor-addons', WPZOOM_EL_ADDONS_URL . 'assets/css/wpzoom-elementor-addons.css', WPZOOM_EL_ADDONS_VER );
+		wp_enqueue_style( 'select2', WPZOOM_EL_ADDONS_URL . 'assets/vendors/select2/select2.css', WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**
 	 * Enqueue plugin scripts.
 	 */
 	public function plugin_scripts() {
-		wp_enqueue_script( 
-			'wpzoom-elementor-addons',
-			WPZOOM_EL_ADDONS_URL . 'assets/js/wpzoom-elementor-addons.js',
-			array( 'jquery', 'wp-util' ), 
-			WPZOOM_EL_ADDONS_VER,
-			true
-		);
+		wp_enqueue_script( 'select2', WPZOOM_EL_ADDONS_URL . 'assets/vendors/select2/select2.full.min.js', array( 'jquery' ), WPZOOM_EL_ADDONS_VER, true );
+		wp_enqueue_script( 'wpzoom-elementor-addons', WPZOOM_EL_ADDONS_URL . 'assets/js/wpzoom-elementor-addons.js', array( 'jquery', 'wp-util', 'select2' ), WPZOOM_EL_ADDONS_VER, true );
 	}
 
 	/**
@@ -263,7 +247,7 @@ class WPZOOM_Elementor_Addons {
 				'<strong>' . esc_html__( 'Elementor', 'wpzoom-elementor-addons' ) . '</strong>'
 			);
 
-			$button_text = esc_html__( 'Activate Elementor', 'hello-elementor' );
+			$button_text = esc_html__( 'Activate Elementor', 'wpzoom-elementor-addons' );
 			$button_link = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
 		
 		} else {
@@ -275,7 +259,7 @@ class WPZOOM_Elementor_Addons {
 				'<strong>' . esc_html__( 'Elementor', 'wpzoom-elementor-addons' ) . '</strong>'
 			);
 
-			$button_text = esc_html__( 'Install Elementor', 'hello-elementor' );
+			$button_text = esc_html__( 'Install Elementor', 'wpzoom-elementor-addons' );
 			$button_link = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
 
 		}

@@ -14,7 +14,7 @@ WPZOOM_Elementor_Widgets::instance();
  *
  * @since 1.0.0
  */
- class WPZOOM_Elementor_Widgets {
+class WPZOOM_Elementor_Widgets {
 
 	/**
 	 * Instance
@@ -49,8 +49,8 @@ WPZOOM_Elementor_Widgets::instance();
 	 * @access public
 	 */
 	public function __construct() {
-        add_action( 'elementor/init', array( $this, 'init' ) );
-    }
+		add_action( 'elementor/init', array( $this, 'init' ) );
+	}
 
 	/**
 	 * Initialize the plugin

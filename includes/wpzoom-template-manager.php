@@ -1,97 +1,217 @@
 <?php
-namespace WPZOOM_Elementor_Addons\Manager;
 
-use \Elementor\Plugin;
-use \Elementor\Api;
+//Exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) 
+	exit;
 
-if( !defined( 'ABSPATH' ) ) {
-    exit;
-}
+if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 
-class WPZOOM_Manager {
+	class WPZOOM_Elementor_Library_Manager {
 
-    private static $instance = null;
 
-    public static function instance() {
+		/**
+		 * Creates a single Instance of self
+		 *
+		 * @var Static data - Define menu main menu name
+		 * @since 1.0.0
+		 */
+		private static $_instance = null;
 
-        if( null == self::$instance ) {
-            self::$instance=new self; 
-        }
-            
-        return self::$instance;
-    
-	}
 
-    public function __construct() {
-            
-		add_action( 'elementor/init', array( $this, 'library_source' ), 15 );
+		/**
+		 * Settings plugin details
+		 *
+		 * @var Static data - Define all important magic strings
+		 * @since 1.0.0
+		 */
+		static $library_source = null;
 
-		if( defined( 'ELEMENTOR_VERSION') && version_compare( ELEMENTOR_VERSION, '2.3.0', '>' ) ) { 
-			add_action( 'elementor/ajax/register_actions', array( $this, 'register_ajax' ), 25 );
+		/**
+		 * Define All Actions
+		 *
+		 * @var Static data - Define all actions
+		 * @since 1.0.0
+		 */
+		static $element_pro_actions = null;
+
+
+		/**
+		 * Creates and returns the main object for this plugin
+		 *
+		 *
+		 * @since  1.0.0
+		 * @return WPZOOM_Elementor_Library_Manager
+		 */
+		static public function init() {
+
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
+
 		}
+
+		/**
+		 * Main Constructor that sets up all static data associated with this plugin.
+		 *
+		 *
+		 * @since  1.0.0
+		 *
+		 */
+		private function __construct() {
+
+			//Setup static library_source
+			self::$library_source = 'https://api.wpzoom.com/';
+
+			add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
+			add_action( 'wp_ajax_get_WPZ_preview', array( $this, 'ajax_get_WPZ_preview' ) );
+
+			/* Set initial version to the and call update on first use */
+			if( get_option( 'wpz_current_version' ) == false ) {
+				update_option( 'wpz_current_version', '0.0.0' );
+			}
+
+		}
+
+		/**
+		 * Throw error on object clone
+		 *
+		 * The whole idea of the singleton design pattern is that there is a single
+		 * object therefore, we don't want the object to be cloned.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function __clone() {
+			// Cloning instances of the class is forbidden
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-pro' ), '1.0.0' );
+		}
+
+		/**
+		 * Disable unserializing of the class
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function __wakeup() {
+			// Unserializing instances of the class is forbidden
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-pro' ), '1.0.0' );
+		}
+
+		/**
+		 * Get templates from the json library
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function get_wpzoom_templates_library_view() {
+			
+			$template_list = array();
+			$thumb_url = '';
+			echo '<script> var WPZ_Index = []; </script>';
+			
+			//Get libray json from source
+			$response = wp_remote_get( self::$library_source, array( 'timeout' => 60 ) );
+
+			if( !is_wp_error( $response ) ) {
+				$info_data = wp_remote_retrieve_body( $response );
+				$template_list = json_decode( $info_data, true );
+			}
+			else {
+				$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
+				if( self::init()->get_filesystem()->exists( $local_file ) ) {
+					$data = self::init()->get_filesystem()->get_contents( $local_file );
+					$template_list = json_decode( $data, true );
+				}
+				$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/thumbs/';
+			}
+
+			echo '<div class="WPZ__main-tiled-view">';
+			if( count( $template_list ) != 0 ) {
+				
+				for( $i = 0; $i < count( $template_list ); $i++ ) {
+					$slug = strtolower( str_replace( " ", "-", $template_list[$i]['name'] ) );
+					?>
+					<div class="WPZ__item" data-theme="<?php echo strtolower( str_replace(" ", "-", $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace(" ", "-", $template_list[$i]['category'] ) ) ?>">
+						<div class="WPZ__title">
+						<?php
+							echo $template_list[$i]['name'];
+						?>
+						</div>
+						<div class="WPZ__thumb WPZ__index-<?php echo $i; ?>" data-index="<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" style='background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>);'></div><?php
+						
+						echo "<script> WPZ_Index[" . $i . "] = " . json_encode( $template_list[$i] ) . "; </script>";
+						?>
+						<div class="WPZ__dates">
+							<div><?php echo "<b>Created</b>: " . $template_list[$i]['created']; ?></div>
+							<div><?php echo "<b>Updated</b>: " . $template_list[$i]['updated']; ?></div>
+						</div>
+						<div class="WPZ__action-bar">
+							<div class="WPZ__grow"> </div>
+							<div data-version="WPZ__version-<?php echo $i;?>" data-template-name='<?php echo $slug; ?>' class='WPZ__btn-template-insert'> Insert Template </div>
+						</div>
+					</div>
+				<?php
+				}  /* Thumbnail Loop */
+			} else {
+				echo '<div class="wpzoom-no-results"> <i class="fa fa-frown-o"></i> No Templates Found! </div>';
+			}
+			echo '</div>';	
+			wp_die();
 		
-		if( defined ( 'Elementor\Api::LIBRARY_OPTION_KEY' ) ) {
-			add_filter( 'option_' . Api::LIBRARY_OPTION_KEY, array( $this, 'add_categories' ) );
 		}
 
-    }
-    
-    public function add_categories ( $data ) {
-		$categories = array(
-			'WPZOOM Blog',
-			'WPZOOM Portfolio',
-			'WPZOOM Hero',
-			'WPZOOM Contact Form'
-		);
-        
-        if( defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION,'2.3.9','>' ) ) {
-            $data['types_data']['block']['categories'] = array_merge( $categories,$data['types_data']['block']['categories'] );
-        }
-        else { 
-            $data['categories'] = array_merge( $categories,$data['categories'] );
-        }
-
-        return $data;
-    }
-    
-    public function register_ajax( $ajax ) { 
-
-		if( !isset($_REQUEST['actions'])) { 
-            return;
-        }
-        $ajax_actions = json_decode( stripslashes( $_REQUEST['actions'] ), true );
-        $template = false;
-        foreach( $ajax_actions as $data => $action_data ) { 
-            if( !isset( $action_data['get_template_data'] ) ) {
-                $template = $action_data;
-            }
-        }
-        if ( !isset( $template['data'] ) || empty( $template['data'] ) ) {
-            return;
-        }
-        if ( empty( $template['data']['template_id']) ) {
-            return;
-        }
-		if( false === strpos( $template['data']['template_id'], 'wpzoom_eladdons_' ) ) { 
-			return;
+		/**
+		 * Get  ajax preview template
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function ajax_get_WPZ_preview() {
+			$this->get_preview_template( $_POST['data'] );
+			wp_die();
 		}
 
-		$ajax->register_ajax_action( 'get_template_data', array( $this,'get_template' ) );
+		/**
+		 * Print the preview window and make callable through ajax
+		 *
+		 * @return void
+		 */
+		private function get_preview_template( $data ) {
+
+			if ( wp_http_validate_url( $data['thumbnail'] ) ) {
+				$thumb_url = $data['thumbnail'];
+			}
+			else {
+				$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/thumbs/' . $data['thumbnail'];
+			}
+		?>
+		<div id="wpzoom-elementor-template-library-preview"> 
+			<img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $data['name']); ?>" />
+		</div>
+		<?php
+		}
+
+		/**
+		 * Get an instance of WP_Filesystem_Direct.
+		 *
+		 * @since 1.0.0
+		 * @return object A WP_Filesystem_Direct instance.
+		 */
+		public static function get_filesystem() {
+		
+			global $wp_filesystem;
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+			WP_Filesystem();
+
+			return $wp_filesystem;
+		}
 
 	}
-    
-    public function get_template( $args )  {
 
-		$template_source = Plugin::instance()->templates_manager->get_source( 'wpzoom_addons_templates' );
-        $template = $template_source->get_data( $args );
-        return $template;
+	// Initialize the Elementor library
+	WPZOOM_Elementor_Library_Manager::init();
 
-	}
+	require __DIR__ . '/wpzoom-template-library.php';
 
-    public function library_source() { 
-        
-		require_once( WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-template-library.php' );
-		Plugin::instance()->templates_manager->register_source( 'Elementor\TemplateLibrary\WPZOOM_Library_Source' );
-
-	}
-}
+} // Make sure class doesn't already exist

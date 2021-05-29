@@ -33,20 +33,20 @@ class Carousel extends Widget_Base {
 		parent::__construct( $data, $args );
 
 		if ( ! wp_style_is( 'slick-slider', 'registered' ) ) {
-			wp_register_style( 'slick-slider', plugins_url( 'assets/slick/slick.css', dirname( __FILE__, 2 ) ), null, '1.0.0' );
+			wp_register_style( 'slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
 		if ( ! wp_style_is( 'slick-slider-theme', 'registered' ) ) {
-			wp_register_style( 'slick-slider-theme', plugins_url( 'assets/slick/slick-theme.css', dirname( __FILE__, 2 ) ), null, '1.0.0' );
+			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
-		wp_register_style( 'zoom-elementor-widgets-css-frontend-carousel', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], '1.0.0' );
+		wp_register_style( 'zoom-elementor-widgets-css-frontend-carousel', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
 
 		if ( ! wp_script_is( 'jquery-slick-slider', 'registered' ) ) {
-			wp_register_script( 'jquery-slick-slider', plugins_url( 'assets/slick/slick.min.js', dirname( __FILE__, 2 ) ), [ 'jquery' ], '1.0.0', true );
+			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
 		}
 
-		wp_register_script( 'zoom-elementor-widgets-js-frontend-carousel', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], '1.0.0', true );
+		wp_register_script( 'zoom-elementor-widgets-js-frontend-carousel', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
 	}
 
 	/**

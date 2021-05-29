@@ -29,7 +29,7 @@ class Posts_Grid extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'wpzoom-elementor-widgets-css-frontend-posts-grid', plugins_url( 'frontend.css', __FILE__ ), [], '1.0.0' );
+		wp_register_style( 'wpzoom-elementor-widgets-css-frontend-posts-grid', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**

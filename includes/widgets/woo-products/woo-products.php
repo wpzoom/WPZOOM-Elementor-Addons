@@ -34,7 +34,7 @@ class Woo_Products extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'zoom-elementor-widgets-css-frontend-woo-products', plugins_url( 'frontend.css', __FILE__ ), [], '1.0.0' );
+		wp_register_style( 'zoom-elementor-widgets-css-frontend-woo-products', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**
