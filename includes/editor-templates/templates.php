@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 			<div id="elementor-template-library-header-preview-back" class="wpzoom-header-back-button" style="display:none;">
 				<i class="eicon-" aria-hidden="true"></i>
-				<span><?php echo __( 'Back to Library', 'elementor' ); ?></span>
+				<span><?php echo __( 'Back to Library', 'wpzoom-elementor-addons' ); ?></span>
 			</div>
 		</div>
 		<div class="elementor-templates-modal__header__items-area">
@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="elementor-loader-box"></div>
 				</div>
 			</div>
-			<div class="elementor-loading-title"><?php echo __( 'Loading', 'elementor' ); ?></div>
+			<div class="elementor-loading-title"><?php echo __( 'Loading', 'wpzoom-elementor-addons' ); ?></div>
 		</div>
 	</div>
 </script>
@@ -54,8 +54,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div id="elementor-template-library-filter">
 				<select id="wpzoom-elementor-template-library-filter-theme" class="elementor-template-library-filter-select" name="theme" data-filter="theme">
 					<option value = ''>Select a theme</option>
-					<option value = "inspiro">Inspiro</option>
-					<option value = "foodica">Foodica</option>
+					<option value ='inspiro'>Inspiro</option>
+					<option value ='foodica'>Foodica</option>
 				</select>
 			</div>
 		</div>

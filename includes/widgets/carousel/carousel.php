@@ -8,7 +8,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Icons_Manager;
 
@@ -40,13 +40,13 @@ class Carousel extends Widget_Base {
 			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
-		wp_register_style( 'zoom-elementor-widgets-css-frontend-carousel', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-carousel', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
 
 		if ( ! wp_script_is( 'jquery-slick-slider', 'registered' ) ) {
 			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
 		}
 
-		wp_register_script( 'zoom-elementor-widgets-js-frontend-carousel', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
+		wp_register_script( 'wpzoom-elementor-addons-js-frontend-carousel', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Carousel extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'zoom-elementor-widgets-carousel';
+		return 'wpzoom-elementor-addons-carousel';
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Carousel extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Carousel', 'zoom-elementor-widgets' );
+		return __( 'Carousel', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Carousel extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-widgets' ];
+		return [ 'wpzoom-elementor-addons' ];
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Carousel extends Widget_Base {
 			'slick-slider-theme',
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
-			'zoom-elementor-widgets-css-frontend-carousel'
+			'wpzoom-elementor-addons-css-frontend-carousel'
 		];
 	}
 
@@ -134,7 +134,7 @@ class Carousel extends Widget_Base {
 			'jquery',
 			'jquery-slick-slider',
 			'font-awesome-4-shim',
-			'zoom-elementor-widgets-js-frontend-carousel'
+			'wpzoom-elementor-addons-js-frontend-carousel'
 		];
 	}
 
@@ -163,7 +163,7 @@ class Carousel extends Widget_Base {
 		$this->start_controls_section(
 			'_section_slides',
 			[
-				'label' => __( 'Slides', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slides', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -174,7 +174,7 @@ class Carousel extends Widget_Base {
 			'image',
 			[
 				'type' => Controls_Manager::MEDIA,
-				'label' => __( 'Image', 'zoom-elementor-widgets' ),
+				'label' => __( 'Image', 'wpzoom-elementor-addons' ),
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -189,8 +189,8 @@ class Carousel extends Widget_Base {
 			[
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
-				'placeholder' => __( 'Type title here', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
+				'placeholder' => __( 'Type title here', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true,
 				]
@@ -200,10 +200,10 @@ class Carousel extends Widget_Base {
 		$repeater->add_control(
 			'subtitle',
 			[
-				'label' => __( 'Subtitle', 'zoom-elementor-widgets' ),
+				'label' => __( 'Subtitle', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'placeholder' => __( 'Type subtitle here', 'zoom-elementor-widgets' ),
+				'placeholder' => __( 'Type subtitle here', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true,
 				]
@@ -213,7 +213,7 @@ class Carousel extends Widget_Base {
 		$repeater->add_control(
 			'link',
 			[
-				'label' => __( 'Link', 'zoom-elementor-widgets' ),
+				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'label_block' => true,
 				'placeholder' => 'https://example.com',
@@ -257,7 +257,7 @@ class Carousel extends Widget_Base {
 		$this->start_controls_section(
 			'_section_settings',
 			[
-				'label' => __( 'Settings', 'zoom-elementor-widgets' ),
+				'label' => __( 'Settings', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -265,13 +265,13 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'animation_speed',
 			[
-				'label' => __( 'Animation Speed', 'zoom-elementor-widgets' ),
+				'label' => __( 'Animation Speed', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'step' => 10,
 				'max' => 10000,
 				'default' => 300,
-				'description' => __( 'Slide speed in milliseconds', 'zoom-elementor-widgets' ),
+				'description' => __( 'Slide speed in milliseconds', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true,
 			]
 		);
@@ -279,10 +279,10 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'autoplay',
 			[
-				'label' => __( 'Autoplay?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Autoplay?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -292,13 +292,13 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'autoplay_speed',
 			[
-				'label' => __( 'Autoplay Speed', 'zoom-elementor-widgets' ),
+				'label' => __( 'Autoplay Speed', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'step' => 100,
 				'max' => 10000,
 				'default' => 3000,
-				'description' => __( 'Autoplay speed in milliseconds', 'zoom-elementor-widgets' ),
+				'description' => __( 'Autoplay speed in milliseconds', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'autoplay' => 'yes'
 				],
@@ -309,10 +309,10 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'loop',
 			[
-				'label' => __( 'Infinite Loop?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Infinite Loop?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -322,12 +322,12 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'center',
 			[
-				'label' => __( 'Center Mode?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Center Mode?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
-				'description' => __( 'Best works with odd number of slides (Slides To Show) and loop (Infinite Loop)', 'zoom-elementor-widgets' ),
+				'description' => __( 'Best works with odd number of slides (Slides To Show) and loop (Infinite Loop)', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true,
 				'style_transfer' => true,
 			]
@@ -336,10 +336,10 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'vertical',
 			[
-				'label' => __( 'Vertical Mode?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Vertical Mode?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'style_transfer' => true,
@@ -349,13 +349,13 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'navigation',
 			[
-				'label' => __( 'Navigation', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'none' => __( 'None', 'zoom-elementor-widgets' ),
-					'arrow' => __( 'Arrow', 'zoom-elementor-widgets' ),
-					'dots' => __( 'Dots', 'zoom-elementor-widgets' ),
-					'both' => __( 'Arrow & Dots', 'zoom-elementor-widgets' ),
+					'none' => __( 'None', 'wpzoom-elementor-addons' ),
+					'arrow' => __( 'Arrow', 'wpzoom-elementor-addons' ),
+					'dots' => __( 'Dots', 'wpzoom-elementor-addons' ),
+					'both' => __( 'Arrow & Dots', 'wpzoom-elementor-addons' ),
 				],
 				'default' => 'arrow',
 				'frontend_available' => true,
@@ -366,15 +366,15 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'slides_to_show',
 			[
-				'label' => __( 'Slides To Show', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slides To Show', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					1 => __( '1 Slide', 'zoom-elementor-widgets' ),
-					2 => __( '2 Slides', 'zoom-elementor-widgets' ),
-					3 => __( '3 Slides', 'zoom-elementor-widgets' ),
-					4 => __( '4 Slides', 'zoom-elementor-widgets' ),
-					5 => __( '5 Slides', 'zoom-elementor-widgets' ),
-					6 => __( '6 Slides', 'zoom-elementor-widgets' ),
+					1 => __( '1 Slide', 'wpzoom-elementor-addons' ),
+					2 => __( '2 Slides', 'wpzoom-elementor-addons' ),
+					3 => __( '3 Slides', 'wpzoom-elementor-addons' ),
+					4 => __( '4 Slides', 'wpzoom-elementor-addons' ),
+					5 => __( '5 Slides', 'wpzoom-elementor-addons' ),
+					6 => __( '6 Slides', 'wpzoom-elementor-addons' ),
 				],
 				'desktop_default' => 4,
 				'tablet_default' => 3,
@@ -387,7 +387,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'arrow_prev_icon',
 			[
-				'label' => __( 'Previous Icon', 'zoom-elementor-widgets' ),
+				'label' => __( 'Previous Icon', 'wpzoom-elementor-addons' ),
 				'label_block' => false,
 				'type' => Controls_Manager::ICONS,
 				'skin' => 'inline',
@@ -404,7 +404,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'arrow_next_icon',
 			[
-				'label' => __( 'Next Icon', 'zoom-elementor-widgets' ),
+				'label' => __( 'Next Icon', 'wpzoom-elementor-addons' ),
 				'label_block' => false,
 				'type' => Controls_Manager::ICONS,
 				'skin' => 'inline',
@@ -432,7 +432,7 @@ class Carousel extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_item',
 			[
-				'label' => __( 'Carousel Item', 'zoom-elementor-widgets' ),
+				'label' => __( 'Carousel Item', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -440,7 +440,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'item_spacing',
 			[
-				'label' => __( 'Slide Spacing (px)', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slide Spacing (px)', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'default' => [
@@ -457,7 +457,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'item_border_radius',
 			[
-				'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -471,7 +471,7 @@ class Carousel extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_content',
 			[
-				'label' => __( 'Slide Content', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slide Content', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -479,7 +479,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'content_padding',
 			[
-				'label' => __( 'Content Padding', 'zoom-elementor-widgets' ),
+				'label' => __( 'Content Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -503,7 +503,7 @@ class Carousel extends Widget_Base {
 			'_heading_title',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -511,7 +511,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'title_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -523,7 +523,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-slick-title' => 'color: {{VALUE}}',
@@ -535,9 +535,9 @@ class Carousel extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title',
-				'label' => __( 'Typography', 'zoom-elementor-widgets' ),
+				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .zew-slick-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -545,7 +545,7 @@ class Carousel extends Widget_Base {
 			'_heading_subtitle',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Subtitle', 'zoom-elementor-widgets' ),
+				'label' => __( 'Subtitle', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -553,7 +553,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'subtitle_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -565,7 +565,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'subtitle_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-slick-subtitle' => 'color: {{VALUE}}',
@@ -577,9 +577,9 @@ class Carousel extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'subtitle',
-				'label' => __( 'Typography', 'zoom-elementor-widgets' ),
+				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .zew-slick-subtitle',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -588,7 +588,7 @@ class Carousel extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_arrow',
 			[
-				'label' => __( 'Navigation :: Arrow', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation :: Arrow', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -596,10 +596,10 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'arrow_position_toggle',
 			[
-				'label' => __( 'Position', 'zoom-elementor-widgets' ),
+				'label' => __( 'Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label_off' => __( 'None', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Custom', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'None', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Custom', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -609,7 +609,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_position_y',
 			[
-				'label' => __( 'Vertical', 'zoom-elementor-widgets' ),
+				'label' => __( 'Vertical', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'condition' => [
@@ -634,7 +634,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_position_x',
 			[
-				'label' => __( 'Horizontal', 'zoom-elementor-widgets' ),
+				'label' => __( 'Horizontal', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px', '%'],
 				'condition' => [
@@ -662,7 +662,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_size',
 			[
-				'label' => __( 'Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
@@ -682,7 +682,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_border_radius',
 			[
-				'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -696,14 +696,14 @@ class Carousel extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_arrow_normal',
 			[
-				'label' => __( 'Normal', 'zoom-elementor-widgets' ),
+				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'arrow_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -715,7 +715,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'arrow_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next' => 'background-color: {{VALUE}};',
@@ -728,14 +728,14 @@ class Carousel extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_arrow_hover',
 			[
-				'label' => __( 'Hover', 'zoom-elementor-widgets' ),
+				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'arrow_hover_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'color: {{VALUE}};',
@@ -746,7 +746,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'arrow_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'background-color: {{VALUE}};',
@@ -757,7 +757,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'arrow_hover_border_color',
 			[
-				'label' => __( 'Border Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => [
 					'arrow_border_border!' => '',
@@ -776,7 +776,7 @@ class Carousel extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_dots',
 			[
-				'label' => __( 'Navigation :: Dots', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation :: Dots', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -784,7 +784,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_nav_position_y',
 			[
-				'label' => __( 'Vertical Position', 'zoom-elementor-widgets' ),
+				'label' => __( 'Vertical Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -802,7 +802,7 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_nav_spacing',
 			[
-				'label' => __( 'Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -814,20 +814,20 @@ class Carousel extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_nav_align',
 			[
-				'label' => __( 'Alignment', 'zoom-elementor-widgets' ),
+				'label' => __( 'Alignment', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'label_block' => false,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'zoom-elementor-widgets' ),
+						'title' => __( 'Left', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'zoom-elementor-widgets' ),
+						'title' => __( 'Center', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'zoom-elementor-widgets' ),
+						'title' => __( 'Right', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
@@ -842,14 +842,14 @@ class Carousel extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_dots_normal',
 			[
-				'label' => __( 'Normal', 'zoom-elementor-widgets' ),
+				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'dots_nav_size',
 			[
-				'label' => __( 'Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -861,7 +861,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'dots_nav_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-dots li button:before' => 'color: {{VALUE}};',
@@ -874,14 +874,14 @@ class Carousel extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_dots_hover',
 			[
-				'label' => __( 'Hover', 'zoom-elementor-widgets' ),
+				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'dots_nav_hover_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-dots li button:hover:before' => 'color: {{VALUE}};',
@@ -894,14 +894,14 @@ class Carousel extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_dots_active',
 			[
-				'label' => __( 'Active', 'zoom-elementor-widgets' ),
+				'label' => __( 'Active', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'dots_nav_active_size',
 			[
-				'label' => __( 'Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -913,7 +913,7 @@ class Carousel extends Widget_Base {
 		$this->add_control(
 			'dots_nav_active_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-dots .slick-active button:before' => 'color: {{VALUE}};',

@@ -14,8 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-//use \WPZOOM_Elementor_Addons\Manager\WPZOOM_Manager;
-
 define( 'WPZOOM_EL_ADDONS_VER', '1.0.0' );
 
 define( 'WPZOOM_EL_ADDONS__FILE__', __FILE__ );
@@ -24,7 +22,6 @@ define( 'WPZOOM_EL_ADDONS_PLUGIN_DIR', dirname( WPZOOM_EL_ADDONS_PLUGIN_BASE ) )
 
 define( 'WPZOOM_EL_ADDONS_PATH', plugin_dir_path( WPZOOM_EL_ADDONS__FILE__ ) );
 define( 'WPZOOM_EL_ADDONS_URL', plugin_dir_url( WPZOOM_EL_ADDONS__FILE__ ) );
-
 
 // Instance the plugin
 WPZOOM_Elementor_Addons::instance();
@@ -315,9 +312,6 @@ final class WPZOOM_Elementor_Addons {
 			'<strong>' . esc_html__( 'PHP', 'wpzoom-elementor-addons' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
-
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 	}
-
-
 }

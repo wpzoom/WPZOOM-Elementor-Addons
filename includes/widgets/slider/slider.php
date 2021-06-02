@@ -10,7 +10,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Plugin;
 use Elementor\Utils;
 use Elementor\Embed;
@@ -45,13 +45,13 @@ class Slider extends Widget_Base {
 			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
-		wp_register_style( 'wpzoom-elementor-widgets-css-frontend-slider', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
 
 		if ( ! wp_script_is( 'jquery-slick-slider', 'registered' ) ) {
 			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
 		}
 
-		wp_register_script( 'wpzoom-elementor-widgets-js-frontend-slider', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
+		wp_register_script( 'wpzoom-elementor-addons-js-frontend-slider', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Slider extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpzoom-elementor-widgets-slider';
+		return 'wpzoom-elementor-addons-slider';
 	}
 
 	/**
@@ -77,7 +77,7 @@ class Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Slider', 'zoom-elementor-widgets' );
+		return __( 'Slider', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -103,7 +103,7 @@ class Slider extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-widgets' ];
+		return [ 'wpzoom-elementor-addons' ];
 	}
 
 	/**
@@ -121,7 +121,7 @@ class Slider extends Widget_Base {
 			'slick-slider-theme',
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-widgets-css-frontend-slider'
+			'wpzoom-elementor-addons-css-frontend-slider'
 		];
 	}
 
@@ -139,7 +139,7 @@ class Slider extends Widget_Base {
 			'jquery',
 			'jquery-slick-slider',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-widgets-js-frontend-slider'
+			'wpzoom-elementor-addons-js-frontend-slider'
 		];
 	}
 
@@ -241,15 +241,15 @@ class Slider extends Widget_Base {
 	 */
 	public function get_post_orderby_options() {
 		return [
-			'ID'            => __( 'Post ID', 'zoom-elementor-widgets' ),
-			'author'        => __( 'Post Author', 'zoom-elementor-widgets' ),
-			'title'         => __( 'Title', 'zoom-elementor-widgets' ),
-			'date'          => __( 'Date', 'zoom-elementor-widgets' ),
-			'modified'      => __( 'Last Modified Date', 'zoom-elementor-widgets' ),
-			'parent'        => __( 'Parent ID', 'zoom-elementor-widgets' ),
-			'rand'          => __( 'Random', 'zoom-elementor-widgets' ),
-			'comment_count' => __( 'Comment Count', 'zoom-elementor-widgets' ),
-			'menu_order'    => __( 'Menu Order', 'zoom-elementor-widgets' )
+			'ID'            => __( 'Post ID', 'wpzoom-elementor-addons' ),
+			'author'        => __( 'Post Author', 'wpzoom-elementor-addons' ),
+			'title'         => __( 'Title', 'wpzoom-elementor-addons' ),
+			'date'          => __( 'Date', 'wpzoom-elementor-addons' ),
+			'modified'      => __( 'Last Modified Date', 'wpzoom-elementor-addons' ),
+			'parent'        => __( 'Parent ID', 'wpzoom-elementor-addons' ),
+			'rand'          => __( 'Random', 'wpzoom-elementor-addons' ),
+			'comment_count' => __( 'Comment Count', 'wpzoom-elementor-addons' ),
+			'menu_order'    => __( 'Menu Order', 'wpzoom-elementor-addons' )
 		];
 	}
 
@@ -301,7 +301,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_slides',
 			[
-				'label' => __( 'Slides', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slides', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -309,12 +309,12 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'slides_source',
 			[
-				'label' => __( 'Source', 'zoom-elementor-widgets' ),
+				'label' => __( 'Source', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'custom',
 				'options' => [
-					'custom' => __( 'Custom', 'zoom-elementor-widgets' ),
-					'posts' => __( 'WordPress Posts', 'zoom-elementor-widgets' )
+					'custom' => __( 'Custom', 'wpzoom-elementor-addons' ),
+					'posts' => __( 'WordPress Posts', 'wpzoom-elementor-addons' )
 				],
 				'separator' => 'after'
 			]
@@ -326,7 +326,7 @@ class Slider extends Widget_Base {
 			'image',
 			[
 				'type' => Controls_Manager::MEDIA,
-				'label' => __( 'Image', 'zoom-elementor-widgets' ),
+				'label' => __( 'Image', 'wpzoom-elementor-addons' ),
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -340,9 +340,9 @@ class Slider extends Widget_Base {
 			'video',
 			[
 				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label' => __( 'Video', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'None', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Custom', 'zoom-elementor-widgets' ),
+				'label' => __( 'Video', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'None', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Custom', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'frontend_available' => true
 			]
@@ -353,17 +353,17 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'video_type',
 			[
-				'label' => __( 'Source', 'zoom-elementor-widgets' ),
+				'label' => __( 'Source', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'condition' => [
 					'video' => 'yes'
 				],
 				'default' => 'youtube',
 				'options' => [
-					'youtube' => __( 'YouTube', 'zoom-elementor-widgets' ),
-					'vimeo' => __( 'Vimeo', 'zoom-elementor-widgets' ),
-					'dailymotion' => __( 'Dailymotion', 'zoom-elementor-widgets' ),
-					'hosted' => __( 'Self Hosted', 'zoom-elementor-widgets' )
+					'youtube' => __( 'YouTube', 'wpzoom-elementor-addons' ),
+					'vimeo' => __( 'Vimeo', 'wpzoom-elementor-addons' ),
+					'dailymotion' => __( 'Dailymotion', 'wpzoom-elementor-addons' ),
+					'hosted' => __( 'Self Hosted', 'wpzoom-elementor-addons' )
 				],
 				'frontend_available' => true
 			]
@@ -372,7 +372,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'youtube_url',
 			[
-				'label' => __( 'Link', 'zoom-elementor-widgets' ),
+				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -381,7 +381,7 @@ class Slider extends Widget_Base {
 						TagsModule::URL_CATEGORY
 					]
 				],
-				'placeholder' => __( 'Enter your URL', 'zoom-elementor-widgets' ) . ' (YouTube)',
+				'placeholder' => __( 'Enter your URL', 'wpzoom-elementor-addons' ) . ' (YouTube)',
 				'default' => 'https://www.youtube.com/watch?v=XHOmBV4js_E',
 				'label_block' => true,
 				'condition' => [
@@ -395,7 +395,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'vimeo_url',
 			[
-				'label' => __( 'Link', 'zoom-elementor-widgets' ),
+				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -404,7 +404,7 @@ class Slider extends Widget_Base {
 						TagsModule::URL_CATEGORY
 					]
 				],
-				'placeholder' => __( 'Enter your URL', 'zoom-elementor-widgets' ) . ' (Vimeo)',
+				'placeholder' => __( 'Enter your URL', 'wpzoom-elementor-addons' ) . ' (Vimeo)',
 				'default' => 'https://vimeo.com/235215203',
 				'label_block' => true,
 				'condition' => [
@@ -418,7 +418,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'dailymotion_url',
 			[
-				'label' => __( 'Link', 'zoom-elementor-widgets' ),
+				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -427,7 +427,7 @@ class Slider extends Widget_Base {
 						TagsModule::URL_CATEGORY
 					]
 				],
-				'placeholder' => __( 'Enter your URL', 'zoom-elementor-widgets' ) . ' (Dailymotion)',
+				'placeholder' => __( 'Enter your URL', 'wpzoom-elementor-addons' ) . ' (Dailymotion)',
 				'default' => 'https://www.dailymotion.com/video/x6tqhqb',
 				'label_block' => true,
 				'condition' => [
@@ -441,7 +441,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'insert_url',
 			[
-				'label' => __( 'External URL', 'zoom-elementor-widgets' ),
+				'label' => __( 'External URL', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'video' => 'yes',
@@ -453,7 +453,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'hosted_url',
 			[
-				'label' => __( 'Choose File', 'zoom-elementor-widgets' ),
+				'label' => __( 'Choose File', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
 				'dynamic' => [
 					'active' => true,
@@ -474,7 +474,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'external_url',
 			[
-				'label' => __( 'URL', 'zoom-elementor-widgets' ),
+				'label' => __( 'URL', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'autocomplete' => false,
 				'options' => false,
@@ -488,7 +488,7 @@ class Slider extends Widget_Base {
 					]
 				],
 				'media_type' => 'video',
-				'placeholder' => __( 'Enter your URL', 'zoom-elementor-widgets' ),
+				'placeholder' => __( 'Enter your URL', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'video' => 'yes',
 					'video_type' => 'hosted',
@@ -505,8 +505,8 @@ class Slider extends Widget_Base {
 			[
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
-				'placeholder' => __( 'Type title here', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
+				'placeholder' => __( 'Type title here', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true,
 				]
@@ -516,10 +516,10 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'subtitle',
 			[
-				'label' => __( 'Subtitle', 'zoom-elementor-widgets' ),
+				'label' => __( 'Subtitle', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'placeholder' => __( 'Type subtitle here', 'zoom-elementor-widgets' ),
+				'placeholder' => __( 'Type subtitle here', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true,
 				]
@@ -529,7 +529,7 @@ class Slider extends Widget_Base {
 		$repeater->add_control(
 			'link',
 			[
-				'label' => __( 'Link', 'zoom-elementor-widgets' ),
+				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'label_block' => true,
 				'placeholder' => 'https://example.com',
@@ -560,7 +560,7 @@ class Slider extends Widget_Base {
 		);
 
 		$post_types = $this->get_post_types();
-		$post_types[ 'by_id' ] = __( 'Manual Selection', 'zoom-elementor-widgets' );
+		$post_types[ 'by_id' ] = __( 'Manual Selection', 'wpzoom-elementor-addons' );
 		$post_list = $this->get_post_list();
 		$author_list = $this->get_authors_list();
 		$taxonomies = get_taxonomies( [], 'objects' );
@@ -569,7 +569,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts_type',
 			[
-				'label' => __( 'Posts Source', 'zoom-elementor-widgets' ),
+				'label' => __( 'Posts Source', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => $post_types,
 				'default' => key( $post_types ),
@@ -582,7 +582,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts_ids',
 			[
-				'label' => __( 'Search & Select', 'zoom-elementor-widgets' ),
+				'label' => __( 'Search & Select', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT2,
 				'options' => $post_list,
 				'label_block' => true,
@@ -596,7 +596,7 @@ class Slider extends Widget_Base {
 
 		$this->add_control(
 			'posts_authors', [
-				'label' => __( 'Author', 'zoom-elementor-widgets' ),
+				'label' => __( 'Author', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'type' => Controls_Manager::SELECT2,
 				'multiple' => true,
@@ -634,7 +634,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts__not_in',
 			[
-				'label' => __( 'Exclude', 'zoom-elementor-widgets' ),
+				'label' => __( 'Exclude', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT2,
 				'options' => $post_list,
 				'label_block' => true,
@@ -650,7 +650,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts_offset',
 			[
-				'label' => __( 'Offset', 'zoom-elementor-widgets' ),
+				'label' => __( 'Offset', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => '0',
 				'condition' => [
@@ -662,7 +662,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts_orderby',
 			[
-				'label' => __( 'Order By', 'zoom-elementor-widgets' ),
+				'label' => __( 'Order By', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => $orderby_options,
 				'default' => 'date',
@@ -675,11 +675,11 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts_order',
 			[
-				'label' => __( 'Order', 'zoom-elementor-widgets' ),
+				'label' => __( 'Order', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'asc' => __( 'Ascending', 'zoom-elementor-widgets' ),
-					'desc' => __( 'Descending', 'zoom-elementor-widgets' ),
+					'asc' => __( 'Ascending', 'wpzoom-elementor-addons' ),
+					'desc' => __( 'Descending', 'wpzoom-elementor-addons' ),
 				],
 				'default' => 'desc',
 				'condition' => [
@@ -691,7 +691,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'posts_amount',
 			[
-				'label' => __( 'Amount', 'zoom-elementor-widgets' ),
+				'label' => __( 'Amount', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'step' => 1,
@@ -720,7 +720,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_settings',
 			[
-				'label' => __( 'Settings', 'zoom-elementor-widgets' ),
+				'label' => __( 'Settings', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -728,7 +728,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'settings_slides',
 			[
-				'label' => __( 'Slides', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slides', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING
 			]
 		);
@@ -736,13 +736,13 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'animation_speed',
 			[
-				'label' => __( 'Animation Speed', 'zoom-elementor-widgets' ),
+				'label' => __( 'Animation Speed', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'step' => 10,
 				'max' => 10000,
 				'default' => 300,
-				'description' => __( 'Slide speed in milliseconds', 'zoom-elementor-widgets' ),
+				'description' => __( 'Slide speed in milliseconds', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true,
 			]
 		);
@@ -750,10 +750,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'autoplay',
 			[
-				'label' => __( 'Autoplay?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Autoplay?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true,
@@ -763,13 +763,13 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'autoplay_speed',
 			[
-				'label' => __( 'Autoplay Speed', 'zoom-elementor-widgets' ),
+				'label' => __( 'Autoplay Speed', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 100,
 				'step' => 100,
 				'max' => 10000,
 				'default' => 3000,
-				'description' => __( 'Autoplay speed in milliseconds', 'zoom-elementor-widgets' ),
+				'description' => __( 'Autoplay speed in milliseconds', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'autoplay' => 'yes'
 				],
@@ -780,10 +780,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'loop',
 			[
-				'label' => __( 'Infinite Loop?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Infinite Loop?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'frontend_available' => true
@@ -793,12 +793,12 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'center',
 			[
-				'label' => __( 'Center Mode?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Center Mode?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
-				'description' => __( 'Best works with odd number of slides (Slides To Show) and loop (Infinite Loop)', 'zoom-elementor-widgets' ),
+				'description' => __( 'Best works with odd number of slides (Slides To Show) and loop (Infinite Loop)', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true,
 				'style_transfer' => true
 			]
@@ -807,10 +807,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'vertical',
 			[
-				'label' => __( 'Vertical Mode?', 'zoom-elementor-widgets' ),
+				'label' => __( 'Vertical Mode?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'style_transfer' => true
@@ -820,15 +820,15 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'slides_to_show',
 			[
-				'label' => __( 'Slides To Show', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slides To Show', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					1 => __( '1 Slide', 'zoom-elementor-widgets' ),
-					2 => __( '2 Slides', 'zoom-elementor-widgets' ),
-					3 => __( '3 Slides', 'zoom-elementor-widgets' ),
-					4 => __( '4 Slides', 'zoom-elementor-widgets' ),
-					5 => __( '5 Slides', 'zoom-elementor-widgets' ),
-					6 => __( '6 Slides', 'zoom-elementor-widgets' )
+					1 => __( '1 Slide', 'wpzoom-elementor-addons' ),
+					2 => __( '2 Slides', 'wpzoom-elementor-addons' ),
+					3 => __( '3 Slides', 'wpzoom-elementor-addons' ),
+					4 => __( '4 Slides', 'wpzoom-elementor-addons' ),
+					5 => __( '5 Slides', 'wpzoom-elementor-addons' ),
+					6 => __( '6 Slides', 'wpzoom-elementor-addons' )
 				],
 				'desktop_default' => 1,
 				'tablet_default' => 1,
@@ -841,7 +841,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'settings_video',
 			[
-				'label' => __( 'Video', 'zoom-elementor-widgets' ),
+				'label' => __( 'Video', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before'
 			]
@@ -850,7 +850,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_autoplay',
 			[
-				'label' => __( 'Autoplay', 'zoom-elementor-widgets' ),
+				'label' => __( 'Autoplay', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'frontend_available' => true
@@ -860,7 +860,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'play_on_mobile',
 			[
-				'label' => __( 'Play On Mobile', 'zoom-elementor-widgets' ),
+				'label' => __( 'Play On Mobile', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'video_autoplay' => 'yes'
@@ -872,7 +872,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_mute',
 			[
-				'label' => __( 'Mute', 'zoom-elementor-widgets' ),
+				'label' => __( 'Mute', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'frontend_available' => true
@@ -882,7 +882,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_loop',
 			[
-				'label' => __( 'Loop', 'zoom-elementor-widgets' ),
+				'label' => __( 'Loop', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'frontend_available' => true
@@ -892,10 +892,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_controls',
 			[
-				'label' => __( 'Player Controls', 'zoom-elementor-widgets' ),
+				'label' => __( 'Player Controls', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -903,10 +903,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_showinfo',
 			[
-				'label' => __( 'Video Info', 'zoom-elementor-widgets' ),
+				'label' => __( 'Video Info', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -914,7 +914,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_modestbranding',
 			[
-				'label' => __( 'Modest Branding', 'zoom-elementor-widgets' ),
+				'label' => __( 'Modest Branding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'video_controls' => 'yes'
@@ -926,10 +926,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_logo',
 			[
-				'label' => __( 'Logo', 'zoom-elementor-widgets' ),
+				'label' => __( 'Logo', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -937,9 +937,9 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'yt_privacy',
 			[
-				'label' => __( 'Privacy Mode', 'zoom-elementor-widgets' ),
+				'label' => __( 'Privacy Mode', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'description' => __( 'When you turn on privacy mode, YouTube won\'t store information about visitors on your website unless they play the video.', 'zoom-elementor-widgets' ),
+				'description' => __( 'When you turn on privacy mode, YouTube won\'t store information about visitors on your website unless they play the video.', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -947,11 +947,11 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_rel',
 			[
-				'label' => __( 'Suggested Videos', 'zoom-elementor-widgets' ),
+				'label' => __( 'Suggested Videos', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'Current Video Channel', 'zoom-elementor-widgets' ),
-					'yes' => __( 'Any Video', 'zoom-elementor-widgets' )
+					'' => __( 'Current Video Channel', 'wpzoom-elementor-addons' ),
+					'yes' => __( 'Any Video', 'wpzoom-elementor-addons' )
 				],
 				'frontend_available' => true
 			]
@@ -960,10 +960,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'vimeo_title',
 			[
-				'label' => __( 'Intro Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Intro Title', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -971,10 +971,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'vimeo_portrait',
 			[
-				'label' => __( 'Intro Portrait', 'zoom-elementor-widgets' ),
+				'label' => __( 'Intro Portrait', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'default' => 'yes',
 				'frontend_available' => true
 			]
@@ -983,10 +983,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'vimeo_byline',
 			[
-				'label' => __( 'Intro Byline', 'zoom-elementor-widgets' ),
+				'label' => __( 'Intro Byline', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -994,10 +994,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_download_button',
 			[
-				'label' => __( 'Download Button', 'zoom-elementor-widgets' ),
+				'label' => __( 'Download Button', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'frontend_available' => true
 			]
 		);
@@ -1005,7 +1005,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'video_poster',
 			[
-				'label' => __( 'Poster', 'zoom-elementor-widgets' ),
+				'label' => __( 'Poster', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
 				'dynamic' => [
 					'active' => true
@@ -1017,7 +1017,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'show_play_icon',
 			[
-				'label' => __( 'Play Icon', 'zoom-elementor-widgets' ),
+				'label' => __( 'Play Icon', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes'
 			]
@@ -1026,7 +1026,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'settings_navigation',
 			[
-				'label' => __( 'Navigation', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before'
 			]
@@ -1035,13 +1035,13 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'navigation',
 			[
-				'label' => __( 'Navigation', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'none' => __( 'None', 'zoom-elementor-widgets' ),
-					'arrow' => __( 'Arrow', 'zoom-elementor-widgets' ),
-					'dots' => __( 'Dots', 'zoom-elementor-widgets' ),
-					'both' => __( 'Arrow & Dots', 'zoom-elementor-widgets' )
+					'none' => __( 'None', 'wpzoom-elementor-addons' ),
+					'arrow' => __( 'Arrow', 'wpzoom-elementor-addons' ),
+					'dots' => __( 'Dots', 'wpzoom-elementor-addons' ),
+					'both' => __( 'Arrow & Dots', 'wpzoom-elementor-addons' )
 				],
 				'default' => 'arrow',
 				'frontend_available' => true,
@@ -1052,7 +1052,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'arrow_prev_icon',
 			[
-				'label' => __( 'Previous Icon', 'zoom-elementor-widgets' ),
+				'label' => __( 'Previous Icon', 'wpzoom-elementor-addons' ),
 				'label_block' => false,
 				'type' => Controls_Manager::ICONS,
 				'skin' => 'inline',
@@ -1069,7 +1069,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'arrow_next_icon',
 			[
-				'label' => __( 'Next Icon', 'zoom-elementor-widgets' ),
+				'label' => __( 'Next Icon', 'wpzoom-elementor-addons' ),
 				'label_block' => false,
 				'type' => Controls_Manager::ICONS,
 				'skin' => 'inline',
@@ -1097,7 +1097,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_slider',
 			[
-				'label' => __( 'Slider', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slider', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1105,7 +1105,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'auto_height',
 			[
-				'label' => __( 'Automatic Height', 'zoom-elementor-widgets' ),
+				'label' => __( 'Automatic Height', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes'
 			]
@@ -1114,7 +1114,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'auto_height_size',
 			[
-				'label' => __( 'Automatic Height Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Automatic Height Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'range' => [
@@ -1139,7 +1139,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'auto_height_max',
 			[
-				'label' => __( 'Automatic Height Maximum', 'zoom-elementor-widgets' ),
+				'label' => __( 'Automatic Height Maximum', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -1182,7 +1182,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_item',
 			[
-				'label' => __( 'Slider Item', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slider Item', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1190,7 +1190,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'item_spacing',
 			[
-				'label' => __( 'Slide Spacing (px)', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slide Spacing (px)', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'default' => [
@@ -1207,7 +1207,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'item_border_radius',
 			[
-				'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1221,7 +1221,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_content',
 			[
-				'label' => __( 'Slide Content', 'zoom-elementor-widgets' ),
+				'label' => __( 'Slide Content', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1229,7 +1229,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'content_padding',
 			[
-				'label' => __( 'Content Padding', 'zoom-elementor-widgets' ),
+				'label' => __( 'Content Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -1253,7 +1253,7 @@ class Slider extends Widget_Base {
 			'_heading_title',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -1261,7 +1261,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'title_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -1273,7 +1273,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-slick-title' => 'color: {{VALUE}}',
@@ -1285,9 +1285,9 @@ class Slider extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title',
-				'label' => __( 'Typography', 'zoom-elementor-widgets' ),
+				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .zew-slick-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -1295,7 +1295,7 @@ class Slider extends Widget_Base {
 			'_heading_subtitle',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Subtitle', 'zoom-elementor-widgets' ),
+				'label' => __( 'Subtitle', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -1303,7 +1303,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'subtitle_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -1315,7 +1315,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'subtitle_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-slick-subtitle' => 'color: {{VALUE}}',
@@ -1327,9 +1327,9 @@ class Slider extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'subtitle',
-				'label' => __( 'Typography', 'zoom-elementor-widgets' ),
+				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .zew-slick-subtitle',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1337,7 +1337,7 @@ class Slider extends Widget_Base {
 			'_heading_video',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Video', 'zoom-elementor-widgets' ),
+				'label' => __( 'Video', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -1345,7 +1345,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'aspect_ratio',
 			[
-				'label' => __( 'Aspect Ratio', 'zoom-elementor-widgets' ),
+				'label' => __( 'Aspect Ratio', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'169' => '16:9',
@@ -1381,7 +1381,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'play_icon_color',
 			[
-				'label' => __( 'Play Icon Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Play Icon Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-custom-embed-play i' => 'color: {{VALUE}}'
@@ -1395,7 +1395,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'play_icon_size',
 			[
-				'label' => __( 'Play Icon Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Play Icon Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -1419,7 +1419,7 @@ class Slider extends Widget_Base {
 				'selector' => '{{WRAPPER}} .elementor-custom-embed-play i',
 				'fields_options' => [
 					'text_shadow_type' => [
-						'label' => _x( 'Play Icon Shadow', 'Text Shadow Control', 'zoom-elementor-widgets' )
+						'label' => _x( 'Play Icon Shadow', 'Text Shadow Control', 'wpzoom-elementor-addons' )
 					]
 				],
 				'condition' => [
@@ -1433,7 +1433,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_arrow',
 			[
-				'label' => __( 'Navigation :: Arrow', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation :: Arrow', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1441,10 +1441,10 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'arrow_position_toggle',
 			[
-				'label' => __( 'Position', 'zoom-elementor-widgets' ),
+				'label' => __( 'Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label_off' => __( 'None', 'zoom-elementor-widgets' ),
-				'label_on' => __( 'Custom', 'zoom-elementor-widgets' ),
+				'label_off' => __( 'None', 'wpzoom-elementor-addons' ),
+				'label_on' => __( 'Custom', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -1454,7 +1454,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_position_y',
 			[
-				'label' => __( 'Vertical', 'zoom-elementor-widgets' ),
+				'label' => __( 'Vertical', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'condition' => [
@@ -1479,7 +1479,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_position_x',
 			[
-				'label' => __( 'Horizontal', 'zoom-elementor-widgets' ),
+				'label' => __( 'Horizontal', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'default' => [
@@ -1511,7 +1511,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_size',
 			[
-				'label' => __( 'Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'default' => [
@@ -1535,7 +1535,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'arrow_border_radius',
 			[
-				'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1549,14 +1549,14 @@ class Slider extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_arrow_normal',
 			[
-				'label' => __( 'Normal', 'zoom-elementor-widgets' ),
+				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'arrow_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1568,7 +1568,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'arrow_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#00000000',
 				'selectors' => [
@@ -1582,14 +1582,14 @@ class Slider extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_arrow_hover',
 			[
-				'label' => __( 'Hover', 'zoom-elementor-widgets' ),
+				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'arrow_hover_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'color: {{VALUE}};',
@@ -1600,7 +1600,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'arrow_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'background-color: {{VALUE}};',
@@ -1611,7 +1611,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'arrow_hover_border_color',
 			[
-				'label' => __( 'Border Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => [
 					'arrow_border_border!' => '',
@@ -1630,7 +1630,7 @@ class Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_dots',
 			[
-				'label' => __( 'Navigation :: Dots', 'zoom-elementor-widgets' ),
+				'label' => __( 'Navigation :: Dots', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1638,7 +1638,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_nav_position_y',
 			[
-				'label' => __( 'Vertical Position', 'zoom-elementor-widgets' ),
+				'label' => __( 'Vertical Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'default' => [
@@ -1660,7 +1660,7 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_nav_spacing',
 			[
-				'label' => __( 'Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -1672,20 +1672,20 @@ class Slider extends Widget_Base {
 		$this->add_responsive_control(
 			'dots_nav_align',
 			[
-				'label' => __( 'Alignment', 'zoom-elementor-widgets' ),
+				'label' => __( 'Alignment', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'label_block' => false,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'zoom-elementor-widgets' ),
+						'title' => __( 'Left', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'zoom-elementor-widgets' ),
+						'title' => __( 'Center', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'zoom-elementor-widgets' ),
+						'title' => __( 'Right', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
@@ -1700,14 +1700,14 @@ class Slider extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_dots_normal',
 			[
-				'label' => __( 'Normal', 'zoom-elementor-widgets' ),
+				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'dots_nav_size',
 			[
-				'label' => __( 'Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -1719,7 +1719,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'dots_nav_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-dots li button:before' => 'color: {{VALUE}};',
@@ -1732,14 +1732,14 @@ class Slider extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_dots_hover',
 			[
-				'label' => __( 'Hover', 'zoom-elementor-widgets' ),
+				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'dots_nav_hover_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-dots li button:hover:before' => 'color: {{VALUE}};',
@@ -1752,14 +1752,14 @@ class Slider extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_dots_active',
 			[
-				'label' => __( 'Active', 'zoom-elementor-widgets' ),
+				'label' => __( 'Active', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'dots_nav_active_size',
 			[
-				'label' => __( 'Size', 'zoom-elementor-widgets' ),
+				'label' => __( 'Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -1771,7 +1771,7 @@ class Slider extends Widget_Base {
 		$this->add_control(
 			'dots_nav_active_color',
 			[
-				'label' => __( 'Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .slick-dots .slick-active button:before' => 'color: {{VALUE}};',
@@ -2154,7 +2154,7 @@ class Slider extends Widget_Base {
 								<?php if ( 'yes' === $settings[ 'show_play_icon' ] ) : ?>
 									<div class="elementor-custom-embed-play" role="button">
 										<i class="eicon-play" aria-hidden="true"></i>
-										<span class="elementor-screen-only"><?php _e( 'Play Video', 'zoom-elementor-widgets' ); ?></span>
+										<span class="elementor-screen-only"><?php _e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
 									</div>
 								<?php endif; ?>
 							</div>

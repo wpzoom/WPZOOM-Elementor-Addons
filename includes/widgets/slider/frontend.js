@@ -1,3 +1,4 @@
+
 ;(function ($) {
 	'use strict';
 
@@ -232,7 +233,7 @@
 		} );
 
 		elementorFrontend.hooks.addAction(
-			'frontend/element_ready/zoom-elementor-widgets-slider.default',
+			'frontend/element_ready/wpzoom-elementor-addons-slider.default',
 			function ( $scope ) {
 				elementorFrontend.elementsHandler.addHandler( SliderBase, {
 					$element: $scope

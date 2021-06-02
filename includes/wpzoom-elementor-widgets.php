@@ -109,9 +109,9 @@ class WPZOOM_Elementor_Widgets {
 	 */
 	function add_widget_categories( $elements_manager ) {
 		$elements_manager->add_category(
-			'wpzoom-elementor-widgets',
+			'wpzoom-elementor-addons',
 			[
-				'title' => __( 'WPZOOM', 'zoom-elementor-widgets' ),
+				'title' => __( 'WPZOOM', 'wpzoom-elementor-addons' ),
 				'icon' => 'fa fa-plug'
 			]
 		);

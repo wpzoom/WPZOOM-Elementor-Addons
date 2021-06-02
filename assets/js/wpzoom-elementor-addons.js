@@ -11,7 +11,7 @@ var WPZCached = null;
 		//Add the WPZoom Button
 		(text = text.replace(
 			'<div class="elementor-add-section-drag-title',
-			'<div class="elementor-add-section-area-button elementor-add-wpzoom-templates-button" title="WPZOOM Elementor Templates"> <i class="eicon-folder"></i> </div> <div class="elementor-add-section-drag-title'
+			'<div class="elementor-add-section-area-button elementor-add-wpzoom-templates-button" title="WPZoom Library"> <i class="eicon-folder"></i> </div> <div class="elementor-add-section-drag-title'
 		)),
 
 		elementor_add_section_tmpl.text(text),
@@ -66,14 +66,14 @@ var WPZCached = null;
 									header.append( wp.template( 'wpzoom-elementor-templates-modal__header' ) );
 								}
 								const content = windowWPZ.wpzModal.getElements("content");
-								if( !$('#wpzoom-elementor-templates-header').length ) {
-									content.append('<div id="wpzoom-elementor-templates-header" class="wrap"></div>');
-								}
 								if( !$('#elementor-template-library-filter-toolbar-remote').length ) {
 									content.append( wp.template( 'wpzoom-elementor-template-library-tools' ) );
 								}
+								if( !$('#wpzoom-elementor-templates-header').length ) {
+									content.append('<div id="wpzoom-elementor-templates-header" class="wrap"></div>');
+								}
 								if( !$('#wpzoom_main_library_templates_panel').length ) {
-									content.append('<div id="wpzoom_main_library_templates_panel" class="wpz__main-view"></div>');
+									content.append('<div id="wpzoom_main_library_templates_panel" class="wpzoom__main-view"></div>');
 								}
 								const loading = windowWPZ.wpzModal.getElements("loading");
 								if( !$('#elementor-template-library-loading').length ) {
@@ -114,8 +114,8 @@ var WPZCached = null;
 	var WPZupdateActions = function( insertIndex ){
 
 		/* INSERT template buttons */
-		$('.WPZ__btn-template-insert, .elementor-template-library-template-action').unbind('click');
-        $('.WPZ__btn-template-insert, .elementor-template-library-template-action').click(function(){
+		$('.wpzoom-btn-template-insert, .elementor-template-library-template-action').unbind('click');
+        $('.wpzoom-btn-template-insert, .elementor-template-library-template-action').click(function(){
 			var WPZ_selectedElement = this;
             showLoadingView();
 			var filename = $( WPZ_selectedElement ).attr( "data-template-name" ) + ".json";
@@ -152,10 +152,10 @@ var WPZCached = null;
 				}
 				filters[$(select).attr('name')] = value;
 			});
-			$('.WPZ__item').each(function(i, item) {
+			$('.wpzoom-item').each(function(i, item) {
 				var show = true;
 				$.each(filters, function(name, val) {
-					if (val === "null") { return; }
+					if ( val === null ) { return; }
 					if ( name === 'theme' && $(item).data('theme').indexOf(val) === -1) {
 						show = false;
 					} else if( $(item).data(name).indexOf(val) === -1) {
@@ -172,7 +172,7 @@ var WPZCached = null;
 		});
 
         /* Open the preview template */
-        $('.WPZ__thumb').click( function() {
+        $('.wpzoom-template-thumb').click( function() {
 			var data = WPZ_Index[ $(this).attr('data-index') ];
 			var slug = $(this).attr('data-template-name');
 			$('.elementor-templates-modal__header__logo').hide();
@@ -180,11 +180,11 @@ var WPZCached = null;
 			$('#wpzoom-elementor-template-library-header-preview').show();
 			$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').attr( 'data-template-name', slug );
 			$('.wpzoom-header-back-button').show();
-			//console.log( slug );
             showLoadingView();
-            $.post(ajaxurl, { action : 'get_WPZ_preview', data: data}, function(data) {
+            $.post( ajaxurl, { action : 'get_wpzoom_preview', data: data}, function(data) {
+				//console.log( slug );
 				hideLoadingView();
-				$('.wpz__main-view').html( data );
+				$('.wpzoom__main-view').html( data );
             	WPZupdateActions(insertIndex);
             });
         });
@@ -217,13 +217,13 @@ var WPZCached = null;
 			$.post( ajaxurl, { action : 'get_wpzoom_templates_library_view' }, function( data ) {
 
 				hideLoadingView();
-				$( '.wpz__main-view').html( data );
+				$( '.wpzoom__main-view').html( data );
 				WPZCached = data;
 				WPZupdateActions( insertIndex );
 			});
 		} else {
 			hideLoadingView();
-			$('.wpz__main-view').html( WPZCached );
+			$('.wpzoom__main-view').html( WPZCached );
 			WPZupdateActions( insertIndex );
 		}
 
@@ -231,11 +231,11 @@ var WPZCached = null;
 		var filterValue = $('#wpzoom-elementor-template-library-filter-theme').val();
 		if( filterValue ) {
 			filters['theme'] = filterValue;
-			$('.WPZ__item').each(function(i, item) {
+			$( '.wpzoom-item' ).each( function( i, item ) {
 				var show = true;
-				$.each(filters, function(name, val) {
-					if (val === "null") { return; }
-					if ( name === 'theme' && $(item).data('theme').indexOf(val) === -1) {
+				$.each( filters, function( name, val ) {
+					if ( val === null ) { return; }
+					if ( name === 'theme' && $(item).data('theme').indexOf(val) === -1 ) {
 						show = false;
 					} else if( $(item).data(name).indexOf(val) === -1) {
 						show = false;

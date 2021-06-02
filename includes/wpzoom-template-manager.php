@@ -132,7 +132,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				for( $i = 0; $i < count( $template_list ); $i++ ) {
 					$slug = strtolower( str_replace( " ", "-", $template_list[$i]['name'] ) );
 					?>
-					<div class="WPZ__item" data-theme="<?php echo strtolower( str_replace(" ", "-", $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace(" ", "-", $template_list[$i]['category'] ) ) ?>">
+					<div class="WPZ__item" data-theme="<?php echo strtolower( str_replace( " ", "-", $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace( " ", "-", $template_list[$i]['category'] ) ) ?>">
 						<div class="WPZ__title">
 						<?php
 							echo $template_list[$i]['name'];
@@ -148,7 +148,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						</div>
 						<div class="WPZ__action-bar">
 							<div class="WPZ__grow"> </div>
-							<div data-version="WPZ__version-<?php echo $i;?>" data-template-name='<?php echo $slug; ?>' class='WPZ__btn-template-insert'> Insert Template </div>
+							<div data-version="WPZ__version-<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" class="WPZ__btn-template-insert"> Insert Template </div>
 						</div>
 					</div>
 				<?php

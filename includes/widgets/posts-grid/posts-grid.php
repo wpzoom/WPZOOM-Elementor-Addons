@@ -5,7 +5,7 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Image_Size;
 
@@ -29,7 +29,7 @@ class Posts_Grid extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'wpzoom-elementor-widgets-css-frontend-posts-grid', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-posts-grid', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class Posts_Grid extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpzoom-elementor-widgets-posts-grid';
+		return 'wpzoom-elementor-addons-posts-grid';
 	}
 
 	/**
@@ -55,7 +55,7 @@ class Posts_Grid extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Posts Grid', 'zoom-elementor-widgets' );
+		return __( 'Posts Grid', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Posts_Grid extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-widgets' ];
+		return [ 'wpzoom-elementor-addons' ];
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Posts_Grid extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return [
-			'wpzoom-elementor-widgets-css-frontend-posts-grid'
+			'wpzoom-elementor-addons-css-frontend-posts-grid'
 		];
 	}
 
@@ -171,22 +171,22 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout',
 			[
-				'label' => esc_html__( 'Layout', 'zoom-elementor-widgets' )
+				'label' => esc_html__( 'Layout', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_control(
 			'grid_style',
 			[
-				'label' => __( 'Grid Style', 'zoom-elementor-widgets' ),
+				'label' => __( 'Grid Style', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '1',
 				'options' => [
-					'1' => esc_html__( 'Layout 1', 'zoom-elementor-widgets' ),
-					'2' => esc_html__( 'Layout 2', 'zoom-elementor-widgets' ),
-					'3' => esc_html__( 'Layout 3', 'zoom-elementor-widgets' ),
-					'4' => esc_html__( 'Layout 4', 'zoom-elementor-widgets' ),
-					'5' => esc_html__( 'Layout 5', 'zoom-elementor-widgets' )
+					'1' => esc_html__( 'Layout 1', 'wpzoom-elementor-addons' ),
+					'2' => esc_html__( 'Layout 2', 'wpzoom-elementor-addons' ),
+					'3' => esc_html__( 'Layout 3', 'wpzoom-elementor-addons' ),
+					'4' => esc_html__( 'Layout 4', 'wpzoom-elementor-addons' ),
+					'5' => esc_html__( 'Layout 5', 'wpzoom-elementor-addons' )
 				]
 			]
 		);
@@ -194,7 +194,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'columns',
 			[
-				'label' => __( 'Columns', 'zoom-elementor-widgets' ),
+				'label' => __( 'Columns', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '3',
 				'tablet_default' => '2',
@@ -216,7 +216,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'posts_per_page',
 			[
-				'label' => __( 'Posts Per Page', 'zoom-elementor-widgets' ),
+				'label' => __( 'Posts Per Page', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => 3
 			]
@@ -225,10 +225,10 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'show_image',
 			[
-				'label' => __( 'Image', 'zoom-elementor-widgets' ),
+				'label' => __( 'Image', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
 				'default' => 'yes',
 				'separator' => 'before'
 			]
@@ -250,10 +250,10 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'show_title',
 			[
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
 				'default' => 'yes',
 				'separator' => 'before'
 			]
@@ -262,7 +262,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			[
-				'label' => __( 'Title HTML Tag', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title HTML Tag', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1'   => 'H1',
@@ -285,16 +285,16 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'meta_data',
 			[
-				'label' => __( 'Meta Data', 'zoom-elementor-widgets' ),
+				'label' => __( 'Meta Data', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'type' => Controls_Manager::SELECT2,
 				'default' => [ 'date', 'comments' ],
 				'multiple' => true,
 				'options' => [
-					'author'     => __( 'Author', 'zoom-elementor-widgets' ),
-					'date'       => __( 'Date', 'zoom-elementor-widgets' ),
-					'categories' => __( 'Categories', 'zoom-elementor-widgets' ),
-					'comments'   => __( 'Comments', 'zoom-elementor-widgets' )
+					'author'     => __( 'Author', 'wpzoom-elementor-addons' ),
+					'date'       => __( 'Date', 'wpzoom-elementor-addons' ),
+					'categories' => __( 'Categories', 'wpzoom-elementor-addons' ),
+					'comments'   => __( 'Comments', 'wpzoom-elementor-addons' )
 				],
 				'separator' => 'before'
 			]
@@ -303,7 +303,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'meta_separator',
 			[
-				'label' => __( 'Separator Between', 'zoom-elementor-widgets' ),
+				'label' => __( 'Separator Between', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '/',
 				'selectors' => [
@@ -318,10 +318,10 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'show_excerpt',
 			[
-				'label'     => __( 'Excerpt', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Excerpt', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'label_on'  => __( 'Show', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
+				'label_on'  => __( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
 				'default'   => 'yes',
 				'separator' => 'before'
 			]
@@ -330,7 +330,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'excerpt_length',
 			[
-				'label' => __( 'Excerpt Length', 'zoom-elementor-widgets' ),
+				'label' => __( 'Excerpt Length', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::NUMBER,
 				/** This filter is documented in wp-includes/formatting.php */
 				'default' => apply_filters( 'excerpt_length', 25 ),
@@ -343,10 +343,10 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'show_read_more',
 			[
-				'label'     => __( 'Read More', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Read More', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'label_on'  => __( 'Show', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
+				'label_on'  => __( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
 				'default'   => 'yes',
 				'separator' => 'before'
 			]
@@ -355,9 +355,9 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'read_more_text',
 			[
-				'label'     => __( 'Read More Text', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Read More Text', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => __( 'Read More Â»', 'zoom-elementor-widgets' ),
+				'default'   => __( 'Read More Â»', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'show_read_more' => 'yes'
 				]
@@ -367,19 +367,19 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'content_align',
 			[
-				'label' => __( 'Alignment', 'zoom-elementor-widgets' ),
+				'label' => __( 'Alignment', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'zoom-elementor-widgets' ),
+						'title' => __( 'Left', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-left'
 					],
 					'center' => [
-						'title' => __( 'Center', 'zoom-elementor-widgets' ),
+						'title' => __( 'Center', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-center'
 					],
 					'right' => [
-						'title' => __( 'Right', 'zoom-elementor-widgets' ),
+						'title' => __( 'Right', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-right'
 					]
 				],
@@ -406,7 +406,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_query',
 			[
-				'label' => __( 'Query', 'zoom-elementor-widgets' ),
+				'label' => __( 'Query', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT
 			]
 		);
@@ -415,7 +415,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'post_categories',
 			[
-				'label'       => __( 'Categories', 'zoom-elementor-widgets' ),
+				'label'       => __( 'Categories', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => true,
@@ -426,7 +426,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'advanced',
 			[
-				'label' => __( 'Advanced', 'zoom-elementor-widgets' ),
+				'label' => __( 'Advanced', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING
 			]
 		);
@@ -434,13 +434,13 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'orderby',
 			[
-				'label'   => __( 'Order By', 'zoom-elementor-widgets' ),
+				'label'   => __( 'Order By', 'wpzoom-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'post_date',
 				'options' => [
-					'post_date'  => __( 'Date', 'zoom-elementor-widgets' ),
-					'post_title' => __( 'Title', 'zoom-elementor-widgets' ),
-					'rand'       => __( 'Random', 'zoom-elementor-widgets' )
+					'post_date'  => __( 'Date', 'wpzoom-elementor-addons' ),
+					'post_title' => __( 'Title', 'wpzoom-elementor-addons' ),
+					'rand'       => __( 'Random', 'wpzoom-elementor-addons' )
 				]
 			]
 		);
@@ -448,12 +448,12 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'order',
 			[
-				'label'   => __( 'Order', 'zoom-elementor-widgets' ),
+				'label'   => __( 'Order', 'wpzoom-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'desc',
 				'options' => [
-					'asc'  => __( 'ASC', 'zoom-elementor-widgets' ),
-					'desc' => __( 'DESC', 'zoom-elementor-widgets' ),
+					'asc'  => __( 'ASC', 'wpzoom-elementor-addons' ),
+					'desc' => __( 'DESC', 'wpzoom-elementor-addons' ),
 				]
 			]
 		);
@@ -474,7 +474,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout_style',
 			[
-				'label' => __( 'Layout', 'zoom-elementor-widgets' ),
+				'label' => __( 'Layout', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -483,7 +483,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'grid_style_columns_margin',
 			[
-				'label'     => __( 'Columns margin', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Columns margin', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 15
@@ -504,7 +504,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'grid_style_rows_margin',
 			[
-				'label'     => __( 'Rows margin', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Rows margin', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 30
@@ -537,7 +537,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_box',
 			[
-				'label' => __( 'Box', 'zoom-elementor-widgets' ),
+				'label' => __( 'Box', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -546,7 +546,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'grid_box_border_width',
 			[
-				'label'      => __( 'Border Widget', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Border Widget', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -559,7 +559,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'grid_style_border_radius',
 			[
-				'label'     => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 0
@@ -580,7 +580,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'grid_items_style_padding',
 			[
-				'label'      => __( 'Padding', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Padding', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -595,7 +595,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_tab(
 			'grid_button_style_normal',
 			[
-				'label' => __( 'Normal', 'zoom-elementor-widgets' )
+				'label' => __( 'Normal', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -604,7 +604,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_button_style_normal_bg_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
@@ -618,7 +618,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_button_style_normal_border_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Border Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
@@ -642,7 +642,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_tab(
 			'grid_button_style_hover',
 			[
-				'label' => __( 'Hover', 'zoom-elementor-widgets' )
+				'label' => __( 'Hover', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -651,7 +651,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_button_style_hover_bg_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
@@ -665,7 +665,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_button_style_hover_border_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Border Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
@@ -703,7 +703,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_image',
 			[
-				'label' => __( 'Image', 'zoom-elementor-widgets' ),
+				'label' => __( 'Image', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -712,7 +712,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_control(
 			'grid_image_border_radius',
 			[
-				'label'      => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -724,7 +724,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'grid_style_image_margin',
 			[
-				'label'      => __( 'Margin', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
@@ -749,7 +749,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_grid_title_style',
 			[
-				'label'     => __( 'Title', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Title', 'wpzoom-elementor-addons' ),
 				'tab'       => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -759,7 +759,7 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'grid_title_style_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a'
 			]
 		);
@@ -770,7 +770,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_tab(
 			'grid_title_style_normal',
 			[
-				'label' => esc_html__( 'Normal', 'zoom-elementor-widgets' )
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -779,7 +779,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_title_style_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a' => 'color: {{VALUE}};'
@@ -793,7 +793,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_tab(
 			'grid_title_style_hover',
 			[
-				'label' => esc_html__( 'Hover', 'zoom-elementor-widgets' )
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -802,7 +802,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_title_style_hover_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'zoom-elementor-widgets' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a:hover' => 'color: {{VALUE}};'
@@ -818,7 +818,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'grid_title_style_margin',
 			[
-				'label'      => __( 'Margin', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
@@ -843,7 +843,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_grid_meta_style',
 			[
-				'label'     => __( 'Meta', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Meta', 'wpzoom-elementor-addons' ),
 				'tab'       => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -853,7 +853,7 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'grid_meta_style_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta span'
 			]
 		);
@@ -863,7 +863,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_meta_style_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta span'      => 'color: {{VALUE}};',
@@ -876,7 +876,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'grid_meta_style_margin',
 			[
-				'label'      => __( 'Margin', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
@@ -901,7 +901,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_grid_content_style',
 			[
-				'label' => __( 'Content', 'zoom-elementor-widgets' ),
+				'label' => __( 'Content', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -911,7 +911,7 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'grid_content_style_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .zew-grid-container .zew-post .post-grid-excerpt p'
 			]
 		);
@@ -921,7 +921,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_content_style_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-excerpt p' => 'color: {{VALUE}};'
@@ -933,7 +933,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'grid_content_style_margin',
 			[
-				'label'      => __( 'Margin', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
@@ -958,7 +958,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_section(
 			'section_grid_readmore_style',
 			[
-				'label' => __( 'Read More', 'zoom-elementor-widgets' ),
+				'label' => __( 'Read More', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -968,7 +968,7 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'grid_readmore_style_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn'
 			]
 		);
@@ -979,7 +979,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_tab(
 			'grid_readmore_style_normal',
 			[
-				'label' => esc_html__( 'Normal', 'zoom-elementor-widgets' )
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -988,7 +988,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_readmore_style_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'zoom-elementor-widgets' ),
+				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn' => 'color: {{VALUE}};'
@@ -1002,7 +1002,7 @@ class Posts_Grid extends Widget_Base {
 		$this->start_controls_tab(
 			'grid_readmore_style_color_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'zoom-elementor-widgets' )
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -1011,7 +1011,7 @@ class Posts_Grid extends Widget_Base {
 			'grid_readmore_style_hover_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'zoom-elementor-widgets' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn:hover' => 'color: {{VALUE}};'
@@ -1027,7 +1027,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'grid_readmore_style_margin',
 			[
-				'label'      => __( 'Margin', 'zoom-elementor-widgets' ),
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
@@ -1237,7 +1237,7 @@ class Posts_Grid extends Widget_Base {
 
 			if ( in_array( 'categories', $meta_data ) ) {
 
-				$categories_list = get_the_category_list( esc_html__( ', ', 'zoom-elementor-widgets' ) ); 
+				$categories_list = get_the_category_list( esc_html__( ', ', 'wpzoom-elementor-addons' ) ); 
 
 				if ( $categories_list ) {
 					printf( '<span class="post-categories">%s</span>', $categories_list ); // WPCS: XSS OK.

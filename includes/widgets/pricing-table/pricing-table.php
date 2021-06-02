@@ -1,10 +1,10 @@
 <?php
-namespace WpZOOMElementorWidgets;
+namespace WPZOOMElementorWidgets;
 
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -31,7 +31,7 @@ class Pricing_Table extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'wpzoom-elementor-widgets-css-frontend-pricing-table', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-pricing-table', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Pricing_Table extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpzoom-elementor-widgets-pricing-table';
+		return 'wpzoom-elementor-addons-pricing-table';
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Pricing_Table extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Pricing Table', 'zoom-elementor-widgets' );
+		return __( 'Pricing Table', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Pricing_Table extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-widgets' ];
+		return [ 'wpzoom-elementor-addons' ];
 	}
 
 	/**
@@ -99,7 +99,7 @@ class Pricing_Table extends Widget_Base {
 		return [
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-widgets-css-frontend-pricing-table'
+			'wpzoom-elementor-addons-css-frontend-pricing-table'
 		];
 	}
 
@@ -128,7 +128,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_header',
 			[
-				'label' => __( 'Header', 'zoom-elementor-widgets' ),
+				'label' => __( 'Header', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT
 			]
 		);
@@ -136,10 +136,10 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'title',
 			[
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
-				'default' => __( 'Basic', 'zoom-elementor-widgets' ),
+				'default' => __( 'Basic', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true
 				]
@@ -151,7 +151,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_pricing',
 			[
-				'label' => __( 'Pricing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Pricing', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT
 			]
 		);
@@ -159,30 +159,30 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'currency',
 			[
-				'label' => __( 'Currency', 'zoom-elementor-widgets' ),
+				'label' => __( 'Currency', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'label_block' => false,
 				'options' => [
-					''             => __( 'None', 'zoom-elementor-widgets' ),
-					'baht'         => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'bdt'          => '&#2547; ' . _x( 'BD Taka', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'dollar'       => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'euro'         => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'franc'        => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'guilder'      => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'krona'        => 'kr ' . _x( 'Krona', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'lira'         => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'peseta'       => '&#8359 ' . _x( 'Peseta', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'peso'         => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'pound'        => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'real'         => 'R$ ' . _x( 'Real', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'ruble'        => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'rupee'        => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'indian_rupee' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'shekel'       => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'won'          => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'yen'          => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'zoom-elementor-widgets' ),
-					'custom'       => __( 'Custom', 'zoom-elementor-widgets' )
+					''             => __( 'None', 'wpzoom-elementor-addons' ),
+					'baht'         => '&#3647; ' . _x( 'Baht', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'bdt'          => '&#2547; ' . _x( 'BD Taka', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'dollar'       => '&#36; ' . _x( 'Dollar', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'euro'         => '&#128; ' . _x( 'Euro', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'franc'        => '&#8355; ' . _x( 'Franc', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'guilder'      => '&fnof; ' . _x( 'Guilder', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'krona'        => 'kr ' . _x( 'Krona', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'lira'         => '&#8356; ' . _x( 'Lira', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'peseta'       => '&#8359 ' . _x( 'Peseta', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'peso'         => '&#8369; ' . _x( 'Peso', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'pound'        => '&#163; ' . _x( 'Pound Sterling', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'real'         => 'R$ ' . _x( 'Real', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'ruble'        => '&#8381; ' . _x( 'Ruble', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'rupee'        => '&#8360; ' . _x( 'Rupee', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'indian_rupee' => '&#8377; ' . _x( 'Rupee (Indian)', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'shekel'       => '&#8362; ' . _x( 'Shekel', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'won'          => '&#8361; ' . _x( 'Won', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'yen'          => '&#165; ' . _x( 'Yen/Yuan', 'Currency Symbol', 'wpzoom-elementor-addons' ),
+					'custom'       => __( 'Custom', 'wpzoom-elementor-addons' )
 				],
 				'default' => 'dollar'
 			]
@@ -191,7 +191,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'currency_custom',
 			[
-				'label' => __( 'Custom Symbol', 'zoom-elementor-widgets' ),
+				'label' => __( 'Custom Symbol', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'condition' => [
 					'currency' => 'custom'
@@ -205,7 +205,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'price',
 			[
-				'label' => __( 'Price', 'zoom-elementor-widgets' ),
+				'label' => __( 'Price', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '9.99',
 				'dynamic' => [
@@ -217,9 +217,9 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'period',
 			[
-				'label' => __( 'Period', 'zoom-elementor-widgets' ),
+				'label' => __( 'Period', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Per Month', 'zoom-elementor-widgets' ),
+				'default' => __( 'Per Month', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true
 				]
@@ -231,16 +231,16 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_features',
 			[
-				'label' => __( 'Features', 'zoom-elementor-widgets' )
+				'label' => __( 'Features', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_control(
 			'features_title',
 			[
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Features', 'zoom-elementor-widgets' ),
+				'default' => __( 'Features', 'wpzoom-elementor-addons' ),
 				'separator' => 'after',
 				'label_block' => true,
 				'dynamic' => [
@@ -254,9 +254,9 @@ class Pricing_Table extends Widget_Base {
 		$repeater->add_control(
 			'text',
 			[
-				'label' => __( 'Text', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'Exciting Feature', 'zoom-elementor-widgets' ),
+				'default' => __( 'Exciting Feature', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true
 				]
@@ -266,7 +266,7 @@ class Pricing_Table extends Widget_Base {
 		$repeater->add_control(
 			'selected_icon',
 			[
-				'label' => __( 'Icon', 'zoom-elementor-widgets' ),
+				'label' => __( 'Icon', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'default' => [
@@ -293,19 +293,19 @@ class Pricing_Table extends Widget_Base {
 				'show_label' => false,
 				'default' => [
 					[
-						'text' => __( 'Standard Feature', 'zoom-elementor-widgets' ),
+						'text' => __( 'Standard Feature', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-check'
 					],
 					[
-						'text' => __( 'Another Great Feature', 'zoom-elementor-widgets' ),
+						'text' => __( 'Another Great Feature', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-check'
 					],
 					[
-						'text' => __( 'Obsolete Feature', 'zoom-elementor-widgets' ),
+						'text' => __( 'Obsolete Feature', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-close'
 					],
 					[
-						'text' => __( 'Exciting Feature', 'zoom-elementor-widgets' ),
+						'text' => __( 'Exciting Feature', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-check'
 					]
 				],
@@ -318,7 +318,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_footer',
 			[
-				'label' => __( 'Footer', 'zoom-elementor-widgets' ),
+				'label' => __( 'Footer', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT
 			]
 		);
@@ -326,10 +326,10 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'button_text',
 			[
-				'label' => __( 'Button Text', 'zoom-elementor-widgets' ),
+				'label' => __( 'Button Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Subscribe', 'zoom-elementor-widgets' ),
-				'placeholder' => __( 'Type button text here', 'zoom-elementor-widgets' ),
+				'default' => __( 'Subscribe', 'wpzoom-elementor-addons' ),
+				'placeholder' => __( 'Type button text here', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'dynamic' => [
 					'active' => true
@@ -340,7 +340,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'button_link',
 			[
-				'label' => __( 'Link', 'zoom-elementor-widgets' ),
+				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'label_block' => true,
 				'placeholder' => 'https://example.com',
@@ -358,17 +358,17 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_badge',
 			[
-				'label' => __( 'Badge', 'zoom-elementor-widgets' )
+				'label' => __( 'Badge', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_control(
 			'show_badge',
 			[
-				'label' => __( 'Show', 'zoom-elementor-widgets' ),
+				'label' => __( 'Show', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'zoom-elementor-widgets' ),
-				'label_off' => __( 'Hide', 'zoom-elementor-widgets' ),
+				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'style_transfer' => true
@@ -378,16 +378,16 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'badge_position',
 			[
-				'label' => __( 'Position', 'zoom-elementor-widgets' ),
+				'label' => __( 'Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'label_block' => false,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'zoom-elementor-widgets' ),
+						'title' => __( 'Left', 'wpzoom-elementor-addons' ),
 						'icon' => 'eicon-h-align-left'
 					],
 					'right' => [
-						'title' => __( 'Right', 'zoom-elementor-widgets' ),
+						'title' => __( 'Right', 'wpzoom-elementor-addons' ),
 						'icon' => 'eicon-h-align-right'
 					]
 				],
@@ -403,10 +403,10 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'badge_text',
 			[
-				'label' => __( 'Badge Text', 'zoom-elementor-widgets' ),
+				'label' => __( 'Badge Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Recommended', 'zoom-elementor-widgets' ),
-				'placeholder' => __( 'Type badge text', 'zoom-elementor-widgets' ),
+				'default' => __( 'Recommended', 'wpzoom-elementor-addons' ),
+				'placeholder' => __( 'Type badge text', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'show_badge' => 'yes'
 				],
@@ -430,7 +430,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_general',
 			[
-				'label' => __( 'General', 'zoom-elementor-widgets' ),
+				'label' => __( 'General', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -438,7 +438,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'text_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-title,'
@@ -456,7 +456,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_header',
 			[
-				'label' => __( 'Header', 'zoom-elementor-widgets' ),
+				'label' => __( 'Header', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -464,7 +464,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'title_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -476,7 +476,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-title' => 'color: {{VALUE}};'
@@ -489,7 +489,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2
+				'scheme' => Typography::TYPOGRAPHY_2
 			]
 		);
 
@@ -506,7 +506,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_pricing',
 			[
-				'label' => __( 'Pricing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Pricing', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -515,14 +515,14 @@ class Pricing_Table extends Widget_Base {
 			'_heading_price',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Price', 'zoom-elementor-widgets' )
+				'label' => __( 'Price', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_responsive_control(
 			'price_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -534,7 +534,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'price_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-price-text' => 'color: {{VALUE}};'
@@ -547,7 +547,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'price_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-price-text',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3
+				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
 
@@ -555,7 +555,7 @@ class Pricing_Table extends Widget_Base {
 			'_heading_currency',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Currency', 'zoom-elementor-widgets' ),
+				'label' => __( 'Currency', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -563,7 +563,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'currency_spacing',
 			[
-				'label' => __( 'Side Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Side Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -575,7 +575,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'currency_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-currency' => 'color: {{VALUE}};'
@@ -588,7 +588,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'currency_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-currency',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3
+				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
 
@@ -596,7 +596,7 @@ class Pricing_Table extends Widget_Base {
 			'_heading_period',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Period', 'zoom-elementor-widgets' ),
+				'label' => __( 'Period', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -604,7 +604,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'period_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -616,7 +616,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'period_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-period' => 'color: {{VALUE}};'
@@ -629,7 +629,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'period_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-period',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3
+				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
 
@@ -638,7 +638,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_features',
 			[
-				'label' => __( 'Features', 'zoom-elementor-widgets' ),
+				'label' => __( 'Features', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -646,7 +646,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'features_container_spacing',
 			[
-				'label' => __( 'Container Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Container Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -659,7 +659,7 @@ class Pricing_Table extends Widget_Base {
 			'_heading_features_title',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Title', 'zoom-elementor-widgets' ),
+				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -667,7 +667,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'features_title_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'zoom-elementor-widgets' ),
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -679,7 +679,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'features_title_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-features-title' => 'color: {{VALUE}};'
@@ -692,7 +692,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'features_title_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-features-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2
+				'scheme' => Typography::TYPOGRAPHY_2
 			]
 		);
 
@@ -700,7 +700,7 @@ class Pricing_Table extends Widget_Base {
 			'_heading_features_list',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'List', 'zoom-elementor-widgets' ),
+				'label' => __( 'List', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -708,7 +708,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'features_list_spacing',
 			[
-				'label' => __( 'Spacing Between', 'zoom-elementor-widgets' ),
+				'label' => __( 'Spacing Between', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
@@ -720,7 +720,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'features_list_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-features-list > li' => 'color: {{VALUE}};'
@@ -733,7 +733,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'features_list_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-features-list > li',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3
+				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
 
@@ -742,7 +742,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_footer',
 			[
-				'label' => __( 'Footer', 'zoom-elementor-widgets' ),
+				'label' => __( 'Footer', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -751,14 +751,14 @@ class Pricing_Table extends Widget_Base {
 			'_heading_button',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Button', 'zoom-elementor-widgets' )
+				'label' => __( 'Button', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_responsive_control(
 			'button_padding',
 			[
-				'label' => __( 'Padding', 'zoom-elementor-widgets' ),
+				'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -778,7 +778,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -800,7 +800,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .zew-pricing-table-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4
+				'scheme' => Typography::TYPOGRAPHY_4
 			]
 		);
 
@@ -817,14 +817,14 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_button_normal',
 			[
-				'label' => __( 'Normal', 'zoom-elementor-widgets' )
+				'label' => __( 'Normal', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_control(
 			'button_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-btn' => 'color: {{VALUE}};'
@@ -835,7 +835,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'button_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-btn' => 'background-color: {{VALUE}};'
@@ -848,14 +848,14 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_button_hover',
 			[
-				'label' => __( 'Hover', 'zoom-elementor-widgets' )
+				'label' => __( 'Hover', 'wpzoom-elementor-addons' )
 			]
 		);
 
 		$this->add_control(
 			'button_hover_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-btn:hover, {{WRAPPER}} .zew-pricing-table-btn:focus' => 'color: {{VALUE}};'
@@ -866,7 +866,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'button_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-btn:hover, {{WRAPPER}} .zew-pricing-table-btn:focus' => 'background-color: {{VALUE}};'
@@ -877,7 +877,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'button_hover_border_color',
 			[
-				'label' => __( 'Border Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => [
 					'button_border_border!' => ''
@@ -895,7 +895,7 @@ class Pricing_Table extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_badge',
 			[
-				'label' => __( 'Badge', 'zoom-elementor-widgets' ),
+				'label' => __( 'Badge', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -903,7 +903,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'badge_padding',
 			[
-				'label' => __( 'Padding', 'zoom-elementor-widgets' ),
+				'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -915,7 +915,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'badge_color',
 			[
-				'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-badge' => 'color: {{VALUE}};'
@@ -926,7 +926,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_control(
 			'badge_bg_color',
 			[
-				'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .zew-pricing-table-badge' => 'background-color: {{VALUE}};'
@@ -945,7 +945,7 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'badge_border_radius',
 			[
-				'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -966,9 +966,9 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'badge_typography',
-				'label' => __( 'Typography', 'zoom-elementor-widgets' ),
+				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .zew-pricing-table-badge',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3
+				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPZOOM Elementor Addons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astra-sites\n"
-"POT-Creation-Date: 2021-05-18 15:50+0300\n"
+"POT-Creation-Date: 2021-06-02 11:27+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,6 +22,14 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: includes/editor-templates/templates.php:17
+msgid "Back to Library"
+msgstr ""
+
+#: includes/editor-templates/templates.php:47
+msgid "Loading"
+msgstr ""
 
 #: includes/widgets/carousel/carousel.php:75
 msgid "Carousel"
@@ -1805,50 +1813,46 @@ msgstr ""
 msgid "WPZOOM"
 msgstr ""
 
-#: includes/wpzoom-template-library.php:20
-msgid "WPZOOM Templates"
+#: includes/wpzoom-template-manager.php:89 includes/wpzoom-template-manager.php:100
+msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: includes/wpzoom-template-manager copy.php:75
-msgid "Remote"
-msgstr ""
-
-#: wpzoom-elementor-addons.php:261
+#: wpzoom-elementor-addons.php:242
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" to activated."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:262 wpzoom-elementor-addons.php:274
+#: wpzoom-elementor-addons.php:243 wpzoom-elementor-addons.php:255
 msgid "WPZOOM Elementor Addons"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:263 wpzoom-elementor-addons.php:275
-#: wpzoom-elementor-addons.php:309
+#: wpzoom-elementor-addons.php:244 wpzoom-elementor-addons.php:256
+#: wpzoom-elementor-addons.php:290
 msgid "Elementor"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:266
+#: wpzoom-elementor-addons.php:247
 msgid "Activate Elementor"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:273
+#: wpzoom-elementor-addons.php:254
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" to be installed."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:278
+#: wpzoom-elementor-addons.php:259
 msgid "Install Elementor"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:307 wpzoom-elementor-addons.php:329
+#: wpzoom-elementor-addons.php:288 wpzoom-elementor-addons.php:310
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:308 wpzoom-elementor-addons.php:330
+#: wpzoom-elementor-addons.php:289 wpzoom-elementor-addons.php:311
 msgid "Elementor Test Extension"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:331
+#: wpzoom-elementor-addons.php:312
 msgid "PHP"
 msgstr ""

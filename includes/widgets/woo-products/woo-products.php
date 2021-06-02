@@ -3,7 +3,7 @@ namespace WPZOOMElementorWidgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -34,7 +34,7 @@ class Woo_Products extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'zoom-elementor-widgets-css-frontend-woo-products', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-woo-products', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class Woo_Products extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'zoom-elementor-widgets-woo-products';
+		return 'wpzoom-elementor-addons-woo-products';
 	}
 
 	/**
@@ -60,7 +60,7 @@ class Woo_Products extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Woo Products', 'zoom-elementor-widgets' );
+		return __( 'Woo Products', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Woo_Products extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-widgets' ];
+		return [ 'wpzoom-elementor-addons' ];
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Woo_Products extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return [
-			'zoom-elementor-widgets-css-frontend-woo-products'
+			'wpzoom-elementor-addons-css-frontend-woo-products'
 		];
 	}
 
@@ -130,14 +130,14 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_woo_products',
 				[
-					'label' => __( 'Products', 'zoom-elementor-widgets' ),
+					'label' => __( 'Products', 'wpzoom-elementor-addons' ),
 				]
 		);
 
 		$this->add_control(
 				'columns',
 				[
-					'label' => __( 'Columns', 'zoom-elementor-widgets' ),
+					'label' => __( 'Columns', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => '4',
 					'options' => [
@@ -158,7 +158,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'posts_per_page',
 				[
-					'label' => __( 'Products Count', 'zoom-elementor-widgets' ),
+					'label' => __( 'Products Count', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::NUMBER,
 					'default' => '4',
 				]
@@ -167,7 +167,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'pagination',
 				[
-					'label' => __( 'Pagination', 'zoom-elementor-widgets' ),
+					'label' => __( 'Pagination', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SWITCHER,
 					'default' => '',
 				]
@@ -176,19 +176,19 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'pagination_position',
 				[
-					'label' => __( 'Pagination Position', 'zoom-elementor-widgets' ),
+					'label' => __( 'Pagination Position', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::CHOOSE,
 					'options' => [
 						'left' => [
-							'title' => __( 'Left', 'zoom-elementor-widgets' ),
+							'title' => __( 'Left', 'wpzoom-elementor-addons' ),
 							'icon' => 'fa fa-align-left',
 						],
 						'center' => [
-							'title' => __( 'Center', 'zoom-elementor-widgets' ),
+							'title' => __( 'Center', 'wpzoom-elementor-addons' ),
 							'icon' => 'fa fa-align-center',
 						],
 						'right' => [
-							'title' => __( 'Right', 'zoom-elementor-widgets' ),
+							'title' => __( 'Right', 'wpzoom-elementor-addons' ),
 							'icon' => 'fa fa-align-right',
 						],
 					],
@@ -207,7 +207,7 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_filter',
 				[
-					'label' => __( 'Query', 'zoom-elementor-widgets' ),
+					'label' => __( 'Query', 'wpzoom-elementor-addons' ),
 					'tab' => Controls_Manager::TAB_CONTENT,
 				]
 		);
@@ -215,13 +215,13 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'query_type',
 				[
-					'label' => __( 'Source', 'zoom-elementor-widgets' ),
+					'label' => __( 'Source', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'all',
 					'options' => [
-						'all' => __( 'All Products', 'zoom-elementor-widgets' ),
-						'custom' => __( 'Custom Query', 'zoom-elementor-widgets' ),
-						'manual' => __( 'Manual Selection', 'zoom-elementor-widgets' ),
+						'all' => __( 'All Products', 'wpzoom-elementor-addons' ),
+						'custom' => __( 'Custom Query', 'wpzoom-elementor-addons' ),
+						'manual' => __( 'Manual Selection', 'wpzoom-elementor-addons' ),
 					],
 				]
 		);
@@ -229,12 +229,12 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'category_filter_rule',
 				[
-					'label' => __( 'Cat Filter Rule', 'zoom-elementor-widgets' ),
+					'label' => __( 'Cat Filter Rule', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'IN',
 					'options' => [
-						'IN' => __( 'Match Categories', 'zoom-elementor-widgets' ),
-						'NOT IN' => __( 'Exclude Categories', 'zoom-elementor-widgets' ),
+						'IN' => __( 'Match Categories', 'wpzoom-elementor-addons' ),
+						'NOT IN' => __( 'Exclude Categories', 'wpzoom-elementor-addons' ),
 					],
 					'condition' => [
 						'query_type' => 'custom',
@@ -245,7 +245,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'category_filter',
 				[
-					'label' => __( 'Select Categories', 'zoom-elementor-widgets' ),
+					'label' => __( 'Select Categories', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT2,
 					'multiple' => true,
 					'default' => '',
@@ -259,12 +259,12 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'tag_filter_rule',
 				[
-					'label' => __( 'Tag Filter Rule', 'zoom-elementor-widgets' ),
+					'label' => __( 'Tag Filter Rule', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'IN',
 					'options' => [
-						'IN' => __( 'Match Tags', 'zoom-elementor-widgets' ),
-						'NOT IN' => __( 'Exclude Tags', 'zoom-elementor-widgets' ),
+						'IN' => __( 'Match Tags', 'wpzoom-elementor-addons' ),
+						'NOT IN' => __( 'Exclude Tags', 'wpzoom-elementor-addons' ),
 					],
 					'condition' => [
 						'query_type' => 'custom',
@@ -275,7 +275,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'tag_filter',
 				[
-					'label' => __( 'Select Tags', 'zoom-elementor-widgets' ),
+					'label' => __( 'Select Tags', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT2,
 					'multiple' => true,
 					'default' => '',
@@ -289,10 +289,10 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'offset',
 				[
-					'label' => __( 'Offset', 'zoom-elementor-widgets' ),
+					'label' => __( 'Offset', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::NUMBER,
 					'default' => 0,
-					'description' => __( 'Number of post to displace or pass over.', 'zoom-elementor-widgets' ),
+					'description' => __( 'Number of post to displace or pass over.', 'wpzoom-elementor-addons' ),
 					'condition' => [
 						'query_type' => 'custom',
 					],
@@ -302,7 +302,7 @@ class Woo_Products extends Widget_Base {
 		/*$this->add_control(
 				'query_manual_ids',
 				[
-					'label' => __( 'Select Products', 'zoom-elementor-widgets' ),
+					'label' => __( 'Select Products', 'wpzoom-elementor-addons' ),
 					'type' => 'etww-query-posts',
 					'post_type' => 'product',
 					'multiple' => true,
@@ -315,7 +315,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'query_exclude',
 				[
-					'label' => __( 'Exclude', 'zoom-elementor-widgets' ),
+					'label' => __( 'Exclude', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::HEADING,
 					'separator' => 'before',
 					'condition' => [
@@ -327,11 +327,11 @@ class Woo_Products extends Widget_Base {
 		/*$this->add_control(
 				'query_exclude_ids',
 				[
-					'label' => __( 'Select Products', 'zoom-elementor-widgets' ),
+					'label' => __( 'Select Products', 'wpzoom-elementor-addons' ),
 					'type' => 'etww-query-posts',
 					'post_type' => 'product',
 					'multiple' => true,
-					'description' => __( 'Select products to exclude from the query.', 'zoom-elementor-widgets' ),
+					'description' => __( 'Select products to exclude from the query.', 'wpzoom-elementor-addons' ),
 					'condition' => [
 						'query_type!' => 'manual',
 					],
@@ -341,13 +341,13 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'query_exclude_current',
 				[
-					'label' => __( 'Exclude Current Product', 'zoom-elementor-widgets' ),
+					'label' => __( 'Exclude Current Product', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SWITCHER,
-					'label_on' => __( 'Yes', 'zoom-elementor-widgets' ),
-					'label_off' => __( 'No', 'zoom-elementor-widgets' ),
+					'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
+					'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
 					'return_value' => 'yes',
 					'default' => '',
-					'description' => __( 'Enable this option to remove current product from the query.', 'zoom-elementor-widgets' ),
+					'description' => __( 'Enable this option to remove current product from the query.', 'wpzoom-elementor-addons' ),
 					'condition' => [
 						'query_type!' => 'manual',
 					],
@@ -357,7 +357,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'advanced',
 				[
-					'label' => __( 'Advanced', 'zoom-elementor-widgets' ),
+					'label' => __( 'Advanced', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::HEADING,
 				]
 		);
@@ -365,13 +365,13 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'filter_by',
 				[
-					'label' => __( 'Filter By', 'zoom-elementor-widgets' ),
+					'label' => __( 'Filter By', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => '',
 					'options' => [
-						'' => __( 'None', 'zoom-elementor-widgets' ),
-						'featured' => __( 'Featured', 'zoom-elementor-widgets' ),
-						'sale' => __( 'Sale', 'zoom-elementor-widgets' ),
+						'' => __( 'None', 'wpzoom-elementor-addons' ),
+						'featured' => __( 'Featured', 'wpzoom-elementor-addons' ),
+						'sale' => __( 'Sale', 'wpzoom-elementor-addons' ),
 					],
 				]
 		);
@@ -379,17 +379,17 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'orderby',
 				[
-					'label' => __( 'Order by', 'zoom-elementor-widgets' ),
+					'label' => __( 'Order by', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'date',
 					'options' => [
-						'date' => __( 'Date', 'zoom-elementor-widgets' ),
-						'title' => __( 'Title', 'zoom-elementor-widgets' ),
-						'price' => __( 'Price', 'zoom-elementor-widgets' ),
-						'popularity' => __( 'Popularity', 'zoom-elementor-widgets' ),
-						'rating' => __( 'Rating', 'zoom-elementor-widgets' ),
-						'rand' => __( 'Random', 'zoom-elementor-widgets' ),
-						'menu_order' => __( 'Menu Order', 'zoom-elementor-widgets' ),
+						'date' => __( 'Date', 'wpzoom-elementor-addons' ),
+						'title' => __( 'Title', 'wpzoom-elementor-addons' ),
+						'price' => __( 'Price', 'wpzoom-elementor-addons' ),
+						'popularity' => __( 'Popularity', 'wpzoom-elementor-addons' ),
+						'rating' => __( 'Rating', 'wpzoom-elementor-addons' ),
+						'rand' => __( 'Random', 'wpzoom-elementor-addons' ),
+						'menu_order' => __( 'Menu Order', 'wpzoom-elementor-addons' ),
 					],
 				]
 		);
@@ -397,12 +397,12 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'order',
 				[
-					'label' => __( 'Order', 'zoom-elementor-widgets' ),
+					'label' => __( 'Order', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'desc',
 					'options' => [
-						'asc' => __( 'ASC', 'zoom-elementor-widgets' ),
-						'desc' => __( 'DESC', 'zoom-elementor-widgets' ),
+						'asc' => __( 'ASC', 'wpzoom-elementor-addons' ),
+						'desc' => __( 'DESC', 'wpzoom-elementor-addons' ),
 					],
 				]
 		);
@@ -412,7 +412,7 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_item_style',
 				[
-					'label' => __( 'Item', 'zoom-elementor-widgets' ),
+					'label' => __( 'Item', 'wpzoom-elementor-addons' ),
 					'tab' => Controls_Manager::TAB_STYLE,
 				]
 		);
@@ -420,7 +420,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'item_background_color',
 				[
-					'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product' => 'background-color: {{VALUE}};',
@@ -441,7 +441,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'item_border_radius',
 				[
-					'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+					'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%' ],
 					'selectors' => [
@@ -461,7 +461,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'item_padding',
 				[
-					'label' => __( 'Padding', 'zoom-elementor-widgets' ),
+					'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -473,7 +473,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'item_margin',
 				[
-					'label' => __( 'Margin', 'zoom-elementor-widgets' ),
+					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -488,7 +488,7 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_image_style',
 				[
-					'label' => __( 'Image', 'zoom-elementor-widgets' ),
+					'label' => __( 'Image', 'wpzoom-elementor-addons' ),
 					'tab' => Controls_Manager::TAB_STYLE,
 				]
 		);
@@ -505,7 +505,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'image_border_radius',
 				[
-					'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+					'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => ['px', '%'],
 					'selectors' => [
@@ -525,7 +525,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'image_margin',
 				[
-					'label' => __( 'Padding', 'zoom-elementor-widgets' ),
+					'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -539,7 +539,7 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_content_style',
 				[
-					'label' => __( 'Content', 'zoom-elementor-widgets' ),
+					'label' => __( 'Content', 'wpzoom-elementor-addons' ),
 					'tab' => Controls_Manager::TAB_STYLE,
 				]
 		);
@@ -547,7 +547,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'category_heading',
 				[
-					'label' => __( 'Category', 'zoom-elementor-widgets' ),
+					'label' => __( 'Category', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::HEADING,
 				]
 		);
@@ -556,7 +556,7 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'category_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => Typography::TYPOGRAPHY_4,
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product li.category a, {{WRAPPER}} .woocommerce ul.products li.product .archive-product-categories a',
 				]
 		);
@@ -564,7 +564,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'category_color',
 				[
-					'label' => esc_html__( 'Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product li.category a, {{WRAPPER}} .woocommerce ul.products li.product .archive-product-categories a' => 'color: {{VALUE}};',
@@ -575,7 +575,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'category_hover_color',
 				[
-					'label' => esc_html__( 'Hover Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Hover Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product li.category a:hover, {{WRAPPER}} .woocommerce ul.products li.product .archive-product-categories a:hover' => 'color: {{VALUE}};',
@@ -586,7 +586,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'category_margin',
 				[
-					'label' => __( 'Margin', 'zoom-elementor-widgets' ),
+					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -598,7 +598,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'title_heading',
 				[
-					'label' => __( 'Title', 'zoom-elementor-widgets' ),
+					'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::HEADING,
 					'separator' => 'before',
 				]
@@ -608,7 +608,7 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'title_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => Typography::TYPOGRAPHY_4,
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title',
 				]
 		);
@@ -616,7 +616,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'title_color',
 				[
-					'label' => esc_html__( 'Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title' => 'color: {{VALUE}};',
@@ -627,7 +627,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'title_hover_color',
 				[
-					'label' => esc_html__( 'Hover Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Hover Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title:hover' => 'color: {{VALUE}};',
@@ -638,7 +638,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'title_margin',
 				[
-					'label' => __( 'Margin', 'zoom-elementor-widgets' ),
+					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -650,7 +650,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'price_heading',
 				[
-					'label' => __( 'Price', 'zoom-elementor-widgets' ),
+					'label' => __( 'Price', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::HEADING,
 					'separator' => 'before',
 				]
@@ -659,7 +659,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'price_color',
 				[
-					'label' => esc_html__( 'Price Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Price Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .price, {{WRAPPER}} .woocommerce ul.products li.product .price .amount' => 'color: {{VALUE}};',
@@ -671,7 +671,7 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'price_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => Typography::TYPOGRAPHY_4,
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .price, {{WRAPPER}} .woocommerce ul.products li.product .price .amount',
 				]
 		);
@@ -679,7 +679,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'del_price_color',
 				[
-					'label' => esc_html__( 'Del Price Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Del Price Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'separator' => 'before',
 					'selectors' => [
@@ -692,7 +692,7 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'del_price_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => Typography::TYPOGRAPHY_4,
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .price del .amount',
 				]
 		);
@@ -700,7 +700,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'price_margin',
 				[
-					'label' => __( 'Margin', 'zoom-elementor-widgets' ),
+					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -712,7 +712,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'rating_heading',
 				[
-					'label' => __( 'Rating', 'zoom-elementor-widgets' ),
+					'label' => __( 'Rating', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::HEADING,
 					'separator' => 'before',
 				]
@@ -721,7 +721,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'rating_color',
 				[
-					'label' => esc_html__( 'Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .star-rating span::before' => 'color: {{VALUE}};',
@@ -732,7 +732,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'rating_fill_color',
 				[
-					'label' => esc_html__( 'Fill Color', 'zoom-elementor-widgets' ),
+					'label' => esc_html__( 'Fill Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .star-rating::before' => 'color: {{VALUE}};',
@@ -745,7 +745,7 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_button_style',
 				[
-					'label' => __( 'Button', 'zoom-elementor-widgets' ),
+					'label' => __( 'Button', 'wpzoom-elementor-addons' ),
 					'tab' => Controls_Manager::TAB_STYLE,
 				]
 		);
@@ -754,7 +754,7 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'button_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => Typography::TYPOGRAPHY_4,
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .button',
 				]
 		);
@@ -764,14 +764,14 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_tab(
 				'tab_button_normal',
 				[
-					'label' => __( 'Normal', 'zoom-elementor-widgets' ),
+					'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
 				]
 		);
 
 		$this->add_control(
 				'button_background_color',
 				[
-					'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .button' => 'background-color: {{VALUE}};',
@@ -782,7 +782,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'button_text_color',
 				[
-					'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .button' => 'color: {{VALUE}};',
@@ -795,14 +795,14 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_tab(
 				'tab_button_hover',
 				[
-					'label' => __( 'Hover', 'zoom-elementor-widgets' ),
+					'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
 				]
 		);
 
 		$this->add_control(
 				'button_hover_background_color',
 				[
-					'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .button:hover' => 'background-color: {{VALUE}};',
@@ -813,7 +813,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'button_hover_color',
 				[
-					'label' => __( 'Text Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .button:hover' => 'color: {{VALUE}};',
@@ -824,7 +824,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'button_hover_border_color',
 				[
-					'label' => __( 'Border Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce ul.products li.product .button:hover' => 'border-color: {{VALUE}};',
@@ -850,7 +850,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'button_border_radius',
 				[
-					'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+					'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%' ],
 					'selectors' => [
@@ -870,7 +870,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'button_padding',
 				[
-					'label' => __( 'Padding', 'zoom-elementor-widgets' ),
+					'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -883,7 +883,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'button_margin',
 				[
-					'label' => __( 'Margin', 'zoom-elementor-widgets' ),
+					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -897,7 +897,7 @@ class Woo_Products extends Widget_Base {
 		$this->start_controls_section(
 				'section_badge_style',
 				[
-					'label' => __( 'Badge', 'zoom-elementor-widgets' ),
+					'label' => __( 'Badge', 'wpzoom-elementor-addons' ),
 					'tab' => Controls_Manager::TAB_STYLE,
 				]
 		);
@@ -906,7 +906,7 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'badge_typography',
-					'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => Typography::TYPOGRAPHY_4,
 					'selector' => '{{WRAPPER}} .woocommerce span.onsale',
 				]
 		);
@@ -914,7 +914,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'badge_background_color',
 				[
-					'label' => __( 'Background Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce span.onsale' => 'background-color: {{VALUE}};',
@@ -925,7 +925,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'badge_color',
 				[
-					'label' => __( 'Color', 'zoom-elementor-widgets' ),
+					'label' => __( 'Color', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
 						'{{WRAPPER}} .woocommerce span.onsale' => 'color: {{VALUE}};',
@@ -946,7 +946,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_control(
 				'badge_border_radius',
 				[
-					'label' => __( 'Border Radius', 'zoom-elementor-widgets' ),
+					'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', '%' ],
 					'selectors' => [
@@ -966,7 +966,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'badge_padding',
 				[
-					'label' => __( 'Padding', 'zoom-elementor-widgets' ),
+					'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -979,7 +979,7 @@ class Woo_Products extends Widget_Base {
 		$this->add_responsive_control(
 				'badge_margin',
 				[
-					'label' => __( 'Margin', 'zoom-elementor-widgets' ),
+					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
 					'type' => Controls_Manager::DIMENSIONS,
 					'size_units' => [ 'px', 'em', '%' ],
 					'selectors' => [
@@ -1042,7 +1042,7 @@ class Woo_Products extends Widget_Base {
 
 		$product_tags = get_terms( 'product_tag', $tag_args );
 
-		if ( !empty( $product_tags ) ) {
+		if ( ! empty( $product_tags ) && ! is_wp_error( $product_tags ) ) {
 			foreach ( $product_tags as $key => $tag ) {
 				$product_tag[ $tag->slug ] = $tag->name;
 			}
@@ -1238,8 +1238,8 @@ class Woo_Products extends Widget_Base {
 		if ( ! function_exists( 'WC' ) ) {
 			printf(
 				'<div class="woocommerce error"><h2>%1$s</h2><p>%2$s</p></div>',
-				__( 'Error!', 'zoom-elementor-widgets' ),
-				__( 'The WooCommerce plugin could not be found. Please install/activate it in order to use this feature.', 'zoom-elementor-widgets' )
+				__( 'Error!', 'wpzoom-elementor-addons' ),
+				__( 'The WooCommerce plugin could not be found. Please install/activate it in order to use this feature.', 'wpzoom-elementor-addons' )
 			);
 
 			return;

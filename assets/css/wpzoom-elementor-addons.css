@@ -6,57 +6,47 @@
 .elementor-add-new-section .elementor-add-wpzoom-templates-button .eicon-folder {
     visibility: hidden;
 }
-
 #wpzoom-elementor-template-library-modal .e-logo-wrapper {
     background:url(../images/logo.svg) no-repeat left center;
     background-size: contain;
 	border-radius:0px;
 }
-
 #wpzoom-elementor-template-library-modal .e-logo-wrapper i {
 	visibility: hidden;
 }
-
 .elementor-template-library-menu-custom-item {
 	display:inline-block;
 	padding:17px 0;
 	width:145px;
 	cursor:pointer;
 }
-
 #wpzoom-elementor-template-library-preview img {
 	width:100%;
 }
-
-.WPZ__version-label, .WPZ__version, .WPZ__dates {
+.wpzoom-version-label, .wpzoom-version, .wpzoom-dates {
 	display: none !important;
 }
-
-.WPZ__main-tiled-view {
+.wpzoom-main-tiled-view {
 	display:flex;
 	flex-wrap:wrap;
 	justify-content:center;
 	align-items:center;
 }
-
-.WPZ__main-tiled-view .WPZ__item {
+.wpzoom-main-tiled-view .wpzoom-item {
 	display:flex;
 	flex-direction:column;
 	padding:10px;
 	margin:2px;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__title {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-title {
 	text-align:left;
 	font-size:16px;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__title i {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-title i {
 	color:#D52;
 	margin-right:3px;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__version-label {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-version-label {
 	font-size:11px;
 	text-align:center;
 	margin-bottom:-8px;
@@ -65,12 +55,10 @@
 	z-index:20;
 	background:#f1f3f5;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__version {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-version {
 	margin-bottom:5px;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__thumb {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb {
 	width:250px;
 	height:150px;
 	margin-bottom:5px;
@@ -81,40 +69,32 @@
 	transition:.6s;
 	transition-timing-function:ease-in-out;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__thumb:hover {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb:hover {
 	background-position:100% 99%;
 	transition-timing-function:linear;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__dates {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-dates {
 	display:flex;
 	flex-direction:row;
 	font-size:11px;
 	padding:5px 0;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__dates div {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-dates div {
 	flex-grow:1;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__dates div:nth-child(1) {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-dates div:nth-child(1) {
 	text-align:left;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__dates div:nth-child(2) {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-dates div:nth-child(2) {
 	text-align:right;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__action-bar {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar {
 	display:flex;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__action-bar .WPZ__grow {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar .wpzoom-grow {
 	flex-grow:1;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__action-bar .WPZ__btn-template-insert {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar .wpzoom-btn-template-insert {
 	color:#555;
 	cursor:pointer;
 	padding:5px 10px;
@@ -123,20 +103,14 @@
 	border:1px solid rgba(0,0,0,0.3);
 	transition:.4s;
 }
-
-.WPZ__main-tiled-view .WPZ__item .WPZ__action-bar .WPZ__btn-template-insert:hover {
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar .wpzoom-btn-template-insert:hover {
 	background:#fff;
 	border-color:#0A0;
 	transform:scale(1.1);
 	box-shadow:0 10px 15px rgba(0,0,0,0.1);
 	color:#0A0;
 }
-
-#WPZ__cache_first_view,.WPZ_thumb_hidden {
-	display:none;
-}
-
-.WPZ__pagging {
+.wpzoom-pagging {
 	display:flex;
 	justify-content:center;
 	flex-direction:row;
@@ -144,8 +118,7 @@
 	border-bottom:1px solid #ddd;
 	margin-bottom:5px;
 }
-
-.WPZ__pagging .WPZ__page-current {
+.wpzoom-pagging .wpzoom-page-current {
 	margin:10px 2px 0;
 	padding:3px 10px;
 	font-size:16px;
@@ -155,8 +128,7 @@
 	border-radius:5px;
 	box-shadow:inset 5px 5px 15px rgba(0,0,0,0.2);
 }
-
-.WPZ__pagging .WPZ__page-goto {
+.wpzoom-pagging .wpzoom-page-goto {
 	margin:10px 2px 0;
 	border-radius:5px;
 	padding:3px 10px;
@@ -165,200 +137,13 @@
 	border:1px solid #DDD;
 	transition:.4s;
 }
-
-.WPZ__pagging .WPZ__page-goto:hover {
+.wpzoom-pagging .wpzoom-page-goto:hover {
 	background:#fff;
 	border:1px solid #FFF;
 	color:#03F;
 	z-index:9999;
 	box-shadow:2px 2px 15px rgba(0,0,0,0.2);
 	transform:scale(1.1);
-}
-
-.WPZ__pagging_bottom_made_with_love {
-	padding:20px;
-	color:#000;
-	font-weight:700;
-}
-
-.WPZ__pagging_bottom_made_with_love i {
-	color:#f09;
-}
-
-.WPZ__pagging_bottom_made_with_love a {
-	color:#f30;
-}
-
-.WPZ__pagging_bottom_made_with_love a:hover {
-	color:#f20;
-}
-
-.WPZ__preview-window {
-	z-index:9999;
-	position:fixed;
-	display:flex;
-	transition:.3s;
-	background:#fff;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	box-shadow:0 0 30px rgba(0,0,0,0.5);
-	animation:Sizing .5s ease-in-out forwards;
-}
-
-.WPZ__preview-window .WPZ__preview-pane {
-	display:flex;
-	overflow:hidden;
-	flex-grow:1;
-}
-
-.WPZ__preview-window .WPZ__preview-pane .WPZ__inner-size {
-	background:#999;
-	display:flex;
-	flex-direction:column;
-	width:100%;
-	overflow-y:auto;
-}
-
-.WPZ__preview-window .WPZ__preview-pane .WPZ__inner-size .WPZ__preview-caption {
-	display:block;
-	font-family:verdana;
-	text-align:center;
-	font-size:20px;
-	padding:15px;
-	color:#222;
-	background:#fff;
-	border:1px solid #222;
-	border-right:0;
-	border-left:0;
-}
-
-.WPZ__preview-window .WPZ__preview-pane .WPZ__inner-size .WPZ__preview-caption .fa {
-	margin:2px 8px;
-	color:#F20;
-}
-
-.WPZ__preview-window .WPZ__preview-pane .WPZ__inner-size img {
-	width:100%;
-}
-
-.WPZ__preview-window .WPZ__info-bar {
-	position:relative;
-	width:100%;
-	max-width:300px;
-	padding:20px;
-	display:flex;
-	flex-direction:column;
-	justify-content:flex-start;
-	align-items:flex-start;
-	box-shadow:0 0 20px rgba(0,0,0,0.3);
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__preview-close {
-	position:absolute;
-	right:15px;
-	top:10px;
-	padding:10px 15px;
-	font-size:24px;
-	transition:.3s;
-	border-radius:5px;
-	border:1px solid #ccc;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__preview-close:hover {
-	background:#fff;
-	border:1px solid #FFF;
-	color:#bb3737;
-	z-index:9999;
-	box-shadow:2px 2px 15px rgba(0,0,0,0.2);
-	transform:scale(1.1);
-}
-
-.WPZ__preview-window .WPZ__info-bar div {
-	padding-bottom:5px;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__ib-details {
-	font-size:18px;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__ib-details a {
-	color:#444;
-	text-decoration:underline;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__ib-details a:hover {
-	color:#F33;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__ib-details span {
-	color:#222;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__ib-header {
-	font-size:23px;
-}
-
-.WPZ__preview-window .WPZ__info-bar .WPZ__line_divider {
-	border-bottom:5px solid #F30;
-	max-width:40px;
-	margin:10px;
-	margin-left:0;
-}
-
-.WPZ__background {
-	background:rgba(0,0,0,0.5);
-	position:fixed;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	z-index:9999;
-}
-
-.WPZ__background .WPZ__where_to_get_modal {
-	display:flex;
-	padding:25px;
-	background:#fff;
-	flex-direction:column;
-	max-width:400px;
-	border-radius:10px;
-	font-size:18px;
-	box-shadow:0 0 40px rgba(0,0,0,0.2);
-}
-
-.WPZ__background .WPZ__where_to_get_modal .WPZ__actions_modal {
-	padding:20px 0;
-	flex-direction:row;
-}
-
-.WPZ__background .WPZ__where_to_get_modal .WPZ__actions_modal a.WPZ__go {
-	color:#fff;
-	border-radius:10px;
-	background:#494;
-	padding:10px 20px;
-}
-
-.WPZ__background .WPZ__where_to_get_modal .WPZ__actions_modal a.WPZ__go:hover {
-	background:#2A2;
-	color:#fff;
-}
-
-.WPZ__background .WPZ__where_to_get_modal .WPZ__actions_modal a.WPZ__cancel {
-	color:#222;
-	border-radius:10px;
-	background:#CCC;
-	padding:10px 20px;
-	margin-right:10px;
-}
-
-.WPZ__background .WPZ__where_to_get_modal .WPZ__actions_modal a.WPZ__cancel:hover {
-	background:#DDD;
-	color:#444;
 }
 
 @keyframes Sizing {

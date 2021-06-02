@@ -28,7 +28,7 @@ class Testimonial extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'zoom-elementor-widgets-css-frontend-testimonial', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-testimonial', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Testimonial extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'zoom-elementor-widgets-testimonial';
+		return 'wpzoom-elementor-addons-testimonial';
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Testimonial extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Testimonial', 'zoom-elementor-widgets' );
+		return __( 'Testimonial', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Testimonial extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-widgets' ];
+		return [ 'wpzoom-elementor-addons' ];
 	}
 
 	/**
@@ -94,7 +94,7 @@ class Testimonial extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return [
-			'zoom-elementor-widgets-css-frontend-testimonial',
+			'wpzoom-elementor-addons-css-frontend-testimonial',
 			'font-awesome-5-all',
 			'font-awesome-4-shim'
 		];
@@ -128,14 +128,14 @@ class Testimonial extends Widget_Base {
   		$this->start_controls_section(
   			'zew_section_testimonial_image',
   			[
-  				'label' => esc_html__( 'Testimonial Image', 'zoom-elementor-widgets' )
+  				'label' => esc_html__( 'Testimonial Image', 'wpzoom-elementor-addons' )
   			]
   		);
 
 		$this->add_control(
 			'zew_testimonial_enable_avatar',
 			[
-				'label' => esc_html__( 'Display Avatar?', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Display Avatar?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -144,7 +144,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'image',
 			[
-				'label' => __( 'Testimonial Avatar', 'zoom-elementor-widgets' ),
+				'label' => __( 'Testimonial Avatar', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -172,16 +172,16 @@ class Testimonial extends Widget_Base {
   		$this->start_controls_section(
   			'zew_section_testimonial_content',
   			[
-  				'label' => esc_html__( 'Testimonial Content', 'zoom-elementor-widgets' )
+  				'label' => esc_html__( 'Testimonial Content', 'wpzoom-elementor-addons' )
   			]
   		);
 
 		$this->add_control(
 			'zew_testimonial_name',
 			[
-				'label' => esc_html__( 'User Name', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'User Name', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'John Doe', 'zoom-elementor-widgets' ),
+				'default' => esc_html__( 'John Doe', 'wpzoom-elementor-addons' ),
 				'dynamic' => [ 'active' => true ]
 			]
 		);
@@ -189,9 +189,9 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_company_title',
 			[
-				'label' => esc_html__( 'Company Name', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Company Name', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Codetic', 'zoom-elementor-widgets' ),
+				'default' => esc_html__( 'Codetic', 'wpzoom-elementor-addons' ),
 				'dynamic' => [ 'active' => true ]
 			]
 		);
@@ -199,16 +199,16 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_description',
 			[
-				'label' => esc_html__( 'Testimonial Description', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Testimonial Description', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Add testimonial description here. Edit and place your own text.', 'zoom-elementor-widgets' ),
+				'default' => esc_html__( 'Add testimonial description here. Edit and place your own text.', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'content_height',
 			[
-				'label' => esc_html__( 'Description Height', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Description Height', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units'	=> ['px', '%', 'em'],
 				'range' => [
@@ -224,7 +224,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_enable_rating',
 			[
-				'label' => esc_html__( 'Display Rating?', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Display Rating?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -233,15 +233,15 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 		  'zew_testimonial_rating_number',
 		  [
-			 'label'       => __( 'Rating Number', 'zoom-elementor-widgets' ),
+			 'label'       => __( 'Rating Number', 'wpzoom-elementor-addons' ),
 			 'type' => Controls_Manager::SELECT,
 			 'default' => 'rating-five',
 			 'options' => [
-			 	'rating-one'  => __( '1', 'zoom-elementor-widgets' ),
-			 	'rating-two' => __( '2', 'zoom-elementor-widgets' ),
-			 	'rating-three' => __( '3', 'zoom-elementor-widgets' ),
-			 	'rating-four' => __( '4', 'zoom-elementor-widgets' ),
-			 	'rating-five'   => __( '5', 'zoom-elementor-widgets' ),
+			 	'rating-one'  => __( '1', 'wpzoom-elementor-addons' ),
+			 	'rating-two' => __( '2', 'wpzoom-elementor-addons' ),
+			 	'rating-three' => __( '3', 'wpzoom-elementor-addons' ),
+			 	'rating-four' => __( '4', 'wpzoom-elementor-addons' ),
+			 	'rating-five'   => __( '5', 'wpzoom-elementor-addons' ),
 			 ],
 			'condition' => [
 				'zew_testimonial_enable_rating' => 'yes',
@@ -254,7 +254,7 @@ class Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'zew_section_testimonial_styles_general',
 			[
-				'label' => esc_html__( 'Testimonial Styles', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Testimonial Styles', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -262,17 +262,17 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_style',
 			[
-				'label'		=> __( 'Select Style', 'zoom-elementor-widgets' ),
+				'label'		=> __( 'Select Style', 'wpzoom-elementor-addons' ),
 				'type'		=> Controls_Manager::SELECT,
 				'default'	=> 'default-style',
 				'options'	=> [
-					'default-style'						=> __( 'Default', 'zoom-elementor-widgets' ),
-					'classic-style'						=> __( 'Classic', 'zoom-elementor-widgets' ),
-					'middle-style'						=> __( 'Content | Icon/Image | Bio', 'zoom-elementor-widgets' ),
-					'icon-img-left-content'				=> __( 'Icon/Image | Content', 'zoom-elementor-widgets' ),
-					'icon-img-right-content'			=> __( 'Content | Icon/Image', 'zoom-elementor-widgets' ),
-					'content-top-icon-title-inline'		=> __( 'Content Top | Icon Title Inline', 'zoom-elementor-widgets' ),
-					'content-bottom-icon-title-inline'	=> __( 'Content Bottom | Icon Title Inline', 'zoom-elementor-widgets' )
+					'default-style'						=> __( 'Default', 'wpzoom-elementor-addons' ),
+					'classic-style'						=> __( 'Classic', 'wpzoom-elementor-addons' ),
+					'middle-style'						=> __( 'Content | Icon/Image | Bio', 'wpzoom-elementor-addons' ),
+					'icon-img-left-content'				=> __( 'Icon/Image | Content', 'wpzoom-elementor-addons' ),
+					'icon-img-right-content'			=> __( 'Content | Icon/Image', 'wpzoom-elementor-addons' ),
+					'content-top-icon-title-inline'		=> __( 'Content Top | Icon Title Inline', 'wpzoom-elementor-addons' ),
+					'content-bottom-icon-title-inline'	=> __( 'Content Bottom | Icon Title Inline', 'wpzoom-elementor-addons' )
 				]
 			]
 		);
@@ -319,24 +319,24 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_alignment',
 			[
-				'label' => esc_html__( 'Layout Alignment', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Layout Alignment', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'label_block' => true,
 				'options' => [
 					'default' => [
-						'title' => __( 'Default', 'zoom-elementor-widgets' ),
+						'title' => __( 'Default', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-ban',
 					],
 					'left' => [
-						'title' => esc_html__( 'Left', 'zoom-elementor-widgets' ),
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'zoom-elementor-widgets' ),
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'zoom-elementor-widgets' ),
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
@@ -351,7 +351,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_user_display_block',
 			[
-				'label' => esc_html__( 'Display User & Company Block?', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Display User & Company Block?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default' => '',
@@ -363,7 +363,7 @@ class Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'zew_section_testimonial_image_styles',
 			[
-				'label' => esc_html__( 'Testimonial Image Style', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Testimonial Image Style', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition'	=> [
 					'zew_testimonial_enable_avatar'	=> 'yes'
@@ -374,7 +374,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'zew_testimonial_image_width',
 			[
-				'label' => esc_html__( 'Image Width', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Image Width', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 150,
@@ -400,7 +400,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'zew_testimonial_max_image_width',
 			[
-				'label' => esc_html__( 'Image Max Width', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Image Max Width', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 100,
@@ -422,7 +422,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'zew_testimonial_image_margin',
 			[
-				'label' => esc_html__( 'Margin', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -434,7 +434,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'zew_testimonial_image_padding',
 			[
-				'label' => esc_html__( 'Padding', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -447,7 +447,7 @@ class Testimonial extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'zew_testimonial_image_border',
-				'label' => esc_html__( 'Border', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .zew-testimonial-image img',
 			]
 		);
@@ -455,7 +455,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_image_rounded',
 			[
-				'label' => esc_html__( 'Rounded Avatar?', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Rounded Avatar?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => 'testimonial-avatar-rounded',
 				'default' => '',
@@ -465,7 +465,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_image_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'selectors' => [
 					'{{WRAPPER}} .zew-testimonial-image img' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
@@ -482,7 +482,7 @@ class Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'zew_section_testimonial_typography',
 			[
-				'label' => esc_html__( 'Color, Typography &amp; Spacing', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Color, Typography &amp; Spacing', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -490,7 +490,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_name_heading',
 			[
-				'label' => __( 'User Name', 'zoom-elementor-widgets' ),
+				'label' => __( 'User Name', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 			]
 		);
@@ -498,7 +498,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_name_color',
 			[
-				'label' => esc_html__( 'User Name Color', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'User Name Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#272727',
 				'selectors' => [
@@ -518,7 +518,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_name_margin',
 			[
-				'label' => esc_html__( 'Margin', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -530,7 +530,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_company_heading',
 			[
-				'label' 	=> __( 'Company Name', 'zoom-elementor-widgets' ),
+				'label' 	=> __( 'Company Name', 'wpzoom-elementor-addons' ),
 				'type' 		=> Controls_Manager::HEADING,
 				'separator'	=> 'before'
 			]
@@ -539,7 +539,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_company_color',
 			[
-				'label' => esc_html__( 'Company Color', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Company Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#272727',
 				'selectors' => [
@@ -559,7 +559,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_company_margin',
 			[
-				'label' => esc_html__( 'Margin', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -571,7 +571,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_description_heading',
 			[
-				'label' => __( 'Testimonial Text', 'zoom-elementor-widgets' ),
+				'label' => __( 'Testimonial Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator'	=> 'before'
 			]
@@ -580,7 +580,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_description_color',
 			[
-				'label' => esc_html__( 'Testimonial Text Color', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Testimonial Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#7a7a7a',
 				'selectors' => [
@@ -600,7 +600,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_description_margin',
 			[
-				'label' => esc_html__( 'Margin', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -612,7 +612,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_rating_heading',
 			[
-				'label' => __( 'Rating', 'zoom-elementor-widgets' ),
+				'label' => __( 'Rating', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator'	=> 'before'
 			]
@@ -621,7 +621,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_rating_item_distance',
 			[
-				'label' => esc_html__( 'Distance Between Rating Item', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Distance Between Rating Item', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -633,7 +633,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_rating_margin',
 			[
-				'label' => esc_html__( 'Margin', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -647,7 +647,7 @@ class Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'zew_section_testimonial_quotation_typography',
 			[
-				'label' => esc_html__( 'Quotation Style', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Quotation Style', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			]
 		);
@@ -655,7 +655,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'zew_testimonial_quotation_color',
 			[
-				'label' => esc_html__( 'Quotation Mark Color', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Quotation Mark Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => 'rgba(0,0,0,0.15)',
 				'selectors' => [
@@ -675,7 +675,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'zew_testimonial_quotation_top',
 			[
-				'label' => esc_html__( 'Quotation Postion From Top', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Quotation Postion From Top', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 5,
@@ -697,7 +697,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'zew_testimonial_quotation_right',
 			[
-				'label' => esc_html__( 'Quotation Postion From Right', 'zoom-elementor-widgets' ),
+				'label' => esc_html__( 'Quotation Postion From Right', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 5,
