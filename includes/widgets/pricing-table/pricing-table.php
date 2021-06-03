@@ -1057,18 +1057,18 @@ class Pricing_Table extends Widget_Base {
 
 		<div class="zew-pricing-table-header">
 			<?php if ( $settings[ 'title' ] ) : ?>
-				<h2 <?php $this->print_render_attribute_string( 'title' ); ?>><?php echo ZOOM_Elementor_Widgets::custom_kses( $settings[ 'title' ] ); ?></h2>
+				<h2 <?php $this->print_render_attribute_string( 'title' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'title' ] ); ?></h2>
 			<?php endif; ?>
 		</div>
 		<div class="zew-pricing-table-price">
-			<div class="zew-pricing-table-price-tag"><span class="zew-pricing-table-currency"><?php echo esc_html( $currency ); ?></span><span <?php $this->print_render_attribute_string( 'price' ); ?>><?php echo ZOOM_Elementor_Widgets::custom_kses( $settings[ 'price' ] ); ?></span></div>
+			<div class="zew-pricing-table-price-tag"><span class="zew-pricing-table-currency"><?php echo esc_html( $currency ); ?></span><span <?php $this->print_render_attribute_string( 'price' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'price' ] ); ?></span></div>
 			<?php if ( $settings[ 'period' ] ) : ?>
-				<div <?php $this->print_render_attribute_string( 'period' ); ?>><?php echo ZOOM_Elementor_Widgets::custom_kses( $settings[ 'period' ] ); ?></div>
+				<div <?php $this->print_render_attribute_string( 'period' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'period' ] ); ?></div>
 			<?php endif; ?>
 		</div>
 		<div class="zew-pricing-table-body">
 			<?php if ( $settings[ 'features_title' ] ) : ?>
-				<h3 <?php $this->print_render_attribute_string( 'features_title' ); ?>><?php echo ZOOM_Elementor_Widgets::custom_kses( $settings[ 'features_title' ] ); ?></h3>
+				<h3 <?php $this->print_render_attribute_string( 'features_title' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'features_title' ] ); ?></h3>
 			<?php endif; ?>
 
 			<?php if ( is_array( $settings[ 'features_list' ] ) ) : ?>
@@ -1082,7 +1082,7 @@ class Pricing_Table extends Widget_Base {
 							<?php if ( ! empty( $feature[ 'selected_icon' ][ 'value' ] ) ) :
 								Icons_Manager::render_icon( $feature[ 'selected_icon' ], [] );
 							endif; ?>
-							<div <?php $this->print_render_attribute_string( $name_key ); ?>><?php echo ZOOM_Elementor_Widgets::custom_kses( $feature[ 'text' ] ); ?></div>
+							<div <?php $this->print_render_attribute_string( $name_key ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $feature[ 'text' ] ); ?></div>
 						</li>
 					<?php endforeach; ?>
 				</ul>

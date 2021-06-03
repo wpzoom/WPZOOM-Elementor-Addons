@@ -1417,17 +1417,17 @@ class Team_Members extends Widget_Base {
 				printf( '<%1$s %2$s>%3$s</%1$s>',
 					tag_escape( $settings['title_tag'] ),
 					$this->get_render_attribute_string( 'title' ),
-					ZOOM_Elementor_Widgets::custom_kses( $settings[ 'title' ] )
+					WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'title' ] )
 				);
 			endif; ?>
 
 			<?php if ( $settings['job_title' ] ) : ?>
-				<div <?php $this->print_render_attribute_string( 'job_title' ); ?>><?php echo ZOOM_Elementor_Widgets::custom_kses( $settings[ 'job_title' ] ); ?></div>
+				<div <?php $this->print_render_attribute_string( 'job_title' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'job_title' ] ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( $settings['bio'] ) : ?>
 				<div <?php $this->print_render_attribute_string( 'bio' ); ?>>
-					<p><?php echo ZOOM_Elementor_Widgets::custom_kses( $settings[ 'bio' ] ); ?></p>
+					<p><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'bio' ] ); ?></p>
 				</div>
 			<?php endif; ?>
 

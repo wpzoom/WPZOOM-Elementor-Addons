@@ -972,10 +972,10 @@ class Carousel extends Widget_Base {
 						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] ) : ?>
 							<div class="zew-slick-content">
 								<?php if ( $slide[ 'title' ] ) : ?>
-									<h2 class="zew-slick-title"><?php echo ZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+									<h2 class="zew-slick-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
 								<?php endif; ?>
 								<?php if ( $slide[ 'subtitle' ] ) : ?>
-									<p class="zew-slick-subtitle"><?php echo ZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
+									<p class="zew-slick-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>
