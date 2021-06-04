@@ -64,7 +64,9 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			self::$library_source = 'https://api.wpzoom.com/';
 
 			add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
-			add_action( 'wp_ajax_get_WPZ_preview', array( $this, 'ajax_get_WPZ_preview' ) );
+			add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
+			add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
+			
 
 			/* Set initial version to the and call update on first use */
 			if( get_option( 'wpz_current_version' ) == false ) {
@@ -84,7 +86,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-pro' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpzoom-elementor-addons' ), '1.0.0' );
 		}
 
 		/**
@@ -95,7 +97,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-pro' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpzoom-elementor-addons' ), '1.0.0' );
 		}
 
 		/**
@@ -126,29 +128,27 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/thumbs/';
 			}
 
-			echo '<div class="WPZ__main-tiled-view">';
+			echo '<div class="wpzoom-main-tiled-view">';
 			if( count( $template_list ) != 0 ) {
 				
 				for( $i = 0; $i < count( $template_list ); $i++ ) {
-					$slug = strtolower( str_replace( " ", "-", $template_list[$i]['name'] ) );
+					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['name'] ) );
 					?>
-					<div class="WPZ__item" data-theme="<?php echo strtolower( str_replace( " ", "-", $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace( " ", "-", $template_list[$i]['category'] ) ) ?>">
-						<div class="WPZ__title">
+					<div class="wpzoom-templates-library-template wpzoom-item" data-theme="<?php echo strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace( ' ', '-', $template_list[$i]['category'] ) ) ?>">
+						<div class="wpzoom-template-title">
 						<?php
 							echo $template_list[$i]['name'];
 						?>
 						</div>
-						<div class="WPZ__thumb WPZ__index-<?php echo $i; ?>" data-index="<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" style='background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>);'></div><?php
-						
-						echo "<script> WPZ_Index[" . $i . "] = " . json_encode( $template_list[$i] ) . "; </script>";
-						?>
-						<div class="WPZ__dates">
-							<div><?php echo "<b>Created</b>: " . $template_list[$i]['created']; ?></div>
-							<div><?php echo "<b>Updated</b>: " . $template_list[$i]['updated']; ?></div>
+						<div class="wpzoom-template-thumb wpzoom-index-<?php echo $i; ?>" data-index="<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>);"></div>
+						<?php echo '<script> WPZ_Index[' . $i . '] = ' . json_encode( $template_list[$i] ) . '; </script>'; ?>
+						<div class="wpzoom-dates">
+							<div><?php echo '<b>Created</b>: ' . $template_list[$i]['created']; ?></div>
+							<div><?php echo '<b>Updated</b>: ' . $template_list[$i]['updated']; ?></div>
 						</div>
-						<div class="WPZ__action-bar">
-							<div class="WPZ__grow"> </div>
-							<div data-version="WPZ__version-<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" class="WPZ__btn-template-insert"> Insert Template </div>
+						<div class="wpzoom-action-bar">
+							<div class="wpzoom-grow"> </div>
+							<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>">Insert Template</div>
 						</div>
 					</div>
 				<?php
@@ -162,12 +162,50 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		}
 
 		/**
+		 * Get templates themes
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function get_template_filter_options_values( $data ) {
+
+			$themesList = $templates = array();
+
+			//Get libray json from source
+			$response = wp_remote_get( self::$library_source, array( 'timeout' => 60 ) );
+
+			if( !is_wp_error( $response ) ) {
+				$data = wp_remote_retrieve_body( $response );
+				$templates = json_decode( $data, true );
+			}
+			else {
+				$localJson = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
+				if( self::init()->get_filesystem()->exists( $localJson ) ) {
+					$data = self::init()->get_filesystem()->get_contents( $localJson );
+					$templates = json_decode( $data, true );
+				}
+			}
+			if( count( $templates ) != 0 ) {
+				foreach( $templates as $key => $template ) {
+					$themesList[] = strtolower( str_replace(' ', '-', $template['theme'] ) );
+				}
+			}
+			$themesList = array_unique( $themesList );
+
+			echo json_encode( $themesList );
+			
+			wp_die();
+
+		}
+
+
+		/**
 		 * Get  ajax preview template
 		 *
 		 * @since 1.0.0
 		 * @return void
 		 */
-		public function ajax_get_WPZ_preview() {
+		public function ajax_get_wpzoom_preview() {
 			$this->get_preview_template( $_POST['data'] );
 			wp_die();
 		}
@@ -206,7 +244,6 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 
 			return $wp_filesystem;
 		}
-
 	}
 
 	// Initialize the Elementor library

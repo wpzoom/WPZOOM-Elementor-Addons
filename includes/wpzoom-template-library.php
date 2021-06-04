@@ -6,9 +6,9 @@ if( ! defined( 'ABSPATH' ) )
 	exit;
 
 /**
- * Elementor Library Unlimited
+ * WPZOOM Templates Library
  *
- * Uses built-in Elementor commands to create a new source for template library.
+ * Uses built-in Elementor functions to create a new source for template library.
  *
  * @since 1.0.0
  */

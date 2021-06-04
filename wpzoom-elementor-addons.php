@@ -1,13 +1,20 @@
 <?php
 /**
- * Plugin Name: WPZOOM Elementor Addons
- * Description: Advanced Addons for Elementor by WPZOOM.
- * Plugin URI:  https://wpzoom.com/plugins/wpzoom-elementor-addons
- * Version:     1.0.0
- * Author:      WPZOOM
- * Author URI:  https://wpzoom.com/
- * Text Domain: wpzoom-elementor-addons
+ * Plugin Name:       WPZOOM Elementor Addons
+ * Plugin URI:        https://wpzoom.com/plugins/wpzoom-elementor-addons
+ * Description:       A plugin that provides a collection of the Elementor Templates and advanced widgets created by WPZOOM team
+ * Version:           1.0.0
+ * Author:            WPZOOM
+ * Author URI:        https://www.wpzoom.com/
+ * Text Domain:       wpzoom-elementor-addons
+ * License:           GNU General Public License v2
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Requires at least: 5.2
+ * Tested up to:      5.7
+ *
+ * @package WPZOOM_Elementor_Addons
  */
+
 namespace WPZOOM_Elementor_Addons;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -122,8 +129,6 @@ final class WPZOOM_Elementor_Addons {
 
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-elementor-widgets.php';
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-template-manager.php';
-
-		//WPZOOM_Manager::instance();
 
 	}
 

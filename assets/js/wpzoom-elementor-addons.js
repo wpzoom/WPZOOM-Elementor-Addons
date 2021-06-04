@@ -8,10 +8,10 @@ var WPZCached = null;
 	if (0 < elementor_add_section_tmpl.length && typeof elementor !== undefined) {
 		let text = elementor_add_section_tmpl.text();
 
-		//Add the WPZoom Button
+		//Add the WPZOOM Button
 		(text = text.replace(
 			'<div class="elementor-add-section-drag-title',
-			'<div class="elementor-add-section-area-button elementor-add-wpzoom-templates-button" title="WPZoom Library"> <i class="eicon-folder"></i> </div> <div class="elementor-add-section-drag-title'
+			'<div class="elementor-add-section-area-button elementor-add-wpzoom-templates-button" title="WPZOOM Library"> <i class="eicon-folder"></i> </div> <div class="elementor-add-section-drag-title'
 		)),
 
 		elementor_add_section_tmpl.text(text),
