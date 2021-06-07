@@ -44,7 +44,7 @@
 					autoplay    : true,
 					arrows      : false,
 					checkVisible: false,
-					container   : '.zewjs-slick',
+					container   : '.wpzjs-slick',
 					dots        : false,
 					infinite    : true,
 					rows        : 0,

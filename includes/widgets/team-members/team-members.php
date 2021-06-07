@@ -429,7 +429,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}' => 'color: {{VALUE}}',
 				],
 				'condition' => ['customize' => 'yes'],
 				'style_transfer' => true,
@@ -442,7 +442,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
 				],
 				'condition' => ['customize' => 'yes'],
 				'style_transfer' => true,
@@ -463,7 +463,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}:focus' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:focus' => 'color: {{VALUE}}',
 				],
 				'condition' => ['customize' => 'yes'],
 				'style_transfer' => true,
@@ -476,7 +476,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}:focus' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:focus' => 'background-color: {{VALUE}}',
 				],
 				'condition' => ['customize' => 'yes'],
 				'style_transfer' => true,
@@ -489,7 +489,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .zew-member-links > {{CURRENT_ITEM}}:focus' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:focus' => 'border-color: {{VALUE}}',
 				],
 				'condition' => ['customize' => 'yes'],
 				'style_transfer' => true,
@@ -663,8 +663,8 @@ class Team_Members extends Widget_Base {
 					'button_icon[value]!' => ''
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn--icon-before .zew-btn-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .zew-btn--icon-after .zew-btn-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-btn--icon-before .wpz-btn-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-btn--icon-after .wpz-btn-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -706,7 +706,7 @@ class Team_Members extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-figure' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-figure' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -724,7 +724,7 @@ class Team_Members extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-figure' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-figure' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -736,7 +736,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-figure' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .wpz-member-figure' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
 				],
 			]
 		);
@@ -748,7 +748,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-figure img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-figure img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -757,7 +757,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'image_border',
-				'selector' => '{{WRAPPER}} .zew-member-figure img'
+				'selector' => '{{WRAPPER}} .wpz-member-figure img'
 			]
 		);
 
@@ -768,7 +768,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-figure img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-figure img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -780,7 +780,7 @@ class Team_Members extends Widget_Base {
 				'exclude' => [
 					'box_shadow_position',
 				],
-				'selector' => '{{WRAPPER}} .zew-member-figure img'
+				'selector' => '{{WRAPPER}} .wpz-member-figure img'
 			]
 		);
 
@@ -790,7 +790,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-figure img' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-member-figure img' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -812,7 +812,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -833,7 +833,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -844,7 +844,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-name' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-name' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -853,7 +853,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .zew-member-name',
+				'selector' => '{{WRAPPER}} .wpz-member-name',
 				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
@@ -862,7 +862,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'title_text_shadow',
-				'selector' => '{{WRAPPER}} .zew-member-name',
+				'selector' => '{{WRAPPER}} .wpz-member-name',
 			]
 		);
 
@@ -882,7 +882,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-position' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-position' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -893,7 +893,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-position' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-position' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -902,7 +902,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'job_title_typography',
-				'selector' => '{{WRAPPER}} .zew-member-position',
+				'selector' => '{{WRAPPER}} .wpz-member-position',
 				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
@@ -911,7 +911,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'job_title_text_shadow',
-				'selector' => '{{WRAPPER}} .zew-member-position',
+				'selector' => '{{WRAPPER}} .wpz-member-position',
 			]
 		);
 
@@ -931,7 +931,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-bio' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-bio' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -942,7 +942,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-member-bio' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -951,7 +951,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'bio_typography',
-				'selector' => '{{WRAPPER}} .zew-member-bio',
+				'selector' => '{{WRAPPER}} .wpz-member-bio',
 				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
@@ -960,7 +960,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'bio_text_shadow',
-				'selector' => '{{WRAPPER}} .zew-member-bio',
+				'selector' => '{{WRAPPER}} .wpz-member-bio',
 			]
 		);
 
@@ -981,7 +981,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-links > a:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -993,7 +993,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a' => 'padding: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-links > a' => 'padding: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1005,7 +1005,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-links > a' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1014,7 +1014,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'links_border',
-				'selector' => '{{WRAPPER}} .zew-member-links > a'
+				'selector' => '{{WRAPPER}} .wpz-member-links > a'
 			]
 		);
 
@@ -1025,7 +1025,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-member-links > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1044,7 +1044,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-member-links > a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1055,7 +1055,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-member-links > a' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1074,7 +1074,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a:hover, {{WRAPPER}} .zew-member-links > a:focus' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > a:hover, {{WRAPPER}} .wpz-member-links > a:focus' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1085,7 +1085,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a:hover, {{WRAPPER}} .zew-member-links > a:focus' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-member-links > a:hover, {{WRAPPER}} .wpz-member-links > a:focus' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1096,7 +1096,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-member-links > a:hover, {{WRAPPER}} .zew-member-links > a:focus' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-member-links > a:hover, {{WRAPPER}} .wpz-member-links > a:focus' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'links_border_border!' => '',
@@ -1124,7 +1124,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1136,7 +1136,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1145,7 +1145,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'button_typography',
-				'selector' => '{{WRAPPER}} .zew-btn',
+				'selector' => '{{WRAPPER}} .wpz-btn',
 				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
@@ -1154,7 +1154,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border',
-				'selector' => '{{WRAPPER}} .zew-btn',
+				'selector' => '{{WRAPPER}} .wpz-btn',
 			]
 		);
 
@@ -1165,7 +1165,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1174,7 +1174,7 @@ class Team_Members extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .zew-btn',
+				'selector' => '{{WRAPPER}} .wpz-btn',
 			]
 		);
 
@@ -1202,7 +1202,7 @@ class Team_Members extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-btn' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1213,7 +1213,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-btn' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1233,7 +1233,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn:hover, {{WRAPPER}} .zew-btn:focus' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-btn:hover, {{WRAPPER}} .wpz-btn:focus' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1244,7 +1244,7 @@ class Team_Members extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zeww-btn:hover, {{WRAPPER}} .zew-btn:focus' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .wpzw-btn:hover, {{WRAPPER}} .wpz-btn:focus' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1258,7 +1258,7 @@ class Team_Members extends Widget_Base {
 					'button_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-btn:hover, {{WRAPPER}} .zew-btn:focus' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-btn:hover, {{WRAPPER}} .wpz-btn:focus' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1363,13 +1363,13 @@ class Team_Members extends Widget_Base {
 				$this->add_render_attribute( 'button', 'class', 'ha-btn--icon-before' );
 				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), esc_html( $button_text ) );
 				?>
-				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'zew-btn-icon'] ); ?> <?php echo $button_text; ?></a>
+				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?> <?php echo $button_text; ?></a>
 				<?php
 			else :
 				$this->add_render_attribute( 'button', 'class', 'ha-btn--icon-after' );
 				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), esc_html( $button_text ) );
 				?>
-				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php echo $button_text; ?> <?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'zew-btn-icon'] ); ?></a>
+				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php echo $button_text; ?> <?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?></a>
 				<?php
 			endif;
 		endif;
@@ -1395,24 +1395,24 @@ class Team_Members extends Widget_Base {
 		}
 
 		$this->add_inline_editing_attributes( 'title', 'basic' );
-		$this->add_render_attribute( 'title', 'class', 'zew-member-name' );
+		$this->add_render_attribute( 'title', 'class', 'wpz-member-name' );
 
 		$this->add_inline_editing_attributes( 'job_title', 'basic' );
-		$this->add_render_attribute( 'job_title', 'class', 'zew-member-position' );
+		$this->add_render_attribute( 'job_title', 'class', 'wpz-member-position' );
 
 		$this->add_inline_editing_attributes( 'bio', 'intermediate' );
-		$this->add_render_attribute( 'bio', 'class', 'zew-member-bio' );
+		$this->add_render_attribute( 'bio', 'class', 'wpz-member-bio' );
 		?>
 
 		<?php if ( $settings['image']['url'] || $settings['image']['id'] ) :
 			$settings['hover_animation'] = 'disable-animation'; // hack to prevent image hover animation
 			?>
-			<figure class="zew-member-figure">
+			<figure class="wpz-member-figure">
 				<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ); ?>
 			</figure>
 		<?php endif; ?>
 
-		<div class="zew-member-body">
+		<div class="wpz-member-body">
 			<?php if ( $settings['title'] ) :
 				printf( '<%1$s %2$s>%3$s</%1$s>',
 					tag_escape( $settings['title_tag'] ),
@@ -1438,7 +1438,7 @@ class Team_Members extends Widget_Base {
 			?>
 
 			<?php if ( $settings[ 'show_profiles' ] && is_array( $settings[ 'profiles' ] ) ) : ?>
-				<div class="zew-member-links">
+				<div class="wpz-member-links">
 					<?php
 					foreach ( $settings['profiles'] as $profile ) :
 						$icon = $profile['name'];
@@ -1482,13 +1482,13 @@ class Team_Members extends Widget_Base {
 		?>
 		<#
 		view.addInlineEditingAttributes( 'title', 'basic' );
-		view.addRenderAttribute( 'title', 'class', 'zew-member-name' );
+		view.addRenderAttribute( 'title', 'class', 'wpz-member-name' );
 
 		view.addInlineEditingAttributes( 'job_title', 'basic' );
-		view.addRenderAttribute( 'job_title', 'class', 'zew-member-position' );
+		view.addRenderAttribute( 'job_title', 'class', 'wpz-member-position' );
 
 		view.addInlineEditingAttributes( 'bio', 'intermediate' );
-		view.addRenderAttribute( 'bio', 'class', 'zew-member-bio' );
+		view.addRenderAttribute( 'bio', 'class', 'wpz-member-bio' );
 
 		if ( settings.image.url || settings.image.id ) {
 			var image = {
@@ -1501,11 +1501,11 @@ class Team_Members extends Widget_Base {
 
 			var image_url = elementor.imagesManager.getImageUrl( image );
 			#>
-			<figure class="zew-member-figure">
+			<figure class="wpz-member-figure">
 				<img src="{{ image_url }}">
 			</figure>
 		<# } #>
-		<div class="zew-member-body">
+		<div class="wpz-member-body">
 			<# if (settings.title) { #>
 				<{{ settings.title_tag }} {{{ view.getRenderAttributeString( 'title' ) }}}>{{ settings.title }}</{{ settings.title_tag }}>
 			<# } #>
@@ -1523,7 +1523,7 @@ class Team_Members extends Widget_Base {
 			} #>
 
 			<# if (settings.show_profiles && _.isArray(settings.profiles)) { #>
-				<div class="zew-member-links">
+				<div class="wpz-member-links">
 					<# _.each(settings.profiles, function(profile, index) {
 						var icon = profile.name,
 							url = profile.link.url,

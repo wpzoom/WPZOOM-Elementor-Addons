@@ -441,12 +441,12 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-title,'
-					. '{{WRAPPER}} .zew-pricing-table-currency,'
-					. '{{WRAPPER}} .zew-pricing-table-period,'
-					. '{{WRAPPER}} .zew-pricing-table-features-title,'
-					. '{{WRAPPER}} .zew-pricing-table-features-list li,'
-					. '{{WRAPPER}} .zew-pricing-table-price-text' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-title,'
+					. '{{WRAPPER}} .wpz-pricing-table-currency,'
+					. '{{WRAPPER}} .wpz-pricing-table-period,'
+					. '{{WRAPPER}} .wpz-pricing-table-features-title,'
+					. '{{WRAPPER}} .wpz-pricing-table-features-list li,'
+					. '{{WRAPPER}} .wpz-pricing-table-price-text' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -468,7 +468,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-title' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-title' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -479,7 +479,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Title Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-title' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-title' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -488,7 +488,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-title',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-title',
 				'scheme' => Typography::TYPOGRAPHY_2
 			]
 		);
@@ -497,7 +497,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'title_text_shadow',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-title'
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-title'
 			]
 		);
 
@@ -526,7 +526,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-price-tag' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-price-tag' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -537,7 +537,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-price-text' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-price-text' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -546,7 +546,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-price-text',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-price-text',
 				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
@@ -567,7 +567,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-currency' => 'margin-right: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-currency' => 'margin-right: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -578,7 +578,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-currency' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-currency' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -587,7 +587,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'currency_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-currency',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-currency',
 				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
@@ -608,7 +608,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-price' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-price' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -619,7 +619,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-period' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-period' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -628,7 +628,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'period_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-period',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-period',
 				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
@@ -650,7 +650,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-body' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-body' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -671,7 +671,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-features-title' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-features-title' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -682,7 +682,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-features-title' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-features-title' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -691,7 +691,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'features_title_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-features-title',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-features-title',
 				'scheme' => Typography::TYPOGRAPHY_2
 			]
 		);
@@ -712,7 +712,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-features-list > li' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-features-list > li' => 'margin-bottom: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -723,7 +723,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-features-list > li' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-features-list > li' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -732,7 +732,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'features_list_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-features-list > li',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-features-list > li',
 				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
@@ -762,7 +762,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -771,7 +771,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-btn'
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-btn'
 			]
 		);
 
@@ -782,7 +782,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -791,7 +791,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-btn'
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-btn'
 			]
 		);
 
@@ -799,7 +799,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'button_typography',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-btn',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-btn',
 				'scheme' => Typography::TYPOGRAPHY_4
 			]
 		);
@@ -827,7 +827,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -838,7 +838,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn' => 'background-color: {{VALUE}};'
 				]
 			]
 		);
@@ -858,7 +858,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn:hover, {{WRAPPER}} .zew-pricing-table-btn:focus' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn:hover, {{WRAPPER}} .wpz-pricing-table-btn:focus' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -869,7 +869,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn:hover, {{WRAPPER}} .zew-pricing-table-btn:focus' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn:hover, {{WRAPPER}} .wpz-pricing-table-btn:focus' => 'background-color: {{VALUE}};'
 				]
 			]
 		);
@@ -883,7 +883,7 @@ class Pricing_Table extends Widget_Base {
 					'button_border_border!' => ''
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-btn:hover, {{WRAPPER}} .zew-pricing-table-btn:focus' => 'border-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-btn:hover, {{WRAPPER}} .wpz-pricing-table-btn:focus' => 'border-color: {{VALUE}};'
 				]
 			]
 		);
@@ -907,7 +907,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -918,7 +918,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-badge' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-badge' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -929,7 +929,7 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-badge' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-pricing-table-badge' => 'background-color: {{VALUE}};'
 				]
 			]
 		);
@@ -938,7 +938,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'badge_border',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-badge'
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-badge'
 			]
 		);
 
@@ -949,7 +949,7 @@ class Pricing_Table extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-pricing-table-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -958,7 +958,7 @@ class Pricing_Table extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'badge_box_shadow',
-				'selector' => '{{WRAPPER}} .zew-pricing-table-badge'
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-badge'
 			]
 		);
 
@@ -967,7 +967,7 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'badge_typography',
 				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .zew-pricing-table-badge',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-badge',
 				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
@@ -1022,25 +1022,25 @@ class Pricing_Table extends Widget_Base {
 
 		$this->add_render_attribute( 'badge_text', 'class',
 			[
-				'zew-pricing-table-badge',
-				'zew-pricing-table-badge--' . $settings[ 'badge_position' ]
+				'wpz-pricing-table-badge',
+				'wpz-pricing-table-badge--' . $settings[ 'badge_position' ]
 			]
 		);
 
 		$this->add_inline_editing_attributes( 'title', 'basic' );
-		$this->add_render_attribute( 'title', 'class', 'zew-pricing-table-title' );
+		$this->add_render_attribute( 'title', 'class', 'wpz-pricing-table-title' );
 
 		$this->add_inline_editing_attributes( 'price', 'basic' );
-		$this->add_render_attribute( 'price', 'class', 'zew-pricing-table-price-text' );
+		$this->add_render_attribute( 'price', 'class', 'wpz-pricing-table-price-text' );
 
 		$this->add_inline_editing_attributes( 'period', 'basic' );
-		$this->add_render_attribute( 'period', 'class', 'zew-pricing-table-period' );
+		$this->add_render_attribute( 'period', 'class', 'wpz-pricing-table-period' );
 
 		$this->add_inline_editing_attributes( 'features_title', 'basic' );
-		$this->add_render_attribute( 'features_title', 'class', 'zew-pricing-table-features-title' );
+		$this->add_render_attribute( 'features_title', 'class', 'wpz-pricing-table-features-title' );
 
 		$this->add_inline_editing_attributes( 'button_text', 'none' );
-		$this->add_render_attribute( 'button_text', 'class', 'zew-pricing-table-btn' );
+		$this->add_render_attribute( 'button_text', 'class', 'wpz-pricing-table-btn' );
 
 		$this->add_link_attributes( 'button_text', $settings[ 'button_link' ] );
 
@@ -1055,28 +1055,28 @@ class Pricing_Table extends Widget_Base {
 			<span <?php $this->print_render_attribute_string( 'badge_text' ); ?>><?php echo esc_html( $settings[ 'badge_text' ] ); ?></span>
 		<?php endif; ?>
 
-		<div class="zew-pricing-table-header">
+		<div class="wpz-pricing-table-header">
 			<?php if ( $settings[ 'title' ] ) : ?>
 				<h2 <?php $this->print_render_attribute_string( 'title' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'title' ] ); ?></h2>
 			<?php endif; ?>
 		</div>
-		<div class="zew-pricing-table-price">
-			<div class="zew-pricing-table-price-tag"><span class="zew-pricing-table-currency"><?php echo esc_html( $currency ); ?></span><span <?php $this->print_render_attribute_string( 'price' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'price' ] ); ?></span></div>
+		<div class="wpz-pricing-table-price">
+			<div class="wpz-pricing-table-price-tag"><span class="wpz-pricing-table-currency"><?php echo esc_html( $currency ); ?></span><span <?php $this->print_render_attribute_string( 'price' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'price' ] ); ?></span></div>
 			<?php if ( $settings[ 'period' ] ) : ?>
 				<div <?php $this->print_render_attribute_string( 'period' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'period' ] ); ?></div>
 			<?php endif; ?>
 		</div>
-		<div class="zew-pricing-table-body">
+		<div class="wpz-pricing-table-body">
 			<?php if ( $settings[ 'features_title' ] ) : ?>
 				<h3 <?php $this->print_render_attribute_string( 'features_title' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'features_title' ] ); ?></h3>
 			<?php endif; ?>
 
 			<?php if ( is_array( $settings[ 'features_list' ] ) ) : ?>
-				<ul class="zew-pricing-table-features-list">
+				<ul class="wpz-pricing-table-features-list">
 					<?php foreach ( $settings[ 'features_list' ] as $index => $feature ) :
 						$name_key = $this->get_repeater_setting_key( 'text', 'features_list', $index );
 						$this->add_inline_editing_attributes( $name_key, 'intermediate' );
-						$this->add_render_attribute( $name_key, 'class', 'zew-pricing-table-feature-text' );
+						$this->add_render_attribute( $name_key, 'class', 'wpz-pricing-table-feature-text' );
 						?>
 						<li class="<?php echo esc_attr( 'elementor-repeater-item-' . $feature[ '_id' ] ); ?>">
 							<?php if ( ! empty( $feature[ 'selected_icon' ][ 'value' ] ) ) :

@@ -1,16 +1,16 @@
-.zew-member > .elementor-widget-container {
+.wpz-member > .elementor-widget-container {
 	padding: 25px;
 	border-radius: 5px;
 	background-color: #fff;
 	box-shadow: 0 3px 40px rgba(36, 36, 36, .1);
 }
 
-.zew-member-figure {
+.wpz-member-figure {
 	display: inline-block;
 	margin: 0 0 25px !important;
 }
 
-.zew-member-figure img {
+.wpz-member-figure img {
 	width: 100%;
 	height: 100%;
 	vertical-align: bottom;
@@ -18,24 +18,24 @@
 	object-fit: cover;
 }
 
-.zew-member-name {
+.wpz-member-name {
 	margin-top: 0;
 	margin-bottom: 10px;
 	font-size: 18px;
 }
 
-.zew-member-position {
+.wpz-member-position {
 	margin-bottom: 25px;
 	font-size: 14px;
 }
 
-.zew-member-bio {
+.wpz-member-bio {
 	margin-bottom: 25px;
 	font-size: 14px;
 	line-height: 1.6;
 }
 
-.zew-member-links > a {
+.wpz-member-links > a {
 	display: inline-block;
 	text-align: center;
 	line-height: 1;
@@ -44,20 +44,20 @@
 }
 
 
-.zew-member-links > a > i {
+.wpz-member-links > a > i {
 	width: 1em;
 	height: 1em;
 }
 
-.zew-member-links > a:not(:last-child) {
+.wpz-member-links > a:not(:last-child) {
 	margin-right: 10px;
 }
 
-.zew-member .zew-btn {
+.wpz-member .wpz-btn {
 	margin-bottom: 15px;
 }
 
-.zew-member-body .zew-btn:last-child {
+.wpz-member-body .wpz-btn:last-child {
 	margin-top: 15px;
 	margin-bottom: 0;
 }

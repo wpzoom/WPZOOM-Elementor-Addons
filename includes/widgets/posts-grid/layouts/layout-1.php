@@ -3,7 +3,7 @@ while ( $all_posts->have_posts() ) :
 
     $all_posts->the_post(); ?>
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class('zew-post'); ?>>
+        <article id="post-<?php the_ID(); ?>" <?php post_class('wpz-post'); ?>>
          
             <div class="post-grid-inner">
             	

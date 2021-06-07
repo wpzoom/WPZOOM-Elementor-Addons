@@ -108,7 +108,7 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 * @return array Array of categories.
 	 */
-	private function zew_get_all_post_categories( $post_type ) {
+	private function wpz_get_all_post_categories( $post_type ) {
 		$options = array();
 
 		$taxonomy = 'category';
@@ -145,17 +145,17 @@ class Posts_Grid extends Widget_Base {
 	 * @return void
 	 */
 	protected function _register_controls() {
-		$this->zew_content_layout_options();
-		$this->zew_content_query_options();
+		$this->wpz_content_layout_options();
+		$this->wpz_content_query_options();
 
-		$this->zew_style_layout_options();
-		$this->zew_style_box_options();
-		$this->zew_style_image_options();
+		$this->wpz_style_layout_options();
+		$this->wpz_style_box_options();
+		$this->wpz_style_image_options();
 
-		$this->zew_style_title_options();
-		$this->zew_style_meta_options();
-		$this->zew_style_content_options();
-		$this->zew_style_readmore_options();
+		$this->wpz_style_title_options();
+		$this->wpz_style_meta_options();
+		$this->wpz_style_content_options();
+		$this->wpz_style_readmore_options();
 	}
 
 	/**
@@ -167,7 +167,7 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	private function zew_content_layout_options() {
+	private function wpz_content_layout_options() {
 		$this->start_controls_section(
 			'section_layout',
 			[
@@ -307,7 +307,7 @@ class Posts_Grid extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' => '/',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta span + span:before' => 'content: "{{VALUE}}"'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-meta span + span:before' => 'content: "{{VALUE}}"'
 				],
 				'condition' => [
 					'meta_data!' => []
@@ -357,7 +357,7 @@ class Posts_Grid extends Widget_Base {
 			[
 				'label'     => __( 'Read More Text', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => __( 'Read More Â»', 'wpzoom-elementor-addons' ),
+				'default'   => __( 'Read More »', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'show_read_more' => 'yes'
 				]
@@ -402,7 +402,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_content_query_options() {
+	private function wpz_content_query_options() {
 		$this->start_controls_section(
 			'section_query',
 			[
@@ -419,7 +419,7 @@ class Posts_Grid extends Widget_Base {
 				'label_block' => true,
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => true,
-				'options'     => $this->zew_get_all_post_categories( 'post' )
+				'options'     => $this->wpz_get_all_post_categories( 'post' )
 			]
 		);
 
@@ -469,7 +469,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_layout_options() {
+	private function wpz_style_layout_options() {
 		// Layout.
 		$this->start_controls_section(
 			'section_layout_style',
@@ -495,7 +495,7 @@ class Posts_Grid extends Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}'
+					'{{WRAPPER}} .wpz-grid-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}'
 				]
 			]
 		);
@@ -516,7 +516,7 @@ class Posts_Grid extends Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container' => 'grid-row-gap: {{SIZE}}{{UNIT}}'
+					'{{WRAPPER}} .wpz-grid-container' => 'grid-row-gap: {{SIZE}}{{UNIT}}'
 				]
 			]
 		);
@@ -532,7 +532,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_box_options() {
+	private function wpz_style_box_options() {
 		// Box.
 		$this->start_controls_section(
 			'section_box',
@@ -550,7 +550,7 @@ class Posts_Grid extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .zew-grid-container .zew-post' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
 				],			
 			]
 		);
@@ -571,7 +571,7 @@ class Posts_Grid extends Widget_Base {
 					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post' => 'border-radius: {{SIZE}}{{UNIT}}'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post' => 'border-radius: {{SIZE}}{{UNIT}}'
 				]
 			]
 		);
@@ -584,7 +584,7 @@ class Posts_Grid extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .zew-grid-container .zew-post' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
 				]
 			]
 		);
@@ -608,7 +608,7 @@ class Posts_Grid extends Widget_Base {
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post' => 'background-color: {{VALUE}};'
 				]
 			]
 		);
@@ -622,7 +622,7 @@ class Posts_Grid extends Widget_Base {
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post' => 'border-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post' => 'border-color: {{VALUE}};'
 				]
 			]
 		);
@@ -632,7 +632,7 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'grid_button_style_normal_box_shadow',
-				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post'
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post'
 			]
 		);
 
@@ -655,7 +655,7 @@ class Posts_Grid extends Widget_Base {
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post:hover' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post:hover' => 'background-color: {{VALUE}};'
 				]
 			]
 		);
@@ -669,7 +669,7 @@ class Posts_Grid extends Widget_Base {
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post:hover' => 'border-color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post:hover' => 'border-color: {{VALUE}};'
 				]
 			]
 		);
@@ -679,7 +679,7 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'grid_button_style_hover_box_shadow',
-				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post:hover',
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post:hover',
 			]
 		);
 
@@ -698,7 +698,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_image_options() {
+	private function wpz_style_image_options() {
 		// Box.
 		$this->start_controls_section(
 			'section_image',
@@ -744,7 +744,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_title_options() {
+	private function wpz_style_title_options() {
 		// Tab.
 		$this->start_controls_section(
 			'section_grid_title_style',
@@ -760,7 +760,7 @@ class Posts_Grid extends Widget_Base {
 			[
 				'name'     => 'grid_title_style_typography',
 				'scheme'   => Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a'
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post .title, {{WRAPPER}} .wpz-grid-container .wpz-post .title > a'
 			]
 		);
 
@@ -782,7 +782,7 @@ class Posts_Grid extends Widget_Base {
 				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .title, {{WRAPPER}} .wpz-grid-container .wpz-post .title > a' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -805,7 +805,7 @@ class Posts_Grid extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a:hover' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .title, {{WRAPPER}} .wpz-grid-container .wpz-post .title > a:hover' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -822,7 +822,7 @@ class Posts_Grid extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .title, {{WRAPPER}} .zew-grid-container .zew-post .title > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .title, {{WRAPPER}} .wpz-grid-container .wpz-post .title > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -838,7 +838,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_meta_options() {
+	private function wpz_style_meta_options() {
 		// Tab.
 		$this->start_controls_section(
 			'section_grid_meta_style',
@@ -854,7 +854,7 @@ class Posts_Grid extends Widget_Base {
 			[
 				'name'     => 'grid_meta_style_typography',
 				'scheme'   => Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta span'
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-meta span'
 			]
 		);
 
@@ -866,8 +866,8 @@ class Posts_Grid extends Widget_Base {
 				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta span'      => 'color: {{VALUE}};',
-					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta span a' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-meta span'      => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-meta span a' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -880,7 +880,7 @@ class Posts_Grid extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-meta' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-meta' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				]
 			]
 		);
@@ -896,7 +896,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_content_options() {
+	private function wpz_style_content_options() {
 		// Tab.
 		$this->start_controls_section(
 			'section_grid_content_style',
@@ -912,7 +912,7 @@ class Posts_Grid extends Widget_Base {
 			[
 				'name'      => 'grid_content_style_typography',
 				'scheme'    => Typography::TYPOGRAPHY_1,
-				'selector'  => '{{WRAPPER}} .zew-grid-container .zew-post .post-grid-excerpt p'
+				'selector'  => '{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-excerpt p'
 			]
 		);
 
@@ -924,7 +924,7 @@ class Posts_Grid extends Widget_Base {
 				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-excerpt p' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-excerpt p' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -937,7 +937,7 @@ class Posts_Grid extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
-					'{{WRAPPER}} .zew-grid-container .zew-post .post-grid-excerpt' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-excerpt' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -953,7 +953,7 @@ class Posts_Grid extends Widget_Base {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	private function zew_style_readmore_options() {
+	private function wpz_style_readmore_options() {
 		// Tab.
 		$this->start_controls_section(
 			'section_grid_readmore_style',
@@ -969,7 +969,7 @@ class Posts_Grid extends Widget_Base {
 			[
 				'name'     => 'grid_readmore_style_typography',
 				'scheme'   => Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn'
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn'
 			]
 		);
 
@@ -991,7 +991,7 @@ class Posts_Grid extends Widget_Base {
 				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -1014,7 +1014,7 @@ class Posts_Grid extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn:hover' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn:hover' => 'color: {{VALUE}};'
 				]
 			]
 		);
@@ -1031,7 +1031,7 @@ class Posts_Grid extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [
-					'{{WRAPPER}} .zew-grid-container .zew-post a.read-more-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
 			]
 		);
@@ -1052,14 +1052,14 @@ class Posts_Grid extends Widget_Base {
 		$settings = $this->get_settings();
 
 		?>
-		<div class="zew-grid">
+		<div class="wpz-grid">
 			<?php 
 
-			$columns_desktop = ( ! empty( $settings[ 'columns' ] ) ? 'zew-grid-desktop-' . $settings[ 'columns' ] : 'zew-grid-desktop-3' );
+			$columns_desktop = ( ! empty( $settings[ 'columns' ] ) ? 'wpz-grid-desktop-' . $settings[ 'columns' ] : 'wpz-grid-desktop-3' );
 
-			$columns_tablet = ( ! empty( $settings[ 'columns_tablet' ] ) ? ' zew-grid-tablet-' . $settings[ 'columns_tablet' ] : ' zew-grid-tablet-2' );
+			$columns_tablet = ( ! empty( $settings[ 'columns_tablet' ] ) ? ' wpz-grid-tablet-' . $settings[ 'columns_tablet' ] : ' wpz-grid-tablet-2' );
 
-			$columns_mobile = ( ! empty( $settings[ 'columns_mobile' ] ) ? ' zew-grid-mobile-' . $settings[ 'columns_mobile' ] : ' zew-grid-mobile-1' );
+			$columns_mobile = ( ! empty( $settings[ 'columns_mobile' ] ) ? ' wpz-grid-mobile-' . $settings[ 'columns_mobile' ] : ' wpz-grid-mobile-1' );
 
 			$grid_style = $settings[ 'grid_style' ];
 
@@ -1072,7 +1072,7 @@ class Posts_Grid extends Widget_Base {
 			}
 
 			?>
-			<div class="zew-grid-container elementor-grid <?php echo $columns_desktop.$columns_tablet.$columns_mobile.$grid_class; ?>">
+			<div class="wpz-grid-container elementor-grid <?php echo $columns_desktop.$columns_tablet.$columns_mobile.$grid_class; ?>">
 				<?php
 				$posts_per_page = ( ! empty( $settings[ 'posts_per_page' ] ) ?  $settings[ 'posts_per_page' ] : 3 );
 
@@ -1126,7 +1126,7 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 * @return array Custom excerpt length.
 	 */
-	public function zew_filter_excerpt_length( $length ) {
+	public function wpz_filter_excerpt_length( $length ) {
 		$settings = $this->get_settings();
 
 		$excerpt_length = ( !empty( $settings[ 'excerpt_length' ] ) ) ? absint( $settings[ 'excerpt_length' ] ) : 25;
@@ -1143,7 +1143,7 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 * @return array Excerpt more.
 	 */
-	public function zew_filter_excerpt_more( $more ) {
+	public function wpz_filter_excerpt_more( $more ) {
 		return '&hellip;';
 	}
 
@@ -1273,13 +1273,13 @@ class Posts_Grid extends Widget_Base {
 			return;
 		}
 
-		add_filter( 'excerpt_more', [ $this, 'zew_filter_excerpt_more' ], 20 );
-		add_filter( 'excerpt_length', [ $this, 'zew_filter_excerpt_length' ], 9999 );
+		add_filter( 'excerpt_more', [ $this, 'wpz_filter_excerpt_more' ], 20 );
+		add_filter( 'excerpt_length', [ $this, 'wpz_filter_excerpt_length' ], 9999 );
 
 		?><div class="post-grid-excerpt"><?php the_excerpt(); ?></div><?php
 
-		remove_filter( 'excerpt_length', [ $this, 'zew_filter_excerpt_length' ], 9999 );
-		remove_filter( 'excerpt_more', [ $this, 'zew_filter_excerpt_more' ], 20 );
+		remove_filter( 'excerpt_length', [ $this, 'wpz_filter_excerpt_length' ], 9999 );
+		remove_filter( 'excerpt_more', [ $this, 'wpz_filter_excerpt_more' ], 20 );
 	}
 
 	/**

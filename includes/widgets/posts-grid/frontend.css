@@ -1,51 +1,40 @@
-.zew-grid-container .zew-post {
+.wpz-grid-container .wpz-post {
     overflow: hidden;
 }
-
-.zew-grid-container .zew-post a.read-more-btn {
+.wpz-grid-container .wpz-post a.read-more-btn {
 	display: block;
 }
-
-.zew-grid-container .post-grid-thumbnail {
+.wpz-grid-container .post-grid-thumbnail {
 	margin-bottom: 20px;
 }
-
-.zew-grid-container .post-grid-meta {
+.wpz-grid-container .post-grid-meta {
 	margin-bottom: 10px;
 }
-
-.zew-grid-container .zew-post .post-grid-meta span + span:before {
+.wpz-grid-container .wpz-post .post-grid-meta span + span:before {
     margin-left: 2px;
     margin-right: 4px;
 }
-
 .grid-meta-bottom .post-grid-text-wrap {
 	border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
-
-.grid-meta-bottom .zew-post {
+.grid-meta-bottom .wpz-post {
     padding: 20px 20px 20px 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
-
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post,
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post:hover {
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post,
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post:hover {
     background: transparent;
     margin-top: 0;
 }
-
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .title, 
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .title > a {
-    color: #333333;
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post .title, 
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post .title > a {
     margin: 5px 0;
     padding: 5px 0;
 }
-
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .post-grid-excerpt p,
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post a.read-more-btn,
-.elementor-widget-elementor-blog-posts .zew-grid .zew-grid-container .zew-post .post-grid-meta span {
-    color: #707070; 
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post .post-grid-excerpt p,
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post a.read-more-btn,
+.elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post .post-grid-meta span {
     font-weight: 400;
 }

@@ -45,7 +45,7 @@
 					autoplay    : true,
 					arrows      : false,
 					checkVisible: false,
-					container   : '.zewjs-slick',
+					container   : '.wpzjs-slick',
 					dots        : false,
 					infinite    : true,
 					rows        : 0,
@@ -55,7 +55,7 @@
 					selectors   : {
 						video       : '.elementor-video',
 						videoIframe : '.elementor-video-iframe',
-						videoWrapper: '.zew-video-wrapper'
+						videoWrapper: '.wpz-video-wrapper'
 					}
 				}
 			},

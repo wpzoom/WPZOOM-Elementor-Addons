@@ -1211,7 +1211,7 @@ class Slider extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-slick-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+					'{{WRAPPER}} .wpz-slick-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
 				],
 			]
 		);
@@ -1233,7 +1233,7 @@ class Slider extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-slick-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-slick-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1242,7 +1242,7 @@ class Slider extends Widget_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'content_background',
-				'selector' => '{{WRAPPER}} .zew-slick-content',
+				'selector' => '{{WRAPPER}} .wpz-slick-content',
 				'exclude' => [
 					 'image'
 				]
@@ -1265,7 +1265,7 @@ class Slider extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-slick-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-slick-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1276,7 +1276,7 @@ class Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-slick-title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-slick-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1286,7 +1286,7 @@ class Slider extends Widget_Base {
 			[
 				'name' => 'title',
 				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .zew-slick-title',
+				'selector' => '{{WRAPPER}} .wpz-slick-title',
 				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
@@ -1307,7 +1307,7 @@ class Slider extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .zew-slick-subtitle' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-slick-subtitle' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1318,7 +1318,7 @@ class Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .zew-slick-subtitle' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-slick-subtitle' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1328,7 +1328,7 @@ class Slider extends Widget_Base {
 			[
 				'name' => 'subtitle',
 				'label' => __( 'Typography', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .zew-slick-subtitle',
+				'selector' => '{{WRAPPER}} .wpz-slick-subtitle',
 				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
@@ -2073,7 +2073,7 @@ class Slider extends Widget_Base {
 			return;
 		}
 
-		?><div class="zewjs-slick zew-slick zew-slick--slider">
+		?><div class="wpzjs-slick wpz-slick wpz-slick--slider">
 
 			<?php foreach ( $slides as $slide ) :
 				if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) ) {
@@ -2115,7 +2115,7 @@ class Slider extends Widget_Base {
 						}
 
 						$this->add_render_attribute( 'video-wrapper', 'class', 'elementor-wrapper' );
-						$this->add_render_attribute( 'video-wrapper', 'class', 'zew-video-wrapper' );
+						$this->add_render_attribute( 'video-wrapper', 'class', 'wpz-video-wrapper' );
 						$this->add_render_attribute( 'video-wrapper', 'class', 'e-' . $slide[ 'video_type' ] . '-video' );
 						$this->add_render_attribute( 'video-wrapper', 'data-video-type', $slide[ 'video_type' ] );
 						$this->add_render_attribute( 'video-wrapper', 'data-video-url', $video_url );
@@ -2129,9 +2129,9 @@ class Slider extends Widget_Base {
 				}
 
 				$item_tag = 'div';
-				$id = 'zew-slick-item-' . $slide ['_id' ];
+				$id = 'wpz-slick-item-' . $slide ['_id' ];
 
-				$this->add_render_attribute( $id, 'class', 'zew-slick-item' );
+				$this->add_render_attribute( $id, 'class', 'wpz-slick-item' );
 
 				if ( isset( $slide[ 'link' ] ) && ! empty( $slide[ 'link' ][ 'url' ] ) ) {
 					$item_tag = 'a';
@@ -2139,12 +2139,12 @@ class Slider extends Widget_Base {
 				}
 				?>
 
-				<div class="zew-slick-slide">
+				<div class="wpz-slick-slide">
 
 					<<?php echo $item_tag; ?> <?php $this->print_render_attribute_string( $id ); ?>>
 
 						<?php if ( $image ) : ?>
-							<img class="zew-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
+							<img class="wpz-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
 						<?php endif; ?>
 
 						<?php if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) && ! empty( $video_html ) ) : ?>
@@ -2161,12 +2161,12 @@ class Slider extends Widget_Base {
 						<?php endif; ?>
 
 						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] ) : ?>
-							<div class="zew-slick-content">
+							<div class="wpz-slick-content">
 								<?php if ( $slide[ 'title' ] ) : ?>
-									<h2 class="zew-slick-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+									<h2 class="wpz-slick-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
 								<?php endif; ?>
 								<?php if ( $slide[ 'subtitle' ] ) : ?>
-									<p class="zew-slick-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
+									<p class="wpz-slick-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>

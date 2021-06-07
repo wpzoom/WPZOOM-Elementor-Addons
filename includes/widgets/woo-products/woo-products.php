@@ -1097,7 +1097,7 @@ class Woo_Products extends Widget_Base {
 				$format = '&paged=%#%';
 			}
 
-			$args = apply_filters( 'zew_pagination_args', array(
+			$args = apply_filters( 'wpz_pagination_args', array(
 				'base' => str_replace( $big, '%#%', html_entity_decode( get_pagenum_link( $big ) ) ),
 				'format' => $format,
 				'current' => max( 1, $current_page ),
@@ -1110,9 +1110,9 @@ class Woo_Products extends Widget_Base {
 
 			// Output pagination
 			if ( $echo ) {
-				echo '<div class="zew-pagination clr">' . wp_kses_post( paginate_links( $args ) ) . '</div>';
+				echo '<div class="wpz-pagination clr">' . wp_kses_post( paginate_links( $args ) ) . '</div>';
 			} else {
-				return '<div class="zew-pagination clr">' . wp_kses_post( paginate_links( $args ) ) . '</div>';
+				return '<div class="wpz-pagination clr">' . wp_kses_post( paginate_links( $args ) ) . '</div>';
 			}
 		}
 	}
