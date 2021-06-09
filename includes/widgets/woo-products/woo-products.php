@@ -428,6 +428,32 @@ class Woo_Products extends Widget_Base {
 				]
 		);
 
+		$this->add_control(
+			'item_content_align',
+			array(
+				'label'     => __( 'Content Alignment', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => array(
+					'left'   => array(
+						'title' => __( 'Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'right'  => array(
+						'title' => __( 'Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-align-right',
+					),
+				),
+				'default'   => 'left',
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product' => 'text-align: {{VALUE}} !important;',
+				),
+			)
+		);
+
 		$this->add_group_control(
 				Group_Control_Border::get_type(),
 				[
@@ -635,16 +661,49 @@ class Woo_Products extends Widget_Base {
 				]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'        => 'title_border',
+				'placeholder' => '1px',
+				'selector'    => '{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title',
+			)
+		);
+
+		$this->add_control(
+			'title_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
 		$this->add_responsive_control(
-				'title_margin',
-				[
-					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
-					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px', 'em', '%' ],
-					'selectors' => [
-						'{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					],
-				]
+			'title_padding',
+			array(
+				'label'      => __( 'Padding', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'title_margin',
+			array(
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
 		);
 
 		$this->add_control(
@@ -697,16 +756,50 @@ class Woo_Products extends Widget_Base {
 				]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'        => 'price_border',
+				'placeholder' => '1px',
+				'separator'   => 'before',
+				'selector'    => '{{WRAPPER}} .woocommerce ul.products li.product .price',
+			)
+		);
+
+		$this->add_control(
+			'price_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product .price' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
 		$this->add_responsive_control(
-				'price_margin',
-				[
-					'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
-					'type' => Controls_Manager::DIMENSIONS,
-					'size_units' => [ 'px', 'em', '%' ],
-					'selectors' => [
-						'{{WRAPPER}} .woocommerce ul.products li.product .price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					],
-				]
+			'price_padding',
+			array(
+				'label'      => __( 'Padding', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product .price' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'price_margin',
+			array(
+				'label'      => __( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .woocommerce ul.products li.product .price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
 		);
 
 		$this->add_control(
