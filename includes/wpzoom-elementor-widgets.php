@@ -87,7 +87,13 @@ class WPZOOM_Elementor_Widgets {
 			$file = trailingslashit( $path ) . $slug . '.php';
 
 			if ( file_exists( $file ) ) {
-				require_once( $file );
+
+				if( 'portfolio-showcase' == $slug && !current_theme_supports( 'zoom-portfolio' ) ) {
+					continue;
+				}
+				else {
+					require_once( $file );
+				}
 
 				$class_name = '\WPZOOMElementorWidgets\\' . ucwords( $slug_, '_' );
 
