@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPZOOM Elementor Addons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astra-sites\n"
-"POT-Creation-Date: 2021-06-02 11:27+0300\n"
+"POT-Creation-Date: 2021-06-15 14:05+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,6 +50,7 @@ msgstr ""
 
 #: includes/widgets/carousel/carousel.php:192
 #: includes/widgets/carousel/carousel.php:506
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:736
 #: includes/widgets/posts-grid/posts-grid.php:253
 #: includes/widgets/posts-grid/posts-grid.php:442
 #: includes/widgets/posts-grid/posts-grid.php:752
@@ -104,9 +105,25 @@ msgstr ""
 #: includes/widgets/carousel/carousel.php:284
 #: includes/widgets/carousel/carousel.php:314
 #: includes/widgets/carousel/carousel.php:327
-#: includes/widgets/carousel/carousel.php:341 includes/widgets/slider/slider.php:755
-#: includes/widgets/slider/slider.php:785 includes/widgets/slider/slider.php:798
-#: includes/widgets/slider/slider.php:812
+#: includes/widgets/carousel/carousel.php:341
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:151
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:187
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:212
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:264
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:294
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:314
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:324
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:342
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:352
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:370
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:380
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:390
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:400
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:414
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:452
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:462
+#: includes/widgets/slider/slider.php:755 includes/widgets/slider/slider.php:785
+#: includes/widgets/slider/slider.php:798 includes/widgets/slider/slider.php:812
 #: includes/widgets/team-members/team-members.php:406
 #: includes/widgets/woo-products/woo-products.php:346
 msgid "Yes"
@@ -115,9 +132,25 @@ msgstr ""
 #: includes/widgets/carousel/carousel.php:285
 #: includes/widgets/carousel/carousel.php:315
 #: includes/widgets/carousel/carousel.php:328
-#: includes/widgets/carousel/carousel.php:342 includes/widgets/slider/slider.php:756
-#: includes/widgets/slider/slider.php:786 includes/widgets/slider/slider.php:799
-#: includes/widgets/slider/slider.php:813
+#: includes/widgets/carousel/carousel.php:342
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:152
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:188
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:213
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:265
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:295
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:315
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:325
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:343
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:353
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:371
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:381
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:391
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:401
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:415
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:453
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:463
+#: includes/widgets/slider/slider.php:756 includes/widgets/slider/slider.php:786
+#: includes/widgets/slider/slider.php:799 includes/widgets/slider/slider.php:813
 #: includes/widgets/team-members/team-members.php:407
 #: includes/widgets/woo-products/woo-products.php:347
 msgid "No"
@@ -226,6 +259,9 @@ msgstr ""
 
 #: includes/widgets/carousel/carousel.php:460
 #: includes/widgets/carousel/carousel.php:685
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:519
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1031
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1184
 #: includes/widgets/posts-grid/posts-grid.php:562
 #: includes/widgets/posts-grid/posts-grid.php:715
 #: includes/widgets/pricing-table/pricing-table.php:781
@@ -339,6 +375,15 @@ msgstr ""
 
 #: includes/widgets/carousel/carousel.php:699
 #: includes/widgets/carousel/carousel.php:845
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:542
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:648
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:757
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:829
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:901
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:972
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1054
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1125
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1207
 #: includes/widgets/posts-grid/posts-grid.php:598
 #: includes/widgets/posts-grid/posts-grid.php:773
 #: includes/widgets/posts-grid/posts-grid.php:982
@@ -356,6 +401,18 @@ msgstr ""
 #: includes/widgets/carousel/carousel.php:864
 #: includes/widgets/carousel/carousel.php:884
 #: includes/widgets/carousel/carousel.php:916
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:657
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:679
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:766
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:788
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:838
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:860
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:910
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:932
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:981
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1003
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1134
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1156
 #: includes/widgets/posts-grid/posts-grid.php:782
 #: includes/widgets/posts-grid/posts-grid.php:805
 #: includes/widgets/posts-grid/posts-grid.php:866
@@ -397,6 +454,15 @@ msgstr ""
 
 #: includes/widgets/carousel/carousel.php:731
 #: includes/widgets/carousel/carousel.php:877
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:575
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:670
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:779
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:851
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:923
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:994
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1076
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1147
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1229
 #: includes/widgets/posts-grid/posts-grid.php:645
 #: includes/widgets/posts-grid/posts-grid.php:796
 #: includes/widgets/posts-grid/posts-grid.php:1005
@@ -410,6 +476,12 @@ msgid "Hover"
 msgstr ""
 
 #: includes/widgets/carousel/carousel.php:760
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:551
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:584
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1063
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1084
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1216
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1237
 #: includes/widgets/posts-grid/posts-grid.php:621
 #: includes/widgets/posts-grid/posts-grid.php:668
 #: includes/widgets/pricing-table/pricing-table.php:880
@@ -437,6 +509,7 @@ msgid "Spacing"
 msgstr ""
 
 #: includes/widgets/carousel/carousel.php:817
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:693
 #: includes/widgets/posts-grid/posts-grid.php:370
 #: includes/widgets/slider/slider.php:1675
 #: includes/widgets/team-members/team-members.php:316
@@ -444,6 +517,7 @@ msgid "Alignment"
 msgstr ""
 
 #: includes/widgets/carousel/carousel.php:822
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:697
 #: includes/widgets/posts-grid/posts-grid.php:374
 #: includes/widgets/pricing-table/pricing-table.php:386
 #: includes/widgets/slider/slider.php:1680
@@ -454,6 +528,7 @@ msgid "Left"
 msgstr ""
 
 #: includes/widgets/carousel/carousel.php:826
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:701
 #: includes/widgets/posts-grid/posts-grid.php:378
 #: includes/widgets/slider/slider.php:1684
 #: includes/widgets/team-members/team-members.php:324
@@ -463,6 +538,7 @@ msgid "Center"
 msgstr ""
 
 #: includes/widgets/carousel/carousel.php:830
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:705
 #: includes/widgets/posts-grid/posts-grid.php:382
 #: includes/widgets/pricing-table/pricing-table.php:390
 #: includes/widgets/slider/slider.php:1688
@@ -475,6 +551,265 @@ msgstr ""
 #: includes/widgets/carousel/carousel.php:897
 #: includes/widgets/slider/slider.php:1755
 msgid "Active"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:74
+msgid "Portfolio Showcase"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:143
+msgid "General Settings"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:149
+msgid "Show a Single Portfolio Post"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:159
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1264
+msgid "Select a Post"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:171
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:805
+#: includes/widgets/woo-products/woo-products.php:550
+msgid "Category"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:183
+msgid "Display Category Filter <br/>at the Top (Isotope Effect)"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:184
+msgid "Isotope Effect"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:185
+msgid ""
+"If you've selected to display posts from All categories, then the filter will "
+"include top-level portfolio categories (no sub-categories). <br/><br/>If you "
+"selected to display posts from a specific category, then the filter will display "
+"its sub-categories."
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:198
+msgid "Number of Posts"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:209
+msgid "Load Dynamically <br/>New Posts in Each Category"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:210
+msgid ""
+"This option will try to display the same number of posts in each category as it's "
+"configured in the Number of Posts option above."
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:227
+msgid "Design & Appearance"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:234
+msgid "Layout:"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:237
+msgid "Full-width"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:238
+msgid "Narrow"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:247
+msgid "Number of Columns"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:248
+msgid "The number of columns may vary depending on screen size"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:262
+msgid "Display Posts in Masonry Layout"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:277
+#: includes/widgets/slider/slider.php:1348
+msgid "Aspect Ratio"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:280
+msgid "Landscape"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:281
+msgid "Cinema"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:282
+msgid "Square"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:283
+msgid "Portrait"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:284
+msgid "No Cropping"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:292
+msgid "Add Margins <br/>between Posts (whitespace)"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:305
+msgid "Posts Settings"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:312
+msgid "Enable Lightbox"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:322
+msgid "Show Lightbox Caption"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:332
+msgid "Video Background"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:340
+msgid "Enable Background Video on hover"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:350
+msgid "Play Always Video Background"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:360
+msgid "Details to Show"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:368
+msgid "Display Director Name"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:378
+msgid "Display Year of Production"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:388
+msgid "Display Category Name"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:398
+msgid "Display Excerpts"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:412
+msgid "Display Read More button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:426
+msgid "Text for Read More button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:428
+#: includes/widgets/posts-grid/posts-grid.php:346
+#: includes/widgets/posts-grid/posts-grid.php:961
+msgid "Read More"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:440
+msgid "\"View All\" or \"Load More\" Button at the Bottom"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:450
+msgid "Display View All button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:460
+msgid "Load new posts dynamically"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:470
+msgid "Text for View All button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:471
+msgid ""
+"Change the text to something like \"Load More\" if you have enabled the option to "
+"load new posts dynamically."
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:473
+msgid "View All"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:479
+msgid "Link for View All button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:484
+msgid "https://your-link.com"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:497
+msgid "Portfolio Item"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:506
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1018
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1171
+#: includes/widgets/testimonial/testimonial.php:450
+msgid "Border"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:609
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:721
+#: includes/widgets/posts-grid/posts-grid.php:583
+#: includes/widgets/pricing-table/pricing-table.php:761
+#: includes/widgets/pricing-table/pricing-table.php:906
+#: includes/widgets/team-members/team-members.php:747
+#: includes/widgets/team-members/team-members.php:992
+#: includes/widgets/team-members/team-members.php:1135
+#: includes/widgets/testimonial/testimonial.php:437
+#: includes/widgets/woo-products/woo-products.php:464
+#: includes/widgets/woo-products/woo-products.php:528
+#: includes/widgets/woo-products/woo-products.php:873
+#: includes/widgets/woo-products/woo-products.php:969
+msgid "Padding"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:624
+msgid "Filter"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:877
+msgid "Excerpts"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:948
+msgid "Read More Button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1101
+msgid "View All/Load More Button"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1299
+#: includes/widgets/portfolio-showcase/view/filter.php:7
+msgid "All"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1481
+msgid "No Portfolio Posts Found"
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1482
+#, php-format
+msgid "Please add a few Portfolio Posts first <a href=\"%1$s\">here</a>."
 msgstr ""
 
 #: includes/widgets/posts-grid/posts-grid.php:58
@@ -592,17 +927,12 @@ msgstr ""
 msgid "Excerpt Length"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:346
-#: includes/widgets/posts-grid/posts-grid.php:961
-msgid "Read More"
-msgstr ""
-
 #: includes/widgets/posts-grid/posts-grid.php:358
 msgid "Read More Text"
 msgstr ""
 
 #: includes/widgets/posts-grid/posts-grid.php:360
-msgid "Read More Â»"
+msgid "Read More »"
 msgstr ""
 
 #: includes/widgets/posts-grid/posts-grid.php:409
@@ -656,20 +986,6 @@ msgstr ""
 
 #: includes/widgets/posts-grid/posts-grid.php:549
 msgid "Border Widget"
-msgstr ""
-
-#: includes/widgets/posts-grid/posts-grid.php:583
-#: includes/widgets/pricing-table/pricing-table.php:761
-#: includes/widgets/pricing-table/pricing-table.php:906
-#: includes/widgets/team-members/team-members.php:747
-#: includes/widgets/team-members/team-members.php:992
-#: includes/widgets/team-members/team-members.php:1135
-#: includes/widgets/testimonial/testimonial.php:437
-#: includes/widgets/woo-products/woo-products.php:464
-#: includes/widgets/woo-products/woo-products.php:528
-#: includes/widgets/woo-products/woo-products.php:873
-#: includes/widgets/woo-products/woo-products.php:969
-msgid "Padding"
 msgstr ""
 
 #: includes/widgets/posts-grid/posts-grid.php:727
@@ -1140,10 +1456,6 @@ msgstr ""
 
 #: includes/widgets/slider/slider.php:1185
 msgid "Slider Item"
-msgstr ""
-
-#: includes/widgets/slider/slider.php:1348
-msgid "Aspect Ratio"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:1375
@@ -1628,10 +1940,6 @@ msgstr ""
 msgid "Image Max Width"
 msgstr ""
 
-#: includes/widgets/testimonial/testimonial.php:450
-msgid "Border"
-msgstr ""
-
 #: includes/widgets/testimonial/testimonial.php:458
 msgid "Rounded Avatar?"
 msgstr ""
@@ -1778,10 +2086,6 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
-#: includes/widgets/woo-products/woo-products.php:550
-msgid "Category"
-msgstr ""
-
 #: includes/widgets/woo-products/woo-products.php:578
 #: includes/widgets/woo-products/woo-products.php:630
 msgid "Hover Color"
@@ -1809,7 +2113,7 @@ msgid ""
 "use this feature."
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:114
+#: includes/wpzoom-elementor-widgets.php:119
 msgid "WPZOOM"
 msgstr ""
 
@@ -1817,42 +2121,42 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:242
+#: wpzoom-elementor-addons.php:247
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" to activated."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:243 wpzoom-elementor-addons.php:255
+#: wpzoom-elementor-addons.php:248 wpzoom-elementor-addons.php:260
 msgid "WPZOOM Elementor Addons"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:244 wpzoom-elementor-addons.php:256
-#: wpzoom-elementor-addons.php:290
+#: wpzoom-elementor-addons.php:249 wpzoom-elementor-addons.php:261
+#: wpzoom-elementor-addons.php:295
 msgid "Elementor"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:247
+#: wpzoom-elementor-addons.php:252
 msgid "Activate Elementor"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:254
+#: wpzoom-elementor-addons.php:259
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" to be installed."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:259
+#: wpzoom-elementor-addons.php:264
 msgid "Install Elementor"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:288 wpzoom-elementor-addons.php:310
+#: wpzoom-elementor-addons.php:293 wpzoom-elementor-addons.php:315
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:289 wpzoom-elementor-addons.php:311
+#: wpzoom-elementor-addons.php:294 wpzoom-elementor-addons.php:316
 msgid "Elementor Test Extension"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:312
+#: wpzoom-elementor-addons.php:317
 msgid "PHP"
 msgstr ""
