@@ -44,7 +44,6 @@
     margin: 10px -15px 0;
 	display:flex;
 	flex-wrap:wrap;
-	justify-content:center;
 	align-items:center;
 }
 .wpzoom-main-tiled-view .wpzoom-item {
