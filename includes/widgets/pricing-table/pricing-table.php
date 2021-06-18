@@ -10,6 +10,8 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -225,6 +227,18 @@ class Pricing_Table extends Widget_Base {
 				]
 			]
 		);
+		$this->add_control(
+			'extra_text',
+			[
+				'label' => __( 'Extra Text', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => '',
+				'dynamic' => [
+					'active' => true
+				]
+			]
+		);
+		
 
 		$this->end_controls_section();
 
@@ -257,9 +271,6 @@ class Pricing_Table extends Widget_Base {
 				'label' => __( 'Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => __( 'Exciting Feature', 'wpzoom-elementor-addons' ),
-				'dynamic' => [
-					'active' => true
-				]
 			]
 		);
 
@@ -285,31 +296,55 @@ class Pricing_Table extends Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'icon_color',
+			[
+				'label' => __( 'Icon Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} i' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'features_list',
 			[
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
-				'show_label' => false,
 				'default' => [
 					[
 						'text' => __( 'Standard Feature', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-check'
+						'selected_icon' => [
+							'value' => 'fas fa-check',
+							'library' => 'fa-solid',
+						],
 					],
 					[
 						'text' => __( 'Another Great Feature', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-check'
+						'selected_icon' => [
+							'value' => 'fas fa-check',
+							'library' => 'fa-solid',
+						],
 					],
 					[
 						'text' => __( 'Obsolete Feature', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-close'
+						'selected_icon' => [
+							'value' => 'fas fa-minus',
+							'library' => 'fa-solid',
+						],
+
 					],
 					[
 						'text' => __( 'Exciting Feature', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-check'
+						'selected_icon' => [
+							'value' => 'fas fa-check',
+							'library' => 'fa-solid',
+						],
 					]
 				],
-				'title_field' => '<# print(text); #>'
+				'title_field' => '{{{ elementor.helpers.renderIcon( this, selected_icon, {}, "i", "panel" ) || \'<i class="{{ icon }}" aria-hidden="true"></i>\' }}} {{{ text }}}'
 			]
 		);
 
@@ -604,11 +639,11 @@ class Pricing_Table extends Widget_Base {
 		$this->add_responsive_control(
 			'period_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'label' => __( 'Side Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .wpz-pricing-table-price' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .wpz-pricing-table-period' => 'margin-left: {{SIZE}}{{UNIT}};'
 				]
 			]
 		);
@@ -624,11 +659,43 @@ class Pricing_Table extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'_heading_extra',
+			[
+				'type' => Controls_Manager::HEADING,
+				'label' => __( 'Extra Text', 'wpzoom-elementor-addons' ),
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_responsive_control(
+			'extra_text_spacing',
+			[
+				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-pricing-table-extra' => 'margin-bottom: {{SIZE}}{{UNIT}};'
+				]
+			]
+		);
+
+		$this->add_control(
+			'extra_text_color',
+			[
+				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-pricing-table-extra' => 'color: {{VALUE}};'
+				]
+			]
+		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'period_typography',
-				'selector' => '{{WRAPPER}} .wpz-pricing-table-period',
+				'name' => 'extra_text_typography',
+				'selector' => '{{WRAPPER}} .wpz-pricing-table-extra',
 				'scheme' => Typography::TYPOGRAPHY_3
 			]
 		);
@@ -1065,7 +1132,13 @@ class Pricing_Table extends Widget_Base {
 			<?php if ( $settings[ 'period' ] ) : ?>
 				<div <?php $this->print_render_attribute_string( 'period' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'period' ] ); ?></div>
 			<?php endif; ?>
+			<?php if ( ! empty( $settings[ 'extra_text' ] ) ) { ?>
+				<div class="wpz-pricing-table-extra">
+					<?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'extra_text' ] ); ?>
+				</div>
+			<?php } ?>
 		</div>
+
 		<div class="wpz-pricing-table-body">
 			<?php if ( $settings[ 'features_title' ] ) : ?>
 				<h3 <?php $this->print_render_attribute_string( 'features_title' ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'features_title' ] ); ?></h3>
@@ -1075,14 +1148,14 @@ class Pricing_Table extends Widget_Base {
 				<ul class="wpz-pricing-table-features-list">
 					<?php foreach ( $settings[ 'features_list' ] as $index => $feature ) :
 						$name_key = $this->get_repeater_setting_key( 'text', 'features_list', $index );
-						$this->add_inline_editing_attributes( $name_key, 'intermediate' );
+						$this->add_inline_editing_attributes( $name_key );
 						$this->add_render_attribute( $name_key, 'class', 'wpz-pricing-table-feature-text' );
 						?>
 						<li class="<?php echo esc_attr( 'elementor-repeater-item-' . $feature[ '_id' ] ); ?>">
 							<?php if ( ! empty( $feature[ 'selected_icon' ][ 'value' ] ) ) :
 								Icons_Manager::render_icon( $feature[ 'selected_icon' ], [] );
 							endif; ?>
-							<div <?php $this->print_render_attribute_string( $name_key ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $feature[ 'text' ] ); ?></div>
+							<div <?php echo $this->get_render_attribute_string( $name_key ); ?>><?php echo WPZOOM_Elementor_Widgets::custom_kses( $feature[ 'text' ] ); ?></div>
 						</li>
 					<?php endforeach; ?>
 				</ul>

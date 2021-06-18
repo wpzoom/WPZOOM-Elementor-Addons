@@ -40,7 +40,7 @@
 	font-size: 24px;
 }
 .wpz-pricing-table-price {
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 .wpz-pricing-table-price-tag {
 	margin-bottom: 0.5rem;
@@ -48,21 +48,19 @@
 	font-weight: 700;
 	font-size: 60px;
 	line-height: normal;
+	display: inline-block;
 }
-
 .wpz-pricing-table-currency {
 	font-size: 24px;
 }
-
 .wpz-pricing-table-period {
+	display: inline-block;
 	color: #8c8c8c;
 	font-size: 16px;
 }
-
 .wpz-pricing-table-body {
 	margin-bottom: 3rem;
 }
-
 .wpz-pricing-table-features-title {
 	margin-top: 0;
 	margin-bottom: 1rem;
