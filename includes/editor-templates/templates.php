@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="elementor-templates-modal__header__logo__icon-wrapper e-logo-wrapper">
 					<i class="eicon-elementor"></i>
 				</span>
-				<span class="elementor-templates-modal__header__logo__title">WPZoom Library</span>
+				<span class="elementor-templates-modal__header__logo__title">WPZOOM Library</span>
 			</div>
 			<div id="elementor-template-library-header-preview-back" class="wpzoom-header-back-button" style="display:none;">
 				<i class="eicon-" aria-hidden="true"></i>

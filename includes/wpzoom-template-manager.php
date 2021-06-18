@@ -132,7 +132,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			if( count( $template_list ) != 0 ) {
 				
 				for( $i = 0; $i < count( $template_list ); $i++ ) {
-					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['name'] ) );
+					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['id'] ) );
 					?>
 					<div class="wpzoom-templates-library-template wpzoom-item" data-theme="<?php echo strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace( ' ', '-', $template_list[$i]['category'] ) ) ?>">
 						<div class="wpzoom-template-title">
@@ -140,7 +140,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 							echo $template_list[$i]['name'];
 						?>
 						</div>
-						<div class="wpzoom-template-thumb wpzoom-index-<?php echo $i; ?>" data-index="<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>);"></div>
+						<div class="wpzoom-template-thumb wpzoom-index-<?php echo $i; ?>" data-index="<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>-thumb.png);"></div>
 						<?php echo '<script> WPZ_Index[' . $i . '] = ' . json_encode( $template_list[$i] ) . '; </script>'; ?>
 						<div class="wpzoom-dates">
 							<div><?php echo '<b>Created</b>: ' . $template_list[$i]['created']; ?></div>
@@ -225,7 +225,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			}
 		?>
 		<div id="wpzoom-elementor-template-library-preview"> 
-			<img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $data['name']); ?>" />
+			<img src="<?php echo esc_url( $thumb_url ); ?>-full.png" alt="<?php echo esc_attr( $data['name']); ?>" />
 		</div>
 		<?php
 		}
