@@ -5,7 +5,8 @@
     "category": "Flow 1",
     "thumbnail": "inspiro-pro/flow-1/home",
     "requires": ["free"],
-    "contributor": ["WPZOOM"]
+    "contributor": ["WPZOOM"],
+	"separator" : "Flow 1"
 },{
     "name": "Flow 1 - Portfolio",
     "id": "f1-work",
@@ -61,12 +62,13 @@
     "category": "Flow 2",
     "thumbnail": "inspiro-pro/flow-2/home",
     "requires": ["free"],
-    "contributor": ["WPZOOM"]
+    "contributor": ["WPZOOM"],
+	"separator" : "Flow 2"
 }, {
     "name": "Flow 2 - Portfolio",
     "id": "f2-work",
     "theme": "Inspiro PRO",
-    "category": "Flow 1",
+    "category": "Flow 2",
     "thumbnail": "inspiro-pro/flow-2/work",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
@@ -117,7 +119,8 @@
     "category": "Flow 3",
     "thumbnail": "inspiro-pro/flow-3/home",
     "requires": ["free"],
-    "contributor": ["WPZOOM"]
+    "contributor": ["WPZOOM"],
+	"separator" : "Flow 3"
 },{
     "name": "Flow 3 - Portfolio",
     "id": "f3-work",
