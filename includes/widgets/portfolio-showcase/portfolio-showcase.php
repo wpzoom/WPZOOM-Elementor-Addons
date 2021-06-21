@@ -692,7 +692,7 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label' => __( 'Widget Title', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
-			),
+			)
 		);
 
 		// Title typography.
@@ -741,7 +741,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'condition' => array(
 					'show_categories' => 'yes'
 				)
-			),
+			)
 		);
 
 		//Filter typography.
@@ -850,7 +850,7 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
-			),
+			)
 		);
 
 		// Title typography.
@@ -922,7 +922,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'condition' => array(
 					'enable_category' => 'yes'
 				)
-			),
+			)
 		);
 
 		//Category typography.
@@ -994,7 +994,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'condition' => array(
 					'show_excerpt' => 'yes'
 				)
-			),
+			)
 		);
 
 		//Excerpt typography.
@@ -1065,7 +1065,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'condition' => array(
 					'view_all_btn' => 'yes'
 				)
-			),
+			)
 		);
 
 		//ReadMore typography.
@@ -1218,7 +1218,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'condition' => array(
 					'view_all_enabled' => 'yes'
 				)
-			),
+			)
 		);
 
 		//View All or Load More typography.
