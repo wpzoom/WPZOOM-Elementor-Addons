@@ -8,6 +8,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Widget_Base;
+use Elementor\Utils;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -46,6 +47,9 @@ class Portfolio_Showcase extends Widget_Base {
 	 */
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
+	
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-portoflio-showcase', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+	
 	}
 
 	/**
@@ -110,7 +114,9 @@ class Portfolio_Showcase extends Widget_Base {
 	 * @return array Style slugs.
 	 */
 	public function get_style_depends() {
-		return [];
+		return [
+			'wpzoom-elementor-addons-css-frontend-portoflio-showcase'
+		];
 	}
 
 	/**
@@ -143,6 +149,68 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'General Settings', 'wpzoom-elementor-addons' ),
 			)
 		);
+
+		$this->add_control(
+			'widget_title',
+			array(
+				'label'       => esc_html__( 'Widget Title', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Enter your widget title', 'wpzoom-elementor-addons' ),
+				'label_block' => true,
+				'dynamic'     => array(
+					'active' => true,
+				)
+			)
+		);
+		$this->add_control(
+			'widget_title_tag',
+			array(
+				'label'   => esc_html__( 'HTML Tag', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'h1'   => 'H1',
+					'h2'   => 'H2',
+					'h3'   => 'H3',
+					'h4'   => 'H4',
+					'h5'   => 'H5',
+					'h6'   => 'H6',
+					'div'  => 'div',
+					'span' => 'span',
+					'p'    => 'p',
+				),
+				'default' => 'h2',
+			)
+		);
+		$this->add_responsive_control(
+			'widget_title_align',
+			array(
+				'label'   => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left' => array(
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => esc_html__( 'Justified', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-justify',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+
 		$this->add_control(
 			'single_post',
 			array(
@@ -151,6 +219,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'separator'   => 'before',
 			)
 		);
 		$this->add_control(
@@ -613,6 +682,52 @@ class Portfolio_Showcase extends Widget_Base {
 					'{{WRAPPER}} .portfolio-grid .portfolio_item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
 				]
 			]
+		);
+
+		$this->end_controls_section();
+
+		//Widget Title Styles section
+		$this->start_controls_section(
+			'section_widget_title_style',
+			array(
+				'label' => __( 'Widget Title', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE
+			),
+		);
+
+		// Title typography.
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'widget_title_style_typography',
+				'scheme'   => Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title'
+			)
+		);
+
+		// Title color.
+		$this->add_control(
+			'widget_title_style_color',
+			array(
+				'type'      => Controls_Manager::COLOR,
+				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'default'   => '',
+				'selectors' => array(
+					'{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title' => 'color: {{VALUE}};'
+				)
+			)
+		);
+		// Box internal padding.
+		$this->add_responsive_control(
+			'widget_title_style_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+				]
+			)
 		);
 
 		$this->end_controls_section();
@@ -1333,6 +1448,8 @@ class Portfolio_Showcase extends Widget_Base {
 		// Get settings.
 		$settings = $this->get_settings();
 
+		$widget_title                       = $settings['widget_title'];
+
 		$single_post                        = ( 'yes' == $settings['single_post'] ? true : false );
 		$single_post_id                     = ( '0' !== $settings['single_post_id'] ? intval( $settings['single_post_id'] ) : -1 );
         $category                           = $settings['category'];
@@ -1394,21 +1511,34 @@ class Portfolio_Showcase extends Widget_Base {
             );
         }
 
+		echo '<div class="portfolio-showcase">';
+
 		$wp_query = new \WP_Query( $args );
 
 		$count = $wp_query->found_posts;
 		
 		if ( $wp_query->have_posts() ) :
 
-			echo '<div class="portfolio-showcase">';
-
 			if ( $show_masonry ) {
 				echo '<div id="portfolio-masonry">';
+			}
+
+			echo '<div class="portfolio-showcase-header">';
+
+			if( ! empty( $widget_title ) ) {
+
+				$this->add_render_attribute( 'widget_title', 'class', 'wpzoom-portfolio-showcase-widget-title' );
+				$this->add_inline_editing_attributes( 'widget_title' );
+				$widget_title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['widget_title_tag'] ), $this->get_render_attribute_string( 'widget_title' ), $widget_title );
+	
+				echo $widget_title_html;
 			}
 
 			if ( !$single_post && $show_categories ) {
 				include( __DIR__ . '/view/filter.php' );
 			}
+
+			echo '</div><!-- // .portfolio-showcase-header -->';
 
 			if ( 'narrow' == $layout_type ) {
 				echo '<div class="inner-wrap portfolio_template_clean">';
@@ -1472,8 +1602,7 @@ class Portfolio_Showcase extends Widget_Base {
 				if ( $show_masonry ) { 
 					echo '</div>';
 				} 
-			?>	
-			</div><!-- // .portfolio-showcase -->
+			?>				
 
 		<?php else: ?>
 
@@ -1516,6 +1645,8 @@ class Portfolio_Showcase extends Widget_Base {
 			?>
 
         <?php endif; ?>
+
+		</div><!-- // .portfolio-showcase -->
 
 		<?php
 	}
