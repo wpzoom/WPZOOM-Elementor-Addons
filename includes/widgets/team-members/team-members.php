@@ -101,9 +101,10 @@ class Team_Members extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return [
-			'wpzoom-elementor-addons-css-frontend-team-members',
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
+			'elementor-icons-fa-brands',
+			'wpzoom-elementor-addons-css-frontend-team-members'
 		];
 	}
 
@@ -1453,7 +1454,7 @@ class Team_Members extends Widget_Base {
 							$icon .= ' fab';
 						}
 
-						printf( '<a target="_blank" rel="noopener" href="%s" class="elementor-repeater-item-%s"><i class="fa fa-%s" aria-hidden="true"></i></a>',
+						printf( '<a target="_blank" rel="noopener" href="%s" class="elementor-repeater-item-%s"><i class="fa-%s" aria-hidden="true"></i></a>',
 							$url,
 							esc_attr( $profile['_id'] ),
 							esc_attr( $icon )
