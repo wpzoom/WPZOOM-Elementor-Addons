@@ -1401,7 +1401,7 @@ class Team_Members extends Widget_Base {
 		$this->add_inline_editing_attributes( 'job_title', 'basic' );
 		$this->add_render_attribute( 'job_title', 'class', 'wpz-member-position' );
 
-		$this->add_inline_editing_attributes( 'bio', 'intermediate' );
+		$this->add_inline_editing_attributes( 'bio' );
 		$this->add_render_attribute( 'bio', 'class', 'wpz-member-bio' );
 		?>
 
