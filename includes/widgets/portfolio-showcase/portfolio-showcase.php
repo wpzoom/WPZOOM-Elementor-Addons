@@ -326,6 +326,18 @@ class Portfolio_Showcase extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'grid_style',
+			array(
+				'label'       => esc_html__( 'Item Style', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::SELECT,
+				'options'     => array(
+					'default'     => esc_html__( 'Default', 'wpzoom-elementor-addons' ),
+					'title_below' => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
+				),
+				'default'     => 'default',
+			)
+		);
+		$this->add_control(
 			'show_masonry',
 			array(
 				'label'       => esc_html__( 'Display Posts in Masonry Layout', 'wpzoom-elementor-addons' ),
@@ -468,11 +480,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'yes',
-				'condition'   =>  array(
-					'layout_type!' => 'narrow',
-					'show_popup!' => 'yes'
-				),
+				'default'     => 'no',
 			)
 		);
 		$this->add_control(
@@ -667,6 +675,17 @@ class Portfolio_Showcase extends Widget_Base {
 				'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item:hover',
 			]
 		);
+		$this->add_control(
+			'portfolio_item_overlay_bg_color',
+			[
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Overlay Background', 'wpzoom-elementor-addons' ),
+				'selectors' => array(
+					'{{WRAPPER}} .entry-thumbnail-popover-content.lightbox_popup_insp' => 'background-color: {{VALUE}};'
+				),
+			]
+		);
+
 
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
@@ -717,7 +736,7 @@ class Portfolio_Showcase extends Widget_Base {
 				)
 			)
 		);
-		// Box internal padding.
+		// Widget title margins.
 		$this->add_responsive_control(
 			'widget_title_style_margin',
 			array(
@@ -802,7 +821,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'filter_align',
 			array(
 				'label' => __( 'Alignment', 'wpzoom-elementor-addons' ),
@@ -838,6 +857,39 @@ class Portfolio_Showcase extends Widget_Base {
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
 					'{{WRAPPER}} .portfolio-archive-taxonomies ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important'
+				]
+			)
+		);
+
+		$this->end_controls_section();		
+
+		//Portfolio Details box section
+		$this->start_controls_section(
+			'section_portfolio_info_style',
+			array(
+				'label' => esc_html__( 'Details Box', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition'   =>  array(
+					'layout_type' => 'narrow',
+				),
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name' => 'portfolio_info_style_bg',
+				'selector' => '{{WRAPPER}} .portfolio-grid .clean_skin_wrap_post'
+			)
+		);
+		// Paddings.
+		$this->add_responsive_control(
+			'portfolio_info_style_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .portfolio-grid .clean_skin_wrap_post' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
 				]
 			)
 		);
@@ -911,6 +963,48 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 
+		$this->add_responsive_control(
+			'portfolio_item_title_align',
+			array(
+				'label'   => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left' => array(
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => esc_html__( 'Justified', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-justify',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .portfolio-showcase .portfolio_item-title' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+		// Title margins.
+		$this->add_responsive_control(
+			'portfolio_title_style_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .portfolio-showcase .portfolio_item-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+				]
+			)
+		);
+
 		$this->end_controls_section();
 
 		//Category Styles
@@ -953,7 +1047,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
-					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a, .clean_skin_wrap_post a' => 'color: {{VALUE}};'
 				)
 			)
 		);
@@ -975,13 +1069,55 @@ class Portfolio_Showcase extends Widget_Base {
 				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
-					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta:hover, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a:hover' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta:hover, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a:hover,.clean_skin_wrap_post a:hover' => 'color: {{VALUE}};'
 				)
 			)
 		);
 
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'portfolio_cat_align',
+			array(
+				'label'   => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left' => array(
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => esc_html__( 'Justified', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-justify',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+		// Title margins.
+		$this->add_responsive_control(
+			'portfolio_cat_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+				]
+			)
+		);
 
 		$this->end_controls_section();
 
@@ -1054,6 +1190,49 @@ class Portfolio_Showcase extends Widget_Base {
 
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'portfolio_excerpt_align',
+			array(
+				'label'   => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left' => array(
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => esc_html__( 'Justified', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-justify',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .portfolio-grid .portfolio_item p' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+		// Title margins.
+		$this->add_responsive_control(
+			'portfolio_excerpt_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .portfolio-grid .portfolio_item p' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+				]
+			)
+		);
+
 		$this->end_controls_section();
 
 		//ReadMore Styles
@@ -1452,30 +1631,31 @@ class Portfolio_Showcase extends Widget_Base {
 
 		$single_post                        = ( 'yes' == $settings['single_post'] ? true : false );
 		$single_post_id                     = ( '0' !== $settings['single_post_id'] ? intval( $settings['single_post_id'] ) : -1 );
-        $category                           = $settings['category'];
-        $show_count                         = $settings['show_count'];
-        $col_number                         = $settings['col_number'];
-        $layout_type                        = $settings['layout_type'];
-        $aspect_ratio                       = $settings['aspect_ratio'];
-        $show_masonry                       = ( 'yes' == $settings['show_masonry'] ? true : false );
-        $show_popup                         = ( 'yes' == $settings['show_popup'] ? true : false );
-        $show_popup_caption                 = ( 'yes' == $settings['show_popup_caption'] ? true : false ) ;
-        $show_space                         = ( 'yes' == $settings['show_space'] ? true : false );
-        $show_categories                    = ( 'yes' == $settings['show_categories'] ? true : false );
-        $background_video                   = ( 'yes' == $settings['enable_background_video'] ? true : false );
-        $enable_director_name               = ( 'yes' == $settings['enable_director_name'] ? true : false );
-        $enable_year                        = ( 'yes' == $settings['enable_year'] ? true : false );
-        $enable_category                    = ( 'yes' == $settings['enable_category'] ? true : false );
-        $always_play_background_video       = ( 'yes' == $settings['always_play_background_video'] ? true : false );
-        $always_play_background_video_class = ( 'yes' == $settings['always_play_background_video'] ? ' always-play-background-video' : '' );
-        $enable_ajax_items_loading          = ( 'yes' == $settings['enable_ajax_items_loading'] ? true : false );
-        $show_excerpt                       = ( 'yes' == $settings['show_excerpt'] ? true : false );
-        $view_all_btn                       = ( 'yes' == $settings['view_all_btn'] ? true : false );
-        $view_all_ajax_loading              = ( 'yes' == $settings['view_all_ajax_loading'] ? true : false );
-        $view_all_enabled                   = ( 'yes' == $settings['view_all_enabled'] ? true : false );
-        $readmore_text                      = $settings['readmore_text'];
-        $view_all_text                      = $settings['view_all_text'];
-        $view_all_link                      = !empty( $settings['view_all_link']['url'] ) ? $settings['view_all_link']['url'] : $settings['view_all_link']['url'] = get_page_link( \option::get( 'portfolio_url' ) );
+		$category                           = $settings['category'];
+		$show_count                         = $settings['show_count'];
+		$col_number                         = $settings['col_number'];
+		$grid_style                         = $settings['grid_style'];
+		$layout_type                        = $settings['layout_type'];
+		$aspect_ratio                       = $settings['aspect_ratio'];
+		$show_masonry                       = ( 'yes' == $settings['show_masonry'] ? true : false );
+		$show_popup                         = ( 'yes' == $settings['show_popup'] ? true : false );
+		$show_popup_caption                 = ( 'yes' == $settings['show_popup_caption'] ? true : false ) ;
+		$show_space                         = ( 'yes' == $settings['show_space'] ? true : false );
+		$show_categories                    = ( 'yes' == $settings['show_categories'] ? true : false );
+		$background_video                   = ( 'yes' == $settings['enable_background_video'] ? true : false );
+		$enable_director_name               = ( 'yes' == $settings['enable_director_name'] ? true : false );
+		$enable_year                        = ( 'yes' == $settings['enable_year'] ? true : false );
+		$enable_category                    = ( 'yes' == $settings['enable_category'] ? true : false );
+		$always_play_background_video       = ( 'yes' == $settings['always_play_background_video'] ? true : false );
+		$always_play_background_video_class = ( 'yes' == $settings['always_play_background_video'] ? ' always-play-background-video' : '' );
+		$enable_ajax_items_loading          = ( 'yes' == $settings['enable_ajax_items_loading'] ? true : false );
+		$show_excerpt                       = ( 'yes' == $settings['show_excerpt'] ? true : false );
+		$view_all_btn                       = ( 'yes' == $settings['view_all_btn'] ? true : false );
+		$view_all_ajax_loading              = ( 'yes' == $settings['view_all_ajax_loading'] ? true : false );
+		$view_all_enabled                   = ( 'yes' == $settings['view_all_enabled'] ? true : false );
+		$readmore_text                      = $settings['readmore_text'];
+		$view_all_text                      = $settings['view_all_text'];
+		$view_all_link                      = !empty( $settings['view_all_link']['url'] ) ? $settings['view_all_link']['url'] : $settings['view_all_link']['url'] = get_page_link( \option::get( 'portfolio_url' ) );
 
 		if ( ! empty( $view_all_link ) ) {
 			$this->add_link_attributes( 'button', $settings['view_all_link'] );
@@ -1876,9 +2056,10 @@ class Portfolio_Showcase extends Widget_Base {
                              <?php endif; ?>
                         </ul>
                     </div>
-
                     <?php the_title( sprintf( '<h3 class="portfolio_item-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
-
+					<?php if ( $show_excerpt == true ) : ?>
+						<?php the_excerpt(); ?>
+					<?php endif; ?>
 
                 </div>
             <?php } else {
@@ -2009,11 +2190,11 @@ class Portfolio_Showcase extends Widget_Base {
                                     </ul>
                                 </div>
 
-                                <?php if ( $show_excerpt == true ) : ?>
+								<?php if ( $show_excerpt == true ) : ?>
 
-                                    <?php the_excerpt(); ?>
+									<?php the_excerpt(); ?>
 
-                                <?php endif; ?>
+								<?php endif; ?>
 
                                 <?php if ( $view_all_btn == true ) : ?>
 
