@@ -326,18 +326,6 @@ class Portfolio_Showcase extends Widget_Base {
 			)
 		);
 		$this->add_control(
-			'grid_style',
-			array(
-				'label'       => esc_html__( 'Item Style', 'wpzoom-elementor-addons' ),
-				'type'        => Controls_Manager::SELECT,
-				'options'     => array(
-					'default'     => esc_html__( 'Default', 'wpzoom-elementor-addons' ),
-					'title_below' => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
-				),
-				'default'     => 'default',
-			)
-		);
-		$this->add_control(
 			'show_masonry',
 			array(
 				'label'       => esc_html__( 'Display Posts in Masonry Layout', 'wpzoom-elementor-addons' ),
@@ -1634,7 +1622,6 @@ class Portfolio_Showcase extends Widget_Base {
 		$category                           = $settings['category'];
 		$show_count                         = $settings['show_count'];
 		$col_number                         = $settings['col_number'];
-		$grid_style                         = $settings['grid_style'];
 		$layout_type                        = $settings['layout_type'];
 		$aspect_ratio                       = $settings['aspect_ratio'];
 		$show_masonry                       = ( 'yes' == $settings['show_masonry'] ? true : false );
