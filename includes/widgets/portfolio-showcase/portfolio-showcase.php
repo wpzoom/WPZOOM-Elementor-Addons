@@ -300,11 +300,11 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'layout_type',
 			array(
-				'label'   => esc_html__( 'Layout:', 'wpzoom-elementor-addons' ),
+				'label'   => esc_html__( 'Items Style', 'wpzoom-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'full-width' => esc_html__( 'Full-width', 'wpzoom-elementor-addons' ),
-					'narrow'     => esc_html__( 'Narrow', 'wpzoom-elementor-addons' ),
+					'full-width' => esc_html__( 'Title Overlay', 'wpzoom-elementor-addons' ),
+					'narrow'     => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
 				),
 				'default' => 'full-width',
 			)
