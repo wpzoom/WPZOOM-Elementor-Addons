@@ -1,6 +1,6 @@
 === WPZOOM Elementor Addons ===
 Contributors:      WPZOOM, alexus450
-Donate link:       https://www.wpzoom.com/
+Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Tested up to:      5.7
