@@ -91,6 +91,9 @@ class WPZOOM_Elementor_Widgets {
 				if( 'portfolio-showcase' == $slug && !current_theme_supports( 'zoom-portfolio' ) ) {
 					continue;
 				}
+				elseif( 'slider-pro' == $slug && !post_type_exists( 'slider' )  ) {
+					continue;
+				}
 				else {
 					require_once( $file );
 				}
