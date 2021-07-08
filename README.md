@@ -1,4 +1,4 @@
-# [WPZOOM Elementor Addons](https://wordpress.org/plugins/wpzoom-elementor-addons/) #
+# [WPZOOM Addons for Elementor](https://wordpress.org/plugins/wpzoom-elementor-addons/) #
 
 ### Welcome to our GitHub Repository
 
@@ -13,16 +13,16 @@ This plugin provides a collection of custom [**Elementor** page builder](https:/
 1. You can clone the GitHub repository: `https://github.com/wpzoom/wpzoom-elementor-addons`
 2. Or download it directly as a ZIP file: `https://github.com/wpzoom/wpzoom-elementor-addons/archive/refs/heads/master.zip`
 
-This will download the latest developer copy of WPZOOM Elementor Addons.
+This will download the latest developer copy of WPZOOM Addons for Elementor.
 
 ## Bugs ##
 If you find an issue, let us know [here](https://github.com/wpzoom/wpzoom-elementor-addons/issues)!
 
 ## Support ##
-This is a developer's portal for WPZOOM Elementor Addons and should _not_ be used for support. Please visit the [support page](https://wordpress.org/support/plugin/wpzoom-elementor-addons/) on WordPress.org if you need to submit a support request.
+This is a developer's portal for WPZOOM Addons for Elementor and should _not_ be used for support. Please visit the [support page](https://wordpress.org/support/plugin/wpzoom-elementor-addons/) on WordPress.org if you need to submit a support request.
 
 ## Contributions ##
-Anyone is welcome to contribute to WPZOOM Elementor Addons.
+Anyone is welcome to contribute to WPZOOM Addons for Elementor.
 
 There are various ways you can contribute:
 

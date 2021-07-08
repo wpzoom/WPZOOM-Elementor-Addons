@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       WPZOOM Elementor Addons
- * Plugin URI:        https://wpzoom.com/plugins/wpzoom-elementor-addons
- * Description:       A plugin that provides a collection of the Elementor Templates and advanced widgets created by WPZOOM team
+ * Plugin Name:       WPZOOM Addons for Elementor
+ * Plugin URI:        https://wpzoom.com/plugins/
+ * Description:       A plugin that provides a collection of Elementor Templates and advanced widgets created by the WPZOOM team
  * Version:           1.0.0
  * Author:            WPZOOM
  * Author URI:        https://www.wpzoom.com/
