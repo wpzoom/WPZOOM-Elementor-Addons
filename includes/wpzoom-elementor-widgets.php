@@ -91,7 +91,7 @@ class WPZOOM_Elementor_Widgets {
 				if( 'portfolio-showcase' == $slug && !current_theme_supports( 'zoom-portfolio' ) ) {
 					continue;
 				}
-				elseif( 'slider-pro' == $slug && !post_type_exists( 'slider' )  ) {
+				elseif( 'slider-pro' == $slug && !self::is_supported_theme() ) {
 					continue;
 				}
 				else {
@@ -124,6 +124,25 @@ class WPZOOM_Elementor_Widgets {
 				'icon' => 'fa fa-plug'
 			]
 		);
+	}
+
+	/**
+	 * Get list of the supported themes
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 * @return bool
+	 */
+
+	private function is_supported_theme() {
+
+		$current_theme = get_template();
+
+		if( 'wpzoom-inspiro-pro' === $current_theme || 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) {
+			return true;
+		}
+		return false;
+
 	}
 
 	/**
