@@ -80,7 +80,7 @@ class Slider_Pro extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Slider PRO', 'wpzoom-elementor-addons' );
+		return esc_html__( 'Inspiro Slideshow', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -148,7 +148,7 @@ class Slider_Pro extends Widget_Base {
 		$this->start_controls_section(
 			'_section_slider_pro',
 			array(
-				'label' => esc_html__( 'Slider PRO', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Inspiro Slideshow', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -167,7 +167,7 @@ class Slider_Pro extends Widget_Base {
 			'show_count',
 			array(
 				'label'       => esc_html__( 'Number of Posts in Slider', 'wpzoom-elementor-addons' ),
-				'description' => esc_html__( 'YHow many posts should appear in Slider on the homepage? Default: 5.', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'How many posts should appear in Slider on the homepage? Default: 5.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => 5,
 			)
@@ -179,7 +179,7 @@ class Slider_Pro extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'no',
+				'default'     => 'yes',
 				'separator'   => 'before'
 			)
 		);
@@ -190,7 +190,7 @@ class Slider_Pro extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'no',
+				'default'     => 'yes',
 			)
 		);
 		$this->add_control(
@@ -201,7 +201,7 @@ class Slider_Pro extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'no',
+				'default'     => 'yes',
 			)
 		);
 
@@ -422,8 +422,30 @@ class Slider_Pro extends Widget_Base {
 
 							<div class="slide-background-overlay"></div>
 
+                            <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
+                                <div id="zoom-popup-<?php echo $post->ID?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
+
+                                    <div class="mfp-iframe-scaler">
+
+                                        <?php
+                                        echo  wp_video_shortcode(
+                                            array(
+                                                'src' => $popup_final_external_src,
+                                                'preload' => 'none',
+                                                // 'loop' => 'on'
+                                                //'autoplay' => 'on'
+                                            ));
+                                        ?>
+
+                                    </div>
+                                </div>
+                                <a href="#zoom-popup-<?php echo $post->ID?>"  data-popup-type="inline" class="popup-video"></a>
+
+                                <?php elseif(!empty($video_background_popup_url)): ?>
+                                    <a data-popup-type="iframe" class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
+                                <?php endif; ?>
+
 							<div class="li-wrap">
-								<?php edit_post_link( __( '[Edit this slide]', 'wpzoom' ), '<small class="edit-link">', '</small>' ); ?>
 
 								<?php if( $slideshow_title ) : ?>
 									<?php if ( empty( $slide_url ) ) { ?>
@@ -437,32 +459,14 @@ class Slider_Pro extends Widget_Base {
 									<div class="excerpt"><?php the_content(); ?></div>
 								<?php } ?>
 
+                                <?php edit_post_link( __( '[Edit this slide]', 'wpzoom' ), '<small class="edit-link">', '</small>' ); ?>
+
 								<?php if ( ! empty( $btn_title ) && ! empty( $btn_url ) ) {
 									?>
 									<div class="slide_button">
 										<a href="<?php echo esc_url( $btn_url ); ?>"><?php echo esc_html( $btn_title ); ?></a>
 									</div><?php
 								} ?>
-
-								<?php if( $popup_video_type === 'self_hosted' && $is_video_popup ): ?>
-									<div id="zoom-popup-<?php echo $post->ID ?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
-										<div class="mfp-iframe-scaler">
-											<?php echo wp_video_shortcode(
-												array(
-													'src' => $popup_final_external_src,
-													'preload' => 'none',
-													// 'loop' => 'on'
-													//'autoplay' => 'on'
-												));
-											?>
-										</div>
-									</div>
-									<a href="#zoom-popup-<?php echo $post->ID?>"  data-popup-type="inline" class="popup-video"></a>
-
-								<?php elseif( ! empty( $video_background_popup_url ) ) : ?>
-									<a  data-popup-type="iframe" class="popup-video animated slow pulse"
-										href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
-								<?php endif; ?>
 
 							</div>
 
