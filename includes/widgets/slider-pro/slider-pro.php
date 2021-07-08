@@ -412,7 +412,7 @@ class Slider_Pro extends Widget_Base {
 							$style = ' data-smallimg="' . $small_image_url[0] . '" data-bigimg="' . $large_image_url[0] . '"';
 						}
 						?>
-						<li <?php echo $style; ?>
+						<li <?php echo $style; // WPCS: XSS OK. ?>
 							<?php if ( $is_formstone && ( $is_video_slide || $is_video_external ) ): ?>data-formstone-options='<?php echo json_encode( $encode_array ); ?>'
 							<?php endif; ?>
 						<?php if ( $is_vimeo_pro ): ?>
@@ -423,7 +423,7 @@ class Slider_Pro extends Widget_Base {
 							<div class="slide-background-overlay"></div>
 
                             <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
-                                <div id="zoom-popup-<?php echo $post->ID?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
+                                <div id="zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  class="animated slow mfp-hide" data-src ="<?php echo esc_url( $popup_final_external_src ); ?>">
 
                                     <div class="mfp-iframe-scaler">
 
@@ -439,10 +439,10 @@ class Slider_Pro extends Widget_Base {
 
                                     </div>
                                 </div>
-                                <a href="#zoom-popup-<?php echo $post->ID?>"  data-popup-type="inline" class="popup-video"></a>
+                                <a href="#zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  data-popup-type="inline" class="popup-video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
-                                    <a data-popup-type="iframe" class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
+                                    <a data-popup-type="iframe" class="popup-video animated slow pulse" href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
                                 <?php endif; ?>
 
 							<div class="li-wrap">
@@ -459,7 +459,7 @@ class Slider_Pro extends Widget_Base {
 									<div class="excerpt"><?php the_content(); ?></div>
 								<?php } ?>
 
-                                <?php edit_post_link( __( '[Edit this slide]', 'wpzoom' ), '<small class="edit-link">', '</small>' ); ?>
+                                <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
 
 								<?php if ( ! empty( $btn_title ) && ! empty( $btn_url ) ) {
 									?>
@@ -479,14 +479,14 @@ class Slider_Pro extends Widget_Base {
 								<div class="background-video-buttons-wrapper">
 
 									<?php if ( $show_play_button || ! $autoplay ): ?>
-										<a class="wpzoom-button-video-background-play display-none"><?php _e('Play', 'wpzoom'); ?></a>
-										<a class="wpzoom-button-video-background-pause display-none"><?php _e('Pause', 'wpzoom'); ?></a>
+										<a class="wpzoom-button-video-background-play display-none"><?php esc_html_e( 'Play', 'wpzoom-elementor-addons' ); ?></a>
+										<a class="wpzoom-button-video-background-pause display-none"><?php esc_html_e( 'Pause', 'wpzoom-elementor-addons' ); ?></a>
 
 									<?php endif; ?>
 
 									<?php if ( $show_sound_button ): ?>
-										<a class="wpzoom-button-sound-background-unmute display-none">Unmute</a>
-										<a class="wpzoom-button-sound-background-mute display-none">Mute</a>
+										<a class="wpzoom-button-sound-background-unmute display-none"><?php esc_html_e( 'Unmute', 'wpzoom-elementor-addons' ); ?></a>
+										<a class="wpzoom-button-sound-background-mute display-none"><?php esc_html_e( 'Mute', 'wpzoom-elementor-addons' ); ?></a>
 
 									<?php endif; ?>
 
@@ -497,19 +497,19 @@ class Slider_Pro extends Widget_Base {
 
 				</ul>
 				<?php if( $slideshow_scroll ) { ?>
-					<div id="scroll-to-content" title="<?php esc_attr_e( 'Scroll to Content', 'wpzoom' ); ?>">
-						<?php esc_html_e('Scroll to Content', 'wpzoom' ); ?>
+					<div id="scroll-to-content" title="<?php esc_attr_e( 'Scroll to Content', 'wpzoom-elementor-addons' ); ?>">
+						<?php esc_html_e('Scroll to Content', 'wpzoom-elementor-addons' ); ?>
 					</div>
 				<?php } ?>
 			</div>
 		<?php else: ?>
 			<div class="empty-slider">
 				<div class="inner-wrap">
-					<p><strong><?php _e('You are now ready to set-up your Slideshow content.', 'wpzoom'); ?></strong></p>
+					<p><strong><?php esc_html_e('You are now ready to set-up your Slideshow content.', 'wpzoom-elementor-addons' ); ?></strong></p>
 					<p>
 						<?php
 						printf(
-							__('For more information about adding posts to the slider, please <strong><a href="%1$s">read the documentation</a></strong> or <a href="%2$s">add a new post</a>.', 'wpzoom'),
+							__('For more information about adding posts to the slider, please <strong><a href="%1$s">read the documentation</a></strong> or <a href="%2$s">add a new post</a>.', 'wpzoom-elementor-addons' ),
 							'https://www.wpzoom.com/documentation/inspiro/',
 							admin_url('post-new.php?post_type=slider')
 						);

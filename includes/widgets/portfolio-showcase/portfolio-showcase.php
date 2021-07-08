@@ -75,7 +75,7 @@ class Portfolio_Showcase extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Portfolio Showcase', 'wpzoom-elementor-addons' );
+		return esc_html__( 'Portfolio Showcase', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -214,7 +214,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'single_post',
 			array(
-				'label'       => __( 'Show a Single Portfolio Post', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Show a Single Portfolio Post', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -249,9 +249,9 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'show_categories',
 			array(
-				'label'       => __( 'Display Category Filter <br/>at the Top (Isotope Effect)', 'wpzoom-elementor-addons' ),
-				'subtitle'    => __( 'Isotope Effect', 'wpzoom-elementor-addons' ),
-				'description' => __( 'If you\'ve selected to display posts from All categories, then the filter will include top-level portfolio categories (no sub-categories). <br/><br/>If you selected to display posts from a specific category, then the filter will display its sub-categories.', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Display Category Filter <br/>at the Top (Isotope Effect)', 'wpzoom-elementor-addons' ),
+				'subtitle'    => esc_html__( 'Isotope Effect', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'If you\'ve selected to display posts from All categories, then the filter will include top-level portfolio categories (no sub-categories). <br/><br/>If you selected to display posts from a specific category, then the filter will display its sub-categories.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -264,7 +264,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'show_count',
 			array(
-				'label'    => __( 'Number of Posts', 'wpzoom-elementor-addons' ),
+				'label'    => esc_html__( 'Number of Posts', 'wpzoom-elementor-addons' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 6,
 				'condition'   =>  array(
@@ -275,8 +275,8 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'enable_ajax_items_loading',
 			array(
-				'label'       => __( 'Load Dynamically <br/>New Posts in Each Category', 'wpzoom-elementor-addons' ),
-				'description' => __( 'This option will try to display the same number of posts in each category as it\'s configured in the Number of Posts option above.', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Load Dynamically <br/>New Posts in Each Category', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'This option will try to display the same number of posts in each category as it\'s configured in the Number of Posts option above.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -293,7 +293,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_design_appearance',
 			array(
-				'label' => __( 'Design & Appearance', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Design & Appearance', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT
 			)
 		);
@@ -358,7 +358,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'show_space',
 			array(
-				'label'       => wp_kses_post( __( 'Add Margins <br/>between Posts (whitespace)', 'wpzoom-elementor-addons' ) ),
+				'label'       => wp_kses_post( esc_html__( 'Add Margins <br/>between Posts (whitespace)', 'wpzoom-elementor-addons' ) ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -371,7 +371,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_post_settings',
 			array(
-				'label' => __( 'Posts Settings', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Posts Settings', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT
 			)
 		);
@@ -398,7 +398,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'video_background_heading',
 			array(
-				'label' => __( 'Video Background', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Video Background', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before'
 			)
@@ -426,7 +426,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'details_to_show_heading',
 			array(
-				'label' => __( 'Details to Show', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Details to Show', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before'
 			)
@@ -502,7 +502,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_view_all_load_more_settings',
 			array(
-				'label' => __( '"View All" or "Load More" Button at the Bottom', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( '"View All" or "Load More" Button at the Bottom', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 				'condition'   =>  array(
 					'single_post!' => 'yes'
@@ -546,7 +546,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'dynamic' => array(
 					'active' => true,
 				),
-				'placeholder' => __( 'https://your-link.com', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'wpzoom-elementor-addons' ),
 				'default' => array(
 					'url' => '#',
 				),
@@ -559,7 +559,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_item',
 			array(
-				'label' => __( 'Portfolio Item', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Portfolio Item', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE
 			)
 		);
@@ -568,7 +568,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'portfolio_item_border_width',
 			[
-				'label'      => __( 'Border', 'wpzoom-elementor-addons' ),
+				'label'      => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -581,7 +581,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'portfolio_item_style_border_radius',
 			[
-				'label'     => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 0
@@ -604,7 +604,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_tab(
 			'portfolio_item_style_normal',
 			[
-				'label' => __( 'Normal', 'wpzoom-elementor-addons' )
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -613,7 +613,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_item_style_normal_border_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
@@ -637,7 +637,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_tab(
 			'portfolio_item_style_hover',
 			[
-				'label' => __( 'Hover', 'wpzoom-elementor-addons' )
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' )
 			]
 		);
 
@@ -646,7 +646,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_item_style_hover_border_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'separator' => '',
 				'default'   => '',
 				'selectors' => [
@@ -682,7 +682,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_responsive_control(
 			'portfolio_item_style_padding',
 			[
-				'label'      => __( 'Padding', 'wpzoom-elementor-addons' ),
+				'label'      => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -697,7 +697,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_widget_title_style',
 			array(
-				'label' => __( 'Widget Title', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Widget Title', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			)
 		);
@@ -717,7 +717,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'widget_title_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title' => 'color: {{VALUE}};'
@@ -743,7 +743,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_filter_style',
 			array(
-				'label' => __( 'Filter', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Filter', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'show_categories' => 'yes'
@@ -776,7 +776,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_filter_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-archive-taxonomies a' => 'color: {{VALUE}};'
@@ -812,7 +812,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_responsive_control(
 			'filter_align',
 			array(
-				'label' => __( 'Alignment', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
@@ -888,7 +888,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_item_style',
 			array(
-				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Title', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE
 			)
 		);
@@ -918,7 +918,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_title_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item-title, {{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item-title > a' => 'color: {{VALUE}};'
@@ -999,7 +999,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_cat_style',
 			array(
-				'label' => __( 'Category', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Category', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'enable_category' => 'yes'
@@ -1032,7 +1032,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_cat_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a, .clean_skin_wrap_post a' => 'color: {{VALUE}};'
@@ -1113,7 +1113,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_excerpt_style',
 			array(
-				'label' => __( 'Excerpts', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Excerpts', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'show_excerpt' => 'yes'
@@ -1146,7 +1146,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_excerpt_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-grid .portfolio_item p' => 'color: {{VALUE}};'
@@ -1227,7 +1227,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_readmore_style',
 			array(
-				'label' => __( 'Read More Button', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Read More Button', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'view_all_btn' => 'yes'
@@ -1260,7 +1260,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_readmore_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-grid .portfolio_item span.btn' => 'color: {{VALUE}};'
@@ -1297,7 +1297,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'portfolio_readmore_border_width',
 			array(
-				'label'      => __( 'Border', 'wpzoom-elementor-addons' ),
+				'label'      => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -1310,7 +1310,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'portfolio_readmore_border_radius',
 			array(
-				'label'     => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 100
@@ -1342,7 +1342,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_readmore_border_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-grid .portfolio_item span.btn' => 'border-color: {{VALUE}};'
@@ -1380,7 +1380,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_portfolio_viewall_style',
 			array(
-				'label' => __( 'View All/Load More Button', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'View All/Load More Button', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'view_all_enabled' => 'yes'
@@ -1413,7 +1413,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_viewall_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'color: {{VALUE}};'
@@ -1450,7 +1450,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'portfolio_viewall_border_width',
 			array(
-				'label'      => __( 'Border', 'wpzoom-elementor-addons' ),
+				'label'      => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -1463,7 +1463,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'portfolio_viewall_border_radius',
 			array(
-				'label'     => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => [
 					'size' => 100
@@ -1495,7 +1495,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'portfolio_viewall_border_style_color',
 			array(
 				'type'      => Controls_Manager::COLOR,
-				'label'     => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'border-color: {{VALUE}};'
@@ -1698,7 +1698,7 @@ class Portfolio_Showcase extends Widget_Base {
 				$this->add_inline_editing_attributes( 'widget_title' );
 				$widget_title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['widget_title_tag'] ), $this->get_render_attribute_string( 'widget_title' ), $widget_title );
 	
-				echo $widget_title_html;
+				echo $widget_title_html; // WPCS: XSS OK.
 			}
 
 			if ( !$single_post && $show_categories ) {
@@ -1712,11 +1712,11 @@ class Portfolio_Showcase extends Widget_Base {
 			}
 			?>
 			<div <?php 
-				echo( ! empty( $category ) ? 'data-subcategory="' . $category . '"' : '' ); ?>
+				echo( ! empty( $category ) ? 'data-subcategory="' . esc_attr( $category ) . '"' : '' ); ?>
 				data-ajax-items-loading="<?php echo esc_attr( $enable_ajax_items_loading ) ?>"
 				data-nonce="<?php echo esc_attr( wp_create_nonce( 'wpz_get_portfolio_items' ) ) ?>"
 				data-count-nonce="<?php echo esc_attr( wp_create_nonce( 'wpz_count_portfolio_items' ) ) ?>"
-				data-items-count="<?php echo $count ?>"
+				data-items-count="<?php echo esc_attr( $count ) ?>"
 				data-instance="<?php echo esc_attr( wp_json_encode( array(
 					'layout_type'                  => $layout_type,
 					'col_number'                   => $col_number,
@@ -1735,7 +1735,7 @@ class Portfolio_Showcase extends Widget_Base {
 					'show_categories'              => $show_categories,
 					'always_play_background_video' => $always_play_background_video
 				) ) ) ?>"
-				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo $col_number; ?> <?php echo $always_play_background_video_class; ?>"
+				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo esc_attr( $col_number ); ?> <?php echo $always_play_background_video_class; // WPCS: XSS OK. ?>"
 			>
 				<?php
 					$this->looper( $wp_query,
@@ -1921,11 +1921,11 @@ class Portfolio_Showcase extends Widget_Base {
                         <div class="entry-thumbnail-popover">
                             <div
                                 class="entry-thumbnail-popover-content lightbox_popup_insp popover-content--animated"
-                                data-show-caption="<?php echo $show_popup_caption ?>">
+                                data-show-caption="<?php echo esc_attr( $show_popup_caption ); ?>">
                                 <!-- start lightbox -->
                                 <?php if ( $popup_video_type === 'self_hosted' && $is_video_popup ): ?>
                                     <div id="zoom-popup-<?php echo the_ID(); ?>" class="mfp-hide"
-                                         data-src="<?php echo $popup_final_external_src ?>">
+                                         data-src="<?php echo esc_url( $popup_final_external_src ); ?>">
                                         <div class="mfp-iframe-scaler">
                                             <?php
                                             echo wp_video_shortcode(
@@ -1952,11 +1952,11 @@ class Portfolio_Showcase extends Widget_Base {
                                        class="mfp-inline portfolio-popup-video"></a>
                                 <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
                                     class="mfp-iframe portfolio-popup-video"
-                                    href="<?php echo $video_background_popup_url ?>"></a>
+                                    href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
                                 <?php else: ?>
                                     <?php if( has_post_thumbnail() && !\option::is_on('lightbox_video_only') ): ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
-                                           href="<?php echo $post_thumbnail ?>"></a>
+                                           href="<?php echo esc_url( $post_thumbnail ); ?>"></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
@@ -1969,10 +1969,10 @@ class Portfolio_Showcase extends Widget_Base {
                         </div>
 
                         <?php if ( $is_video_background ): ?>
-                            <video class="portfolio-gallery-video-background" <?php echo $video_atts ?>
+                            <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
                                    style=" width:100%; height:auto;vertical-align: middle; display:block;">
-                                <source src="<?php echo $final_background_src ?>"
-                                        type="<?php echo $filetype['type'] ?>">
+                                <source src="<?php echo esc_url( $final_background_src ) ?>"
+                                        type="<?php echo esc_attr( $filetype['type'] ) ?>">
                             </video>
 
                             <?php the_post_thumbnail( $size ); ?>
@@ -1994,10 +1994,10 @@ class Portfolio_Showcase extends Widget_Base {
                            title="<?php echo esc_attr( get_the_title() ); ?>">
 
                             <?php if ( $is_video_background ): ?>
-                                <video class="portfolio-gallery-video-background" <?php echo $video_atts ?>
+                                <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
                                        style=" width:100%; height:auto;vertical-align: middle; display:block;">
-                                    <source src="<?php echo $final_background_src ?>"
-                                            type="<?php echo $filetype['type'] ?>">
+                                    <source src="<?php echo esc_url( $final_background_src ); ?>"
+                                            type="<?php echo esc_attr( $filetype['type'] ) ?>">
                                 </video>
 
                                 <?php the_post_thumbnail( $size ); ?>
@@ -2023,12 +2023,12 @@ class Portfolio_Showcase extends Widget_Base {
 
                     <div class="entry-meta">
                         <ul>
-                            <?php if ( $enable_director_name && $video_director) { ?>
-                               <li><?php echo $video_director; ?></li>
+                            <?php if ( $enable_director_name && $video_director ) { ?>
+                               <li><?php echo esc_html( $video_director ); ?></li>
                             <?php } ?>
 
-                            <?php if ($enable_year && $video_year) { ?>
-                               <li><?php echo $video_year; ?></li>
+                            <?php if ( $enable_year && $video_year ) { ?>
+                               <li><?php echo esc_html( $video_year ); ?></li>
                             <?php } ?>
 
                             <?php if ( $enable_category ) : ?>
@@ -2055,7 +2055,7 @@ class Portfolio_Showcase extends Widget_Base {
 
                     <div class="entry-thumbnail-popover">
                         <div class="entry-thumbnail-popover-content lightbox_popup_insp popover-content--animated"
-                             data-show-caption="<?php echo $show_popup_caption ?>">
+                             data-show-caption="<?php echo esc_attr( $show_popup_caption ) ?>">
                             <!-- start lightbox --><?php if ( $popup_video_type === 'self_hosted' && $is_video_popup ): ?>
                                 <div id="zoom-popup-<?php echo the_ID(); ?>" class="animated slow mfp-hide">
 
@@ -2085,11 +2085,11 @@ class Portfolio_Showcase extends Widget_Base {
                                    class="mfp-inline portfolio-popup-video"></a>
                             <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
                                 class="mfp-iframe portfolio-popup-video"
-                                href="<?php echo $video_background_popup_url ?>"></a>
+                                href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
                             <?php else: ?>
                                 <?php if( has_post_thumbnail() && !\option::is_on( 'lightbox_video_only' ) ) : ?>
                                     <a class="mfp-image portfolio-popup-video popup_image_insp"
-                                       href="<?php echo $post_thumbnail ?>"></a>
+                                       href="<?php echo esc_url( $post_thumbnail ); ?>"></a>
                                 <?php endif; ?>
                             <?php endif; ?>
 
@@ -2101,19 +2101,19 @@ class Portfolio_Showcase extends Widget_Base {
                                 </h3>
 
                                 <ul>
-                                    <?php if ($enable_director_name && $video_director) { ?>
-                                       <li><?php echo $video_director; ?></li>
+                                    <?php if ( $enable_director_name && $video_director ) { ?>
+                                       <li><?php echo esc_html( $video_director ); ?></li>
                                     <?php } ?>
 
-                                    <?php if ($enable_year && $video_year) { ?>
-                                       <li><?php echo $video_year; ?></li>
+                                    <?php if ( $enable_year && $video_year ) { ?>
+                                       <li><?php echo esc_html( $video_year ); ?></li>
                                     <?php } ?>
 
                                     <?php if ( $enable_category ) : ?><li>
 
                                          <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
                                              <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
-                                                <?php echo $tax_menu_item->name; ?>
+                                                <?php echo esc_html( $tax_menu_item->name ); ?>
                                              <?php endforeach; ?>
                                          <?php endif; ?>
                                      </li>
@@ -2126,10 +2126,10 @@ class Portfolio_Showcase extends Widget_Base {
                     </div>
 
                     <?php if ( $is_video_background ): ?>
-                        <video class="portfolio-gallery-video-background" <?php echo $video_atts ?>
+                        <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
                                style=" width:100%; height:auto;vertical-align: middle; display:block;">
-                            <source src="<?php echo $final_background_src ?>"
-                                    type="<?php echo $filetype['type'] ?>">
+                            <source src="<?php echo esc_url( $final_background_src ) ?>"
+                                    type="<?php echo esc_attr( $filetype['type'] ) ?>">
                         </video>
 
                         <?php the_post_thumbnail( $size ); ?>
@@ -2157,19 +2157,19 @@ class Portfolio_Showcase extends Widget_Base {
 
                                 <div class="entry-meta">
                                     <ul>
-                                        <?php if ($enable_director_name && $video_director) { ?>
-                                           <li><?php echo $video_director; ?></li>
+                                        <?php if ( $enable_director_name && $video_director ) { ?>
+                                           <li><?php echo esc_html( $video_director ); ?></li>
                                         <?php } ?>
 
-                                        <?php if ($enable_year && $video_year) { ?>
-                                           <li><?php echo $video_year; ?></li>
+                                        <?php if ( $enable_year && $video_year ) { ?>
+                                           <li><?php echo esc_html( $video_year ); ?></li>
                                         <?php } ?>
 
                                         <?php if ( $enable_category ) : ?><li>
 
                                              <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
                                                  <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
-                                                    <?php echo $tax_menu_item->name; ?>
+                                                    <?php echo esc_html( $tax_menu_item->name ); ?>
                                                  <?php endforeach; ?>
                                              <?php endif; ?>
                                          </li>
@@ -2192,10 +2192,10 @@ class Portfolio_Showcase extends Widget_Base {
                         </div>
 
                         <?php if ( $is_video_background ): ?>
-                            <video class="portfolio-gallery-video-background" <?php echo $video_atts ?>
+                            <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
                                    style=" width:100%; height:auto;vertical-align: middle; display:block;">
-                                <source src="<?php echo $final_background_src ?>"
-                                        type="<?php echo $filetype['type'] ?>">
+                                <source src="<?php echo esc_url( $final_background_src ) ?>"
+                                        type="<?php echo esc_attr( $filetype['type'] ) ?>">
                             </video>
 
                             <?php the_post_thumbnail( $size ); ?>

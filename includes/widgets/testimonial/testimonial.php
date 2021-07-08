@@ -54,7 +54,7 @@ class Testimonial extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Testimonial', 'wpzoom-elementor-addons' );
+		return esc_html__( 'Testimonial', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -144,7 +144,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'image',
 			[
-				'label' => __( 'Testimonial Avatar', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Testimonial Avatar', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -233,15 +233,15 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 		  'wpz_testimonial_rating_number',
 		  [
-			 'label'       => __( 'Rating Number', 'wpzoom-elementor-addons' ),
+			 'label'       => esc_html__( 'Rating Number', 'wpzoom-elementor-addons' ),
 			 'type' => Controls_Manager::SELECT,
 			 'default' => 'rating-five',
 			 'options' => [
-			 	'rating-one'  => __( '1', 'wpzoom-elementor-addons' ),
-			 	'rating-two' => __( '2', 'wpzoom-elementor-addons' ),
-			 	'rating-three' => __( '3', 'wpzoom-elementor-addons' ),
-			 	'rating-four' => __( '4', 'wpzoom-elementor-addons' ),
-			 	'rating-five'   => __( '5', 'wpzoom-elementor-addons' ),
+			 	'rating-one'  => esc_html__( '1', 'wpzoom-elementor-addons' ),
+			 	'rating-two' => esc_html__( '2', 'wpzoom-elementor-addons' ),
+			 	'rating-three' => esc_html__( '3', 'wpzoom-elementor-addons' ),
+			 	'rating-four' => esc_html__( '4', 'wpzoom-elementor-addons' ),
+			 	'rating-five'   => esc_html__( '5', 'wpzoom-elementor-addons' ),
 			 ],
 			'condition' => [
 				'wpz_testimonial_enable_rating' => 'yes',
@@ -262,17 +262,17 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_style',
 			[
-				'label'		=> __( 'Select Style', 'wpzoom-elementor-addons' ),
+				'label'		=> esc_html__( 'Select Style', 'wpzoom-elementor-addons' ),
 				'type'		=> Controls_Manager::SELECT,
 				'default'	=> 'default-style',
 				'options'	=> [
-					'default-style'						=> __( 'Default', 'wpzoom-elementor-addons' ),
-					'classic-style'						=> __( 'Classic', 'wpzoom-elementor-addons' ),
-					'middle-style'						=> __( 'Content | Icon/Image | Bio', 'wpzoom-elementor-addons' ),
-					'icon-img-left-content'				=> __( 'Icon/Image | Content', 'wpzoom-elementor-addons' ),
-					'icon-img-right-content'			=> __( 'Content | Icon/Image', 'wpzoom-elementor-addons' ),
-					'content-top-icon-title-inline'		=> __( 'Content Top | Icon Title Inline', 'wpzoom-elementor-addons' ),
-					'content-bottom-icon-title-inline'	=> __( 'Content Bottom | Icon Title Inline', 'wpzoom-elementor-addons' )
+					'default-style'						=> esc_html__( 'Default', 'wpzoom-elementor-addons' ),
+					'classic-style'						=> esc_html__( 'Classic', 'wpzoom-elementor-addons' ),
+					'middle-style'						=> esc_html__( 'Content | Icon/Image | Bio', 'wpzoom-elementor-addons' ),
+					'icon-img-left-content'				=> esc_html__( 'Icon/Image | Content', 'wpzoom-elementor-addons' ),
+					'icon-img-right-content'			=> esc_html__( 'Content | Icon/Image', 'wpzoom-elementor-addons' ),
+					'content-top-icon-title-inline'		=> esc_html__( 'Content Top | Icon Title Inline', 'wpzoom-elementor-addons' ),
+					'content-bottom-icon-title-inline'	=> esc_html__( 'Content Bottom | Icon Title Inline', 'wpzoom-elementor-addons' )
 				]
 			]
 		);
@@ -280,10 +280,10 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_is_gradient_background',
 			[
-				'label' => __( 'Use Gradient Background', 'essential-addons-elementor' ),
+				'label' => esc_html__( 'Use Gradient Background', 'essential-addons-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'essential-addons-elementor' ),
-				'label_off' => __( 'Hide', 'essential-addons-elementor' ),
+				'label_on' => esc_html__( 'Show', 'essential-addons-elementor' ),
+				'label_off' => esc_html__( 'Hide', 'essential-addons-elementor' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -307,7 +307,7 @@ class Testimonial extends Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => 'wpz_testimonial_gradient_background',
-				'label' => __( 'Gradient Background', 'essential-addons-elementor' ),
+				'label' => esc_html__( 'Gradient Background', 'essential-addons-elementor' ),
 				'types' => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .wpz-testimonial-item',
 				'condition' => [
@@ -324,7 +324,7 @@ class Testimonial extends Widget_Base {
 				'label_block' => true,
 				'options' => [
 					'default' => [
-						'title' => __( 'Default', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'Default', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-ban',
 					],
 					'left' => [
@@ -490,7 +490,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_name_heading',
 			[
-				'label' => __( 'User Name', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'User Name', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 			]
 		);
@@ -530,7 +530,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_company_heading',
 			[
-				'label' 	=> __( 'Company Name', 'wpzoom-elementor-addons' ),
+				'label' 	=> esc_html__( 'Company Name', 'wpzoom-elementor-addons' ),
 				'type' 		=> Controls_Manager::HEADING,
 				'separator'	=> 'before'
 			]
@@ -571,7 +571,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_description_heading',
 			[
-				'label' => __( 'Testimonial Text', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Testimonial Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator'	=> 'before'
 			]
@@ -612,7 +612,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_rating_heading',
 			[
-				'label' => __( 'Rating', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Rating', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator'	=> 'before'
 			]
@@ -783,11 +783,11 @@ class Testimonial extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings[ 'wpz_testimonial_name' ] ) ) :
-			?><p <?php echo $this->get_render_attribute_string( 'wpz_testimonial_user' ); ?>><?php echo $settings[ 'wpz_testimonial_name' ]; ?></p><?php
+			?><p <?php echo $this->get_render_attribute_string( 'wpz_testimonial_user' ); ?>><?php echo esc_html( $settings[ 'wpz_testimonial_name' ] ); ?></p><?php
 		endif;
 
 		if ( ! empty( $settings[ 'wpz_testimonial_company_title' ] ) ) :
-			?><p class="wpz-testimonial-user-company"><?php echo $settings[ 'wpz_testimonial_company_title' ]; ?></p><?php
+			?><p class="wpz-testimonial-user-company"><?php echo esc_html( $settings[ 'wpz_testimonial_company_title' ] ); ?></p><?php
 		endif;
 	}
 

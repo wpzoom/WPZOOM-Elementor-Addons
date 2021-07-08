@@ -135,32 +135,30 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['id'] ) );
 
 					if( isset( $template_list[$i]['separator'] ) ) {
-						echo '<h2 class="wpzoom-templates-library-template-category">' . $template_list[$i]['separator'] . '</h2>';
+						echo '<h2 class="wpzoom-templates-library-template-category">' . esc_html( $template_list[$i]['separator'] ) . '</h2>';
 					}
 					?>
 					<div class="wpzoom-templates-library-template wpzoom-item" data-theme="<?php echo strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ?>" data-category="<?php echo strtolower( str_replace( ' ', '-', $template_list[$i]['category'] ) ) ?>">
 						<div class="wpzoom-template-title">
 						<?php
-							echo $template_list[$i]['name'];
+							echo esc_html( $template_list[$i]['name'] );
 						?>
 						</div>
-						<div class="wpzoom-template-thumb wpzoom-index-<?php echo $i; ?>" data-index="<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>" style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>-thumb.png);"></div>
+						<div class="wpzoom-template-thumb wpzoom-index-<?php echo esc_attr( $i ); ?>" data-index="<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>" style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>-thumb.png);"></div>
 						<?php echo '<script> WPZ_Index[' . $i . '] = ' . json_encode( $template_list[$i] ) . '; </script>'; ?>
-						<div class="wpzoom-dates">
-							<div><?php echo '<b>Created</b>: ' . $template_list[$i]['created']; ?></div>
-							<div><?php echo '<b>Updated</b>: ' . $template_list[$i]['updated']; ?></div>
-						</div>
 						<div class="wpzoom-action-bar">
 							<div class="wpzoom-grow"> </div>
-							<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo $i; ?>" data-template-name="<?php echo $slug; ?>">Insert Template</div>
+							<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template'. 'wpzoom-elementor-addons' ); ?></div>
 						</div>
 					</div>
 				<?php
 				}  /* Thumbnail Loop */
 			} else {
-				echo '<div class="wpzoom-no-results"> <i class="fa fa-frown-o"></i> No Templates Found! </div>';
+				echo '<div class="wpzoom-no-results"> <i class="fa fa-frown-o"></i> ' . esc_html__( 'No Templates Found!', 'wpzoom-elementor-addons' ) . ' </div>';
 			}
+			
 			echo '</div>';	
+			
 			wp_die();
 		
 		}

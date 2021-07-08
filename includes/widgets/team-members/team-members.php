@@ -61,7 +61,7 @@ class Team_Members extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Team Members', 'wpzoom-elementor-addons' );
+		return esc_html__( 'Team Members', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -134,45 +134,45 @@ class Team_Members extends Widget_Base {
 	 */
 	protected static function get_profile_names() {
 		return [
-			'500px'          => __( '500px', 'wpzoom-elementor-addons' ),
-			'apple'          => __( 'Apple', 'wpzoom-elementor-addons' ),
-			'behance'        => __( 'Behance', 'wpzoom-elementor-addons' ),
-			'bitbucket'      => __( 'BitBucket', 'wpzoom-elementor-addons' ),
-			'codepen'        => __( 'CodePen', 'wpzoom-elementor-addons' ),
-			'delicious'      => __( 'Delicious', 'wpzoom-elementor-addons' ),
-			'deviantart'     => __( 'DeviantArt', 'wpzoom-elementor-addons' ),
-			'digg'           => __( 'Digg', 'wpzoom-elementor-addons' ),
-			'dribbble'       => __( 'Dribbble', 'wpzoom-elementor-addons' ),
-			'email'          => __( 'Email', 'wpzoom-elementor-addons' ),
-			'facebook'       => __( 'Facebook', 'wpzoom-elementor-addons' ),
-			'flickr'         => __( 'Flicker', 'wpzoom-elementor-addons' ),
-			'foursquare'     => __( 'FourSquare', 'wpzoom-elementor-addons' ),
-			'github'         => __( 'Github', 'wpzoom-elementor-addons' ),
-			'houzz'          => __( 'Houzz', 'wpzoom-elementor-addons' ),
-			'instagram'      => __( 'Instagram', 'wpzoom-elementor-addons' ),
-			'jsfiddle'       => __( 'JS Fiddle', 'wpzoom-elementor-addons' ),
-			'linkedin'       => __( 'LinkedIn', 'wpzoom-elementor-addons' ),
-			'medium'         => __( 'Medium', 'wpzoom-elementor-addons' ),
-			'pinterest'      => __( 'Pinterest', 'wpzoom-elementor-addons' ),
-			'product-hunt'   => __( 'Product Hunt', 'wpzoom-elementor-addons' ),
-			'reddit'         => __( 'Reddit', 'wpzoom-elementor-addons' ),
-			'slideshare'     => __( 'Slide Share', 'wpzoom-elementor-addons' ),
-			'snapchat'       => __( 'Snapchat', 'wpzoom-elementor-addons' ),
-			'soundcloud'     => __( 'SoundCloud', 'wpzoom-elementor-addons' ),
-			'spotify'        => __( 'Spotify', 'wpzoom-elementor-addons' ),
-			'stack-overflow' => __( 'StackOverflow', 'wpzoom-elementor-addons' ),
-			'tripadvisor'    => __( 'TripAdvisor', 'wpzoom-elementor-addons' ),
-			'tumblr'         => __( 'Tumblr', 'wpzoom-elementor-addons' ),
-			'twitch'         => __( 'Twitch', 'wpzoom-elementor-addons' ),
-			'twitter'        => __( 'Twitter', 'wpzoom-elementor-addons' ),
-			'vimeo'          => __( 'Vimeo', 'wpzoom-elementor-addons' ),
-			'vk'             => __( 'VK', 'wpzoom-elementor-addons' ),
-			'website'        => __( 'Website', 'wpzoom-elementor-addons' ),
-			'whatsapp'       => __( 'WhatsApp', 'wpzoom-elementor-addons' ),
-			'wordpress'      => __( 'WordPress', 'wpzoom-elementor-addons' ),
-			'xing'           => __( 'Xing', 'wpzoom-elementor-addons' ),
-			'yelp'           => __( 'Yelp', 'wpzoom-elementor-addons' ),
-			'youtube'        => __( 'YouTube', 'wpzoom-elementor-addons' ),
+			'500px'          => esc_html__( '500px', 'wpzoom-elementor-addons' ),
+			'apple'          => esc_html__( 'Apple', 'wpzoom-elementor-addons' ),
+			'behance'        => esc_html__( 'Behance', 'wpzoom-elementor-addons' ),
+			'bitbucket'      => esc_html__( 'BitBucket', 'wpzoom-elementor-addons' ),
+			'codepen'        => esc_html__( 'CodePen', 'wpzoom-elementor-addons' ),
+			'delicious'      => esc_html__( 'Delicious', 'wpzoom-elementor-addons' ),
+			'deviantart'     => esc_html__( 'DeviantArt', 'wpzoom-elementor-addons' ),
+			'digg'           => esc_html__( 'Digg', 'wpzoom-elementor-addons' ),
+			'dribbble'       => esc_html__( 'Dribbble', 'wpzoom-elementor-addons' ),
+			'email'          => esc_html__( 'Email', 'wpzoom-elementor-addons' ),
+			'facebook'       => esc_html__( 'Facebook', 'wpzoom-elementor-addons' ),
+			'flickr'         => esc_html__( 'Flicker', 'wpzoom-elementor-addons' ),
+			'foursquare'     => esc_html__( 'FourSquare', 'wpzoom-elementor-addons' ),
+			'github'         => esc_html__( 'Github', 'wpzoom-elementor-addons' ),
+			'houzz'          => esc_html__( 'Houzz', 'wpzoom-elementor-addons' ),
+			'instagram'      => esc_html__( 'Instagram', 'wpzoom-elementor-addons' ),
+			'jsfiddle'       => esc_html__( 'JS Fiddle', 'wpzoom-elementor-addons' ),
+			'linkedin'       => esc_html__( 'LinkedIn', 'wpzoom-elementor-addons' ),
+			'medium'         => esc_html__( 'Medium', 'wpzoom-elementor-addons' ),
+			'pinterest'      => esc_html__( 'Pinterest', 'wpzoom-elementor-addons' ),
+			'product-hunt'   => esc_html__( 'Product Hunt', 'wpzoom-elementor-addons' ),
+			'reddit'         => esc_html__( 'Reddit', 'wpzoom-elementor-addons' ),
+			'slideshare'     => esc_html__( 'Slide Share', 'wpzoom-elementor-addons' ),
+			'snapchat'       => esc_html__( 'Snapchat', 'wpzoom-elementor-addons' ),
+			'soundcloud'     => esc_html__( 'SoundCloud', 'wpzoom-elementor-addons' ),
+			'spotify'        => esc_html__( 'Spotify', 'wpzoom-elementor-addons' ),
+			'stack-overflow' => esc_html__( 'StackOverflow', 'wpzoom-elementor-addons' ),
+			'tripadvisor'    => esc_html__( 'TripAdvisor', 'wpzoom-elementor-addons' ),
+			'tumblr'         => esc_html__( 'Tumblr', 'wpzoom-elementor-addons' ),
+			'twitch'         => esc_html__( 'Twitch', 'wpzoom-elementor-addons' ),
+			'twitter'        => esc_html__( 'Twitter', 'wpzoom-elementor-addons' ),
+			'vimeo'          => esc_html__( 'Vimeo', 'wpzoom-elementor-addons' ),
+			'vk'             => esc_html__( 'VK', 'wpzoom-elementor-addons' ),
+			'website'        => esc_html__( 'Website', 'wpzoom-elementor-addons' ),
+			'whatsapp'       => esc_html__( 'WhatsApp', 'wpzoom-elementor-addons' ),
+			'wordpress'      => esc_html__( 'WordPress', 'wpzoom-elementor-addons' ),
+			'xing'           => esc_html__( 'Xing', 'wpzoom-elementor-addons' ),
+			'yelp'           => esc_html__( 'Yelp', 'wpzoom-elementor-addons' ),
+			'youtube'        => esc_html__( 'YouTube', 'wpzoom-elementor-addons' ),
 		];
 	}
 
@@ -203,7 +203,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_info',
 			[
-				'label' => __( 'Information', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Information', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -211,7 +211,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'image',
 			[
-				'label' => __( 'Photo', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Photo', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -234,11 +234,11 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'title',
 			[
-				'label' => __( 'Name', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Name', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'type' => Controls_Manager::TEXT,
 				'default' => 'Team Member Name',
-				'placeholder' => __( 'Team Member Name', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Team Member Name', 'wpzoom-elementor-addons' ),
 				'separator' => 'before',
 				'dynamic' => [
 					'active' => true,
@@ -249,11 +249,11 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'job_title',
 			[
-				'label' => __( 'Job Title', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Job Title', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Officer', 'wpzoom-elementor-addons' ),
-				'placeholder' => __( 'Team Member Job Title', 'wpzoom-elementor-addons' ),
+				'default' => esc_html__( 'Officer', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Team Member Job Title', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true,
 				]
@@ -263,10 +263,10 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'bio',
 			[
-				'label' => __( 'Short Bio', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Short Bio', 'wpzoom-elementor-addons' ),
 				'description' => sprintf( __( 'This input field has support for the following HTML tags: %1$s', 'wpzoom-elementor-addons' ), '<code>' . esc_html( '<' . implode( '>,<', array_keys( WPZOOM_Elementor_Widgets::get_allowed_html_tags() ) ) . '>' ) . '</code>' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( 'Write something about the team member', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Write something about the team member', 'wpzoom-elementor-addons' ),
 				'rows' => 5,
 				'dynamic' => [
 					'active' => true,
@@ -277,31 +277,31 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'title_tag',
 			[
-				'label' => __( 'Title HTML Tag', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Title HTML Tag', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'h1'  => [
-						'title' => __( 'H1', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'H1', 'wpzoom-elementor-addons' ),
 						'icon' => 'far fa-h1'
 					],
 					'h2'  => [
-						'title' => __( 'H2', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'H2', 'wpzoom-elementor-addons' ),
 						'icon' => 'far fa-h2'
 					],
 					'h3'  => [
-						'title' => __( 'H3', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'H3', 'wpzoom-elementor-addons' ),
 						'icon' => 'far fa-h3'
 					],
 					'h4'  => [
-						'title' => __( 'H4', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'H4', 'wpzoom-elementor-addons' ),
 						'icon' => 'far fa-h4'
 					],
 					'h5'  => [
-						'title' => __( 'H5', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'H5', 'wpzoom-elementor-addons' ),
 						'icon' => 'far fa-h5'
 					],
 					'h6'  => [
-						'title' => __( 'H6', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'H6', 'wpzoom-elementor-addons' ),
 						'icon' => 'far fa-h6'
 					]
 				],
@@ -314,23 +314,23 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'align',
 			[
-				'label' => __( 'Alignment', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justify', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'Justify', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
@@ -346,7 +346,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_social',
 			[
-				'label' => __( 'Social Profiles', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Social Profiles', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -356,7 +356,7 @@ class Team_Members extends Widget_Base {
 		$repeater->add_control(
 			'name',
 			[
-				'label' => __( 'Profile Name', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Profile Name', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT2,
 				'label_block' => true,
 				'select2options' => [
@@ -368,8 +368,8 @@ class Team_Members extends Widget_Base {
 
 		$repeater->add_control(
 			'link', [
-				'label' => __( 'Profile Link', 'wpzoom-elementor-addons' ),
-				'placeholder' => __( 'Add your profile link', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Profile Link', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Add your profile link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'label_block' => true,
 				'autocomplete' => false,
@@ -385,8 +385,8 @@ class Team_Members extends Widget_Base {
 
 		$repeater->add_control(
 			'email', [
-				'label' => __( 'Email Address', 'wpzoom-elementor-addons' ),
-				'placeholder' => __( 'Add your email address', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Email Address', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Add your email address', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => false,
 				'input_type' => 'email',
@@ -402,10 +402,10 @@ class Team_Members extends Widget_Base {
 		$repeater->add_control(
 			'customize',
 			[
-				'label' => __( 'Want To Customize?', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Want To Customize?', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'wpzoom-elementor-addons' ),
-				'label_off' => __( 'No', 'wpzoom-elementor-addons' ),
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'style_transfer' => true,
 			]
@@ -420,14 +420,14 @@ class Team_Members extends Widget_Base {
 		$repeater->start_controls_tab(
 			'_tab_icon_normal',
 			[
-				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$repeater->add_control(
 			'color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}' => 'color: {{VALUE}}',
@@ -440,7 +440,7 @@ class Team_Members extends Widget_Base {
 		$repeater->add_control(
 			'bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
@@ -454,14 +454,14 @@ class Team_Members extends Widget_Base {
 		$repeater->start_controls_tab(
 			'_tab_icon_hover',
 			[
-				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$repeater->add_control(
 			'hover_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:focus' => 'color: {{VALUE}}',
@@ -474,7 +474,7 @@ class Team_Members extends Widget_Base {
 		$repeater->add_control(
 			'hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:focus' => 'background-color: {{VALUE}}',
@@ -487,7 +487,7 @@ class Team_Members extends Widget_Base {
 		$repeater->add_control(
 			'hover_border_color',
 			[
-				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:hover, {{WRAPPER}} .wpz-member-links > {{CURRENT_ITEM}}:focus' => 'border-color: {{VALUE}}',
@@ -527,10 +527,10 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'show_profiles',
 			[
-				'label' => __( 'Show Profiles', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Show Profiles', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
-				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'separator' => 'before',
@@ -543,7 +543,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_button',
 			[
-				'label' => __( 'Details Button', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Details Button', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -551,10 +551,10 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'show_details_button',
 			[
-				'label' => __( 'Show Button', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Show Button', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'wpzoom-elementor-addons' ),
-				'label_off' => __( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'default' => '',
 				'style_transfer' => true,
@@ -564,13 +564,13 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_position',
 			[
-				'label' => __( 'Position', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'after',
 				'style_transfer' => true,
 				'options' => [
-					'before' => __( 'Before Social Icons', 'wpzoom-elementor-addons' ),
-					'after' => __( 'After Social Icons', 'wpzoom-elementor-addons' ),
+					'before' => esc_html__( 'Before Social Icons', 'wpzoom-elementor-addons' ),
+					'after' => esc_html__( 'After Social Icons', 'wpzoom-elementor-addons' ),
 				],
 				'condition' => [
 					'show_details_button' => 'yes',
@@ -581,10 +581,10 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_text',
 			[
-				'label' => __( 'Text', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Show Details', 'wpzoom-elementor-addons' ),
-				'placeholder' => __( 'Type button text here', 'wpzoom-elementor-addons' ),
+				'default' => esc_html__( 'Show Details', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Type button text here', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'dynamic' => [
 					'active' => true,
@@ -598,7 +598,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_link',
 			[
-				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => 'https://example.com',
 				'dynamic' => [
@@ -628,16 +628,16 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_icon_position',
 			[
-				'label' => __( 'Icon Position', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Icon Position', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
 				'label_block' => false,
 				'options' => [
 					'before' => [
-						'title' => __( 'Before', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'Before', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa-align-left',
 					],
 					'after' => [
-						'title' => __( 'After', 'wpzoom-elementor-addons' ),
+						'title' => esc_html__( 'After', 'wpzoom-elementor-addons' ),
 						'icon' => 'fa-align-right',
 					],
 				],
@@ -654,7 +654,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_icon_spacing',
 			[
-				'label' => __( 'Icon Spacing', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Icon Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10
@@ -685,7 +685,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_image',
 			[
-				'label' => __( 'Photo', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Photo', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -693,7 +693,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'image_width',
 			[
-				'label' => __( 'Width', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Width', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%'],
 				'range' => [
@@ -715,7 +715,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'image_height',
 			[
-				'label' => __( 'Height', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Height', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -733,7 +733,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'image_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -745,7 +745,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'image_padding',
 			[
-				'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -765,7 +765,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'image_border_radius',
 			[
-				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -788,7 +788,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'image_bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-figure img' => 'background-color: {{VALUE}};',
@@ -801,7 +801,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_content',
 			[
-				'label' => __( 'Name, Job Title & Bio', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Name, Job Title & Bio', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -809,7 +809,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'content_padding',
 			[
-				'label' => __( 'Content Padding', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Content Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -822,7 +822,7 @@ class Team_Members extends Widget_Base {
 			'_heading_title',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Name', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Name', 'wpzoom-elementor-addons' ),
 				'separator' => 'before',
 			]
 		);
@@ -830,7 +830,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'title_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -842,7 +842,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-name' => 'color: {{VALUE}}',
@@ -871,7 +871,7 @@ class Team_Members extends Widget_Base {
 			'_heading_job_title',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Job Title', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Job Title', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -879,7 +879,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'job_title_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -891,7 +891,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'job_title_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-position' => 'color: {{VALUE}}',
@@ -920,7 +920,7 @@ class Team_Members extends Widget_Base {
 			'_heading_bio',
 			[
 				'type' => Controls_Manager::HEADING,
-				'label' => __( 'Short Bio', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Short Bio', 'wpzoom-elementor-addons' ),
 				'separator' => 'before'
 			]
 		);
@@ -928,7 +928,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'bio_spacing',
 			[
-				'label' => __( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -940,7 +940,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'bio_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-bio' => 'color: {{VALUE}};',
@@ -970,7 +970,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_social',
 			[
-				'label' => __( 'Social Icons', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Social Icons', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -978,7 +978,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'links_spacing',
 			[
-				'label' => __( 'Right Spacing', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Right Spacing', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -990,7 +990,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'links_padding',
 			[
-				'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -1002,7 +1002,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'links_icon_size',
 			[
-				'label' => __( 'Icon Size', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Icon Size', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'selectors' => [
@@ -1022,7 +1022,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'links_border_radius',
 			[
-				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1035,14 +1035,14 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_links_normal',
 			[
-				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'links_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > a' => 'color: {{VALUE}};',
@@ -1053,7 +1053,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'links_bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > a' => 'background-color: {{VALUE}};',
@@ -1065,14 +1065,14 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_links_hover',
 			[
-				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'links_hover_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > a:hover, {{WRAPPER}} .wpz-member-links > a:focus' => 'color: {{VALUE}}',
@@ -1083,7 +1083,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'links_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > a:hover, {{WRAPPER}} .wpz-member-links > a:focus' => 'background-color: {{VALUE}}',
@@ -1094,7 +1094,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'links_hover_border_color',
 			[
-				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-member-links > a:hover, {{WRAPPER}} .wpz-member-links > a:focus' => 'border-color: {{VALUE}};',
@@ -1113,7 +1113,7 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_button',
 			[
-				'label' => __( 'Details Button', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Details Button', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1121,7 +1121,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'button_margin',
 			[
-				'label' => __( 'Margin', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1133,7 +1133,7 @@ class Team_Members extends Widget_Base {
 		$this->add_responsive_control(
 			'button_padding',
 			[
-				'label' => __( 'Padding', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -1162,7 +1162,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label' => __( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -1192,14 +1192,14 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_button_normal',
 			[
-				'label' => __( 'Normal', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'button_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -1211,7 +1211,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-btn' => 'background-color: {{VALUE}};',
@@ -1224,14 +1224,14 @@ class Team_Members extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_button_hover',
 			[
-				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
 		$this->add_control(
 			'button_hover_color',
 			[
-				'label' => __( 'Text Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-btn:hover, {{WRAPPER}} .wpz-btn:focus' => 'color: {{VALUE}};',
@@ -1242,7 +1242,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_hover_bg_color',
 			[
-				'label' => __( 'Background Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpzw-btn:hover, {{WRAPPER}} .wpz-btn:focus' => 'background-color: {{VALUE}};',
@@ -1253,7 +1253,7 @@ class Team_Members extends Widget_Base {
 		$this->add_control(
 			'button_hover_border_color',
 			[
-				'label' => __( 'Border Color', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => [
 					'button_border_border!' => '',
@@ -1370,7 +1370,7 @@ class Team_Members extends Widget_Base {
 				$this->add_render_attribute( 'button', 'class', 'ha-btn--icon-after' );
 				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), esc_html( $button_text ) );
 				?>
-				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php echo $button_text; ?> <?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?></a>
+				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php echo esc_html( $button_text ); ?> <?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?></a>
 				<?php
 			endif;
 		endif;
