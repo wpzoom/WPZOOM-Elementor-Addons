@@ -255,7 +255,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'no',
+				'default'     => 'yes',
 				'condition'   =>  array(
 					'single_post!' => 'yes'
 				),

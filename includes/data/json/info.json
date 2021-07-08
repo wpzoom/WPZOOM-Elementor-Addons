@@ -9,7 +9,15 @@
 	"separator" : "Flow 1"
 },{
     "name": "Flow 1 - Portfolio",
-    "id": "f1-work",
+    "id": "f1-portfolio",
+    "theme": "Inspiro PRO",
+    "category": "Flow 1",
+    "thumbnail": "inspiro-pro/flow-1/work",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+}, {
+    "name": "Flow 1 - Portfolio (full-width)",
+    "id": "f1-portfolio-full",
     "theme": "Inspiro PRO",
     "category": "Flow 1",
     "thumbnail": "inspiro-pro/flow-1/work",
@@ -40,19 +48,19 @@
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }, {
-    "name": "Flow 1 - Directors",
+    "name": "Flow 1 - Directors Page",
     "id": "f1-directors",
     "theme": "Inspiro PRO",
     "category": "Flow 1",
-    "thumbnail": "inspiro-pro/flow-1/directors-page",
+    "thumbnail": "inspiro-pro/flow-1/directors",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }, {
-    "name": "Flow 1 - Director",
-    "id": "f1-director",
+    "name": "Flow 1 - Single Director",
+    "id": "f1-director-page",
     "theme": "Inspiro PRO",
     "category": "Flow 1",
-    "thumbnail": "inspiro-pro/flow-1/directors",
+    "thumbnail": "inspiro-pro/flow-1/director-page",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
