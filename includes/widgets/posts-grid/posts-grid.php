@@ -1072,7 +1072,7 @@ class Posts_Grid extends Widget_Base {
 			}
 
 			?>
-			<div class="wpz-grid-container elementor-grid <?php echo $columns_desktop.$columns_tablet.$columns_mobile.$grid_class; // WPCS: XSS OK. ?>">
+			<div class="wpz-grid-container elementor-grid <?php echo sanitize_html_class( $columns_desktop ); ?> <?php echo sanitize_html_class( $columns_tablet ); ?> <?php echo sanitize_html_class( $columns_mobile ); ?> <?php echo sanitize_html_class( $grid_class ); ?>">
 				<?php
 				$posts_per_page = ( ! empty( $settings[ 'posts_per_page' ] ) ?  $settings[ 'posts_per_page' ] : 3 );
 

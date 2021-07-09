@@ -148,7 +148,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						<?php echo '<script> WPZ_Index[' . $i . '] = ' . json_encode( $template_list[$i] ) . '; </script>'; ?>
 						<div class="wpzoom-action-bar">
 							<div class="wpzoom-grow"> </div>
-							<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template'. 'wpzoom-elementor-addons' ); ?></div>
+							<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template', 'wpzoom-elementor-addons' ); ?></div>
 						</div>
 					</div>
 				<?php

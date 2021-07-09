@@ -1696,9 +1696,9 @@ class Portfolio_Showcase extends Widget_Base {
 
 				$this->add_render_attribute( 'widget_title', 'class', 'wpzoom-portfolio-showcase-widget-title' );
 				$this->add_inline_editing_attributes( 'widget_title' );
-				$widget_title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['widget_title_tag'] ), $this->get_render_attribute_string( 'widget_title' ), $widget_title );
-	
-				echo $widget_title_html; // WPCS: XSS OK.
+				
+				printf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['widget_title_tag'] ), $this->get_render_attribute_string( 'widget_title' ), $widget_title );
+				
 			}
 
 			if ( !$single_post && $show_categories ) {
@@ -1735,7 +1735,7 @@ class Portfolio_Showcase extends Widget_Base {
 					'show_categories'              => $show_categories,
 					'always_play_background_video' => $always_play_background_video
 				) ) ) ?>"
-				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo esc_attr( $col_number ); ?> <?php echo $always_play_background_video_class; // WPCS: XSS OK. ?>"
+				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo sanitize_html_class( $col_number ); ?> <?php echo sanitize_html_class( $always_play_background_video_class ); // WPCS: XSS OK. ?>"
 			>
 				<?php
 					$this->looper( $wp_query,
@@ -1969,7 +1969,7 @@ class Portfolio_Showcase extends Widget_Base {
                         </div>
 
                         <?php if ( $is_video_background ): ?>
-                            <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
+                            <video class="portfolio-gallery-video-background" <?php echo esc_attr( $video_atts ) // WPCS: XSS OK. ?>
                                    style=" width:100%; height:auto;vertical-align: middle; display:block;">
                                 <source src="<?php echo esc_url( $final_background_src ) ?>"
                                         type="<?php echo esc_attr( $filetype['type'] ) ?>">
@@ -1994,7 +1994,7 @@ class Portfolio_Showcase extends Widget_Base {
                            title="<?php echo esc_attr( get_the_title() ); ?>">
 
                             <?php if ( $is_video_background ): ?>
-                                <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
+                                <video class="portfolio-gallery-video-background" <?php echo esc_attr( $video_atts ) // WPCS: XSS OK. ?>
                                        style=" width:100%; height:auto;vertical-align: middle; display:block;">
                                     <source src="<?php echo esc_url( $final_background_src ); ?>"
                                             type="<?php echo esc_attr( $filetype['type'] ) ?>">
@@ -2036,7 +2036,7 @@ class Portfolio_Showcase extends Widget_Base {
                                 <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
                                     <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
                                         <a class="portfolio_sub_category"
-                                           href="<?php echo get_term_link( $tax_menu_item, $tax_menu_item->taxonomy ); ?>"><?php echo $tax_menu_item->name; ?></a>
+                                           href="<?php echo get_term_link( $tax_menu_item, $tax_menu_item->taxonomy ); ?>"><?php echo esc_html( $tax_menu_item->name ); ?></a>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                              </li>
@@ -2126,7 +2126,7 @@ class Portfolio_Showcase extends Widget_Base {
                     </div>
 
                     <?php if ( $is_video_background ): ?>
-                        <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
+                        <video class="portfolio-gallery-video-background" <?php echo esc_attr( $video_atts ) // WPCS: XSS OK. ?>
                                style=" width:100%; height:auto;vertical-align: middle; display:block;">
                             <source src="<?php echo esc_url( $final_background_src ) ?>"
                                     type="<?php echo esc_attr( $filetype['type'] ) ?>">
@@ -2192,7 +2192,7 @@ class Portfolio_Showcase extends Widget_Base {
                         </div>
 
                         <?php if ( $is_video_background ): ?>
-                            <video class="portfolio-gallery-video-background" <?php echo $video_atts // WPCS: XSS OK. ?>
+                            <video class="portfolio-gallery-video-background" <?php echo esc_attr( $video_atts ) // WPCS: XSS OK. ?>
                                    style=" width:100%; height:auto;vertical-align: middle; display:block;">
                                 <source src="<?php echo esc_url( $final_background_src ) ?>"
                                         type="<?php echo esc_attr( $filetype['type'] ) ?>">

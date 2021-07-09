@@ -1,6 +1,6 @@
 <nav class="portfolio-archive-taxonomies">
 	<ul class="portfolio-taxonomies portfolio-taxonomies-filter-by">
-		<li <?php echo( ! empty( $category ) ? 'data-subcategory="' . $category . '"' : '' ); ?>
+		<li <?php echo( ! empty( $category ) ? 'data-subcategory="' . esc_attr( $category ) . '"' : '' ); ?>
 			class="cat-item cat-item-all current-cat" 
 			data-counter="<?php echo $count ?>"
 		>

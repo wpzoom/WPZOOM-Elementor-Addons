@@ -409,7 +409,7 @@ class Slider_Pro extends Widget_Base {
 						$video_on_mobile = get_theme_mod( 'featured_video_mobile', zoom_customizer_get_default_option_value( 'featured_video_mobile', inspiro_customizer_data() ) );
 
 						if ( ! $is_video_slide || \option::is_on( 'slideshow_video_fallback' ) ) {
-							$style = ' data-smallimg="' . $small_image_url[0] . '" data-bigimg="' . $large_image_url[0] . '"';
+							$style = ' data-smallimg="' . esc_attr( $small_image_url[0] ) . '" data-bigimg="' . esc_attr( $large_image_url[0] ) . '"';
 						}
 						?>
 						<li <?php echo $style; // WPCS: XSS OK. ?>
@@ -428,7 +428,7 @@ class Slider_Pro extends Widget_Base {
                                     <div class="mfp-iframe-scaler">
 
                                         <?php
-                                        echo  wp_video_shortcode(
+                                        echo wp_video_shortcode(
                                             array(
                                                 'src' => $popup_final_external_src,
                                                 'preload' => 'none',
