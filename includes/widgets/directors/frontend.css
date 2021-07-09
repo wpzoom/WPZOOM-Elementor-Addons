@@ -1,141 +1,147 @@
 .wpz-directors-nav {
-	text-align: center;
+    text-align: center;
 }
 .wpz-directors-nav ul {
-	margin:0;
+    margin:0;
 }
 .wpz-default-directors .wpz-directors-nav ul li {
-	display: block;
-	z-index: 2;
+    display: block;
+    z-index: 2;
 }
  .wpz-default-directors .wpz-directors-nav ul li hr {
-	background-color: #111;
-	opacity: .1;
-	margin-top: 35px;
-	margin-bottom: 35px;
-	max-width: 770px;
-	margin-left: auto;
-	margin-right:auto;
+    background-color: #111;
+    opacity: .1;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    max-width: 770px;
+    margin-left: auto;
+    margin-right:auto;
 }
 .wpz-fullview-directors .wpz-directors-nav ul li {
-	padding: 35px 0;
-	position: relative;
-	z-index: 2;
+    padding: 0;
+    margin: 20px 0 90px;
+    position: relative;
+    z-index: 2;
 }
 .wpz-fullview-directors .wpz-directors-nav ul li hr {
-	display: none;
+    display: none;
 }
 .wpz-default-directors li.wpz-is-active span {
-	text-align: center;
-	position: relative;
-	z-index: 99;
+    text-align: center;
+    position: relative;
+    z-index: 99;
 }
 .wpz-directors-nav ul li, .wpz-directors-nav ul li a {
-	list-style: none;
-	font-family: 'Inter';
-	font-size: 60px;
-	font-weight: 500;
-	color: #fff;
-	transition: opacity 0.3s;
+    list-style: none;
+    font-weight: 500;
+    color: #fff;
+    transition: opacity 0.3s;
 }
 .wpz-directors-nav ul li, .wpz-directors-nav ul li a {
-	position: relative;
-	cursor: pointer;
+    position: relative;
+    cursor: pointer;
+}
+
+.wpz-directors-nav ul li a {
+    font-size: 60px;
+    line-height: 1.2;
 }
 
 .wpz-default-directors li.wpz-is-active figure.hidden {
-	visibility: hidden;
+    visibility: hidden;
 }
 .wpz-default-directors li.wpz-is-active .wpz-director-bg {
-	opacity: 1;
-	position:absolute;
-	border-radius: 8px;
-	width: 100%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	overflow: visible;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 1s;
+    opacity: 1;
+    position:absolute;
+    border-radius: 8px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
 }
 
 .wpz-directors-nav:hover li:not(:hover),
 .wpz-directors-nav:hover li a:not(:hover) {
-	opacity: 0.1;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-out;
-	animation-duration: 2s;
+    opacity: 0.5;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 2s;
 }
 .wpz-fullview-directors .wpz-director-bg {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-	transition-property: transform, opacity;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-property: transform, opacity;
 }
 .wpz-fullview-directors .wpz-director-bg img {
-	visibility: hidden;
+    visibility: hidden;
 }
 .wpz-default-directors .wpz-director-bg {
-	opacity: 0;
-	position: absolute;
-	z-index: -1;
-	top: 50%;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
 }
 .wpz-director-bg figure,
 .wpz-director-bg video {
-	width: 100%;
-	border-radius: 8px;
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    object-fit: cover;
 }
 .wpz-fullview-directors .wpz-director-bg.wpz-is-active {
-	opacity: 1; 
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 1s;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
 
 }
 .wpz-director-object-container {
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	position: absolute;
-}  
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: absolute;
+}
 @media screen and (max-width: 768px) {
-	.wpz-director-bg {
-		width: 90%;
-		left: 5%;
-	}
+    .wpz-director-bg {
+        width: 90%;
+        left: 5%;
+    }
 }
 @media screen and (max-width: 479px) {
-	.wpz-director-bg {
-		width: 98%;
-		left: 1%;
-	}
+    .wpz-director-bg {
+        width: 98%;
+        left: 1%;
+    }
 }
 .fade-in {
-	opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 2s;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
