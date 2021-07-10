@@ -174,7 +174,7 @@ class Directors extends Widget_Base {
 			'image',
 			[
 				'type' => Controls_Manager::MEDIA,
-				'label' => __( 'Image', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Image', 'wpzoom-elementor-addons' ),
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
@@ -188,9 +188,9 @@ class Directors extends Widget_Base {
 			'video',
 			[
 				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label' => __( 'Video', 'wpzoom-elementor-addons' ),
-				'label_off' => __( 'None', 'wpzoom-elementor-addons' ),
-				'label_on' => __( 'Custom', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Video', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'None', 'wpzoom-elementor-addons' ),
+				'label_on' => esc_html__( 'Custom', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 				'frontend_available' => true
 			]
@@ -201,7 +201,7 @@ class Directors extends Widget_Base {
 		$repeater->add_control(
 			'insert_url',
 			[
-				'label' => __( 'External URL', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'External URL', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 			]
 		);
@@ -209,7 +209,7 @@ class Directors extends Widget_Base {
 		$repeater->add_control(
 			'hosted_url',
 			[
-				'label' => __( 'Choose File', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Choose File', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
 				'dynamic' => [
 					'active' => true,
@@ -229,7 +229,7 @@ class Directors extends Widget_Base {
 		$repeater->add_control(
 			'external_url',
 			[
-				'label' => __( 'URL', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'URL', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'autocomplete' => false,
 				'options' => false,
@@ -243,7 +243,7 @@ class Directors extends Widget_Base {
 					]
 				],
 				'media_type' => 'video',
-				'placeholder' => __( 'Enter your URL', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Enter your URL', 'wpzoom-elementor-addons' ),
 				'condition' => [
 					'video' => 'yes',
 					'insert_url' => 'yes'
@@ -259,8 +259,8 @@ class Directors extends Widget_Base {
 			[
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
-				'label' => __( 'Title', 'wpzoom-elementor-addons' ),
-				'placeholder' => __( 'Type title here', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Title', 'wpzoom-elementor-addons' ),
+				'placeholder' => esc_html__( 'Type title here', 'wpzoom-elementor-addons' ),
 				'default' => array_rand( array_flip( array( 'Burnish Creative', 'Vita Race', 'Fabian Ferdinand Fallend', 'Cargo The Film', 'Vita Titan' ) ), 1 ),
 				'dynamic' => [
 					'active' => true,
@@ -271,7 +271,7 @@ class Directors extends Widget_Base {
 		$repeater->add_control(
 			'link',
 			[
-				'label' => __( 'Link', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'label_block' => true,
 				'placeholder' => 'https://example.com',
@@ -373,7 +373,7 @@ class Directors extends Widget_Base {
 		$this->start_controls_tab(
 			'_tab_nav_item_hover',
 			[
-				'label' => __( 'Hover', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
 			]
 		);
 
