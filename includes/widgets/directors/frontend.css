@@ -42,7 +42,7 @@
     cursor: pointer;
 }
 
-.wpz-directors-nav ul li a {
+.wpz-directors-nav ul li {
     font-size: 60px;
     line-height: 1.2;
 }
