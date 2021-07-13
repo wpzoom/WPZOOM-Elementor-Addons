@@ -55,6 +55,9 @@ class Slider_Pro extends Widget_Base {
 	 */
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
+		
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider-pro', plugins_url( 'frontend.css', __FILE__ ), null, WPZOOM_EL_ADDONS_VER );
+	
 	}
 
 	/**
@@ -107,6 +110,21 @@ class Slider_Pro extends Widget_Base {
 	 */
 	public function get_categories() {
 		return [ 'wpzoom-elementor-addons' ];
+	}
+
+	/**
+	 * Style Dependencies.
+	 *
+	 * Returns all the styles the widget depends on.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return array Style slugs.
+	 */
+	public function get_style_depends() {
+		return [
+			'wpzoom-elementor-addons-css-frontend-slider-pro'
+		];
 	}
 
 	/**
@@ -172,27 +190,117 @@ class Slider_Pro extends Widget_Base {
 				'default'     => 5,
 			)
 		);
+
 		$this->add_control(
-			'slideshow_title',
-			array(
-				'label'       => esc_html__( 'Display Slide Title?', 'wpzoom-elementor-addons' ),
-				'type'        => Controls_Manager::SWITCHER,
-				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
-				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'yes',
-				'separator'   => 'before'
-			)
+			'heading_slide_title',
+			[
+				'label' => esc_html__( 'Slide Title', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
 		);
 		$this->add_control(
-			'slideshow_excerpt',
-			array(
-				'label'       => esc_html__( 'Display Slide Content?', 'wpzoom-elementor-addons' ),
-				'type'        => Controls_Manager::SWITCHER,
-				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
-				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'yes',
-			)
+			'responsive_description_slide_title',
+			[
+				'raw' => esc_html__( 'Responsive visibility will take effect only on preview or live page, and not while editing in Elementor.', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::RAW_HTML,
+				'content_classes' => 'elementor-descriptor',
+			]
 		);
+		$this->add_control(
+			'hide_title_desktop',
+			[
+				'label' => esc_html__( 'Hide On Desktop', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'prefix_class' => 'wpzoom-',
+				'label_on' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'return_value' => 'elementor-hidden-desktop',
+			]
+		);
+
+		$this->add_control(
+			'hide_title_tablet',
+			[
+				'label' => esc_html__( 'Hide On Tablet', 'wpzoom-elementor-addons'),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'prefix_class' => 'wpzoom-',
+				'label_on' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'return_value' => 'elementor-hidden-tablet',
+			]
+		);
+
+		$this->add_control(
+			'hide_title_mobile',
+			[
+				'label' => esc_html__( 'Hide On Mobile', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'prefix_class' => 'wpzoom-',
+				'label_on' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'return_value' => 'elementor-hidden-phone',
+			]
+		);
+
+		$this->add_control(
+			'heading_slide_excerpt',
+			[
+				'label' => esc_html__( 'Slide Content', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'responsive_description_slide_excerpt',
+			[
+				'raw' => esc_html__( 'Responsive visibility will take effect only on preview or live page, and not while editing in Elementor.', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::RAW_HTML,
+				'content_classes' => 'elementor-descriptor',
+			]
+		);
+		$this->add_control(
+			'hide_excerpt_desktop',
+			[
+				'label' => esc_html__( 'Hide On Desktop', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'prefix_class' => 'wpzoom-',
+				'label_on' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'return_value' => 'elementor-hidden-desktop',
+			]
+		);
+
+		$this->add_control(
+			'hide_excerpt_tablet',
+			[
+				'label' => esc_html__( 'Hide On Tablet', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'prefix_class' => 'wpzoom-',
+				'label_on' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'return_value' => 'elementor-hidden-tablet',
+			]
+		);
+
+		$this->add_control(
+			'hide_excerpt_mobile',
+			[
+				'label' => esc_html__( 'Hide On Mobile', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'prefix_class' => 'wpzoom-',
+				'label_on' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'return_value' => 'elementor-hidden-phone',
+			]
+		);
+
 		$this->add_control(
 			'slideshow_scroll',
 			array(
@@ -202,6 +310,7 @@ class Slider_Pro extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'yes',
+				'separator'   => 'before',
 			)
 		);
 
@@ -299,11 +408,14 @@ class Slider_Pro extends Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 
+		$this->add_render_attribute( '_slide_title', 'class', [ $settings['hide_title_desktop'], $settings['hide_title_tablet'], $settings['hide_title_mobile'] ] );
+		
+		$this->add_render_attribute( '_slide_excerpt', 'class', 'excerpt' );
+		$this->add_render_attribute( '_slide_excerpt', 'class', [ $settings['hide_excerpt_desktop'], $settings['hide_excerpt_tablet'], $settings['hide_excerpt_mobile'] ] );
+
 		$show_count = $settings['show_count'];
 		$category   = $settings['category'];
-		
-		$slideshow_title   = ( 'yes' === $settings['slideshow_title'] ? true : false );
-		$slideshow_excerpt = ( 'yes' === $settings['slideshow_excerpt'] ? true : false );
+
 		$slideshow_scroll  = ( 'yes' === $settings['slideshow_scroll'] ? true : false );
 
 		$args = array(
@@ -447,17 +559,16 @@ class Slider_Pro extends Widget_Base {
 
 							<div class="li-wrap">
 
-								<?php if( $slideshow_title ) : ?>
-									<?php if ( empty( $slide_url ) ) { ?>
-										<?php the_title('<h3 class="missing-url">', '</h3>'); ?>
+								
+									<?php if ( empty( $slide_url ) ) { 
+										$this->add_render_attribute( '_slide_title', 'class', 'missing-url' );
+										?>
+										<?php the_title( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '>', '</h3>'); ?>
 									<?php } else { ?>
-										<?php the_title(sprintf('<h3><a href="%s">', esc_url( $slide_url ) ), '</a></h3>'); ?>
+										<?php the_title( sprintf( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '><a href="%s">', esc_url( $slide_url ) ), '</a></h3>'); ?>
 									<?php } ?>
-								<?php endif; ?>
 
-								<?php if( $slideshow_excerpt ) { ?>
-									<div class="excerpt"><?php the_content(); ?></div>
-								<?php } ?>
+									<div <?php echo $this->get_render_attribute_string( '_slide_excerpt' ); ?>><?php the_content(); ?></div>
 
                                 <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
 
