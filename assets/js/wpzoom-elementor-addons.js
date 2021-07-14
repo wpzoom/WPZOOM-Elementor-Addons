@@ -173,8 +173,10 @@ var WPZCached = null;
 
         /* Open the preview template */
         $('.wpzoom-template-thumb').click( function() {
-			var data = WPZ_Index[ $(this).attr('data-index') ];
-			var slug = $(this).attr('data-template-name');
+			var jsonData = $(this).attr('data-template');
+			var data = jQuery.parseJSON( jsonData );
+			var slug = data.id;
+			//console.log( data );
 			$('.elementor-templates-modal__header__logo').hide();
 			$('#wpzoom-elementor-template-library-toolbar').hide();
 			$('#wpzoom-elementor-template-library-header-preview').show();
