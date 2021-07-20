@@ -1735,7 +1735,7 @@ class Portfolio_Showcase extends Widget_Base {
 					'show_categories'              => $show_categories,
 					'always_play_background_video' => $always_play_background_video
 				) ) ) ?>"
-				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo sanitize_html_class( $col_number ); ?> <?php echo sanitize_html_class( $always_play_background_video_class ); // WPCS: XSS OK. ?>"
+				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo esc_attr( $col_number ); ?> <?php echo esc_attr( $always_play_background_video_class ); // WPCS: XSS OK. ?>"
 			>
 				<?php
 					$this->looper( $wp_query,

@@ -812,7 +812,7 @@ class Testimonial extends Widget_Base {
 	protected function testimonial_desc() {
 		$settings = $this->get_settings_for_display();
 
-		echo '<div class="wpz-testimonial-text">' . wpautop( $settings[ 'wpz_testimonial_description' ] ) . '</div>';
+		echo '<div class="wpz-testimonial-text">' . wp_kses_post( wpautop( $settings[ 'wpz_testimonial_description' ] ) ) . '</div>';
 	}
 
 	/**
