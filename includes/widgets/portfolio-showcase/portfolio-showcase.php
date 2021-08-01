@@ -249,9 +249,9 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'show_categories',
 			array(
-				'label'       => esc_html__( 'Display Category Filter <br/>at the Top (Isotope Effect)', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Display Category Filter at the Top (Isotope Effect)', 'wpzoom-elementor-addons' ),
 				'subtitle'    => esc_html__( 'Isotope Effect', 'wpzoom-elementor-addons' ),
-				'description' => esc_html__( 'If you\'ve selected to display posts from All categories, then the filter will include top-level portfolio categories (no sub-categories). <br/><br/>If you selected to display posts from a specific category, then the filter will display its sub-categories.', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'If you\'ve selected to display posts from All categories, then the filter will include top-level portfolio categories (no sub-categories). If you selected to display posts from a specific category, then the filter will display its sub-categories.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -275,7 +275,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'enable_ajax_items_loading',
 			array(
-				'label'       => esc_html__( 'Load Dynamically <br/>New Posts in Each Category', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Load Dynamically New Posts in Each Category', 'wpzoom-elementor-addons' ),
 				'description' => esc_html__( 'This option will try to display the same number of posts in each category as it\'s configured in the Number of Posts option above.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
@@ -358,7 +358,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'show_space',
 			array(
-				'label'       => wp_kses_post( esc_html__( 'Add Margins <br/>between Posts (whitespace)', 'wpzoom-elementor-addons' ) ),
+				'label'       => wp_kses_post( esc_html__( 'Add Margins between Posts (whitespace)', 'wpzoom-elementor-addons' ) ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -669,7 +669,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'label'     => esc_html__( 'Overlay Background', 'wpzoom-elementor-addons' ),
 				'selectors' => array(
-					'{{WRAPPER}} .entry-thumbnail-popover-content.lightbox_popup_insp' => 'background-color: {{VALUE}};'
+					'{{WRAPPER}} .portfolio-grid .portfolio_item:hover .entry-thumbnail-popover, .portfolio-showcase .portfolio_item:hover .entry-thumbnail-popover' => 'background-color: {{VALUE}};'
 				),
 			]
 		);
@@ -1888,7 +1888,7 @@ class Portfolio_Showcase extends Widget_Base {
                     'muted',
                     // 'preload="none"',
                     'playsinline',
-                    'poster="' . esc_attr( get_the_post_thumbnail_url( get_the_ID(), $size ) ) . '"'
+                    'poster=' . esc_attr( get_the_post_thumbnail_url( get_the_ID(), $size ) ) . ''
                 );
 
                 if ($always_play_background_video) {
