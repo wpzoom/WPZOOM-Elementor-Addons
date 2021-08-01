@@ -64,60 +64,60 @@
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
-    "name": "Flow 3 - Homepage",
-    "id": "f3-homepage",
+    "name": "Flow 2 - Homepage",
+    "id": "f2-homepage",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/home",
+    "category": "Flow 2",
+    "thumbnail": "inspiro-pro/flow-2/home",
     "requires": ["free"],
     "contributor": ["WPZOOM"],
-	"separator" : "Flow 3"
-},{
-    "name": "Flow 3 - Portfolio",
-    "id": "f3-work",
+    "separator" : "Flow 2"
+}, {
+    "name": "Flow 2 - Portfolio",
+    "id": "f2-work",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/work",
+    "category": "Flow 2",
+    "thumbnail": "inspiro-pro/flow-2/work",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
-    "name": "Flow 3 - About",
-    "id": "f3-about",
+    "name": "Flow 2 - About",
+    "id": "f2-about",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/about",
+    "category": "Flow 2",
+    "thumbnail": "inspiro-pro/flow-2/about",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
-    "name": "Flow 3 - Services",
-    "id": "f3-services",
+    "name": "Flow 2 - Services",
+    "id": "f2-services",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/services",
+    "category": "Flow 2",
+    "thumbnail": "inspiro-pro/flow-2/services",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
-    "name": "Flow 3 - Contact",
-    "id": "f3-contact",
+    "name": "Flow 2 - Contact",
+    "id": "f2-contact",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/contact",
+    "category": "Flow 2",
+    "thumbnail": "inspiro-pro/flow-2/contact",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }, {
-    "name": "Flow 3 - Directors",
-    "id": "f3-directors",
+    "name": "Flow 2 - Directors Page",
+    "id": "f2-directors",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/directors-page",
+    "category": "Flow 1",
+    "thumbnail": "inspiro-pro/flow-2/directors",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }, {
-    "name": "Flow 3 - Director",
-    "id": "f3-director",
+    "name": "Flow 2 - Single Director",
+    "id": "f2-director",
     "theme": "Inspiro PRO",
-    "category": "Flow 3",
-    "thumbnail": "inspiro-pro/flow-3/directors",
+    "category": "Flow 2",
+    "thumbnail": "inspiro-pro/flow-2/director-page",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }]
