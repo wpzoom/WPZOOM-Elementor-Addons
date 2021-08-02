@@ -391,6 +391,56 @@ class Directors extends Widget_Base {
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 
+		$this->add_responsive_control(
+			'label_nav_align',
+			[
+				'label' => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'label_block' => false,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'fa fa-align-right',
+					],
+				],
+				'toggle' => true,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-directors-nav ul li.wpz-director-nav-item' => 'text-align: {{VALUE}}'
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'director_margin',
+			array(
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .wpz-directors-nav ul li.wpz-director-nav-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+				]
+			)
+		);
+		$this->add_responsive_control(
+			'director_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .wpz-directors-nav ul li.wpz-director-nav-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+				]
+			)
+		);
+
 		$this->end_controls_section();
 
 
@@ -405,16 +455,39 @@ class Directors extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'hr_color',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::COLOR,
+				'name' => 'border',
+				'selector' => '{{WRAPPER}} .wpz-directors-nav ul li hr',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'width',
+			[
+				'label' => esc_html__( 'HR Width', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ '%', 'px' ],
+				'range' => [
+					'px' => [
+						'max' => 1000,
+					],
+				],
+				'tablet_default' => [
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'unit' => '%',
+				],
+				'separator' => 'before',
 				'selectors' => [
-					'{{WRAPPER}} .wpz-directors-nav ul li hr' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .wpz-directors-nav ul li hr' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
+
 		$this->add_responsive_control(
 			'hr_style_margin',
 			array(
@@ -426,7 +499,6 @@ class Directors extends Widget_Base {
 				]
 			)
 		);
-
 
 
 		$this->end_controls_section();

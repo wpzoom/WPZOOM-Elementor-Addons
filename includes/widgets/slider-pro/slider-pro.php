@@ -55,9 +55,6 @@ class Slider_Pro extends Widget_Base {
 	 */
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
-		
-		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider-pro', plugins_url( 'frontend.css', __FILE__ ), null, WPZOOM_EL_ADDONS_VER );
-	
 	}
 
 	/**
@@ -122,9 +119,7 @@ class Slider_Pro extends Widget_Base {
 	 * @return array Style slugs.
 	 */
 	public function get_style_depends() {
-		return [
-			'wpzoom-elementor-addons-css-frontend-slider-pro'
-		];
+		return array();
 	}
 
 	/**
