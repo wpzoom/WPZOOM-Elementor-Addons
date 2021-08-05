@@ -335,7 +335,7 @@ class Slider extends Widget_Base {
 				]
 			]
 		);
-
+        /*
 		$repeater->add_control(
 			'video',
 			[
@@ -498,7 +498,7 @@ class Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->end_popover();
+		$repeater->end_popover(); */
 
 		$repeater->add_control(
 			'title',
@@ -837,7 +837,7 @@ class Slider extends Widget_Base {
 				'style_transfer' => true
 			]
 		);
-
+        /*
 		$this->add_control(
 			'settings_video',
 			[
@@ -1022,7 +1022,7 @@ class Slider extends Widget_Base {
 				'default' => 'yes'
 			]
 		);
-
+        */
 		$this->add_control(
 			'settings_navigation',
 			[
@@ -1332,7 +1332,7 @@ class Slider extends Widget_Base {
 				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
-
+        /*
 		$this->add_control(
 			'_heading_video',
 			[
@@ -1427,7 +1427,7 @@ class Slider extends Widget_Base {
 				]
 			]
 		);
-
+*/
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -2076,6 +2076,8 @@ class Slider extends Widget_Base {
 		?><div class="wpzjs-slick wpz-slick wpz-slick--slider">
 
 			<?php foreach ( $slides as $slide ) :
+
+                /*
 				if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) ) {
 					$video_url = $slide[ $slide[ 'video_type' ] . '_url' ];
 					$video_html = '';
@@ -2122,6 +2124,8 @@ class Slider extends Widget_Base {
 					}
 				}
 
+                */
+
 				$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
 
 				if ( ! $image ) {
@@ -2147,7 +2151,7 @@ class Slider extends Widget_Base {
 							<img class="wpz-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
 						<?php endif; ?>
 
-						<?php if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) && ! empty( $video_html ) ) : ?>
+						<?php /* if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) && ! empty( $video_html ) ) : ?>
 							<div <?php echo $this->get_render_attribute_string( 'video-wrapper' ); ?>>
 								<?php echo $video_html; // WPCS: XSS OK. ?>
 
@@ -2158,7 +2162,7 @@ class Slider extends Widget_Base {
 									</div>
 								<?php endif; ?>
 							</div>
-						<?php endif; ?>
+						<?php endif; */ ?>
 
 						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] ) : ?>
 							<div class="wpz-slick-content">
