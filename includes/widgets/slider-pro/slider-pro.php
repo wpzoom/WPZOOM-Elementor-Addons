@@ -516,7 +516,12 @@ class Slider_Pro extends Widget_Base {
 						$video_on_mobile = get_theme_mod( 'featured_video_mobile', zoom_customizer_get_default_option_value( 'featured_video_mobile', inspiro_customizer_data() ) );
 
 						if ( ! $is_video_slide || \option::is_on( 'slideshow_video_fallback' ) ) {
-							$style = ' data-smallimg="' . esc_attr( $small_image_url[0] ) . '" data-bigimg="' . esc_attr( $large_image_url[0] ) . '"';
+
+							$data_smallimg = isset( $small_image_url[0] ) ? ' data-smallimg="' . esc_attr( $small_image_url[0] ) . '"' : '';
+							$data_bigimg   = isset( $large_image_url[0] ) ? ' data-bigimg="' . esc_attr( $large_image_url[0] ) . '"' : '';
+		
+							$style = $data_smallimg . $data_bigimg;
+
 						}
 						?>
 						<li <?php echo $style; // WPCS: XSS OK. ?>
