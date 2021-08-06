@@ -170,13 +170,13 @@ class Slider_Pro extends Widget_Base {
 		$this->start_controls_section(
 			'section_restricted_portfolio_showcase',
 			array(
-				'label' => esc_html__( 'RESTRICTED WIDGET', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ),
 			)
 		);
 		$this->add_control(
 			'restricted_widget_text',
 			[
-				'raw' => wp_kses_post( __( '<strong>We are sorry! <br/> This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro"</a> and <a href="#">"Inspiro PRO"</a> themes</strong>', 'wpzoom-elementor-addons' ) ),
+				'raw' => wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro"</a> and <a href="https://www.wpzoom.com/themes/inspiro-pro/">"Inspiro PRO"</a> themes', 'wpzoom-elementor-addons' ) ),
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-descriptor',
 			]
@@ -439,8 +439,8 @@ class Slider_Pro extends Widget_Base {
 	protected function render() {
 
 		if ( !WPZOOM_Elementor_Widgets::is_supported_theme() ) {
-			echo '<h3>' . esc_html__( 'Restricted Widget', 'wpzoom-elementor-addons' ) . '</h3>';
-			echo wp_kses_post( __( '<strong>We are sorry! <br/> This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro"</a> and <a href="#">"Inspiro PRO"</a> themes</strong>', 'wpzoom-elementor-addons' ) );
+			echo '<h3>' . esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ) . '</h3>';
+			echo wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro"</a> and <a href="https://www.wpzoom.com/themes/inspiro-pro/">"Inspiro PRO"</a> themes', 'wpzoom-elementor-addons' ) );
 			return;
 		}
 
