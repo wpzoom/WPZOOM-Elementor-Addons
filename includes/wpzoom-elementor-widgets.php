@@ -88,15 +88,7 @@ class WPZOOM_Elementor_Widgets {
 
 			if ( file_exists( $file ) ) {
 
-				if( 'portfolio-showcase' == $slug && !self::is_supported_theme() ) {
-					continue;
-				}
-				elseif( 'slider-pro' == $slug && !self::is_supported_theme() ) {
-					continue;
-				}
-				else {
-					require_once( $file );
-				}
+				require_once( $file );
 
 				$class_name = '\WPZOOMElementorWidgets\\' . ucwords( $slug_, '_' );
 
@@ -134,7 +126,7 @@ class WPZOOM_Elementor_Widgets {
 	 * @return bool
 	 */
 
-	private function is_supported_theme() {
+	public static function is_supported_theme() {
 
 		$current_theme = get_template();
 
