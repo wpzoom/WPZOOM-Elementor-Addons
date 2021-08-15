@@ -1,14 +1,14 @@
-=== WPZOOM Addons for Elementor ===
-Contributors:      WPZOOM, alexus450
+=== WPZOOM Addons for Elementor (Templates, Widgets) ===
+Contributors:      WPZOOM, alexus450, ciorici
 Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      5.6
-Tested up to:      5.7
-Stable tag:        1.0.0
+Tested up to:      5.8
+Stable tag:        1.0.1
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom
+Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
 
 **WPZOOM Addons for Elementor** contains a collection of pre-designed templates and advanced widgets for the Elementor page builder.
 
@@ -34,10 +34,11 @@ It is very easy to use and you do not need to write any code. To contribute impr
 * Latest Posts
 * Portfolio (Inspiro theme only)
 * Pricing Table
+* Directors (for video creators)
 
 == VIEW DEMO ==
 
-You can see multiple pages created using **Elementor** and our **Inspiro PRO** theme [here](https://demo.wpzoom.com/inspiro-pro-json/)
+You can see multiple pages created using **Elementor** and our **Inspiro PRO** theme [here](https://demo.wpzoom.com/inspiro-pro-demo/)
 
 
 = Additional Resources =
@@ -88,6 +89,11 @@ If you want, you can modify the plugin with code using action and filter hooks p
 
 
 == Changelog ==
+
+= 1.0.1 =
+* New templates
+* New widgets
+* Multiple fixes and improvements
 
 = 1.0.0 =
 * Initial plugin release
