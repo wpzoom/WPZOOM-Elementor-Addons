@@ -354,6 +354,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
 					'full-width' => esc_html__( 'Title Overlay', 'wpzoom-elementor-addons' ),
+                    'full-width-visible' => esc_html__( 'Title Overlay (Visible)', 'wpzoom-elementor-addons' ),
 					'narrow'     => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
 				),
 				'default' => 'full-width',
@@ -1926,7 +1927,7 @@ class Portfolio_Showcase extends Widget_Base {
                 $size = 'portfolio_item-masonry';
             // } elseif ($col_number == '1') {
             //     $size = 'portfolio_item-thumbnail_wide';
-            } elseif ($aspect_ratio == 'cinema' && $col_number != '1' && $show_masonry != true ) {
+            } elseif ($aspect_ratio == 'cinema' && $show_masonry != true ) {
                 $size = 'portfolio_item-thumbnail_cinema';
             } elseif ($aspect_ratio == 'square' && $col_number != '1' && $show_masonry != true) {
                 $size = 'portfolio_item-thumbnail_square';
