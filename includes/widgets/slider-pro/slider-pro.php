@@ -223,6 +223,37 @@ class Slider_Pro extends Widget_Base {
 			)
 		);
 
+		$this->add_responsive_control(
+			'slideshow_height_desktop',
+			array(
+				'label'       => esc_html__( 'Slider Height (In Percents)', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'Slider height in regard to browser height.', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::SLIDER,
+				'size_units'  => array( 'vh' ),
+				'range'  => array(
+					'vh' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+				),
+				'default' => array(
+					'unit' => 'vh',
+					'size' => 100
+				),
+				'tablet_default' => array(
+					'unit' => 'vh',
+					'size' => 100
+				),
+				'mobile_default' => array(
+					'unit' => 'vh',
+					'size' => 100
+				),
+				'selectors' => array(
+					'{{WRAPPER}} #slider .flex-viewport,{{WRAPPER}} #slider .slides,{{WRAPPER}} #slider .slides > li' => 'height: {{SIZE}}vh !important;',
+				)
+			)
+		);
+
 		$this->add_control(
 			'heading_slide_title',
 			[
