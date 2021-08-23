@@ -1731,7 +1731,7 @@ class Portfolio_Showcase extends Widget_Base {
                 array(
                     'taxonomy' => 'portfolio',
                     'terms'    => $category,
-                    'field'    => 'term_id',
+                    'field'    => 'slug',
                 )
             );
         }
