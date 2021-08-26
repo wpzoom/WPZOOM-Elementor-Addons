@@ -5,7 +5,7 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      5.6
 Tested up to:      5.8
-Stable tag:        1.0.1
+Stable tag:        1.0.2
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -89,6 +89,9 @@ If you want, you can modify the plugin with code using action and filter hooks p
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Minor bug fixes
 
 = 1.0.1 =
 * New templates
