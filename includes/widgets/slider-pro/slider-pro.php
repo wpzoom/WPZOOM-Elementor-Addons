@@ -610,6 +610,10 @@ class Slider_Pro extends Widget_Base {
 
 							<div class="slide-background-overlay"></div>
 
+                            <?php $current_theme = get_template();
+                                /* Markup for Inspiro PRO*/
+                                 if( 'wpzoom-inspiro-pro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
+
                             <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
                                 <div id="zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  class="animated slow mfp-hide" data-src ="<?php echo esc_url( $popup_final_external_src ); ?>">
 
@@ -633,7 +637,15 @@ class Slider_Pro extends Widget_Base {
                                     <a data-popup-type="iframe" class="popup-video animated slow pulse" href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
                                 <?php endif; ?>
 
+                            <?php } /* End Inspiro PRO markup */ ?>
+
 							<div class="li-wrap">
+
+                                <?php
+                                    /* Markup for Inspiro Classic*/
+                                     if( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
+                                        <?php edit_post_link( __( '[Edit this slide]', 'wpzoom' ), '<small class="edit-link">', '</small>' ); ?>
+                                <?php } ?>
 
 								
 									<?php if ( empty( $slide_url ) ) { 
@@ -646,7 +658,11 @@ class Slider_Pro extends Widget_Base {
 
 									<div <?php echo $this->get_render_attribute_string( '_slide_excerpt' ); ?>><?php the_content(); ?></div>
 
+                                <?php
+                                    /* Markup for Inspiro PRO*/
+                                     if( 'wpzoom-inspiro-pro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
                                 <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
+                                <?php } ?>
 
 								<?php if ( ! empty( $btn_title ) && ! empty( $btn_url ) ) {
 									?>
@@ -654,6 +670,37 @@ class Slider_Pro extends Widget_Base {
 										<a href="<?php echo esc_url( $btn_url ); ?>"><?php echo esc_html( $btn_title ); ?></a>
 									</div><?php
 								} ?>
+
+                                <?php
+                                    /* Markup for Inspiro Classic*/
+                                     if( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
+
+                                <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
+                                    <div id="zoom-popup-<?php echo $post->ID?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
+
+                                        <div class="mfp-iframe-scaler">
+
+
+                                            <?php
+                                            echo  wp_video_shortcode(
+                                                array(
+                                                    'src' => $popup_final_external_src,
+                                                    'preload' => 'none',
+                                                    // 'loop' => 'on'
+                                                    //'autoplay' => 'on'
+                                                ));
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                    <a href="#zoom-popup-<?php echo $post->ID?>"  data-popup-type="inline" class="popup-video"></a>
+
+                                <?php elseif(!empty($video_background_popup_url)): ?>
+                                    <a  data-popup-type="iframe" class="popup-video animated slow pulse"
+                                        href="<?php echo $video_background_popup_url ?>"></a>
+                                <?php endif; ?>
+
+                                <?php } /* End Inspiro Classic markup */ ?>
 
 							</div>
 
