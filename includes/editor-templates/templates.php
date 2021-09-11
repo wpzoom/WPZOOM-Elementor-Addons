@@ -55,6 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<select id="wpzoom-elementor-template-library-filter-theme" class="elementor-template-library-filter-select" name="theme" data-filter="theme">
 					<option value = ''>Select a theme</option>
 					<option value ='inspiro-pro'>Inspiro PRO</option>
+                    <option value ='inspiro-classic'>Inspiro Classic</option>
 				</select>
 			</div>
 		</div>
