@@ -6,7 +6,7 @@
     "thumbnail": "inspiro-pro/flow-1/home",
     "requires": ["free"],
     "contributor": ["WPZOOM"],
-	"separator" : "Eccentric"
+	"separator" : "Inspiro PRO - Eccentric Demo"
 },{
     "name": "Portfolio",
     "id": "f1-portfolio",
@@ -71,7 +71,7 @@
     "thumbnail": "inspiro-pro/flow-2/home",
     "requires": ["free"],
     "contributor": ["WPZOOM"],
-    "separator" : "Offbeat"
+    "separator" : "Inspiro PRO - Offbeat Demo"
 },{
     "name": "Portfolio",
     "id": "f2-work",
@@ -138,6 +138,14 @@
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
+    "name": "Portfolio",
+    "id": "inspiro-portfolio",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/portfolio",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
     "name": "About",
     "id": "inspiro-about",
     "theme": "Inspiro Classic",
@@ -151,6 +159,71 @@
     "theme": "Inspiro Classic",
     "category": "Inspiro Classic",
     "thumbnail": "inspiro/services",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Directors (Dark Scheme)",
+    "id": "inspiro-directors-dark",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/directors-dark",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Directors (Light Scheme)",
+    "id": "inspiro-directors-light",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/directors-light",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Pricing Page",
+    "id": "inspiro-pricing",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/pricing",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact Page",
+    "id": "inspiro-contact",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
+    "id": "inspiro-lite-homepage",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro-lite/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro Lite"
+},{
+    "name": "About",
+    "id": "inspiro-about",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Services",
+    "id": "inspiro-services",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro/services",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact Page",
+    "id": "inspiro-contact",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro/contact",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }]

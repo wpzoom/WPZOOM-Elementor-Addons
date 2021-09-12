@@ -56,6 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<option value = ''>Select a theme</option>
 					<option value ='inspiro-pro'>Inspiro PRO</option>
                     <option value ='inspiro-classic'>Inspiro Classic</option>
+                    <option value ='inspiro-lite'>Inspiro Lite</option>
 				</select>
 			</div>
 		</div>
