@@ -138,6 +138,22 @@
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
+    "name": "Homepage (Video Demo)",
+    "id": "inspiro-homepage-video",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/home-video",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage (Video 2 Demo)",
+    "id": "inspiro-homepage-video2",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/home-video2",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
     "name": "Portfolio",
     "id": "inspiro-portfolio",
     "theme": "Inspiro Classic",
