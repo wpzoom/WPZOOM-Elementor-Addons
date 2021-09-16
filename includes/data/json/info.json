@@ -258,7 +258,7 @@
     "thumbnail": "inspiro/home-video2",
     "requires": ["free"],
     "contributor": ["WPZOOM"],
-    "separator" : "Inspiro Classic - Video 2 Demo"
+    "separator" : "Inspiro Classic - Video #2"
 },{
     "name": "Portfolio",
     "id": "inspiro-portfolio",

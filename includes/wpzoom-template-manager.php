@@ -125,7 +125,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					$data = self::init()->get_filesystem()->get_contents( $local_file );
 					$template_list = json_decode( $data, true );
 				}
-				$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/thumbs/';
+				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/';
 			}
 
 			echo '<div class="wpzoom-main-tiled-view">';
@@ -230,7 +230,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$thumb_url = $data['thumbnail'];
 			}
 			else {
-				$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/thumbs/' . $data['thumbnail'];
+				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/' . $data['thumbnail'];
 			}
 		?>
 		<div id="wpzoom-elementor-template-library-preview"> 
