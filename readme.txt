@@ -5,7 +5,7 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      5.6
 Tested up to:      5.8.1
-Stable tag:        1.1.0
+Stable tag:        1.1.1
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -89,6 +89,10 @@ If you want, you can modify the plugin with code using action and filter hooks p
 
 
 == Changelog ==
+
+= 1.1.1 =
+* More templates for Inspiro Classic.
+* Screenshots have benn moved to a S3 server to reduce the plugin size
 
 = 1.1.0 =
 * Added new templates for Inspiro (Classic) and Inspiro Lite themes
