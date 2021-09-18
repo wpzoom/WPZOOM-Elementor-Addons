@@ -233,7 +233,7 @@ var WPZCached = null;
 		var filterValue = $('#wpzoom-elementor-template-library-filter-theme').val();
 		if( filterValue ) {
 			filters['theme'] = filterValue;
-			$( '.wpzoom-item' ).each( function( i, item ) {
+			$( '.wpzoom-item, h2.wpzoom-templates-library-template-category' ).each( function( i, item ) {
 				var show = true;
 				$.each( filters, function( name, val ) {
 					if ( val === null ) { return; }
