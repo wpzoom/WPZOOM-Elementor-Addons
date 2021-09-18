@@ -135,7 +135,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['id'] ) );
 
 					if( isset( $template_list[$i]['separator'] ) ) {
-						echo '<h2 class="wpzoom-templates-library-template-category">' . esc_html( $template_list[$i]['separator'] ) . '</h2>';
+						echo '<h2 class="wpzoom-templates-library-template-category" data-theme="'. esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ) .'">' . esc_html( $template_list[$i]['separator'] ) . '</h2>';
 					}
 					?>
 					<div 

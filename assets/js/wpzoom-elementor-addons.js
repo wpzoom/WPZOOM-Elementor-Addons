@@ -152,7 +152,7 @@ var WPZCached = null;
 				}
 				filters[$(select).attr('name')] = value;
 			});
-			$('.wpzoom-item').each(function(i, item) {
+			$('.wpzoom-item, h2.wpzoom-templates-library-template-category').each(function(i, item) {
 				var show = true;
 				$.each(filters, function(name, val) {
 					if ( val === null ) { return; }
