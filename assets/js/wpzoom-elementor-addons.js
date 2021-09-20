@@ -120,24 +120,31 @@ var WPZCached = null;
             showLoadingView();
 			var filename = $( WPZ_selectedElement ).attr( "data-template-name" ) + ".json";
 			//console.log(filename);
-			$.post( ajaxurl, { action : 'get_content_from_elementor_export_file', filename: filename }, function(data) {
-				//console.log( filename );
-				data = JSON.parse(data);
-				//console.log(data);
-				if(insertIndex == -1){
-					elementor.getPreviewView().addChildModel(data, {silent: 0});
-				} else {
-					elementor.getPreviewView().addChildModel(data, {at: insertIndex, silent: 0});
-				}
-				elementor.channels.data.trigger('template:after:insert', {});
-				if (undefined != $e && 'undefined' != typeof $e.internal) {
-					$e.internal('document/save/set-is-modified', { status: true })
-				}
-				else {
-					elementor.saver.setFlagEditorChange(true);
-				}
-				showLoadingView();
-				windowWPZ.wpzModal.hide();
+			$.post( 
+				ajaxurl, 
+				{ action : 'get_content_from_elementor_export_file', filename: filename }, 
+				function(data) {
+
+					data = JSON.parse(data);
+
+					if(insertIndex == -1){
+						elementor.getPreviewView().addChildModel(data, {silent: 0});
+					} else {
+						elementor.getPreviewView().addChildModel(data, {at: insertIndex, silent: 0});
+					}
+					elementor.channels.data.trigger('template:after:insert', {});
+					if (undefined != $e && 'undefined' != typeof $e.internal) {
+						$e.internal('document/save/set-is-modified', { status: true })
+					}
+					else {
+						elementor.saver.setFlagEditorChange(true);
+					}
+					showLoadingView();
+					windowWPZ.wpzModal.hide();
+			} )
+			.fail( function error(errorData) {
+				elementor.templates.showErrorDialog(errorData);
+				hideLoadingView();
 			} );
         });
 
