@@ -92,7 +92,7 @@ If you want, you can modify the plugin with code using action and filter hooks p
 
 = 1.1.1 =
 * More templates for Inspiro Classic.
-* Screenshots have benn moved to a S3 server to reduce the plugin size
+* Screenshots have been moved to a S3 server to reduce the plugin size
 
 = 1.1.0 =
 * Added new templates for Inspiro (Classic) and Inspiro Lite themes
