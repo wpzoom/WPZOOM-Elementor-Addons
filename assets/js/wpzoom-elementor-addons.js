@@ -143,7 +143,7 @@ var WPZCached = null;
 					windowWPZ.wpzModal.hide();
 			} )
 			.fail( function error(errorData) {
-				elementor.templates.showErrorDialog( 'The template couldn’t be inserted. Please try again or get in touch with our support team.' );
+				elementor.templates.showErrorDialog( 'The template couldn’t be imported. Please try again or get in touch with the WPZOOM team.' );
 				hideLoadingView();
 			} );
         });

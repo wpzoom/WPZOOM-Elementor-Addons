@@ -5,7 +5,7 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      5.6
 Tested up to:      5.8.1
-Stable tag:        1.1.1
+Stable tag:        1.1.2
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -20,9 +20,10 @@ It is very easy to use and you do not need to write any code. To contribute impr
 
 = Features =
 
-* Beautiful pre-designed templates
-* Possibility to extend the templates for specific WordPress Theme
+* Beautiful pre-designed templates for professionals
+* Possibility to extend the templates for specific WordPress Themes
 * Advanced Elementor widgets with multiple options and settings
+* Unique layouts for **video & photo professionals**
 
 == Included modules: ==
 
@@ -36,9 +37,19 @@ It is very easy to use and you do not need to write any code. To contribute impr
 * Pricing Table
 * Directors (for video creators)
 
-== VIEW DEMO ==
+== Recommended Themes & DEMO ==
 
-You can see multiple pages created using **Elementor** and our **Inspiro PRO** theme [here](https://demo.wpzoom.com/inspiro-pro-demo/)
+Even though the plugin works great with any theme, currently, it includes templates that were generated specifically for the following WPZOOM themes:
+
+[**Inspiro PRO**](https://www.wpzoom.com/inspiro-pro/)
+[**Inspiro Classic**](https://www.wpzoom.com/inspiro/)
+[**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
+
+You can see multiple pages created using **Elementor** and this plugin in the following themes:
+
+[**Inspiro PRO**](https://demo.wpzoom.com/inspiro-pro-demo/)
+[**Inspiro Classic**](https://demo.wpzoom.com/inspiro-demo/)
+[**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
 
 
 = Additional Resources =
@@ -60,13 +71,18 @@ You can see multiple pages created using **Elementor** and our **Inspiro PRO** t
 
 == Frequently Asked Questions ==
 
+= What to do if a template is not loading? =
+
+Sometimes, it's enough to **try again** to import a template, and in 99% of cases, it will work fine. However, depending on your theme and server configuration, templates that include **many images** might take longer to be imported. This is mainly caused by how Elementor handles importing of templates: it uploads all images to the Media Library and then it generates files for all registered image sizes on your website.
+
+
 = Who should use the WPZOOM Addons for Elementor? =
 
 The WPZOOM Addons for Elementor is a collection of unique and creative templates and the widgets, that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Elementor.
 
 = What are the requirements to use the WPZOOM Addons for Elementor? =
 
-You only need to have the [**Elementor** page builder](https://elementor.com/) plugin installed and activated first.
+You only need to have the [**Elementor** page builder](https://www.wpzoom.com/go/elementor/) plugin installed and activated first.
 
 = What themes does the WPZOOM Addons for Elementor work with? =
 
@@ -76,19 +92,19 @@ The WPZOOM Addons for Elementor is built to work great with all the themes.
 
 Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templates and widgets to Elementor page builder library, so it is not slowing down your website at all. Therefore, it will not affect your website speed and performance in any way.
 
-= Can I set it up somehow? =
-
-This is a simple plugin that only adds custom collections of designs and widgets into Elementor page builder and there is really no need for any settings page.
-
-If you want, you can modify the plugin with code using action and filter hooks provided. More information on [GitHub repository](https://github.com/wpzoom/wpzoom-elementor-addons)
-
-
 == Screenshots ==
 
-1. /assets/screenshots/1.png
+1. Template Library
+2. Additional Modules/widgets
+3. Pricing Table widget in Inspiro PRO theme
+4. Team Members module
+5. WooCommerce Products module
 
 
 == Changelog ==
+
+= 1.1.2 =
+* Add notice when templates can't be loaded
 
 = 1.1.1 =
 * More templates for Inspiro Classic.
