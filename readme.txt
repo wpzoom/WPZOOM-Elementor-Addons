@@ -41,8 +41,8 @@ It is very easy to use and you do not need to write any code. To contribute impr
 
 Even though the plugin works great with any theme, currently, it includes templates that were generated specifically for the following WPZOOM themes:
 
-[**Inspiro PRO**](https://www.wpzoom.com/inspiro-pro/)
-[**Inspiro Classic**](https://www.wpzoom.com/inspiro/)
+[**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/)
+[**Inspiro Classic**](https://www.wpzoom.com/themes/inspiro/)
 [**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
 
 You can see multiple pages created using **Elementor** and this plugin in the following themes:
