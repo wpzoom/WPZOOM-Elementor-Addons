@@ -501,7 +501,7 @@ class Slider_Pro extends Widget_Base {
 				array(
 					'taxonomy' => 'slide-category',
 					'terms'    => $category,
-					'field'    => 'term_id',
+					'field'    => 'slug',
 				)
 			);
 		}
