@@ -5,7 +5,7 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      5.6
 Tested up to:      5.8.1
-Stable tag:        1.1.2
+Stable tag:        1.1.3
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -102,6 +102,9 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 
 == Changelog ==
+
+= 1.1.3 =
+* Minor bug fix with the Inspiro Slideshow widget
 
 = 1.1.2 =
 * Add notice when templates can't be loaded
