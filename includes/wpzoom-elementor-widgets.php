@@ -116,6 +116,24 @@ class WPZOOM_Elementor_Widgets {
 				'icon' => 'fa fa-plug'
 			]
 		);
+		if( self::is_supported_theme( 'inspiro' ) ) {
+			$elements_manager->add_category(
+				'wpzoom-elementor-addons-inspiro',
+				[
+					'title' => __( 'WPZOOM Inspiro', 'wpzoom-elementor-addons' ),
+					'icon' => 'fa fa-plug'
+				]
+			);
+		}
+		if( self::is_supported_theme( 'foodica' ) ) {
+			$elements_manager->add_category(
+				'wpzoom-elementor-addons-foodica',
+				[
+					'title' => __( 'WPZOOM Foodica', 'wpzoom-elementor-addons' ),
+					'icon' => 'fa fa-plug'
+				]
+			);
+		}
 	}
 
 	/**
@@ -126,13 +144,25 @@ class WPZOOM_Elementor_Widgets {
 	 * @return bool
 	 */
 
-	public static function is_supported_theme() {
+	public static function is_supported_theme( $theme = 'inspiro' ) {
 
 		$current_theme = get_template();
 
-		if( 'wpzoom-inspiro-pro' === $current_theme || 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) {
-			return true;
+		switch( $theme ) {
+			
+			case 'inspiro':
+				if( 'wpzoom-inspiro-pro' === $current_theme || 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) {
+					return true;
+				}
+			break;
+			case 'foodica':
+				if( 'foodica-pro' === $current_theme || 'foodica' === $current_theme && class_exists( 'WPZOOM' ) ) {
+					return true;
+				}
+			break;	
+		
 		}
+
 		return false;
 
 	}

@@ -101,7 +101,7 @@ class Portfolio_Showcase extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-addons' ];
+		return [ 'wpzoom-elementor-addons-inspiro' ];
 	}
 
 	/**

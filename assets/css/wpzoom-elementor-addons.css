@@ -18,8 +18,12 @@
     display: flex;
     flex-direction: column;
 }
+#elementor-panel-category-wpzoom-elementor-addons-inspiro,
+#elementor-panel-category-wpzoom-elementor-addons-foodica {
+    order: -2;
+}
 #elementor-panel-category-wpzoom-elementor-addons {
-    order: -1;
+    order: -1
 }
 .elementor-add-new-section .elementor-add-wpzoom-templates-button {
     margin-left:5px;
