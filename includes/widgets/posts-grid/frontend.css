@@ -2,7 +2,7 @@
     overflow: hidden;
 }
 .wpz-grid-container .wpz-post a.read-more-btn {
-	display: block;
+	display: inline-block;
 }
 .wpz-grid-container .post-grid-thumbnail {
 	margin-bottom: 20px;

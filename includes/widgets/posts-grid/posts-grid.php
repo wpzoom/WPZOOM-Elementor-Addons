@@ -4,10 +4,15 @@ namespace WPZOOMElementorWidgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Core\Schemes\Typography;
-use Elementor\Scheme_Color;
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
+use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -973,6 +978,14 @@ class Posts_Grid extends Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn',
+			]
+		);
+
 		$this->start_controls_tabs( 'grid_readmore_color_style' );
 
 		// Normal tab.
@@ -988,11 +1001,32 @@ class Posts_Grid extends Widget_Base {
 			'grid_readmore_style_color',
 			[
 				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+				'label'     => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'default'   => '',
 				'selectors' => [
 					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn' => 'color: {{VALUE}};'
 				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'grid_readmore_style_background',
+				'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'global' => [
+							'default' => '',
+						],
+					],
+				],
 			]
 		);
 
@@ -1018,10 +1052,82 @@ class Posts_Grid extends Widget_Base {
 				]
 			]
 		);
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'grid_readmore_style_background_hover',
+				'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn:hover',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+				],
+			]
+		);
+
+		$this->add_control(
+			'grid_readmore_style_hover_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => [
+					'grid_readmore_style_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
 
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'grid_readmore_style_border',
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'grid_readmore_style_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'grid_readmore_style_box_shadow',
+				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'grid_readmore_style_text_padding',
+			[
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
 
 		// Readmore margin
 		$this->add_responsive_control(
