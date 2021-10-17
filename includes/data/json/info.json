@@ -74,7 +74,7 @@
     "separator" : "Inspiro PRO - Offbeat Demo"
 },{
     "name": "Portfolio",
-    "id": "f2-work",
+    "id": "f2-portfolio",
     "theme": "Inspiro PRO",
     "category": "Offbeat",
     "thumbnail": "inspiro-pro/flow-2/work",
@@ -114,10 +114,44 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Single Director",
-    "id": "f2-director",
+    "id": "f2-director-page",
     "theme": "Inspiro PRO",
     "category": "Offbeat",
     "thumbnail": "inspiro-pro/flow-2/director-page",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+},{
+    "name": "Homepage",
+    "id": "winery-homepage",
+    "theme": "Inspiro PRO",
+    "category": "Winery",
+    "thumbnail": "inspiro-pro/winery/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Winery Demo"
+},{
+    "name": "Story (About)",
+    "id": "winery-about",
+    "theme": "Inspiro PRO",
+    "category": "Winery",
+    "thumbnail": "inspiro-pro/winery/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Winery",
+    "id": "winery-winery",
+    "theme": "Inspiro PRO",
+    "category": "Winery",
+    "thumbnail": "inspiro-pro/winery/winery",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "winery-contact",
+    "theme": "Inspiro PRO",
+    "category": "Winery",
+    "thumbnail": "inspiro-pro/winery/contact",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
