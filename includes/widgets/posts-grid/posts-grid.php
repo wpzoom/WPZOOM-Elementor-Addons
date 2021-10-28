@@ -463,6 +463,15 @@ class Posts_Grid extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'offset',
+            [
+                'label'   => esc_html__( 'Number of posts to Offset', 'wpzoom-elementor-addons' ),
+                'type'    => Controls_Manager::TEXT,
+                'default' => 0,
+            ]
+        );
+
 		$this->end_controls_section();
 	}
 
@@ -1201,6 +1210,11 @@ class Posts_Grid extends Widget_Base {
 				if ( ! empty( $settings[ 'order' ] ) ) {
 					$query_args[ 'order' ] = $settings[ 'order' ];
 				}
+
+                // Offset .
+                if ( ! empty( $settings[ 'offset' ] ) ) {
+                    $query_args[ 'offset' ] = $settings[ 'offset' ];
+                }
 
 				$all_posts = new \WP_Query( $query_args );
 
