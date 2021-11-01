@@ -1,5 +1,22 @@
 [{
     "name": "Homepage",
+    "id": "foodica-home",
+    "theme": "Foodica (PRO)",
+    "category": "Foodica",
+    "thumbnail": "foodica/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Foodica (PRO)"
+},{
+    "name": "Recipe Index",
+    "id": "foodica-index",
+    "theme": "Foodica (PRO)",
+    "category": "Foodica",
+    "thumbnail": "foodica/index",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "f1-homepage",
     "theme": "Inspiro PRO",
     "category": "Eccentric",
