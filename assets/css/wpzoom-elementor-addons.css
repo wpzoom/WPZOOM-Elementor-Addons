@@ -227,3 +227,6 @@
 .wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar .wpzoom-btn-template-insert:hover {
 	color:#111;
 }
+.wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb {
+	border-color:#444;
+}
