@@ -479,8 +479,25 @@ class Posts_Grid extends Widget_Base {
 				]
 			]
 		);
-
-
+		$this->add_responsive_control(
+			'load_more_width',
+			[
+				'label' => esc_html__( 'Width', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em' ],
+				'range' => [
+					'px' => [
+						'max' => 500,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition'   => [
+					'pagination_type' => 'load_more'
+				]
+			]
+		);
 
 		$this->end_controls_section();
 	}
