@@ -35,6 +35,16 @@ class Posts_Grid extends Widget_Base {
 		parent::__construct( $data, $args );
 
 		wp_register_style( 'wpzoom-elementor-addons-css-frontend-posts-grid', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_script( 'wpzoom-elementor-addons-js-frontend-posts-grid', plugins_url( 'frontend.js', __FILE__ ), array( 'jquery' ), WPZOOM_EL_ADDONS_VER, true );
+		wp_localize_script( 
+			'wpzoom-elementor-addons-js-frontend-posts-grid', 
+			'WPZoomElementorAddons', 
+			array(
+				'ajaxURL' => admin_url( 'admin-ajax.php' ),
+				'loadingString' => esc_html__( 'Loading...', 'wpzoom-elementor-addons' )
+			) 
+		);
+
 	}
 
 	/**
@@ -105,6 +115,22 @@ class Posts_Grid extends Widget_Base {
 	}
 
 	/**
+	 * Script Dependencies.
+	 *
+	 * Returns all the scripts the widget depends on.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return array Script slugs.
+	 */
+	public function get_script_depends() {
+		return [
+			'jquery',
+			'wpzoom-elementor-addons-js-frontend-posts-grid'
+		];
+	}
+
+	/**
 	 * Get All Post Categories.
 	 *
 	 * Returns a list of all post categories.
@@ -161,6 +187,7 @@ class Posts_Grid extends Widget_Base {
 		$this->wpz_style_meta_options();
 		$this->wpz_style_content_options();
 		$this->wpz_style_readmore_options();
+		$this->wpz_style_loadmore_options();
 	}
 
 	/**
@@ -395,6 +422,65 @@ class Posts_Grid extends Widget_Base {
 				'separator' => 'before'
 			]
 		);
+
+		$this->add_control(
+			'pagination_type',
+			[
+				'label' => esc_html__( 'Pagination', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none'       => esc_html__( 'None', 'wpzoom-elementor-addons' ),
+					'pagination' => esc_html__( 'Pagination', 'wpzoom-elementor-addons' ),
+					'load_more'  => esc_html__( 'Load More Button', 'wpzoom-elementor-addons' )
+				],
+				'default'   => 'none',
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'load_more_text',
+			[
+				'label'       => esc_html__( 'Load More Text', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'default'     => esc_html__( 'Load More', 'wpzoom-elementor-addons' ),
+				'condition'   => [
+					'pagination_type' => 'load_more'
+				]
+			]
+		);
+
+		$this->add_control(
+			'pagination_align',
+			[
+				'label' => esc_html__( 'Pagination Alignment', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'fa fa-align-left'
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'fa fa-align-center'
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'fa fa-align-right'
+					]
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wpzoom-posts-grid-pagination .pagination, {{WRAPPER}} .wpz-posts-grid-load-more' => 'text-align: {{VALUE}};'
+				],
+				'condition'   => [
+					'pagination_type!' => 'none'
+				]
+			]
+		);
+
+
 
 		$this->end_controls_section();
 	}
@@ -1155,6 +1241,204 @@ class Posts_Grid extends Widget_Base {
 	}
 
 	/**
+	 * Style > Load More.
+	 *
+	 * Registers the style Load More controls.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	private function wpz_style_loadmore_options() {
+		
+		// Tab.
+		$this->start_controls_section(
+			'section_grid_loadmore_style',
+			[
+				'label' => esc_html__( 'Load More Button', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition'   => [
+					'pagination_type' => 'load_more'
+				]
+			]
+		);
+
+		// Loadmore typography.
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name'     => 'grid_loadmore_style_typography',
+				'selector' => '{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn'
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'grid_loadmore_text_shadow',
+				'selector' => '{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn',
+			]
+		);
+
+		$this->start_controls_tabs( 'grid_loadmore_color_style' );
+
+		// Normal tab.
+		$this->start_controls_tab(
+			'grid_loadmore_style_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' )
+			]
+		);
+
+		// Load more color.
+		$this->add_control(
+			'grid_loadmore_style_color',
+			[
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn' => 'color: {{VALUE}};'
+				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'grid_loadmore_style_background',
+				'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'global' => [
+							'default' => '',
+						],
+					],
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		// Hover tab.
+		$this->start_controls_tab(
+			'grid_loadmore_style_color_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' )
+			]
+		);
+
+		// Loadmore hover color.
+		$this->add_control(
+			'grid_loadmore_style_hover_color',
+			[
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn:hover' => 'color: {{VALUE}};'
+				]
+			]
+		);
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'grid_loadmore_style_background_hover',
+				'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn:hover',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+				],
+			]
+		);
+
+		$this->add_control(
+			'grid_loadmore_style_hover_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => [
+					'grid_loadmore_style_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'grid_loadmore_style_border',
+				'selector' => '{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'grid_loadmore_style_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'grid_loadmore_style_box_shadow',
+				'selector' => '{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'grid_loadmore_style_text_padding',
+			[
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more a.wpz-posts-grid-load-more-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		// Load more margin
+		$this->add_responsive_control(
+			'grid_loadmore_style_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'selectors'  => [
+					'{{WRAPPER}} .wpz-posts-grid-load-more' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+				]
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	/**
 	 * Render the Widget.
 	 *
 	 * Renders the widget on the frontend.
@@ -1163,61 +1447,88 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 */
 	protected function render( $instance = [] ) {
-		// Get settings.
-		$settings = $this->get_settings();
 
+		// Get settings.
+		$settings = $this->get_settings_for_display();
+
+		if ( get_query_var('paged') ) {
+			$paged = get_query_var('paged');
+		} else if ( get_query_var('page') ) {
+			$paged = get_query_var('page');
+		} else {
+			$paged = 1;
+		}
+
+		$posts_per_page = ( ! empty( $settings[ 'posts_per_page' ] ) ?  $settings[ 'posts_per_page' ] : 3 );
+		$cats = is_array( $settings[ 'post_categories' ] ) ? implode( ',', $settings[ 'post_categories' ] ) : $settings[ 'post_categories' ];
+		
+		$grid_style = $settings[ 'grid_style' ];
+
+		$query_args = array(
+			'posts_per_page' 	  => absint( $posts_per_page ),
+			//'no_found_rows'  	  => true,
+			'post__not_in'        => get_option( 'sticky_posts' ),
+			'ignore_sticky_posts' => true,
+			'category_name' 	  => $cats
+		);
+
+		// Order by.
+		if ( ! empty( $settings[ 'orderby' ] ) ) {
+			$query_args[ 'orderby' ] = $settings[ 'orderby' ];
+		}
+
+		// Order .
+		if ( ! empty( $settings[ 'order' ] ) ) {
+			$query_args[ 'order' ] = $settings[ 'order' ];
+		}
+
+		// Offset .
+		$adjusted_offset = (int) $settings['offset'] + ( ( $paged - 1 ) * (int)$posts_per_page );
+		$query_args[ 'offset' ] = $adjusted_offset;
+		
+		$all_posts = new \WP_Query( $query_args );
+		
+		//Need to pass offset to ajax data
+		$offset = $adjusted_offset + (int)$posts_per_page;
+		$query_args['offset'] = $offset;
+
+		$data_posts_grid = array_merge( 
+			$query_args, 
+			array( 
+				'show_image'          => $settings['show_image'],
+				'post_thumbnail_size' => $settings['post_thumbnail_size'],
+				'show_title'          => $settings['show_title'],
+				'title_tag'           => $settings['title_tag'],
+				'meta_data'           => $settings['meta_data'],
+				'show_excerpt'        => $settings['show_excerpt'],
+				'excerpt_length'      => $settings['excerpt_length'],
+				'show_read_more'      => $settings['show_read_more'],
+				'read_more_text'      => $settings['read_more_text'],
+				'grid_style'          => $grid_style,
+				'total'               => $all_posts->found_posts,
+			) 
+		);
 		?>
-		<div class="wpz-grid">
+		<div 
+			class="wpz-grid" 
+			data-uid="<?php echo esc_attr( $this->get_id() ); ?>"
+			data-offset="<?php echo esc_attr( $offset ); ?>"
+			data-posts-grid='<?php echo wp_json_encode( $data_posts_grid ); ?>'>
 			<?php 
 
 			$columns_desktop = ( ! empty( $settings[ 'columns' ] ) ? 'wpz-grid-desktop-' . $settings[ 'columns' ] : 'wpz-grid-desktop-3' );
-
 			$columns_tablet = ( ! empty( $settings[ 'columns_tablet' ] ) ? ' wpz-grid-tablet-' . $settings[ 'columns_tablet' ] : ' wpz-grid-tablet-2' );
-
 			$columns_mobile = ( ! empty( $settings[ 'columns_mobile' ] ) ? ' wpz-grid-mobile-' . $settings[ 'columns_mobile' ] : ' wpz-grid-mobile-1' );
-
-			$grid_style = $settings[ 'grid_style' ];
 
 			$grid_class = '';
 
 			if( 5 == $grid_style ){
-
 				$grid_class = ' grid-meta-bottom';
-
 			}
 
 			?>
 			<div class="wpz-grid-container elementor-grid <?php echo esc_attr( $columns_desktop ); ?> <?php echo esc_attr( $columns_tablet ); ?> <?php echo esc_attr( $columns_mobile ); ?> <?php echo esc_attr( $grid_class ); ?>">
 				<?php
-				$posts_per_page = ( ! empty( $settings[ 'posts_per_page' ] ) ?  $settings[ 'posts_per_page' ] : 3 );
-
-				$cats = is_array( $settings[ 'post_categories' ] ) ? implode( ',', $settings[ 'post_categories' ] ) : $settings[ 'post_categories' ];
-
-				$query_args = array(
-								'posts_per_page' 		=> absint( $posts_per_page ),
-								'no_found_rows'  		=> true,
-								'post__not_in'          => get_option( 'sticky_posts' ),
-								'ignore_sticky_posts'   => true,
-								'category_name' 		=> $cats
-							);
-
-				// Order by.
-				if ( ! empty( $settings[ 'orderby' ] ) ) {
-					$query_args[ 'orderby' ] = $settings[ 'orderby' ];
-				}
-
-				// Order .
-				if ( ! empty( $settings[ 'order' ] ) ) {
-					$query_args[ 'order' ] = $settings[ 'order' ];
-				}
-
-                // Offset .
-                if ( ! empty( $settings[ 'offset' ] ) ) {
-                    $query_args[ 'offset' ] = $settings[ 'offset' ];
-                }
-
-				$all_posts = new \WP_Query( $query_args );
-
 				if ( $all_posts->have_posts() ) {
 					if ( 5 == $grid_style ) {
 						include( __DIR__ . '/layouts/layout-5.php' );
@@ -1231,9 +1542,31 @@ class Posts_Grid extends Widget_Base {
 						include( __DIR__ . '/layouts/layout-1.php' );
 					}
 				} ?>
+			</div>
 
-			</div>			      						               
-		</div>
+			<?php if ( 'pagination' == $settings['pagination_type'] ) :
+				$links = paginate_links( array(
+					'total'		=> $all_posts->max_num_pages,
+					'current'	=> $paged,
+					'prev_next' => true,
+					'prev_text' => '<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>',
+					'next_text' => '<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>',
+				) );
+
+				if( !empty( $links ) ) {
+					printf( '<div class="wpzoom-posts-grid-pagination"><nav class="navigation paging-navigation pagination" role="navigation">%s</nav></div>', $links );
+				}
+
+			endif;
+			?>
+			<?php if ( 'load_more' == $settings['pagination_type'] && !empty( $settings['load_more_text'] ) ) : ?>
+				<div class="wpz-posts-grid-load-more">
+					<a href="#" class="wpz-posts-grid-load-more-btn btn"><?php echo esc_html_e( $settings['load_more_text'] ); ?></a>
+				</div>
+				<?php wp_nonce_field( 'wpz_posts_grid_load_more', 'wpz_posts_grid_load_more' . $this->get_id() ); ?>
+			<?php endif; ?>
+		
+		</div><!-- //.wpz-grid -->
 		<?php
 	}
 
@@ -1247,8 +1580,8 @@ class Posts_Grid extends Widget_Base {
 	 * @return array Custom excerpt length.
 	 */
 	public function wpz_filter_excerpt_length( $length ) {
+		
 		$settings = $this->get_settings();
-
 		$excerpt_length = ( !empty( $settings[ 'excerpt_length' ] ) ) ? absint( $settings[ 'excerpt_length' ] ) : 25;
 
 		return absint( $excerpt_length );
@@ -1422,4 +1755,5 @@ class Posts_Grid extends Widget_Base {
 
 		?><a class="read-more-btn" href="<?php the_permalink(); ?>"><?php echo esc_html( $read_more_text ); ?></a><?php
 	}
+
 }
