@@ -1,3 +1,7 @@
+<?php
+	$category = get_term_by( 'slug', $category, 'portfolio' );
+	$category = isset( $category->term_id ) ? $category->term_id : '';
+?>
 <nav class="portfolio-archive-taxonomies">
 	<ul class="portfolio-taxonomies portfolio-taxonomies-filter-by">
 		<li <?php echo( ! empty( $category ) ? 'data-subcategory="' . esc_attr( $category ) . '"' : '' ); ?>
