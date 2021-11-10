@@ -312,6 +312,20 @@ class Portfolio_Showcase extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'hide_sub_categories',
+			array(
+				'label'       => esc_html__( 'Hide sub-categories in filter?', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'If you select yes, filter will display on top level categories, the sub-categorie\'s posts will display in parent\'s categories', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::SWITCHER,
+				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'default'     => 'no',
+				'condition'   =>  array(
+					'show_categories' => 'yes'
+				),
+			)
+		);
+		$this->add_control(
 			'show_count',
 			array(
 				'label'    => esc_html__( 'Number of Posts', 'wpzoom-elementor-addons' ),
@@ -1804,6 +1818,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$show_popup_caption                 = ( 'yes' == $settings['show_popup_caption'] ? true : false ) ;
 		$show_space                         = ( 'yes' == $settings['show_space'] ? true : false );
 		$show_categories                    = ( 'yes' == $settings['show_categories'] ? true : false );
+		$hide_subcategories                 = ( 'yes' == $settings['hide_sub_categories'] ? true : false );
 		$background_video                   = ( 'yes' == $settings['enable_background_video'] ? true : false );
 		$enable_director_name               = ( 'yes' == $settings['enable_director_name'] ? true : false );
 		$enable_year                        = ( 'yes' == $settings['enable_year'] ? true : false );
@@ -1926,6 +1941,7 @@ class Portfolio_Showcase extends Widget_Base {
 							'enable_director_name'         => $enable_director_name,
 							'enable_year'                  => $enable_year,
 							'enable_category'              => $enable_category,
+							'hide_subcategories'           => $hide_subcategories,
 							'show_excerpt'                 => $show_excerpt,
 							'view_all_btn'                 => $view_all_btn,
 							'readmore_text'                => $readmore_text,
@@ -2009,6 +2025,7 @@ class Portfolio_Showcase extends Widget_Base {
         $enable_director_name         = wp_validate_boolean( $settings['enable_director_name'] );
         $enable_year                  = wp_validate_boolean( $settings['enable_year'] );
         $enable_category              = wp_validate_boolean( $settings['enable_category'] );
+		$hide_subcategories           = wp_validate_boolean( $settings['hide_subcategories'] );
         $always_play_background_video = wp_validate_boolean( $settings['always_play_background_video'] );
 
         while ( $wp_query->have_posts() ) : $wp_query->the_post();
@@ -2079,6 +2096,9 @@ class Portfolio_Showcase extends Widget_Base {
             if ( is_array( $portfolios ) ) {
                 foreach ( $portfolios as $portfolio ) {
                     $articleClass .= ' portfolio_' . $portfolio->term_id . '_item ';
+					if( isset( $portfolio->parent ) && $hide_subcategories ) {
+						$articleClass .= ' portfolio_' . $portfolio->parent . '_item ';
+					}
                 }
             }
 

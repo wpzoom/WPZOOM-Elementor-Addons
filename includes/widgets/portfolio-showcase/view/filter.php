@@ -11,12 +11,17 @@
 			<a href="<?php echo esc_url( get_page_link( option::get( 'portfolio_url' ) ) ); ?>"><?php esc_html_e( 'All', 'wpzoom-elementor-addons' ); ?></a>
 		</li>
 		<?php 
-			wp_list_categories( array(
+			$args = array(
 				'title_li'     => '',
 				'hierarchical' => false,
 				'taxonomy'     => 'portfolio',
 				'child_of'     => $category
-			) ); 
+			);
+			if( 'yes' == $settings['hide_sub_categories'] ) {
+				$args['hierarchical'] = true;
+				$args['depth'] = 1;
+			}
+			wp_list_categories( $args ); 
 		?>
 	</ul>
 </nav>
