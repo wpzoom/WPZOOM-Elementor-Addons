@@ -301,7 +301,7 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label'       => esc_html__( 'Display Category Filter at the Top (Isotope Effect)', 'wpzoom-elementor-addons' ),
 				'subtitle'    => esc_html__( 'Isotope Effect', 'wpzoom-elementor-addons' ),
-				'description' => esc_html__( 'If you\'ve selected to display posts from All categories, then the filter will include top-level portfolio categories (no sub-categories). If you selected to display posts from a specific category, then the filter will display its sub-categories.', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'If you\'ve selected to display posts from All categories, then the filter will include all categories. If you selected to display posts from a specific category, then the filter will display its sub-categories.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -315,7 +315,7 @@ class Portfolio_Showcase extends Widget_Base {
 			'hide_sub_categories',
 			array(
 				'label'       => esc_html__( 'Hide sub-categories in filter?', 'wpzoom-elementor-addons' ),
-				'description' => esc_html__( 'If you select yes, filter will display on top level categories, the sub-categorie\'s posts will display in parent\'s categories', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'If you select yes, filter will display only top level categories', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
