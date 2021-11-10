@@ -212,3 +212,21 @@
 		transform:scale(1);
 	}
 }
+
+/* Editor Panel Dark Mode */
+.wpzoom-dark-mode .wpzoom-templates-library-template-category {
+	border-color:#444;
+}
+.wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item {
+	background-color:#26292c;
+}
+.wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar .wpzoom-btn-template-insert {
+	color:#fff;
+	border-color:#444;
+}
+.wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item .wpzoom-action-bar .wpzoom-btn-template-insert:hover {
+	color:#111;
+}
+.wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb {
+	border-color:#444;
+}

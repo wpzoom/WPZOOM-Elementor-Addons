@@ -602,6 +602,49 @@ class Portfolio_Showcase extends Widget_Base {
 				),
 			)
 		);
+		$this->add_responsive_control(
+			'view_all_align',
+			array(
+				'label'   => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left' => array(
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					),
+				),
+				'default' => '',
+				'selectors' => array(
+					'{{WRAPPER}} .portfolio-view_all-link' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'view_all_width',
+			[
+				'label' => esc_html__( 'Width', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em' ],
+				'range' => [
+					'px' => [
+						'max' => 500,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		//Style and Design Options
@@ -1539,6 +1582,26 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' )
 			)
 		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'portfolio_viewall_normal_style_background',
+				'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .portfolio-view_all-link a.btn',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'global' => [
+							'default' => '',
+						],
+					],
+				],
+			]
+		);
 
 		//View All or Load More color.
 		$this->add_control(
@@ -1561,6 +1624,26 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' )
 			)
 		);
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'portfolio_viewall_hover_style_background',
+				'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .portfolio-view_all-link a.btn:hover',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'global' => [
+							'default' => '',
+						],
+					],
+				],
+			]
+		);
 		//View All or Load More hover color.
 		$this->add_control(
 			'portfolio_viewall_border_style_hover_color',
@@ -1576,6 +1659,40 @@ class Portfolio_Showcase extends Widget_Base {
 
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'portfolio_viewall_style_box_shadow',
+				'selector' => '{{WRAPPER}} .portfolio-view_all-link a.btn',
+			]
+		);
+
+		$this->add_responsive_control(
+			'portfolio_viewall_style_text_padding',
+			[
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		// Viewall button margin
+		$this->add_responsive_control(
+			'portfolio_viewall_style_margin',
+			[
+				'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'selectors'  => [
+					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+				]
+			]
+		);
 
 		$this->end_controls_section();
 

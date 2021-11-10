@@ -38,3 +38,8 @@
 .elementor-widget-wpzoom-elementor-addons-posts-grid .wpz-grid .wpz-grid-container .wpz-post .post-grid-meta span {
     font-weight: 400;
 }
+
+.wpz-posts-grid-load-more {
+	display: block;
+	margin:50px 0;
+}
