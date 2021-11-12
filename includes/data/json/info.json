@@ -139,6 +139,63 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "business-home",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Business Demo"
+},{
+    "name": "About",
+    "id": "business-about",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Work",
+    "id": "business-work",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/work",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Pricing/Services",
+    "id": "business-pricing",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/pricing",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Careers",
+    "id": "business-careers",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/careers",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "News",
+    "id": "business-news",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/news",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "business-contact",
+    "theme": "Inspiro PRO",
+    "category": "Business",
+    "thumbnail": "inspiro-pro/business/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "winery-homepage",
     "theme": "Inspiro PRO",
     "category": "Winery",
