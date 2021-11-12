@@ -156,7 +156,7 @@ class Posts_Grid extends Widget_Base {
 				foreach ( $terms as $term ) {
 					if ( isset( $term ) ) {
 						if ( isset( $term->slug ) && isset( $term->name ) ) {
-							$options[ $term->slug ] = $term->name;
+							$options[ $term->slug ] = $term->name . ' (' . $term->count . ')';
 						}
 					}
 				}

@@ -1773,7 +1773,7 @@ class Portfolio_Showcase extends Widget_Base {
 		if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 			foreach ( $terms as $key => $taxonomy ) {
 				if ( is_object( $taxonomy ) && property_exists( $taxonomy, 'slug' ) && property_exists( $taxonomy, 'name' ) ) {
-					$portfolio_tax[ $taxonomy->slug ] = $taxonomy->name;
+					$portfolio_tax[ $taxonomy->slug ] = $taxonomy->name . ' (' . $taxonomy->count . ')';
 				}
 			}
 		}
