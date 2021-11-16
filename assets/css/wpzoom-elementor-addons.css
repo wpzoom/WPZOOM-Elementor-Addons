@@ -62,9 +62,7 @@
 .wpzoom-main-tiled-view .wpzoom-item {
 	display:flex;
 	flex-direction:column;
-
     width: calc(20% - 30px);
-
     margin: 15px;
     padding: 8px;
     background-color: #fff;
@@ -72,8 +70,8 @@
     box-shadow: 0 1px 20px 0 rgb(0 0 0 / 7%);
     -webkit-border-radius: 3px;
     border-radius: 3px;
-
-
+	position: relative;
+	overflow: hidden;
 }
 .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-title {
 	text-align:left;
@@ -229,4 +227,17 @@
 }
 .wpzoom-dark-mode .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb {
 	border-color:#444;
+}
+.wpzoom-ribbon {
+	font-size: 12px;
+	color:#fff;
+	background:#2b6;
+	position: absolute;
+	top:25px;
+	padding:5px;
+	text-align: center;
+	z-index: 9;
+	transform: rotate(45deg);
+	width: 250px;
+	text-transform: uppercase;
 }

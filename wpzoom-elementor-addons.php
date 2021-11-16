@@ -157,7 +157,15 @@ final class WPZOOM_Elementor_Addons {
 	 */
 	public function plugin_scripts() {
 		wp_enqueue_script( 'select2', WPZOOM_EL_ADDONS_URL . 'assets/vendors/select2/select2.full.min.js', array( 'jquery' ), WPZOOM_EL_ADDONS_VER, true );
-		wp_enqueue_script( 'wpzoom-elementor-addons', WPZOOM_EL_ADDONS_URL . 'assets/js/wpzoom-elementor-addons.js', array( 'jquery', 'wp-util', 'select2' ), WPZOOM_EL_ADDONS_VER, true );
+		wp_enqueue_script( 'wpzoom-elementor-addons', WPZOOM_EL_ADDONS_URL . 'assets/js/wpzoom-elementor-addons.min.js', array( 'jquery', 'wp-util', 'select2' ), WPZOOM_EL_ADDONS_VER, true );
+		wp_localize_script(
+			'wpzoom-elementor-addons',
+			'wpzoomElementorAddons',
+			array(
+				'currentTemplate' => get_template(),
+				'wpzoomFramework' => class_exists( 'WPZOOM' ) ? true : false
+			),
+		);
 	}
 
 	/**

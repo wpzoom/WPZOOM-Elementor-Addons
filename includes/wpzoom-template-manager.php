@@ -139,6 +139,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					}
 					?>
 					<div 
+						id="wpzoom-<?php echo esc_attr( $slug ); ?>"
 						class="wpzoom-templates-library-template wpzoom-item" 
 						data-theme="<?php echo esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ) ?>" 
 						data-category="<?php echo esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['category'] ) ) ) ?>"
