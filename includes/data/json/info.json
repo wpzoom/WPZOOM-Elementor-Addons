@@ -589,7 +589,7 @@
     "separator" : "Inspiro Lite"
 },{
     "name": "About",
-    "id": "inspiro-about",
+    "id": "inspiro-lite-about",
     "theme": "Inspiro Lite",
     "category": "Inspiro Lite",
     "thumbnail": "inspiro/about",
@@ -597,7 +597,7 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Services",
-    "id": "inspiro-services",
+    "id": "inspiro-lite-services",
     "theme": "Inspiro Lite",
     "category": "Inspiro Lite",
     "thumbnail": "inspiro/services",
@@ -605,7 +605,7 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Contact Page",
-    "id": "inspiro-contact",
+    "id": "inspiro-lite-contact",
     "theme": "Inspiro Lite",
     "category": "Inspiro Lite",
     "thumbnail": "inspiro/contact",
