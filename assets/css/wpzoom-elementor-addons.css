@@ -233,11 +233,12 @@
 	color:#fff;
 	background:#2b6;
 	position: absolute;
-	top:25px;
+	top:18px;
+    right: -40px;
 	padding:5px;
 	text-align: center;
 	z-index: 9;
 	transform: rotate(45deg);
-	width: 250px;
+	width: 150px;
 	text-transform: uppercase;
 }
