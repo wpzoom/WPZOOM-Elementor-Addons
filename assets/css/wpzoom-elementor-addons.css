@@ -243,6 +243,6 @@
 	text-transform: uppercase;
 }
 .wpzoom-restricted,
-.elementor-button:not([data-template-name]) {
+#wpzoom-elementor-template-library-header-preview .elementor-button:not([data-template-name]) {
 	cursor: not-allowed !important;
 }
