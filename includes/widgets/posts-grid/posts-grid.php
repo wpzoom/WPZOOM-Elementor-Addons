@@ -1483,11 +1483,15 @@ class Posts_Grid extends Widget_Base {
 
 		$query_args = array(
 			'posts_per_page' 	  => absint( $posts_per_page ),
-			//'no_found_rows'  	  => true,
+			'paged'				  => $paged,
 			'post__not_in'        => get_option( 'sticky_posts' ),
 			'ignore_sticky_posts' => true,
 			'category_name' 	  => $cats
 		);
+
+		if( 'none' == $settings['pagination_type'] ) {
+			$query_args['no_found_rows'] = true;
+		}
 
 		// Order by.
 		if ( ! empty( $settings[ 'orderby' ] ) ) {
