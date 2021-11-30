@@ -615,7 +615,7 @@ class Slider_Pro extends Widget_Base {
                                  if( 'wpzoom-inspiro-pro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
 
                             <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
-                                <div id="zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  class="animated slow mfp-hide" data-src ="<?php echo esc_url( $popup_final_external_src ); ?>">
+                                <div id="zoom-popup-<?php echo get_the_ID(); ?>"  class="animated slow mfp-hide" data-src ="<?php echo esc_url( $popup_final_external_src ); ?>">
 
                                     <div class="mfp-iframe-scaler">
 
@@ -631,7 +631,7 @@ class Slider_Pro extends Widget_Base {
 
                                     </div>
                                 </div>
-                                <a href="#zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  data-popup-type="inline" class="popup-video"></a>
+                                <a href="#zoom-popup-<?php echo get_the_ID(); ?>"  data-popup-type="inline" class="popup-video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
                                     <a data-popup-type="iframe" class="popup-video animated slow pulse" href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
@@ -676,7 +676,7 @@ class Slider_Pro extends Widget_Base {
                                      if( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
 
                                 <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
-                                    <div id="zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
+                                    <div id="zoom-popup-<?php echo get_the_ID(); ?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
 
                                         <div class="mfp-iframe-scaler">
 
@@ -693,7 +693,7 @@ class Slider_Pro extends Widget_Base {
 
                                         </div>
                                     </div>
-                                    <a href="#zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  data-popup-type="inline" class="popup-video"></a>
+                                    <a href="#zoom-popup-<?php echo get_the_ID(); ?>"  data-popup-type="inline" class="popup-video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
                                     <a  data-popup-type="iframe" class="popup-video animated slow pulse"
