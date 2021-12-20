@@ -19,7 +19,8 @@
     flex-direction: column;
 }
 #elementor-panel-category-wpzoom-elementor-addons-inspiro,
-#elementor-panel-category-wpzoom-elementor-addons-foodica {
+#elementor-panel-category-wpzoom-elementor-addons-foodica,
+#elementor-panel-category-wpzoom-elementor-addons-gustos {
     order: -2;
 }
 #elementor-panel-category-wpzoom-elementor-addons {

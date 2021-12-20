@@ -134,6 +134,15 @@ class WPZOOM_Elementor_Widgets {
 				]
 			);
 		}
+		if( self::is_supported_theme( 'gustos' ) ) {
+			$elements_manager->add_category(
+				'wpzoom-elementor-addons-gustos',
+				[
+					'title' => __( 'WPZOOM Gustos', 'wpzoom-elementor-addons' ),
+					'icon' => 'fa fa-plug'
+				]
+			);
+		}
 	}
 
 	/**
@@ -157,6 +166,11 @@ class WPZOOM_Elementor_Widgets {
 			break;
 			case 'foodica':
 				if( 'foodica-pro' === $current_theme || 'foodica' === $current_theme && class_exists( 'WPZOOM' ) ) {
+					return true;
+				}
+			break;
+			case 'gustos':
+				if( 'gustos' === $current_theme || 'wpzoom/wpzoom-gustos' === $current_theme && class_exists( 'WPZOOM' ) ) {
 					return true;
 				}
 			break;	
