@@ -164,7 +164,7 @@ final class WPZOOM_Elementor_Addons {
 			array(
 				'currentTemplate' => get_template(),
 				'wpzoomFramework' => class_exists( 'WPZOOM' ) ? true : false
-			),
+			)
 		);
 	}
 
@@ -300,7 +300,7 @@ final class WPZOOM_Elementor_Addons {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpzoom-elementor-addons' ),
-			'<strong>' . esc_html__( 'Elementor Test Extension', 'wpzoom-elementor-addons' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor Addons by WPZOOM', 'wpzoom-elementor-addons' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'wpzoom-elementor-addons' ) . '</strong>',
 			 self::MINIMUM_ELEMENTOR_VERSION
 		);
@@ -322,7 +322,7 @@ final class WPZOOM_Elementor_Addons {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpzoom-elementor-addons' ),
-			'<strong>' . esc_html__( 'Elementor Test Extension', 'wpzoom-elementor-addons' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor Addons by WPZOOM', 'wpzoom-elementor-addons' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'wpzoom-elementor-addons' ) . '</strong>',
 			 self::MINIMUM_PHP_VERSION
 		);
