@@ -611,4 +611,13 @@
     "thumbnail": "inspiro/contact",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
+    "id": "gustos-home",
+    "theme": "Gustos",
+    "category": "Gustos",
+    "thumbnail": "gustos/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Gustos"
 }]

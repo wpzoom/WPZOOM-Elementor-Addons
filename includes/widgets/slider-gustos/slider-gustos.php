@@ -413,11 +413,22 @@ class Slider_Gustos extends Widget_Base {
 
 									<?php
 									if ( $show_recipe_details ) {
-										echo '<div class="entry-recipe-details">';
+										$time       = trim( get_post_meta( get_the_ID(), 'wpzoom_recipe_cook_time', true ) );
+										$difficulty = trim( get_post_meta( get_the_ID(), 'wpzoom_recipe_difficulty', true ) );
 
-										echo '[Recipe Tags]';
+										if ( ! empty( $time ) || ! empty( $difficulty ) ) {
+											echo '<div class="entry-recipe-details">';
 
-										echo '</div>';
+											if ( ! empty( $time ) ) {
+												printf( '<span class="entry-recipe-details_time">%s</span>', esc_html( $time ) );
+											}
+
+											if ( ! empty( $difficulty ) ) {
+												printf( '<span class="entry-recipe-details_difficulty">%s</span>', esc_html( $difficulty ) );
+											}
+
+											echo '</div>';
+										}
 									}
 									?>
 								</div>
