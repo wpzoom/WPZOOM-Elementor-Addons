@@ -170,7 +170,7 @@ class WPZOOM_Elementor_Widgets {
 				}
 			break;
 			case 'gustos':
-				if( 'gustos' === $current_theme || 'wpzoom/wpzoom-gustos' === $current_theme && class_exists( 'WPZOOM' ) ) {
+				if( 'wpzoom-gustos' === $current_theme || 'wpzoom/wpzoom-gustos' === $current_theme && class_exists( 'WPZOOM' ) ) {
 					return true;
 				}
 			break;	
