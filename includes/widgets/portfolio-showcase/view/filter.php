@@ -1,8 +1,9 @@
 <?php
 	$category = get_term_by( 'slug', $category, 'portfolio' );
 	$category = isset( $category->term_id ) ? $category->term_id : '';
+	$inline_style = !$show_categories ? 'display:none;' : '';
 ?>
-<nav class="portfolio-archive-taxonomies">
+<nav class="portfolio-archive-taxonomies" style="<?php echo esc_attr( $inline_style ); ?>">
 	<ul class="portfolio-taxonomies portfolio-taxonomies-filter-by">
 		<li <?php echo( ! empty( $category ) ? 'data-subcategory="' . esc_attr( $category ) . '"' : '' ); ?>
 			class="cat-item cat-item-all current-cat" 

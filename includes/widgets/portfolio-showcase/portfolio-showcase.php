@@ -1891,7 +1891,7 @@ class Portfolio_Showcase extends Widget_Base {
 				
 			}
 
-			if ( !$single_post && $show_categories ) {
+			if ( !$single_post ) {
 				include( __DIR__ . '/view/filter.php' );
 			}
 
@@ -1922,7 +1922,7 @@ class Portfolio_Showcase extends Widget_Base {
 					'enable_year'                  => $enable_year,
 					'enable_category'              => $enable_category,
 					'show_count'                   => $show_count,
-					'show_categories'              => $show_categories,
+					'show_categories'              => true,
 					'always_play_background_video' => $always_play_background_video
 				) ) ) ?>"
 				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo esc_attr( $col_number ); ?> <?php echo esc_attr( $always_play_background_video_class ); // WPCS: XSS OK. ?>"
