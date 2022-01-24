@@ -1,0 +1,104 @@
+.wpzoom-elementor-addons-backend-align-control .elementor-control-field {
+	align-items: flex-start;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices {
+	flex-wrap: wrap;
+	height: auto;
+	width: 81px;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label {
+	border-width: 0 !important;
+	border-style: none !important;
+	border-radius: 0 !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-top_left'] {
+	border-top-width: 1px !important;
+	border-top-style: solid !important;
+	border-left-width: 1px !important;
+	border-left-style: solid !important;
+	border-top-left-radius: 3px !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-top_left'] .fa {
+	transform: rotateZ(-45deg);
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-top_center'] {
+	border-top-width: 1px !important;
+	border-top-style: solid !important;
+	border-left-width: 1px !important;
+	border-left-style: solid !important;
+	border-right-width: 1px !important;
+	border-right-style: solid !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-top_right'] {
+	border-top-width: 1px !important;
+	border-top-style: solid !important;
+	border-right-width: 1px !important;
+	border-right-style: solid !important;
+	border-top-right-radius: 3px !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-top_right'] .fa {
+	transform: rotateZ(45deg);
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-center_left'] {
+	border-top-width: 1px !important;
+	border-top-style: solid !important;
+	border-left-width: 1px !important;
+	border-left-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-style: solid !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-center_center'] {
+	border-width: 1px !important;
+	border-style: solid !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-center_right'] {
+	border-top-width: 1px !important;
+	border-top-style: solid !important;
+	border-right-width: 1px !important;
+	border-right-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-style: solid !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-bottom_left'] {
+	border-left-width: 1px !important;
+	border-left-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-style: solid !important;
+	border-bottom-left-radius: 3px !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-bottom_left'] .fa {
+	transform: rotateZ(45deg);
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-bottom_center'] {
+	border-left-width: 1px !important;
+	border-left-style: solid !important;
+	border-right-width: 1px !important;
+	border-right-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-style: solid !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-bottom_right'] {
+	border-right-width: 1px !important;
+	border-right-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-style: solid !important;
+	border-bottom-right-radius: 3px !important;
+}
+
+.wpzoom-elementor-addons-backend-align-control .elementor-choices .elementor-choices-label[for^='elementor-control-bottom_right'] .fa {
+	transform: rotateZ(-45deg);
+}

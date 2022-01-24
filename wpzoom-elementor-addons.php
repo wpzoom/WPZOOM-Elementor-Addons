@@ -174,6 +174,10 @@ final class WPZOOM_Elementor_Addons {
 	public function on_plugins_loaded() {
 		if ( $this->is_compatible() ) {
 			add_action( 'elementor/init', array( $this, 'init' ) );
+
+			// Setup some extra stuff for specific widgets.
+			require_once WPZOOM_EL_ADDONS_PATH . 'includes/widgets/featured-category/category-image.php';
+			new \WPZOOMElementorWidgets\Featured_Category_Image();
 		}
 	}
 
