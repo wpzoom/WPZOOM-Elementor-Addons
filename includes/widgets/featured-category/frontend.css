@@ -8,7 +8,52 @@
 	margin: 0;
 }
 
-.wpzoom-elementor-addons-featured-category > h3 > a {
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link {
+	display: block;
+	position: relative;
+	background-color: black;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 2rem;
+	margin: 0;
+	overflow: hidden;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	padding: 0;
+	margin: 0;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span {
+	display: block;
+	position: relative;
+	font-size: 2rem;
+	font-weight: bold;
+	font-style: normal;
+	color: white;
+	aspect-ratio: 16/9;
+	padding: 0;
+	margin: 0;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span > strong {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -18,23 +63,33 @@
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
-	background-color: black;
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 2rem;
-	margin: 0;
-	-webkit-transition: all 0.25s ease;
-	-o-transition: all 0.25s ease;
-	transition: all 0.25s ease;
+	min-height: 100%;
 }
 
-.wpzoom-elementor-addons-featured-category > h3 > a > span {
-	font-size: 5rem;
-	font-weight: bold;
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span > strong > span {
+	display: flex;
+	flex-direction: column;
+}
+
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-post-count {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-size: 70%;
 	font-style: normal;
-	color: white;
-	padding: 0;
-	margin: 0;
+	line-height: 1.2;
+}
+
+.wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-post-count::before {
+	content: '';
+	display: block;
+	background-color: white;
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg width='13' height='17' viewBox='0 0 13 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2 16.5H1.6C0.716344 16.5 0 15.7837 0 14.9V2.1C0 1.21634 0.716344 0.5 1.6 0.5H7.2C7.20872 0.500378 7.21734 0.501994 7.2256 0.5048C7.23342 0.507214 7.24146 0.508822 7.2496 0.5096C7.32015 0.514123 7.3898 0.527839 7.4568 0.5504L7.4792 0.5576C7.49733 0.563746 7.51498 0.571233 7.532 0.58C7.61916 0.618739 7.69857 0.672948 7.7664 0.74L12.5664 5.54C12.6335 5.60783 12.6877 5.68724 12.7264 5.7744C12.7344 5.792 12.74 5.8104 12.7464 5.8288L12.7536 5.8496C12.7759 5.91631 12.7891 5.98574 12.7928 6.056C12.794 6.06335 12.7959 6.07057 12.7984 6.0776C12.7998 6.08498 12.8004 6.0925 12.8001 6.1V14.9C12.8001 15.7837 12.0837 16.5 11.2 16.5ZM1.6 2.1V14.9H11.2V6.9H7.2C6.75817 6.9 6.4 6.54183 6.4 6.1V2.1H1.6ZM8 3.2312V5.3H10.0688L8 3.2312Z' fill='black'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg width='13' height='17' viewBox='0 0 13 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2 16.5H1.6C0.716344 16.5 0 15.7837 0 14.9V2.1C0 1.21634 0.716344 0.5 1.6 0.5H7.2C7.20872 0.500378 7.21734 0.501994 7.2256 0.5048C7.23342 0.507214 7.24146 0.508822 7.2496 0.5096C7.32015 0.514123 7.3898 0.527839 7.4568 0.5504L7.4792 0.5576C7.49733 0.563746 7.51498 0.571233 7.532 0.58C7.61916 0.618739 7.69857 0.672948 7.7664 0.74L12.5664 5.54C12.6335 5.60783 12.6877 5.68724 12.7264 5.7744C12.7344 5.792 12.74 5.8104 12.7464 5.8288L12.7536 5.8496C12.7759 5.91631 12.7891 5.98574 12.7928 6.056C12.794 6.06335 12.7959 6.07057 12.7984 6.0776C12.7998 6.08498 12.8004 6.0925 12.8001 6.1V14.9C12.8001 15.7837 12.0837 16.5 11.2 16.5ZM1.6 2.1V14.9H11.2V6.9H7.2C6.75817 6.9 6.4 6.54183 6.4 6.1V2.1H1.6ZM8 3.2312V5.3H10.0688L8 3.2312Z' fill='black'/%3E%3C/svg%3E");
+	height: 17px;
+	width: 13px;
+	opacity: 0.5;
 	-webkit-transition: all 0.25s ease;
 	-o-transition: all 0.25s ease;
 	transition: all 0.25s ease;

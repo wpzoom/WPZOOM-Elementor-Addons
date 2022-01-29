@@ -9,6 +9,51 @@
 }
 
 .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link {
+	display: block;
+	position: relative;
+	background-color: black;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 2rem;
+	margin: 0;
+	overflow: hidden;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	padding: 0;
+	margin: 0;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span {
+	display: block;
+	position: relative;
+	font-size: 5rem;
+	font-weight: bold;
+	font-style: normal;
+	color: white;
+	aspect-ratio: 16/9;
+	padding: 0;
+	margin: 0;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span > strong {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -18,24 +63,5 @@
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
-	background-color: black;
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 2rem;
-	margin: 0;
-	-webkit-transition: all 0.25s ease;
-	-o-transition: all 0.25s ease;
-	transition: all 0.25s ease;
-}
-
-.wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span {
-	font-size: 5rem;
-	font-weight: bold;
-	font-style: normal;
-	color: white;
-	padding: 0;
-	margin: 0;
-	-webkit-transition: all 0.25s ease;
-	-o-transition: all 0.25s ease;
-	transition: all 0.25s ease;
+	min-height: 100%;
 }

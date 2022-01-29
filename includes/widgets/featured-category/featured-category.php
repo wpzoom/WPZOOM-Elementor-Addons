@@ -13,7 +13,9 @@ namespace WPZOOMElementorWidgets;
 use \Elementor\Widget_Base;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
+use \Elementor\Group_Control_Text_Stroke;
 use \Elementor\Group_Control_Text_Shadow;
+use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Image_Size;
@@ -193,13 +195,6 @@ class Featured_Category extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'hr_1',
-			array(
-				'type' => Controls_Manager::DIVIDER,
-			)
-		);
-
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			array(
@@ -208,6 +203,36 @@ class Featured_Category extends Widget_Base {
 				'label_block' => true,
 				'description' => esc_html__( 'Select the size at which to display the category image.', 'wpzoom-elementor-addons' ),
 				'default'     => 'large',
+				'separator'   => 'before',
+			)
+		);
+
+		$this->add_control(
+			'show_post_count',
+			array(
+				'type'         => Controls_Manager::SWITCHER,
+				'label'        => esc_html__( 'Show Post Count', 'wpzoom-elementor-addons' ),
+				'label_on'     => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off'    => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'separator'    => 'before',
+			)
+		);
+
+		$this->add_control(
+			'post_count_format',
+			array(
+				'type'        => Controls_Manager::TEXT,
+				'label'       => esc_html__( 'Post Count Label', 'wpzoom-elementor-addons' ),
+				'description' => __( 'The <strong><code>%</code></strong> character is a placeholder that will be replaced with the actual amount of posts when displayed on the frontend.', 'wpzoom-elementor-addons' ),
+				// translators: % will be replaced in final output with the amount of posts in the category.
+				'default'     => esc_html__( '% Posts', 'wpzoom-elementor-addons' ),
+				// translators: % will be replaced in final output with the amount of posts in the category.
+				'placeholder' => esc_html__( '% Posts', 'wpzoom-elementor-addons' ),
+				'condition'   => array(
+					'show_post_count' => 'yes',
+				),
 			)
 		);
 
@@ -225,9 +250,951 @@ class Featured_Category extends Widget_Base {
 	 */
 	private function style_options() {
 		$this->start_controls_section(
-			'section_style',
+			'section_style_typography',
 			array(
-				'label' => esc_html__( 'Style', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->start_controls_tabs( 'section_style_typography_tabs' );
+
+		$this->start_controls_tab(
+			'section_style_typography_tabs_normal',
+			array(
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'           => 'style_normal_typography',
+				'label'          => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'scheme'         => Typography::TYPOGRAPHY_1,
+				'fields_options' => array(
+					'typography'      => array(
+						'default' => 'yes',
+					),
+					'font_size'       => array(
+						'default' => array(
+							'size' => 2,
+							'unit' => 'rem',
+						),
+					),
+					'font_weight'     => array(
+						'default' => 'bold',
+					),
+					'font_style'      => array(
+						'default' => 'normal',
+					),
+					'text_decoration' => array(
+						'default' => 'none',
+					),
+					'text_transform'  => array(
+						'default' => 'none',
+					),
+					'line_height'     => array(
+						'default' => array(
+							'size' => 3,
+							'unit' => 'rem',
+						),
+					),
+				),
+				'selector'       => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span',
+			)
+		);
+
+		$this->add_control(
+			'style_normal_typography_color',
+			array(
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link .wpzoom-elementor-addons-featured-category-post-count::before' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			array(
+				'name'     => 'style_normal_typography_stroke',
+				'label'    => esc_html__( 'Stroke', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			array(
+				'name'     => 'style_normal_typography_shadow',
+				'label'    => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span',
+			)
+		);
+
+		$this->add_control(
+			'style_normal_typography_align',
+			array(
+				'label'                => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'                 => Controls_Manager::CHOOSE,
+				'options'              => array(
+					'top_left'      => array(
+						'title' => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-up',
+					),
+					'top_center'    => array(
+						'title' => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-up',
+					),
+					'top_right'     => array(
+						'title' => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-up',
+					),
+					'center_left'   => array(
+						'title' => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-left',
+					),
+					'center_center' => array(
+						'title' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-plus',
+					),
+					'center_right'  => array(
+						'title' => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-right',
+					),
+					'bottom_left'   => array(
+						'title' => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-down',
+					),
+					'bottom_center' => array(
+						'title' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-down',
+					),
+					'bottom_right'  => array(
+						'title' => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-down',
+					),
+				),
+				'default'              => 'center_center',
+				'selectors_dictionary' => array(
+					'top_left'      => 'align-items: flex-start; justify-content: flex-start; text-align: left',
+					'top_center'    => 'align-items: flex-start; justify-content: center; text-align: center',
+					'top_right'     => 'align-items: flex-start; justify-content: flex-end; text-align: right',
+					'center_left'   => 'align-items: center; justify-content: flex-start; text-align: left',
+					'center_center' => 'align-items: center; justify-content: center; text-align: center',
+					'center_right'  => 'align-items: center; justify-content: flex-end; text-align: right',
+					'bottom_left'   => 'align-items: flex-end; justify-content: flex-start; text-align: left',
+					'bottom_center' => 'align-items: flex-end; justify-content: center; text-align: center',
+					'bottom_right'  => 'align-items: flex-end; justify-content: flex-end; text-align: right',
+				),
+				'selectors'            => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link strong' => '{{VALUE}}',
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link .wpzoom-elementor-addons-featured-category-post-count' => '{{VALUE}}',
+				),
+				'toggle'               => true,
+				'classes'              => 'wpzoom-elementor-addons-backend-align-control',
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'section_style_typography_tabs_hover',
+			array(
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'           => 'style_hover_typography',
+				'label'          => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'scheme'         => Typography::TYPOGRAPHY_1,
+				'fields_options' => array(
+					'typography'      => array(
+						'default' => 'yes',
+					),
+					'font_size'       => array(
+						'default' => array(
+							'size' => 2,
+							'unit' => 'rem',
+						),
+					),
+					'font_weight'     => array(
+						'default' => 'bold',
+					),
+					'font_style'      => array(
+						'default' => 'normal',
+					),
+					'text_decoration' => array(
+						'default' => 'none',
+					),
+					'text_transform'  => array(
+						'default' => 'none',
+					),
+					'line_height'     => array(
+						'default' => array(
+							'size' => 3,
+							'unit' => 'rem',
+						),
+					),
+				),
+				'selector'       => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover > span',
+			)
+		);
+
+		$this->add_control(
+			'style_hover_typography_color',
+			array(
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover > span' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover .wpzoom-elementor-addons-featured-category-post-count::before' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			array(
+				'name'     => 'style_hover_typography_stroke',
+				'label'    => esc_html__( 'Stroke', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover > span',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			array(
+				'name'     => 'style_hover_typography_shadow',
+				'label'    => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover > span',
+			)
+		);
+
+		$this->add_control(
+			'style_hover_typography_align',
+			array(
+				'label'                => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type'                 => Controls_Manager::CHOOSE,
+				'options'              => array(
+					'top_left'      => array(
+						'title' => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-up',
+					),
+					'top_center'    => array(
+						'title' => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-up',
+					),
+					'top_right'     => array(
+						'title' => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-up',
+					),
+					'center_left'   => array(
+						'title' => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-left',
+					),
+					'center_center' => array(
+						'title' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-plus',
+					),
+					'center_right'  => array(
+						'title' => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-right',
+					),
+					'bottom_left'   => array(
+						'title' => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-down',
+					),
+					'bottom_center' => array(
+						'title' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-down',
+					),
+					'bottom_right'  => array(
+						'title' => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
+						'icon'  => 'fa fa-arrow-down',
+					),
+				),
+				'default'              => 'center_center',
+				'selectors_dictionary' => array(
+					'top_left'      => 'align-items: flex-start; justify-content: flex-start; text-align: left',
+					'top_center'    => 'align-items: flex-start; justify-content: center; text-align: center',
+					'top_right'     => 'align-items: flex-start; justify-content: flex-end; text-align: right',
+					'center_left'   => 'align-items: center; justify-content: flex-start; text-align: left',
+					'center_center' => 'align-items: center; justify-content: center; text-align: center',
+					'center_right'  => 'align-items: center; justify-content: flex-end; text-align: right',
+					'bottom_left'   => 'align-items: flex-end; justify-content: flex-start; text-align: left',
+					'bottom_center' => 'align-items: flex-end; justify-content: center; text-align: center',
+					'bottom_right'  => 'align-items: flex-end; justify-content: flex-end; text-align: right',
+				),
+				'selectors'            => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover strong' => '{{VALUE}}',
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover .wpzoom-elementor-addons-featured-category-post-count'  => '{{VALUE}}',
+				),
+				'toggle'               => true,
+				'classes'              => 'wpzoom-elementor-addons-backend-align-control',
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_image',
+			array(
+				'label' => esc_html__( 'Image', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->start_controls_tabs( 'section_style_image_tabs' );
+
+		$this->start_controls_tab(
+			'section_style_image_tabs_normal',
+			array(
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_control(
+			'style_normal_image_color',
+			array(
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
+				'default'   => '#000000',
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_normal_image_position',
+			array(
+				'label'     => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'center center',
+				'options'   => array(
+					'top left'      => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
+					'top center'    => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
+					'top right'     => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
+					'center left'   => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
+					'center center' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
+					'center right'  => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
+					'bottom left'   => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
+					'bottom center' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
+					'bottom right'  => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-position: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_normal_image_repeat',
+			array(
+				'label'     => esc_html__( 'Repeat', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'no-repeat',
+				'options'   => array(
+					'no-repeat' => esc_html__( 'Don&rsquo;t Repeat', 'wpzoom-elementor-addons' ),
+					'repeat-x'  => esc_html__( 'Repeat Horizontally', 'wpzoom-elementor-addons' ),
+					'repeat-y'  => esc_html__( 'Repeat Vertically', 'wpzoom-elementor-addons' ),
+					'repeat'    => esc_html__( 'Repeat Both', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-repeat: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_normal_image_attachment',
+			array(
+				'label'     => esc_html__( 'Attachment', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'scroll',
+				'options'   => array(
+					'scroll' => esc_html__( 'Scroll', 'wpzoom-elementor-addons' ),
+					'fixed'  => esc_html__( 'Fixed', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-attachment: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_normal_image_size',
+			array(
+				'label'     => esc_html__( 'Size', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'cover',
+				'options'   => array(
+					'auto'    => esc_html__( 'Auto', 'wpzoom-elementor-addons' ),
+					'cover'   => esc_html__( 'Cover', 'wpzoom-elementor-addons' ),
+					'contain' => esc_html__( 'Contain', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-size: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'section_style_image_tabs_hover',
+			array(
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_control(
+			'style_hover_image_color',
+			array(
+				'type'      => Controls_Manager::COLOR,
+				'label'     => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
+				'default'   => '#000000',
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_hover_image_position',
+			array(
+				'label'     => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'center center',
+				'options'   => array(
+					'top left'      => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
+					'top center'    => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
+					'top right'     => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
+					'center left'   => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
+					'center center' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
+					'center right'  => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
+					'bottom left'   => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
+					'bottom center' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
+					'bottom right'  => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-position: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_hover_image_repeat',
+			array(
+				'label'     => esc_html__( 'Repeat', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'no-repeat',
+				'options'   => array(
+					'no-repeat' => esc_html__( 'Don&rsquo;t Repeat', 'wpzoom-elementor-addons' ),
+					'repeat-x'  => esc_html__( 'Repeat Horizontally', 'wpzoom-elementor-addons' ),
+					'repeat-y'  => esc_html__( 'Repeat Vertically', 'wpzoom-elementor-addons' ),
+					'repeat'    => esc_html__( 'Repeat Both', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-repeat: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_hover_image_attachment',
+			array(
+				'label'     => esc_html__( 'Attachment', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'scroll',
+				'options'   => array(
+					'scroll' => esc_html__( 'Scroll', 'wpzoom-elementor-addons' ),
+					'fixed'  => esc_html__( 'Fixed', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-attachment: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_hover_image_size',
+			array(
+				'label'     => esc_html__( 'Size', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'cover',
+				'options'   => array(
+					'auto'    => esc_html__( 'Auto', 'wpzoom-elementor-addons' ),
+					'cover'   => esc_html__( 'Cover', 'wpzoom-elementor-addons' ),
+					'contain' => esc_html__( 'Contain', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-size: {{VALUE}} !important;',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_overlay',
+			array(
+				'label' => esc_html__( 'Overlay', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->start_controls_tabs( 'section_style_overlay_tabs' );
+
+		$this->start_controls_tab(
+			'section_style_overlay_tabs_normal',
+			array(
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'           => 'style_normal_overlay_background',
+				'label'          => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color'      => array(
+						'default' => '#000000',
+					),
+				),
+				'selector'       => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link::before',
+			)
+		);
+
+		$this->add_control(
+			'style_normal_overlay_opacity',
+			array(
+				'label'     => esc_html__( 'Opacity', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 1,
+						'step' => 0.01,
+					),
+				),
+				'default'   => array(
+					'size' => 0.5,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link::before' => 'opacity: {{SIZE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Backdrop_Filter::get_type(),
+			array(
+				'name'     => 'style_normal_overlay_filters',
+				'label'    => esc_html__( 'Filters', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link::before',
+			)
+		);
+
+		$this->add_control(
+			'style_normal_overlay_blend_mode',
+			array(
+				'label'     => esc_html__( 'Blend Mode', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''            => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+					'multiply'    => esc_html__( 'Multiply', 'wpzoom-elementor-addons' ),
+					'screen'      => esc_html__( 'Screen', 'wpzoom-elementor-addons' ),
+					'overlay'     => esc_html__( 'Overlay', 'wpzoom-elementor-addons' ),
+					'darken'      => esc_html__( 'Darken', 'wpzoom-elementor-addons' ),
+					'lighten'     => esc_html__( 'Lighten', 'wpzoom-elementor-addons' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'wpzoom-elementor-addons' ),
+					'saturation'  => esc_html__( 'Saturation', 'wpzoom-elementor-addons' ),
+					'color'       => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+					'difference'  => esc_html__( 'Difference', 'wpzoom-elementor-addons' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'wpzoom-elementor-addons' ),
+					'hue'         => esc_html__( 'Hue', 'wpzoom-elementor-addons' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link::before' => 'mix-blend-mode: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'section_style_overlay_tabs_hover',
+			array(
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'           => 'style_hover_overlay_background',
+				'label'          => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color'      => array(
+						'default' => '#000000',
+					),
+				),
+				'selector'       => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover::before',
+			)
+		);
+
+		$this->add_control(
+			'style_hover_overlay_opacity',
+			array(
+				'label'     => esc_html__( 'Opacity', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 1,
+						'step' => 0.01,
+					),
+				),
+				'default'   => array(
+					'size' => 0.5,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover::before' => 'opacity: {{SIZE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Backdrop_Filter::get_type(),
+			array(
+				'name'     => 'style_hover_overlay_filters',
+				'label'    => esc_html__( 'Filters', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover::before',
+			)
+		);
+
+		$this->add_control(
+			'style_hover_overlay_blend_mode',
+			array(
+				'label'     => esc_html__( 'Blend Mode', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''            => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+					'multiply'    => esc_html__( 'Multiply', 'wpzoom-elementor-addons' ),
+					'screen'      => esc_html__( 'Screen', 'wpzoom-elementor-addons' ),
+					'overlay'     => esc_html__( 'Overlay', 'wpzoom-elementor-addons' ),
+					'darken'      => esc_html__( 'Darken', 'wpzoom-elementor-addons' ),
+					'lighten'     => esc_html__( 'Lighten', 'wpzoom-elementor-addons' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'wpzoom-elementor-addons' ),
+					'saturation'  => esc_html__( 'Saturation', 'wpzoom-elementor-addons' ),
+					'color'       => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+					'difference'  => esc_html__( 'Difference', 'wpzoom-elementor-addons' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'wpzoom-elementor-addons' ),
+					'hue'         => esc_html__( 'Hue', 'wpzoom-elementor-addons' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover::before' => 'mix-blend-mode: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_box',
+			array(
+				'label' => esc_html__( 'Box', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->start_controls_tabs( 'section_style_box_tabs' );
+
+		$this->start_controls_tab(
+			'section_style_box_tabs_normal',
+			array(
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_responsive_control(
+			'style_normal_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', 'rem', '%' ),
+				'default'    => array(
+					'top'      => 2,
+					'right'    => 2,
+					'bottom'   => 2,
+					'left'     => 2,
+					'unit'     => 'rem',
+					'isLinked' => true,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'style_normal_border',
+				'label'    => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link',
+			)
+		);
+
+		$this->add_control(
+			'style_normal_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', 'rem', '%' ),
+				'default'    => array(
+					'top'      => 0,
+					'right'    => 0,
+					'bottom'   => 0,
+					'left'     => 0,
+					'unit'     => 'px',
+					'isLinked' => true,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'style_normal_box_shadow',
+				'label'    => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			array(
+				'name'     => 'style_normal_filters',
+				'label'    => esc_html__( 'Filters', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link',
+			)
+		);
+
+		$this->add_control(
+			'style_normal_blend_mode',
+			array(
+				'label'     => esc_html__( 'Blend Mode', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''            => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+					'multiply'    => esc_html__( 'Multiply', 'wpzoom-elementor-addons' ),
+					'screen'      => esc_html__( 'Screen', 'wpzoom-elementor-addons' ),
+					'overlay'     => esc_html__( 'Overlay', 'wpzoom-elementor-addons' ),
+					'darken'      => esc_html__( 'Darken', 'wpzoom-elementor-addons' ),
+					'lighten'     => esc_html__( 'Lighten', 'wpzoom-elementor-addons' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'wpzoom-elementor-addons' ),
+					'saturation'  => esc_html__( 'Saturation', 'wpzoom-elementor-addons' ),
+					'color'       => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+					'difference'  => esc_html__( 'Difference', 'wpzoom-elementor-addons' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'wpzoom-elementor-addons' ),
+					'hue'         => esc_html__( 'Hue', 'wpzoom-elementor-addons' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'mix-blend-mode: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_normal_opacity',
+			array(
+				'label'     => esc_html__( 'Opacity', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 1,
+						'step' => 0.01,
+					),
+				),
+				'default'   => array(
+					'size' => 1,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'opacity: {{SIZE}};',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'section_style_box_tabs_hover',
+			array(
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+		$this->add_responsive_control(
+			'style_hover_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', 'rem', '%' ),
+				'default'    => array(
+					'top'      => 2,
+					'right'    => 2,
+					'bottom'   => 2,
+					'left'     => 2,
+					'unit'     => 'rem',
+					'isLinked' => true,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'style_hover_border',
+				'label'    => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover',
+			)
+		);
+
+		$this->add_control(
+			'style_hover_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', 'rem', '%' ),
+				'default'    => array(
+					'top'      => 0,
+					'right'    => 0,
+					'bottom'   => 0,
+					'left'     => 0,
+					'unit'     => 'px',
+					'isLinked' => true,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'style_hover_box_shadow',
+				'label'    => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			array(
+				'name'     => 'style_hover_filters',
+				'label'    => esc_html__( 'Filters', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover',
+			)
+		);
+
+		$this->add_control(
+			'style_hover_blend_mode',
+			array(
+				'label'     => esc_html__( 'Blend Mode', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					''            => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+					'multiply'    => esc_html__( 'Multiply', 'wpzoom-elementor-addons' ),
+					'screen'      => esc_html__( 'Screen', 'wpzoom-elementor-addons' ),
+					'overlay'     => esc_html__( 'Overlay', 'wpzoom-elementor-addons' ),
+					'darken'      => esc_html__( 'Darken', 'wpzoom-elementor-addons' ),
+					'lighten'     => esc_html__( 'Lighten', 'wpzoom-elementor-addons' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'wpzoom-elementor-addons' ),
+					'saturation'  => esc_html__( 'Saturation', 'wpzoom-elementor-addons' ),
+					'color'       => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+					'difference'  => esc_html__( 'Difference', 'wpzoom-elementor-addons' ),
+					'exclusion'   => esc_html__( 'Exclusion', 'wpzoom-elementor-addons' ),
+					'hue'         => esc_html__( 'Hue', 'wpzoom-elementor-addons' ),
+					'luminosity'  => esc_html__( 'Luminosity', 'wpzoom-elementor-addons' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'mix-blend-mode: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'style_hover_opacity',
+			array(
+				'label'     => esc_html__( 'Opacity', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 1,
+						'step' => 0.01,
+					),
+				),
+				'default'   => array(
+					'size' => 1,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'opacity: {{SIZE}};',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_animation',
+			array(
+				'label' => esc_html__( 'Animation', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -247,693 +1214,10 @@ class Featured_Category extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'transition-duration: {{SIZE}}s',
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'transition-duration: {{SIZE}}s',
 				),
 			)
 		);
-
-		$this->add_control(
-			'hr_2',
-			array(
-				'type' => Controls_Manager::DIVIDER,
-			)
-		);
-
-		$this->start_controls_tabs( 'section_style_tabs' );
-
-		$this->start_controls_tab(
-			'section_style_tabs_normal',
-			array(
-				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_font',
-			array(
-				'label'     => esc_html__( 'Text', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'style_normal_font',
-				'label'    => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a > span',
-			)
-		);
-
-		$this->add_control(
-			'style_normal_font_color',
-			array(
-				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
-				'default'   => '#ffffff',
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a > span' => 'color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
-			array(
-				'name'     => 'style_normal_font_shadow',
-				'label'    => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a > span',
-			)
-		);
-
-		$this->add_control(
-			'style_normal_font_align',
-			array(
-				'label'                => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
-				'type'                 => Controls_Manager::CHOOSE,
-				'options'              => array(
-					'top_left'      => array(
-						'title' => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-up',
-					),
-					'top_center'    => array(
-						'title' => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-up',
-					),
-					'top_right'     => array(
-						'title' => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-up',
-					),
-					'center_left'   => array(
-						'title' => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-left',
-					),
-					'center_center' => array(
-						'title' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-plus',
-					),
-					'center_right'  => array(
-						'title' => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-right',
-					),
-					'bottom_left'   => array(
-						'title' => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-down',
-					),
-					'bottom_center' => array(
-						'title' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-down',
-					),
-					'bottom_right'  => array(
-						'title' => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-down',
-					),
-				),
-				'default'              => 'center_center',
-				'selectors_dictionary' => array(
-					'top_left'      => 'align-items: flex-start; justify-content: flex-start',
-					'top_center'    => 'align-items: flex-start; justify-content: center',
-					'top_right'     => 'align-items: flex-start; justify-content: flex-end',
-					'center_left'   => 'align-items: center; justify-content: flex-start',
-					'center_center' => 'align-items: center; justify-content: center',
-					'center_right'  => 'align-items: center; justify-content: flex-end',
-					'bottom_left'   => 'align-items: flex-end; justify-content: flex-start',
-					'bottom_center' => 'align-items: flex-end; justify-content: center',
-					'bottom_right'  => 'align-items: flex-end; justify-content: flex-end',
-				),
-				'selectors'            => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => '{{VALUE}}',
-				),
-				'toggle'               => true,
-				'classes'              => 'wpzoom-elementor-addons-backend-align-control',
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_background',
-			array(
-				'label'     => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_control(
-			'style_normal_background_color',
-			array(
-				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
-				'default'   => '#000000',
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'background-color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_normal_background_position',
-			array(
-				'label'     => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'center center',
-				'options'   => array(
-					'top left'      => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
-					'top center'    => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
-					'top right'     => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
-					'center left'   => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
-					'center center' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
-					'center right'  => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
-					'bottom left'   => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
-					'bottom center' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
-					'bottom right'  => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'background-position: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_normal_background_repeat',
-			array(
-				'label'     => esc_html__( 'Repeat', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'no-repeat',
-				'options'   => array(
-					'no-repeat' => esc_html__( 'Don&rsquo;t Repeat', 'wpzoom-elementor-addons' ),
-					'repeat-x'  => esc_html__( 'Repeat Horizontally', 'wpzoom-elementor-addons' ),
-					'repeat-y'  => esc_html__( 'Repeat Vertically', 'wpzoom-elementor-addons' ),
-					'repeat'    => esc_html__( 'Repeat Both', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'background-repeat: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_normal_background_attachment',
-			array(
-				'label'     => esc_html__( 'Attachment', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'scroll',
-				'options'   => array(
-					'scroll' => esc_html__( 'Scroll', 'wpzoom-elementor-addons' ),
-					'fixed'  => esc_html__( 'Fixed', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'background-attachment: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_normal_background_size',
-			array(
-				'label'     => esc_html__( 'Size', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'auto',
-				'options'   => array(
-					'auto'    => esc_html__( 'Auto', 'wpzoom-elementor-addons' ),
-					'cover'   => esc_html__( 'Cover', 'wpzoom-elementor-addons' ),
-					'contain' => esc_html__( 'Contain', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'background-size: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_padding',
-			array(
-				'label'     => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_responsive_control(
-			'style_normal_padding',
-			array(
-				'label'      => esc_html__( 'Size', 'wpzoom-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', 'rem', '%' ),
-				'default'    => array(
-					'top'      => 2,
-					'right'    => 2,
-					'bottom'   => 2,
-					'left'     => 2,
-					'unit'     => 'rem',
-					'isLinked' => true,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_border',
-			array(
-				'label'     => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			array(
-				'name'     => 'style_normal_border',
-				'label'    => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a',
-			)
-		);
-
-		$this->add_control(
-			'style_normal_border_radius',
-			array(
-				'label'      => esc_html__( 'Radius', 'wpzoom-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', 'rem', '%' ),
-				'default'    => array(
-					'top'      => 0,
-					'right'    => 0,
-					'bottom'   => 0,
-					'left'     => 0,
-					'unit'     => 'px',
-					'isLinked' => true,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_shadow',
-			array(
-				'label'     => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			array(
-				'name'     => 'style_normal_box_shadow',
-				'label'    => esc_html__( 'Box Shadow', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a',
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_filters',
-			array(
-				'label'     => esc_html__( 'Filters', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			array(
-				'name'     => 'style_normal_filters',
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a',
-			)
-		);
-
-		$this->add_control(
-			'section_style_normal_heading_opacity',
-			array(
-				'label'     => esc_html__( 'Opacity', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_control(
-			'style_normal_opacity',
-			array(
-				'label'     => esc_html__( 'Value', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 1,
-						'step' => 0.01,
-					),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a' => 'opacity: {{SIZE}};',
-				),
-			)
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'section_style_tabs_hover',
-			array(
-				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_font',
-			array(
-				'label'     => esc_html__( 'Text', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'style_hover_font',
-				'label'    => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover > span',
-			)
-		);
-
-		$this->add_control(
-			'style_hover_font_color',
-			array(
-				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
-				'default'   => '#ffffff',
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover > span' => 'color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
-			array(
-				'name'     => 'style_hover_font_shadow',
-				'label'    => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover > span',
-			)
-		);
-
-		$this->add_control(
-			'style_hover_font_align',
-			array(
-				'label'                => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
-				'type'                 => Controls_Manager::CHOOSE,
-				'options'              => array(
-					'top_left'      => array(
-						'title' => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-up',
-					),
-					'top_center'    => array(
-						'title' => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-up',
-					),
-					'top_right'     => array(
-						'title' => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-up',
-					),
-					'center_left'   => array(
-						'title' => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-left',
-					),
-					'center_center' => array(
-						'title' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-plus',
-					),
-					'center_right'  => array(
-						'title' => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-right',
-					),
-					'bottom_left'   => array(
-						'title' => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-down',
-					),
-					'bottom_center' => array(
-						'title' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-down',
-					),
-					'bottom_right'  => array(
-						'title' => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
-						'icon'  => 'fa fa-arrow-down',
-					),
-				),
-				'default'              => 'center_center',
-				'selectors_dictionary' => array(
-					'top_left'      => 'align-items: flex-start; justify-content: flex-start',
-					'top_center'    => 'align-items: flex-start; justify-content: center',
-					'top_right'     => 'align-items: flex-start; justify-content: flex-end',
-					'center_left'   => 'align-items: center; justify-content: flex-start',
-					'center_center' => 'align-items: center; justify-content: center',
-					'center_right'  => 'align-items: center; justify-content: flex-end',
-					'bottom_left'   => 'align-items: flex-end; justify-content: flex-start',
-					'bottom_center' => 'align-items: flex-end; justify-content: center',
-					'bottom_right'  => 'align-items: flex-end; justify-content: flex-end',
-				),
-				'selectors'            => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => '{{VALUE}}',
-				),
-				'toggle'               => true,
-				'classes'              => 'wpzoom-elementor-addons-backend-align-control',
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_background',
-			array(
-				'label'     => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_control(
-			'style_hover_background_color',
-			array(
-				'type'      => Controls_Manager::COLOR,
-				'label'     => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
-				'default'   => '#000000',
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'background-color: {{VALUE}};',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_hover_background_position',
-			array(
-				'label'     => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'center center',
-				'options'   => array(
-					'top left'      => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
-					'top center'    => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
-					'top right'     => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
-					'center left'   => esc_html__( 'Center Left', 'wpzoom-elementor-addons' ),
-					'center center' => esc_html__( 'Center Center', 'wpzoom-elementor-addons' ),
-					'center right'  => esc_html__( 'Center Right', 'wpzoom-elementor-addons' ),
-					'bottom left'   => esc_html__( 'Bottom Left', 'wpzoom-elementor-addons' ),
-					'bottom center' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
-					'bottom right'  => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'background-position: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_hover_background_repeat',
-			array(
-				'label'     => esc_html__( 'Repeat', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'no-repeat',
-				'options'   => array(
-					'no-repeat' => esc_html__( 'Don&rsquo;t Repeat', 'wpzoom-elementor-addons' ),
-					'repeat-x'  => esc_html__( 'Repeat Horizontally', 'wpzoom-elementor-addons' ),
-					'repeat-y'  => esc_html__( 'Repeat Vertically', 'wpzoom-elementor-addons' ),
-					'repeat'    => esc_html__( 'Repeat Both', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'background-repeat: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_hover_background_attachment',
-			array(
-				'label'     => esc_html__( 'Attachment', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'scroll',
-				'options'   => array(
-					'scroll' => esc_html__( 'Scroll', 'wpzoom-elementor-addons' ),
-					'fixed'  => esc_html__( 'Fixed', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'background-attachment: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'style_hover_background_size',
-			array(
-				'label'     => esc_html__( 'Size', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'auto',
-				'options'   => array(
-					'auto'    => esc_html__( 'Auto', 'wpzoom-elementor-addons' ),
-					'cover'   => esc_html__( 'Cover', 'wpzoom-elementor-addons' ),
-					'contain' => esc_html__( 'Contain', 'wpzoom-elementor-addons' ),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'background-size: {{VALUE}} !important;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_padding',
-			array(
-				'label'     => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_responsive_control(
-			'style_hover_padding',
-			array(
-				'label'      => esc_html__( 'Size', 'wpzoom-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', 'rem', '%' ),
-				'default'    => array(
-					'top'      => 2,
-					'right'    => 2,
-					'bottom'   => 2,
-					'left'     => 2,
-					'unit'     => 'rem',
-					'isLinked' => true,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_border',
-			array(
-				'label'     => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			array(
-				'name'     => 'style_hover_border',
-				'label'    => esc_html__( 'Border', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover',
-			)
-		);
-
-		$this->add_control(
-			'style_hover_border_radius',
-			array(
-				'label'      => esc_html__( 'Radius', 'wpzoom-elementor-addons' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', 'rem', '%' ),
-				'default'    => array(
-					'top'      => 0,
-					'right'    => 0,
-					'bottom'   => 0,
-					'left'     => 0,
-					'unit'     => 'px',
-					'isLinked' => true,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_shadow',
-			array(
-				'label'     => esc_html__( 'Shadow', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			array(
-				'name'     => 'style_hover_box_shadow',
-				'label'    => esc_html__( 'Box Shadow', 'wpzoom-elementor-addons' ),
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover',
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_filters',
-			array(
-				'label'     => esc_html__( 'Filters', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			array(
-				'name'     => 'style_hover_filters',
-				'selector' => '{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover',
-			)
-		);
-
-		$this->add_control(
-			'section_style_hover_heading_opacity',
-			array(
-				'label'     => esc_html__( 'Opacity', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::HEADING,
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_control(
-			'style_hover_opacity',
-			array(
-				'label'     => esc_html__( 'Value', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 1,
-						'step' => 0.01,
-					),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 > a:hover' => 'opacity: {{SIZE}};',
-				),
-			)
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 	}
@@ -966,38 +1250,47 @@ class Featured_Category extends Widget_Base {
 			return;
 		}
 
-		$term_meta    = get_term_meta( $cat_data->term_id, 'wpz_cover_image_id', true );
-		$image_id     = false !== $term_meta ? absint( $term_meta ) : 0;
-		$image_url    = '';
-		$image_height = -1;
+		$term_meta = get_term_meta( $cat_data->term_id, 'wpz_cover_image_id', true );
+		$image_id  = false !== $term_meta ? absint( $term_meta ) : 0;
+		$image_url = '';
 
 		if ( $image_id > 0 ) {
 			$image_size = isset( $settings['category_image_size'] ) ? trim( $settings['category_image_size'] ) : 'large';
 			$attachment = wp_get_attachment_image_src( $image_id, $image_size );
 
 			if ( false !== $attachment && is_array( $attachment ) && count( $attachment ) > 2 ) {
-				$image_url    = trim( $attachment[0] );
-				$image_height = absint( $attachment[2] );
+				$image_url = trim( $attachment[0] );
 			}
 		}
 
 		$term_pos       = get_term_meta( $cat_data->term_id, 'wpz_cover_image_pos', true );
 		$image_position = false !== $term_pos ? trim( $term_pos ) : '';
 
-		$attrs = '';
-		$style = '';
+		$attrs    = '';
+		$classes  = 'wpzoom-elementor-addons-featured-category-link';
+		$style    = '';
+		$cat_link = get_category_link( $cat_data );
+
+		if ( ! empty( $cat_link ) ) {
+			$classes .= ' is-linked';
+			$attrs   .= ' href="' . esc_url( $cat_link ) . '"';
+		} else {
+			$classes .= ' not-linked';
+		}
 
 		if ( ! empty( $image_url ) ) {
-			$attrs .= ' class="has-image"';
-			$style .= sprintf( 'background-image:url(\'%s\');', esc_url( $image_url ) );
+			$classes .= ' has-image';
+			$style   .= sprintf( 'background-image:url(\'%s\');', esc_url( $image_url ) );
+		} else {
+			$classes .= ' no-image';
 		}
 
 		if ( ! empty( $image_position ) ) {
 			$style .= sprintf( 'background-position:%s;', esc_attr( $image_position ) );
 		}
 
-		if ( $image_height > 0 ) {
-			$style .= sprintf( 'height:%spx;', absint( $image_height ) );
+		if ( ! empty( $classes ) ) {
+			$attrs .= ' class="' . $classes . '"';
 		}
 
 		if ( ! empty( $style ) ) {
@@ -1005,15 +1298,28 @@ class Featured_Category extends Widget_Base {
 			$attrs .= $style;
 		}
 
+		$show_post_count = isset( $settings['show_post_count'] ) && 'yes' === $settings['show_post_count'];
+		$post_count      = '';
+
+		if ( $show_post_count ) {
+			$format_string = esc_html( isset( $settings['post_count_format'] ) ? trim( $settings['post_count_format'] ) : __( '% Posts', 'wpzoom-elementor-addons' ) );
+			$cat_count     = property_exists( $cat_data, 'count' ) ? intval( $cat_data->count ) : 0;
+			$post_count    = '<em class="wpzoom-elementor-addons-featured-category-post-count">' . str_replace( '%', $cat_count, $format_string ) . '</em>';
+		}
+
 		// phpcs:disable WordPress.Security.EscapeOutput
 		?>
 		<div class="wpzoom-elementor-addons-featured-category">
 			<h3>
-				<a href="<?php echo esc_url( get_category_link( $cat_data ) ); ?>"<?php echo $attrs; ?>>
-					<span>
-						<?php echo esc_html( $cat_data->name ); ?>
-					</span>
-				</a>
+				<?php
+				printf(
+					'<a%2$s><span><strong><span>%3$s%4$s</span></strong></span></a>',
+					esc_url( get_category_link( $cat_data ) ),
+					$attrs,
+					esc_html( $cat_data->name ),
+					$post_count
+				);
+				?>
 			</h3>
 		</div><!-- //.wpzoom-elementor-addons-featured-category -->
 		<?php
