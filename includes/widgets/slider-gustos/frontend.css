@@ -12,12 +12,20 @@
 }
 
 .gustos-slider > .gustos-slides .gustos-slide {
-	display: inline-flex;
 	flex-direction: row-reverse;
 	gap: 30px;
 	float: none;
 	vertical-align: middle;
 	border: 0;
+    display: none;
+}
+
+.gustos-slider > .gustos-slides .gustos-slide:nth-child(1) {
+    display: inline-flex;
+}
+
+.gustos-slider > .gustos-slides .gustos-slide.slick-slide {
+    display: inline-flex;
 }
 
 .gustos-slider > .gustos-slides .gustos-slide .slide-overlay {
