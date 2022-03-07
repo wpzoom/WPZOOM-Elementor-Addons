@@ -3,9 +3,9 @@ Contributors:      WPZOOM, alexus450, ciorici
 Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
-Requires PHP:      5.6
+Requires PHP:      7.2
 Tested up to:      5.9
-Stable tag:        1.1.11
+Stable tag:        1.1.12
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -104,6 +104,9 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 
 == Changelog ==
+
+= 1.1.12 =
+* Added slider alignment option in the Inspiro PRO theme
 
 = 1.1.11 =
 * Bug fix with the Portfolio widget in the Inspiro theme
