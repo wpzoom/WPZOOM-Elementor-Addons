@@ -398,9 +398,10 @@ class Slider_Pro extends Widget_Base {
 		);
 
 
-        $current_theme = get_template();
-            /* Option for Inspiro PRO*/
-             if( 'wpzoom-inspiro-pro' === $current_theme  ) {
+		$current_theme = get_template();
+
+		/* Option for Inspiro PRO*/
+		if( 'wpzoom-inspiro-pro' === $current_theme  ) {
 
             $this->add_control(
                 'slideshow_align',
@@ -512,16 +513,16 @@ class Slider_Pro extends Widget_Base {
 
 
 		$settings = $this->get_settings_for_display();
+		$current_theme = get_template();
 
-        $current_theme = get_template();
-            /* Option for Inspiro PRO*/
-            if( 'wpzoom-inspiro-pro' === $current_theme  ) {
+		$align = isset( $settings['slideshow_align'] ) ? $settings['slideshow_align'] : '';
 
-                $align = $settings['slideshow_align'];
-                $this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap' );
-            } else {
-                $this->add_render_attribute( '_li-wrap', 'class', 'li-wrap' );
-            }
+		/* Option for Inspiro PRO*/
+        if( 'wpzoom-inspiro-pro' === $current_theme  ) {
+			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap' );
+		} else {
+			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap' );
+		}
 
 		$this->add_render_attribute( '_slide_title', 'class', [ $settings['hide_title_desktop'], $settings['hide_title_tablet'], $settings['hide_title_mobile'] ] );
 		
@@ -648,9 +649,9 @@ class Slider_Pro extends Widget_Base {
 
 							<div class="slide-background-overlay"></div>
 
-                            <?php $current_theme = get_template();
-                                /* Markup for Inspiro PRO*/
-                                 if( 'wpzoom-inspiro-pro' === $current_theme && class_exists( 'WPZOOM') && $align != 'center' ) { ?>
+                            <?php 
+							/* Markup for Inspiro PRO*/
+							if( 'wpzoom-inspiro-pro' === $current_theme && 'center' != $align ) { ?>
 
                             <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
                                 <div id="zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  class="animated slow mfp-hide" data-src ="<?php echo esc_url( $popup_final_external_src ); ?>">
@@ -697,8 +698,9 @@ class Slider_Pro extends Widget_Base {
 									<div <?php echo $this->get_render_attribute_string( '_slide_excerpt' ); ?>><?php the_content(); ?></div>
 
                                 <?php
-                                    /* Markup for Inspiro PRO*/
-                                     if( 'wpzoom-inspiro-pro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
+									/* Markup for Inspiro PRO*/
+									if( 'wpzoom-inspiro-pro' === $current_theme ) { 
+								?>
                                 <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
                                 <?php } ?>
 
@@ -707,12 +709,12 @@ class Slider_Pro extends Widget_Base {
 									<div class="slide_button">
 										<a href="<?php echo esc_url( $btn_url ); ?>"><?php echo esc_html( $btn_title ); ?></a>
 									</div><?php
-								} ?>
-
+								} 
+								?>
                                 <?php
                                     /* Markup for Inspiro Classic*/
-                                     if( ( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) || ( 'wpzoom-inspiro-pro' === $current_theme && $align == 'center' ) ) { ?>
-
+                                     if( ( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) || ( 'wpzoom-inspiro-pro' === $current_theme && $align == 'center' ) ) { 
+								?>
                                 <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
                                     <div id="zoom-popup-<?php echo esc_attr( $post->ID ); ?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
 
