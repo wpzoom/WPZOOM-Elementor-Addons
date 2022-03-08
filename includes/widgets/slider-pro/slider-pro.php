@@ -398,10 +398,9 @@ class Slider_Pro extends Widget_Base {
 		);
 
 
-         $current_theme = get_template();
+        $current_theme = get_template();
             /* Option for Inspiro PRO*/
              if( 'wpzoom-inspiro-pro' === $current_theme  ) {
-
 
             $this->add_control(
                 'slideshow_align',
@@ -514,10 +513,15 @@ class Slider_Pro extends Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 
-        $align  = $settings['slideshow_align'];
+        $current_theme = get_template();
+            /* Option for Inspiro PRO*/
+            if( 'wpzoom-inspiro-pro' === $current_theme  ) {
 
-
-        $this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap' );
+                $align = $settings['slideshow_align'];
+                $this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap' );
+            } else {
+                $this->add_render_attribute( '_li-wrap', 'class', 'li-wrap' );
+            }
 
 		$this->add_render_attribute( '_slide_title', 'class', [ $settings['hide_title_desktop'], $settings['hide_title_tablet'], $settings['hide_title_mobile'] ] );
 		
@@ -526,7 +530,6 @@ class Slider_Pro extends Widget_Base {
 
 		$show_count = $settings['show_count'];
 		$category   = $settings['category'];
-
 
 		$slideshow_scroll  = ( 'yes' === $settings['slideshow_scroll'] ? true : false );
 
