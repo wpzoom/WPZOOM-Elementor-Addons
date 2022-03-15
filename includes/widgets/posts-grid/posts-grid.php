@@ -175,7 +175,7 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->wpz_content_layout_options();
 		$this->wpz_content_query_options();
 

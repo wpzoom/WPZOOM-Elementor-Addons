@@ -132,7 +132,7 @@ class Slider_Foodica extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		
 		if ( !WPZOOM_Elementor_Widgets::is_supported_theme( 'foodica' ) ) {
 			$this->register_restricted_controls();

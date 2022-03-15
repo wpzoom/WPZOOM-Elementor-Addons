@@ -144,7 +144,7 @@ class Slider_Pro extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		
 		if ( !WPZOOM_Elementor_Widgets::is_supported_theme() ) {
 			$this->register_restricted_controls();
