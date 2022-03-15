@@ -1512,7 +1512,7 @@ class Posts_Grid extends Widget_Base {
 
 		$posts_per_page = ( ! empty( $settings[ 'posts_per_page' ] ) ?  $settings[ 'posts_per_page' ] : 3 );
 		$cats   = is_array( $settings[ 'post_categories' ] ) ? implode( ',', $settings[ 'post_categories' ] ) : $settings[ 'post_categories' ];
-		$excats = is_array( $settings[ 'ex_post_categories' ] ) ? $settings[ 'ex_post_categories' ] : null;
+		$excats = is_array( $settings[ 'ex_post_categories' ] ) ? $settings[ 'ex_post_categories' ] : array();
 		$category__not_in = array();
 		
 		foreach ( $excats as $excat )
