@@ -114,7 +114,7 @@ class Pricing_Table extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->register_content_controls();
 		$this->register_style_controls();
 	}

@@ -196,7 +196,72 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
-    "id": "winery-homepage",
+    "id": "charity-home",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Charity / NGO Demo"
+},{
+    "name": "About",
+    "id": "charity-about",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "What we do",
+    "id": "charity-what-we-do",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/what-we-do",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Get Involved",
+    "id": "charity-get-involved",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/get-involved",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Causes",
+    "id": "charity-causes",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/causes",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Donate",
+    "id": "charity-donate",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/donate",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "News",
+    "id": "charity-news",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/news",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "charity-contact",
+    "theme": "Inspiro PRO",
+    "category": "Charity / NGO",
+    "thumbnail": "inspiro-pro/charity/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
+    "id": "winery-home",
     "theme": "Inspiro PRO",
     "category": "Winery",
     "thumbnail": "inspiro-pro/winery/home",

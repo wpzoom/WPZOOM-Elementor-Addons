@@ -175,7 +175,7 @@ class Posts_Grid extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->wpz_content_layout_options();
 		$this->wpz_content_query_options();
 
@@ -522,6 +522,14 @@ class Posts_Grid extends Widget_Base {
 		);
 
 		// Post categories
+
+		$this->start_controls_tabs( '_tabs_query_cats' );
+		$this->start_controls_tab(
+			'_tab_cats_include',
+			[
+				'label' => esc_html__( 'Include', 'wpzoom-elementor-addons' ),
+			]
+		);	
 		$this->add_control(
 			'post_categories',
 			[
@@ -533,6 +541,28 @@ class Posts_Grid extends Widget_Base {
 			]
 		);
 
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_cats_exclude',
+			[
+				'label' => esc_html__( 'Exclude', 'wpzoom-elementor-addons' ),
+			]
+		);
+		$this->add_control(
+			'ex_post_categories',
+			[
+				'label'       => esc_html__( 'Categories', 'wpzoom-elementor-addons' ),
+				'label_block' => true,
+				'type'        => Controls_Manager::SELECT2,
+				'multiple'    => true,
+				'options'     => $this->wpz_get_all_post_categories( 'post' )
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
 		$this->add_control(
 			'advanced',
 			[
@@ -540,6 +570,8 @@ class Posts_Grid extends Widget_Base {
 				'type' => Controls_Manager::HEADING
 			]
 		);
+
+
 
 		$this->add_control(
 			'orderby',
@@ -1479,17 +1511,33 @@ class Posts_Grid extends Widget_Base {
 		}
 
 		$posts_per_page = ( ! empty( $settings[ 'posts_per_page' ] ) ?  $settings[ 'posts_per_page' ] : 3 );
-		$cats = is_array( $settings[ 'post_categories' ] ) ? implode( ',', $settings[ 'post_categories' ] ) : $settings[ 'post_categories' ];
+		$cats   = is_array( $settings[ 'post_categories' ] ) ? implode( ',', $settings[ 'post_categories' ] ) : $settings[ 'post_categories' ];
+		$excats = is_array( $settings[ 'ex_post_categories' ] ) ? $settings[ 'ex_post_categories' ] : null;
+		$category__not_in = array();
+		
+		foreach ( $excats as $excat )
+		{
+			$cat = get_category_by_slug( $excat );
+			$cat and $category__not_in[] = $cat->term_id;
+		}
 		
 		$grid_style = $settings[ 'grid_style' ];
 
 		$query_args = array(
 			'posts_per_page' 	  => absint( $posts_per_page ),
-			//'no_found_rows'  	  => true,
+			'paged'				  => $paged,
 			'post__not_in'        => get_option( 'sticky_posts' ),
 			'ignore_sticky_posts' => true,
 			'category_name' 	  => $cats
 		);
+
+		if( $excats ) {
+			$query_args['category__not_in'] = $category__not_in;
+		}
+
+		if( 'none' == $settings['pagination_type'] ) {
+			$query_args['no_found_rows'] = true;
+		}
 
 		// Order by.
 		if ( ! empty( $settings[ 'orderby' ] ) ) {

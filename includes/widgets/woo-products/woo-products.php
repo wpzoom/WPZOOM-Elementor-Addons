@@ -126,7 +126,7 @@ class Woo_Products extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 				'section_woo_products',
 				[

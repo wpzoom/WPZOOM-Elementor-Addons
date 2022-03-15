@@ -83,6 +83,10 @@ class WPZOOM_Elementor_Ajax_Post_Grid {
 				$args[ 'category_name' ] = $data[ 'category_name' ];
 			}
 
+			if ( ! empty( $data[ 'category__not_in' ] ) ) {
+				$args[ 'category__not_in' ] = $data[ 'category__not_in' ];
+			}
+
 			// Order by.
 			if ( ! empty( $data[ 'orderby' ] ) ) {
 				$args[ 'orderby' ] = $data[ 'orderby' ];
