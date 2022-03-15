@@ -3,9 +3,9 @@ Contributors:      WPZOOM, alexus450, ciorici
 Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
-Requires PHP:      5.6
-Tested up to:      5.8.1
-Stable tag:        1.1.7
+Requires PHP:      7.2
+Tested up to:      5.9
+Stable tag:        1.1.13
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -32,8 +32,8 @@ It is very easy to use and you do not need to write any code. To contribute impr
 * **Clients Carousel**
 * Testimonials
 * **WooCommerce Products** - *NEW*
-* Latest Posts
-* Portfolio (Inspiro theme only)
+* Latest Posts (Posts Grid)
+* Portfolio (Inspiro/Inspiro PRO only)
 * Pricing Table
 * Directors (for video creators)
 
@@ -44,12 +44,14 @@ Even though the plugin works great with any theme, currently, it includes templa
 [**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/)
 [**Inspiro Classic**](https://www.wpzoom.com/themes/inspiro/)
 [**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
+[**Foodica PRO**](https://www.wpzoom.com/themes/foodica/)
 
 You can see multiple pages created using **Elementor** and this plugin in the following themes:
 
 [**Inspiro PRO**](https://demo.wpzoom.com/inspiro-pro-demo/)
 [**Inspiro Classic**](https://demo.wpzoom.com/inspiro-demo/)
 [**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
+[**Foodica PRO**](https://demo.wpzoom.com/foodica-elementor/)
 
 
 = Additional Resources =
@@ -102,6 +104,24 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 
 == Changelog ==
+
+= 1.1.13 =
+* Minor bug fix
+
+= 1.1.12 =
+* Added slider alignment option in the Inspiro PRO theme
+
+= 1.1.11 =
+* Bug fix with the Portfolio widget in the Inspiro theme
+
+= 1.1.10 =
+* Bug fix in the Winery demo
+
+= 1.1.9 =
+* Added new Charity Demo for Inspiro PRO theme
+
+= 1.1.8 =
+* Added new Business Demo for Inspiro PRO theme
 
 = 1.1.7 =
 * Added new option to hide sub-categories in the filter of the Portfolio widget
