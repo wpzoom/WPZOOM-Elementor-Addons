@@ -613,11 +613,11 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
-    "id": "gustos-home",
-    "theme": "Gustos",
-    "category": "Gustos",
-    "thumbnail": "gustos/home",
+    "id": "cookbook-home",
+    "theme": "cookbook",
+    "category": "cookbook",
+    "thumbnail": "cookbook/home",
     "requires": ["free"],
     "contributor": ["WPZOOM"],
-    "separator" : "Gustos"
+    "separator" : "cookbook"
 }]

@@ -134,11 +134,11 @@ class WPZOOM_Elementor_Widgets {
 				]
 			);
 		}
-		if( self::is_supported_theme( 'gustos' ) ) {
+		if( self::is_supported_theme( 'cookbook' ) ) {
 			$elements_manager->add_category(
-				'wpzoom-elementor-addons-gustos',
+				'wpzoom-elementor-addons-cookbook',
 				[
-					'title' => __( 'WPZOOM Gustos', 'wpzoom-elementor-addons' ),
+					'title' => __( 'WPZOOM CookBook', 'wpzoom-elementor-addons' ),
 					'icon' => 'fa fa-plug'
 				]
 			);
@@ -169,8 +169,8 @@ class WPZOOM_Elementor_Widgets {
 					return true;
 				}
 			break;
-			case 'gustos':
-				if( 'wpzoom-gustos' === $current_theme || 'wpzoom/wpzoom-gustos' === $current_theme && class_exists( 'WPZOOM' ) ) {
+			case 'cookbook':
+				if( 'wpzoom-cookbook' === $current_theme || 'wpzoom/wpzoom-cookbook' === $current_theme && class_exists( 'WPZOOM' ) ) {
 					return true;
 				}
 			break;	

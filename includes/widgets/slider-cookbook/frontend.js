@@ -26,7 +26,7 @@
 	$window.on( 'elementor/frontend/init', function() {
 		var ModuleHandler = elementorModules.frontend.handlers.Base;
 
-		var GustosSliderBase = ModuleHandler.extend( {
+		var cookbookSliderBase = ModuleHandler.extend( {
 			bindEvents: function() {
 				//this.removeArrows();
 				this.run();
@@ -45,7 +45,7 @@
 					autoplay    : true,
 					arrows      : true,
 					checkVisible: false,
-					container   : '.gustos-slider > .gustos-slides',
+					container   : '.cookbook-slider > .cookbook-slides',
 					dots        : false,
 					infinite    : true,
 					rows        : 0,
@@ -222,16 +222,16 @@
 				this.elements.$container.on(
 					'beforeChange',
 					( event, slick, currentSlide, nextSlide ) => {
-						slick.$prevArrow.siblings( '.gustos-slider-prevnext-number' ).text( ( nextSlide + 1 ) + '/' + slick.slideCount );
+						slick.$prevArrow.siblings( '.cookbook-slider-prevnext-number' ).text( ( nextSlide + 1 ) + '/' + slick.slideCount );
 					}
 				);
 			}
 		} );
 
 		elementorFrontend.hooks.addAction(
-			'frontend/element_ready/wpzoom-elementor-addons-slider-gustos.default',
+			'frontend/element_ready/wpzoom-elementor-addons-slider-cookbook.default',
 			function ( $scope ) {
-				elementorFrontend.elementsHandler.addHandler( GustosSliderBase, {
+				elementorFrontend.elementsHandler.addHandler( cookbookSliderBase, {
 					$element: $scope
 				} );
 			}

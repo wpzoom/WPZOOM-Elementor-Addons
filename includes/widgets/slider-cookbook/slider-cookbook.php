@@ -21,13 +21,13 @@ use Elementor\Modules\DynamicTags\Module as TagsModule;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * ZOOM Elementor Widgets - Gustos Slider Widget.
+ * ZOOM Elementor Widgets - cookbook Slider Widget.
  *
  * Elementor widget that inserts a customizable slider.
  *
  * @since 1.0.0
  */
-class Slider_Gustos extends Widget_Base {
+class Slider_cookbook extends Widget_Base {
 	
 	/**
 	 * @var \WP_Query
@@ -52,13 +52,13 @@ class Slider_Gustos extends Widget_Base {
 			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
-		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider-gustos', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider-cookbook', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
 
 		if ( ! wp_script_is( 'jquery-slick-slider', 'registered' ) ) {
 			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
 		}
 
-		wp_register_script( 'wpzoom-elementor-addons-js-frontend-slider-gustos', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
+		wp_register_script( 'wpzoom-elementor-addons-js-frontend-slider-cookbook', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
 	}
 
 	/**
@@ -71,7 +71,7 @@ class Slider_Gustos extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'wpzoom-elementor-addons-slider-gustos';
+		return 'wpzoom-elementor-addons-slider-cookbook';
 	}
 
 	/**
@@ -84,7 +84,7 @@ class Slider_Gustos extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Gustos Slideshow', 'wpzoom-elementor-addons' );
+		return esc_html__( 'CookBook Slideshow', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Slider_Gustos extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-addons-gustos' ];
+		return [ 'wpzoom-elementor-addons-cookbook' ];
 	}
 
 	/**
@@ -128,7 +128,7 @@ class Slider_Gustos extends Widget_Base {
 			'slick-slider-theme',
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-addons-css-frontend-slider-gustos'
+			'wpzoom-elementor-addons-css-frontend-slider-cookbook'
 		];
 	}
 
@@ -146,7 +146,7 @@ class Slider_Gustos extends Widget_Base {
 			'jquery',
 			'jquery-slick-slider',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-addons-js-frontend-slider-gustos'
+			'wpzoom-elementor-addons-js-frontend-slider-cookbook'
 		];
 	}
 
@@ -174,7 +174,7 @@ class Slider_Gustos extends Widget_Base {
 	 */
 	protected function _register_controls() {
 		
-		if ( !WPZOOM_Elementor_Widgets::is_supported_theme( 'gustos' ) ) {
+		if ( !WPZOOM_Elementor_Widgets::is_supported_theme( 'cookbook' ) ) {
 			$this->register_restricted_controls();
 		}
 		else {
@@ -196,7 +196,7 @@ class Slider_Gustos extends Widget_Base {
 	protected function register_restricted_controls() {
 
 		$this->start_controls_section(
-			'section_restricted_gustos_slideshow',
+			'section_restricted_cookbook_slideshow',
 			array(
 				'label' => esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ),
 			)
@@ -204,7 +204,7 @@ class Slider_Gustos extends Widget_Base {
 		$this->add_control(
 			'restricted_widget_text',
 			[
-				'raw' => wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/gustos/">"Gustos"</a> theme', 'wpzoom-elementor-addons' ) ),
+				'raw' => wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/cookbook/">"CookBook"</a> theme', 'wpzoom-elementor-addons' ) ),
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-descriptor',
 			]
@@ -224,9 +224,9 @@ class Slider_Gustos extends Widget_Base {
 	protected function register_content_controls() {
 		
 		$this->start_controls_section(
-			'_section_gustos_slider',
+			'_section_cookbook_slider',
 			array(
-				'label' => esc_html__( 'Gustos Slideshow', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'cookbook Slideshow', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -320,9 +320,9 @@ class Slider_Gustos extends Widget_Base {
 	protected function register_style_controls() { 
 
 		$this->start_controls_section(
-			'_section_style_gustos_slideshow',
+			'_section_style_cookbook_slideshow',
 			array(
-				'label' => esc_html__( 'Gustos Slideshow', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'CookBook Slideshow', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -341,10 +341,10 @@ class Slider_Gustos extends Widget_Base {
 	 */
 	protected function render() {
 
-		if ( !WPZOOM_Elementor_Widgets::is_supported_theme( 'gustos' ) ) {
+		if ( !WPZOOM_Elementor_Widgets::is_supported_theme( 'cookbook' ) ) {
 			if( current_user_can('editor') || current_user_can('administrator') ) {
 				echo '<h3>' . esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ) . '</h3>';
-				echo wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/gustos/">"Gustos"</a> theme', 'wpzoom-elementor-addons' ) );
+				echo wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/cookbook/">"cookbook"</a> theme', 'wpzoom-elementor-addons' ) );
 			}
 			return;
 		}
@@ -373,16 +373,16 @@ class Slider_Gustos extends Widget_Base {
 	
 		if ( $featured->have_posts() ) : ?>
 
-			<div class="gustos-slider <?php echo get_theme_mod('slider-styles', zoom_customizer_get_default_option_value('slider-styles', gustos_customizer_data()))?>">		
-				<div class="gustos-slider-title">
+			<div class="cookbook-slider <?php echo get_theme_mod('slider-styles', zoom_customizer_get_default_option_value('slider-styles', cookbook_customizer_data()))?>">
+				<div class="cookbook-slider-title">
 					<h3><?php echo esc_html( isset( $settings['slider_title'] ) ? $settings['slider_title'] : __( 'Featured Recipes', 'wpzoom-elementor-addons' ) ); ?></h3>
 				</div>
 
-				<div class="gustos-slides">
+				<div class="cookbook-slides">
 					<?php while ( $featured->have_posts() ) : $featured->the_post(); ?>
 						<?php
 	
-							$slider_style = get_theme_mod('slider-styles', zoom_customizer_get_default_option_value('slider-styles', gustos_customizer_data()));
+							$slider_style = get_theme_mod('slider-styles', zoom_customizer_get_default_option_value('slider-styles', cookbook_customizer_data()));
 		
 						if ($slider_style == 'slide-style-3') {
 							$image_size = 'loop-full';
@@ -401,7 +401,7 @@ class Slider_Gustos extends Widget_Base {
 		
 						?>
 
-						<div class="gustos-slide">
+						<div class="cookbook-slide">
 
 							<div class="slide-overlay">
 
@@ -409,7 +409,7 @@ class Slider_Gustos extends Widget_Base {
 
 								   <?php if ( 'yes' == $settings['slider_category'] && $FeaturedSource == 'post' ) printf( '<span class="cat-links">%s</span>', get_the_category_list( ', ' ) ); ?>
 
-									<?php the_title( sprintf( '<h3 class="gustos-slide-title"><a href="%s">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+									<?php the_title( sprintf( '<h3 class="cookbook-slide-title"><a href="%s">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
 									<?php
 									if ( $show_recipe_details ) {
@@ -473,17 +473,17 @@ class Slider_Gustos extends Widget_Base {
 
 				</div>
 
-				<div class="gustos-slider-prevnext">
+				<div class="cookbook-slider-prevnext">
 					<div class="prevnext-wrapper">
-						<button type="button" class="slick-prev gustos-slider-prevnext-prev" title="<?php esc_attr_e( 'Previous', 'wpzoom-elementor-addons' ); ?>">
+						<button type="button" class="slick-prev cookbook-slider-prevnext-prev" title="<?php esc_attr_e( 'Previous', 'wpzoom-elementor-addons' ); ?>">
 							<svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
 								<path d="M3.83 5L7.41 1.41L6 0L0 6L6 12L7.41 10.59L3.83 7L16 7V5L3.83 5Z" fill="currentColor"/>
 							</svg>
 						</button>
 
-						<span class="gustos-slider-prevnext-number">1/<?php echo esc_html( $featured->post_count ); ?></span>
+						<span class="cookbook-slider-prevnext-number">1/<?php echo esc_html( $featured->post_count ); ?></span>
 
-						<button type="button" class="slick-next gustos-slider-prevnext-next" title="<?php esc_attr_e( 'Next', 'wpzoom-elementor-addons' ); ?>">
+						<button type="button" class="slick-next cookbook-slider-prevnext-next" title="<?php esc_attr_e( 'Next', 'wpzoom-elementor-addons' ); ?>">
 							<svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
 								<path d="M12.17 7L8.59 10.59L10 12L16 6L10 -5.24537e-07L8.59 1.41L12.17 5L6.11959e-07 5L4.37114e-07 7L12.17 7Z" fill="currentColor"/>
 							</svg>
@@ -508,7 +508,7 @@ class Slider_Gustos extends Widget_Base {
 						<?php
 						printf(
 							wp_kses_post( __( 'For more information about adding posts to the slider, please read <strong><a target="_blank" href="%1$s">theme documentation</a></strong>', 'wpzoom-elementor-addons' ) ),
-							'https://www.wpzoom.com/documentation/gustos/gustos-configure-homepage-slider/'
+							'https://www.wpzoom.com/documentation/cookbook/cookbook-configure-homepage-slider/'
 						);
 						?>
 					</p>
