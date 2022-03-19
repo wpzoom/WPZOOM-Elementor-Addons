@@ -319,19 +319,19 @@ class Team_Members extends Widget_Base {
 				'options' => [
 					'left' => [
 						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-align-left',
+						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
 						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-align-center',
+						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
 						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-align-right',
+						'icon' => 'eicon-text-align-right',
 					],
 					'justify' => [
 						'title' => esc_html__( 'Justify', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa fa-align-justify',
+						'icon' => 'eicon-text-align-justify',
 					],
 				],
 				'toggle' => true,
@@ -634,11 +634,11 @@ class Team_Members extends Widget_Base {
 				'options' => [
 					'before' => [
 						'title' => esc_html__( 'Before', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa-align-left',
+						'icon' => 'eicon-text-align-left',
 					],
 					'after' => [
 						'title' => esc_html__( 'After', 'wpzoom-elementor-addons' ),
-						'icon' => 'fa-align-right',
+						'icon' => 'eicon-text-align-right',
 					],
 				],
 				'default' => 'after',
