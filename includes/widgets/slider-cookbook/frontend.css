@@ -18,6 +18,11 @@
 	vertical-align: middle;
 	border: 0;
     display: none;
+    position: relative;
+}
+
+.cookbook-slider > .cookbook-slides .cookbook-slide:hover {
+    cursor: grab;
 }
 
 .cookbook-slider > .cookbook-slides .cookbook-slide:nth-child(1) {
@@ -40,6 +45,12 @@
 	height: 450px;
 	width: calc(60% - 30px);
 	border-radius: 4px;
+}
+
+.cookbook-slider > .cookbook-slides .cookbook-slide .slide-background a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .cookbook-slider > .cookbook-slides .cookbook-slide .cat-links {

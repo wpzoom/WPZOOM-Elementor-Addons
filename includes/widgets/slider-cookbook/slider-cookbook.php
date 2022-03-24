@@ -172,7 +172,7 @@ class Slider_cookbook extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		
 		if ( !WPZOOM_Elementor_Widgets::is_supported_theme( 'cookbook' ) ) {
 			$this->register_restricted_controls();
@@ -226,7 +226,7 @@ class Slider_cookbook extends Widget_Base {
 		$this->start_controls_section(
 			'_section_cookbook_slider',
 			array(
-				'label' => esc_html__( 'cookbook Slideshow', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'CookBook Slideshow', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -235,21 +235,20 @@ class Slider_cookbook extends Widget_Base {
 			'featured_type',
 			array(
 				'type'        => Controls_Manager::SELECT,
-				'label'       => esc_html__( 'Content Source', 'wpzoom-elementor-addons' ),
-				'description' => wp_kses_post( __( 'Select the type of content that should be displayed in the slider. <strong>Slides are ordered by date</strong>.', 'wpzoom-elementor-addons' ) ),
+				'label'       => esc_html__( 'Content', 'wpzoom-elementor-addons' ),
 				'options'     => array(
-					'post' => esc_html__( 'Featured Posts', 'wpzoom-elementor-addons' ),
-					'page' => esc_html__( 'Featured Pages', 'wpzoom-elementor-addons' ),
+					'featured' => esc_html__( 'Featured Posts', 'wpzoom-elementor-addons' ),
+					'latest' => esc_html__( 'Latest Posts', 'wpzoom-elementor-addons' ),
+                    'random' => esc_html__( 'Random Posts', 'wpzoom-elementor-addons' ),
 				),
-				'default' => 'post'
+				'default' => 'featured'
 			)
 		);
 		$this->add_control(
 			'slideshow_posts',
 			array(
 				'type'        => Controls_Manager::TEXT,
-				'label'       => esc_html__( 'Number of Posts/Pages in Slider', 'wpzoom-elementor-addons' ),
-				'description' => esc_html__( 'How many posts or pages should appear in the Slider on the homepage? Default: 5.', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Number of Posts', 'wpzoom-elementor-addons' ),
 				'default' => '5'
 			)
 		);
@@ -258,7 +257,7 @@ class Slider_cookbook extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Title', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
-				'description' => esc_html__( 'Static title to display at the top of the slider.', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'Title to display at the top of the slider.', 'wpzoom-elementor-addons' ),
 				'default' => esc_html__( 'Featured Recipes', 'wpzoom-elementor-addons' )
 			)
 		);
@@ -272,6 +271,36 @@ class Slider_cookbook extends Widget_Base {
 				'default' => 'yes',
 			)
 		);
+        $this->add_control(
+            'slider_recipe_details',
+            array(
+                'label' => esc_html__( 'Display Cooking Time & Difficulty', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+                'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+                'default' => 'yes',
+            )
+        );
+        $this->add_control(
+            'slider_author_pic',
+            array(
+                'label' => esc_html__( 'Display Author Photo', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+                'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+                'default' => 'yes',
+            )
+        );
+        $this->add_control(
+            'slider_author_name',
+            array(
+                'label' => esc_html__( 'Display Author Name', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+                'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+                'default' => 'yes',
+            )
+        );
 		$this->add_control(
 			'slider_date',
 			array(
@@ -283,29 +312,6 @@ class Slider_cookbook extends Widget_Base {
 				'default' => 'yes',
 			)
 		);
-		$this->add_control(
-			'slider_comments',
-			array(
-				'label' => esc_html__( 'Display Comments Count' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'default' => 'yes',
-			)
-		);
-		$this->add_control(
-			'slider_button',
-			array(
-				'label' => esc_html__( 'Display Read More Button' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'default' => 'yes',
-			)
-		);
-
-
-
 
 		$this->end_controls_section();
 	}
@@ -359,41 +365,49 @@ class Slider_cookbook extends Widget_Base {
 		$show_author_name    = isset( $settings['slider_author_name'] ) ? ( 'yes' === $settings['slider_author_name'] ) : true;
 		$show_author_date    = isset( $settings['slider_date'] ) ? ( 'yes' === $settings['slider_date'] ) : true;
 
-		$args = array(
-			'showposts'    => $slideshow_posts,
-			'post__not_in' => get_option( 'sticky_posts' ),
-			'meta_key'     => 'wpzoom_is_featured',
-			'meta_value'   => 1,
-			'orderby'     => 'menu_order date',
-			'post_status' => array( 'publish' ),
-			'post_type' => $FeaturedSource
-		);
+
+        if ($FeaturedSource == 'featured' ) {
+    		$args = array(
+    			'showposts'    => $slideshow_posts,
+    			'post__not_in' => get_option( 'sticky_posts' ),
+    			'meta_key'     => 'wpzoom_is_featured',
+    			'meta_value'   => 1,
+    			'orderby'     => 'menu_order date',
+    			'post_status' => array( 'publish' ),
+    			'post_type' => 'post'
+            );
+
+        } elseif ( $FeaturedSource == 'latest' ) {
+            $args = array(
+                'showposts'    => $slideshow_posts,
+                'post__not_in' => get_option( 'sticky_posts' ),
+                'orderby'     => 'menu_order date',
+                'post_status' => array( 'publish' ),
+                'post_type' => 'post'
+            );
+        } else {
+            $args = array(
+                'showposts'    => $slideshow_posts,
+                'post__not_in' => get_option( 'sticky_posts' ),
+                'orderby'     => 'rand',
+                'post_status' => array( 'publish' ),
+                'post_type' => 'post'
+            );
+        }
 	
 		$featured = new \WP_Query($args );
 	
 		if ( $featured->have_posts() ) : ?>
 
 			<div class="cookbook-slider <?php echo get_theme_mod('slider-styles', zoom_customizer_get_default_option_value('slider-styles', cookbook_customizer_data()))?>">
-				<div class="cookbook-slider-title">
-					<h3><?php echo esc_html( isset( $settings['slider_title'] ) ? $settings['slider_title'] : __( 'Featured Recipes', 'wpzoom-elementor-addons' ) ); ?></h3>
-				</div>
 
 				<div class="cookbook-slides">
 					<?php while ( $featured->have_posts() ) : $featured->the_post(); ?>
 						<?php
 	
-							$slider_style = get_theme_mod('slider-styles', zoom_customizer_get_default_option_value('slider-styles', cookbook_customizer_data()));
-		
-						if ($slider_style == 'slide-style-3') {
-							$image_size = 'loop-full';
-							$reatina_image_size = 'loop-full-retina';
-						} else {
-							$image_size = 'loop-sticky';
-							$reatina_image_size = 'loop-sticky-retina';
-						}
-		
-		
-		
+						$image_size = 'loop-sticky';
+						$reatina_image_size = 'loop-sticky-retina';
+
 						$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), $image_size);
 						$retina_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), $reatina_image_size);
 		
@@ -405,9 +419,13 @@ class Slider_cookbook extends Widget_Base {
 
 							<div class="slide-overlay">
 
+                                <div class="cookbook-slider-title">
+                                    <h3><?php echo esc_html( isset( $settings['slider_title'] ) ? $settings['slider_title'] : __( 'Featured Recipes', 'wpzoom-elementor-addons' ) ); ?></h3>
+                                </div>
+
 								<div class="slide-header">
 
-								   <?php if ( 'yes' == $settings['slider_category'] && $FeaturedSource == 'post' ) printf( '<span class="cat-links">%s</span>', get_the_category_list( ', ' ) ); ?>
+								   <?php if ( 'yes' == $settings['slider_category'] ) printf( '<span class="cat-links">%s</span>', get_the_category_list( ', ' ) ); ?>
 
 									<?php the_title( sprintf( '<h3 class="cookbook-slide-title"><a href="%s">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
@@ -439,7 +457,6 @@ class Slider_cookbook extends Widget_Base {
 
 								</div>
 
-								<?php if ( $FeaturedSource == 'post' ) { ?>
 									<div class="slide-footer">
 										<?php
 										if ( $show_author_pic ) {
@@ -462,11 +479,10 @@ class Slider_cookbook extends Widget_Base {
 										}
 										?>
 									</div>
-								<?php } ?>
 
 							</div>
 
-							<div class="slide-background" <?php echo $style; ?>></div>
+							<div class="slide-background" <?php echo $style; ?>><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'wpzoom' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"></a></div>
 
 						</div>
 					<?php endwhile; ?>

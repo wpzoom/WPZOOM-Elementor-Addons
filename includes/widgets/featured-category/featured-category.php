@@ -160,7 +160,7 @@ class Featured_Category extends Widget_Base {
 	 * @access public
 	 * @return void
 	 */
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->content_options();
 		$this->style_options();
 	}
