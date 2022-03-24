@@ -103,7 +103,7 @@ class Woo_Products extends Widget_Base {
 			'wpzoom-elementor-addons-css-frontend-woo-products'
 		];
 	}
-
+  
 	/**
 	 * Get the query
 	 *
@@ -165,6 +165,36 @@ class Woo_Products extends Widget_Base {
 		);
 
 		$this->add_control(
+			'hideprice',
+			[
+				'label' => esc_html__( 'Hide Product Price?', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'default'      => '',
+				'return_value' => 'none',
+				'selectors' => [
+					'{{WRAPPER}} .product .price' =>  'display: {{VALUE}} !important',
+				],
+			]
+		);
+
+		$this->add_control(
+			'hidecartbtn',
+			[
+				'label' => esc_html__( 'Hide "Add to Cart" Button?', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'default' => '',
+				'return_value' => 'none',
+				'selectors' => [
+					'{{WRAPPER}} .product a.button' =>  'display: {{VALUE}} !important',
+				],
+			]
+		);
+
+		$this->add_control(
 				'pagination',
 				[
 					'label' => esc_html__( 'Pagination', 'wpzoom-elementor-addons' ),
@@ -181,15 +211,15 @@ class Woo_Products extends Widget_Base {
 					'options' => [
 						'left' => [
 							'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
-							'icon' => 'fa fa-align-left',
+							'icon' => 'eicon-text-align-left',
 						],
 						'center' => [
 							'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
-							'icon' => 'fa fa-align-center',
+							'icon' => 'eicon-text-align-center',
 						],
 						'right' => [
 							'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
-							'icon' => 'fa fa-align-right',
+							'icon' => 'eicon-text-align-right',
 						],
 					],
 					'selectors' => [
@@ -1328,6 +1358,7 @@ class Woo_Products extends Widget_Base {
 	 * @return void
 	 */
 	public function render() {
+
 		if ( ! function_exists( 'WC' ) ) {
 			printf(
 				'<div class="woocommerce error"><h2>%1$s</h2><p>%2$s</p></div>',
@@ -1339,6 +1370,9 @@ class Woo_Products extends Widget_Base {
 		}
 
 		$settings = $this->get_settings();
+
+		$this->add_render_attribute( 'woocontainer', 'class', 'wpzoom-elementor-addons-woo-products' );
+		$this->add_render_attribute( 'woocontainer', 'class', 'woocommerce' );
 
 		$this->query_posts();
 
@@ -1352,7 +1386,9 @@ class Woo_Products extends Widget_Base {
 
 		$woocommerce_loop[ 'columns' ] = (int) $settings[ 'columns' ];
 
-		echo '<div class="woocommerce columns-' . esc_attr( $woocommerce_loop[ 'columns' ] ) . '">';
+		$this->add_render_attribute( 'woocontainer', 'class', 'columns-' . esc_attr( $woocommerce_loop[ 'columns' ] ) );
+
+		echo '<div ' . $this->get_render_attribute_string( 'woocontainer' ) . '>';
 
 		woocommerce_product_loop_start();
 
