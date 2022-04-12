@@ -676,13 +676,4 @@
     "thumbnail": "inspiro/contact",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
-},{
-    "name": "Homepage",
-    "id": "cookbook-home",
-    "theme": "cookbook",
-    "category": "cookbook",
-    "thumbnail": "cookbook/home",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"],
-    "separator" : "cookbook"
 }]
