@@ -5,7 +5,7 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      7.2
 Tested up to:      5.9
-Stable tag:        1.1.14
+Stable tag:        1.1.15
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
@@ -32,6 +32,8 @@ It is very easy to use and you do not need to write any code. To contribute impr
 * **Clients Carousel**
 * Testimonials
 * **WooCommerce Products** - *NEW*
+* **Image Box** - *NEW*
+* **Featured Category** - *NEW*
 * Latest Posts (Posts Grid)
 * Portfolio (Inspiro/Inspiro PRO only)
 * Pricing Table
@@ -104,6 +106,9 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 
 == Changelog ==
+
+= 1.1.15 =
+* Added 2 new widgets: Image Box, Featured Category
 
 = 1.1.14 =
 * Elementor 3.6 compatibility fixes

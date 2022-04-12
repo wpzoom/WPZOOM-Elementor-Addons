@@ -3,7 +3,7 @@
  * Plugin Name:       Elementor Addons by WPZOOM
  * Plugin URI:        https://wpzoom.com/plugins/
  * Description:       A plugin that provides a collection of Elementor Templates and advanced widgets created by the WPZOOM team
- * Version:           1.1.14
+ * Version:           1.1.15
  * Author:            WPZOOM
  * Author URI:        https://www.wpzoom.com/
  * Text Domain:       wpzoom-elementor-addons
@@ -11,8 +11,8 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires at least: 5.2
  * Tested up to:      5.9
- * Elementor tested up to: 3.6
- * Elementor Pro tested up to: 3.6
+ * Elementor tested up to: 3.6.2
+ * Elementor Pro tested up to: 3.6.2
  *
  * @package WPZOOM_Elementor_Addons
  */
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'WPZOOM_EL_ADDONS_VER', '1.1.14' );
+define( 'WPZOOM_EL_ADDONS_VER', '1.1.15' );
 
 define( 'WPZOOM_EL_ADDONS__FILE__', __FILE__ );
 define( 'WPZOOM_EL_ADDONS_PLUGIN_BASE', plugin_basename( WPZOOM_EL_ADDONS__FILE__ ) );
