@@ -441,7 +441,9 @@ class Slider_cookbook extends Widget_Base {
 												printf( '<span class="entry-recipe-details_time">%s</span>', esc_html( $time ) );
 											}
 
-											if ( ! empty( $difficulty ) ) {
+
+                                            if ( ( '' != $difficulty ) && ( 'none' != $difficulty ) ) {
+
 												printf( '<span class="entry-recipe-details_difficulty">%s</span>', esc_html( $difficulty ) );
 											}
 
