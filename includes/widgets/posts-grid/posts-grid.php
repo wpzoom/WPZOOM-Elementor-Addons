@@ -1808,7 +1808,7 @@ class Posts_Grid extends Widget_Base {
 
 				foreach ( $other_fields as $field_id => $field_label ) {
 					if ( ( $all_fields || ( false === $invert && in_array( $field_id, $fields ) ) || ( true === $invert && ! in_array( $field_id, $fields ) ) ) && in_array( $field_id, $meta_data ) ) {
-						printf( '<span class="meta-field_%s" title="%s">', esc_attr( $field_id ), esc_attr( $field_label ) );
+						printf( '<span class="zoom-field_%s" title="%s">', esc_attr( $field_id ), esc_attr( $field_label ) );
 						do_action( 'wpzoom_elementor_addons_posts_grid_meta_field_display', $field_id );
 						echo '</span>';
 					}
