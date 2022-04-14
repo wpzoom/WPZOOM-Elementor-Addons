@@ -1,5 +1,46 @@
 [{
     "name": "Homepage",
+    "id": "cookbook-home",
+    "theme": "CookBook",
+    "category": "CookBook",
+    "thumbnail": "cookbook/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "CookBook"
+},{
+    "name": "Recipe Index (by Category)",
+    "id": "cookbook-index",
+    "theme": "CookBook",
+    "category": "CookBook",
+    "thumbnail": "cookbook/recipe-index",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Recipe Index (Posts)",
+    "id": "cookbook-index2",
+    "theme": "CookBook",
+    "category": "CookBook",
+    "thumbnail": "cookbook/recipe-posts",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "About",
+    "id": "cookbook-about",
+    "theme": "CookBook",
+    "category": "CookBook",
+    "thumbnail": "cookbook/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "cookbook-contact",
+    "theme": "CookBook",
+    "category": "CookBook",
+    "thumbnail": "cookbook/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "foodica-home",
     "theme": "Foodica (PRO)",
     "category": "Foodica",

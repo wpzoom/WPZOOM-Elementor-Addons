@@ -188,7 +188,7 @@ class Featured_Category extends Widget_Base {
 			array(
 				'label'       => esc_html__( 'Category', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
-				'description' => esc_html__( 'Select the category to display.', 'wpzoom-elementor-addons' ),
+                'description' => wp_kses_post( __( 'Select the category to display.<br /><br/>The <strong>Featured Image</strong> for each category can be uploaded <a href=\'edit-tags.php?taxonomy=category\' target=\'_blank\'>here</a>.', 'wpzoom-elementor-addons' ) ),
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => false,
 				'options'     => $this->get_all_categories(),

@@ -47,6 +47,7 @@ Even though the plugin works great with any theme, currently, it includes templa
 [**Inspiro Classic**](https://www.wpzoom.com/themes/inspiro/)
 [**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
 [**Foodica PRO**](https://www.wpzoom.com/themes/foodica/)
+[**CookBook**](https://www.wpzoom.com/themes/cookbook/) - *NEW*
 
 You can see multiple pages created using **Elementor** and this plugin in the following themes:
 
@@ -54,6 +55,7 @@ You can see multiple pages created using **Elementor** and this plugin in the fo
 [**Inspiro Classic**](https://demo.wpzoom.com/inspiro-demo/)
 [**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
 [**Foodica PRO**](https://demo.wpzoom.com/foodica-elementor/)
+[**CookBook**](https://demo.wpzoom.com/cookbook/) - *NEW*
 
 
 = Additional Resources =

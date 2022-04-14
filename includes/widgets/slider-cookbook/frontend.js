@@ -194,6 +194,7 @@
 					vertical: !! this.getElementSettings( 'vertical' ),
 					slidesToScroll: 1,
 					dots: false,
+                    // fade: true,
 					arrows: true,
 				};
 
