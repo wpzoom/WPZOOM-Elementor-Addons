@@ -381,7 +381,7 @@ class Slider_cookbook extends Widget_Base {
             $args = array(
                 'showposts'    => $slideshow_posts,
                 'post__not_in' => get_option( 'sticky_posts' ),
-                'orderby'     => 'menu_order date',
+                'orderby'     => 'date',
                 'post_status' => array( 'publish' ),
                 'post_type' => 'post'
             );
