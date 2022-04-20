@@ -179,7 +179,7 @@ class Slider_cookbook extends Widget_Base {
 		}
 		else {
 			$this->register_content_controls();
-			//$this->register_style_controls();
+			$this->register_style_controls();
 		}
 
 	}
@@ -316,24 +316,554 @@ class Slider_cookbook extends Widget_Base {
 		$this->end_controls_section();
 	}
 
-	/**
+/**
 	 * Register Style Controls.
 	 *
 	 * @since 1.0.0
 	 * @access public
 	 * @return void
 	 */
-	protected function register_style_controls() { 
-
+	protected function register_style_controls() {
 		$this->start_controls_section(
-			'_section_style_cookbook_slideshow',
-			array(
-				'label' => esc_html__( 'CookBook Slideshow', 'wpzoom-elementor-addons' ),
+			'_section_style_slider',
+			[
+				'label' => esc_html__( 'Slider', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			)
+			]
+		);
+
+		$this->add_control(
+			'auto_height',
+			[
+				'label' => esc_html__( 'Automatic Height', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => 'no'
+			]
+		);
+
+		$this->add_responsive_control(
+			'auto_height_size',
+			[
+				'label' => esc_html__( 'Automatic Height Size', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ '%' ],
+				'range' => [
+					'%' => [
+						'min' => 1,
+						'max' => 100,
+					]
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100
+				],
+				'selectors' => [
+					'{{WRAPPER}} .slick-slider' => 'height: {{SIZE}}vh;'
+				],
+				'condition' => [
+					'auto_height' => 'yes'
+				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'auto_height_max',
+			[
+				'label' => esc_html__( 'Automatic Height Maximum', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 1000,
+					],
+					'%' => [
+						'min' => 1,
+						'max' => 100,
+					]
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 550
+				],
+				'desktop_default' => [
+					'unit' => 'px',
+					'size' => 550
+				],
+				'tablet_default' => [
+					'unit' => 'px',
+					'size' => 350
+				],
+				'mobile_default' => [
+					'unit' => 'px',
+					'size' => 250
+				],
+				'selectors' => [
+					'{{WRAPPER}} .slick-slider' => 'max-height: {{SIZE}}{{UNIT}};'
+				],
+				'condition' => [
+					'auto_height' => 'yes'
+				]
+			]
 		);
 
 		$this->end_controls_section();
+		
+		$this->start_controls_section(
+			'_section_style_item',
+			[
+				'label' => esc_html__( 'Slider Item', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'item_spacing',
+			[
+				'label' => esc_html__( 'Slide Spacing (px)', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .slick-slider:not(.slick-vertical) .slick-slide' => 'padding-right: {{SIZE}}{{UNIT}}; padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .slick-slider.slick-vertical .slick-slide' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_style_content',
+			[
+				'label' => esc_html__( 'Slide Content', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'content_padding',
+			[
+				'label' => esc_html__( 'Content Padding', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .slide-overlay' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'content_background',
+				'selector' => '{{WRAPPER}} .slick-slide',
+				'exclude' => [
+					 'image'
+				]
+			]
+		);
+
+		//Category Styling
+		$this->add_control(
+			'_heading_category',
+			[
+				'type' => Controls_Manager::HEADING,
+				'label' => esc_html__( 'Category', 'wpzoom-elementor-addons' ),
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_responsive_control(
+			'cat_spacing',
+			[
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .cat-links a' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( '_tabs_cat_color' );
+
+		$this->start_controls_tab(
+			'_tab_cat_color_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'cat_color',
+			[
+				'label' => esc_html__( 'Category Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cat-links a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_cat_color_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'cat_color_hover',
+			[
+				'label' => esc_html__( 'Category Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cat-links a:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'category',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .cat-links',
+			]
+		);
+
+		//Title Styling
+		$this->add_control(
+			'_heading_title',
+			[
+				'type' => Controls_Manager::HEADING,
+				'label' => esc_html__( 'Title', 'wpzoom-elementor-addons' ),
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_responsive_control(
+			'title_spacing',
+			[
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .cookbook-slide-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( '_tabs_title_color' );
+
+		$this->start_controls_tab(
+			'_tab_title_color_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Title Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cookbook-slide-title a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_title_color_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'title_color_hover',
+			[
+				'label' => esc_html__( 'Title Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cookbook-slide-title a:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .cookbook-slide-title',
+			]
+		);
+
+		//Content Styling
+		$this->add_control(
+			'_heading_content',
+			[
+				'type' => Controls_Manager::HEADING,
+				'label' => esc_html__( 'Content', 'wpzoom-elementor-addons' ),
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'content_color',
+			[
+				'label' => esc_html__( 'Content Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .slide-content' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'content_text',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .slide-content',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_style_footer',
+			[
+				'label' => esc_html__( 'Slide Footer', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'footer_margin',
+			[
+				'label' => esc_html__( 'Top Margin', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .slide-footer' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);	
+		$this->add_responsive_control(
+			'footer_spacing',
+			[
+				'label' => esc_html__( 'Top Padding', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .slide-footer' => 'padding-top: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'footer_border',
+				'selector' => '{{WRAPPER}} .slide-footer',
+			]
+		);
+
+		//Author Styling
+		$this->add_control(
+			'_heading_author',
+			[
+				'type' => Controls_Manager::HEADING,
+				'label' => esc_html__( 'Author', 'wpzoom-elementor-addons' ),
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_responsive_control(
+			'author_spacing',
+			[
+				'label' => esc_html__( 'Bottom Spacing', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .entry-author-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( '_tabs_author_color' );
+
+		$this->start_controls_tab(
+			'_tab_author_color_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'author_color',
+			[
+				'label' => esc_html__( 'Author Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .entry-author-name a' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_author_color_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'author_color_hover',
+			[
+				'label' => esc_html__( 'Author Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .entry-author-name a:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'author',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .entry-author-name',
+			]
+		);
+
+		//Date Styling
+		$this->add_control(
+			'_heading_date',
+			[
+				'type' => Controls_Manager::HEADING,
+				'label' => esc_html__( 'Date', 'wpzoom-elementor-addons' ),
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'date_color',
+			[
+				'label' => esc_html__( 'Date Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .entry-date' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'date',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .entry-date',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_style_navigation',
+			[
+				'label' => esc_html__( 'Slide Navigation', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->start_controls_tabs( '_tabs_arrow_color' );
+
+		$this->start_controls_tab(
+			'_tab_arrow_color_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'arrow_color',
+			[
+				'label' => esc_html__( 'Arrows Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .slick-arrow' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_arrow_color_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'arrow_color_hover',
+			[
+				'label' => esc_html__( 'Arrow Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .slick-arrow:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'nav_numbers',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .cookbook-slider-prevnext-number',
+			]
+		);
+		$this->add_control(
+			'number_nav_color',
+			[
+				'label' => esc_html__( 'Numbers Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .cookbook-slider-prevnext-number' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+
+		$this->end_controls_section();
+
 	}
 
 	/**
