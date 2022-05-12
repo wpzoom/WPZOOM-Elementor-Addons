@@ -428,6 +428,32 @@ class Slider_Pro extends Widget_Base {
                 ]
             );
 
+            $this->add_control(
+                'slideshow_align_vertical',
+                [
+                    'label' => esc_html__( 'Content Position (Vertical)', 'wpzoom-elementor-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'label_block' => false,
+                    'options' => [
+                        'bottom' => [
+                            'title' => esc_html__( 'Bottom', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-v-align-bottom',
+                        ],
+                        'middle' => [
+                            'title' => esc_html__( 'Middle', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-v-align-middle',
+                        ],
+                    ],
+
+                    'condition'   =>  array(
+                        'slideshow_align!' => 'center',
+                    ),
+                    'toggle' => true,
+                    'default' => 'bottom'
+                ]
+            );
+
+
         }
 
 
@@ -516,10 +542,11 @@ class Slider_Pro extends Widget_Base {
 		$current_theme = get_template();
 
 		$align = isset( $settings['slideshow_align'] ) ? $settings['slideshow_align'] : '';
+        $align_vertical = isset( $settings['slideshow_align_vertical'] ) ? $settings['slideshow_align_vertical'] : '';
 
 		/* Option for Inspiro PRO*/
         if( 'wpzoom-inspiro-pro' === $current_theme  ) {
-			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap' );
+			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap wpz-' . $align_vertical . '-slider-wrap' );
 		} else {
 			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap' );
 		}

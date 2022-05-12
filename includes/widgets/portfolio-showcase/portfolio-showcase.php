@@ -2058,8 +2058,12 @@ class Portfolio_Showcase extends Widget_Base {
 
             if ( $show_masonry == true ) {
                 $size = 'portfolio_item-masonry';
-            // } elseif ($col_number == '1') {
-            //     $size = 'portfolio_item-thumbnail_wide';
+            } elseif ($col_number == '1' && $aspect_ratio == 'default') {
+                $size = 'portfolio_item-thumbnail_wide';
+            } elseif ($col_number == '1' && $aspect_ratio == 'cinema') {
+                $size = 'portfolio_item-thumbnail_wide_cinema';
+            } elseif ($col_number == '1' && $aspect_ratio == 'original') {
+               $size = 'entry-cover';
             } elseif ($aspect_ratio == 'cinema' && $col_number != '1' && $show_masonry != true ) {
                 $size = 'portfolio_item-thumbnail_cinema';
             } elseif ($aspect_ratio == 'square' && $col_number != '1' && $show_masonry != true) {

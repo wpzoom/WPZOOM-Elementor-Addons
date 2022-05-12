@@ -237,6 +237,120 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "agency-home",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Agency Demo (Light)"
+},{
+    "name": "About",
+    "id": "agency-about",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Work",
+    "id": "agency-work",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/work",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Services",
+    "id": "agency-services",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/services",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Careers",
+    "id": "agency-careers",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/careers",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "News",
+    "id": "agency-news",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/news",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "agency-contact",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
+    "id": "agency-dark-home",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Agency Demo (Dark)"
+},{
+    "name": "About",
+    "id": "agency-dark-about",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Work",
+    "id": "agency-dark-work",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/work",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Services",
+    "id": "agency-dark-services",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/services",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Careers",
+    "id": "agency-dark-careers",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/careers",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "News",
+    "id": "agency-dark-news",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/news",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "agency-dark-contact",
+    "theme": "Inspiro PRO",
+    "category": "Agency",
+    "thumbnail": "inspiro-pro/agency-dark/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "charity-home",
     "theme": "Inspiro PRO",
     "category": "Charity / NGO",
