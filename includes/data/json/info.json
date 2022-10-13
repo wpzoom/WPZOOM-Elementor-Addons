@@ -351,6 +351,55 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "shop-home",
+    "theme": "Inspiro PRO",
+    "category": "Shop",
+    "thumbnail": "inspiro-pro/shop/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Shop"
+},{
+    "name": "About",
+    "id": "shop-about",
+    "theme": "Inspiro PRO",
+    "category": "Shop",
+    "thumbnail": "inspiro-pro/shop/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Collections",
+    "id": "shop-collections",
+    "theme": "Inspiro PRO",
+    "category": "Shop",
+    "thumbnail": "inspiro-pro/shop/collections",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Inspiration",
+    "id": "shop-inspiration",
+    "theme": "Inspiro PRO",
+    "category": "Shop",
+    "thumbnail": "inspiro-pro/shop/inspiration",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Shop",
+    "id": "shop-shop",
+    "theme": "Inspiro PRO",
+    "category": "Shop",
+    "thumbnail": "inspiro-pro/shop/shop",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "shop-contact",
+    "theme": "Inspiro PRO",
+    "category": "Shop",
+    "thumbnail": "inspiro-pro/shop/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "charity-home",
     "theme": "Inspiro PRO",
     "category": "Charity / NGO",
