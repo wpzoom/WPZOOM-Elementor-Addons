@@ -1877,7 +1877,7 @@ class Portfolio_Showcase extends Widget_Base {
 		if ( $wp_query->have_posts() ) :
 
 			if ( $show_masonry ) {
-				echo '<div id="portfolio-masonry">';
+				echo '<div id="portfolio-masonry" class="portfolio-masonry" data-masonry="true">';
 			}
 
 			echo '<div class="portfolio-showcase-header">';
