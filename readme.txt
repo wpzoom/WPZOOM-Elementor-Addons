@@ -4,7 +4,7 @@ Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
 Requires at least: 5.2
 Requires PHP:      7.2
-Tested up to:      6.0
+Tested up to:      6.1
 Stable tag:        1.1.18
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html

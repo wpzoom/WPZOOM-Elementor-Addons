@@ -418,6 +418,48 @@ class Directors extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'director_title_opacity',
+			array(
+				'label'     => esc_html__( 'Title Opacity', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 1,
+						'step' => 0.05,
+					),
+				),
+				'default'   => array(
+					'size' => 0.5,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpz-directors-nav:hover li:not(:hover),{{WRAPPER}} .wpz-directors-nav:hover li a:not(:hover)' => 'opacity: {{SIZE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'director_background_opacity',
+			array(
+				'label'     => esc_html__( 'Background Opacity', 'wpzoom-elementor-addons' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 1,
+						'step' => 0.05,
+					),
+				),
+				'default'   => array(
+					'size' => 1,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .wpz-director-object-container' => 'opacity: {{SIZE}};',
+				),
+			)
+		);
+
 		$this->add_responsive_control(
 			'director_margin',
 			array(

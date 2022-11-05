@@ -10,7 +10,7 @@
  * License:           GNU General Public License v2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires at least: 5.2
- * Tested up to:      6.0
+ * Tested up to:      6.1
  * Elementor tested up to: 3.7.2
  * Elementor Pro tested up to: 3.7.2
  *
