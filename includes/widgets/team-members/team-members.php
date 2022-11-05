@@ -104,6 +104,8 @@ class Team_Members extends Widget_Base {
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
 			'elementor-icons-fa-brands',
+            'elementor-icons-fa-regular',
+            'elementor-icons-fa-solid',
 			'wpzoom-elementor-addons-css-frontend-team-members'
 		];
 	}
@@ -1443,10 +1445,16 @@ class Team_Members extends Widget_Base {
 					<?php
 					foreach ( $settings['profiles'] as $profile ) :
 						$icon = $profile['name'];
-						$url = $profile['link']['url'];
+
+                        if ( $profile['name'] === 'email' ) {
+                            $url = 'mailto:' . antispambot( $profile['email'] );
+                        } else {
+						  $url = $profile['link']['url'];
+                        }
+
 
 						if ( $profile['name'] === 'website' ) {
-							$icon = 'globe far';
+							$icon = 'globe fa';
 						} elseif ( $profile['name'] === 'email' ) {
 							$icon = 'envelope far';
 							$url = 'mailto:' . antispambot( $profile['email'] );
