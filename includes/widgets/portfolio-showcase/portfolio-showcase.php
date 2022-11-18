@@ -1876,10 +1876,6 @@ class Portfolio_Showcase extends Widget_Base {
 		
 		if ( $wp_query->have_posts() ) :
 
-			if ( $show_masonry ) {
-				echo '<div id="portfolio-masonry" class="portfolio-masonry" data-masonry="true">';
-			}
-
 			echo '<div class="portfolio-showcase-header">';
 
 			if( ! empty( $widget_title ) ) {
@@ -1896,6 +1892,10 @@ class Portfolio_Showcase extends Widget_Base {
 			}
 
 			echo '</div><!-- // .portfolio-showcase-header -->';
+
+			if ( $show_masonry ) {
+				echo '<div class="portfolio-masonry">';
+			}
 
 			if ( 'narrow' == $layout_type ) {
 				echo '<div class="inner-wrap portfolio_template_clean">';
