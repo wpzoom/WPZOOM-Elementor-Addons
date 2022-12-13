@@ -400,6 +400,47 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "real-estate-home",
+    "theme": "Inspiro PRO",
+    "category": "Real Estate",
+    "thumbnail": "inspiro-pro/real-estate/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Real Estate"
+},{
+    "name": "About",
+    "id": "real-estate-about",
+    "theme": "Inspiro PRO",
+    "category": "Real Estate",
+    "thumbnail": "inspiro-pro/real-estate/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Portfolio / Listings",
+    "id": "real-estate-portfolio",
+    "theme": "Inspiro PRO",
+    "category": "Real Estate",
+    "thumbnail": "inspiro-pro/real-estate/portfolio",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "News",
+    "id": "real-estate-news",
+    "theme": "Inspiro PRO",
+    "category": "Real Estate",
+    "thumbnail": "inspiro-pro/real-estate/news",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "real-estate-contact",
+    "theme": "Inspiro PRO",
+    "category": "Real Estate",
+    "thumbnail": "inspiro-pro/real-estate/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "charity-home",
     "theme": "Inspiro PRO",
     "category": "Charity / NGO",
