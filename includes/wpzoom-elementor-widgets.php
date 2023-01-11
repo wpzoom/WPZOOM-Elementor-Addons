@@ -67,7 +67,7 @@ class WPZOOM_Elementor_Widgets {
 
 		// Add Plugin actions
 		add_action( 'elementor/elements/categories_registered', [ $this, 'add_widget_categories' ] );
-		add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+		add_action( 'elementor/widgets/register', [ $this, 'init_widgets' ] );
 	}
 
 	/**
@@ -94,7 +94,7 @@ class WPZOOM_Elementor_Widgets {
 
 				if ( class_exists( $class_name ) ) {
 					// Register widget
-					Plugin::instance()->widgets_manager->register_widget_type( new $class_name() );
+					Plugin::instance()->widgets_manager->register( new $class_name() );
 				}
 			}
 		}
