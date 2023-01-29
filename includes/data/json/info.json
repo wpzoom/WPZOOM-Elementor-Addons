@@ -890,6 +890,47 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "events-home",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/demo-events",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro Classic - Events/Conference"
+},{
+    "name": "Speakers",
+    "id": "events-speakers",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/events-speakers",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Schedule",
+    "id": "events-schedule",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/events-schedule",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Buy Tickets",
+    "id": "events-tickets",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/events-tickets",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact Page",
+    "id": "events-contact",
+    "theme": "Inspiro Classic",
+    "category": "Inspiro Classic",
+    "thumbnail": "inspiro/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "inspiro-lite-homepage",
     "theme": "Inspiro Lite",
     "category": "Inspiro Lite",
