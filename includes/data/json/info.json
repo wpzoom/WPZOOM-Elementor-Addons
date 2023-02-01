@@ -539,6 +539,48 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "fitness-home",
+    "theme": "Inspiro PRO",
+    "category": "Fitness",
+    "thumbnail": "inspiro-pro/fitness/fitness-home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro PRO - Fitness Demo"
+},{
+    "name": "About",
+    "id": "fitness-about",
+    "theme": "Inspiro PRO",
+    "category": "Fitness",
+    "thumbnail": "inspiro-pro/fitness/fitnes-about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Membership",
+    "id": "fitness-membership",
+    "theme": "Inspiro PRO",
+    "category": "Fitness",
+    "thumbnail": "inspiro-pro/fitness/fitness-membership",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Clubs",
+    "id": "fitness-clubs",
+    "theme": "Inspiro PRO",
+    "category": "Fitness",
+    "thumbnail": "inspiro-pro/fitness/fitness-clubs",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact",
+    "id": "fitness-contact",
+    "theme": "Inspiro PRO",
+    "category": "Fitness",
+    "thumbnail": "inspiro-pro/fitness/fitness-contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+
+},{
+    "name": "Homepage",
     "id": "inspiro-homepage",
     "theme": "Inspiro Classic",
     "category": "Inspiro Classic",
