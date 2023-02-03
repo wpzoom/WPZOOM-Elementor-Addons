@@ -1297,7 +1297,7 @@ class Team_Members extends Widget_Base {
 	 *                        `basic`.
 	 * @param string $setting_key Additional settings key in case $key != $setting_key
 	 */
-	protected function add_inline_editing_attributes( $key, $toolbar = 'basic', $setting_key = '' ) {
+	public function add_inline_editing_attributes( $key, $toolbar = 'basic', $setting_key = '' ) {
 		if ( ! Plugin::instance()->editor->is_edit_mode() ) {
 			return;
 		}
