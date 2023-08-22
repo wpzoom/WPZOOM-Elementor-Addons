@@ -7,10 +7,12 @@ use Elementor\Repeater;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Core\Schemes\Typography;
+
+use Elementor\Group_Control_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 use Elementor\Plugin;
 use Elementor\Utils;
 use Elementor\Embed;
@@ -230,6 +232,7 @@ class Directors extends Widget_Base {
 			'external_url',
 			[
 				'label' => esc_html__( 'URL', 'wpzoom-elementor-addons' ),
+				'description' => esc_html__( 'Supports only MP4 video format', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::URL,
 				'autocomplete' => false,
 				'options' => false,
@@ -344,7 +347,9 @@ class Directors extends Widget_Base {
 				'name' => 'title',
 				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .wpz-directors-nav ul li, {{WRAPPER}} .wpz-directors-nav ul li a',
-				'scheme' => Typography::TYPOGRAPHY_2,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				],
 			]
 		);
 

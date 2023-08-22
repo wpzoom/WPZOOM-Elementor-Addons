@@ -5,7 +5,6 @@ use Elementor\Plugin;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Repeater;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Icons_Manager;
 use Elementor\Control_Media;
@@ -13,7 +12,9 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
+
 use Elementor\Group_Control_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -857,7 +858,9 @@ class Team_Members extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .wpz-member-name',
-				'scheme' => Typography::TYPOGRAPHY_2,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				],
 			]
 		);
 
@@ -906,7 +909,9 @@ class Team_Members extends Widget_Base {
 			[
 				'name' => 'job_title_typography',
 				'selector' => '{{WRAPPER}} .wpz-member-position',
-				'scheme' => Typography::TYPOGRAPHY_3,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 
@@ -955,7 +960,9 @@ class Team_Members extends Widget_Base {
 			[
 				'name' => 'bio_typography',
 				'selector' => '{{WRAPPER}} .wpz-member-bio',
-				'scheme' => Typography::TYPOGRAPHY_3,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 
@@ -1149,7 +1156,9 @@ class Team_Members extends Widget_Base {
 			[
 				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .wpz-btn',
-				'scheme' => Typography::TYPOGRAPHY_4,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				],
 			]
 		);
 

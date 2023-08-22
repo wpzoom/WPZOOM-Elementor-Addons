@@ -2,12 +2,13 @@
 namespace WPZOOMElementorWidgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Widget_Base;
+
+use Elementor\Group_Control_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -612,7 +613,9 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'category_typography',
-					'scheme' => Typography::TYPOGRAPHY_4,
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product li.category a, {{WRAPPER}} .woocommerce ul.products li.product .archive-product-categories a',
 				]
 		);
@@ -664,7 +667,9 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'title_typography',
-					'scheme' => Typography::TYPOGRAPHY_4,
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .woocommerce-loop-product__title',
 				]
 		);
@@ -760,7 +765,9 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'price_typography',
-					'scheme' => Typography::TYPOGRAPHY_4,
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .price, {{WRAPPER}} .woocommerce ul.products li.product .price .amount',
 				]
 		);
@@ -781,7 +788,9 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'del_price_typography',
-					'scheme' => Typography::TYPOGRAPHY_4,
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .price del .amount',
 				]
 		);
@@ -877,7 +886,9 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'button_typography',
-					'scheme' => Typography::TYPOGRAPHY_4,
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' => '{{WRAPPER}} .woocommerce ul.products li.product .button',
 				]
 		);
@@ -1029,7 +1040,9 @@ class Woo_Products extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name' => 'badge_typography',
-					'scheme' => Typography::TYPOGRAPHY_4,
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' => '{{WRAPPER}} .woocommerce span.onsale',
 				]
 		);

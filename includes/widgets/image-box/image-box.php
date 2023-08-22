@@ -12,7 +12,6 @@ namespace WPZOOMElementorWidgets;
 
 use \Elementor\Widget_Base;
 use \Elementor\Controls_Manager;
-use \Elementor\Group_Control_Typography;
 use \Elementor\Group_Control_Text_Stroke;
 use \Elementor\Group_Control_Text_Shadow;
 use \Elementor\Group_Control_Background;
@@ -20,8 +19,10 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Group_Control_Css_Filter;
-use \Elementor\Core\Schemes\Typography;
 use \Elementor\Utils;
+
+use \Elementor\Group_Control_Typography;
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
@@ -233,7 +234,9 @@ class Image_Box extends Widget_Base {
 			array(
 				'name'           => 'style_normal_typography',
 				'label'          => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
-				'scheme'         => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'fields_options' => array(
 					'typography'      => array(
 						'default' => 'yes',
@@ -374,7 +377,9 @@ class Image_Box extends Widget_Base {
 			array(
 				'name'           => 'style_hover_typography',
 				'label'          => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
-				'scheme'         => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'fields_options' => array(
 					'typography'      => array(
 						'default' => 'yes',

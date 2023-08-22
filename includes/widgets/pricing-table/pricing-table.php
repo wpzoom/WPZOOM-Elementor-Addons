@@ -4,7 +4,6 @@ namespace WPZOOMElementorWidgets;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Repeater;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -524,7 +523,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-title',
-				'scheme' => Typography::TYPOGRAPHY_2
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				],
 			]
 		);
 
@@ -582,7 +583,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'price_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-price-text',
-				'scheme' => Typography::TYPOGRAPHY_3
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 
@@ -623,7 +626,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'currency_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-currency',
-				'scheme' => Typography::TYPOGRAPHY_3
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 
@@ -696,7 +701,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'extra_text_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-extra',
-				'scheme' => Typography::TYPOGRAPHY_3
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 
@@ -759,7 +766,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'features_title_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-features-title',
-				'scheme' => Typography::TYPOGRAPHY_2
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				],
 			]
 		);
 
@@ -800,7 +809,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'features_list_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-features-list > li',
-				'scheme' => Typography::TYPOGRAPHY_3
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 
@@ -867,7 +878,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-btn',
-				'scheme' => Typography::TYPOGRAPHY_4
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				],
 			]
 		);
 
@@ -1035,7 +1048,9 @@ class Pricing_Table extends Widget_Base {
 				'name' => 'badge_typography',
 				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .wpz-pricing-table-badge',
-				'scheme' => Typography::TYPOGRAPHY_3
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
 

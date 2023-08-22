@@ -2,13 +2,14 @@
 namespace WPZOOMElementorWidgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Widget_Base;
 use Elementor\Utils;
+
+use Elementor\Group_Control_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -814,7 +815,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'widget_title_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title'
 			)
 		);
@@ -863,7 +866,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'portfolio_filter_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-archive-taxonomies a'
 			)
 		);
@@ -1005,7 +1010,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'portfolio_title_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item-title, {{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item-title > a'
 			)
 		);
@@ -1119,7 +1126,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'portfolio_cat_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a'
 			)
 		);
@@ -1233,7 +1242,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'portfolio_excerpt_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item p'
 			)
 		);
@@ -1347,7 +1358,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'portfolio_readmore_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item span.btn'
 			)
 		);
@@ -1500,7 +1513,9 @@ class Portfolio_Showcase extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'portfolio_viewall_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .portfolio-view_all-link a.btn'
 			)
 		);

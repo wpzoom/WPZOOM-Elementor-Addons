@@ -7,14 +7,16 @@ use Elementor\Repeater;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Core\Schemes\Typography;
 use Elementor\Plugin;
 use Elementor\Utils;
 use Elementor\Embed;
 use Elementor\Icons_Manager;
+
+use Elementor\Group_Control_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 
 // Exit if accessed directly
@@ -1287,7 +1289,9 @@ class Slider extends Widget_Base {
 				'name' => 'title',
 				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .wpz-slick-title',
-				'scheme' => Typography::TYPOGRAPHY_2,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				],
 			]
 		);
 
@@ -1329,7 +1333,9 @@ class Slider extends Widget_Base {
 				'name' => 'subtitle',
 				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
 				'selector' => '{{WRAPPER}} .wpz-slick-subtitle',
-				'scheme' => Typography::TYPOGRAPHY_3,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				],
 			]
 		);
         /*

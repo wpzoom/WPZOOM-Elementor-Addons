@@ -10,7 +10,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Scheme_Color;
-use Elementor\Core\Schemes\Typography;
+
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
@@ -910,7 +910,9 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'grid_title_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post .title, {{WRAPPER}} .wpz-grid-container .wpz-post .title > a'
 			]
 		);
@@ -1004,7 +1006,9 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'grid_meta_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-meta span'
 			]
 		);
@@ -1062,7 +1066,9 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'grid_content_style_typography',
-				'scheme'    => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector'  => '{{WRAPPER}} .wpz-grid-container .wpz-post .post-grid-excerpt p'
 			]
 		);
@@ -1119,7 +1125,9 @@ class Posts_Grid extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'grid_readmore_style_typography',
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .wpz-grid-container .wpz-post a.read-more-btn'
 			]
 		);
