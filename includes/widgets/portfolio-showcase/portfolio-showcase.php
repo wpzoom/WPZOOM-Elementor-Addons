@@ -1744,6 +1744,7 @@ class Portfolio_Showcase extends Widget_Base {
 
 		$args = array(
 			'post_type'   => 'portfolio_item',
+			'post_status' => array( 'publish' ),
 			'numberposts' => -1
 		);
 
@@ -1868,6 +1869,7 @@ class Portfolio_Showcase extends Widget_Base {
 		} else {
 			$args = array(
 				'post_type'      => 'portfolio_item',
+				'post_status'    => array( 'publish' ),
 				'posts_per_page' => $show_count,
 				'orderby'        =>'menu_order date'
 			);
