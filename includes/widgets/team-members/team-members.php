@@ -304,43 +304,6 @@ class Team_Members extends Widget_Base {
 			]
 		);
 
-		// $this->add_control(
-		// 	'title_tag',
-		// 	[
-		// 		'label' => esc_html__( 'Title HTML Tag', 'wpzoom-elementor-addons' ),
-		// 		'type' => Controls_Manager::CHOOSE,
-		// 		'options' => [
-		// 			'h1'  => [
-		// 				'title' => esc_html__( 'H1', 'wpzoom-elementor-addons' ),
-		// 				//'icon' => 'far fa-h1'
-		// 			],
-		// 			'h2'  => [
-		// 				'title' => esc_html__( 'H2', 'wpzoom-elementor-addons' ),
-		// 				//'icon' => 'far fa-h2'
-		// 			],
-		// 			'h3'  => [
-		// 				'title' => esc_html__( 'H3', 'wpzoom-elementor-addons' ),
-		// 				//'icon' => 'far fa-h3'
-		// 			],
-		// 			'h4'  => [
-		// 				'title' => esc_html__( 'H4', 'wpzoom-elementor-addons' ),
-		// 				//'icon' => 'far fa-h4'
-		// 			],
-		// 			'h5'  => [
-		// 				'title' => esc_html__( 'H5', 'wpzoom-elementor-addons' ),
-		// 				//'icon' => 'far fa-h5'
-		// 			],
-		// 			'h6'  => [
-		// 				'title' => esc_html__( 'H6', 'wpzoom-elementor-addons' ),
-		// 				//'icon' => 'far fa-h6'
-		// 			]
-		// 		],
-		// 		'default' => 'h2',
-		// 		'toggle' => false,
-		// 		'separator' => 'before',
-		// 	]
-		// );
-
 		$this->add_responsive_control(
 			'align',
 			[
