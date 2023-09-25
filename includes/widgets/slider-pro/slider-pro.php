@@ -712,14 +712,28 @@ class Slider_Pro extends Widget_Base {
                                         <?php edit_post_link( __( '[Edit this slide]', 'wpzoom' ), '<small class="edit-link">', '</small>' ); ?>
                                 <?php } ?>
 
-								
+
+                                <?php if ($slide_counter == 1) { ?>
+
 									<?php if ( empty( $slide_url ) ) { 
 										$this->add_render_attribute( '_slide_title', 'class', 'missing-url' );
 										?>
-										<?php the_title( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '>', '</h3>'); ?>
+										<?php the_title( '<h1 ' . $this->get_render_attribute_string( '_slide_title' ) . '>', '</h1>'); ?>
 									<?php } else { ?>
-										<?php the_title( sprintf( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '><a href="%s">', esc_url( $slide_url ) ), '</a></h3>'); ?>
+										<?php the_title( sprintf( '<h1 ' . $this->get_render_attribute_string( '_slide_title' ) . '><a href="%s">', esc_url( $slide_url ) ), '</a></h1>'); ?>
 									<?php } ?>
+
+                                <?php } else { ?>
+
+                                    <?php if ( empty( $slide_url ) ) {
+                                        $this->add_render_attribute( '_slide_title', 'class', 'missing-url' );
+                                        ?>
+                                        <?php the_title( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '>', '</h3>'); ?>
+                                    <?php } else { ?>
+                                        <?php the_title( sprintf( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '><a href="%s">', esc_url( $slide_url ) ), '</a></h3>'); ?>
+                                    <?php } ?>
+
+                                <?php } ?>
 
 									<div <?php echo $this->get_render_attribute_string( '_slide_excerpt' ); ?>><?php the_content(); ?></div>
 
@@ -727,7 +741,7 @@ class Slider_Pro extends Widget_Base {
 									/* Markup for Inspiro PRO*/
 									if( 'wpzoom-inspiro-pro' === $current_theme ) { 
 								?>
-                                <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
+                                    <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
                                 <?php } ?>
 
 								<?php if ( ! empty( $btn_title ) && ! empty( $btn_url ) ) {
@@ -746,8 +760,7 @@ class Slider_Pro extends Widget_Base {
 
                                         <div class="mfp-iframe-scaler">
 
-                                            <?php
-                                            echo  wp_video_shortcode(
+                                            <?php echo wp_video_shortcode(
                                                 array(
                                                     'src' => $popup_final_external_src,
                                                     'preload' => 'none',
@@ -768,11 +781,7 @@ class Slider_Pro extends Widget_Base {
 
 							</div>
 
-							<?php if ( ! empty( $video_background_mp4 ) ||
-									! empty( $video_background_webm ) ||
-									! empty( $is_vimeo_pro ) ||
-									$is_video_external
-							): ?>
+							<?php if ( ! empty( $video_background_mp4 ) || ! empty( $video_background_webm ) || ! empty( $is_vimeo_pro ) || $is_video_external ): ?>
 
 								<div class="background-video-buttons-wrapper">
 
