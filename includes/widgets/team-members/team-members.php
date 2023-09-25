@@ -36,7 +36,13 @@ class Team_Members extends Widget_Base {
 	public function __construct( $data = [], $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'wpzoom-elementor-addons-css-frontend-team-members', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-team-members', plugins_url( 'css/frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 
+			'wpzoom-elementor-addons-awesomefont-brands', 
+			plugins_url( 'css/brands.min.css', __FILE__ ), 
+			[], 
+			WPZOOM_EL_ADDONS_VER 
+		);
 	}
 
 	/**
@@ -104,10 +110,10 @@ class Team_Members extends Widget_Base {
 		return [
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
-			'elementor-icons-fa-brands',
             'elementor-icons-fa-regular',
             'elementor-icons-fa-solid',
-			'wpzoom-elementor-addons-css-frontend-team-members'
+			'wpzoom-elementor-addons-css-frontend-team-members',
+			'wpzoom-elementor-addons-awesomefont-brands'
 		];
 	}
 
@@ -174,6 +180,7 @@ class Team_Members extends Widget_Base {
 			'whatsapp'       => esc_html__( 'WhatsApp', 'wpzoom-elementor-addons' ),
 			'wordpress'      => esc_html__( 'WordPress', 'wpzoom-elementor-addons' ),
 			'xing'           => esc_html__( 'Xing', 'wpzoom-elementor-addons' ),
+			'x-twitter'      => esc_html__( 'X', 'wpzoom-elementor-addons' ),
 			'yelp'           => esc_html__( 'Yelp', 'wpzoom-elementor-addons' ),
 			'youtube'        => esc_html__( 'YouTube', 'wpzoom-elementor-addons' ),
 		];
@@ -281,36 +288,19 @@ class Team_Members extends Widget_Base {
 			'title_tag',
 			[
 				'label' => esc_html__( 'Title HTML Tag', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::CHOOSE,
+				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'h1'  => [
-						'title' => esc_html__( 'H1', 'wpzoom-elementor-addons' ),
-						'icon' => 'far fa-h1'
-					],
-					'h2'  => [
-						'title' => esc_html__( 'H2', 'wpzoom-elementor-addons' ),
-						'icon' => 'far fa-h2'
-					],
-					'h3'  => [
-						'title' => esc_html__( 'H3', 'wpzoom-elementor-addons' ),
-						'icon' => 'far fa-h3'
-					],
-					'h4'  => [
-						'title' => esc_html__( 'H4', 'wpzoom-elementor-addons' ),
-						'icon' => 'far fa-h4'
-					],
-					'h5'  => [
-						'title' => esc_html__( 'H5', 'wpzoom-elementor-addons' ),
-						'icon' => 'far fa-h5'
-					],
-					'h6'  => [
-						'title' => esc_html__( 'H6', 'wpzoom-elementor-addons' ),
-						'icon' => 'far fa-h6'
-					]
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+					'span' => 'span',
+					'p' => 'p',
 				],
 				'default' => 'h2',
-				'toggle' => false,
-				'separator' => 'before',
 			]
 		);
 
