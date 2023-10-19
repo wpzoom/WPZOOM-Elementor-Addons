@@ -615,6 +615,16 @@ class Slider_Pro extends Widget_Base {
 						$is_video_external               = ! empty( $video_background_external_url ) && ( ! ( filter_var( $video_background_external_url, FILTER_VALIDATE_URL ) === false ) );
 						$is_formstone                    = in_array( $post_meta_of_external_hosted, array( 'self_hosted', 'external_hosted' ) );
 
+						$lightbox_video_autoplay = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_autoplay', true ) == '' ? true : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_autoplay', true ) );
+						$lightbox_video_mute     = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_mute', true ) == '' ? true : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_mute', true ) );
+						$lightbox_video_loop     = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_loop', true ) == '' ? false : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_loop', true ) );
+		
+						$encode_lightbox_video_opts = array(
+							'autoplay' => $lightbox_video_autoplay,
+							'mute'     => $lightbox_video_mute,
+							'loop'     => $lightbox_video_loop
+						);
+
 						$slide_counter++;
 
 						$style = '';
@@ -771,10 +781,10 @@ class Slider_Pro extends Widget_Base {
 
                                         </div>
                                     </div>
-                                    <a href="#zoom-popup-<?php echo get_the_ID(); ?>"  data-popup-type="inline" class="popup-video"></a>
+                                    <a href="#zoom-popup-<?php echo get_the_ID(); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
-                                    <a data-popup-type="iframe" class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
+                                    <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
                                 <?php endif; ?>
 
                                 <?php } /* End Inspiro Classic markup */ ?>
