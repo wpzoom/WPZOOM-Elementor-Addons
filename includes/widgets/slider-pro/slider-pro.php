@@ -771,12 +771,12 @@ class Slider_Pro extends Widget_Base {
                                         <div class="mfp-iframe-scaler">
 
                                             <?php echo wp_video_shortcode(
-                                                array(
-                                                    'src' => $popup_final_external_src,
-                                                    'preload' => 'none',
-                                                    // 'loop' => 'on'
-                                                    //'autoplay' => 'on'
-                                                ));
+												array(
+													'src' => $popup_final_external_src,
+													'preload' => 'none',
+													'loop'     => $lightbox_video_loop,
+													'muted'    => $lightbox_video_mute,
+												));
                                             ?>
 
                                         </div>
