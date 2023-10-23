@@ -699,8 +699,8 @@ class Slider_Pro extends Widget_Base {
                                             array(
                                                 'src' => $popup_final_external_src,
                                                 'preload' => 'none',
-                                                // 'loop' => 'on'
-                                                //'autoplay' => 'on'
+                                                'loop'     => $lightbox_video_loop,
+                                                'muted'    => $lightbox_video_mute
                                             ));
                                         ?>
 
