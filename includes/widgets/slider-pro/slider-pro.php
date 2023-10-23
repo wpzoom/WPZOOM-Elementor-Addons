@@ -616,7 +616,7 @@ class Slider_Pro extends Widget_Base {
 						$is_formstone                    = in_array( $post_meta_of_external_hosted, array( 'self_hosted', 'external_hosted' ) );
 
 						$lightbox_video_autoplay = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_autoplay', true ) == '' ? true : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_autoplay', true ) );
-						$lightbox_video_mute     = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_mute', true ) == '' ? true : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_mute', true ) );
+						$lightbox_video_mute     = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_mute', true ) == '' ? false : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_mute', true ) );
 						$lightbox_video_loop     = (bool) ( get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_loop', true ) == '' ? false : get_post_meta( get_the_ID(), 'wpzoom_portfolio_lightbox_video_loop', true ) );
 		
 						$encode_lightbox_video_opts = array(
@@ -716,13 +716,6 @@ class Slider_Pro extends Widget_Base {
 
                             <div <?php echo $this->get_render_attribute_string( '_li-wrap' ); ?>>
 
-                                <?php
-                                    /* Markup for Inspiro Classic*/
-                                     if( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) { ?>
-                                        <?php edit_post_link( __( '[Edit this slide]', 'wpzoom' ), '<small class="edit-link">', '</small>' ); ?>
-                                <?php } ?>
-
-
                                 <?php if ($slide_counter == 1) { ?>
 
 									<?php if ( empty( $slide_url ) ) { 
@@ -746,13 +739,6 @@ class Slider_Pro extends Widget_Base {
                                 <?php } ?>
 
 									<div <?php echo $this->get_render_attribute_string( '_slide_excerpt' ); ?>><?php the_content(); ?></div>
-
-                                <?php
-									/* Markup for Inspiro PRO*/
-									if( 'wpzoom-inspiro-pro' === $current_theme ) { 
-								?>
-                                    <?php edit_post_link( esc_html__( '[Edit this slide]', 'wpzoom-elementor-addons' ), '<small class="edit-link">', '</small>' ); ?>
-                                <?php } ?>
 
 								<?php if ( ! empty( $btn_title ) && ! empty( $btn_url ) ) {
 									?>
