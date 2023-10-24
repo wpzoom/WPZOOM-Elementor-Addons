@@ -953,6 +953,7 @@ class Carousel extends Widget_Base {
 
 			<?php foreach ( $settings[ 'slides' ] as $slide ) :
 				$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
+				$image_alt = ! empty( $slide[ 'title' ] ) ? $slide[ 'title' ] : get_post_meta( $slide[ 'image' ][ 'id' ], '_wp_attachment_image_alt', true );
 
 				if ( ! $image ) {
 					$image = $slide[ 'image' ][ 'url' ];
@@ -972,7 +973,7 @@ class Carousel extends Widget_Base {
 				<div class="wpz-slick-slide">
 					<<?php echo $item_tag; // WPCS: XSS OK. ?> <?php $this->print_render_attribute_string( $id ); ?>>
 						<?php if ( $image ) : ?>
-							<img class="wpz-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
+							<img class="wpz-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $image_alt ); ?>">
 						<?php endif; ?>
 
 						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] ) : ?>
