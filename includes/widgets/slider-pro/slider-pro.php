@@ -706,7 +706,7 @@ class Slider_Pro extends Widget_Base {
 
                                     </div>
                                 </div>
-                                <a href="#zoom-popup-<?php echo esc_attr( $post->ID ); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video"></a>
+                                <a href="#zoom-popup-<?php echo get_the_ID(); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
                                     <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
