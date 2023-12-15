@@ -170,7 +170,8 @@ class Team_Members extends Widget_Base {
 			'soundcloud'     => esc_html__( 'SoundCloud', 'wpzoom-elementor-addons' ),
 			'spotify'        => esc_html__( 'Spotify', 'wpzoom-elementor-addons' ),
 			'stack-overflow' => esc_html__( 'StackOverflow', 'wpzoom-elementor-addons' ),
-			'tripadvisor'    => esc_html__( 'TripAdvisor', 'wpzoom-elementor-addons' ),
+			'tiktok'         => esc_html__( 'TikTok', 'wpzoom-elementor-addons' ),
+            'tripadvisor'    => esc_html__( 'TripAdvisor', 'wpzoom-elementor-addons' ),
 			'tumblr'         => esc_html__( 'Tumblr', 'wpzoom-elementor-addons' ),
 			'twitch'         => esc_html__( 'Twitch', 'wpzoom-elementor-addons' ),
 			'twitter'        => esc_html__( 'Twitter', 'wpzoom-elementor-addons' ),
@@ -506,8 +507,8 @@ class Team_Members extends Widget_Base {
 						'name' => 'facebook'
 					],
 					[
-						'link' => ['url' => 'https://twitter.com/'],
-						'name' => 'twitter'
+						'link' => ['url' => 'https://x.com/'],
+						'name' => 'x-twitter'
 					],
 					[
 						'link' => ['url' => 'https://linkedin.com/'],
