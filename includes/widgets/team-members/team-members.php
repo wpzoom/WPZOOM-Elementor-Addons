@@ -1456,7 +1456,7 @@ class Team_Members extends Widget_Base {
 						if ( $profile['name'] === 'website' ) {
 							$icon = 'globe fa';
 						} elseif ( $profile['name'] === 'email' ) {
-							$icon = 'envelope far';
+							$icon = 'envelope fab';
 							$url = 'mailto:' . antispambot( $profile['email'] );
 						} else {
 							$icon .= ' fab';

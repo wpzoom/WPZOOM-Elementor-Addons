@@ -43,10 +43,10 @@
 	transition: all .2s;
 }
 
-
 .wpz-member-links > a > i {
 	width: 1em;
 	height: 1em;
+    font-style: normal;
 }
 
 .wpz-member-links > a:not(:last-child) {
@@ -60,4 +60,8 @@
 .wpz-member-body .wpz-btn:last-child {
 	margin-top: 15px;
 	margin-bottom: 0;
+}
+
+.elementor-editor-active .wpz-member-links > a > i.fa-envelope {
+    font-family: "Font Awesome 5 Free" !important;
 }
