@@ -23,7 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'WPZOOM_EL_ADDONS_VER', '1.1.34' );
+if ( ! defined( 'WPZOOM_EL_ADDONS_VER' ) ) {
+	define( 'WPZOOM_EL_ADDONS_VER', get_file_data( __FILE__, [ 'Version' ] )[0] ); // phpcs:ignore
+}
 
 define( 'WPZOOM_EL_ADDONS__FILE__', __FILE__ );
 define( 'WPZOOM_EL_ADDONS_PLUGIN_BASE', plugin_basename( WPZOOM_EL_ADDONS__FILE__ ) );
