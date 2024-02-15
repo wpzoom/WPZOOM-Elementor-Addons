@@ -29,6 +29,14 @@ class Testimonial extends Widget_Base {
 		parent::__construct( $data, $args );
 
 		wp_register_style( 'wpzoom-elementor-addons-css-frontend-testimonial', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		if ( ! wp_script_is( 'font-awesome-pro' ) ) {
+			wp_enqueue_style(
+				'font-awesome-5-all',
+				self::get_fa_asset_url( 'all' ),
+				[],
+				WPZOOM_EL_ADDONS_VER
+			);
+		}
 	}
 
 	/**
@@ -113,6 +121,19 @@ class Testimonial extends Widget_Base {
 		return [
 			'font-awesome-4-shim'
 		];
+	}
+
+	private static function get_fa_asset_url( $filename, $ext_type = 'css', $add_suffix = true ) {
+		static $is_test_mode = null;
+		if ( null === $is_test_mode ) {
+			$is_test_mode = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || defined( 'ELEMENTOR_TESTS' ) && ELEMENTOR_TESTS;
+		}
+		$url = ELEMENTOR_ASSETS_URL . 'lib/font-awesome/' . $ext_type . '/' . $filename;
+		if ( ! $is_test_mode && $add_suffix ) {
+			$url .= '.min';
+		}
+
+		return $url . '.' . $ext_type;
 	}
 
 	/**
