@@ -588,7 +588,7 @@ class Slider_Pro extends Widget_Base {
 						$slide_url                       = trim( get_post_meta( get_the_ID(), 'wpzoom_slide_url', true ) );
 						$btn_title                       = trim( get_post_meta( get_the_ID(), 'wpzoom_slide_button_title', true ) );
 						$btn_url                         = trim( get_post_meta( get_the_ID(), 'wpzoom_slide_button_url', true ) );
-						$large_image_url                 = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured' );
+						$large_image_url                 = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured@2x' );
 						$small_image_url                 = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured-small' );
 						$video_background_mp4            = get_post_meta( get_the_ID(), 'wpzoom_home_slider_video_bg_url_mp4', true );
 						$video_background_webm           = get_post_meta( get_the_ID(), 'wpzoom_home_slider_video_bg_url_webm', true );
