@@ -10,6 +10,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Scheme_Color;
+use Elementor\Utils;
 
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
@@ -1722,12 +1723,12 @@ class Posts_Grid extends Widget_Base {
 			return;
 		}
 
-		$title_tag = $settings[ 'title_tag' ];
+		$title_tag = esc_attr( $settings[ 'title_tag' ] );
 			
 		?>
-		<<?php echo $title_tag; // WPCS: XSS OK. ?> class="title">
+		<<?php echo Utils::validate_html_tag( $title_tag ); // WPCS: XSS OK. ?> class="title">
 			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-		</<?php echo $title_tag; // WPCS: XSS OK. ?>>
+		</<?php echo Utils::validate_html_tag( $title_tag ); // WPCS: XSS OK. ?>>
 		<?php
 	}
 
