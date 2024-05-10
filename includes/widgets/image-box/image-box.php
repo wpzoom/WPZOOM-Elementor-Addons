@@ -1226,7 +1226,7 @@ class Image_Box extends Widget_Base {
 
 		if ( ! empty( $settings['link']['url'] ) ) {
 			$classes .= ' is-linked';
-			$attrs   .= ' href="' . $settings['link']['url'] . '"';
+			$attrs   .= ' href="' . esc_url( $settings['link']['url'] ) . '"';
 		} else {
 			$classes .= ' not-linked';
 		}
@@ -1239,7 +1239,7 @@ class Image_Box extends Widget_Base {
 		}
 
 		if ( ! empty( $classes ) ) {
-			$attrs .= ' class="' . $classes . '"';
+			$attrs .= ' class="' . esc_attr( $classes ) . '"';
 		}
 
 		if ( ! empty( $style ) ) {
