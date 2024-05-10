@@ -8,7 +8,7 @@ Tested up to:      6.5
 Stable tag:        1.1.36
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-Tags:              elementor, elementor kits, elementor widgets, widgets, page builder templates, templates, wpzoom, inspiro
+Tags:              elementor, elementor templates, elementor widgets, page builder templates, templates
 
 **WPZOOM Addons for Elementor** contains a collection of pre-designed templates and advanced widgets for the Elementor page builder.
 

@@ -1253,7 +1253,7 @@ class Image_Box extends Widget_Base {
 			<h3>
 				<?php
 				printf(
-					'<%1$s%2$s><span><strong>%3$s</strong></span></%1$s>',
+					'<%1$s%2$s><span>%3$s</span></%1$s>',
 					( empty( $settings['link']['url'] ) ? 'span' : 'a' ),
 					$attrs,
 					esc_html( trim( $settings['title_text'] ) )
