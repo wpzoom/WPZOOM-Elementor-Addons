@@ -102,7 +102,7 @@ class WPZOOM_Elementor_Ajax_Post_Grid {
 				$args[ 'offset' ] = $offset;
 			}
 
-			$grid_style = isset( $data[ 'grid_style' ] ) ? $data[ 'grid_style' ] : '1';
+			$grid_style = isset( $data['grid_style'] ) && is_int( $data['grid_style'] ) ? sanitize_file_name ( $data[ 'grid_style' ] ) : '1';
 
 			// Post Query
 			$all_posts = new WP_Query( $args );
