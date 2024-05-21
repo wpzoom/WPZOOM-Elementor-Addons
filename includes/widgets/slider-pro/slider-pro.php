@@ -8,12 +8,16 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Plugin;
 use Elementor\Utils;
 use Elementor\Embed;
 use Elementor\Icons_Manager;
+
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 
 // Exit if accessed directly
@@ -360,7 +364,7 @@ class Slider_Pro extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_slider_pro',
 			array(
-				'label' => esc_html__( 'Slider PRO', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Slider Options', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -480,6 +484,333 @@ class Slider_Pro extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+
+        $this->start_controls_section(
+            '_section_colors_title',
+            [
+                'label' => esc_html__( 'Slider Title', 'wpzoom-elementor-addons' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title',
+                'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+                'selector' => '{{WRAPPER}} .slides li h1',
+                'fields_options' => [
+                    // first mimic the click on Typography edit icon
+                    'typography' => ['default' => 'yes'],
+                    // then redifine the Elementor defaults
+                    'font_family' => ['default' => 'Poppins'],
+                    'font_size' => ['default' => ['size' => 54]],
+                    'font_weight' => ['default' => 600],
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs( '_tabs_title' );
+
+        $this->start_controls_tab(
+            '_tab_title_normal',
+            [
+                'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .slides li h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .slides li h1 a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            '_tab_title_hover',
+            [
+                'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+            ]
+        );
+
+        $this->add_control(
+            'title_color_hover',
+            [
+                'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .slides li h1 a:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+
+        // Title margin.
+        $this->add_responsive_control(
+            'title_spacing',
+            [
+                'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .slides li h1' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+
+        $this->start_controls_section(
+            '_section_text_style',
+            [
+                'label' => esc_html__( 'Slider Text', 'wpzoom-elementor-addons' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'excerpt',
+                'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+                'selector' => '{{WRAPPER}} .slides > li .excerpt',
+                'fields_options' => [
+                    // first mimic the click on Typography edit icon
+                    'typography' => ['default' => 'yes'],
+                    // then redifine the Elementor defaults
+                    'font_family' => ['default' => 'Inter'],
+                    'font_size' => ['default' => ['size' => 18]],
+                    'font_weight' => ['default' => 400],
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'excerpt_color',
+            [
+                'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .slides > li .excerpt' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        // Text margin.
+        $this->add_responsive_control(
+            'excerpt_spacing',
+            [
+                'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .slides > li .excerpt' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+
+        $this->start_controls_section(
+            '_section_colors_button',
+            [
+                'label' => esc_html__( 'Slider Button', 'wpzoom-elementor-addons' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'button',
+                'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+                'selector' => '{{WRAPPER}} .slides > li .slide_button a',
+                'fields_options' => [
+                    // first mimic the click on Typography edit icon
+                    'typography' => ['default' => 'yes'],
+                    // then redifine the Elementor defaults
+                    'font_family' => ['default' => 'Inter'],
+                    'font_size' => ['default' => ['size' => 18]],
+                    'font_weight' => ['default' => 600],
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs( '_tabs_btn' );
+
+        $this->start_controls_tab(
+            '_tab_btn_normal',
+            [
+                'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+            ]
+        );
+
+        $this->add_control(
+            'btn_color',
+            [
+                'label' => esc_html__( 'Button Color', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .slides > li .slide_button a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'btn_style_background',
+                'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+                'types' => [ 'classic', 'gradient' ],
+                'exclude' => [ 'image' ],
+                'selector' => '{{WRAPPER}} .slides > li .slide_button a',
+                'fields_options' => [
+                    'background' => [
+                        'default' => 'classic',
+                    ],
+                    'color' => [
+                        'global' => [
+                            'default' => '',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            '_tab_btn_hover',
+            [
+                'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+            ]
+        );
+
+        $this->add_control(
+            'btn_color_hover',
+            [
+                'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .slides > li .slide_button a:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'btn_style_background_hover',
+                'label' => esc_html__( 'Background', 'wpzoom-elementor-addons' ),
+                'types' => [ 'classic', 'gradient' ],
+                'exclude' => [ 'image' ],
+                'selector' => '{{WRAPPER}} .slides > li .slide_button a:hover',
+                'fields_options' => [
+                    'background' => [
+                        'default' => 'classic',
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'btn_style_hover_border_color',
+            [
+                'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'btn_style_border_border!' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .slides > li .slide_button a:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'btn_style_border',
+                'selector' => '{{WRAPPER}} .slides > li .slide_button a',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'btn_style_border_radius',
+            [
+                'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .slides > li .slide_button a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'btn_style_box_shadow',
+                'selector' => '{{WRAPPER}} .slides > li .slide_button a',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'btn_style_text_padding',
+            [
+                'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .slides > li .slide_button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+
+        // Readmore margin
+        $this->add_responsive_control(
+            'btn_style_margin',
+            [
+                'label'      => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .slides > li .slide_button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
 	}
 
 	/**
