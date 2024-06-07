@@ -65,3 +65,8 @@
 .elementor-editor-active .wpz-member-links > a > i.fa-envelope {
     font-family: "Font Awesome 5 Free" !important;
 }
+
+.wpz-member-body .ha-btn svg {
+	max-width: 15px;
+	fill: inherit;
+}

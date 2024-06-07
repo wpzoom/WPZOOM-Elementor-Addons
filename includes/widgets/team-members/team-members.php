@@ -1348,6 +1348,8 @@ class Team_Members extends Widget_Base {
 			return;
 		}
 
+		$button_text = wp_kses_post( $button_text );
+
 		$this->add_inline_editing_attributes( $args['text'], 'none' );
 		$this->add_render_attribute( $args['text'], 'class', $args['text_class'] );
 
@@ -1357,22 +1359,22 @@ class Team_Members extends Widget_Base {
 		if ( $button_text && ( empty( $has_new_icon ) && empty( $has_old_icon ) ) ) :
 			printf( '<a %1$s>%2$s</a>',
 				$this->get_render_attribute_string( 'button' ),
-				sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), esc_html( $button_text ) )
+				sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), $button_text )
 			);
 		elseif ( empty( $button_text ) && ( ! empty( $has_old_icon ) || ! empty( $has_new_icon ) ) ) : ?>
 			<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ] ); ?></a>
 		<?php elseif ( $button_text && ( ! empty( $has_old_icon ) || ! empty( $has_new_icon ) ) ) :
 			if ( $settings[ $args['icon_pos'] ] === 'before' ) :
 				$this->add_render_attribute( 'button', 'class', 'ha-btn--icon-before' );
-				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), esc_html( $button_text ) );
+				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), $button_text );
 				?>
 				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?> <?php echo $button_text; ?></a>
 				<?php
 			else :
 				$this->add_render_attribute( 'button', 'class', 'ha-btn--icon-after' );
-				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), esc_html( $button_text ) );
+				$button_text = sprintf( '<span %1$s>%2$s</span>', $this->get_render_attribute_string( $args['text'] ), $button_text );
 				?>
-				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php echo esc_html( $button_text ); ?> <?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?></a>
+				<a <?php $this->print_render_attribute_string( 'button' ); ?>><?php echo $button_text; ?> <?php Icons_Manager::render_icon( $settings[ $args['new_icon'] ], ['class' => 'wpz-btn-icon'] ); ?></a>
 				<?php
 			endif;
 		endif;
@@ -1444,14 +1446,14 @@ class Team_Members extends Widget_Base {
 				<div class="wpz-member-links">
 					<?php
 					foreach ( $settings['profiles'] as $profile ) :
+						
 						$icon = $profile['name'];
 
                         if ( $profile['name'] === 'email' ) {
                             $url = 'mailto:' . antispambot( $profile['email'] );
                         } else {
-						  $url = $profile['link']['url'];
+						  $url = esc_url( $profile['link']['url'] );
                         }
-
 
 						if ( $profile['name'] === 'website' ) {
 							$icon = 'globe fa';
@@ -1463,7 +1465,7 @@ class Team_Members extends Widget_Base {
 						}
 
 						printf( '<a target="_blank" rel="noopener" href="%s" class="elementor-repeater-item-%s"><i class="fa-%s" aria-hidden="true"></i></a>',
-							$url,
+							esc_url( $url ),
 							esc_attr( $profile['_id'] ),
 							esc_attr( $icon )
 						);
