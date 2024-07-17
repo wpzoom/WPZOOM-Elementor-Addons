@@ -494,22 +494,45 @@ class Slider_Pro extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'title',
-                'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
-                'selector' => '{{WRAPPER}} .slides li h1',
-                'fields_options' => [
-                    // first mimic the click on Typography edit icon
-                    'typography' => ['default' => 'yes'],
-                    // then redifine the Elementor defaults
-                    'font_family' => ['default' => 'Poppins'],
-                    'font_size' => ['default' => ['size' => 54]],
-                    'font_weight' => ['default' => 600],
-                ],
-            ]
-        );
+        /* Option for Inspiro PRO*/
+        if( 'wpzoom-inspiro-pro' === $current_theme  ) {
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'title',
+                    'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+                    'selector' => '{{WRAPPER}} .slides li h1, {{WRAPPER}} .slides li h3',
+                    'fields_options' => [
+                        // first mimic the click on Typography edit icon
+                        'typography' => ['default' => 'yes'],
+                        // then redifine the Elementor defaults
+                        'font_family' => ['default' => 'Poppins'],
+                        'font_size' => ['default' => ['size' => 54], 'tablet_default' => ['size' => 30], 'mobile_default' => ['size' => 24]],
+                        'font_weight' => ['default' => 600],
+                    ],
+                ]
+            );
+        } else {
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'title',
+                    'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+                    'selector' => '{{WRAPPER}} .slides li h1, {{WRAPPER}} .slides li h3',
+                    'fields_options' => [
+                        // first mimic the click on Typography edit icon
+                        'typography' => ['default' => 'yes'],
+                        // then redifine the Elementor defaults
+                        'font_family' => ['default' => 'Inter'],
+                        'font_size' => ['default' => ['size' => 72], 'tablet_default' => ['size' => 38], 'mobile_default' => ['size' => 24]],
+                        'font_weight' => ['default' => 200],
+                    ],
+                ]
+            );
+
+        }
 
         $this->start_controls_tabs( '_tabs_title' );
 
