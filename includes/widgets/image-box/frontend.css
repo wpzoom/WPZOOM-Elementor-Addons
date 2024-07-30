@@ -39,7 +39,9 @@
 }
 
 .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span {
-	display: block;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
 	position: relative;
 	font-size: 5rem;
 	font-weight: bold;
