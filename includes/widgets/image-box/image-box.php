@@ -356,7 +356,7 @@ class Image_Box extends Widget_Base {
 					'bottom_right'  => 'align-items: flex-end; justify-content: flex-end; text-align: right',
 				),
 				'selectors'            => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link strong' => '{{VALUE}}',
+					'{{WRAPPER}} .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span' => '{{VALUE}}',
 				),
 				'toggle'               => true,
 				'classes'              => 'wpzoom-elementor-addons-backend-align-control',
