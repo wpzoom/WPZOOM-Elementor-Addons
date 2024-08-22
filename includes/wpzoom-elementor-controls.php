@@ -66,7 +66,9 @@ class WPZOOM_Elementor_Controls {
 	 */
 	public function register_controls( $controls_manager ) {
 		require_once plugin_dir_path( __FILE__ ) . 'controls/class-group-control-css-backdrop-filter.php';
+		require_once plugin_dir_path( __FILE__ ) . 'controls/class-control-select-slide-post.php';
 
+		$controls_manager->register_control( 'select_slider_post', new WPZOOM_Select_Slider_Post() );
 		$controls_manager->add_group_control( Group_Control_Css_Backdrop_Filter::get_type(), new Group_Control_Css_Backdrop_Filter() );
 	}
 }

@@ -206,6 +206,60 @@ class Slider_Pro extends Widget_Base {
 			)
 		);
 
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'slide_title',
+			array(
+				'label'       => esc_html__( 'Title', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Slide Title', 'wpzoom-elementor-addons' ),
+				'label_block' => true,
+			)
+		);
+
+		$repeater->add_control(
+			'slide_description',
+			array(
+				'label'       => esc_html__( 'Description', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::WYSIWYG,
+				'default'     => esc_html__( 'Slide Description', 'wpzoom-elementor-addons' ),
+				'label_block' => true,
+			)
+		);
+
+		$repeater->add_control(
+			'slide_id',
+			[
+				'label'       => esc_html__( 'Select Source Slider Post', 'wpzoom-elementor-addons' ),
+				'label_block' => true,
+				'type'        => 'select_slider_post',
+				'options'     => $this->get_slider_custom_posts(),
+				'default'     => 0,
+			]
+		);
+
+		$this->add_control(
+			'slider_pro_items',
+			array(
+				'label' => esc_html__( 'Slides', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::REPEATER,
+				'default' => $this->get_default_slider_items_from_posts(),
+				'fields' => $repeater->get_controls(),
+				'title_field' => '{{{ slide_title }}}',
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_slider_pro_settings',
+			array(
+				'label' => esc_html__( 'Settings', 'wpzoom-elementor-addons' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			)
+		);
+
 		$this->add_control(
 			'category',
 			array(
@@ -651,8 +705,6 @@ class Slider_Pro extends Widget_Base {
 
         $this->end_controls_section();
 
-
-
         $this->start_controls_section(
             '_section_colors_button',
             [
@@ -837,6 +889,37 @@ class Slider_Pro extends Widget_Base {
 	}
 
 	/**
+	 * Get slider custom posts.
+	 *
+	 * Retrieve a list of all slider custom posts.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return array All slider custom posts.
+	 */
+	protected function get_slider_custom_posts() {
+		
+		$slider_posts = array();
+
+		$args = array(
+			'post_type'      => 'slider',
+			'orderby'        => 'menu_order date',
+			'post_status'    => 'publish'
+		);
+
+		$slider_posts_query = get_posts( $args );
+
+		if( ! empty( $slider_posts_query ) ) {
+			foreach ( $slider_posts_query as $post ) {
+				$slider_posts[ $post->ID ] = $post->post_title;
+			}
+		}
+
+		return $slider_posts;
+
+	}
+
+	/**
 	 * Get slider taxonomies.
 	 *
 	 * Retrieve a list of all slider taxonomies.
@@ -871,6 +954,32 @@ class Slider_Pro extends Widget_Base {
 
 	}
 
+	protected function get_default_slider_items_from_posts() {
+
+		$items = array();
+
+		$args = array(
+			'post_type'      => 'slider',
+			'orderby'        => 'menu_order date',
+			'post_status'    => 'publish'
+		);
+
+		$slider_posts = get_posts( $args);
+
+		if( ! empty( $slider_posts ) ) {
+			foreach ( $slider_posts as $post ) {
+				$items[ $post->ID ] = array(
+					'slide_title'          => $post->post_title,
+					'slide_description'    => $post->post_content,
+					'slide_id'             => $post->ID,
+				);
+			}
+		}
+
+		return $items;
+
+	}
+
 	/**
 	 * Render the Widget.
 	 *
@@ -882,7 +991,7 @@ class Slider_Pro extends Widget_Base {
 	 */
 	protected function render() {
 
-		if ( !WPZOOM_Elementor_Widgets::is_supported_theme() ) {
+		if ( ! WPZOOM_Elementor_Widgets::is_supported_theme() ) {
 			if( current_user_can('editor') || current_user_can('administrator') ) {
 				echo '<h3>' . esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ) . '</h3>';
 				echo wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro"</a> and <a href="https://www.wpzoom.com/themes/inspiro-pro/">"Inspiro PRO"</a> themes', 'wpzoom-elementor-addons' ) );
@@ -893,6 +1002,8 @@ class Slider_Pro extends Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 		$current_theme = get_template();
+
+		$slide_items = $settings['slider_pro_items'];
 
 		$align = isset( $settings['slideshow_align'] ) ? $settings['slideshow_align'] : '';
         $align_vertical = isset( $settings['slideshow_align_vertical'] ) ? $settings['slideshow_align_vertical'] : '';
@@ -906,8 +1017,6 @@ class Slider_Pro extends Widget_Base {
 
 		$this->add_render_attribute( '_slide_title', 'class', [ $settings['hide_title_desktop'], $settings['hide_title_tablet'], $settings['hide_title_mobile'] ] );
 		
-		$this->add_render_attribute( '_slide_excerpt', 'class', 'excerpt' );
-		$this->add_render_attribute( '_slide_excerpt', 'class', [ $settings['hide_excerpt_desktop'], $settings['hide_excerpt_tablet'], $settings['hide_excerpt_mobile'] ] );
 
 		$show_count = $settings['show_count'];
 		$category   = $settings['category'];
@@ -916,7 +1025,6 @@ class Slider_Pro extends Widget_Base {
 
 		$args = array(
 			'post_type'      => 'slider',
-			'posts_per_page' => $show_count,
 			'orderby'        => 'menu_order date',
 			'post_status'    => 'publish'
 		);
@@ -938,6 +1046,21 @@ class Slider_Pro extends Widget_Base {
 			<div id="slider" class="flexslider" data-posts="<?php echo count( $sliderLoop->posts ); ?>">
 				<ul class="slides">
 					<?php while ( $sliderLoop->have_posts() ) : $sliderLoop->the_post();
+
+						$slide_repeater_key            = $this->getKeyBySlideId( get_the_ID() );
+						$slide_title_setting_key       = $this->get_repeater_setting_key( 'slide_title', 'slider_pro_items', $slide_repeater_key );
+						$slide_description_setting_key = $this->get_repeater_setting_key( 'slide_description', 'slider_pro_items', $slide_repeater_key );
+						$this->add_render_attribute( 
+							$slide_title_setting_key, [
+								'class' => [ 'slide-title', $settings['hide_title_desktop'], $settings['hide_title_tablet'], $settings['hide_title_mobile'] ],
+							]
+						);
+
+						$this->add_render_attribute( 
+							$slide_description_setting_key, [
+								'class' => [ 'excerpt', $settings['hide_excerpt_desktop'], $settings['hide_excerpt_tablet'], $settings['hide_excerpt_mobile'] ],
+							]
+						);
 
 						$slide_url                       = trim( get_post_meta( get_the_ID(), 'wpzoom_slide_url', true ) );
 						$btn_title                       = trim( get_post_meta( get_the_ID(), 'wpzoom_slide_button_title', true ) );
@@ -1069,15 +1192,17 @@ class Slider_Pro extends Widget_Base {
                             <?php } /* End Inspiro PRO markup */ ?>
 
                             <div <?php echo $this->get_render_attribute_string( '_li-wrap' ); ?>>
+							
+							<?php $this->add_inline_editing_attributes( $slide_title_setting_key ); ?>
 
-                                <?php if ($slide_counter == 1) { ?>
+                                <?php if ( $slide_counter == 1 ) { ?>
 
 									<?php if ( empty( $slide_url ) ) { 
 										$this->add_render_attribute( '_slide_title', 'class', 'missing-url' );
 										?>
-										<?php the_title( '<h1 ' . $this->get_render_attribute_string( '_slide_title' ) . '>', '</h1>'); ?>
+										<h1 <?php $this->print_render_attribute_string( $slide_title_setting_key ) ?>><?php $this->print_unescaped_setting( 'slide_title', 'slider_pro_items', $slide_repeater_key ) ?></h1>
 									<?php } else { ?>
-										<?php the_title( sprintf( '<h1 ' . $this->get_render_attribute_string( '_slide_title' ) . '><a href="%s">', esc_url( $slide_url ) ), '</a></h1>'); ?>
+										<h1 <?php $this->print_render_attribute_string( $slide_title_setting_key ) ?>><a href="<?php echo esc_url( $slide_url ) ?>"><?php $this->print_unescaped_setting( 'slide_title', 'slider_pro_items', $slide_repeater_key ) ?></a></h1>
 									<?php } ?>
 
                                 <?php } else { ?>
@@ -1085,14 +1210,18 @@ class Slider_Pro extends Widget_Base {
                                     <?php if ( empty( $slide_url ) ) {
                                         $this->add_render_attribute( '_slide_title', 'class', 'missing-url' );
                                         ?>
-                                        <?php the_title( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '>', '</h3>'); ?>
+                                        <h3 <?php $this->print_render_attribute_string( $slide_title_setting_key ) ?>><?php $this->print_unescaped_setting( 'slide_title', 'slider_pro_items', $slide_repeater_key ) ?></h3>
                                     <?php } else { ?>
-                                        <?php the_title( sprintf( '<h3 ' . $this->get_render_attribute_string( '_slide_title' ) . '><a href="%s">', esc_url( $slide_url ) ), '</a></h3>'); ?>
+                                        <h3 <?php $this->print_render_attribute_string( $slide_title_setting_key ) ?>><a href="<?php echo esc_url( $slide_url ) ?>"><?php $this->print_unescaped_setting( 'slide_title', 'slider_pro_items', $slide_repeater_key ) ?></a></h3>
                                     <?php } ?>
 
                                 <?php } ?>
+									
 
-									<div <?php echo $this->get_render_attribute_string( '_slide_excerpt' ); ?>><?php the_content(); ?></div>
+									<?php $this->add_inline_editing_attributes( $slide_description_setting_key, 'advanced' ); ?>
+									<div <?php $this->print_render_attribute_string( $slide_description_setting_key ); ?>>
+										<?php $this->print_text_editor( $slide_items[ $slide_repeater_key ]['slide_description'] ) ?>										
+									</div>
 
 								<?php if ( ! empty( $btn_title ) && ! empty( $btn_url ) ) {
 									?>
@@ -1177,5 +1306,17 @@ class Slider_Pro extends Widget_Base {
 		<?php 
 			endif;
 			wp_reset_postdata();
+	}
+
+	public function getKeyBySlideId( $slideId ) {
+
+		$slide_items = $this->get_settings( 'slider_pro_items' );
+
+		foreach ( $slide_items as $key => $item ) {
+			if ( isset( $item[ 'slide_id' ] ) && $item[ 'slide_id' ] == $slideId ) {
+				return $key;
+			}
+		}
+		return null; // Return null if the slide_id is not found
 	}
 }
