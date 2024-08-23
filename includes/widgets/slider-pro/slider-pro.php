@@ -247,6 +247,12 @@ class Slider_Pro extends Widget_Base {
 				'default' => $this->get_default_slider_items_from_posts(),
 				'fields' => $repeater->get_controls(),
 				'title_field' => '{{{ slide_title }}}',
+				'item_actions' => [
+					'add'       => false,
+					'duplicate' => false,
+					'remove'    => false,
+					'sort'      => false,
+				],
 			)
 		);
 
