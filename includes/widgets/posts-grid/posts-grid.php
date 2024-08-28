@@ -1534,6 +1534,7 @@ class Posts_Grid extends Widget_Base {
 
 		$query_args = array(
 			'posts_per_page' 	  => absint( $posts_per_page ),
+			'post_status'         => 'publish',
 			'paged'				  => $paged,
 			'post__not_in'        => get_option( 'sticky_posts' ),
 			'ignore_sticky_posts' => true,
