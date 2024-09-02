@@ -102,6 +102,8 @@ class WPZOOM_Elementor_Ajax_Post_Grid {
 				$args[ 'offset' ] = $offset;
 			}
 
+			$data['grid_style'] = (int)$data['grid_style'];
+
 			$grid_style = isset( $data['grid_style'] ) && is_int( $data['grid_style'] ) ? sanitize_file_name ( $data[ 'grid_style' ] ) : '1';
 
 			// Post Query
@@ -224,7 +226,7 @@ class WPZOOM_Elementor_Ajax_Post_Grid {
 	 * @since 1.1.5
 	 * @access public
 	 */
-	protected function render_meta() {
+	protected function render_meta( $fields = array(), $invert = false, $combined_author_date = false) {
 		$settings = $this->get_settings();
 
 		$meta_data = $settings[ 'meta_data' ];
@@ -232,39 +234,78 @@ class WPZOOM_Elementor_Ajax_Post_Grid {
 		if ( empty( $meta_data ) ) {
 			return;
 		}
+
+		$all_fields = empty( $fields );
 		
 		?>
 		<div class="post-grid-meta">
 			<?php
-			if ( in_array( 'author', $meta_data ) ) { ?>
+			if ( $combined_author_date ) {
 
-				<span class="post-author"><?php the_author(); ?></span>
+				?><span class="author-date-wrap"><?php
 
-				<?php 
 			}
 
-			if ( in_array( 'date', $meta_data ) ) { ?>
+			if ( ( $all_fields || ( false === $invert && in_array( 'author_pic', $fields ) ) || ( true === $invert && ! in_array( 'author_pic', $fields ) ) ) && in_array( 'author_pic', $meta_data ) ) {
 
-				<span class="post-author"><?php echo apply_filters( 'the_date', get_the_date(), get_option( 'date_format' ), '', '' ); ?></span>
+				?><span class="post-author-pic"><?php echo get_avatar( get_the_author_meta( 'ID' ), 36 ); ?></span><?php
 
-				<?php
 			}
 
-			if ( in_array( 'categories', $meta_data ) ) {
+			if ( $combined_author_date ) {
+
+				?><span class="author-date-inner-wrap"><?php
+
+			}
+
+			if ( ( $all_fields || ( false === $invert && in_array( 'author', $fields ) ) || ( true === $invert && ! in_array( 'author', $fields ) ) ) && in_array( 'author', $meta_data ) ) {
+
+				?><span class="post-author"><?php the_author(); ?></span><?php
+
+			}
+
+			if ( ( $all_fields || ( false === $invert && in_array( 'date', $fields ) ) || ( true === $invert && ! in_array( 'date', $fields ) ) ) && in_array( 'date', $meta_data ) ) {
+
+				?><span class="post-date"><?php echo apply_filters( 'the_date', get_the_date(), get_option( 'date_format' ), '', '' ); ?></span><?php
+
+			}
+
+			if ( $combined_author_date ) {
+
+				?></span></span><?php
+
+			}
+
+			if ( ( $all_fields || ( false === $invert && in_array( 'categories', $fields ) ) || ( true === $invert && ! in_array( 'categories', $fields ) ) ) && in_array( 'categories', $meta_data ) ) {
 
 				$categories_list = get_the_category_list( esc_html__( ', ', 'wpzoom-elementor-addons' ) ); 
 
 				if ( $categories_list ) {
 					printf( '<span class="post-categories">%s</span>', $categories_list ); // WPCS: XSS OK.
 				}
-				
+
 			}
 
-			if ( in_array( 'comments', $meta_data ) ) { ?>
-				
-				<span class="post-comments"><?php comments_number(); ?></span>
+			if ( ( $all_fields || ( false === $invert && in_array( 'comments', $fields ) ) || ( true === $invert && ! in_array( 'comments', $fields ) ) ) && in_array( 'comments', $meta_data ) ) {
 
-				<?php
+				?><span class="post-comments"><?php comments_number(); ?></span><?php
+
+			}
+
+			$other_fields = apply_filters( 'wpzoom_elementor_addons_posts_grid_meta_fields', array() );
+
+			if ( ! empty( $other_fields ) ) {
+				echo '<div class="other-meta">';
+
+				foreach ( $other_fields as $field_id => $field_label ) {
+					if ( ( $all_fields || ( false === $invert && in_array( $field_id, $fields ) ) || ( true === $invert && ! in_array( $field_id, $fields ) ) ) && in_array( $field_id, $meta_data ) ) {
+						printf( '<span class="zoom-field_%s" title="%s">', esc_attr( $field_id ), esc_attr( $field_label ) );
+						do_action( 'wpzoom_elementor_addons_posts_grid_meta_field_display', $field_id );
+						echo '</span>';
+					}
+				}
+
+				echo '</div>';
 			}
 			?>
 		</div>
