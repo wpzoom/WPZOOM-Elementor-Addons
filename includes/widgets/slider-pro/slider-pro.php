@@ -201,7 +201,7 @@ class Slider_Pro extends Widget_Base {
 		$this->start_controls_section(
 			'_section_slider_pro',
 			array(
-				'label' => esc_html__( 'Inspiro Slideshow', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Slideshow Posts', 'wpzoom-elementor-addons' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -242,7 +242,14 @@ class Slider_Pro extends Widget_Base {
 		$this->add_control(
 			'slider_pro_items',
 			array(
-				'label' => esc_html__( 'Slides', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Below you can edit the title and description of ', 'wpzoom-elementor-addons' ),
+
+                'label' => sprintf(
+                    esc_html__( 'Below you can edit the title and description of each post included in this Slideshow. To re-order items or edit other details such as Featured Image or Background Video, go to the %1$s Slideshow Section%2$s in the Dashboard.', 'elementor' ),
+                    '<a href="'.admin_url('edit.php?post_type=slider').'" target="_blank">',
+                    '</a>'
+                ),
+
 				'type' => Controls_Manager::REPEATER,
 				'default' => $this->get_default_slider_items_from_posts(),
 				'fields' => $repeater->get_controls(),
