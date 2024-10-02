@@ -2270,9 +2270,9 @@ class Portfolio_Showcase extends Widget_Base {
                     ?>
 
                     <div class="entry-thumbnail-popover">
-                        <div class="entry-thumbnail-popover-content lightbox_popup_insp popover-content--animated"
-                             data-show-caption="<?php echo esc_attr( $show_popup_caption ) ?>">
+                        <div class="entry-thumbnail-popover-content lightbox_popup_insp popover-content--animated" data-show-caption="<?php echo esc_attr( $show_popup_caption ) ?>">
 
+                            <a class="wpz-portfolio-link" href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"></a>
 
                             <div class="entry-meta">
 
