@@ -2272,44 +2272,46 @@ class Portfolio_Showcase extends Widget_Base {
                     <div class="entry-thumbnail-popover">
                         <div class="entry-thumbnail-popover-content lightbox_popup_insp popover-content--animated"
                              data-show-caption="<?php echo esc_attr( $show_popup_caption ) ?>">
-                            <!-- start lightbox --><?php if ( $popup_video_type === 'self_hosted' && $is_video_popup ): ?>
-                                <div id="zoom-popup-<?php echo the_ID(); ?>" class="animated slow mfp-hide">
 
-                                    <div class="mfp-iframe-scaler">
-
-                                        <?php
-                                        echo wp_video_shortcode(
-                                            array(
-                                                'src'     => $popup_final_external_src,
-                                                'preload' => 'none',
-                                                //'autoplay' => 'on'
-                                            ) );
-                                        ?>
-                                        <?php if ( $show_popup_caption ): ?>
-                                            <div class="mfp-bottom-bar">
-                                                <div class="mfp-title">
-                                                    <a href="<?php echo esc_url( get_permalink() ); ?>"
-                                                       title="<?php echo esc_attr( get_the_title() ); ?>">
-                                                        <?php the_title(); ?>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <a href="#zoom-popup-<?php echo the_ID(); ?>"
-                                   class="mfp-inline portfolio-popup-video"></a>
-                            <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
-                                class="mfp-iframe portfolio-popup-video"
-                                href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
-                            <?php else: ?>
-                                <?php if( has_post_thumbnail() && !\option::is_on( 'lightbox_video_only' ) ) : ?>
-                                    <a class="mfp-image portfolio-popup-video popup_image_insp"
-                                       href="<?php echo esc_url( $post_thumbnail ); ?>"></a>
-                                <?php endif; ?>
-                            <?php endif; ?>
 
                             <div class="entry-meta">
+
+                                <!-- start lightbox --><?php if ( $popup_video_type === 'self_hosted' && $is_video_popup ): ?>
+                                    <div id="zoom-popup-<?php echo the_ID(); ?>" class="animated slow mfp-hide">
+
+                                        <div class="mfp-iframe-scaler">
+
+                                            <?php
+                                            echo wp_video_shortcode(
+                                                array(
+                                                    'src'     => $popup_final_external_src,
+                                                    'preload' => 'none',
+                                                    //'autoplay' => 'on'
+                                                ) );
+                                            ?>
+                                            <?php if ( $show_popup_caption ): ?>
+                                                <div class="mfp-bottom-bar">
+                                                    <div class="mfp-title">
+                                                        <a href="<?php echo esc_url( get_permalink() ); ?>"
+                                                           title="<?php echo esc_attr( get_the_title() ); ?>">
+                                                            <?php the_title(); ?>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <a href="#zoom-popup-<?php echo the_ID(); ?>"
+                                       class="mfp-inline portfolio-popup-video"></a>
+                                <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
+                                    class="mfp-iframe portfolio-popup-video"
+                                    href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
+                                <?php else: ?>
+                                    <?php if( has_post_thumbnail() && !\option::is_on( 'lightbox_video_only' ) ) : ?>
+                                        <a class="mfp-image portfolio-popup-video popup_image_insp"
+                                           href="<?php echo esc_url( $post_thumbnail ); ?>"></a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
 
                                 <h3 class="portfolio_item-title">
                                     <a href="<?php echo esc_url( get_permalink() ); ?>"
