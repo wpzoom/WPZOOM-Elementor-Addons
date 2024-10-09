@@ -14,7 +14,7 @@ Tags:              elementor, elementor templates, elementor widgets, page build
 
 == Description ==
 
-This plugin provides a collection of custom [**Elementor** page builder](https://www.wpzoom.com/go/elementor/) templates and widgets that can make your job extremely easy to create a beautiful interface of the pages or posts on your WordPress site.
+This plugin provides a collection of custom **Elementor** templates and widgets that can make your job extremely easy to create a beautiful interface of the pages or posts on your WordPress site.
 
 It is very easy to use and you do not need to write any code. To contribute improve this plugin, please access the [GitHub repository](https://github.com/wpzoom/wpzoom-elementor-addons).
 
@@ -88,7 +88,7 @@ The WPZOOM Addons for Elementor is a collection of unique and creative templates
 
 = What are the requirements to use the WPZOOM Addons for Elementor? =
 
-You only need to have the [**Elementor** page builder](https://www.wpzoom.com/go/elementor/) plugin installed and activated first.
+You only need to have the **Elementor** plugin installed and activated.
 
 = What themes does the WPZOOM Addons for Elementor work with? =
 
