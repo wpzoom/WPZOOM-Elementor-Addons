@@ -1102,7 +1102,7 @@ class Slider_Pro extends Widget_Base {
 								} 
 								?>
                                 <?php
-                                    /* Markup for Inspiro Classic*/
+                                    /* Markup for Inspiro Premium*/
                                      if( ( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) || ( 'wpzoom-inspiro-pro' === $current_theme && $align == 'center' ) ) { 
 								?>
                                 <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
@@ -1127,7 +1127,7 @@ class Slider_Pro extends Widget_Base {
                                     <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
                                 <?php endif; ?>
 
-                                <?php } /* End Inspiro Classic markup */ ?>
+                                <?php } /* End Inspiro Premium markup */ ?>
 
 							</div>
 
