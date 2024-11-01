@@ -44,7 +44,7 @@ It is very easy to use and you do not need to write any code. To contribute impr
 Even though the plugin works great with any theme, currently, it includes templates that were generated specifically for the following WPZOOM themes:
 
 [**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/)
-[**Inspiro Classic**](https://www.wpzoom.com/themes/inspiro/)
+[**Inspiro Premium**](https://www.wpzoom.com/themes/inspiro/)
 [**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
 [**Foodica PRO**](https://www.wpzoom.com/themes/foodica/)
 [**CookBook**](https://www.wpzoom.com/themes/cookbook/) - *NEW*
@@ -52,7 +52,7 @@ Even though the plugin works great with any theme, currently, it includes templa
 You can see multiple pages created using **Elementor** and this plugin in the following themes:
 
 [**Inspiro PRO**](https://demo.wpzoom.com/inspiro-pro-demo/)
-[**Inspiro Classic**](https://demo.wpzoom.com/inspiro-demo/)
+[**Inspiro Premium**](https://demo.wpzoom.com/inspiro-demo/)
 [**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
 [**Foodica PRO**](https://demo.wpzoom.com/foodica-elementor/)
 [**CookBook**](https://demo.wpzoom.com/cookbook/) - *NEW*
@@ -237,7 +237,7 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 * Add notice when templates can't be loaded
 
 = 1.1.1 =
-* More templates for Inspiro Classic.
+* More templates for Inspiro Premium.
 * Screenshots have been moved to a S3 server to reduce the plugin size
 
 = 1.1.0 =
