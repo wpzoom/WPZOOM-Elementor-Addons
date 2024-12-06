@@ -403,6 +403,63 @@ class Slider_Pro extends Widget_Base {
 
 		$current_theme = get_template();
 
+        /* Option for Inspiro Premium*/
+        if( 'inspiro' === $current_theme  ) {
+
+            $this->add_control(
+                'slideshow_align',
+                [
+                    'label' => esc_html__( 'Content Alignment', 'wpzoom-elementor-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'label_block' => false,
+                    'options' => [
+                        'left' => [
+                            'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                    ],
+                    'toggle' => true,
+                    'default' => 'center'
+                ]
+            );
+
+            $this->add_control(
+                'slideshow_align_vertical',
+                [
+                    'label' => esc_html__( 'Content Position (Vertical)', 'wpzoom-elementor-addons' ),
+                    'type' => Controls_Manager::CHOOSE,
+                    'label_block' => false,
+                    'options' => [
+                        'bottom' => [
+                            'title' => esc_html__( 'Bottom', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-v-align-bottom',
+                        ],
+                        'middle' => [
+                            'title' => esc_html__( 'Middle', 'wpzoom-elementor-addons' ),
+                            'icon' => 'eicon-v-align-middle',
+                        ],
+                    ],
+
+                    'condition'   =>  array(
+                        'slideshow_align!' => 'center',
+                    ),
+                    'toggle' => true,
+                    'default' => 'middle'
+                ]
+            );
+
+
+        }
+
+
 		/* Option for Inspiro PRO*/
 		if( 'wpzoom-inspiro-pro' === $current_theme  ) {
 
@@ -897,12 +954,7 @@ class Slider_Pro extends Widget_Base {
 		$align = isset( $settings['slideshow_align'] ) ? $settings['slideshow_align'] : '';
         $align_vertical = isset( $settings['slideshow_align_vertical'] ) ? $settings['slideshow_align_vertical'] : '';
 
-		/* Option for Inspiro PRO*/
-        if( 'wpzoom-inspiro-pro' === $current_theme  ) {
-			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap wpz-' . $align_vertical . '-slider-wrap' );
-		} else {
-			$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap' );
-		}
+		$this->add_render_attribute( '_li-wrap', 'class', 'li-wrap wpz-' . $align . '-slider-wrap wpz-' . $align_vertical . '-slider-wrap' );
 
 		$this->add_render_attribute( '_slide_title', 'class', [ $settings['hide_title_desktop'], $settings['hide_title_tablet'], $settings['hide_title_mobile'] ] );
 		
@@ -1041,7 +1093,7 @@ class Slider_Pro extends Widget_Base {
 
                             <?php 
 							/* Markup for Inspiro PRO*/
-							if( 'wpzoom-inspiro-pro' === $current_theme && 'center' != $align ) { ?>
+							if( ('wpzoom-inspiro-pro' === $current_theme && 'center' != $align ) || ('inspiro' === $current_theme && 'bottom' === $align_vertical ) ) { ?>
 
                             <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
                                 <div id="zoom-popup-<?php echo get_the_ID(); ?>"  class="animated slow mfp-hide" data-src ="<?php echo esc_url( $popup_final_external_src ); ?>">
@@ -1103,7 +1155,7 @@ class Slider_Pro extends Widget_Base {
 								?>
                                 <?php
                                     /* Markup for Inspiro Premium*/
-                                     if( ( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) ) || ( 'wpzoom-inspiro-pro' === $current_theme && $align == 'center' ) ) { 
+                                     if( ( 'inspiro' === $current_theme && class_exists( 'WPZOOM' ) && $align_vertical != 'bottom' ) || ( 'wpzoom-inspiro-pro' === $current_theme && $align == 'center' ) ) {
 								?>
                                 <?php if($popup_video_type === 'self_hosted' && $is_video_popup): ?>
                                     <div id="zoom-popup-<?php echo get_the_ID(); ?>"  class="animated slow mfp-hide" data-src ="<?php echo $popup_final_external_src ?>">
