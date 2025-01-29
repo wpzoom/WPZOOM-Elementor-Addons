@@ -219,7 +219,7 @@ class Slider extends Widget_Base {
 	 */
 	public function get_authors_list() {
 		$users = get_users( [
-			'who' => 'authors',
+			'capability'          => 'edit_posts',
 			'has_published_posts' => true,
 			'fields' => [
 				'ID',
