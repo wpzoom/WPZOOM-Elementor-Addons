@@ -1114,10 +1114,10 @@ class Slider_Pro extends Widget_Base {
 
                                     </div>
                                 </div>
-                                <a href="#zoom-popup-<?php echo get_the_ID(); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video"></a>
+                                <a href="#zoom-popup-<?php echo get_the_ID(); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video" aria-label="Watch Video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
-                                    <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
+                                    <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>" aria-label="Watch Video"></a>
                                 <?php endif; ?>
 
                             <?php } /* End Inspiro PRO markup */ ?>
@@ -1175,10 +1175,10 @@ class Slider_Pro extends Widget_Base {
 
                                         </div>
                                     </div>
-                                    <a href="#zoom-popup-<?php echo get_the_ID(); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video"></a>
+                                    <a href="#zoom-popup-<?php echo get_the_ID(); ?>" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' data-popup-type="inline" class="popup-video" aria-label="Watch Video"></a>
 
                                 <?php elseif(!empty($video_background_popup_url)): ?>
-                                    <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>"></a>
+                                    <a data-popup-type="iframe" data-popup-video-options='<?php echo json_encode( $encode_lightbox_video_opts ); ?>' class="popup-video animated slow pulse" href="<?php echo $video_background_popup_url ?>" aria-label="Watch Video"></a>
                                 <?php endif; ?>
 
                                 <?php } /* End Inspiro Premium markup */ ?>
@@ -1190,14 +1190,14 @@ class Slider_Pro extends Widget_Base {
 								<div class="background-video-buttons-wrapper">
 
 									<?php if ( $show_play_button || ! $autoplay ): ?>
-										<a class="wpzoom-button-video-background-play display-none"><?php esc_html_e( 'Play', 'wpzoom-elementor-addons' ); ?></a>
-										<a class="wpzoom-button-video-background-pause display-none"><?php esc_html_e( 'Pause', 'wpzoom-elementor-addons' ); ?></a>
+										<a class="wpzoom-button-video-background-play display-none" href="#"><?php esc_html_e( 'Play', 'wpzoom-elementor-addons' ); ?></a>
+										<a class="wpzoom-button-video-background-pause display-none" href="#"><?php esc_html_e( 'Pause', 'wpzoom-elementor-addons' ); ?></a>
 
 									<?php endif; ?>
 
 									<?php if ( $show_sound_button ): ?>
-										<a class="wpzoom-button-sound-background-unmute display-none"><?php esc_html_e( 'Unmute', 'wpzoom-elementor-addons' ); ?></a>
-										<a class="wpzoom-button-sound-background-mute display-none"><?php esc_html_e( 'Mute', 'wpzoom-elementor-addons' ); ?></a>
+										<a class="wpzoom-button-sound-background-unmute display-none" href="#"><?php esc_html_e( 'Unmute', 'wpzoom-elementor-addons' ); ?></a>
+										<a class="wpzoom-button-sound-background-mute display-none" href="#"><?php esc_html_e( 'Mute', 'wpzoom-elementor-addons' ); ?></a>
 
 									<?php endif; ?>
 

@@ -1700,7 +1700,7 @@ class Posts_Grid extends Widget_Base {
 			
 		if ( has_post_thumbnail() ) :  ?>
 			<div class="post-grid-thumbnail">
-				<a href="<?php the_permalink(); ?>">
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
 					<?php the_post_thumbnail( $post_thumbnail_size ); ?>
 				</a>
 			</div>
@@ -1728,7 +1728,7 @@ class Posts_Grid extends Widget_Base {
 			
 		?>
 		<<?php echo Utils::validate_html_tag( $title_tag ); // WPCS: XSS OK. ?> class="title">
-			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"><?php the_title(); ?></a>
 		</<?php echo Utils::validate_html_tag( $title_tag ); // WPCS: XSS OK. ?>>
 		<?php
 	}

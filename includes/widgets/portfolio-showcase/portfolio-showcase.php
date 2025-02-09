@@ -2168,11 +2168,11 @@ class Portfolio_Showcase extends Widget_Base {
                                        class="mfp-inline portfolio-popup-video"></a>
                                 <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
                                     class="mfp-iframe portfolio-popup-video"
-                                    href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
+                                    href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
                                 <?php else: ?>
                                     <?php if( has_post_thumbnail() && !\option::is_on('lightbox_video_only') ): ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
-                                           href="<?php echo esc_url( $post_thumbnail ); ?>"></a>
+                                           href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
@@ -2305,11 +2305,11 @@ class Portfolio_Showcase extends Widget_Base {
                                        class="mfp-inline portfolio-popup-video"></a>
                                 <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
                                     class="mfp-iframe portfolio-popup-video"
-                                    href="<?php echo esc_url( $video_background_popup_url ); ?>"></a>
+                                    href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
                                 <?php else: ?>
                                     <?php if( has_post_thumbnail() && !\option::is_on( 'lightbox_video_only' ) ) : ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
-                                           href="<?php echo esc_url( $post_thumbnail ); ?>"></a>
+                                           href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
