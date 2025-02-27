@@ -44,17 +44,17 @@ class Slider_cookbook extends Widget_Base {
 		parent::__construct( $data, $args );
 
 		if ( ! wp_style_is( 'slick-slider', 'registered' ) ) {
-			wp_register_style( 'slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.css', null, WPZOOM_EL_ADDONS_VER );
+			wp_register_style( 'slick-slider', WPZOOM_EL_ADDONS_URL . 'assets/vendors/slick/slick.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
 		if ( ! wp_style_is( 'slick-slider-theme', 'registered' ) ) {
-			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
+			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . 'assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
 		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider-cookbook', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
 
 		if ( ! wp_script_is( 'jquery-slick-slider', 'registered' ) ) {
-			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . '/assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
+			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . 'assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
 		}
 
 		wp_register_script( 'wpzoom-elementor-addons-js-frontend-slider-cookbook', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
