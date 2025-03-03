@@ -48,9 +48,7 @@ class Portfolio_Showcase extends Widget_Base {
 	 */
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
-	
 		wp_register_style( 'wpzoom-elementor-addons-css-frontend-portoflio-showcase', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
-	
 	}
 
 	/**
@@ -198,6 +196,27 @@ class Portfolio_Showcase extends Widget_Base {
 			'section_portfolio_showcase',
 			array(
 				'label' => esc_html__( 'General Settings', 'wpzoom-elementor-addons' ),
+			)
+		);
+
+        $this->add_control(
+			'portfolio_showcase_styles',
+			array(
+				'label'              => esc_html__( 'Portfolio Showcase Style', 'recipe-card-blocks-by-wpzoom' ),
+				'label_block'        => true,
+				'type'               => 'wpzoom_image_picker',
+				'default'            => 'style-default',
+				'options'            => array(
+					'default'             => array(
+						'label' => esc_html__( 'Default', 'recipe-card-blocks-by-wpzoom' ),
+						'image' => plugins_url( '/assets/images/default.jpg', __FILE__ ),
+					),
+					'eccentric'              => array(
+						'label' => esc_html__( 'Eccentric', 'recipe-card-blocks-by-wpzoom' ),
+						'image' => plugins_url( '/assets/images/eccentric.jpg', __FILE__ ),
+					)
+				),
+				'frontend_available' => true,
 			)
 		);
 
@@ -1809,7 +1828,7 @@ class Portfolio_Showcase extends Widget_Base {
 	 */
 	public function render() {
 
-		if ( !WPZOOM_Elementor_Widgets::is_supported_theme() ) {
+		if ( ! WPZOOM_Elementor_Widgets::is_supported_theme() ) {
 			if( current_user_can('editor') || current_user_can('administrator') ) {
 				echo '<h3>' . esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ) . '</h3>';
 				echo wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro Premium"</a> and <a href="https://www.wpzoom.com/themes/inspiro-pro/">"Inspiro PRO"</a> themes', 'wpzoom-elementor-addons' ) );
@@ -1885,145 +1904,15 @@ class Portfolio_Showcase extends Widget_Base {
             );
         }
 
-		echo '<div class="portfolio-showcase">';
+		if( 'eccentric' === $settings['portfolio_showcase_styles'] ) {
+            include( __DIR__ . '/view/eccentric.php' );
+        }
+        else {
+            include( __DIR__ . '/view/default.php' );
+        }
+        
 
-		$wp_query = new \WP_Query( $args );
 
-		$count = $wp_query->found_posts;
-		
-		if ( $wp_query->have_posts() ) :
-
-			echo '<div class="portfolio-showcase-header">';
-
-			if( ! empty( $widget_title ) ) {
-
-				$this->add_render_attribute( 'widget_title', 'class', 'wpzoom-portfolio-showcase-widget-title' );
-				$this->add_inline_editing_attributes( 'widget_title' );
-				
-				printf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['widget_title_tag'] ), $this->get_render_attribute_string( 'widget_title' ), $widget_title );
-				
-			}
-
-			if ( !$single_post ) {
-				include( __DIR__ . '/view/filter.php' );
-			}
-
-			echo '</div><!-- // .portfolio-showcase-header -->';
-
-			if ( $show_masonry ) {
-				echo '<div class="portfolio-masonry">';
-			}
-
-			if ( 'narrow' == $layout_type ) {
-				echo '<div class="inner-wrap portfolio_template_clean">';
-			}
-			?>
-			<div <?php 
-				echo( ! empty( $category ) ? 'data-subcategory="' . esc_attr( $category ) . '"' : '' ); ?>
-				data-ajax-items-loading="<?php echo esc_attr( $enable_ajax_items_loading ) ?>"
-				data-nonce="<?php echo esc_attr( wp_create_nonce( 'wpz_get_portfolio_items' ) ) ?>"
-				data-count-nonce="<?php echo esc_attr( wp_create_nonce( 'wpz_count_portfolio_items' ) ) ?>"
-				data-items-count="<?php echo esc_attr( $count ) ?>"
-				data-instance="<?php echo esc_attr( wp_json_encode( array(
-					'layout_type'                  => $layout_type,
-					'col_number'                   => $col_number,
-					'aspect_ratio'                 => $aspect_ratio,
-					'background_video'             => $background_video,
-					'show_masonry'                 => $show_masonry,
-					'show_popup'                   => $show_popup,
-					'show_popup_caption'           => $show_popup_caption,
-					'show_excerpt'                 => $show_excerpt,
-					'view_all_btn'                 => $view_all_btn,
-					'readmore_text'                => $readmore_text,
-					'enable_director_name'         => $enable_director_name,
-					'enable_year'                  => $enable_year,
-					'enable_category'              => $enable_category,
-					'show_count'                   => $show_count,
-					'show_categories'              => true,
-					'always_play_background_video' => $always_play_background_video
-				) ) ) ?>"
-				class="portfolio-grid <?php if ( $show_space ) { ?> portfolio_with_space<?php } ?> col_no_<?php echo esc_attr( $col_number ); ?> <?php echo esc_attr( $always_play_background_video_class ); // WPCS: XSS OK. ?>"
-			>
-				<?php
-					$this->looper( $wp_query,
-						array(
-							'single_post'                  => $single_post,
-							'layout_type'                  => $layout_type,
-							'col_number'                   => $col_number,
-							'aspect_ratio'                 => $aspect_ratio,
-							'background_video'             => $background_video,
-							'show_masonry'                 => $show_masonry,
-							'show_popup'                   => $show_popup,
-							'show_popup_caption'           => $show_popup_caption,
-							'enable_director_name'         => $enable_director_name,
-							'enable_year'                  => $enable_year,
-							'enable_category'              => $enable_category,
-							'hide_subcategories'           => $hide_subcategories,
-							'show_excerpt'                 => $show_excerpt,
-							'view_all_btn'                 => $view_all_btn,
-							'readmore_text'                => $readmore_text,
-							'always_play_background_video' => $always_play_background_video
-						)
-					);
-				?>
-
-			</div><!-- // .portfolio-grid -->
-
-			<?php
-				if ( 'narrow' == $layout_type ) { 
-					echo '</div>';
-				}  
-
-				if ( $show_masonry ) { 
-					echo '</div>';
-				} 
-			?>				
-
-		<?php else: ?>
-
-			<div class="inner-wrap" style="text-align:center;">
-				<h3><?php esc_html__( 'No Portfolio Posts Found', 'wpzoom-elementor-addons' ) ?></h3>
-				<p class="description"><?php printf( __( 'Please add a few Portfolio Posts first <a href="%1$s">here</a>.', 'wpzoom-elementor-addons' ), esc_url( admin_url( 'post-new.php?post_type=portfolio_item' ) ) ); ?></p>
-			</div>
-
-		<?php endif; ?>
-		
-		<?php if ( ! $single_post ) : ?>
-			<div class="portfolio-preloader">
-				<div id="loading-39x">
-					<div class="spinner">
-						<div class="rect1"></div> 
-						<div class="rect2"></div> 
-						<div class="rect3"></div> 
-						<div class="rect4"></div> 
-						<div class="rect5"></div>
-					</div>
-				</div>
-			</div>
-		<?php endif; ?>
-
-        <?php if ( ! $single_post && $view_all_enabled ) : ?>
-
-            <?php if ( 'narrow' == $layout_type ) { ?>
-                <div class="inner-wrap">
-            <?php } ?>
-
-            <div class="portfolio-view_all-link">
-				<a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
-					<?php echo esc_html( $view_all_text ); ?>
-				</a>
-            </div><!-- .portfolio-view_all-link -->
-			<?php
-				if ( 'narrow' == $layout_type ) { 
-					echo '</div>';
-				} 
-			?>
-
-        <?php endif; ?>
-
-		</div><!-- // .portfolio-showcase -->
-
-		<?php
 	}
 
 	function looper( $wp_query, $settings ) {

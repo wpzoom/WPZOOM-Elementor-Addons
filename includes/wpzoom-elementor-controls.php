@@ -68,5 +68,27 @@ class WPZOOM_Elementor_Controls {
 		require_once plugin_dir_path( __FILE__ ) . 'controls/class-group-control-css-backdrop-filter.php';
 
 		$controls_manager->add_group_control( Group_Control_Css_Backdrop_Filter::get_type(), new Group_Control_Css_Backdrop_Filter() );
+
+
+        $controls = array(
+			'wpzoom_image_picker' => array(
+				'file'  => __DIR__ . '/controls/class-control-image-picker.php',
+				'class' => 'Controls\WPZOOM_Image_Picker',
+			),
+
+		);
+
+		foreach ( $controls as $control_type => $control_info ) {
+			if ( ! empty( $control_info['file'] ) && ! empty( $control_info['class'] ) ) {
+				include_once $control_info['file'];
+				if ( class_exists( $control_info['class'] ) ) {
+					$class_name = $control_info['class'];
+				} elseif ( class_exists( __NAMESPACE__ . '\\' . $control_info['class'] ) ) {
+					$class_name = __NAMESPACE__ . '\\' . $control_info['class'];
+				}
+				$controls_manager->register( new $class_name() );
+			}
+		}
+
 	}
 }
