@@ -3,13 +3,17 @@
 ?>
 <div class="portfolio-archive">
 
-<?php get_template_part( 'portfolio/includes/filter' ); ?>
-
     <section class="portfolio-archive-fresh">
+
+    <?php 
+        if ( ! $single_post ) {
+            include( __DIR__ . '/filter.php' );
+        }
+    ?>
 
     <?php if ( $wp_query->have_posts() ) : ?>
 
-    <div class="portfolio-fresh<?php echo $always_play_background_video_class; ?>">
+    <div class="portfolio-grid portfolio-fresh<?php echo $always_play_background_video_class; ?>">
 
         <?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 
