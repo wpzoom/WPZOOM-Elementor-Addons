@@ -49,7 +49,23 @@ class Portfolio_Showcase extends Widget_Base {
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 		wp_register_style( 'wpzoom-elementor-addons-css-frontend-portoflio-showcase', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+
+        add_filter( 'post_class', array( $this, 'add_portfolio_class' ), 10, 3 );
 	}
+
+
+    /**
+     * Add portfolio class to the post class.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public function add_portfolio_class( $classes, $class, $post_id ) {
+        if ( get_post_type( $post_id ) === 'portfolio_item' ) {
+            $classes[] = 'portfolio_item';
+        }
+        return $classes;
+    }
 
 	/**
 	 * Get widget name.
