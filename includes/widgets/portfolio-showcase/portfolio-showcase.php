@@ -208,9 +208,6 @@ class Portfolio_Showcase extends Widget_Base {
 	 */
 	protected function register_main_controls() {
 
-        $current_theme = wp_get_theme();
-        $is_inspiro_pro_theme = $current_theme->name === 'Inspiro PRO';
-
 		$this->start_controls_section(
 			'section_portfolio_showcase',
 			array(
@@ -218,28 +215,27 @@ class Portfolio_Showcase extends Widget_Base {
 			)
 		);
 
-        if ( $is_inspiro_pro_theme ) {
-            $this->add_control(
-                'portfolio_showcase_styles',
-                array(
-                    'label'              => esc_html__( 'Portfolio Showcase Style', 'recipe-card-blocks-by-wpzoom' ),
-                    'label_block'        => true,
-                    'type'               => 'wpzoom_image_picker',
-                    'default'            => 'style-default',
-                    'options'            => array(
-                        'default'             => array(
-                            'label' => esc_html__( 'Default', 'recipe-card-blocks-by-wpzoom' ),
-                            'image' => plugins_url( '/assets/images/default.jpg', __FILE__ ),
-                        ),
-                        'eccentric'              => array(
-                            'label' => esc_html__( 'Eccentric', 'recipe-card-blocks-by-wpzoom' ),
-                            'image' => plugins_url( '/assets/images/eccentric.jpg', __FILE__ ),
-                        )
+        $this->add_control(
+            'portfolio_showcase_styles',
+            array(
+                'label'              => esc_html__( 'Portfolio Showcase Style', 'recipe-card-blocks-by-wpzoom' ),
+                'label_block'        => true,
+                'type'               => 'wpzoom_image_picker',
+                'default'            => 'style-default',
+                'options'            => array(
+                    'default'             => array(
+                        'label' => esc_html__( 'Default', 'recipe-card-blocks-by-wpzoom' ),
+                        'image' => plugins_url( '/assets/images/default.jpg', __FILE__ ),
                     ),
-                    'frontend_available' => true,
-                )
-            );
-        }
+                    'eccentric'              => array(
+                        'label' => esc_html__( 'Eccentric', 'recipe-card-blocks-by-wpzoom' ),
+                        'image' => plugins_url( '/assets/images/eccentric.jpg', __FILE__ ),
+                    )
+                ),
+                'frontend_available' => true,
+            )
+        );
+        
 
 		$this->add_control(
 			'widget_title',
@@ -1924,12 +1920,9 @@ class Portfolio_Showcase extends Widget_Base {
                 )
             );
         }
-
-        $current_theme = wp_get_theme();
-        $is_inspiro_pro_theme = $current_theme->name === 'Inspiro PRO';
         
         $portfolio_layout = isset( $settings['portfolio_showcase_styles'] ) ? $settings['portfolio_showcase_styles'] : 'default';
-		if( 'eccentric' === $portfolio_layout && $is_inspiro_pro_theme ) {
+		if( 'eccentric' === $portfolio_layout ) {
             include( __DIR__ . '/view/eccentric.php' );
         }
         else {
