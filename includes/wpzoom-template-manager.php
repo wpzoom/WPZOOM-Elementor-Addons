@@ -61,7 +61,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		private function __construct() {
 
 			//Setup static library_source
-			self::$library_source = 'https://api.wpzoom.com/';
+			self::$library_source = 'https://api.wpzoom.com/elementor/templates/';
 
 			add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
 			add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
@@ -115,18 +115,18 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			//Get libray json from source
 			$response = wp_remote_get( self::$library_source, array( 'timeout' => 60 ) );
 
-			if( !is_wp_error( $response ) ) {
-				$info_data = wp_remote_retrieve_body( $response );
-				$template_list = json_decode( $info_data, true );
-			}
-			else {
+			//if( !is_wp_error( $response ) ) {
+			//	$info_data = wp_remote_retrieve_body( $response );
+			//	$template_list = json_decode( $info_data, true );
+			//}
+			//else {
 				$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
 				if( self::init()->get_filesystem()->exists( $local_file ) ) {
 					$data = self::init()->get_filesystem()->get_contents( $local_file );
 					$template_list = json_decode( $data, true );
 				}
 				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/';
-			}
+			//}
 
 			echo '<div class="wpzoom-main-tiled-view">';
 			if( count( $template_list ) != 0 ) {
