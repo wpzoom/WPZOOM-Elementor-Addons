@@ -1,5 +1,6 @@
 <?php
     $wp_query = new WP_Query( $args );
+    $count = $wp_query->found_posts;
 ?>
 <div class="portfolio-archive">
 
