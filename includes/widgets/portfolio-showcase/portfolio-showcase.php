@@ -397,11 +397,23 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Design & Appearance', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
+			)
+		);
+
+		$this->add_control(
+			'enable_dark_mode',
+			array(
+				'label'       => esc_html__( 'Enable Dark Mode', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::SWITCHER,
+				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'default'     => 'no',
 				'condition' => array(
-					'portfolio_showcase_styles!' => 'eccentric',
+					'portfolio_showcase_styles' => 'eccentric', 
 				),
 			)
 		);
+
 		$this->add_control(
 			'layout_type',
 			array(
@@ -1954,6 +1966,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$view_all_btn                       = ( 'yes' == $settings['view_all_btn'] ? true : false );
 		$view_all_ajax_loading              = ( 'yes' == $settings['view_all_ajax_loading'] ? true : false );
 		$view_all_enabled                   = ( 'yes' == $settings['view_all_enabled'] ? true : false );
+		$enable_dark_mode                   = ( 'yes' == $settings['enable_dark_mode'] ? true : false );
 		$readmore_text                      = $settings['readmore_text'];
 		$view_all_text                      = $settings['view_all_text'];
 		$view_all_link                      = !empty( $settings['view_all_link']['url'] ) ? $settings['view_all_link']['url'] : $settings['view_all_link']['url'] = get_page_link( \option::get( 'portfolio_url' ) );

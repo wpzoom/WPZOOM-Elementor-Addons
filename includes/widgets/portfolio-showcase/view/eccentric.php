@@ -6,7 +6,13 @@ $wp_query = new WP_Query( $args );
 $count = $wp_query->found_posts;
 
 ?>
+
+<?php if ( $enable_dark_mode ) : ?>
+<div class="portfolio-with-post-cover">
+<?php endif; ?>
+
 <div class="portfolio-archive">
+
 
     <section class="portfolio-archive-fresh">
 	<?php echo '<div class="portfolio-showcase-header">'; ?>
@@ -58,3 +64,7 @@ $count = $wp_query->found_posts;
 
     </section><!-- .portfolio-archive-fresh -->
 </div>
+
+<?php if ( $enable_dark_mode ) : ?>
+</div>
+<?php endif; ?>
