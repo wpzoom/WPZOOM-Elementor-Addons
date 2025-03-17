@@ -246,7 +246,10 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_block' => true,
 				'dynamic'     => array(
 					'active' => true,
-				)
+				),
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -266,6 +269,9 @@ class Portfolio_Showcase extends Widget_Base {
 					'p'    => 'p',
 				),
 				'default' => 'h2',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_responsive_control(
@@ -294,6 +300,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'default' => '',
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title' => 'text-align: {{VALUE}};',
+				),
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
 				),
 			)
 		);
@@ -383,7 +392,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'yes',
 				'condition'   =>  array(
-					'single_post!' => 'yes'
+					'single_post!' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				),
 			)
 		);
@@ -395,7 +405,10 @@ class Portfolio_Showcase extends Widget_Base {
 			'section_design_appearance',
 			array(
 				'label' => esc_html__( 'Design & Appearance', 'wpzoom-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_CONTENT
+				'tab'   => Controls_Manager::TAB_CONTENT,
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
+				),
 			)
 		);
 		$this->add_control(
@@ -408,6 +421,9 @@ class Portfolio_Showcase extends Widget_Base {
 					'narrow'     => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
 				),
 				'default' => 'full-width',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 
@@ -424,6 +440,9 @@ class Portfolio_Showcase extends Widget_Base {
 					'4' => '4'
 				),
 				'default'     => '4',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -436,8 +455,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'default'     => 'no',
 				'condition'   =>  array(
 					'layout_type!' => 'narrow',
-					'single_post!' => 'yes'
-
+					'single_post!' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				),
 			)
 		);
@@ -454,6 +473,9 @@ class Portfolio_Showcase extends Widget_Base {
 					'original' => esc_html__( 'No Cropping', 'wpzoom-elementor-addons' ),
 				),
 				'default' => 'default',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -463,7 +485,10 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'no',			
+				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->end_controls_section();
@@ -473,7 +498,10 @@ class Portfolio_Showcase extends Widget_Base {
 			'section_post_settings',
 			array(
 				'label' => esc_html__( 'Posts Settings', 'wpzoom-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_CONTENT
+				'tab'   => Controls_Manager::TAB_CONTENT,
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -484,6 +512,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'yes',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -494,6 +525,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -501,7 +535,10 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Video Background', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
-				'separator' => 'before'
+				'separator' => 'before',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -512,6 +549,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'yes',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -522,6 +562,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -529,7 +572,10 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Details to Show', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
-				'separator' => 'before'
+				'separator' => 'before',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -540,6 +586,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -550,6 +599,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -570,6 +622,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 		$this->add_control(
@@ -582,7 +637,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'default'     => 'yes',
 				'condition'   =>  array(
 					'layout_type!' => 'narrow',
-					'show_popup!' => 'yes'
+					'show_popup!' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				),
 			)
 		);
@@ -593,7 +649,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'      => Controls_Manager::TEXT,
 				'default'   => esc_html__( 'Read More', 'wpzoom-elementor-addons' ),
 				'condition' => array(
-					'view_all_btn' => 'yes'
+					'view_all_btn' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				),
 			)
 		);
@@ -606,7 +663,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( '"View All" or "Load More" Button at the Bottom', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 				'condition'   =>  array(
-					'single_post!' => 'yes'
+					'single_post!' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				),
 			)
 		);
@@ -618,6 +676,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'yes',
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
+				),
 			)
 		);
 		$this->add_control(
@@ -628,6 +689,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'default'     => 'no',
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
+				),
 			)
 		);
 		$this->add_control(
@@ -637,6 +701,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'description' => esc_html__( 'Change the text to something like "Load More" if you have enabled the option to load new posts dynamically.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => esc_html__( 'View All', 'wpzoom' ),
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
+				),
 			)
 		);
 		$this->add_control(
@@ -650,6 +717,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'placeholder' => esc_html__( 'https://your-link.com', 'wpzoom-elementor-addons' ),
 				'default' => array(
 					'url' => '#',
+				),
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
 				),
 			)
 		);
@@ -676,6 +746,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .portfolio-view_all-link' => 'text-align: {{VALUE}};',
 				),
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
+				),
 			)
 		);
 
@@ -693,6 +766,9 @@ class Portfolio_Showcase extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'width: {{SIZE}}{{UNIT}};',
 				],
+				'condition' => array(
+					'portfolio_showcase_styles!' => 'eccentric',
+				),
 			]
 		);
 
@@ -842,7 +918,10 @@ class Portfolio_Showcase extends Widget_Base {
 			'section_widget_title_style',
 			array(
 				'label' => esc_html__( 'Widget Title', 'wpzoom-elementor-addons' ),
-				'tab'   => Controls_Manager::TAB_STYLE
+				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'portfolio_showcase_styles' => 'default',
+				),
 			)
 		);
 
@@ -1007,6 +1086,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition'   =>  array(
 					'layout_type' => 'narrow',
+					'portfolio_showcase_styles' => 'default',
 				),
 			)
 		);
@@ -1152,7 +1232,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'Category', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'enable_category' => 'yes'
+					'enable_category' => 'yes',
+					'portfolio_showcase_styles' => 'default',
 				)
 			)
 		);
@@ -1268,7 +1349,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'Excerpts', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'show_excerpt' => 'yes'
+					'show_excerpt' => 'yes',
+					'portfolio_showcase_styles' => 'default',
 				)
 			)
 		);
@@ -1384,7 +1466,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'Read More Button', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'view_all_btn' => 'yes'
+					'view_all_btn' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				)
 			)
 		);
@@ -1539,7 +1622,8 @@ class Portfolio_Showcase extends Widget_Base {
 				'label' => esc_html__( 'View All/Load More Button', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'view_all_enabled' => 'yes'
+					'view_all_enabled' => 'yes',
+					'portfolio_showcase_styles!' => 'eccentric',
 				)
 			)
 		);
