@@ -58,6 +58,23 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "cookely-home",
+    "theme": "Cookely",
+    "category": "Cookely",
+    "thumbnail": "cookely/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Cookely"
+},{
+    "name": "Recipe Index",
+    "id": "cookely-recipes",
+    "theme": "Cookely",
+    "category": "Cookely",
+    "thumbnail": "cookely/recipes",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "f1-homepage",
     "theme": "Inspiro PRO",
     "category": "Eccentric",
