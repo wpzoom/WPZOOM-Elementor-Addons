@@ -2,10 +2,10 @@
 Contributors:      WPZOOM, alexus450, ciorici
 Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
-Requires at least: 5.2
+Requires at least: 6.0
 Requires PHP:      7.4
 Tested up to:      6.7
-Stable tag:        1.1.46
+Stable tag:        1.1.47
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor templates, elementor widgets, page builder templates, templates
@@ -108,6 +108,9 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 
 == Changelog ==
+
+= 1.1.47 =
+* Added templates for the Cookely theme
 
 = 1.1.46 =
 * Minor bug fixes
