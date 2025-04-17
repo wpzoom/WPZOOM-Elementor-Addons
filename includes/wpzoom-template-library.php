@@ -35,18 +35,18 @@ if ( did_action( 'elementor/loaded' ) ) {
 
 		public function get_finalized_data() {
 
-			$url = sprintf( 'https://api.wpzoom.com/templates/%s', sanitize_text_field( $_POST['filename'] ) );
-			$response = wp_remote_get( $url, array( 'timeout' => 60 ) );
-			if( !is_wp_error( $response ) ) {
-				$data = json_decode( wp_remote_retrieve_body( $response ), true );
-			}
-			else {
+			//$url = sprintf( 'https://api.wpzoom.com/elementor/templates/%s', sanitize_text_field( $_POST['filename'] ) );
+			//$response = wp_remote_get( $url, array( 'timeout' => 60 ) );
+			//if( !is_wp_error( $response ) ) {
+			//	$data = json_decode( wp_remote_retrieve_body( $response ), true );
+			//}
+			//else {
 				$local_file = sprintf( WPZOOM_EL_ADDONS_PATH . '/includes/data/json/%s', sanitize_text_field( $_POST['filename'] ) ) ;
 				if( self::get_filesystem()->exists( $local_file ) ) {
 					$data = self::get_filesystem()->get_contents( $local_file );
 					$data = json_decode( $data, true );
 				}
-			}
+			//}
 			$content = $data['content'];
 			$content = $this->process_export_import_content( $content, 'on_import' );
 			$content = $this->replace_elements_ids( $content );
