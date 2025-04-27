@@ -227,6 +227,20 @@ class Slider_Pro extends Widget_Base {
 		);
 
 		$this->add_control(
+			'slides_order',
+			array(
+				'label'       => esc_html__( 'Slides Order', 'wpzoom-elementor-addons' ),
+				'description' => wp_kses_post( __( '<strong>Default:</strong> Uses menu order which can be changed from <a href="edit.php?post_type=slider&page=wpzoom_featured_sorting_menu_slider" target="_blank">this page</a>.', 'wpzoom-elementor-addons' ) ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'default',
+				'options'     => array(
+					'default' => esc_html__( 'Default (Menu Order)', 'wpzoom-elementor-addons' ),
+					'random'  => esc_html__( 'Random', 'wpzoom-elementor-addons' ),
+				),
+			)
+		);
+
+		$this->add_control(
 			'heading_slide_title',
 			[
 				'label' => esc_html__( 'Slide Title', 'wpzoom-elementor-addons' ),
@@ -969,7 +983,7 @@ class Slider_Pro extends Widget_Base {
 		$args = array(
 			'post_type'      => 'slider',
 			'posts_per_page' => $show_count,
-			'orderby'        => 'menu_order date',
+			'orderby'        => $settings['slides_order'] === 'random' ? 'rand' : 'menu_order date',
 			'post_status'    => 'publish'
 		);
 
