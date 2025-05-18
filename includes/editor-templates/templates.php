@@ -57,6 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<option value ='cookbook'>CookBook</option>
                     <option value ='cookely'>Cookely</option>
                     <option value ='foodica'>Foodica (PRO)</option>
+                    <option value ='gourmand'>Gourmand</option>
                     <option value ='inspiro-pro'>Inspiro PRO</option>
                     <option value ='inspiro-premium'>Inspiro Premium</option>
                     <option value ='inspiro-lite'>Inspiro Lite</option>
