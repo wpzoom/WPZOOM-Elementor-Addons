@@ -419,10 +419,7 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label'   => esc_html__( 'Items Style', 'wpzoom-elementor-addons' ),
 				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'full-width' => esc_html__( 'Title Overlay', 'wpzoom-elementor-addons' ),
-					'narrow'     => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
-				),
+				'options' => $this->get_layout_type_options(),
 				'default' => 'full-width',
 				'condition' => array(
 					'portfolio_showcase_styles!' => 'eccentric',
@@ -495,7 +492,7 @@ class Portfolio_Showcase extends Widget_Base {
 			)
 		);
 		$this->end_controls_section();
-	
+
 		//Posts Settings
 		$this->start_controls_section(
 			'section_post_settings',
@@ -796,7 +793,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
 					'{{WRAPPER}} .portfolio-grid .portfolio_item' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
-				],			
+				],
 			]
 		);
 
@@ -1076,7 +1073,7 @@ class Portfolio_Showcase extends Widget_Base {
 			)
 		);
 
-		$this->end_controls_section();		
+		$this->end_controls_section();
 
 		//Portfolio Details box section
 		$this->start_controls_section(
@@ -1541,7 +1538,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
 					'{{WRAPPER}} .portfolio-grid .portfolio_item span.btn' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
-				],			
+				],
 			)
 		);
 
@@ -1697,7 +1694,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
 					'{{WRAPPER}} .portfolio-view_all-link a.btn' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
-				],			
+				],
 			)
 		);
 
@@ -1934,7 +1931,7 @@ class Portfolio_Showcase extends Widget_Base {
 				echo '<h3>' . esc_html__( 'Widget not available', 'wpzoom-elementor-addons' ) . '</h3>';
 				echo wp_kses_post( __( 'This widget is supported only by the <a href="https://www.wpzoom.com/themes/inspiro/">"Inspiro Premium"</a>, <a href="https://www.wpzoom.com/themes/inspiro-pro/">"Inspiro PRO"</a> and <a href="https://www.wpzoom.com/themes/reel/">"Reel"</a> themes', 'wpzoom-elementor-addons' ) );
 			}
-			return;			
+			return;
 		}
 
 		// Get settings.
@@ -2156,15 +2153,30 @@ class Portfolio_Showcase extends Widget_Base {
                                         </div>
 
                                     </div>
+                                    <?php if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ): ?>
                                     <a href="#zoom-popup-<?php echo the_ID(); ?>"
                                        class="mfp-inline portfolio-popup-video"></a>
-                                <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
-                                    class="mfp-iframe portfolio-popup-video"
-                                    href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
+                                    <?php else: ?>
+                                    <a href="#zoom-popup-<?php echo the_ID(); ?>"
+                                       class="mfp-inline portfolio-popup-video"></a>
+                                    <?php endif; ?>
+                                <?php elseif ( ! empty( $video_background_popup_url ) ): ?>
+                                    <?php if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ): ?>
+                                    <a class="mfp-iframe portfolio-popup-video"
+                                       href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
+                                    <?php else: ?>
+                                    <a class="mfp-iframe portfolio-popup-video"
+                                       href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
+                                    <?php endif; ?>
                                 <?php else: ?>
                                     <?php if( has_post_thumbnail() && !\option::is_on('lightbox_video_only') ): ?>
+                                        <?php if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ): ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
                                            href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
+                                        <?php else: ?>
+                                        <a class="mfp-image portfolio-popup-video popup_image_insp"
+                                           href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
@@ -2199,7 +2211,7 @@ class Portfolio_Showcase extends Widget_Base {
                     <?php } else { ?>
 
                         <a href="<?php echo esc_url( get_permalink() ); ?>"
-                           title="<?php echo esc_attr( get_the_title() ); ?>">
+                           title="<?php echo esc_attr( get_the_title() ); ?>" class="<?php echo WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ? 'reel_video_item' : ''; ?>">
 
                             <?php if ( $is_video_background ): ?>
                                 <video class="portfolio-gallery-video-background" <?php echo esc_attr( $video_atts ) // WPCS: XSS OK. ?>
@@ -2227,7 +2239,7 @@ class Portfolio_Showcase extends Widget_Base {
 
                 </div>
 
-                <div class="clean_skin_wrap_post">
+                <div class="clean_skin_wrap_post <?php echo WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ? 'reel_style2_wrap' : ''; ?>">
 
                     <div class="entry-meta">
                         <ul>
@@ -2257,6 +2269,53 @@ class Portfolio_Showcase extends Widget_Base {
 					<?php endif; ?>
 
                 </div>
+            <?php } elseif ( $layout_type == 'title_corner' ) { ?>
+                <a class="reel_video_item" href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
+                    <?php if ( $is_video_background ): ?>
+                        <video class="portfolio-gallery-video-background" <?php echo esc_attr( $video_atts ) // WPCS: XSS OK. ?>
+                               style=" width:100%; height:auto;vertical-align: middle; display:block;">
+                            <source src="<?php echo esc_url( $final_background_src ) ?>"
+                                    type="<?php echo esc_attr( $filetype['type'] ) ?>">
+                        </video>
+
+                        <?php the_post_thumbnail( $size ); ?>
+
+                    <?php elseif ( has_post_thumbnail() ): ?>
+
+                        <?php the_post_thumbnail( $size ); ?>
+
+                    <?php else: ?>
+
+                        <img width="600" height="400"
+                             src="<?php echo get_template_directory_uri() . '/images/portfolio_item-placeholder.gif'; ?>">
+
+                    <?php endif; ?>
+
+                    <div class="reel_style3_wrap">
+                        <?php the_title( '<h3 class="portfolio_item-title_btm">', '</h3>' ); ?>
+
+                        <div class="entry-meta">
+                            <ul>
+                                <?php if ( $enable_director_name && $video_director ) { ?>
+                                   <li><?php echo esc_html( $video_director ); ?></li>
+                                <?php } ?>
+
+                                <?php if ( $enable_year && $video_year ) { ?>
+                                   <li><?php echo esc_html( $video_year ); ?></li>
+                                <?php } ?>
+
+                                <?php if ( $enable_category ) : ?><li>
+                                     <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
+                                         <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
+                                            <?php echo esc_html( $tax_menu_item->name ); ?>
+                                         <?php endforeach; ?>
+                                     <?php endif; ?>
+                                 </li>
+                                 <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
             <?php } else {
                 if ( $show_popup ) {
                     ?>
@@ -2293,15 +2352,30 @@ class Portfolio_Showcase extends Widget_Base {
                                             <?php endif; ?>
                                         </div>
                                     </div>
+                                    <?php if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ): ?>
                                     <a href="#zoom-popup-<?php echo the_ID(); ?>"
                                        class="mfp-inline portfolio-popup-video"></a>
-                                <?php elseif ( ! empty( $video_background_popup_url ) ): ?><a
-                                    class="mfp-iframe portfolio-popup-video"
-                                    href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
+                                    <?php else: ?>
+                                    <a href="#zoom-popup-<?php echo the_ID(); ?>"
+                                       class="mfp-inline portfolio-popup-video"></a>
+                                    <?php endif; ?>
+                                <?php elseif ( ! empty( $video_background_popup_url ) ): ?>
+                                    <?php if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ): ?>
+                                    <a class="mfp-iframe portfolio-popup-video"
+                                       href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
+                                    <?php else: ?>
+                                    <a class="mfp-iframe portfolio-popup-video"
+                                       href="<?php echo esc_url( $video_background_popup_url ); ?>" aria-label="Watch Video"></a>
+                                    <?php endif; ?>
                                 <?php else: ?>
                                     <?php if( has_post_thumbnail() && !\option::is_on( 'lightbox_video_only' ) ) : ?>
+                                        <?php if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ): ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
                                            href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
+                                        <?php else: ?>
+                                        <a class="mfp-image portfolio-popup-video popup_image_insp"
+                                           href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
@@ -2359,11 +2433,19 @@ class Portfolio_Showcase extends Widget_Base {
                 <?php } else { ?>
 
                     <a href="<?php echo esc_url( get_permalink() ); ?>"
-                       title="<?php echo esc_attr( get_the_title() ); ?>">
+                       title="<?php echo esc_attr( get_the_title() ); ?>" class="<?php echo WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ? 'reel_video_item' : ''; ?>">
 
                         <div class="entry-thumbnail-popover">
                             <div class="entry-thumbnail-popover-content popover-content--animated">
-                                <?php the_title( '<h3 class="portfolio_item-title">', '</h3>' ); ?>
+                                <?php if (WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' )) : ?>
+                                <div class="reel_style1_wrap">
+                                <?php endif; ?>
+
+                                <?php if (WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' )) : ?>
+                                    <?php the_title( '<h3 class="portfolio_item-title_btm">', '</h3>' ); ?>
+                                <?php else: ?>
+                                    <?php the_title( '<h3 class="portfolio_item-title">', '</h3>' ); ?>
+                                <?php endif; ?>
 
                                 <div class="entry-meta">
                                     <ul>
@@ -2387,16 +2469,16 @@ class Portfolio_Showcase extends Widget_Base {
                                     </ul>
                                 </div>
 
+                                <?php if (WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' )) : ?>
+                                </div>
+                                <?php endif; ?>
+
 								<?php if ( $show_excerpt == true ) : ?>
-
 									<?php the_excerpt(); ?>
-
 								<?php endif; ?>
 
                                 <?php if ( $view_all_btn == true ) : ?>
-
                                     <span class="btn"><?php echo esc_html( $readmore_text ); ?></span>
-
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -2427,5 +2509,26 @@ class Portfolio_Showcase extends Widget_Base {
             wp_reset_postdata();
 
     }
+
+	/**
+	 * Get layout type options based on active theme.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 * @return array Layout type options.
+	 */
+	protected function get_layout_type_options() {
+		$options = array(
+			'full-width' => esc_html__( 'Title Overlay', 'wpzoom-elementor-addons' ),
+			'narrow'     => esc_html__( 'Title Below', 'wpzoom-elementor-addons' ),
+		);
+
+		// Add the 'title_corner' option only for Reel theme
+		if ( WPZOOM_Elementor_Widgets::is_supported_theme( 'reel' ) ) {
+			$options['title_corner'] = esc_html__( 'Title in the Corner', 'wpzoom-elementor-addons' );
+		}
+
+		return $options;
+	}
 
 }
