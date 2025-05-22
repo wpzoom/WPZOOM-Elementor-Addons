@@ -58,6 +58,40 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "cookely-home",
+    "theme": "Cookely",
+    "category": "Cookely",
+    "thumbnail": "cookely/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Cookely"
+},{
+    "name": "Recipe Index",
+    "id": "cookely-recipes",
+    "theme": "Cookely",
+    "category": "Cookely",
+    "thumbnail": "cookely/recipes",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
+    "id": "gourmand-home",
+    "theme": "Gourmand",
+    "category": "Gourmand",
+    "thumbnail": "gourmand/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Gourmand"
+},{
+    "name": "Recipe Index",
+    "id": "gourmand-recipes",
+    "theme": "Gourmand",
+    "category": "Gourmand",
+    "thumbnail": "gourmand/recipes",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "f1-homepage",
     "theme": "Inspiro PRO",
     "category": "Eccentric",
