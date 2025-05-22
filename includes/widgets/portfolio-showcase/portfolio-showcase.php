@@ -2096,7 +2096,7 @@ class Portfolio_Showcase extends Widget_Base {
                     'poster=' . esc_attr( get_the_post_thumbnail_url( get_the_ID(), $size ) ) . ''
                 );
 
-                if ($always_play_ba ckground_video) {
+                if ($always_play_background_video) {
                     $video_atts[] = 'autoplay';
                 }
 
