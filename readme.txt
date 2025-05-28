@@ -45,17 +45,23 @@ Even though the plugin works great with any theme, currently, it includes templa
 
 [**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/)
 [**Inspiro Premium**](https://www.wpzoom.com/themes/inspiro/)
+[**Reel**](https://www.wpzoom.com/themes/reel/) - *NEW*
 [**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
 [**Foodica PRO**](https://www.wpzoom.com/themes/foodica/)
 [**CookBook**](https://www.wpzoom.com/themes/cookbook/) - *NEW*
+[**Cookely**](https://www.wpzoom.com/themes/cookely/) - *NEW*
+[**Gourmand**](https://www.wpzoom.com/themes/gourmand/) - *NEW*
 
 You can see multiple pages created using **Elementor** and this plugin in the following themes:
 
 [**Inspiro PRO**](https://demo.wpzoom.com/inspiro-pro-demo/)
 [**Inspiro Premium**](https://demo.wpzoom.com/inspiro-demo/)
+[**Reel**](https://demo.wpzoom.com/reel-elementor/) - *NEW*
 [**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
 [**Foodica PRO**](https://demo.wpzoom.com/foodica-elementor/)
 [**CookBook**](https://demo.wpzoom.com/cookbook/) - *NEW*
+[**Cookely**](https://demo.wpzoom.com/cookely/) - *NEW*
+[**Gourmand**](https://demo.wpzoom.com/gourmand/) - *NEW*
 
 
 = Additional Resources =
