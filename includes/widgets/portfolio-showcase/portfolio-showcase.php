@@ -48,7 +48,7 @@ class Portfolio_Showcase extends Widget_Base {
 	 */
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
-		wp_register_style( 'wpzoom-elementor-addons-css-frontend-portoflio-showcase', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-portfolio-showcase', plugins_url( 'frontend.css', __FILE__ ), [], WPZOOM_EL_ADDONS_VER );
 
         add_filter( 'post_class', array( $this, 'add_portfolio_class' ), 10, 3 );
 	}
@@ -130,7 +130,7 @@ class Portfolio_Showcase extends Widget_Base {
 	 */
 	public function get_style_depends() {
 		return [
-			'wpzoom-elementor-addons-css-frontend-portoflio-showcase'
+			'wpzoom-elementor-addons-css-frontend-portfolio-showcase'
 		];
 	}
 

@@ -143,6 +143,15 @@ class WPZOOM_Elementor_Widgets {
 				]
 			);
 		}
+        if( self::is_supported_theme( 'reel' ) ) {
+            $elements_manager->add_category(
+                'wpzoom-elementor-addons-reel',
+                [
+                    'title' => __( 'WPZOOM Reel', 'wpzoom-elementor-addons' ),
+                    'icon' => 'fa fa-plug'
+                ]
+            );
+        }
 	}
 
 	/**
@@ -174,6 +183,11 @@ class WPZOOM_Elementor_Widgets {
 					return true;
 				}
 			break;	
+            case 'reel':
+                if( 'wpzoom-reel' === $current_theme || 'wpzoom/wpzoom-reel' === $current_theme && class_exists( 'WPZOOM' ) ) {
+                    return true;
+                }
+            break;
 		
 		}
 
