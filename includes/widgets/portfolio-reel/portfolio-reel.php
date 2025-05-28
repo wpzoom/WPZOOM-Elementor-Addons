@@ -796,9 +796,6 @@ class Portfolio_Reel extends Widget_Base {
             Group_Control_Typography::get_type(),
             array(
                 'name'     => 'widget_title_style_typography',
-                'global' => [
-                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                ],
                 'selector' => '{{WRAPPER}} .portfolio-showcase .wpzoom-portfolio-showcase-widget-title'
             )
         );
@@ -847,9 +844,6 @@ class Portfolio_Reel extends Widget_Base {
             Group_Control_Typography::get_type(),
             array(
                 'name'     => 'portfolio_filter_style_typography',
-                'global' => [
-                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                ],
                 'selector' => '{{WRAPPER}} .portfolio-archive-taxonomies a'
             )
         );
@@ -959,9 +953,6 @@ class Portfolio_Reel extends Widget_Base {
             Group_Control_Typography::get_type(),
             array(
                 'name'     => 'portfolio_title_style_typography',
-                'global' => [
-                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                ],
                 'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item-title_btm, {{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item-title_btm > a'
             )
         );
@@ -1075,9 +1066,6 @@ class Portfolio_Reel extends Widget_Base {
             Group_Control_Typography::get_type(),
             array(
                 'name'     => 'portfolio_cat_style_typography',
-                'global' => [
-                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                ],
                 'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a'
             )
         );
@@ -1179,7 +1167,7 @@ class Portfolio_Reel extends Widget_Base {
         $this->start_controls_section(
             'section_portfolio_viewall_style',
             array(
-                'label' => esc_html__( 'View All/Load More Button', 'wpzoom-elementor-addons' ),
+                'label' => esc_html__( 'Load More Button', 'wpzoom-elementor-addons' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => array(
                     'view_all_enabled' => 'yes',
@@ -1192,9 +1180,6 @@ class Portfolio_Reel extends Widget_Base {
             Group_Control_Typography::get_type(),
             array(
                 'name'     => 'portfolio_viewall_style_typography',
-                'global' => [
-                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                ],
                 'selector' => '{{WRAPPER}} .portfolio-view_all-link a.btn'
             )
         );
@@ -1500,7 +1485,6 @@ class Portfolio_Reel extends Widget_Base {
         $settings = $this->get_settings();
 
         $widget_title                       = $settings['widget_title'];
-
         $category                           = $settings['category'];
         $show_count                         = $settings['show_count'];
         $col_number                         = $settings['col_number'];
@@ -1508,7 +1492,7 @@ class Portfolio_Reel extends Widget_Base {
         $aspect_ratio                       = $settings['aspect_ratio'];
         $show_popup                         = ( 'yes' == $settings['show_popup'] ? true : false );
         $show_popup_caption                 = ( 'yes' == $settings['show_popup_caption'] ? true : false ) ;
-        $lightbox_open_thumb                 = ( 'yes' == $settings['lightbox_open_thumb'] ? true : false ) ;
+        $lightbox_open_thumb                = ( 'yes' == $settings['lightbox_open_thumb'] ? true : false ) ;
         $show_space                         = ( 'yes' == $settings['show_space'] ? true : false );
         $show_categories                    = ( 'yes' == $settings['show_categories'] ? true : false );
         $hide_subcategories                 = ( 'yes' == $settings['hide_sub_categories'] ? true : false );
@@ -1587,16 +1571,16 @@ class Portfolio_Reel extends Widget_Base {
                         'background_video'             => $background_video,
                         'show_popup'                   => $show_popup,
                         'col_number'                   => $col_number,
-                        'grid_style'                  => $grid_style,
+                        'grid_style'                   => $grid_style,
                         'aspect_ratio'                 => $aspect_ratio,
-                         'view_all_btn'                 => $view_all_btn,
+                        'view_all_btn'                 => $view_all_btn,
                         'enable_director_name'         => $enable_director_name,
                         'enable_year'                  => $enable_year,
                         'enable_category'              => $enable_category,
                         'show_count'                   => $show_count,
                         'show_categories'              => true,
                         'show_popup_caption'           => $show_popup_caption,
-                        'lightbox_open_thumb'           => $lightbox_open_thumb,
+                        'lightbox_open_thumb'          => $lightbox_open_thumb,
                         'always_play_background_video' => $always_play_background_video
                     ) ) ) ?>"
                     class="portfolio-grid <?php if ( !$show_space ) { ?> portfolio_no_space<?php } ?> col_no_<?php echo esc_attr( $col_number ); ?> <?php echo $grid_style; ?> <?php echo esc_attr( $always_play_background_video_class ); // WPCS: XSS OK. ?>"
@@ -1607,7 +1591,7 @@ class Portfolio_Reel extends Widget_Base {
                                 'background_video'             => $background_video,
                                 'show_popup'                   => $show_popup,
                                 'col_number'                   => $col_number,
-                                'grid_style'                  => $grid_style,
+                                'grid_style'                   => $grid_style,
                                 'aspect_ratio'                 => $aspect_ratio,
                                 'enable_director_name'         => $enable_director_name,
                                 'enable_year'                  => $enable_year,
@@ -1615,7 +1599,7 @@ class Portfolio_Reel extends Widget_Base {
                                 'hide_subcategories'           => $hide_subcategories,
                                 'view_all_btn'                 => $view_all_btn,
                                 'show_popup_caption'           => $show_popup_caption,
-                                'lightbox_open_thumb'           => $lightbox_open_thumb,
+                                'lightbox_open_thumb'          => $lightbox_open_thumb,
                                 'always_play_background_video' => $always_play_background_video
                             )
                         );
@@ -1668,7 +1652,7 @@ class Portfolio_Reel extends Widget_Base {
         $aspect_ratio                 = $settings['aspect_ratio'];
         $lightbox_open_thumb          = wp_validate_boolean( $settings['lightbox_open_thumb'] );
         $show_popup_caption           = wp_validate_boolean( $settings['show_popup_caption'] );
-        $lightbox_open_thumb           = wp_validate_boolean( $settings['lightbox_open_thumb'] );
+        $lightbox_open_thumb          = wp_validate_boolean( $settings['lightbox_open_thumb'] );
         $view_all_btn                 = wp_validate_boolean( $settings['view_all_btn'] );
         $background_video             = wp_validate_boolean( $settings['background_video'] );
         $enable_director_name         = wp_validate_boolean( $settings['enable_director_name'] );
@@ -1683,7 +1667,6 @@ class Portfolio_Reel extends Widget_Base {
             $post_thumbnail                    = get_the_post_thumbnail_url( get_the_ID() );
             $portfolio_video_popup_url         = get_post_meta( get_the_ID(), 'wpzoom_portfolio_video_popup_url', true );
             $portfolio_video_popup_url_mp4     = get_post_meta( get_the_ID(), 'wpzoom_portfolio_video_popup_url_mp4', true );
-            $video_background_popup_url_webm    = get_post_meta( get_the_ID(), 'wpzoom_portfolio_video_popup_url_webm', true );
             $portfolio_video_popup_url_webm    = get_post_meta( get_the_ID(), 'wpzoom_portfolio_video_popup_url_webm', true );
             $portfolio_popup_video_type        = get_post_meta( get_the_ID(), 'wpzoom_portfolio_popup_video_type', true );
             $popup_video_type                  = ! empty( $portfolio_popup_video_type ) ? $portfolio_popup_video_type : 'external_hosted';
@@ -1701,8 +1684,6 @@ class Portfolio_Reel extends Widget_Base {
 
             $video_director = get_post_meta( get_the_ID(), 'su_portfolio_item_director', true );
             $video_year = get_post_meta( get_the_ID(), 'su_portfolio_item_year', true );
-
-            $popup_final_external_src = ! empty( $video_background_popup_url_mp4 ) ? $video_background_popup_url_mp4 : $video_background_popup_url_webm;
 
             $articleClass = ( ! has_post_thumbnail() && ! $is_video_background ) ? 'no-thumbnail ' : '';
 
@@ -1839,8 +1820,7 @@ class Portfolio_Reel extends Widget_Base {
 
                     <?php else: ?>
 
-                        <img width="600" height="400"
-                             src="<?php echo get_template_directory_uri() . '/images/portfolio_item-placeholder.gif'; ?>">
+                        <img width="600" height="400" src="<?php echo get_template_directory_uri() . '/images/portfolio_item-placeholder.gif'; ?>">
 
                     <?php endif; ?>
 
