@@ -54,8 +54,8 @@ Even though the plugin works great with any theme, currently, it includes templa
 
 You can see multiple pages created using **Elementor** and this plugin in the following themes:
 
-[**Inspiro PRO**](https://demo.wpzoom.com/inspiro-pro-demo/)
-[**Inspiro Premium**](https://demo.wpzoom.com/inspiro-demo/)
+[**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/starter-sites/)
+[**Inspiro Premium**](https://www.wpzoom.com/themes/inspiro/starter-sites/)
 [**Reel**](https://demo.wpzoom.com/reel-elementor/) - *NEW*
 [**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
 [**Foodica PRO**](https://demo.wpzoom.com/foodica-elementor/)
