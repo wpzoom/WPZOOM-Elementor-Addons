@@ -60,6 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <option value ='gourmand'>Gourmand</option>
                     <option value ='inspiro-pro'>Inspiro PRO</option>
                     <option value ='inspiro-premium'>Inspiro Premium</option>
+                    <option value ='reel'>Reel</option>
                     <option value ='inspiro-lite'>Inspiro Lite</option>
 				</select>
 			</div>

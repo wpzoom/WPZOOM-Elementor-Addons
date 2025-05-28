@@ -1007,6 +1007,31 @@
     "contributor": ["WPZOOM"]
 },{
     "name": "Homepage",
+    "id": "reel-home",
+    "theme": "Reel",
+    "category": "Reel",
+    "thumbnail": "reel/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Reel"
+},{
+    "name": "About",
+    "id": "reel-about",
+    "theme": "Reel",
+    "category": "Reel",
+    "thumbnail": "reel/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Services",
+    "id": "reel-services",
+    "theme": "Reel",
+    "category": "Reel",
+    "thumbnail": "reel/services",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "inspiro-lite-homepage",
     "theme": "Inspiro Lite",
     "category": "Inspiro Lite",
