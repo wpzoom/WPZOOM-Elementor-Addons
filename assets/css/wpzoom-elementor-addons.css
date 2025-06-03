@@ -28,14 +28,12 @@
     order: -1
 }
 .elementor-add-new-section .elementor-add-wpzoom-templates-button {
-    margin: 15px 5px 15px 1px;
     background:url(../images/logo.svg) no-repeat center center;
     background-size: contain;
     transition: .2s ease all;
 }
 
 .elementor-add-new-section .elementor-add-wpzoom-templates-button:hover {
-    margin-top: 13px;
     opacity: .8;
 }
 
