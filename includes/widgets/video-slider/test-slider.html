@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Slider Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="frontend.css"/>
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        .test-info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <strong>Video Slider Test</strong><br>
+        - Check console for debug messages<br>
+        - Arrows should navigate slides<br>
+        - Auto-play should work<br>
+        - Videos should load in slide 1
+    </div>
+
+    <div class="wpzjs-slick wpz-slick wpz-slick--slider">
+        <!-- Slide 1: Video Background + Button -->
+        <div class="wpz-slick-slide">
+            <div class="wpz-slick-item wpz-slick-item--video">
+                <!-- Video Background -->
+                <div class="wpz-video-bg" data-video-type="vimeo" data-video-url="https://vimeo.com/729485552" data-play-on-mobile="">
+                    <iframe 
+                        src="https://player.vimeo.com/video/729485552?autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0&playsinline=1&loop=1"
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <!-- Fallback Image -->
+                <img class="wpz-slick-img wpz-video-fallback" src="https://via.placeholder.com/1920x1080/4A90E2/ffffff?text=Video+Background" alt="Video Background & Video Lightbox">
+                
+                <div class="wpz-slick-content">
+                    <h2 class="wpz-slick-title">Video Background & Video Lightbox</h2>
+                    <p class="wpz-slick-subtitle">Bring your site to life with Inspiro's versatile video capabilities. Showcase self-hosted (MP4), YouTube, or Vimeo videos directly in your slideshow background for an engaging visual experience.</p>
+                    
+                    <div class="wpz-slick-actions">
+                        <a href="#" class="wpz-slick-button elementor-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Image Background + Video Lightbox -->
+        <div class="wpz-slick-slide">
+            <div class="wpz-slick-item wpz-slick-item--image">
+                <img class="wpz-slick-img" src="https://via.placeholder.com/1920x1080/7ED321/ffffff?text=Image+Background" alt="Enhance Your Storytelling">
+                
+                <div class="wpz-slick-content">
+                    <h2 class="wpz-slick-title">Enhance Your Storytelling</h2>
+                    <p class="wpz-slick-subtitle">Create compelling narratives with our advanced video integration features. Perfect for showcasing your work, products, or services.</p>
+                    
+                    <div class="wpz-slick-actions">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="wpz-slick-lightbox-trigger elementor-lightbox">
+                            <i class="eicon-play" aria-hidden="true">▶</i>
+                            <span class="elementor-screen-only">Play Video</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Image Background + Link -->
+        <div class="wpz-slick-slide">
+            <div class="wpz-slick-item wpz-slick-item--image">
+                <img class="wpz-slick-img" src="https://via.placeholder.com/1920x1080/F5A623/ffffff?text=Professional+Solutions" alt="Professional Video Solutions">
+                
+                <div class="wpz-slick-content">
+                    <h2 class="wpz-slick-title">Professional Video Solutions</h2>
+                    <p class="wpz-slick-subtitle">Experience seamless video integration with support for multiple formats and advanced customization options.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button type="button" class="slick-prev">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+        </svg>
+    </button>
+    <button type="button" class="slick-next">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path>
+        </svg>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log('Video Slider Test: Initializing...');
+            
+            // Test basic Slick functionality
+            $('.wpzjs-slick').slick({
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                speed: 300,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: false,
+                fade: false,
+                adaptiveHeight: false,
+                pauseOnHover: true,
+                pauseOnFocus: true,
+                prevArrow: $('.slick-prev').get(0).outerHTML,
+                nextArrow: $('.slick-next').get(0).outerHTML
+            });
+            
+            console.log('Video Slider Test: Initialized successfully');
+            
+            // Test lightbox triggers
+            $('.wpz-slick-lightbox-trigger').on('click', function(e) {
+                e.preventDefault();
+                var videoUrl = $(this).attr('href');
+                console.log('Lightbox triggered for:', videoUrl);
+                alert('Lightbox would open: ' + videoUrl);
+            });
+        });
+    </script>
+</body>
+</html> 

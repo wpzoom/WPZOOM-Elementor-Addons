@@ -1,4 +1,3 @@
-
 ;(function ($) {
 	'use strict';
 
@@ -53,8 +52,7 @@
 					prevArrow   : $( '<div />' ).append( this.findElement( '.slick-prev' ).clone().show() ).html(),
 					nextArrow   : $( '<div />' ).append( this.findElement( '.slick-next' ).clone().show() ).html(),
 					selectors   : {
-						video       : '.elementor-video',
-						videoIframe : '.elementor-video-iframe',
+						videoBg: '.wpz-video-bg',
 						videoWrapper: '.wpz-video-wrapper'
 					}
 				}
@@ -63,120 +61,202 @@
 			getDefaultElements: function () {
 				return {
 					$container   : this.findElement( this.getSettings( 'container' ) ),
-					$video       : this.$element.find( this.getSettings( 'selectors.video' ) ),
-					$videoIframe : this.$element.find( this.getSettings( 'selectors.videoIframe' ) ),
+					$videoBg     : this.$element.find( this.getSettings( 'selectors.videoBg' ) ),
 					$videoWrapper: this.$element.find( this.getSettings( 'selectors.videoWrapper' ) )
 				};
 			},
 
-			handleVideo: function () {
-				if ( 'youtube' === this.getElementSettings( 'video_type' ) ) {
-					this.apiProvider.onApiReady( ( apiObject ) => {
-						this.prepareYTVideo( apiObject );
-					} );
-				} else {
-					this.playVideo();
-				}
-			},
-
-			playVideo: function () {
-				if ( this.elements.$video.length ) {
-					// this.youtubePlayer exists only for YouTube videos, and its play function is different.
-					if ( this.youtubePlayer ) {
-						this.youtubePlayer.playVideo();
-					} else {
-						this.elements.$video[ 0 ].play();
-					}
-
-					return;
-				}
-
-				const $videoIframe = this.elements.$videoIframe;
-				const newSourceUrl = $videoIframe[ 0 ].src.replace( '&autoplay=0', '' );
-
-				$videoIframe[ 0 ].src = newSourceUrl + '&autoplay=1';
-
-				if ( $videoIframe[ 0 ].src.includes( 'vimeo.com' ) ) {
-					const videoSrc = $videoIframe[ 0 ].src,
-					      timeMatch = /#t=[^&]*/.exec( videoSrc );
-
-					// Param '#t=' must be last in the URL
-					$videoIframe[ 0 ].src = videoSrc.slice( 0, timeMatch.index ) + videoSrc.slice( timeMatch.index + timeMatch[ 0 ].length ) + timeMatch[ 0 ];
-				}
-			},
-
-			prepareYTVideo: function( YT ) {
-				const elementSettings = this.getElementSettings(),
-				      playerOptions = {
-						videoId: this.videoID,
-						events: {
-							onReady: () => {
-								if ( elementSettings.mute ) {
-									this.youtubePlayer.mute();
-								}
-		
-								if ( elementSettings.autoplay ) {
-									this.youtubePlayer.playVideo();
-								}
-							},
-							onStateChange: ( event ) => {
-								if ( event.data === YT.PlayerState.ENDED && elementSettings.video_loop ) {
-									this.youtubePlayer.seekTo( 0 );
-								}
-							},
-						},
-						playerVars: {
-							controls: elementSettings.video_controls ? 1 : 0,
-							rel: elementSettings.video_rel ? 1 : 0,
-							playsinline: elementSettings.play_on_mobile ? 1 : 0,
-							modestbranding: elementSettings.video_modestbranding ? 1 : 0,
-							autoplay: elementSettings.video_autoplay ? 1 : 0
-						},
-					};
-		
-				// To handle CORS issues, when the default host is changed, the origin parameter has to be set.
-				if ( elementSettings.yt_privacy ) {
-					playerOptions.host = 'https://www.youtube-nocookie.com';
-					playerOptions.origin = window.location.hostname;
-				}
-		
-				this.youtubePlayer = new YT.Player( this.elements.$video[ 0 ], playerOptions );
-			},
-
 			onInit: function () {
 				ModuleHandler.prototype.onInit.apply( this, arguments );
+				
+				// Initialize video backgrounds and lightbox after slider is ready
+				this.elements.$container.on('init', () => {
+					this.initVideoBackgrounds();
+					this.initVideoLightbox();
+				});
+			},
 
+			initVideoBackgrounds: function() {
 				var self = this;
+				
+				this.elements.$videoBg.each(function() {
+					var $videoBg = $(this);
+					var videoType = $videoBg.data('video-type');
+					var videoUrl = $videoBg.data('video-url');
+					var playOnMobile = $videoBg.data('play-on-mobile');
 
-				this.elements.$videoWrapper.each( function() {
-					var videoType = $( this ).data( 'video-type' );
-					var videoUrl = $( this ).data( 'video-url' );
-
-					if ( 'youtube' !== videoType || '' == videoUrl.trim() ) {
-						// Currently the only API integration in the Video widget is for the YT API
+					// Check if we should play on mobile
+					if (!playOnMobile && self.isMobile()) {
+						$videoBg.hide();
 						return;
 					}
 
-					this.apiProvider = elementorFrontend.utils.youtube;
+					switch(videoType) {
+						case 'youtube':
+							self.initYouTubeBackground($videoBg, videoUrl, $videoBg.data());
+							break;
+						case 'vimeo':
+							self.initVimeoBackground($videoBg, videoUrl, $videoBg.data());
+							break;
+						case 'hosted':
+							self.initHostedVideoBackground($videoBg);
+							break;
+					}
+				});
+			},
 
-					this.videoID = this.apiProvider.getVideoIDFromURL( videoUrl );
+			initVideoLightbox: function() {
+				// Find all lightbox triggers in this slider
+				this.$element.find('.wpz-slick-lightbox-trigger').each(function() {
+					var $trigger = $(this);
+					var videoUrl = $trigger.attr('href');
+					
+					if (videoUrl) {
+						$trigger.on('click', function(e) {
+							e.preventDefault();
+							
+							// Try Elementor's lightbox first
+							if (elementorFrontend && elementorFrontend.utils && elementorFrontend.utils.lightbox) {
+								elementorFrontend.utils.lightbox.openSlideshow([{
+									image: '',
+									url: videoUrl,
+									type: 'video'
+								}], 0);
+							} else {
+								// Fallback: open in new window
+								window.open(videoUrl, '_blank');
+							}
+						});
+					}
+				});
+			},
 
-					if ( ! this.videoID ) {
+			isMobile: function() {
+				return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+			},
+
+			getVideoId: function(url, type) {
+				var id = '';
+				
+				switch(type) {
+					case 'youtube':
+						var match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+						id = match ? match[1] : '';
+						break;
+					case 'vimeo':
+						var match = url.match(/(?:vimeo\.com\/)([0-9]+)/);
+						id = match ? match[1] : '';
+						break;
+				}
+				
+				return id;
+			},
+
+			initYouTubeBackground: function($container, videoUrl, options) {
+				var videoId = this.getVideoId(videoUrl, 'youtube');
+				
+				if (!videoId) return;
+
+				var $iframe = $('<iframe></iframe>');
+				var src = options.privacyMode ? 
+					'https://www.youtube-nocookie.com/embed/' : 
+					'https://www.youtube.com/embed/';
+				
+				var params = {
+					autoplay: 1,
+					mute: 1,
+					controls: 0,
+					rel: 0,
+					modestbranding: 1,
+					playsinline: 1,
+					enablejsapi: 1
+				};
+
+				if (options.startTime) {
+					params.start = options.startTime;
+				}
+
+				if (options.endTime) {
+					params.end = options.endTime;
+				}
+
+				if (!options.playOnce) {
+					params.loop = 1;
+					params.playlist = videoId;
+				}
+
+				src += videoId + '?' + $.param(params);
+
+				$iframe.attr({
+					src: src,
+					frameborder: 0,
+					allow: 'autoplay; fullscreen; picture-in-picture',
+					allowfullscreen: true
+				});
+
+				$container.html($iframe);
+			},
+
+			initVimeoBackground: function($container, videoUrl, options) {
+				var videoId = this.getVideoId(videoUrl, 'vimeo');
+				
+				if (!videoId) return;
+
+				var $iframe = $('<iframe></iframe>');
+				var src = 'https://player.vimeo.com/video/' + videoId;
+				
+				var params = {
+					autoplay: 1,
+					muted: 1,
+					controls: 0,
+					title: 0,
+					byline: 0,
+					portrait: 0,
+					playsinline: 1
+				};
+
+				if (options.startTime) {
+					params['#t'] = options.startTime + 's';
+				}
+
+				if (!options.playOnce) {
+					params.loop = 1;
+				}
+
+				src += '?' + $.param(params);
+
+				$iframe.attr({
+					src: src,
+					frameborder: 0,
+					allow: 'autoplay; fullscreen; picture-in-picture',
+					allowfullscreen: true
+				});
+
+				$container.html($iframe);
+			},
+
+			initHostedVideoBackground: function($container) {
+				var $video = $container.find('video');
+				
+				if ($video.length) {
+					$video.prop({
+						muted: true,
+						autoplay: true
+					});
+
+					if (this.isMobile() && !$container.data('play-on-mobile')) {
+						$video.prop('autoplay', false);
 						return;
 					}
 
-					// When Optimized asset loading is set to off, the video type is set to 'Youtube', and 'Privacy Mode' is set
-					// to 'On', there might be a conflict with other videos that are loaded WITHOUT privacy mode, such as a
-					// video background in a section. In these cases, to avoid the conflict, a timeout is added to postpone the
-					// initialization of the Youtube API object.
-					if ( ! elementorFrontend.config.experimentalFeatures[ 'e_optimized_assets_loading' ] ) {
-						setTimeout( () => {
-							this.apiProvider.onApiReady( ( apiObject ) => self.prepareYTVideo( apiObject ) );
-						}, 0 );
-					} else {
-						this.apiProvider.onApiReady( ( apiObject ) => self.prepareYTVideo( apiObject ) );
+					var playPromise = $video[0].play();
+					
+					if (playPromise !== undefined) {
+						playPromise.catch(function(error) {
+							console.log('Video autoplay failed:', error);
+						});
 					}
-				} );
+				}
 			},
 
 			onElementChange: debounce( function() {

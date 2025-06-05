@@ -324,6 +324,29 @@ class Video_Slider extends Widget_Base {
 
 		$repeater = new Repeater();
 
+		// Background Type Control
+		$repeater->add_control(
+			'background_type',
+			[
+				'label' => esc_html__( 'Background Type', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'image' => [
+						'title' => esc_html__( 'Image', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-image',
+					],
+					'video' => [
+						'title' => esc_html__( 'Video', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-video-camera',
+					],
+				],
+				'default' => 'image',
+				'toggle' => false,
+				'frontend_available' => true,
+			]
+		);
+
+		// Image Background Controls
 		$repeater->add_control(
 			'image',
 			[
@@ -334,47 +357,18 @@ class Video_Slider extends Widget_Base {
 				],
 				'dynamic' => [
 					'active' => true,
-				]
-			]
-		);
-        /*
-		$repeater->add_control(
-			'video',
-			[
-				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label' => esc_html__( 'Video', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'None', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Custom', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-				'frontend_available' => true
-			]
-		);
-
-		$repeater->start_popover();
-
-		$repeater->add_control(
-			'video_type',
-			[
-				'label' => esc_html__( 'Source', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SELECT,
+				],
 				'condition' => [
-					'video' => 'yes'
+					'background_type' => 'image',
 				],
-				'default' => 'youtube',
-				'options' => [
-					'youtube' => esc_html__( 'YouTube', 'wpzoom-elementor-addons' ),
-					'vimeo' => esc_html__( 'Vimeo', 'wpzoom-elementor-addons' ),
-					'dailymotion' => esc_html__( 'Dailymotion', 'wpzoom-elementor-addons' ),
-					'hosted' => esc_html__( 'Self Hosted', 'wpzoom-elementor-addons' )
-				],
-				'frontend_available' => true
 			]
 		);
 
+		// Video Background Controls
 		$repeater->add_control(
-			'youtube_url',
+			'video_link',
 			[
-				'label' => esc_html__( 'Link', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Video Link', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
@@ -383,124 +377,98 @@ class Video_Slider extends Widget_Base {
 						TagsModule::URL_CATEGORY
 					]
 				],
-				'placeholder' => esc_html__( 'Enter your URL', 'wpzoom-elementor-addons' ) . ' (YouTube)',
-				'default' => 'https://www.youtube.com/watch?v=XHOmBV4js_E',
+				'placeholder' => esc_html__( 'YouTube/Vimeo link, or link to video file (mp4 is recommended).', 'wpzoom-elementor-addons' ),
 				'label_block' => true,
 				'condition' => [
-					'video' => 'yes',
-					'video_type' => 'youtube'
+					'background_type' => 'video',
 				],
-				'frontend_available' => true
+				'frontend_available' => true,
 			]
 		);
 
 		$repeater->add_control(
-			'vimeo_url',
+			'video_start_time',
 			[
-				'label' => esc_html__( 'Link', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::TEXT,
-				'dynamic' => [
-					'active' => true,
-					'categories' => [
-						TagsModule::POST_META_CATEGORY,
-						TagsModule::URL_CATEGORY
-					]
-				],
-				'placeholder' => esc_html__( 'Enter your URL', 'wpzoom-elementor-addons' ) . ' (Vimeo)',
-				'default' => 'https://vimeo.com/235215203',
-				'label_block' => true,
+				'label' => esc_html__( 'Start Time', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'description' => esc_html__( 'Specify a start time (in seconds)', 'wpzoom-elementor-addons' ),
 				'condition' => [
-					'video' => 'yes',
-					'video_type' => 'vimeo'
+					'background_type' => 'video',
+					'video_link!' => '',
 				],
-				'frontend_available' => true
+				'frontend_available' => true,
 			]
 		);
 
 		$repeater->add_control(
-			'dailymotion_url',
+			'video_end_time',
 			[
-				'label' => esc_html__( 'Link', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::TEXT,
-				'dynamic' => [
-					'active' => true,
-					'categories' => [
-						TagsModule::POST_META_CATEGORY,
-						TagsModule::URL_CATEGORY
-					]
-				],
-				'placeholder' => esc_html__( 'Enter your URL', 'wpzoom-elementor-addons' ) . ' (Dailymotion)',
-				'default' => 'https://www.dailymotion.com/video/x6tqhqb',
-				'label_block' => true,
+				'label' => esc_html__( 'End Time', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::NUMBER,
+				'description' => esc_html__( 'Specify an end time (in seconds)', 'wpzoom-elementor-addons' ),
 				'condition' => [
-					'video' => 'yes',
-					'video_type' => 'dailymotion'
+					'background_type' => 'video',
+					'video_link!' => '',
 				],
-				'frontend_available' => true
+				'frontend_available' => true,
 			]
 		);
 
 		$repeater->add_control(
-			'insert_url',
+			'video_play_once',
 			[
-				'label' => esc_html__( 'External URL', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Play Once', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
-					'video' => 'yes',
-					'video_type' => 'hosted'
-				]
+					'background_type' => 'video',
+					'video_link!' => '',
+				],
+				'frontend_available' => true,
 			]
 		);
 
 		$repeater->add_control(
-			'hosted_url',
+			'video_play_on_mobile',
 			[
-				'label' => esc_html__( 'Choose File', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Play On Mobile', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'condition' => [
+					'background_type' => 'video',
+					'video_link!' => '',
+				],
+				'frontend_available' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'video_privacy_mode',
+			[
+				'label' => esc_html__( 'Privacy Mode', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'description' => esc_html__( 'Enable privacy mode for YouTube videos. YouTube won\'t store information about visitors unless they play the video.', 'wpzoom-elementor-addons' ),
+				'condition' => [
+					'background_type' => 'video',
+					'video_link!' => '',
+				],
+				'frontend_available' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'background_fallback',
+			[
+				'label' => esc_html__( 'Background Fallback', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::MEDIA,
+				'description' => esc_html__( 'This cover image will replace the background video in case that the video could not be loaded.', 'wpzoom-elementor-addons' ),
+				'condition' => [
+					'background_type' => 'video',
+				],
 				'dynamic' => [
 					'active' => true,
-					'categories' => [
-						TagsModule::MEDIA_CATEGORY
-					]
 				],
-				'media_type' => 'video',
-				'condition' => [
-					'video' => 'yes',
-					'video_type' => 'hosted',
-					'insert_url' => ''
-				],
-				'frontend_available' => true
+				'frontend_available' => true,
 			]
 		);
-
-		$repeater->add_control(
-			'external_url',
-			[
-				'label' => esc_html__( 'URL', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::URL,
-				'autocomplete' => false,
-				'options' => false,
-				'label_block' => true,
-				'show_label' => false,
-				'dynamic' => [
-					'active' => true,
-					'categories' => [
-						TagsModule::POST_META_CATEGORY,
-						TagsModule::URL_CATEGORY
-					]
-				],
-				'media_type' => 'video',
-				'placeholder' => esc_html__( 'Enter your URL', 'wpzoom-elementor-addons' ),
-				'condition' => [
-					'video' => 'yes',
-					'video_type' => 'hosted',
-					'insert_url' => 'yes'
-				],
-				'frontend_available' => true
-			]
-		);
-
-		$repeater->end_popover(); */
 
 		$repeater->add_control(
 			'title',
@@ -541,9 +509,128 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'show_button',
+			[
+				'label' => esc_html__( 'Show Button', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => '',
+			]
+		);
+
+		$repeater->add_control(
+			'button_text',
+			[
+				'label' => esc_html__( 'Button Text', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Learn More', 'wpzoom-elementor-addons' ),
+				'condition' => [
+					'show_button' => 'yes',
+				],
+				'dynamic' => [
+					'active' => true,
+				]
+			]
+		);
+
+		$repeater->add_control(
+			'button_link',
+			[
+				'label' => esc_html__( 'Button Link', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => 'https://example.com',
+				'condition' => [
+					'show_button' => 'yes',
+				],
+				'dynamic' => [
+					'active' => true,
+				]
+			]
+		);
+
+		$repeater->add_control(
+			'show_video_lightbox',
+			[
+				'label' => esc_html__( 'Show Video Lightbox', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => '',
+			]
+		);
+
+		$repeater->add_control(
+			'lightbox_video_url',
+			[
+				'label' => esc_html__( 'Lightbox Video URL', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'YouTube or Vimeo URL', 'wpzoom-elementor-addons' ),
+				'condition' => [
+					'show_video_lightbox' => 'yes',
+				],
+				'dynamic' => [
+					'active' => true,
+				]
+			]
+		);
+
 		$placeholder = [
 			'image' => [
 				'url' => Utils::get_placeholder_image_src(),
+			],
+		];
+
+		// Sample slides with different configurations
+		$sample_slides = [
+			// Slide 1: Video background with button
+			[
+				'_id' => 'slide_1',
+				'background_type' => 'video',
+				'video_link' => 'https://vimeo.com/729485552',
+				'video_play_on_mobile' => '',
+				'background_fallback' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+				'title' => 'Video Background & Video Lightbox',
+				'subtitle' => 'Bring your site to life with Inspiro\'s versatile video capabilities. Showcase self-hosted (MP4), YouTube, or Vimeo videos directly in your slideshow background for an engaging visual experience.',
+				'show_button' => 'yes',
+				'button_text' => 'Learn More',
+				'button_link' => [
+					'url' => '#',
+					'is_external' => false,
+					'nofollow' => false,
+				],
+			],
+			// Slide 2: Image background with video lightbox
+			[
+				'_id' => 'slide_2',
+				'background_type' => 'image',
+				'image' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+				'title' => 'Enhance Your Storytelling',
+				'subtitle' => 'Create compelling narratives with our advanced video integration features. Perfect for showcasing your work, products, or services.',
+				'show_video_lightbox' => 'yes',
+				'lightbox_video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+			],
+			// Slide 3: Image background with link
+			[
+				'_id' => 'slide_3',
+				'background_type' => 'image',
+				'image' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+				'title' => 'Professional Video Solutions',
+				'subtitle' => 'Experience seamless video integration with support for multiple formats and advanced customization options.',
+				'link' => [
+					'url' => '#',
+					'is_external' => false,
+					'nofollow' => false,
+				],
 			],
 		];
 
@@ -554,7 +641,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'title_field' => '<# print(title || "Slider Item"); #>',
-				'default' => array_fill( 0, 7, $placeholder ),
+				'default' => $sample_slides,
 				'condition' => [
 					'slides_source' => 'custom'
 				]
@@ -839,192 +926,7 @@ class Video_Slider extends Widget_Base {
 				'style_transfer' => true
 			]
 		);
-        /*
-		$this->add_control(
-			'settings_video',
-			[
-				'label' => esc_html__( 'Video', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before'
-			]
-		);
 
-		$this->add_control(
-			'video_autoplay',
-			[
-				'label' => esc_html__( 'Autoplay', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes',
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'play_on_mobile',
-			[
-				'label' => esc_html__( 'Play On Mobile', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'condition' => [
-					'video_autoplay' => 'yes'
-				],
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_mute',
-			[
-				'label' => esc_html__( 'Mute', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes',
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_loop',
-			[
-				'label' => esc_html__( 'Loop', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes',
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_controls',
-			[
-				'label' => esc_html__( 'Player Controls', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_showinfo',
-			[
-				'label' => esc_html__( 'Video Info', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_modestbranding',
-			[
-				'label' => esc_html__( 'Modest Branding', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'condition' => [
-					'video_controls' => 'yes'
-				],
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_logo',
-			[
-				'label' => esc_html__( 'Logo', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'yt_privacy',
-			[
-				'label' => esc_html__( 'Privacy Mode', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'description' => esc_html__( 'When you turn on privacy mode, YouTube won\'t store information about visitors on your website unless they play the video.', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_rel',
-			[
-				'label' => esc_html__( 'Suggested Videos', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'' => esc_html__( 'Current Video Channel', 'wpzoom-elementor-addons' ),
-					'yes' => esc_html__( 'Any Video', 'wpzoom-elementor-addons' )
-				],
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'vimeo_title',
-			[
-				'label' => esc_html__( 'Intro Title', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'vimeo_portrait',
-			[
-				'label' => esc_html__( 'Intro Portrait', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'default' => 'yes',
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'vimeo_byline',
-			[
-				'label' => esc_html__( 'Intro Byline', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_download_button',
-			[
-				'label' => esc_html__( 'Download Button', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'video_poster',
-			[
-				'label' => esc_html__( 'Poster', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::MEDIA,
-				'dynamic' => [
-					'active' => true
-				],
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_control(
-			'show_play_icon',
-			[
-				'label' => esc_html__( 'Play Icon', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes'
-			]
-		);
-        */
 		$this->add_control(
 			'settings_navigation',
 			[
@@ -1338,102 +1240,7 @@ class Video_Slider extends Widget_Base {
 				],
 			]
 		);
-        /*
-		$this->add_control(
-			'_heading_video',
-			[
-				'type' => Controls_Manager::HEADING,
-				'label' => esc_html__( 'Video', 'wpzoom-elementor-addons' ),
-				'separator' => 'before'
-			]
-		);
 
-		$this->add_control(
-			'aspect_ratio',
-			[
-				'label' => esc_html__( 'Aspect Ratio', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'169' => '16:9',
-					'219' => '21:9',
-					'43' => '4:3',
-					'32' => '3:2',
-					'11' => '1:1',
-					'916' => '9:16'
-				],
-				'default' => '169',
-				'prefix_class' => 'elementor-aspect-ratio-',
-				'frontend_available' => true
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'css_filters',
-				'selector' => '{{WRAPPER}} .elementor-wrapper'
-			]
-		);
-
-		$this->add_control(
-			'video_controls_color',
-			[
-				'label' => esc_html__( 'Controls Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => ''
-			]
-		);
-
-		$this->add_control(
-			'play_icon_color',
-			[
-				'label' => esc_html__( 'Play Icon Color', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .elementor-custom-embed-play i' => 'color: {{VALUE}}'
-				],
-				'condition' => [
-					'show_play_icon' => 'yes'
-				]
-			]
-		);
-
-		$this->add_responsive_control(
-			'play_icon_size',
-			[
-				'label' => esc_html__( 'Play Icon Size', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 10,
-						'max' => 300
-					]
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-custom-embed-play i' => 'font-size: {{SIZE}}{{UNIT}}'
-				],
-				'condition' => [
-					'show_play_icon' => 'yes'
-				]
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
-			[
-				'name' => 'play_icon_text_shadow',
-				'selector' => '{{WRAPPER}} .elementor-custom-embed-play i',
-				'fields_options' => [
-					'text_shadow_type' => [
-						'label' => _x( 'Play Icon Shadow', 'Text Shadow Control', 'wpzoom-elementor-addons' )
-					]
-				],
-				'condition' => [
-					'show_play_icon' => 'yes'
-				]
-			]
-		);
-*/
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -1861,181 +1668,209 @@ class Video_Slider extends Widget_Base {
 	}
 
 	/**
-	 * Get embed params.
+	 * Detect video type from URL.
 	 *
-	 * Retrieve video widget embed parameters.
-	 *
-	 * @param array $slide The slide to get the data from.
+	 * @param string $url The video URL to analyze.
 	 * @since 1.0.0
-	 * @access public
-	 * @return array Video embed parameters.
+	 * @access private
+	 * @return string|false The video type (youtube, vimeo, hosted) or false if not detected.
 	 */
-	public function get_embed_params( $slide ) {
-		$settings = $this->get_settings_for_display();
+	private function detect_video_type( $url ) {
+		if ( empty( $url ) ) {
+			return false;
+		}
 
+		// YouTube detection
+		if ( preg_match( '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $url ) ) {
+			return 'youtube';
+		}
+
+		// Vimeo detection
+		if ( preg_match( '/(?:vimeo\.com\/)([0-9]+)/', $url ) ) {
+			return 'vimeo';
+		}
+
+		// Check if it's a direct video file
+		$video_extensions = [ 'mp4', 'webm', 'ogg', 'mov', 'avi' ];
+		$url_parts = parse_url( $url );
+		if ( isset( $url_parts['path'] ) ) {
+			$path_info = pathinfo( $url_parts['path'] );
+			if ( isset( $path_info['extension'] ) && in_array( strtolower( $path_info['extension'] ), $video_extensions ) ) {
+				return 'hosted';
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get video ID from URL.
+	 *
+	 * @param string $url The video URL.
+	 * @param string $type The video type.
+	 * @since 1.0.0
+	 * @access private
+	 * @return string|false The video ID or false if not found.
+	 */
+	private function get_video_id( $url, $type ) {
+		switch ( $type ) {
+			case 'youtube':
+				preg_match( '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $url, $matches );
+				return isset( $matches[1] ) ? $matches[1] : false;
+
+			case 'vimeo':
+				preg_match( '/(?:vimeo\.com\/)([0-9]+)/', $url, $matches );
+				return isset( $matches[1] ) ? $matches[1] : false;
+
+			default:
+				return false;
+		}
+	}
+
+	/**
+	 * Build video embed URL with parameters.
+	 *
+	 * @param array $slide The slide data.
+	 * @param string $video_type The video type.
+	 * @param string $video_id The video ID.
+	 * @since 1.0.0
+	 * @access private
+	 * @return string The embed URL.
+	 */
+	private function build_video_embed_url( $slide, $video_type, $video_id ) {
 		$params = [];
 
-		if ( $settings[ 'video_autoplay' ] ) {
-			$params[ 'video_autoplay' ] = '1';
+		switch ( $video_type ) {
+			case 'youtube':
+				$base_url = $slide['video_privacy_mode'] ? 'https://www.youtube-nocookie.com/embed/' : 'https://www.youtube.com/embed/';
+				$embed_url = $base_url . $video_id;
+				
+				$params['autoplay'] = '1';
+				$params['mute'] = '1';
+				$params['controls'] = '0';
+				$params['rel'] = '0';
+				$params['modestbranding'] = '1';
+				$params['playsinline'] = '1';
+				
+				if ( ! empty( $slide['video_start_time'] ) ) {
+					$params['start'] = $slide['video_start_time'];
+				}
+				
+				if ( ! empty( $slide['video_end_time'] ) ) {
+					$params['end'] = $slide['video_end_time'];
+				}
+				
+				if ( empty( $slide['video_play_once'] ) ) {
+					$params['loop'] = '1';
+					$params['playlist'] = $video_id;
+				}
+				
+				break;
 
-			if ( $settings['play_on_mobile'] ) {
-				$params[ 'playsinline' ] = '1';
-			}
+			case 'vimeo':
+				$embed_url = 'https://player.vimeo.com/video/' . $video_id;
+				
+				$params['autoplay'] = '1';
+				$params['muted'] = '1';
+				$params['controls'] = '0';
+				$params['title'] = '0';
+				$params['byline'] = '0';
+				$params['portrait'] = '0';
+				$params['playsinline'] = '1';
+				
+				if ( ! empty( $slide['video_start_time'] ) ) {
+					$params['#t'] = $slide['video_start_time'] . 's';
+				}
+				
+				if ( empty( $slide['video_play_once'] ) ) {
+					$params['loop'] = '1';
+				}
+				
+				break;
+
+			default:
+				return '';
 		}
 
-		$params_dictionary = [];
-
-		if ( 'youtube' === $slide[ 'video_type' ] ) {
-			$params_dictionary = [
-				'video_loop' => 'loop',
-				'video_controls' => 'controls',
-				'video_mute' => 'mute',
-				'video_rel' => 'rel',
-				'video_modestbranding' => 'modestbranding'
-			];
-
-			if ( $settings[ 'video_loop' ] ) {
-				$video_properties = Embed::get_video_properties( $slide[ 'youtube_url' ] );
-
-				$params[ 'playlist' ] = $video_properties[ 'video_id' ];
-			}
-
-			$params[ 'wmode' ] = 'opaque';
-		} elseif ( 'vimeo' === $slide[ 'video_type' ] ) {
-			$params_dictionary = [
-				'video_loop' => 'loop',
-				'video_mute' => 'muted',
-				'vimeo_title' => 'title',
-				'vimeo_portrait' => 'portrait',
-				'vimeo_byline' => 'byline',
-			];
-
-			$params[ 'color' ] = str_replace( '#', '', $settings[ 'video_controls_color' ] );
-			$params[ 'autopause' ] = '0';
-		} elseif ( 'dailymotion' === $slide[ 'video_type' ] ) {
-			$params_dictionary = [
-				'video_controls' => 'controls',
-				'video_mute' => 'mute',
-				'video_showinfo' => 'ui-start-screen-info',
-				'video_logo' => 'ui-logo',
-			];
-
-			$params[ 'ui-highlight' ] = str_replace( '#', '', $settings[ 'video_controls_color' ] );
-
-			$params[ 'endscreen-enable' ] = '0';
+		if ( ! empty( $params ) ) {
+			$embed_url .= '?' . http_build_query( $params );
 		}
 
-		foreach ( $params_dictionary as $key => $param_name ) {
-			$setting_name = $param_name;
-
-			if ( is_string( $key ) ) {
-				$setting_name = $key;
-			}
-
-			$setting_value = $settings[ $setting_name ] ? '1' : '0';
-
-			$params[ $param_name ] = $setting_value;
-		}
-
-		return $params;
+		return $embed_url;
 	}
 
 	/**
-	 * Get video embed options.
-	 * 
-	 * @param array $slide The slide to get the data from.
-	 * @since 1.0.0
-	 * @access private
-	 * @return array
-	 */
-	private function get_embed_options( $slide ) {
-		$embed_options = [];
-		$settings = $this->get_settings_for_display();
-
-		if ( 'youtube' === $slide[ 'video_type' ] ) {
-			$embed_options[ 'privacy' ] = $settings[ 'yt_privacy' ];
-		}
-
-		return $embed_options;
-	}
-
-	/**
-	 * Get hosted video parameters.
+	 * Render video background.
 	 *
-	 * @since 1.0.0
-	 * @access private
-	 * @return array
-	 */
-	private function get_hosted_params() {
-		$video_params = [];
-		$settings = $this->get_settings_for_display();
-
-		foreach ( [ 'video_autoplay', 'video_loop', 'video_controls' ] as $option_name ) {
-			if ( $settings[ $option_name ] ) {
-				$video_params[ $option_name ] = '';
-			}
-		}
-
-		if ( $settings[ 'video_mute' ] ) {
-			$video_params[ 'muted' ] = 'muted';
-		}
-
-		if ( $settings[ 'play_on_mobile' ] ) {
-			$video_params[ 'playsinline' ] = '';
-		}
-
-		if ( ! $settings[ 'video_download_button' ] ) {
-			$video_params[ 'controlsList' ] = 'nodownload';
-		}
-
-		if ( $settings[ 'video_poster' ][ 'url' ] ) {
-			$video_params[ 'poster' ] = $settings[ 'video_poster' ][ 'url' ];
-		}
-
-		return $video_params;
-	}
-
-	/**
-	 * Get the URL of a hosted video.
-	 *
-	 * @param array $slide The slide to get the data from.
-	 * @since 1.0.0
-	 * @access private
-	 * @return string
-	 */
-	private function get_hosted_video_url( $slide ) {
-		if ( ! empty( $slide[ 'insert_url' ] ) ) {
-			$video_url = $slide[ 'external_url' ][ 'url' ];
-		} else {
-			$video_url = $slide[ 'hosted_url' ][ 'url' ];
-		}
-
-		if ( empty( $video_url ) ) {
-			return '';
-		}
-
-		return $video_url;
-	}
-
-	/**
-	 * Render a hosted video.
-	 *
-	 * @param array $slide The slide to get the data from.
+	 * @param array $slide The slide data.
 	 * @since 1.0.0
 	 * @access private
 	 * @return void
 	 */
-	private function render_hosted_video( $slide ) {
-		$video_url = $this->get_hosted_video_url( $slide );
-
-		if ( empty( $video_url ) ) {
+	private function render_video_background( $slide ) {
+		if ( empty( $slide['video_link'] ) ) {
 			return;
 		}
 
-		$video_params = $this->get_hosted_params();
+		$video_type = $this->detect_video_type( $slide['video_link'] );
+		
+		if ( ! $video_type ) {
+			return;
+		}
+
+		$video_attrs = [
+			'class' => 'wpz-video-bg',
+			'data-video-type' => $video_type,
+			'data-video-url' => esc_url( $slide['video_link'] ),
+		];
+
+		if ( ! empty( $slide['video_play_on_mobile'] ) ) {
+			$video_attrs['data-play-on-mobile'] = 'true';
+		}
+
+		if ( ! empty( $slide['video_start_time'] ) ) {
+			$video_attrs['data-start-time'] = intval( $slide['video_start_time'] );
+		}
+
+		if ( ! empty( $slide['video_end_time'] ) ) {
+			$video_attrs['data-end-time'] = intval( $slide['video_end_time'] );
+		}
+
+		if ( ! empty( $slide['video_play_once'] ) ) {
+			$video_attrs['data-play-once'] = 'true';
+		}
+
+		if ( ! empty( $slide['video_privacy_mode'] ) ) {
+			$video_attrs['data-privacy-mode'] = 'true';
+		}
 
 		?>
-		<video class="elementor-video" src="<?php echo esc_url( $video_url ); ?>" <?php echo Utils::render_html_attributes( $video_params ); ?>></video>
+		<div <?php echo Utils::render_html_attributes( $video_attrs ); ?>>
+			<?php if ( 'hosted' === $video_type ) : ?>
+				<video 
+					autoplay 
+					muted 
+					playsinline 
+					<?php echo empty( $slide['video_play_once'] ) ? 'loop' : ''; ?>
+					<?php echo empty( $slide['video_play_on_mobile'] ) ? 'data-mobile-disabled="true"' : ''; ?>
+				>
+					<source src="<?php echo esc_url( $slide['video_link'] ); ?>" type="video/mp4">
+				</video>
+			<?php else : 
+				$video_id = $this->get_video_id( $slide['video_link'], $video_type );
+				if ( $video_id ) :
+					$embed_url = $this->build_video_embed_url( $slide, $video_type, $video_id );
+			?>
+				<iframe 
+					src="<?php echo esc_url( $embed_url ); ?>"
+					frameborder="0" 
+					allow="autoplay; fullscreen; picture-in-picture" 
+					allowfullscreen>
+				</iframe>
+			<?php 
+				endif;
+			endif; ?>
+		</div>
 		<?php
 	}
 
@@ -2064,6 +1899,7 @@ class Video_Slider extends Widget_Base {
 						'_id' => get_the_ID(),
 						'title' => get_the_title(),
 						'subtitle' => get_the_excerpt(),
+						'background_type' => 'image',
 						'image' => [ 'id' => get_post_thumbnail_id(), 'url' => false ],
 						'link' => [ 'url' => get_permalink() ]
 					];
@@ -2082,68 +1918,22 @@ class Video_Slider extends Widget_Base {
 		?><div class="wpzjs-slick wpz-slick wpz-slick--slider">
 
 			<?php foreach ( $slides as $slide ) :
-
-                /*
-				if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) ) {
-					$video_url = $slide[ $slide[ 'video_type' ] . '_url' ];
-					$video_html = '';
-
-					if ( 'hosted' === $slide[ 'video_type' ] ) {
-						$video_url = $this->get_hosted_video_url( $slide );
-					} else {
-						$embed_params = $this->get_embed_params( $slide );
-						$embed_options = $this->get_embed_options( $slide );
-					}
-
-					if ( ! empty( $video_url ) ) {
-						if ( 'youtube' === $slide[ 'video_type' ] ) {
-							$video_html = '<div class="elementor-video"></div>';
-						}
-
-						if ( 'hosted' === $slide[ 'video_type' ] ) {
-							ob_start();
-
-							$this->render_hosted_video( $slide );
-
-							$video_html = ob_get_clean();
-						} else {
-							$is_static_render_mode = Plugin::$instance->frontend->is_static_render_mode();
-							$post_id = get_queried_object_id();
-
-							if ( $is_static_render_mode ) {
-								$video_html = Embed::get_embed_thumbnail_html( $video_url, $post_id );
-							// YouTube API requires a different markup which was set above.
-							} else if ( 'youtube' !== $slide[ 'video_type' ] ) {
-								$video_html = Embed::get_embed_html( $video_url, $embed_params, $embed_options );
-							}
-						}
-
-						if ( empty( $video_html ) ) {
-							$video_html = esc_url( $video_url );
-						}
-
-						$this->add_render_attribute( 'video-wrapper', 'class', 'elementor-wrapper' );
-						$this->add_render_attribute( 'video-wrapper', 'class', 'wpz-video-wrapper' );
-						$this->add_render_attribute( 'video-wrapper', 'class', 'e-' . $slide[ 'video_type' ] . '-video' );
-						$this->add_render_attribute( 'video-wrapper', 'data-video-type', $slide[ 'video_type' ] );
-						$this->add_render_attribute( 'video-wrapper', 'data-video-url', $video_url );
-					}
-				}
-
-                */
-
-				$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
-
-				if ( ! $image ) {
-					$image = $slide[ 'image' ][ 'url' ];
-				}
-
+				
+				// Set default background type if not set
+				$background_type = isset( $slide['background_type'] ) ? $slide['background_type'] : 'image';
+				
 				$item_tag = 'div';
 				$id = 'wpz-slick-item-' . $slide ['_id' ];
 
 				$this->add_render_attribute( $id, 'class', 'wpz-slick-item' );
+				$this->add_render_attribute( $id, 'class', 'wpz-slick-item--' . $background_type );
 
-				if ( isset( $slide[ 'link' ] ) && ! empty( $slide[ 'link' ][ 'url' ] ) ) {
+				// Only make the slide a link if no button or lightbox is shown and a link is provided
+				$has_button = !empty($slide['show_button']) && $slide['show_button'] === 'yes';
+				$has_lightbox = !empty($slide['show_video_lightbox']) && $slide['show_video_lightbox'] === 'yes';
+				$has_slide_link = isset( $slide[ 'link' ] ) && ! empty( $slide[ 'link' ][ 'url' ] );
+
+				if ( $has_slide_link && !$has_button && !$has_lightbox ) {
 					$item_tag = 'a';
 					$this->add_link_attributes( $id, $slide[ 'link' ] );
 				}
@@ -2153,30 +1943,58 @@ class Video_Slider extends Widget_Base {
 
 					<<?php echo $item_tag; // WPCS: XSS OK. ?> <?php $this->print_render_attribute_string( $id ); ?>>
 
-						<?php if ( $image ) : ?>
-							<img class="wpz-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
+						<?php if ( 'video' === $background_type ) : ?>
+							<!-- Video Background -->
+							<?php $this->render_video_background( $slide ); ?>
+							
+							<!-- Fallback Image for Video -->
+							<?php if ( ! empty( $slide['background_fallback']['url'] ) ) : ?>
+								<img class="wpz-slick-img wpz-video-fallback" src="<?php echo esc_url( $slide['background_fallback']['url'] ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
+							<?php endif; ?>
+							
+						<?php else : ?>
+							<!-- Image Background -->
+							<?php 
+							$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
+							if ( ! $image ) {
+								$image = $slide[ 'image' ][ 'url' ];
+							}
+							?>
+							<?php if ( $image ) : ?>
+								<img class="wpz-slick-img" src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
+							<?php endif; ?>
 						<?php endif; ?>
 
-						<?php /* if ( isset( $slide[ 'video_type' ] ) && ! empty( $slide[ 'video_type' ] ) && ! empty( $video_html ) ) : ?>
-							<div <?php echo $this->get_render_attribute_string( 'video-wrapper' ); ?>>
-								<?php echo $video_html; // WPCS: XSS OK. ?>
-
-								<?php if ( 'yes' === $settings[ 'show_play_icon' ] ) : ?>
-									<div class="elementor-custom-embed-play" role="button">
-										<i class="eicon-play" aria-hidden="true"></i>
-										<span class="elementor-screen-only"><?php _e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
-									</div>
-								<?php endif; ?>
-							</div>
-						<?php endif; */ ?>
-
-						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] ) : ?>
+						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] || $has_button || $has_lightbox ) : ?>
 							<div class="wpz-slick-content">
 								<?php if ( $slide[ 'title' ] ) : ?>
 									<h2 class="wpz-slick-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
 								<?php endif; ?>
 								<?php if ( $slide[ 'subtitle' ] ) : ?>
 									<p class="wpz-slick-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
+								<?php endif; ?>
+								
+								<?php if ( $has_button || $has_lightbox ) : ?>
+									<div class="wpz-slick-actions">
+										<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
+											<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>" 
+											   class="wpz-slick-button elementor-button"
+											   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+											   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+												<?php echo esc_html( $slide['button_text'] ); ?>
+											</a>
+										<?php endif; ?>
+										
+										<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
+											<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>" 
+											   class="wpz-slick-lightbox-trigger elementor-lightbox" 
+											   data-elementor-open-lightbox="yes" 
+											   data-elementor-lightbox-video="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>">
+												<i class="eicon-play" aria-hidden="true"></i>
+												<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
+											</a>
+										<?php endif; ?>
+									</div>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>
