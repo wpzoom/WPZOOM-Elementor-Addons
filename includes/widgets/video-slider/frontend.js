@@ -41,7 +41,7 @@
 
 			getDefaultSettings: function() {
 				return {
-					autoplay    : true,
+					autoplay    : false,
 					arrows      : false,
 					checkVisible: false,
 					container   : '.wpzjs-slick',
@@ -73,6 +73,7 @@
 				this.elements.$container.on('init', () => {
 					this.initVideoBackgrounds();
 					this.initVideoLightbox();
+					this.initEditorSupport();
 				});
 			},
 
@@ -85,9 +86,17 @@
 					var videoUrl = $videoBg.data('video-url');
 					var playOnMobile = $videoBg.data('play-on-mobile');
 
+					console.log('Video Slider: Initializing video background', {
+						type: videoType,
+						url: videoUrl,
+						mobile: playOnMobile,
+						isMobile: self.isMobile()
+					});
+
 					// Check if we should play on mobile
 					if (!playOnMobile && self.isMobile()) {
 						$videoBg.hide();
+						console.log('Video Slider: Hiding video on mobile');
 						return;
 					}
 
@@ -101,6 +110,8 @@
 						case 'hosted':
 							self.initHostedVideoBackground($videoBg);
 							break;
+						default:
+							console.warn('Video Slider: Unknown video type:', videoType);
 					}
 				});
 			},
@@ -127,6 +138,39 @@
 								window.open(videoUrl, '_blank');
 							}
 						});
+					}
+				});
+			},
+
+			initEditorSupport: function() {
+				// Only run in Elementor editor
+				if (!elementorFrontend.isEditMode()) {
+					return;
+				}
+
+				var self = this;
+				
+				// Listen for panel changes in editor
+				elementor.hooks.addAction('panel/open_editor/widget', function(panel, model, view) {
+					if (model.get('widgetType') === 'wpzoom-elementor-addons-video-slider') {
+						// Get the widget element
+						var $widget = view.$el;
+						var $slider = $widget.find('.wpzjs-slick');
+						
+						if ($slider.length && $slider.hasClass('slick-initialized')) {
+							// Listen for repeater item focus
+							setTimeout(function() {
+								$('.elementor-repeater-fields').on('click', function() {
+									var $repeaterItem = $(this);
+									var itemIndex = $repeaterItem.index();
+									
+									// Go to the corresponding slide
+									if (itemIndex >= 0) {
+										$slider.slick('slickGoTo', itemIndex);
+									}
+								});
+							}, 500);
+						}
 					}
 				});
 			},
@@ -194,7 +238,8 @@
 					allowfullscreen: true
 				});
 
-				$container.html($iframe);
+				// Clear existing content and add iframe
+				$container.empty().append($iframe);
 			},
 
 			initVimeoBackground: function($container, videoUrl, options) {
@@ -212,11 +257,12 @@
 					title: 0,
 					byline: 0,
 					portrait: 0,
-					playsinline: 1
+					playsinline: 1,
+					background: 1
 				};
 
 				if (options.startTime) {
-					params['#t'] = options.startTime + 's';
+					params.t = options.startTime + 's';
 				}
 
 				if (!options.playOnce) {
@@ -232,7 +278,8 @@
 					allowfullscreen: true
 				});
 
-				$container.html($iframe);
+				// Clear existing content and add iframe
+				$container.empty().append($iframe);
 			},
 
 			initHostedVideoBackground: function($container) {

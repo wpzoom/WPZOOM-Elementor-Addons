@@ -586,17 +586,17 @@ class Video_Slider extends Widget_Base {
 
 		// Sample slides with different configurations
 		$sample_slides = [
-			// Slide 1: Video background with button
+			// Slide 1: Self-hosted MP4 video background with button
 			[
 				'_id' => 'slide_1',
 				'background_type' => 'video',
-				'video_link' => 'https://vimeo.com/729485552',
-				'video_play_on_mobile' => '',
+				'video_link' => 'https://wpzoom.s3.amazonaws.com/inspiro-blocks-pro/video/video.mp4',
+				'video_play_on_mobile' => 'yes',
 				'background_fallback' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
-				'title' => 'Video Background & Video Lightbox',
-				'subtitle' => 'Bring your site to life with Inspiro\'s versatile video capabilities. Showcase self-hosted (MP4), YouTube, or Vimeo videos directly in your slideshow background for an engaging visual experience.',
+				'title' => 'Self-Hosted Video Background',
+				'subtitle' => 'Experience smooth video playback with our self-hosted MP4 video support. Perfect for showcasing your content with reliable performance and fast loading times.',
 				'show_button' => 'yes',
 				'button_text' => 'Learn More',
 				'button_link' => [
@@ -605,15 +605,17 @@ class Video_Slider extends Widget_Base {
 					'nofollow' => false,
 				],
 			],
-			// Slide 2: Image background with video lightbox
+			// Slide 2: Vimeo video background with video lightbox
 			[
 				'_id' => 'slide_2',
-				'background_type' => 'image',
-				'image' => [
+				'background_type' => 'video',
+				'video_link' => 'https://vimeo.com/729485552',
+				'video_play_on_mobile' => '',
+				'background_fallback' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
-				'title' => 'Enhance Your Storytelling',
-				'subtitle' => 'Create compelling narratives with our advanced video integration features. Perfect for showcasing your work, products, or services.',
+				'title' => 'Vimeo Video Integration',
+				'subtitle' => 'Seamlessly integrate Vimeo videos as background elements. Enjoy professional video hosting with advanced customization options.',
 				'show_video_lightbox' => 'yes',
 				'lightbox_video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 			],
@@ -844,7 +846,7 @@ class Video_Slider extends Widget_Base {
 				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => '',
 				'frontend_available' => true,
 			]
 		);
@@ -1777,9 +1779,10 @@ class Video_Slider extends Widget_Base {
 				$params['byline'] = '0';
 				$params['portrait'] = '0';
 				$params['playsinline'] = '1';
+				$params['background'] = '1';
 
 				if ( ! empty( $slide['video_start_time'] ) ) {
-					$params['#t'] = $slide['video_start_time'] . 's';
+					$params['t'] = $slide['video_start_time'] . 's';
 				}
 
 				if ( empty( $slide['video_play_once'] ) ) {
