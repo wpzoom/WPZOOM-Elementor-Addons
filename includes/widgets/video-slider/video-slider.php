@@ -1003,7 +1003,7 @@ class Video_Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_slider',
 			[
-				'label' => esc_html__( 'Slider', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Slider Height', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -1011,34 +1011,9 @@ class Video_Slider extends Widget_Base {
 		$this->add_control(
 			'auto_height',
 			[
-				'label' => esc_html__( 'Automatic Height', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Custom Height', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'no'
-			]
-		);
-
-		$this->add_responsive_control(
-			'auto_height_size',
-			[
-				'label' => esc_html__( 'Automatic Height Size', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ '%' ],
-				'range' => [
-					'%' => [
-						'min' => 1,
-						'max' => 100,
-					]
-				],
-				'default' => [
-					'unit' => '%',
-					'size' => 100
-				],
-				'selectors' => [
-					'{{WRAPPER}} .slick-slider' => 'height: {{SIZE}}vh;'
-				],
-				'condition' => [
-					'auto_height' => 'yes'
-				]
 			]
 		);
 
@@ -1047,7 +1022,7 @@ class Video_Slider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Automatic Height Maximum', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
+				'size_units' => [ 'px', '%', 'vh' ],
 				'range' => [
 					'px' => [
 						'min' => 1,
@@ -1056,26 +1031,30 @@ class Video_Slider extends Widget_Base {
 					'%' => [
 						'min' => 1,
 						'max' => 100,
-					]
+					],
+                    'vh' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ]
 				],
 				'default' => [
-					'unit' => 'px',
-					'size' => 550
+					'unit' => 'vh',
+					'size' => 100
 				],
 				'desktop_default' => [
-					'unit' => 'px',
-					'size' => 550
+					'unit' => 'vh',
+					'size' => 100
 				],
 				'tablet_default' => [
-					'unit' => 'px',
-					'size' => 350
+					'unit' => 'vh',
+					'size' => 100
 				],
 				'mobile_default' => [
-					'unit' => 'px',
-					'size' => 250
+					'unit' => 'vh',
+					'size' => 100
 				],
 				'selectors' => [
-					'{{WRAPPER}} .slick-slider' => 'max-height: {{SIZE}}{{UNIT}};'
+					'{{WRAPPER}} .slick-slider' => 'height: {{SIZE}}{{UNIT}};'
 				],
 				'condition' => [
 					'auto_height' => 'yes'
