@@ -1013,7 +1013,7 @@ class Video_Slider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Automatic Height', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'default' => 'yes'
+				'default' => 'no'
 			]
 		);
 
