@@ -317,11 +317,11 @@
 /* Mobile optimizations */
 @media (max-width: 768px) {
 	.wpz-slick--slider {
-		height: 70vh; /* Smaller height on mobile */
+		/*height: 70vh;  */
 	}
 	
 	.wpz-slick--slider .slick-slide {
-		height: 70vh;
+		/*height: 70vh;*/
 	}
 	
 	.wpz-slick--slider .wpz-slick-content {
@@ -367,11 +367,11 @@
 /* Small mobile devices */
 @media (max-width: 480px) {
 	.wpz-slick--slider {
-		height: 60vh;
+		/*height: 60vh;*/
 	}
 	
 	.wpz-slick--slider .slick-slide {
-		height: 60vh;
+		/*height: 60vh;*/
 	}
 	
 	.wpz-slick--slider .wpz-slick-title {
@@ -385,4 +385,36 @@
 	.wpz-slick--slider .slick-next {
 		right: 15px;
 	}
+}
+
+/* Background Overlay */
+.wpz-slick-item {
+	position: relative;
+}
+
+.wpz-slick-item::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+	display: none; /* Hidden by default, enabled via Elementor controls */
+}
+
+/* Ensure content stays above overlay */
+.wpz-slick-content {
+	position: relative;
+	z-index: 10;
+}
+
+/* Video backgrounds and images should stay below overlay */
+.wpz-video-bg,
+.wpz-slick-img,
+.wpz-video-fallback {
+	position: relative;
+	z-index: 1;
 }

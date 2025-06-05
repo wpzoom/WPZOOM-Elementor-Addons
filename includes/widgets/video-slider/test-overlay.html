@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Slider Overlay Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .test-info {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Simulating the actual widget CSS */
+        .wpz-slick-item {
+            position: relative;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800') center/cover;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .wpz-slick-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 5;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            display: none; /* Hidden by default */
+        }
+
+        /* Simulating Elementor's generated CSS when overlay is enabled */
+        .overlay-enabled .wpz-slick-item::before {
+            display: block;
+            background-color: #000000;
+            opacity: 0.5;
+            mix-blend-mode: normal;
+        }
+
+        .wpz-slick-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .content-box {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-title {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-description {
+            font-size: 1.2em;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background: #005a87;
+        }
+        
+        .test-variations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .overlay-blue .wpz-slick-item::before {
+            display: block !important;
+            background-color: #007cba !important;
+            opacity: 0.6 !important;
+        }
+        
+        .overlay-red .wpz-slick-item::before {
+            display: block !important;
+            background-color: #e74c3c !important;
+            opacity: 0.4 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-info">
+            <h1>Video Slider Overlay Test</h1>
+            <p>This test verifies that the background overlay functionality is working correctly. The overlay should be enabled by default with a black overlay at 50% opacity.</p>
+        </div>
+        
+        <div class="controls">
+            <h3>Test Controls</h3>
+            <button onclick="toggleOverlay()">Toggle Overlay</button>
+            <button onclick="changeColor('#007cba')">Blue Overlay</button>
+            <button onclick="changeColor('#e74c3c')">Red Overlay</button>
+            <button onclick="changeColor('#000000')">Black Overlay</button>
+            <button onclick="changeOpacity('0.2')">20% Opacity</button>
+            <button onclick="changeOpacity('0.5')">50% Opacity</button>
+            <button onclick="changeOpacity('0.8')">80% Opacity</button>
+        </div>
+        
+        <div class="overlay-enabled" id="test-slide">
+            <div class="wpz-slick-item">
+                <div class="wpz-slick-content">
+                    <div class="content-box">
+                        <div class="slide-title">Overlay Test</div>
+                        <div class="slide-description">This slide should have a black overlay at 50% opacity by default</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-info">
+            <h3>Test Variations</h3>
+            <div class="test-variations">
+                <div class="overlay-blue">
+                    <div class="wpz-slick-item">
+                        <div class="wpz-slick-content">
+                            <div class="content-box">
+                                <div class="slide-title" style="font-size: 1.5em;">Blue Overlay</div>
+                                <div class="slide-description" style="font-size: 1em;">60% opacity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overlay-red">
+                    <div class="wpz-slick-item">
+                        <div class="wpz-slick-content">
+                            <div class="content-box">
+                                <div class="slide-title" style="font-size: 1.5em;">Red Overlay</div>
+                                <div class="slide-description" style="font-size: 1em;">40% opacity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-info">
+            <h3>Expected Behavior</h3>
+            <ul>
+                <li>✅ Main slide should show black overlay at 50% opacity by default</li>
+                <li>✅ Toggle button should show/hide the overlay</li>
+                <li>✅ Color buttons should change overlay color</li>
+                <li>✅ Opacity buttons should change overlay transparency</li>
+                <li>✅ Text should remain readable with high contrast</li>
+                <li>✅ Overlay should cover entire slide background</li>
+            </ul>
+            
+            <h3>Implementation Notes</h3>
+            <ul>
+                <li><strong>Default State:</strong> Overlay enabled by default with 'yes' value</li>
+                <li><strong>CSS Structure:</strong> Uses ::before pseudo-element with z-index layering</li>
+                <li><strong>Elementor Integration:</strong> Controls generate CSS via selectors array</li>
+                <li><strong>Performance:</strong> Uses CSS transitions for smooth changes</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        let overlayEnabled = true;
+        const testSlide = document.getElementById('test-slide');
+        
+        function toggleOverlay() {
+            overlayEnabled = !overlayEnabled;
+            if (overlayEnabled) {
+                testSlide.classList.add('overlay-enabled');
+            } else {
+                testSlide.classList.remove('overlay-enabled');
+            }
+        }
+        
+        function changeColor(color) {
+            const style = document.createElement('style');
+            style.id = 'dynamic-color';
+            style.textContent = `
+                .overlay-enabled .wpz-slick-item::before {
+                    background-color: ${color} !important;
+                }
+            `;
+            
+            const oldStyle = document.getElementById('dynamic-color');
+            if (oldStyle) oldStyle.remove();
+            document.head.appendChild(style);
+        }
+        
+        function changeOpacity(opacity) {
+            const style = document.createElement('style');
+            style.id = 'dynamic-opacity';
+            style.textContent = `
+                .overlay-enabled .wpz-slick-item::before {
+                    opacity: ${opacity} !important;
+                }
+            `;
+            
+            const oldStyle = document.getElementById('dynamic-opacity');
+            if (oldStyle) oldStyle.remove();
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html> 

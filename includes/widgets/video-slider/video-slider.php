@@ -1598,6 +1598,103 @@ class Video_Slider extends Widget_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_style_overlay',
+			[
+				'label' => esc_html__( 'Background Overlay', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_enable',
+			[
+				'label' => esc_html__( 'Enable Overlay', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-item::before' => 'display: block;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_color',
+			[
+				'label' => esc_html__( 'Overlay Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#000000',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-item::before' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'background_overlay_enable' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_opacity',
+			[
+				'label' => esc_html__( 'Overlay Opacity', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1,
+						'step' => 0.01,
+					],
+				],
+				'default' => [
+					'size' => 0.5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-item::before' => 'opacity: {{SIZE}};',
+				],
+				'condition' => [
+					'background_overlay_enable' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'background_overlay_blend_mode',
+			[
+				'label' => esc_html__( 'Blend Mode', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'normal' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+					'multiply' => esc_html__( 'Multiply', 'wpzoom-elementor-addons' ),
+					'screen' => esc_html__( 'Screen', 'wpzoom-elementor-addons' ),
+					'overlay' => esc_html__( 'Overlay', 'wpzoom-elementor-addons' ),
+					'darken' => esc_html__( 'Darken', 'wpzoom-elementor-addons' ),
+					'lighten' => esc_html__( 'Lighten', 'wpzoom-elementor-addons' ),
+					'color-dodge' => esc_html__( 'Color Dodge', 'wpzoom-elementor-addons' ),
+					'color-burn' => esc_html__( 'Color Burn', 'wpzoom-elementor-addons' ),
+					'hard-light' => esc_html__( 'Hard Light', 'wpzoom-elementor-addons' ),
+					'soft-light' => esc_html__( 'Soft Light', 'wpzoom-elementor-addons' ),
+					'difference' => esc_html__( 'Difference', 'wpzoom-elementor-addons' ),
+					'exclusion' => esc_html__( 'Exclusion', 'wpzoom-elementor-addons' ),
+					'hue' => esc_html__( 'Hue', 'wpzoom-elementor-addons' ),
+					'saturation' => esc_html__( 'Saturation', 'wpzoom-elementor-addons' ),
+					'color' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
+					'luminosity' => esc_html__( 'Luminosity', 'wpzoom-elementor-addons' ),
+				],
+				'default' => 'normal',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-item::before' => 'mix-blend-mode: {{VALUE}};',
+				],
+				'condition' => [
+					'background_overlay_enable' => 'yes',
+				],
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
