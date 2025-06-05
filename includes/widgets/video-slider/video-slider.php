@@ -47,13 +47,13 @@ class Video_Slider extends Widget_Base {
 			wp_register_style( 'slick-slider-theme', WPZOOM_EL_ADDONS_URL . 'assets/vendors/slick/slick-theme.css', null, WPZOOM_EL_ADDONS_VER );
 		}
 
-		wp_register_style( 'wpzoom-elementor-addons-css-frontend-slider', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
+		wp_register_style( 'wpzoom-elementor-addons-css-frontend-video-slider', plugins_url( 'frontend.css', __FILE__ ), [ 'slick-slider', 'slick-slider-theme' ], WPZOOM_EL_ADDONS_VER );
 
 		if ( ! wp_script_is( 'jquery-slick-slider', 'registered' ) ) {
 			wp_register_script( 'jquery-slick-slider', WPZOOM_EL_ADDONS_URL . 'assets/vendors/slick/slick.min.js', [ 'jquery' ], WPZOOM_EL_ADDONS_VER, true );
 		}
 
-		wp_register_script( 'wpzoom-elementor-addons-js-frontend-slider', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
+		wp_register_script( 'wpzoom-elementor-addons-js-frontend-video-slider', plugins_url( 'frontend.js', __FILE__ ), [ 'jquery', 'jquery-slick-slider' ], WPZOOM_EL_ADDONS_VER, true );
 	}
 
 	/**
@@ -123,7 +123,7 @@ class Video_Slider extends Widget_Base {
 			'slick-slider-theme',
 			'font-awesome-5-all',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-addons-css-frontend-slider'
+			'wpzoom-elementor-addons-css-frontend-video-slider'
 		];
 	}
 
@@ -141,7 +141,7 @@ class Video_Slider extends Widget_Base {
 			'jquery',
 			'jquery-slick-slider',
 			'font-awesome-4-shim',
-			'wpzoom-elementor-addons-js-frontend-slider'
+			'wpzoom-elementor-addons-js-frontend-video-slider'
 		];
 	}
 
@@ -1082,7 +1082,7 @@ class Video_Slider extends Widget_Base {
 		);
 
 		$this->end_controls_section();
-		
+
 		$this->start_controls_section(
 			'_section_style_item',
 			[
@@ -1744,32 +1744,32 @@ class Video_Slider extends Widget_Base {
 			case 'youtube':
 				$base_url = $slide['video_privacy_mode'] ? 'https://www.youtube-nocookie.com/embed/' : 'https://www.youtube.com/embed/';
 				$embed_url = $base_url . $video_id;
-				
+
 				$params['autoplay'] = '1';
 				$params['mute'] = '1';
 				$params['controls'] = '0';
 				$params['rel'] = '0';
 				$params['modestbranding'] = '1';
 				$params['playsinline'] = '1';
-				
+
 				if ( ! empty( $slide['video_start_time'] ) ) {
 					$params['start'] = $slide['video_start_time'];
 				}
-				
+
 				if ( ! empty( $slide['video_end_time'] ) ) {
 					$params['end'] = $slide['video_end_time'];
 				}
-				
+
 				if ( empty( $slide['video_play_once'] ) ) {
 					$params['loop'] = '1';
 					$params['playlist'] = $video_id;
 				}
-				
+
 				break;
 
 			case 'vimeo':
 				$embed_url = 'https://player.vimeo.com/video/' . $video_id;
-				
+
 				$params['autoplay'] = '1';
 				$params['muted'] = '1';
 				$params['controls'] = '0';
@@ -1777,15 +1777,15 @@ class Video_Slider extends Widget_Base {
 				$params['byline'] = '0';
 				$params['portrait'] = '0';
 				$params['playsinline'] = '1';
-				
+
 				if ( ! empty( $slide['video_start_time'] ) ) {
 					$params['#t'] = $slide['video_start_time'] . 's';
 				}
-				
+
 				if ( empty( $slide['video_play_once'] ) ) {
 					$params['loop'] = '1';
 				}
-				
+
 				break;
 
 			default:
@@ -1813,7 +1813,7 @@ class Video_Slider extends Widget_Base {
 		}
 
 		$video_type = $this->detect_video_type( $slide['video_link'] );
-		
+
 		if ( ! $video_type ) {
 			return;
 		}
@@ -1847,27 +1847,27 @@ class Video_Slider extends Widget_Base {
 		?>
 		<div <?php echo Utils::render_html_attributes( $video_attrs ); ?>>
 			<?php if ( 'hosted' === $video_type ) : ?>
-				<video 
-					autoplay 
-					muted 
-					playsinline 
+				<video
+					autoplay
+					muted
+					playsinline
 					<?php echo empty( $slide['video_play_once'] ) ? 'loop' : ''; ?>
 					<?php echo empty( $slide['video_play_on_mobile'] ) ? 'data-mobile-disabled="true"' : ''; ?>
 				>
 					<source src="<?php echo esc_url( $slide['video_link'] ); ?>" type="video/mp4">
 				</video>
-			<?php else : 
+			<?php else :
 				$video_id = $this->get_video_id( $slide['video_link'], $video_type );
 				if ( $video_id ) :
 					$embed_url = $this->build_video_embed_url( $slide, $video_type, $video_id );
 			?>
-				<iframe 
+				<iframe
 					src="<?php echo esc_url( $embed_url ); ?>"
-					frameborder="0" 
-					allow="autoplay; fullscreen; picture-in-picture" 
+					frameborder="0"
+					allow="autoplay; fullscreen; picture-in-picture"
 					allowfullscreen>
 				</iframe>
-			<?php 
+			<?php
 				endif;
 			endif; ?>
 		</div>
@@ -1918,10 +1918,10 @@ class Video_Slider extends Widget_Base {
 		?><div class="wpzjs-slick wpz-slick wpz-slick--slider">
 
 			<?php foreach ( $slides as $slide ) :
-				
+
 				// Set default background type if not set
 				$background_type = isset( $slide['background_type'] ) ? $slide['background_type'] : 'image';
-				
+
 				$item_tag = 'div';
 				$id = 'wpz-slick-item-' . $slide ['_id' ];
 
@@ -1946,15 +1946,15 @@ class Video_Slider extends Widget_Base {
 						<?php if ( 'video' === $background_type ) : ?>
 							<!-- Video Background -->
 							<?php $this->render_video_background( $slide ); ?>
-							
+
 							<!-- Fallback Image for Video -->
 							<?php if ( ! empty( $slide['background_fallback']['url'] ) ) : ?>
 								<img class="wpz-slick-img wpz-video-fallback" src="<?php echo esc_url( $slide['background_fallback']['url'] ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
 							<?php endif; ?>
-							
+
 						<?php else : ?>
 							<!-- Image Background -->
-							<?php 
+							<?php
 							$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
 							if ( ! $image ) {
 								$image = $slide[ 'image' ][ 'url' ];
@@ -1973,22 +1973,22 @@ class Video_Slider extends Widget_Base {
 								<?php if ( $slide[ 'subtitle' ] ) : ?>
 									<p class="wpz-slick-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
 								<?php endif; ?>
-								
+
 								<?php if ( $has_button || $has_lightbox ) : ?>
 									<div class="wpz-slick-actions">
 										<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
-											<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>" 
+											<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
 											   class="wpz-slick-button elementor-button"
 											   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
 											   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
 												<?php echo esc_html( $slide['button_text'] ); ?>
 											</a>
 										<?php endif; ?>
-										
+
 										<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
-											<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>" 
-											   class="wpz-slick-lightbox-trigger elementor-lightbox" 
-											   data-elementor-open-lightbox="yes" 
+											<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
+											   class="wpz-slick-lightbox-trigger elementor-lightbox"
+											   data-elementor-open-lightbox="yes"
 											   data-elementor-lightbox-video="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>">
 												<i class="eicon-play" aria-hidden="true"></i>
 												<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
