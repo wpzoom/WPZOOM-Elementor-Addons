@@ -158,6 +158,20 @@
 	margin-top: 2rem;
 }
 
+/* Individual button wrapper for independent alignment */
+.wpz-slick--slider .wpz-slick-button-wrapper {
+	display: flex;
+	width: 100%;
+	justify-content: center; /* Default center alignment */
+}
+
+/* Individual play icon wrapper for independent alignment */
+.wpz-slick--slider .wpz-slick-lightbox-wrapper {
+	display: flex;
+	width: 100%;
+	justify-content: center; /* Default center alignment */
+}
+
 .wpz-slick--slider .wpz-slick-button {
 	display: inline-flex;
 	align-items: center;
@@ -204,6 +218,7 @@
 
 .wpz-slick--slider .wpz-slick-lightbox-trigger svg {
 	margin-left: 3px; /* Optical centering for play icon */
+	transition: all 0.3s ease;
 }
 
 /* Dots navigation */

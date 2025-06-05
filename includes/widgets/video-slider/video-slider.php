@@ -1785,6 +1785,393 @@ class Video_Slider extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_style_button',
+			[
+				'label' => esc_html__( 'Button', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_align',
+			[
+				'label' => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button-wrapper' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_typography',
+				'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+				'selector' => '{{WRAPPER}} .wpz-slick-button',
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_padding',
+			[
+				'label' => esc_html__( 'Padding', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_margin',
+			[
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border',
+				'selector' => '{{WRAPPER}} .wpz-slick-button',
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( '_tabs_button' );
+
+		$this->start_controls_tab(
+			'_tab_button_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'button_color',
+			[
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color',
+			[
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_button_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'button_hover_color',
+			[
+				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_hover_bg_color',
+			[
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_hover_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => [
+					'button_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-button:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'_section_style_play_icon',
+			[
+				'label' => esc_html__( 'Play Icon', 'wpzoom-elementor-addons' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'play_icon_align',
+			[
+				'label' => esc_html__( 'Alignment', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-wrapper' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'play_icon_size',
+			[
+				'label' => esc_html__( 'Icon Size', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 100,
+						'step' => 1,
+					],
+					'em' => [
+						'min' => 0.5,
+						'max' => 5,
+						'step' => 0.1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 24,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'play_icon_box_size',
+			[
+				'label' => esc_html__( 'Box Size', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'min' => 30,
+						'max' => 150,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 70,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'play_icon_margin',
+			[
+				'label' => esc_html__( 'Margin', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'play_icon_border',
+				'selector' => '{{WRAPPER}} .wpz-slick-lightbox-trigger',
+			]
+		);
+
+		$this->add_responsive_control(
+			'play_icon_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( '_tabs_play_icon' );
+
+		$this->start_controls_tab(
+			'_tab_play_icon_normal',
+			[
+				'label' => esc_html__( 'Normal', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'play_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'play_icon_bg_color',
+			[
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'_tab_play_icon_hover',
+			[
+				'label' => esc_html__( 'Hover', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		$this->add_control(
+			'play_icon_hover_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger:hover svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'play_icon_hover_bg_color',
+			[
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'play_icon_hover_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => [
+					'play_icon_border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger:hover' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'play_icon_hover_transform',
+			[
+				'label' => esc_html__( 'Hover Transform', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => esc_html__( 'None', 'wpzoom-elementor-addons' ),
+					'scale(1.1)' => esc_html__( 'Scale Up', 'wpzoom-elementor-addons' ),
+					'scale(0.9)' => esc_html__( 'Scale Down', 'wpzoom-elementor-addons' ),
+					'translateY(-5px)' => esc_html__( 'Move Up', 'wpzoom-elementor-addons' ),
+					'rotate(15deg)' => esc_html__( 'Rotate', 'wpzoom-elementor-addons' ),
+				],
+				'default' => 'scale(1.1)',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-lightbox-trigger:hover' => 'transform: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -2167,21 +2554,25 @@ class Video_Slider extends Widget_Base {
 								<?php if ( $has_button || $has_lightbox ) : ?>
 									<div class="wpz-slick-actions">
 										<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
-											<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
-											   class="wpz-slick-button elementor-button"
-											   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
-											   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
-												<?php echo esc_html( $slide['button_text'] ); ?>
-											</a>
+											<div class="wpz-slick-button-wrapper">
+												<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
+												   class="wpz-slick-button elementor-button"
+												   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+												   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+													<?php echo esc_html( $slide['button_text'] ); ?>
+												</a>
+											</div>
 										<?php endif; ?>
 
 										<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
-											<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
-											   class="wpz-slick-lightbox-trigger"
-											   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
-                                               <svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
-												<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
-											</a>
+											<div class="wpz-slick-lightbox-wrapper">
+												<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
+												   class="wpz-slick-lightbox-trigger"
+												   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
+	                                               <svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
+													<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
+												</a>
+											</div>
 										<?php endif; ?>
 									</div>
 								<?php endif; ?>
