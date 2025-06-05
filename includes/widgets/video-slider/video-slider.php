@@ -1990,9 +1990,8 @@ class Video_Slider extends Widget_Base {
 
 										<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
 											<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
-											   class="wpz-slick-lightbox-trigger elementor-lightbox"
-											   data-elementor-open-lightbox="yes"
-											   data-elementor-lightbox-video="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>">
+											   class="wpz-slick-lightbox-trigger"
+											   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
 												<i class="eicon-play" aria-hidden="true"></i>
 												<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
 											</a>

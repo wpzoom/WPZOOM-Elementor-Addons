@@ -25,6 +25,310 @@
 	$window.on( 'elementor/frontend/init', function() {
 		var ModuleHandler = elementorModules.frontend.handlers.Base;
 
+		// Global fallback for video lightbox triggers
+		$(document).on('click', '.wpz-slick-lightbox-trigger', function(e) {
+			// Check if this trigger has already been handled by a widget instance
+			if ($(this).data('wpz-lightbox-handled')) {
+				return;
+			}
+			
+			e.preventDefault();
+			e.stopPropagation();
+			
+			var videoUrl = $(this).attr('href');
+			console.log('Global video lightbox fallback triggered for:', videoUrl);
+			
+			// Find the closest video slider widget to get the handler
+			var $widget = $(this).closest('.elementor-widget-wpzoom-elementor-addons-video-slider');
+			if ($widget.length > 0) {
+				// Try to get the widget handler and call the lightbox
+				var widgetData = $widget.data('wpz-video-slider-handler');
+				if (widgetData && widgetData.openVideoLightbox) {
+					widgetData.openVideoLightbox(videoUrl);
+				} else {
+					// Fallback: create a minimal lightbox
+					openGlobalVideoLightbox(videoUrl);
+				}
+			} else {
+				// No widget found, use global fallback
+				openGlobalVideoLightbox(videoUrl);
+			}
+		});
+
+		// Global lightbox functionality as fallback
+		function openGlobalVideoLightbox(videoUrl) {
+			console.log('Opening global video lightbox for:', videoUrl);
+			
+			var videoType = detectVideoTypeFromUrl(videoUrl);
+			var videoId = getVideoId(videoUrl, videoType);
+			
+			// Create lightbox overlay
+			var $lightbox = $('<div class="wpz-video-lightbox"></div>');
+			var $overlay = $('<div class="wpz-lightbox-overlay"></div>');
+			var $container = $('<div class="wpz-lightbox-container"></div>');
+			var $content = $('<div class="wpz-lightbox-content"></div>');
+			var $closeBtn = $('<button class="wpz-lightbox-close" aria-label="Close video"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>');
+			
+			// Build video content
+			var videoContent = buildGlobalVideoContent(videoUrl, videoType, videoId);
+			
+			if (!videoContent) {
+				console.error('Unable to create video content for:', videoUrl);
+				return;
+			}
+			
+			// Assemble lightbox
+			$content.append(videoContent);
+			$container.append($closeBtn).append($content);
+			$lightbox.append($overlay).append($container);
+			
+			// Add styles
+			addGlobalLightboxStyles();
+			
+			// Add to DOM
+			$('body').append($lightbox).addClass('wpz-lightbox-open');
+			
+			// Bind close events
+			$closeBtn.on('click', function() {
+				closeLightbox($lightbox);
+			});
+			
+			$overlay.on('click', function() {
+				closeLightbox($lightbox);
+			});
+			
+			// ESC key to close
+			$(document).on('keyup.wpzLightbox', function(e) {
+				if (e.keyCode === 27) {
+					closeLightbox($lightbox);
+				}
+			});
+			
+			// Show lightbox with animation
+			setTimeout(function() {
+				$lightbox.addClass('wpz-lightbox-show');
+			}, 10);
+		}
+
+		function detectVideoTypeFromUrl(url) {
+			if (url.match(/(?:youtube\.com|youtu\.be)/)) {
+				return 'youtube';
+			} else if (url.match(/vimeo\.com/)) {
+				return 'vimeo';
+			} else if (url.match(/\.(mp4|webm|ogg)$/i)) {
+				return 'hosted';
+			}
+			return 'unknown';
+		}
+
+		function getVideoId(url, type) {
+			var id = '';
+			
+			switch(type) {
+				case 'youtube':
+					var match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+					id = match ? match[1] : '';
+					break;
+				case 'vimeo':
+					var match = url.match(/(?:vimeo\.com\/)([0-9]+)/);
+					id = match ? match[1] : '';
+					break;
+			}
+			
+			return id;
+		}
+
+		function buildGlobalVideoContent(videoUrl, videoType, videoId) {
+			var $videoWrapper = $('<div class="wpz-lightbox-video"></div>');
+			
+			switch(videoType) {
+				case 'youtube':
+					if (!videoId) return null;
+					var $iframe = $('<iframe></iframe>');
+					var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&showinfo=0';
+					$iframe.attr({
+						src: embedUrl,
+						frameborder: 0,
+						allow: 'autoplay; fullscreen',
+						allowfullscreen: true,
+						width: '100%',
+						height: '100%'
+					});
+					$videoWrapper.append($iframe);
+					break;
+					
+				case 'vimeo':
+					if (!videoId) return null;
+					var $iframe = $('<iframe></iframe>');
+					var embedUrl = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&title=0&byline=0&portrait=0';
+					$iframe.attr({
+						src: embedUrl,
+						frameborder: 0,
+						allow: 'autoplay; fullscreen',
+						allowfullscreen: true,
+						width: '100%',
+						height: '100%'
+					});
+					$videoWrapper.append($iframe);
+					break;
+					
+				case 'hosted':
+					var $video = $('<video controls autoplay></video>');
+					$video.attr({
+						src: videoUrl,
+						width: '100%',
+						height: '100%'
+					});
+					$videoWrapper.append($video);
+					break;
+					
+				default:
+					console.error('Unsupported video type:', videoType);
+					return null;
+			}
+			
+			return $videoWrapper;
+		}
+
+		function addGlobalLightboxStyles() {
+			if ($('#wpz-lightbox-styles').length > 0) {
+				return; // Styles already added
+			}
+			
+			var styles = `
+				<style id="wpz-lightbox-styles">
+					.wpz-video-lightbox {
+						position: fixed;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						z-index: 9999;
+						opacity: 0;
+						visibility: hidden;
+						transition: opacity 0.3s ease, visibility 0.3s ease;
+					}
+					
+					.wpz-video-lightbox.wpz-lightbox-show {
+						opacity: 1;
+						visibility: visible;
+					}
+					
+					.wpz-lightbox-overlay {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.8);
+						cursor: pointer;
+					}
+					
+					.wpz-lightbox-container {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						width: 90%;
+						max-width: 1200px;
+						height: 80vh;
+						max-height: 675px;
+					}
+					
+					.wpz-lightbox-content {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						background: #000;
+						border-radius: 8px;
+						overflow: visible;
+					}
+					
+					.wpz-lightbox-video {
+						width: 100%;
+						height: 100%;
+						border-radius: 8px;
+						overflow: hidden;
+					}
+					
+					.wpz-lightbox-video iframe,
+					.wpz-lightbox-video video {
+						width: 100%;
+						height: 100%;
+						border: none;
+					}
+					
+					.wpz-lightbox-close {
+						position: absolute;
+						top: -25px;
+						right: -25px;
+						width: 50px;
+						height: 50px;
+						background: rgba(0, 0, 0, 0.8);
+						border: 2px solid rgba(255, 255, 255, 0.8);
+						border-radius: 50%;
+						color: white;
+						cursor: pointer;
+						z-index: 10;
+						transition: all 0.3s ease;
+						backdrop-filter: blur(10px);
+					}
+					
+					.wpz-lightbox-close svg {
+						width: 24px;
+						height: 24px;
+						stroke: currentColor;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					}
+					
+					.wpz-lightbox-close:hover {
+						background: rgba(255, 255, 255, 0.9);
+						color: #000;
+						border-color: rgba(255, 255, 255, 1);
+						transform: scale(1.1);
+					}
+					
+					body.wpz-lightbox-open {
+						overflow: hidden;
+					}
+					
+					@media (max-width: 768px) {
+						.wpz-lightbox-container {
+							width: 95%;
+							height: 70vh;
+						}
+						
+						.wpz-lightbox-close {
+							top: -20px;
+							right: -20px;
+							width: 45px;
+							height: 45px;
+						}
+						
+						.wpz-lightbox-close svg {
+							width: 20px;
+							height: 20px;
+						}
+					}
+				</style>
+			`;
+			
+			$('head').append(styles);
+		}
+
+		function closeLightbox($lightbox) {
+			$lightbox.removeClass('wpz-lightbox-show');
+			$('body').removeClass('wpz-lightbox-open');
+			$(document).off('keyup.wpzLightbox');
+			
+			setTimeout(function() {
+				$lightbox.remove();
+			}, 300);
+		}
+
 		var SliderBase = ModuleHandler.extend( {
 			bindEvents: function() {
 				this.removeArrows();
@@ -69,10 +373,19 @@
 			onInit: function () {
 				ModuleHandler.prototype.onInit.apply( this, arguments );
 				
+				// Store reference to this handler in the widget element for global fallback
+				this.$element.data('wpz-video-slider-handler', this);
+				
+				// Initialize video lightbox immediately for static elements
+				this.initVideoLightbox();
+				
 				// Initialize video backgrounds and lightbox after slider is ready
 				this.elements.$container.on('init', () => {
 					this.initVideoBackgrounds();
-					this.initVideoLightbox();
+					// Re-initialize lightbox after slider is ready
+					setTimeout(() => {
+						this.initVideoLightbox();
+					}, 100);
 					this.initEditorSupport();
 				});
 			},
@@ -117,29 +430,288 @@
 			},
 
 			initVideoLightbox: function() {
-				// Find all lightbox triggers in this slider
-				this.$element.find('.wpz-slick-lightbox-trigger').each(function() {
+				var self = this;
+				
+				// Remove any existing event handlers to prevent duplicates
+				this.$element.off('click.wpzLightbox', '.wpz-slick-lightbox-trigger');
+				
+				// Mark all lightbox triggers in this widget as handled
+				this.$element.find('.wpz-slick-lightbox-trigger').data('wpz-lightbox-handled', true);
+				
+				// Use event delegation to handle clicks on lightbox triggers
+				this.$element.on('click.wpzLightbox', '.wpz-slick-lightbox-trigger', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					
 					var $trigger = $(this);
 					var videoUrl = $trigger.attr('href');
 					
+					console.log('Video lightbox trigger clicked (widget handler):', videoUrl);
+					
 					if (videoUrl) {
-						$trigger.on('click', function(e) {
-							e.preventDefault();
-							
-							// Try Elementor's lightbox first
-							if (elementorFrontend && elementorFrontend.utils && elementorFrontend.utils.lightbox) {
-								elementorFrontend.utils.lightbox.openSlideshow([{
-									image: '',
-									url: videoUrl,
-									type: 'video'
-								}], 0);
-							} else {
-								// Fallback: open in new window
-								window.open(videoUrl, '_blank');
-							}
-						});
+						self.openVideoLightbox(videoUrl);
 					}
 				});
+				
+				console.log('Video lightbox initialized with event delegation');
+			},
+
+			openVideoLightbox: function(videoUrl) {
+				var self = this;
+				var videoType = this.detectVideoTypeFromUrl(videoUrl);
+				var videoId = this.getVideoId(videoUrl, videoType);
+				
+				console.log('Opening video lightbox:', { url: videoUrl, type: videoType, id: videoId });
+				console.log('Video lightbox trigger working in Elementor!');
+				
+				// Create lightbox overlay
+				var $lightbox = $('<div class="wpz-video-lightbox"></div>');
+				var $overlay = $('<div class="wpz-lightbox-overlay"></div>');
+				var $container = $('<div class="wpz-lightbox-container"></div>');
+				var $content = $('<div class="wpz-lightbox-content"></div>');
+				var $closeBtn = $('<button class="wpz-lightbox-close" aria-label="Close video"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>');
+				
+				// Build video content based on type
+				var videoContent = this.buildLightboxVideoContent(videoUrl, videoType, videoId);
+				
+				if (!videoContent) {
+					console.error('Unable to create video content for:', videoUrl);
+					return;
+				}
+				
+				// Assemble lightbox
+				$content.append($closeBtn).append(videoContent);
+				$container.append($content);
+				$lightbox.append($overlay).append($container);
+				
+				// Add styles
+				this.addLightboxStyles();
+				
+				// Add to DOM
+				$('body').append($lightbox).addClass('wpz-lightbox-open');
+				
+				// Bind close events
+				$closeBtn.on('click', function() {
+					self.closeLightbox($lightbox);
+				});
+				
+				$overlay.on('click', function() {
+					self.closeLightbox($lightbox);
+				});
+				
+				// ESC key to close
+				$(document).on('keyup.wpzLightbox', function(e) {
+					if (e.keyCode === 27) {
+						self.closeLightbox($lightbox);
+					}
+				});
+				
+				// Show lightbox with animation
+				setTimeout(function() {
+					$lightbox.addClass('wpz-lightbox-show');
+				}, 10);
+			},
+
+			detectVideoTypeFromUrl: function(url) {
+				if (url.match(/(?:youtube\.com|youtu\.be)/)) {
+					return 'youtube';
+				} else if (url.match(/vimeo\.com/)) {
+					return 'vimeo';
+				} else if (url.match(/\.(mp4|webm|ogg)$/i)) {
+					return 'hosted';
+				}
+				return 'unknown';
+			},
+
+			buildLightboxVideoContent: function(videoUrl, videoType, videoId) {
+				var $videoWrapper = $('<div class="wpz-lightbox-video"></div>');
+				
+				switch(videoType) {
+					case 'youtube':
+						if (!videoId) return null;
+						var $iframe = $('<iframe></iframe>');
+						var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&showinfo=0';
+						$iframe.attr({
+							src: embedUrl,
+							frameborder: 0,
+							allow: 'autoplay; fullscreen',
+							allowfullscreen: true,
+							width: '100%',
+							height: '100%'
+						});
+						$videoWrapper.append($iframe);
+						break;
+						
+					case 'vimeo':
+						if (!videoId) return null;
+						var $iframe = $('<iframe></iframe>');
+						var embedUrl = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&title=0&byline=0&portrait=0';
+						$iframe.attr({
+							src: embedUrl,
+							frameborder: 0,
+							allow: 'autoplay; fullscreen',
+							allowfullscreen: true,
+							width: '100%',
+							height: '100%'
+						});
+						$videoWrapper.append($iframe);
+						break;
+						
+					case 'hosted':
+						var $video = $('<video controls autoplay></video>');
+						$video.attr({
+							src: videoUrl,
+							width: '100%',
+							height: '100%'
+						});
+						$videoWrapper.append($video);
+						break;
+						
+					default:
+						console.error('Unsupported video type:', videoType);
+						return null;
+				}
+				
+				return $videoWrapper;
+			},
+
+			addLightboxStyles: function() {
+				if ($('#wpz-lightbox-styles').length > 0) {
+					return; // Styles already added
+				}
+				
+				var styles = `
+					<style id="wpz-lightbox-styles">
+						.wpz-video-lightbox {
+							position: fixed;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							z-index: 9999;
+							opacity: 0;
+							visibility: hidden;
+							transition: opacity 0.3s ease, visibility 0.3s ease;
+						}
+						
+						.wpz-video-lightbox.wpz-lightbox-show {
+							opacity: 1;
+							visibility: visible;
+						}
+						
+						.wpz-lightbox-overlay {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: rgba(0, 0, 0, 0.8);
+							cursor: pointer;
+						}
+						
+						.wpz-lightbox-container {
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							width: 90%;
+							max-width: 1200px;
+							height: 80vh;
+							max-height: 675px;
+						}
+						
+						.wpz-lightbox-content {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							background: #000;
+							border-radius: 8px;
+							overflow: visible;
+						}
+						
+						.wpz-lightbox-video {
+							width: 100%;
+							height: 100%;
+							border-radius: 8px;
+							overflow: hidden;
+						}
+						
+						.wpz-lightbox-video iframe,
+						.wpz-lightbox-video video {
+							width: 100%;
+							height: 100%;
+							border: none;
+						}
+						
+						.wpz-lightbox-close {
+							position: absolute;
+							top: -25px;
+							right: -25px;
+							width: 50px;
+							height: 50px;
+							background: rgba(0, 0, 0, 0.8);
+							border: 2px solid rgba(255, 255, 255, 0.8);
+							border-radius: 50%;
+							color: white;
+							cursor: pointer;
+							z-index: 10;
+							transition: all 0.3s ease;
+							backdrop-filter: blur(10px);
+						}
+						
+						.wpz-lightbox-close svg {
+							width: 24px;
+							height: 24px;
+							stroke: currentColor;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+						}
+						
+						.wpz-lightbox-close:hover {
+							background: rgba(255, 255, 255, 0.9);
+							color: #000;
+							border-color: rgba(255, 255, 255, 1);
+							transform: scale(1.1);
+						}
+						
+						body.wpz-lightbox-open {
+							overflow: hidden;
+						}
+						
+						@media (max-width: 768px) {
+							.wpz-lightbox-container {
+								width: 95%;
+								height: 70vh;
+							}
+							
+							.wpz-lightbox-close {
+								top: -20px;
+								right: -20px;
+								width: 45px;
+								height: 45px;
+							}
+							
+							.wpz-lightbox-close svg {
+								width: 20px;
+								height: 20px;
+							}
+						}
+					</style>
+				`;
+				
+				$('head').append(styles);
+			},
+
+			closeLightbox: function($lightbox) {
+				$lightbox.removeClass('wpz-lightbox-show');
+				$('body').removeClass('wpz-lightbox-open');
+				$(document).off('keyup.wpzLightbox');
+				
+				setTimeout(function() {
+					$lightbox.remove();
+				}, 300);
 			},
 
 			initEditorSupport: function() {
@@ -309,6 +881,10 @@
 			onElementChange: debounce( function() {
 				this.elements.$container.slick( 'unslick' );
 				this.run();
+				// Re-initialize lightbox after slider is recreated
+				setTimeout(() => {
+					this.initVideoLightbox();
+				}, 200);
 			}, 200 ),
 
 			getSlickSettings: function() {
@@ -355,7 +931,16 @@
 			},
 
 			run: function() {
+				var self = this;
 				this.elements.$container.slick( this.getSlickSettings() );
+				
+				// Ensure lightbox is initialized after slider is ready
+				this.elements.$container.on('afterChange', function() {
+					// Re-initialize lightbox for any new slides
+					setTimeout(function() {
+						self.initVideoLightbox();
+					}, 50);
+				});
 			}
 		} );
 

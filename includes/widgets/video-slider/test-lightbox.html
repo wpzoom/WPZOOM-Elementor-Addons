@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Lightbox Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        
+        .test-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .test-button {
+            padding: 15px 25px;
+            background: #007cba;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .test-button:hover {
+            background: #005a87;
+            color: white;
+        }
+        
+        .eicon-play {
+            width: 16px;
+            height: 16px;
+            background: currentColor;
+            mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") no-repeat center;
+            mask-size: contain;
+        }
+        
+        .description {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Video Lightbox Test</h1>
+    
+    <div class="description">
+        <p><strong>Test Instructions:</strong></p>
+        <ul>
+            <li>Click each button below to test different video types</li>
+            <li>The lightbox should open with the video playing automatically</li>
+            <li>Use the close button (×) or press ESC to close</li>
+            <li>Click outside the video area to close</li>
+        </ul>
+    </div>
+    
+    <div class="test-buttons">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="test-button wpz-slick-lightbox-trigger">
+            <span class="eicon-play"></span>
+            YouTube Video
+        </a>
+        
+        <a href="https://vimeo.com/729485552" class="test-button wpz-slick-lightbox-trigger">
+            <span class="eicon-play"></span>
+            Vimeo Video
+        </a>
+        
+        <a href="https://wpzoom.s3.amazonaws.com/inspiro-blocks-pro/video/video.mp4" class="test-button wpz-slick-lightbox-trigger">
+            <span class="eicon-play"></span>
+            Self-Hosted MP4
+        </a>
+    </div>
+    
+    <div class="description">
+        <h3>Expected Behavior:</h3>
+        <ul>
+            <li><strong>YouTube:</strong> Should extract video ID and create proper embed URL</li>
+            <li><strong>Vimeo:</strong> Should extract video ID and create proper embed URL</li>
+            <li><strong>MP4:</strong> Should create HTML5 video element with controls</li>
+            <li><strong>All videos:</strong> Should autoplay when lightbox opens</li>
+            <li><strong>Responsive:</strong> Lightbox should adapt to screen size</li>
+        </ul>
+    </div>
+
+    <script>
+        // Simplified version of the lightbox code for testing
+        $(document).ready(function() {
+            
+            function getVideoId(url, type) {
+                var id = '';
+                
+                switch(type) {
+                    case 'youtube':
+                        var match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+                        id = match ? match[1] : '';
+                        break;
+                    case 'vimeo':
+                        var match = url.match(/(?:vimeo\.com\/)([0-9]+)/);
+                        id = match ? match[1] : '';
+                        break;
+                }
+                
+                return id;
+            }
+            
+            function detectVideoTypeFromUrl(url) {
+                if (url.match(/(?:youtube\.com|youtu\.be)/)) {
+                    return 'youtube';
+                } else if (url.match(/vimeo\.com/)) {
+                    return 'vimeo';
+                } else if (url.match(/\.(mp4|webm|ogg)$/i)) {
+                    return 'hosted';
+                }
+                return 'unknown';
+            }
+            
+            function buildLightboxVideoContent(videoUrl, videoType, videoId) {
+                var $videoWrapper = $('<div class="wpz-lightbox-video"></div>');
+                
+                switch(videoType) {
+                    case 'youtube':
+                        if (!videoId) return null;
+                        var $iframe = $('<iframe></iframe>');
+                        var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&showinfo=0';
+                        $iframe.attr({
+                            src: embedUrl,
+                            frameborder: 0,
+                            allow: 'autoplay; fullscreen',
+                            allowfullscreen: true,
+                            width: '100%',
+                            height: '100%'
+                        });
+                        $videoWrapper.append($iframe);
+                        break;
+                        
+                    case 'vimeo':
+                        if (!videoId) return null;
+                        var $iframe = $('<iframe></iframe>');
+                        var embedUrl = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&title=0&byline=0&portrait=0';
+                        $iframe.attr({
+                            src: embedUrl,
+                            frameborder: 0,
+                            allow: 'autoplay; fullscreen',
+                            allowfullscreen: true,
+                            width: '100%',
+                            height: '100%'
+                        });
+                        $videoWrapper.append($iframe);
+                        break;
+                        
+                    case 'hosted':
+                        var $video = $('<video controls autoplay></video>');
+                        $video.attr({
+                            src: videoUrl,
+                            width: '100%',
+                            height: '100%'
+                        });
+                        $videoWrapper.append($video);
+                        break;
+                        
+                    default:
+                        console.error('Unsupported video type:', videoType);
+                        return null;
+                }
+                
+                return $videoWrapper;
+            }
+            
+            function addLightboxStyles() {
+                if ($('#wpz-lightbox-styles').length > 0) {
+                    return; // Styles already added
+                }
+                
+                var styles = `
+                    <style id="wpz-lightbox-styles">
+                        .wpz-video-lightbox {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 9999;
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: opacity 0.3s ease, visibility 0.3s ease;
+                        }
+                        
+                        .wpz-video-lightbox.wpz-lightbox-show {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        
+                        .wpz-lightbox-overlay {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.8);
+                            cursor: pointer;
+                        }
+                        
+                        .wpz-lightbox-container {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 90%;
+                            max-width: 1200px;
+                            height: 80vh;
+                            max-height: 675px;
+                        }
+                        
+                        .wpz-lightbox-content {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            background: #000;
+                            border-radius: 8px;
+                            overflow: visible;
+                        }
+                        
+                        .wpz-lightbox-video {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 8px;
+                            overflow: hidden;
+                        }
+                        
+                        .wpz-lightbox-video iframe,
+                        .wpz-lightbox-video video {
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                        }
+                        
+                        .wpz-lightbox-close {
+                            position: absolute;
+                            top: -25px;
+                            right: -25px;
+                            width: 50px;
+                            height: 50px;
+                            background: rgba(0, 0, 0, 0.8);
+                            border: 2px solid rgba(255, 255, 255, 0.8);
+                            border-radius: 50%;
+                            color: white;
+                            cursor: pointer;
+                            z-index: 10;
+                            transition: all 0.3s ease;
+                            backdrop-filter: blur(10px);
+                        }
+                        
+                        .wpz-lightbox-close svg {
+                            width: 24px;
+                            height: 24px;
+                            stroke: currentColor;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                        
+                        .wpz-lightbox-close:hover {
+                            background: rgba(255, 255, 255, 0.9);
+                            color: #000;
+                            border-color: rgba(255, 255, 255, 1);
+                            transform: scale(1.1);
+                        }
+                        
+                        body.wpz-lightbox-open {
+                            overflow: hidden;
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .wpz-lightbox-container {
+                                width: 95%;
+                                height: 70vh;
+                            }
+                            
+                            .wpz-lightbox-close {
+                                top: -20px;
+                                right: -20px;
+                                width: 45px;
+                                height: 45px;
+                            }
+                            
+                            .wpz-lightbox-close svg {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    </style>
+                `;
+                
+                $('head').append(styles);
+            }
+            
+            function closeLightbox($lightbox) {
+                $lightbox.removeClass('wpz-lightbox-show');
+                $('body').removeClass('wpz-lightbox-open');
+                $(document).off('keyup.wpzLightbox');
+                
+                setTimeout(function() {
+                    $lightbox.remove();
+                }, 300);
+            }
+            
+            function openVideoLightbox(videoUrl) {
+                var videoType = detectVideoTypeFromUrl(videoUrl);
+                var videoId = getVideoId(videoUrl, videoType);
+                
+                console.log('Opening video lightbox:', { url: videoUrl, type: videoType, id: videoId });
+                
+                // Create lightbox overlay
+                var $lightbox = $('<div class="wpz-video-lightbox"></div>');
+                var $overlay = $('<div class="wpz-lightbox-overlay"></div>');
+                var $container = $('<div class="wpz-lightbox-container"></div>');
+                var $content = $('<div class="wpz-lightbox-content"></div>');
+                var $closeBtn = $('<button class="wpz-lightbox-close" aria-label="Close video"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>');
+                
+                // Build video content based on type
+                var videoContent = buildLightboxVideoContent(videoUrl, videoType, videoId);
+                
+                if (!videoContent) {
+                    console.error('Unable to create video content for:', videoUrl);
+                    return;
+                }
+                
+                // Assemble lightbox
+                $content.append(videoContent);
+                $container.append($closeBtn).append($content);
+                $lightbox.append($overlay).append($container);
+                
+                // Add styles
+                addLightboxStyles();
+                
+                // Add to DOM
+                $('body').append($lightbox).addClass('wpz-lightbox-open');
+                
+                // Bind close events
+                $closeBtn.on('click', function() {
+                    closeLightbox($lightbox);
+                });
+                
+                $overlay.on('click', function() {
+                    closeLightbox($lightbox);
+                });
+                
+                // ESC key to close
+                $(document).on('keyup.wpzLightbox', function(e) {
+                    if (e.keyCode === 27) {
+                        closeLightbox($lightbox);
+                    }
+                });
+                
+                // Show lightbox with animation
+                setTimeout(function() {
+                    $lightbox.addClass('wpz-lightbox-show');
+                }, 10);
+            }
+            
+            // Bind click events to test triggers
+            $('.wpz-slick-lightbox-trigger').on('click', function(e) {
+                e.preventDefault();
+                var videoUrl = $(this).attr('href');
+                openVideoLightbox(videoUrl);
+            });
+        });
+    </script>
+</body>
+</html> 
