@@ -798,7 +798,7 @@ class Video_Slider extends Widget_Base {
 			Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'thumbnail',
-				'default' => 'medium_large',
+				'default' => 'full',
 				'separator' => 'before',
 				'exclude' => [
 					'custom'
@@ -1119,6 +1119,84 @@ class Video_Slider extends Widget_Base {
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
 					'{{WRAPPER}} .wpz-slick-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'content_horizontal_position',
+			[
+				'label' => esc_html__( 'Horizontal Position', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-h-align-center',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-h-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-item' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'content_vertical_position',
+			[
+				'label' => esc_html__( 'Vertical Position', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'flex-start' => [
+						'title' => esc_html__( 'Top', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => esc_html__( 'Middle', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'flex-end' => [
+						'title' => esc_html__( 'Bottom', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-item' => 'align-items: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'content_text_align',
+			[
+				'label' => esc_html__( 'Text Align', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'wpzoom-elementor-addons' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-content' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -1994,7 +2072,7 @@ class Video_Slider extends Widget_Base {
 			return;
 		}
 
-		?><div class="wpzjs-slick wpz-slick wpz-slick--slider">
+		?><div class="wpzjs-slick wpzjs-slick-video wpz-slick wpz-slick--slider">
 
 			<?php foreach ( $slides as $slide ) :
 
@@ -2068,7 +2146,7 @@ class Video_Slider extends Widget_Base {
 											<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
 											   class="wpz-slick-lightbox-trigger"
 											   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
-												<i class="eicon-play" aria-hidden="true"></i>
+                                               <svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
 												<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
 											</a>
 										<?php endif; ?>
