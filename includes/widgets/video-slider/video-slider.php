@@ -1124,6 +1124,39 @@ class Video_Slider extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
+			'content_width',
+			[
+				'label' => esc_html__( 'Content Width', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ '%', 'px', 'vw' ],
+				'range' => [
+					'%' => [
+						'min' => 10,
+						'max' => 100,
+						'step' => 1,
+					],
+					'px' => [
+						'min' => 100,
+						'max' => 1200,
+						'step' => 10,
+					],
+					'vw' => [
+						'min' => 10,
+						'max' => 100,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 80,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slick-content' => 'max-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
 			'content_horizontal_position',
 			[
 				'label' => esc_html__( 'Horizontal Position', 'wpzoom-elementor-addons' ),
