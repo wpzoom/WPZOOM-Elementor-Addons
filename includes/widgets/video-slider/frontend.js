@@ -254,12 +254,56 @@
 					setTimeout(() => {
 						this.initVideoLightbox();
 					}, 100);
+					
+					// Ensure first slide video is sized properly
+					setTimeout(() => {
+						this.resizeCurrentSlideVideo();
+					}, 300);
+					
 					this.initEditorSupport();
 				});
+				
+				// Also initialize after slider is completely ready
+				this.elements.$container.on('afterChange', () => {
+					setTimeout(() => {
+						this.resizeCurrentSlideVideo();
+					}, 100);
+				});
+			},
+
+			resizeCurrentSlideVideo: function() {
+				var self = this;
+				var $currentSlide = this.elements.$container.find('.slick-current');
+				
+				if ($currentSlide.length) {
+					var $videoBg = $currentSlide.find('.wpz-video-bg');
+					if ($videoBg.length) {
+						var $video = $videoBg.find('iframe, video');
+						if ($video.length) {
+							console.log('Resizing current slide video:', $currentSlide.index());
+							this.resizeVideoBackground($videoBg, $video);
+							
+							// For Vimeo/YouTube iframes, retry sizing after a longer delay
+							if ($video.is('iframe')) {
+								setTimeout(function() {
+									self.resizeVideoBackground($videoBg, $video);
+								}, 1000);
+								
+								// Additional retry for stubborn videos
+								setTimeout(function() {
+									self.resizeVideoBackground($videoBg, $video);
+								}, 2000);
+							}
+						}
+					}
+				}
 			},
 
 			initVideoBackgrounds: function() {
 				var self = this;
+				
+				// Initialize dynamic video sizing first
+				this.initDynamicVideoSizing();
 				
 				this.elements.$videoBg.each(function() {
 					var $videoBg = $(this);
@@ -295,6 +339,175 @@
 							console.warn('Video Slider: Unknown video type:', videoType);
 					}
 				});
+			},
+
+			initDynamicVideoSizing: function() {
+				var self = this;
+				
+				// Apply sizing to all video backgrounds in this widget
+				this.$element.find('.wpz-video-bg').each(function(index) {
+					var $container = $(this);
+					var $video = $container.find('iframe, video');
+					
+					if ($video.length) {
+						var isFirstSlide = $container.closest('.slick-slide').hasClass('slick-current') || 
+										   $container.closest('.slick-slide').index() === 0;
+						
+						// Initial sizing with delay (shorter for first slide)
+						var initialDelay = isFirstSlide ? 50 : 100;
+						setTimeout(function() {
+							self.resizeVideoBackground($container, $video);
+						}, initialDelay);
+						
+						// For iframes (YouTube/Vimeo), add progressive retry logic
+						if ($video.is('iframe')) {
+							var videoType = $container.data('video-type');
+							
+							// Progressive retry for better reliability
+							var retryDelays = isFirstSlide ? [200, 500, 1000, 2000] : [500, 1000];
+							
+							retryDelays.forEach(function(delay) {
+								setTimeout(function() {
+									self.resizeVideoBackground($container, $video);
+								}, delay);
+							});
+							
+							// Listen for iframe load
+							$video.on('load', function() {
+								console.log('Iframe loaded for', videoType, 'video, resizing...');
+								setTimeout(function() {
+									self.resizeVideoBackground($container, $video);
+								}, 100);
+								
+								// Additional delay for Vimeo which can be slow
+								if (videoType === 'vimeo') {
+									setTimeout(function() {
+										self.resizeVideoBackground($container, $video);
+									}, 500);
+								}
+							});
+						}
+						
+						// For hosted videos, wait for metadata
+						if ($video.is('video')) {
+							$video.on('loadedmetadata', function() {
+								setTimeout(function() {
+									self.resizeVideoBackground($container, $video);
+								}, 100);
+							});
+						}
+					}
+				});
+				
+				// Set up resize handler for this widget only
+				var self = this;
+				var widgetId = this.$element.attr('data-element_type') + '_' + this.$element.attr('data-id') || Math.random().toString(36).substr(2, 9);
+				var resizeHandler = debounce(function() {
+					self.$element.find('.wpz-video-bg').each(function() {
+						var $container = $(this);
+						var $video = $container.find('iframe, video');
+						if ($video.length) {
+							self.resizeVideoBackground($container, $video);
+						}
+					});
+				}, 100);
+				
+				$(window).off('resize.wpzvideo' + widgetId)
+					.on('resize.wpzvideo' + widgetId, resizeHandler);
+			},
+
+			resizeVideoBackground: function($container, $video) {
+				// Ensure container has dimensions
+				var containerWidth = $container.outerWidth();
+				var containerHeight = $container.outerHeight();
+				
+				// If container doesn't have proper dimensions yet, try parent
+				if (containerWidth <= 0 || containerHeight <= 0) {
+					var $parent = $container.closest('.wpz-slick-item');
+					if ($parent.length) {
+						containerWidth = $parent.outerWidth();
+						containerHeight = $parent.outerHeight();
+					}
+				}
+				
+				// Still no dimensions? Try slider container
+				if (containerWidth <= 0 || containerHeight <= 0) {
+					var $slider = $container.closest('.wpzjs-slick');
+					if ($slider.length) {
+						containerWidth = $slider.outerWidth();
+						containerHeight = $slider.outerHeight();
+					}
+				}
+				
+				// Last resort: use window dimensions
+				if (containerWidth <= 0 || containerHeight <= 0) {
+					containerWidth = $(window).width();
+					containerHeight = $(window).height();
+				}
+				
+				if (containerWidth <= 0 || containerHeight <= 0) {
+					console.warn('Unable to determine container dimensions for video background');
+					return;
+				}
+				
+				var containerRatio = containerWidth / containerHeight;
+				
+				// Default video aspect ratio (16:9)
+				var videoRatio = 16 / 9;
+				
+				// Try to get actual video ratio for hosted videos
+				var videoType = $container.attr('data-video-type');
+				if (videoType === 'hosted' && $video.is('video')) {
+					var videoElement = $video[0];
+					if (videoElement.videoWidth && videoElement.videoHeight) {
+						videoRatio = videoElement.videoWidth / videoElement.videoHeight;
+					}
+				}
+				
+				var newWidth, newHeight;
+				
+				// Calculate dimensions to fill container completely (cover behavior)
+				if (containerRatio > videoRatio) {
+					// Container is wider relative to its height than video
+					// Video needs to fill width and extend beyond height
+					newWidth = containerWidth;
+					newHeight = containerWidth / videoRatio;
+				} else {
+					// Container is taller relative to its width than video  
+					// Video needs to fill height and extend beyond width
+					newHeight = containerHeight;
+					newWidth = containerHeight * videoRatio;
+				}
+				
+				// Ensure minimum coverage - video must be at least as large as container
+				if (newWidth < containerWidth) {
+					newWidth = containerWidth;
+					newHeight = containerWidth / videoRatio;
+				}
+				
+				if (newHeight < containerHeight) {
+					newHeight = containerHeight;
+					newWidth = containerHeight * videoRatio;
+				}
+				
+				// Apply calculated dimensions with center positioning
+				$video.css({
+					width: newWidth + 'px',
+					height: newHeight + 'px',
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)',
+					maxWidth: 'none', // Override any max-width constraints
+					maxHeight: 'none', // Override any max-height constraints
+					minWidth: containerWidth + 'px',
+					minHeight: containerHeight + 'px'
+				});
+				
+				// For hosted videos, ensure object-fit cover as backup
+				if ($video.is('video')) {
+					$video.css('object-fit', 'cover');
+				}
 			},
 
 			initVideoLightbox: function() {
@@ -617,9 +830,10 @@
 			onElementChange: debounce( function() {
 				this.elements.$container.slick( 'unslick' );
 				this.run();
-				// Re-initialize lightbox after slider is recreated
+				// Re-initialize lightbox and video sizing after slider is recreated
 				setTimeout(() => {
 					this.initVideoLightbox();
+					this.initDynamicVideoSizing();
 				}, 200);
 			}, 200 ),
 
@@ -676,7 +890,28 @@
 					setTimeout(function() {
 						self.initVideoLightbox();
 					}, 50);
+					
+					// Re-size videos after slide change
+					setTimeout(function() {
+						self.resizeCurrentSlideVideo();
+					}, 100);
 				});
+				
+				// Force initial video sizing after slider is completely ready
+				setTimeout(function() {
+					console.log('Force initial video sizing...');
+					self.resizeCurrentSlideVideo();
+					
+					// Additional retry for first slide
+					setTimeout(function() {
+						self.resizeCurrentSlideVideo();
+					}, 500);
+					
+					// Final retry for stubborn Vimeo videos
+					setTimeout(function() {
+						self.resizeCurrentSlideVideo();
+					}, 1500);
+				}, 100);
 			}
 		} );
 

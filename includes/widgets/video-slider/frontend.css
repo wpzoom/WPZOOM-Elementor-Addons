@@ -230,69 +230,6 @@
 	color: #fff;
 }
 
-/* Responsive video scaling */
-@media (max-aspect-ratio: 16/9) {
-	.wpz-slick--slider .wpz-video-bg iframe,
-	.wpz-slick--slider .wpz-video-bg video {
-		width: auto;
-		height: 100vh;
-	}
-}
-
-@media (min-aspect-ratio: 16/9) {
-	.wpz-slick--slider .wpz-video-bg iframe,
-	.wpz-slick--slider .wpz-video-bg video {
-		width: 100vw;
-		height: auto;
-	}
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-	
-	.wpz-slick--slider .wpz-slick-content {
-		padding: 2rem 1rem;
-	}
-	
-	.wpz-slick--slider .wpz-slick-actions {
-		flex-direction: column;
-		gap: 1rem;
-	}
-	
-	.wpz-slick--slider .wpz-slick-lightbox-trigger {
-		width: 60px;
-		height: 60px;
-		font-size: 1.5rem;
-	}
-	
-	.wpz-slick--slider .slick-next,
-	.wpz-slick--slider .slick-prev {
-		width: 40px;
-		height: 40px;
-		font-size: 18px;
-	}
-	
-	.wpz-slick--slider .wpz-video-bg[data-mobile-disabled="true"] {
-		display: none !important;
-	}
-	
-	.wpz-slick--slider .wpz-video-bg[data-mobile-disabled="true"] + .wpz-video-fallback {
-		display: block !important;
-	}
-}
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-	
-	.wpz-slick--slider .slick-prev {
-		left: 15px;
-	}
-	
-	.wpz-slick--slider .slick-next {
-		right: 15px;
-	}
-}
-
 /* Image backgrounds */
 .wpz-slick--slider .wpz-slick-item--image {
 	background-size: cover;
@@ -339,17 +276,15 @@
 
 .wpz-slick--slider .wpz-video-bg iframe,
 .wpz-slick--slider .wpz-video-bg video {
+	/* Initial positioning - JavaScript will handle dynamic sizing */
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 100vw;
-	height: 56.25vw; /* 16:9 aspect ratio */
-	min-width: 100%;
-	min-height: 100%;
 	transform: translate(-50%, -50%);
-	object-fit: cover;
 	border: none;
 	pointer-events: none;
+	min-width: 100%;
+	min-height: 100%;
 }
 
 /* Fallback image for video backgrounds */
@@ -502,4 +437,50 @@ body.wpz-lightbox-open {
         width: 20px;
         height: 20px;
     }
+}
+
+/* Dynamic video sizing handled by JavaScript - removing fixed responsive rules */
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+	.wpz-slick--slider .wpz-slick-content {
+		padding: 2rem 1rem;
+	}
+	
+	.wpz-slick--slider .wpz-slick-actions {
+		flex-direction: column;
+		gap: 1rem;
+	}
+	
+	.wpz-slick--slider .wpz-slick-lightbox-trigger {
+		width: 60px;
+		height: 60px;
+		font-size: 1.5rem;
+	}
+	
+	.wpz-slick--slider .slick-next,
+	.wpz-slick--slider .slick-prev {
+		width: 40px;
+		height: 40px;
+		font-size: 18px;
+	}
+	
+	.wpz-slick--slider .wpz-video-bg[data-mobile-disabled="true"] {
+		display: none !important;
+	}
+	
+	.wpz-slick--slider .wpz-video-bg[data-mobile-disabled="true"] + .wpz-video-fallback {
+		display: block !important;
+	}
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+	.wpz-slick--slider .slick-prev {
+		left: 15px;
+	}
+	
+	.wpz-slick--slider .slick-next {
+		right: 15px;
+	}
 }
