@@ -134,6 +134,9 @@ jQuery(window).on('elementor/frontend/init', function () {
 			setTimeout(() => {
 				this.initVideoBackgrounds();
 			}, 100);
+			
+			// Add resize event handler for video backgrounds
+			this.setupResizeHandler();
 		}
 
 		async initSwiper() {
@@ -289,10 +292,12 @@ jQuery(window).on('elementor/frontend/init', function () {
 				this.handleVideoError(container);
 			});
 			
-			// Add load handler
-			video.addEventListener('loadeddata', () => {
-				console.log('Video loaded successfully');
+			// Add load handler with dimension detection
+			video.addEventListener('loadedmetadata', () => {
+				console.log('Video metadata loaded, dimensions:', video.videoWidth, 'x', video.videoHeight);
 				this.handleVideoSuccess(container);
+				// Resize with actual video dimensions
+				this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
 			});
 			
 			// Make sure video is visible
@@ -300,8 +305,14 @@ jQuery(window).on('elementor/frontend/init', function () {
 			video.style.visibility = 'visible';
 			video.style.opacity = '1';
 			
-			// Ensure video covers the entire background
-			this.resizeVideo(container, video);
+			// If video metadata is already loaded, resize immediately
+			if (video.readyState >= 1 && video.videoWidth && video.videoHeight) {
+				console.log('Video already loaded, resizing with dimensions:', video.videoWidth, 'x', video.videoHeight);
+				this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
+			} else {
+				// Fallback resize with default ratio while loading
+				this.resizeVideo(container, video);
+			}
 			
 			// Play video if paused
 			if (video.paused) {
@@ -339,8 +350,8 @@ jQuery(window).on('elementor/frontend/init', function () {
 			iframe.style.visibility = 'visible';
 			iframe.style.opacity = '1';
 			
-			// Ensure iframe covers the entire background
-			this.resizeVideo(container, iframe);
+			// Ensure iframe covers the entire background (use default 16:9 for iframe videos)
+			this.resizeVideo(container, iframe, 16 / 9);
 			
 			// Handle iframe load event for better sizing
 			if (!iframe.dataset.loaded) {
@@ -348,13 +359,13 @@ jQuery(window).on('elementor/frontend/init', function () {
 					iframe.dataset.loaded = 'true';
 					console.log('Iframe loaded, resizing...');
 					setTimeout(() => {
-						this.resizeVideo(container, iframe);
+						this.resizeVideo(container, iframe, 16 / 9);
 					}, 100);
 				});
 			}
 		}
 
-		resizeVideo(container, video) {
+		resizeVideo(container, video, videoRatio = null) {
 			if (!container || !video) return;
 			
 			try {
@@ -366,50 +377,67 @@ jQuery(window).on('elementor/frontend/init', function () {
 				if (containerWidth === 0 || containerHeight === 0) {
 					console.log('Container has zero dimensions, retrying...');
 					setTimeout(() => {
-						this.resizeVideo(container, video);
+						this.resizeVideo(container, video, videoRatio);
 					}, 100);
 					return;
 				}
+
+				// Use provided video ratio or detect from video element or default to 16:9
+				let actualVideoRatio = videoRatio;
 				
-				console.log('Resizing video:', {
+				if (!actualVideoRatio && video.tagName === 'VIDEO' && video.videoWidth && video.videoHeight) {
+					actualVideoRatio = video.videoWidth / video.videoHeight;
+					console.log('Detected video ratio from video element:', actualVideoRatio);
+				}
+				
+				if (!actualVideoRatio) {
+					actualVideoRatio = 16 / 9; // Default fallback
+					console.log('Using default 16:9 ratio');
+				}
+				
+				console.log('Resizing video with ratio:', actualVideoRatio, {
 					containerWidth, 
 					containerHeight, 
 					videoElement: video
 				});
 				
 				const containerRatio = containerWidth / containerHeight;
-				const videoRatio = 16 / 9; // Assume 16:9 for most videos
 				
 				let videoWidth, videoHeight;
 				
-				if (containerRatio > videoRatio) {
-					// Container is wider than video ratio
+				// Calculate dimensions to ensure full coverage
+				if (containerRatio > actualVideoRatio) {
+					// Container is wider than video ratio - fit to container width
 					videoWidth = containerWidth;
-					videoHeight = containerWidth / videoRatio;
+					videoHeight = containerWidth / actualVideoRatio;
 				} else {
-					// Container is taller than video ratio
+					// Container is taller than video ratio - fit to container height
 					videoHeight = containerHeight;
-					videoWidth = containerHeight * videoRatio;
+					videoWidth = containerHeight * actualVideoRatio;
 				}
 				
-				// Center the video
-				const left = (containerWidth - videoWidth) / 2;
-				const top = (containerHeight - videoHeight) / 2;
-				
-				// Apply styles
+				// Use the more robust transform approach that was working before
 				video.style.position = 'absolute';
+				video.style.top = '50%';
+				video.style.left = '50%';
+				video.style.transform = 'translate(-50%, -50%)';
 				video.style.width = videoWidth + 'px';
 				video.style.height = videoHeight + 'px';
-				video.style.left = left + 'px';
-				video.style.top = top + 'px';
+				video.style.minWidth = containerWidth + 'px';
+				video.style.minHeight = containerHeight + 'px';
+				video.style.maxWidth = 'none';
+				video.style.maxHeight = 'none';
 				video.style.objectFit = 'cover';
 				video.style.zIndex = '1';
+				video.style.pointerEvents = 'none';
 				
 				console.log('Video resized:', {
+					actualVideoRatio,
+					containerRatio,
 					width: videoWidth,
 					height: videoHeight,
-					left,
-					top
+					minWidth: containerWidth,
+					minHeight: containerHeight
 				});
 				
 			} catch (error) {
@@ -607,6 +635,62 @@ jQuery(window).on('elementor/frontend/init', function () {
 				// Update Swiper with new params
 				this.swiper.update();
 			}
+		}
+
+		setupResizeHandler() {
+			const self = this;
+			let resizeTimeout;
+			
+			// Debounced resize handler
+			const handleResize = () => {
+				clearTimeout(resizeTimeout);
+				resizeTimeout = setTimeout(() => {
+					console.log('Window resized, updating video backgrounds');
+					self.resizeAllVideos();
+				}, 250);
+			};
+			
+			window.addEventListener('resize', handleResize);
+			
+			// Store reference for cleanup
+			this.resizeHandler = handleResize;
+		}
+
+		resizeAllVideos() {
+			if (!this.elements.$swiperContainer) return;
+			
+			const jQuery = window.jQuery;
+			const self = this; // Capture the correct context
+			
+			// Resize all video backgrounds
+			this.elements.$swiperContainer.find('.wpz-video-bg').each(function() {
+				const videoContainer = jQuery(this);
+				const video = videoContainer.find('video')[0] || videoContainer.find('iframe')[0];
+				
+				if (!video) return;
+				
+				const videoType = videoContainer.data('video-type');
+				
+				if (videoType === 'hosted' && video.tagName === 'VIDEO' && video.videoWidth && video.videoHeight) {
+					// Use actual video dimensions for hosted videos
+					const videoRatio = video.videoWidth / video.videoHeight;
+					console.log('Resizing hosted video on window resize, ratio:', videoRatio);
+					self.resizeVideo(videoContainer, video, videoRatio);
+				} else {
+					// Use default 16:9 for iframe videos
+					console.log('Resizing iframe video on window resize');
+					self.resizeVideo(videoContainer, video, 16 / 9);
+				}
+			});
+		}
+
+		onDestroy() {
+			// Clean up resize handler
+			if (this.resizeHandler) {
+				window.removeEventListener('resize', this.resizeHandler);
+			}
+			
+			super.onDestroy();
 		}
 	}
 

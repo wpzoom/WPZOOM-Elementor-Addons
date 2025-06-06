@@ -47,9 +47,9 @@
 
 .wpz-video-bg video,
 .wpz-video-bg iframe {
-	/* Let JavaScript handle positioning and sizing */
-	object-fit: cover;
+	/* JavaScript handles all positioning and sizing dynamically */
 	background: #000;
+	display: block;
 }
 
 /* Video fallback image - hidden by default, shown only when video fails */
