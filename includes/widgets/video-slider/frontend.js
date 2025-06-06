@@ -3,6 +3,14 @@ jQuery(window).on('elementor/frontend/init', function () {
 
 	class VideoSliderHandler extends elementorModules.frontend.handlers.SwiperBase {
 		
+		constructor() {
+			super(...arguments);
+			this.isProduction = !window.elementorFrontend?.config?.environmentMode?.edit;
+			this.videoEventHandlers = new WeakMap();
+			this.dimensionCache = new Map();
+			this.lastResizeTime = 0;
+		}
+		
 		getDefaultSettings() {
 			return {
 				selectors: {
@@ -54,28 +62,21 @@ jQuery(window).on('elementor/frontend/init', function () {
 				observeParents: true,
 				observer: true,
 				handleElementorBreakpoints: true,
-				// Configure no-swiping for interactive elements
 				noSwiping: true,
 				noSwipingClass: 'swiper-no-swiping',
 				noSwipingSelector: '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
 				on: {
 					init: (swiper) => {
-						console.log('Swiper initialized');
-						setTimeout(() => {
-							this.initVideoBackgrounds();
-						}, 100);
+						this.debugLog('Swiper initialized');
+						this.requestAnimationFrame(() => this.initVideoBackgrounds());
 					},
 					slideChange: (swiper) => {
-						console.log('Slide changed to:', swiper.activeIndex);
-						setTimeout(() => {
-							this.handleVideoBackgrounds();
-						}, 100);
+						this.debugLog('Slide changed to:', swiper.activeIndex);
+						this.requestAnimationFrame(() => this.handleVideoBackgrounds());
 					},
 					resize: (swiper) => {
-						console.log('Swiper resized');
-						setTimeout(() => {
-							this.handleVideoBackgrounds();
-						}, 100);
+						this.debugLog('Swiper resized');
+						this.throttledResizeHandler();
 					}
 				}
 			};
@@ -129,14 +130,10 @@ jQuery(window).on('elementor/frontend/init', function () {
 			await this.initSwiper();
 			this.initVideoLightbox();
 			this.preventSliderDragOnInteractiveElements();
+			this.setupResizeHandler();
 			
 			// Initialize videos after Swiper is ready
-			setTimeout(() => {
-				this.initVideoBackgrounds();
-			}, 100);
-			
-			// Add resize event handler for video backgrounds
-			this.setupResizeHandler();
+			this.requestAnimationFrame(() => this.initVideoBackgrounds());
 		}
 
 		async initSwiper() {
@@ -202,35 +199,33 @@ jQuery(window).on('elementor/frontend/init', function () {
 		}
 
 		initVideoBackgrounds() {
-			const self = this;
-			
 			try {
 				const jQuery = window.jQuery;
 				
-				// Initialize all video backgrounds with better error handling
-				self.elements.$swiperContainer.find('.wpz-video-bg').each(function() {
-					const videoContainer = jQuery(this);
+				// Cache video containers for better performance
+				const videoContainers = this.elements.$swiperContainer.find('.wpz-video-bg');
+				
+				videoContainers.each((index, element) => {
+					const videoContainer = jQuery(element);
 					const videoType = videoContainer.data('video-type');
 					
 					if (!videoType) {
-						console.log('No video type found for container:', videoContainer);
+						this.debugLog('No video type found for container');
 						return;
 					}
 					
-					console.log('Initializing video background:', videoType, videoContainer);
+					this.debugLog('Initializing video background:', videoType);
 					
 					if (videoType === 'hosted') {
-						self.handleHostedVideo(videoContainer);
+						this.handleHostedVideo(videoContainer);
 					} else {
-						self.handleIframeVideo(videoContainer);
+						this.handleIframeVideo(videoContainer);
 					}
 				});
 				
 				// Handle current slide specifically for better initialization
-				if (self.swiper && self.swiper.slides && self.swiper.slides[self.swiper.activeIndex]) {
-					setTimeout(() => {
-						self.handleCurrentSlideVideos();
-					}, 200);
+				if (this.swiper?.slides?.[this.swiper.activeIndex]) {
+					this.requestAnimationFrame(() => this.handleCurrentSlideVideos());
 				}
 				
 			} catch (error) {
@@ -249,7 +244,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 		}
 
 		handleCurrentSlideVideos() {
-			if (!this.swiper || !this.swiper.slides) return;
+			if (!this.swiper?.slides) return;
 			
 			const jQuery = window.jQuery;
 			const currentSlide = jQuery(this.swiper.slides[this.swiper.activeIndex]);
@@ -269,45 +264,59 @@ jQuery(window).on('elementor/frontend/init', function () {
 		handleHostedVideo(container) {
 			const video = container.find('video')[0];
 			if (!video) {
-				console.log('No video element found in hosted video container');
+				this.debugLog('No video element found in hosted video container');
 				this.handleVideoError(container);
 				return;
 			}
 			
-			console.log('Handling hosted video:', video);
+			this.debugLog('Handling hosted video');
 			
 			const isMobile = window.innerWidth <= 768;
 			const playOnMobile = container.data('play-on-mobile');
 			
 			if (isMobile && !playOnMobile) {
 				video.style.display = 'none';
-				console.log('Video hidden on mobile (play on mobile disabled)');
+				this.debugLog('Video hidden on mobile (play on mobile disabled)');
 				this.handleVideoError(container);
 				return;
 			}
 			
-			// Add error handling
-			video.addEventListener('error', () => {
-				console.log('Video failed to load, showing fallback');
-				this.handleVideoError(container);
-			});
+			// Check if event handlers are already attached
+			if (!this.videoEventHandlers.has(video)) {
+				// Add error handling
+				const errorHandler = () => {
+					this.debugLog('Video failed to load, showing fallback');
+					this.handleVideoError(container);
+				};
+				
+				// Add load handler with dimension detection
+				const loadHandler = () => {
+					this.debugLog('Video metadata loaded, dimensions:', video.videoWidth, 'x', video.videoHeight);
+					this.handleVideoSuccess(container);
+					// Resize with actual video dimensions
+					this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
+				};
+				
+				video.addEventListener('error', errorHandler);
+				video.addEventListener('loadedmetadata', loadHandler);
+				
+				// Store handlers for cleanup
+				this.videoEventHandlers.set(video, {
+					error: errorHandler,
+					loadedmetadata: loadHandler
+				});
+			}
 			
-			// Add load handler with dimension detection
-			video.addEventListener('loadedmetadata', () => {
-				console.log('Video metadata loaded, dimensions:', video.videoWidth, 'x', video.videoHeight);
-				this.handleVideoSuccess(container);
-				// Resize with actual video dimensions
-				this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
+			// Make sure video is visible (batched style changes)
+			Object.assign(video.style, {
+				display: 'block',
+				visibility: 'visible',
+				opacity: '1'
 			});
-			
-			// Make sure video is visible
-			video.style.display = 'block';
-			video.style.visibility = 'visible';
-			video.style.opacity = '1';
 			
 			// If video metadata is already loaded, resize immediately
 			if (video.readyState >= 1 && video.videoWidth && video.videoHeight) {
-				console.log('Video already loaded, resizing with dimensions:', video.videoWidth, 'x', video.videoHeight);
+				this.debugLog('Video already loaded, resizing');
 				this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
 			} else {
 				// Fallback resize with default ratio while loading
@@ -317,7 +326,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			// Play video if paused
 			if (video.paused) {
 				video.play().catch((error) => {
-					console.log('Video autoplay failed:', error);
+					this.debugLog('Video autoplay failed:', error.message);
 					this.handleVideoError(container);
 				});
 			}
@@ -326,29 +335,43 @@ jQuery(window).on('elementor/frontend/init', function () {
 		handleIframeVideo(container) {
 			const iframe = container.find('iframe')[0];
 			if (!iframe) {
-				console.log('No iframe element found in iframe video container');
+				this.debugLog('No iframe element found in iframe video container');
 				this.handleVideoError(container);
 				return;
 			}
 			
-			console.log('Handling iframe video:', iframe);
+			this.debugLog('Handling iframe video');
 			
-			// Add error handling for iframe
-			iframe.addEventListener('error', () => {
-				console.log('Iframe video failed to load, showing fallback');
-				this.handleVideoError(container);
+			// Check if event handlers are already attached
+			if (!this.videoEventHandlers.has(iframe)) {
+				// Add error handling for iframe
+				const errorHandler = () => {
+					this.debugLog('Iframe video failed to load, showing fallback');
+					this.handleVideoError(container);
+				};
+				
+				// Add load handler
+				const loadHandler = () => {
+					this.debugLog('Iframe loaded successfully');
+					this.handleVideoSuccess(container);
+				};
+				
+				iframe.addEventListener('error', errorHandler);
+				iframe.addEventListener('load', loadHandler);
+				
+				// Store handlers for cleanup
+				this.videoEventHandlers.set(iframe, {
+					error: errorHandler,
+					load: loadHandler
+				});
+			}
+			
+			// Make sure iframe is visible (batched style changes)
+			Object.assign(iframe.style, {
+				display: 'block',
+				visibility: 'visible',
+				opacity: '1'
 			});
-			
-			// Add load handler
-			iframe.addEventListener('load', () => {
-				console.log('Iframe loaded successfully');
-				this.handleVideoSuccess(container);
-			});
-			
-			// Make sure iframe is visible
-			iframe.style.display = 'block';
-			iframe.style.visibility = 'visible';
-			iframe.style.opacity = '1';
 			
 			// Ensure iframe covers the entire background (use default 16:9 for iframe videos)
 			this.resizeVideo(container, iframe, 16 / 9);
@@ -357,10 +380,10 @@ jQuery(window).on('elementor/frontend/init', function () {
 			if (!iframe.dataset.loaded) {
 				iframe.addEventListener('load', () => {
 					iframe.dataset.loaded = 'true';
-					console.log('Iframe loaded, resizing...');
-					setTimeout(() => {
+					this.debugLog('Iframe loaded, resizing...');
+					this.requestAnimationFrame(() => {
 						this.resizeVideo(container, iframe, 16 / 9);
-					}, 100);
+					});
 				});
 			}
 		}
@@ -369,37 +392,57 @@ jQuery(window).on('elementor/frontend/init', function () {
 			if (!container || !video) return;
 			
 			try {
-				const containerElement = container[0] || container;
-				const containerRect = containerElement.getBoundingClientRect();
-				const containerWidth = containerRect.width;
-				const containerHeight = containerRect.height;
+				// Use cached dimensions if available and recent
+				const cacheKey = video;
+				const now = Date.now();
+				let containerDimensions = this.dimensionCache.get(cacheKey);
+				
+				if (!containerDimensions || (now - containerDimensions.timestamp) > 1000) {
+					const containerElement = container[0] || container;
+					const containerRect = containerElement.getBoundingClientRect();
+					containerDimensions = {
+						width: containerRect.width,
+						height: containerRect.height,
+						timestamp: now
+					};
+					this.dimensionCache.set(cacheKey, containerDimensions);
+				}
+				
+				const { width: containerWidth, height: containerHeight } = containerDimensions;
 				
 				if (containerWidth === 0 || containerHeight === 0) {
-					console.log('Container has zero dimensions, retrying...');
-					setTimeout(() => {
-						this.resizeVideo(container, video, videoRatio);
-					}, 100);
+					this.debugLog('Container has zero dimensions, retrying...');
+					// Limit retry attempts to prevent infinite recursion
+					if (!video.dataset.retryCount) {
+						video.dataset.retryCount = '0';
+					}
+					const retryCount = parseInt(video.dataset.retryCount);
+					if (retryCount < 3) {
+						video.dataset.retryCount = (retryCount + 1).toString();
+						setTimeout(() => {
+							this.resizeVideo(container, video, videoRatio);
+						}, 100);
+					}
 					return;
 				}
+
+				// Reset retry count on successful resize
+				video.dataset.retryCount = '0';
 
 				// Use provided video ratio or detect from video element or default to 16:9
 				let actualVideoRatio = videoRatio;
 				
 				if (!actualVideoRatio && video.tagName === 'VIDEO' && video.videoWidth && video.videoHeight) {
 					actualVideoRatio = video.videoWidth / video.videoHeight;
-					console.log('Detected video ratio from video element:', actualVideoRatio);
+					this.debugLog('Detected video ratio from video element:', actualVideoRatio);
 				}
 				
 				if (!actualVideoRatio) {
 					actualVideoRatio = 16 / 9; // Default fallback
-					console.log('Using default 16:9 ratio');
+					this.debugLog('Using default 16:9 ratio');
 				}
 				
-				console.log('Resizing video with ratio:', actualVideoRatio, {
-					containerWidth, 
-					containerHeight, 
-					videoElement: video
-				});
+				this.debugLog('Resizing video with ratio:', actualVideoRatio);
 				
 				const containerRatio = containerWidth / containerHeight;
 				
@@ -416,29 +459,24 @@ jQuery(window).on('elementor/frontend/init', function () {
 					videoWidth = containerHeight * actualVideoRatio;
 				}
 				
-				// Use the more robust transform approach that was working before
-				video.style.position = 'absolute';
-				video.style.top = '50%';
-				video.style.left = '50%';
-				video.style.transform = 'translate(-50%, -50%)';
-				video.style.width = videoWidth + 'px';
-				video.style.height = videoHeight + 'px';
-				video.style.minWidth = containerWidth + 'px';
-				video.style.minHeight = containerHeight + 'px';
-				video.style.maxWidth = 'none';
-				video.style.maxHeight = 'none';
-				video.style.objectFit = 'cover';
-				video.style.zIndex = '1';
-				video.style.pointerEvents = 'none';
-				
-				console.log('Video resized:', {
-					actualVideoRatio,
-					containerRatio,
-					width: videoWidth,
-					height: videoHeight,
-					minWidth: containerWidth,
-					minHeight: containerHeight
+				// Use the more robust transform approach that was working before (batched style changes)
+				Object.assign(video.style, {
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)',
+					width: videoWidth + 'px',
+					height: videoHeight + 'px',
+					minWidth: containerWidth + 'px',
+					minHeight: containerHeight + 'px',
+					maxWidth: 'none',
+					maxHeight: 'none',
+					objectFit: 'cover',
+					zIndex: '1',
+					pointerEvents: 'none'
 				});
+				
+				this.debugLog('Video resized successfully');
 				
 			} catch (error) {
 				console.error('Error resizing video:', error);
@@ -446,23 +484,22 @@ jQuery(window).on('elementor/frontend/init', function () {
 		}
 
 		initVideoLightbox() {
-			const self = this;
 			const jQuery = window.jQuery;
 			
 			// Remove any existing global lightbox handlers
 			jQuery(document).off('click.wpzLightbox');
 			
 			// Use event delegation for robust handling
-			jQuery(document).on('click.wpzLightbox', '.wpz-slide-lightbox-trigger', function(e) {
+			jQuery(document).on('click.wpzLightbox', '.wpz-slide-lightbox-trigger', (e) => {
 				e.preventDefault();
 				e.stopPropagation();
 				
-				const trigger = jQuery(this);
+				const trigger = jQuery(e.target).closest('.wpz-slide-lightbox-trigger');
 				const videoUrl = trigger.attr('href');
 				
 				if (!videoUrl) return;
 				
-				self.openVideoLightbox(videoUrl);
+				this.openVideoLightbox(videoUrl);
 			});
 		}
 
@@ -493,9 +530,9 @@ jQuery(window).on('elementor/frontend/init', function () {
 			jQuery('body').append(lightbox);
 			
 			// Show lightbox with correct class name
-			setTimeout(() => {
+			this.requestAnimationFrame(() => {
 				lightbox.addClass('active');
-			}, 10);
+			});
 			
 			// Close handlers
 			lightbox.find('.wpz-lightbox-close, .wpz-lightbox-overlay').on('click', () => {
@@ -560,7 +597,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// Add error class to show fallback image
 			slideItem.addClass('video-failed');
-			console.log('Video failed, fallback image should now be visible');
+			this.debugLog('Video failed, fallback image should now be visible');
 		}
 
 		handleVideoSuccess(container) {
@@ -569,102 +606,70 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// Remove error class to hide fallback image
 			slideItem.removeClass('video-failed');
-			console.log('Video loaded successfully, fallback image hidden');
+			this.debugLog('Video loaded successfully, fallback image hidden');
 		}
 
 		preventSliderDragOnInteractiveElements() {
-			const self = this;
 			const jQuery = window.jQuery;
 			
-			// Prevent slider dragging when interacting with interactive elements
-			const interactiveElements = '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
+			// Use single event delegation instead of multiple listeners per element
+			const interactiveSelector = '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
 			
-			// More aggressive prevention for interactive elements
-			this.elements.$swiperContainer.find(interactiveElements).each(function() {
-				const element = jQuery(this);
+			// Prevent all interaction events with single delegation
+			this.elements.$swiperContainer.on('touchstart.preventDrag mousedown.preventDrag', interactiveSelector, (e) => {
+				this.debugLog('Preventing drag on interactive element');
+				e.stopPropagation();
+				e.stopImmediatePropagation();
 				
-				// Prevent all touch events from bubbling up
-				element.on('touchstart.preventDrag', function(e) {
-					console.log('Preventing drag on interactive element:', this.className);
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-					
-					// Mark the slide as non-swipeable
-					const slide = jQuery(this).closest('.swiper-slide');
-					slide.addClass('swiper-no-swiping');
-					
-					// Remove class after a delay
-					setTimeout(() => {
-						slide.removeClass('swiper-no-swiping');
-					}, 500);
-				});
+				// Mark the slide as non-swipeable
+				const slide = jQuery(e.target).closest('.swiper-slide');
+				slide.addClass('swiper-no-swiping');
 				
-				element.on('touchmove.preventDrag', function(e) {
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-				});
-				
-				element.on('touchend.preventDrag', function(e) {
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-				});
-				
-				// Also prevent mouse events for desktop
-				element.on('mousedown.preventDrag', function(e) {
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-				});
-				
-				element.on('mousemove.preventDrag', function(e) {
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-				});
-				
-				element.on('mouseup.preventDrag', function(e) {
-					e.stopPropagation();
-					e.stopImmediatePropagation();
-				});
+				// Remove class after a delay
+				setTimeout(() => {
+					slide.removeClass('swiper-no-swiping');
+				}, 500);
 			});
 			
-			// Additional Swiper configuration to respect no-swiping class
-			if (this.swiper && this.swiper.params) {
-				this.swiper.params.noSwiping = true;
-				this.swiper.params.noSwipingClass = 'swiper-no-swiping';
-				this.swiper.params.noSwipingSelector = interactiveElements;
-				
-				// Update Swiper with new params
+			this.elements.$swiperContainer.on('touchmove.preventDrag touchend.preventDrag mousemove.preventDrag mouseup.preventDrag', interactiveSelector, (e) => {
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+			});
+			
+			// Configure Swiper no-swiping
+			if (this.swiper?.params) {
+				Object.assign(this.swiper.params, {
+					noSwiping: true,
+					noSwipingClass: 'swiper-no-swiping',
+					noSwipingSelector: interactiveSelector
+				});
 				this.swiper.update();
 			}
 		}
 
 		setupResizeHandler() {
-			const self = this;
-			let resizeTimeout;
-			
-			// Debounced resize handler
-			const handleResize = () => {
-				clearTimeout(resizeTimeout);
-				resizeTimeout = setTimeout(() => {
-					console.log('Window resized, updating video backgrounds');
-					self.resizeAllVideos();
+			if (!this.throttledResizeHandler) {
+				this.throttledResizeHandler = this.throttle(() => {
+					this.debugLog('Window resized, updating video backgrounds');
+					this.resizeAllVideos();
 				}, 250);
-			};
+			}
 			
-			window.addEventListener('resize', handleResize);
-			
-			// Store reference for cleanup
-			this.resizeHandler = handleResize;
+			window.addEventListener('resize', this.throttledResizeHandler);
 		}
 
 		resizeAllVideos() {
 			if (!this.elements.$swiperContainer) return;
 			
-			const jQuery = window.jQuery;
-			const self = this; // Capture the correct context
+			// Clear dimension cache on resize
+			this.dimensionCache.clear();
 			
-			// Resize all video backgrounds
-			this.elements.$swiperContainer.find('.wpz-video-bg').each(function() {
-				const videoContainer = jQuery(this);
+			const jQuery = window.jQuery;
+			const videoContainers = this.elements.$swiperContainer.find('.wpz-video-bg');
+			
+			// Batch process all videos
+			videoContainers.each((index, element) => {
+				const videoContainer = jQuery(element);
 				const video = videoContainer.find('video')[0] || videoContainer.find('iframe')[0];
 				
 				if (!video) return;
@@ -674,20 +679,59 @@ jQuery(window).on('elementor/frontend/init', function () {
 				if (videoType === 'hosted' && video.tagName === 'VIDEO' && video.videoWidth && video.videoHeight) {
 					// Use actual video dimensions for hosted videos
 					const videoRatio = video.videoWidth / video.videoHeight;
-					console.log('Resizing hosted video on window resize, ratio:', videoRatio);
-					self.resizeVideo(videoContainer, video, videoRatio);
+					this.debugLog('Resizing hosted video on window resize, ratio:', videoRatio);
+					this.resizeVideo(videoContainer, video, videoRatio);
 				} else {
 					// Use default 16:9 for iframe videos
-					console.log('Resizing iframe video on window resize');
-					self.resizeVideo(videoContainer, video, 16 / 9);
+					this.debugLog('Resizing iframe video on window resize');
+					this.resizeVideo(videoContainer, video, 16 / 9);
 				}
 			});
 		}
 
+		// Utility functions for performance optimization
+		requestAnimationFrame(callback) {
+			if (window.requestAnimationFrame) {
+				window.requestAnimationFrame(callback);
+			} else {
+				setTimeout(callback, 16);
+			}
+		}
+
+		throttle(func, limit) {
+			let inThrottle;
+			return function() {
+				const args = arguments;
+				const context = this;
+				if (!inThrottle) {
+					func.apply(context, args);
+					inThrottle = true;
+					setTimeout(() => inThrottle = false, limit);
+				}
+			};
+		}
+
+		debugLog(...args) {
+			if (!this.isProduction) {
+				console.log('[VideoSlider]', ...args);
+			}
+		}
+
 		onDestroy() {
 			// Clean up resize handler
-			if (this.resizeHandler) {
-				window.removeEventListener('resize', this.resizeHandler);
+			if (this.throttledResizeHandler) {
+				window.removeEventListener('resize', this.throttledResizeHandler);
+			}
+			
+			// Clean up video event handlers
+			this.videoEventHandlers.clear();
+			
+			// Clear dimension cache
+			this.dimensionCache.clear();
+			
+			// Clean up event delegation
+			if (this.elements.$swiperContainer) {
+				this.elements.$swiperContainer.off('.preventDrag');
 			}
 			
 			super.onDestroy();
