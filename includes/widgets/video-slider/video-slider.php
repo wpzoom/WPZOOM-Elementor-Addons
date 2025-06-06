@@ -2476,7 +2476,8 @@ class Video_Slider extends Widget_Base {
 					src="<?php echo esc_url( $embed_url ); ?>"
 					frameborder="0"
 					allow="autoplay; fullscreen; picture-in-picture"
-					allowfullscreen>
+					allowfullscreen
+					class="fitvidsignore">
 				</iframe>
 			<?php
 				endif;

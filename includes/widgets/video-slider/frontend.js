@@ -128,6 +128,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			this.initVideoLightbox();
 			this.preventSliderDragOnInteractiveElements();
 			this.setupResizeHandler();
+			this.preventFitVidsConflicts();
 			
 			// Initialize videos after Swiper is ready
 			this.requestAnimationFrame(() => this.initVideoBackgrounds());
@@ -325,6 +326,9 @@ jQuery(window).on('elementor/frontend/init', function () {
 				return;
 			}
 			
+			// Handle FitVids conflicts - remove any FitVids wrapper
+			this.removeFitVidsWrapper(iframe);
+			
 			// Check if event handlers are already attached
 			if (!this.videoEventHandlers.has(iframe)) {
 				// Add error handling for iframe
@@ -335,6 +339,8 @@ jQuery(window).on('elementor/frontend/init', function () {
 				// Add load handler
 				const loadHandler = () => {
 					this.handleVideoSuccess(container);
+					// Remove FitVids wrapper after load as well
+					this.removeFitVidsWrapper(iframe);
 				};
 				
 				iframe.addEventListener('error', errorHandler);
@@ -361,6 +367,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			if (!iframe.dataset.loaded) {
 				iframe.addEventListener('load', () => {
 					iframe.dataset.loaded = 'true';
+					this.removeFitVidsWrapper(iframe);
 					this.requestAnimationFrame(() => {
 						this.resizeVideo(container, iframe, 16 / 9);
 					});
@@ -617,6 +624,32 @@ jQuery(window).on('elementor/frontend/init', function () {
 			}
 		}
 
+		preventFitVidsConflicts() {
+			const jQuery = window.jQuery;
+			
+			// Add fitvidsignore class to the entire widget container
+			this.elements.$swiperContainer.addClass('fitvidsignore');
+			
+			// Add fitvidsignore to all video containers and iframes
+			this.elements.$swiperContainer.find('.wpz-video-bg').addClass('fitvidsignore');
+			this.elements.$swiperContainer.find('.wpz-video-bg iframe').addClass('fitvidsignore');
+			
+			// If FitVids is already present and has processed our videos, clean them up
+			const existingWrappers = this.elements.$swiperContainer.find('.fluid-width-video-wrapper');
+			existingWrappers.each((index, wrapper) => {
+				const $wrapper = jQuery(wrapper);
+				const $iframe = $wrapper.find('iframe');
+				
+				if ($iframe.length && $wrapper.parent().hasClass('wpz-video-bg')) {
+					// Move iframe out of wrapper
+					$iframe.detach();
+					$wrapper.remove();
+					$wrapper.parent().append($iframe);
+					$iframe.addClass('fitvidsignore');
+				}
+			});
+		}
+
 		setupResizeHandler() {
 			// Only create handler if it doesn't exist and widget is still active
 			if (!this.throttledResizeHandler && this.elements.$swiperContainer) {
@@ -673,6 +706,27 @@ jQuery(window).on('elementor/frontend/init', function () {
 				window.requestAnimationFrame(callback);
 			} else {
 				setTimeout(callback, 16);
+			}
+		}
+
+		removeFitVidsWrapper(iframe) {
+			const jQuery = window.jQuery;
+			const $iframe = jQuery(iframe);
+			
+			// Check if iframe is wrapped by FitVids
+			const $fitVidsWrapper = $iframe.closest('.fluid-width-video-wrapper');
+			
+			if ($fitVidsWrapper.length && $fitVidsWrapper.parent().hasClass('wpz-video-bg')) {
+				// Move iframe out of FitVids wrapper and back to our video container
+				const $videoContainer = $fitVidsWrapper.parent();
+				$iframe.detach();
+				$fitVidsWrapper.remove();
+				$videoContainer.append($iframe);
+				
+				// Ensure iframe has the fitvidsignore class
+				if (!$iframe.hasClass('fitvidsignore')) {
+					$iframe.addClass('fitvidsignore');
+				}
 			}
 		}
 
