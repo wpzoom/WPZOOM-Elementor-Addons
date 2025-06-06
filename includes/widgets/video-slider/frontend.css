@@ -227,13 +227,13 @@
 	font-size: 20px; /* This will be controlled by Elementor font-size control */
 }
 
-.wpz-video-slider-wrapper .swiper-button-prev {
+/*.wpz-video-slider-wrapper .swiper-button-prev {
 	left: 30px;
 }
 
 .wpz-video-slider-wrapper .swiper-button-next {
 	right: 30px;
-}
+}*/
 
 .wpz-video-slider-wrapper .swiper-button-prev:hover,
 .wpz-video-slider-wrapper .swiper-button-next:hover {
@@ -248,8 +248,8 @@
 
 .wpz-video-slider-wrapper .swiper-button-prev svg,
 .wpz-video-slider-wrapper .swiper-button-next svg {
-	width: 1em; /* Use em to scale with parent font-size */
-	height: 1em; /* Use em to scale with parent font-size */
+	width: 1.5em;
+	height: 1.5em;
 	fill: currentColor;
 }
 

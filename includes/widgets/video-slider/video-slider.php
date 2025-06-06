@@ -1824,7 +1824,7 @@ class Video_Slider extends Widget_Base {
 				'size_units' => [ 'px', 'em' ],
 				'default' => [
 					'unit' => 'px',
-					'size' => 80,
+					'size' => 70,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}} * 0.4);',
