@@ -664,36 +664,9 @@
 			},
 
 			initEditorSupport: function() {
-				// Only run in Elementor editor
-				if (!elementorFrontend.isEditMode()) {
-					return;
-				}
-
-				var self = this;
-				
-				// Listen for panel changes in editor
-				elementor.hooks.addAction('panel/open_editor/widget', function(panel, model, view) {
-					if (model.get('widgetType') === 'wpzoom-elementor-addons-video-slider') {
-						// Get the widget element
-						var $widget = view.$el;
-						var $slider = $widget.find('.wpzjs-slick');
-						
-						if ($slider.length && $slider.hasClass('slick-initialized')) {
-							// Listen for repeater item focus
-							setTimeout(function() {
-								$('.elementor-repeater-fields').on('click', function() {
-									var $repeaterItem = $(this);
-									var itemIndex = $repeaterItem.index();
-									
-									// Go to the corresponding slide
-									if (itemIndex >= 0) {
-										$slider.slick('slickGoTo', itemIndex);
-									}
-								});
-							}, 500);
-						}
-					}
-				});
+				// Editor integration removed for reliability
+				// Users can manually navigate slides using the arrow controls
+				return;
 			},
 
 			isMobile: function() {
