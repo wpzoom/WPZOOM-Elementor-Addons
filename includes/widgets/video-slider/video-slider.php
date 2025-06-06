@@ -672,9 +672,6 @@ class Video_Slider extends Widget_Base {
 				'external_url' => 'yes',
 				'video_link' => 'https://wpzoom.s3.amazonaws.com/inspiro-blocks-pro/video/video.mp4',
 				'video_play_on_mobile' => 'yes',
-				'background_fallback' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
 				'title' => 'External Video Background',
 				'subtitle' => 'Experience smooth video playback with our external video support. Perfect for showcasing your content with reliable performance and fast loading times.',
 				'show_button' => 'yes',
@@ -693,9 +690,6 @@ class Video_Slider extends Widget_Base {
 				'external_url' => 'yes',
 				'video_link' => 'https://vimeo.com/729485552',
 				'video_play_on_mobile' => '',
-				'background_fallback' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
 				'title' => 'Vimeo Video Integration',
 				'subtitle' => 'Seamlessly integrate Vimeo videos as background elements. Enjoy professional video hosting with advanced customization options.',
 				'show_video_lightbox' => 'yes',
@@ -706,7 +700,7 @@ class Video_Slider extends Widget_Base {
 				'_id' => 'slide_3',
 				'background_type' => 'image',
 				'image' => [
-					'url' => Utils::get_placeholder_image_src(),
+					'url' => 'https://demo.wpzoom.com/inspiro/files/2021/09/alexander-popov-vCbKwN2IXT4-unsplash.jpg',
 				],
 				'title' => 'Upload Your Own Videos',
 				'subtitle' => 'Easily upload and use your own video files as stunning backgrounds. Perfect for custom content and branding.',
