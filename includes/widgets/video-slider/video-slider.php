@@ -1117,6 +1117,10 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Content Padding', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 80,
+                ],
 				'selectors' => [
 					'{{WRAPPER}} .wpz-slick-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -1286,6 +1290,23 @@ class Video_Slider extends Widget_Base {
 				'global' => [
 					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
 				],
+				'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+					'font_size' => [
+						'default' => [
+							'unit' => 'px',
+							'size' => 50,
+						],
+						'tablet_default' => [
+							'unit' => 'px',
+							'size' => 36,
+						],
+						'mobile_default' => [
+							'unit' => 'px',
+							'size' => 26,
+						],
+					],
+				],
 			]
 		);
 
@@ -1330,6 +1351,23 @@ class Video_Slider extends Widget_Base {
 				'global' => [
 					'default' => Global_Typography::TYPOGRAPHY_TEXT,
 				],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_size' => [
+                        'default' => [
+                            'unit' => 'px',
+                            'size' => 18,
+                        ],
+                        'tablet_default' => [
+                            'unit' => 'px',
+                            'size' => 16,
+                        ],
+                        'mobile_default' => [
+                            'unit' => 'px',
+                            'size' => 16,
+                        ],
+                    ],
+                ],
 			]
 		);
 
@@ -2492,7 +2530,7 @@ class Video_Slider extends Widget_Base {
 			return;
 		}
 
-		?><div class="wpzjs-slick wpzjs-slick-video wpz-slick wpz-slick--slider">
+		?><div class="wpzjs-slick wpzjs-slick-video wpz-slick wpz-video-slider">
 
 			<?php foreach ( $slides as $slide ) :
 

@@ -25,9 +25,13 @@
         outline: none;
     }
 
-    &.dragging {
+    &.draggable {
         cursor: pointer;
-        cursor: hand;
+        cursor: grab;
+    }
+    
+    &.dragging {
+        cursor: grabbing;
     }
 }
 .slick-slider .slick-track,
@@ -65,6 +69,8 @@
     float: left;
     height: 100%;
     min-height: 1px;
+    display: none;
+    
     [dir="rtl"] & {
         float: right;
     }
@@ -74,8 +80,6 @@
     &.slick-loading img {
         display: none;
     }
-
-    display: none;
 
     &.dragging img {
         pointer-events: none;
