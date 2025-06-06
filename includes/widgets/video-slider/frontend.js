@@ -54,6 +54,10 @@ jQuery(window).on('elementor/frontend/init', function () {
 				observeParents: true,
 				observer: true,
 				handleElementorBreakpoints: true,
+				// Configure no-swiping for interactive elements
+				noSwiping: true,
+				noSwipingClass: 'swiper-no-swiping',
+				noSwipingSelector: '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
 				on: {
 					init: (swiper) => {
 						console.log('Swiper initialized');
@@ -124,6 +128,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 
 			await this.initSwiper();
 			this.initVideoLightbox();
+			this.preventSliderDragOnInteractiveElements();
 			
 			// Initialize videos after Swiper is ready
 			setTimeout(() => {
@@ -537,6 +542,71 @@ jQuery(window).on('elementor/frontend/init', function () {
 			// Remove error class to hide fallback image
 			slideItem.removeClass('video-failed');
 			console.log('Video loaded successfully, fallback image hidden');
+		}
+
+		preventSliderDragOnInteractiveElements() {
+			const self = this;
+			const jQuery = window.jQuery;
+			
+			// Prevent slider dragging when interacting with interactive elements
+			const interactiveElements = '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
+			
+			// More aggressive prevention for interactive elements
+			this.elements.$swiperContainer.find(interactiveElements).each(function() {
+				const element = jQuery(this);
+				
+				// Prevent all touch events from bubbling up
+				element.on('touchstart.preventDrag', function(e) {
+					console.log('Preventing drag on interactive element:', this.className);
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+					
+					// Mark the slide as non-swipeable
+					const slide = jQuery(this).closest('.swiper-slide');
+					slide.addClass('swiper-no-swiping');
+					
+					// Remove class after a delay
+					setTimeout(() => {
+						slide.removeClass('swiper-no-swiping');
+					}, 500);
+				});
+				
+				element.on('touchmove.preventDrag', function(e) {
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				});
+				
+				element.on('touchend.preventDrag', function(e) {
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				});
+				
+				// Also prevent mouse events for desktop
+				element.on('mousedown.preventDrag', function(e) {
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				});
+				
+				element.on('mousemove.preventDrag', function(e) {
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				});
+				
+				element.on('mouseup.preventDrag', function(e) {
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				});
+			});
+			
+			// Additional Swiper configuration to respect no-swiping class
+			if (this.swiper && this.swiper.params) {
+				this.swiper.params.noSwiping = true;
+				this.swiper.params.noSwipingClass = 'swiper-no-swiping';
+				this.swiper.params.noSwipingSelector = interactiveElements;
+				
+				// Update Swiper with new params
+				this.swiper.update();
+			}
 		}
 	}
 
