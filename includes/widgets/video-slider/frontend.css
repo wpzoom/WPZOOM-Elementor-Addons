@@ -267,7 +267,7 @@
 	height: 100%;
 	z-index: 1;
 	overflow: hidden;
-    /*cursor: grab;*/
+    cursor: grab;
 }
 
 /* Handle FitVids plugin interference */

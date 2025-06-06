@@ -955,40 +955,6 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'arrow_prev_icon',
-			[
-				'label' => esc_html__( 'Previous Icon', 'wpzoom-elementor-addons' ),
-				'label_block' => false,
-				'type' => Controls_Manager::ICONS,
-				'skin' => 'inline',
-				'default' => [
-					'value' => 'fas fa-chevron-left',
-					'library' => 'fa-solid'
-				],
-				'condition' => [
-					'navigation' => [ 'arrow', 'both' ]
-				],
-			]
-		);
-
-		$this->add_control(
-			'arrow_next_icon',
-			[
-				'label' => esc_html__( 'Next Icon', 'wpzoom-elementor-addons' ),
-				'label_block' => false,
-				'type' => Controls_Manager::ICONS,
-				'skin' => 'inline',
-				'default' => [
-					'value' => 'fas fa-chevron-right',
-					'library' => 'fa-solid'
-				],
-				'condition' => [
-					'navigation' => [ 'arrow', 'both' ]
-				],
-			]
-		);
-
 		$this->end_controls_section();
 	}
 
@@ -1376,80 +1342,11 @@ class Video_Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_arrow',
 			[
-				'label' => esc_html__( 'Navigation :: Arrow', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Navigation Arrows', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->add_control(
-			'arrow_position_toggle',
-			[
-				'label' => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::POPOVER_TOGGLE,
-				'label_off' => esc_html__( 'None', 'wpzoom-elementor-addons' ),
-				'label_on' => esc_html__( 'Custom', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-			]
-		);
-
-		$this->start_popover();
-
-		$this->add_responsive_control(
-			'arrow_position_y',
-			[
-				'label' => esc_html__( 'Vertical', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
-				'condition' => [
-					'arrow_position_toggle' => 'yes'
-				],
-				'range' => [
-					'px' => [
-						'min' => -100,
-						'max' => 500,
-					],
-					'%' => [
-						'min' => -110,
-						'max' => 110,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next' => 'top: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'arrow_position_x',
-			[
-				'label' => esc_html__( 'Horizontal', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
-				'default' => [
-					'unit' => 'px',
-					'size' => 25,
-				],
-				'condition' => [
-					'arrow_position_toggle' => 'yes'
-				],
-				'range' => [
-					'px' => [
-						'min' => -100,
-						'max' => 500,
-					],
-					'%' => [
-						'min' => -110,
-						'max' => 110,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .slick-prev' => 'left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .slick-next' => 'right: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->end_popover();
 
 		$this->add_responsive_control(
 			'arrow_size',
@@ -1573,7 +1470,7 @@ class Video_Slider extends Widget_Base {
 		$this->start_controls_section(
 			'_section_style_dots',
 			[
-				'label' => esc_html__( 'Navigation :: Dots', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Navigation Dots', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -2625,13 +2522,9 @@ class Video_Slider extends Widget_Base {
 
 		</div>
 
-		<?php if ( ! empty( $settings[ 'arrow_prev_icon' ][ 'value' ] ) ) : ?>
-			<button type="button" class="slick-prev"><?php Icons_Manager::render_icon( $settings[ 'arrow_prev_icon' ], [ 'aria-hidden' => 'true' ] ); ?></button>
-		<?php endif; ?>
+		<button type="button" class="slick-prev"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M353,450a15,15,0,0,1-10.61-4.39L157.5,260.71a15,15,0,0,1,0-21.21L342.39,54.6a15,15,0,1,1,21.22,21.21L189.32,250.1,363.61,424.39A15,15,0,0,1,353,450Z"/></g></svg></button>
 
-		<?php if ( ! empty( $settings[ 'arrow_next_icon' ][ 'value' ] ) ) : ?>
-			<button type="button" class="slick-next"><?php Icons_Manager::render_icon( $settings[ 'arrow_next_icon' ], [ 'aria-hidden' => 'true' ] ); ?></button>
-		<?php endif; ?>
+		<button type="button" class="slick-next"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M202.1,450a15,15,0,0,1-10.6-25.61L365.79,250.1,191.5,75.81A15,15,0,0,1,212.71,54.6l184.9,184.9a15,15,0,0,1,0,21.21l-184.9,184.9A15,15,0,0,1,202.1,450Z"/></g></svg></button>
 
 		<?php
 	}
