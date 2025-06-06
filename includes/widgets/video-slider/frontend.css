@@ -1,492 +1,393 @@
-.wpz-video-slider {
+/* Video Slider Widget - Swiper Implementation */
+
+.wpz-video-slider-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100vh; /* Default height, can be overridden by custom height control */
 	overflow: hidden;
-	height: 100vh; /* Full viewport height by default */
-	width: 100%;
-	position: relative;
 }
-.wpz-video-slider .slick-track,
-.wpz-video-slider .slick-list {
+
+.wpz-video-slider-wrapper .swiper-wrapper {
 	height: 100%;
 }
-.wpz-video-slider .slick-slide {
-	display: inline-block !important;
-	float: none;
-	vertical-align: middle;
-	border: 0;
-	height: 100vh; /* Full viewport height */
-	outline: none; /* Remove focus outline */
-}
-.wpz-video-slider .slick-slide > div {
-	height: 100%;
-}
-.wpz-video-slider .slick-next,
-.wpz-video-slider .slick-prev {
-	z-index: 999;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0;
-	border: none;
-	border-radius: 50%;
-	background-color: rgba(255, 255, 255, 0.1);
-	color: #fff;
-	font-size: 24px;
-	opacity: 0.8;
-	transition: all 0.3s ease;
-	width: 50px;
-	height: 50px;
-	cursor: pointer;
-	top: 50%;
-	transform: translateY(-50%);
-}
-.wpz-video-slider .slick-next:focus,
-.wpz-video-slider .slick-next:hover,
-.wpz-video-slider .slick-prev:focus,
-.wpz-video-slider .slick-prev:hover {
-	opacity: 1;
-	background-color: rgba(255, 255, 255, 0.2);
-	transform: translateY(-50%) scale(1.1);
-}
-.wpz-video-slider .slick-next:before,
-.wpz-video-slider .slick-prev:before {
-	display: none;
-	content: "";
-}
-.wpz-video-slider .slick-prev {
-	left: 25px;
-}
-.wpz-video-slider .slick-next {
-	right: 25px;
-}
-.wpz-video-slider .slick-next > svg,
-.wpz-video-slider .slick-prev > svg {
-	width: auto;
-	height: 1em;
-	fill: currentColor;
-}
-.wpz-video-slider .slick-disabled {
-	opacity: .3;
-	cursor: not-allowed;
-}
-/* Remove default slide spacing for full-width layout */
-.wpz-video-slider:not(.slick-vertical) .slick-slide {
-	padding-right: 0;
-	padding-left: 0;
-}
-.wpz-video-slider.slick-vertical .slick-slide {
-	padding-top: 0;
-	padding-bottom: 0;
-}
-.wpz-video-slider .wpz-slick-slide {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 100%;
-}
-.wpz-video-slider .wpz-slick-item {
+
+.wpz-video-slider-wrapper .swiper-slide {
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 300px;
 	height: 100%;
-	width: 100%;
 	overflow: hidden;
 }
 
-.wpz-video-slider .wpz-slick-item::before {
-	content: '';
+/* Slide backgrounds */
+.wpz-slide-bg {
 	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 2;
-	pointer-events: none;
-	transition: opacity 0.3s ease;
-	display: none; /* Hidden by default, enabled via Elementor controls */
-}
-
-.wpz-video-slider .wpz-slick-content {
-	position: relative;
-	z-index: 10;
 	width: 100%;
-    max-width: 80%;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-	padding: 3rem;
-	color: #fff;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+
+/* Video backgrounds */
+.wpz-video-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.wpz-video-bg video,
+.wpz-video-bg iframe {
+	/* Let JavaScript handle positioning and sizing */
+	object-fit: cover;
+	background: #000;
+}
+
+/* Video fallback image - hidden by default, shown only when video fails */
+.wpz-video-fallback {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+/* Show fallback when video fails to load */
+.wpz-slide-item.video-failed .wpz-video-fallback {
+	opacity: 1;
+	z-index: 1;
+}
+
+/* Hide video container when it fails */
+.wpz-slide-item.video-failed .wpz-video-bg {
+	opacity: 0;
+}
+
+/* Content overlay */
+.wpz-slide-inner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+.wpz-slide-content {
 	text-align: center;
+	color: white;
+	max-width: 70%;
+	margin: 0 auto;
+	z-index: 10;
 }
 
-.wpzjs-slick-video .wpz-slick-content {
-    background: none !important;
-}
-
-.wpz-video-slider .wpz-slick-title {
-	margin-top: 0;
-	margin-bottom: 1rem;
+.wpz-slide-title {
+	font-size: 50px;
+	font-weight: 600;
+	margin-bottom: 20px;
 	line-height: 1.2;
-	color: #fff;
+    color: #fff;
 }
 
-.wpz-video-slider .wpz-slick-subtitle {
-	margin: 0 0 2rem 0;
-	line-height: 1.6;
-    opacity: .9;
-	margin-left: auto;
-	margin-right: auto;
+.wpz-slide-subtitle {
+	font-size: 18px;
+	margin-bottom: 30px;
+	line-height: 1.5;
 }
 
-/* Action buttons and lightbox */
-.wpz-video-slider .wpz-slick-actions {
+/* Actions */
+.wpz-slide-actions {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.wpz-slide-button-wrapper,
+.wpz-slide-lightbox-wrapper {
 	display: flex;
 	justify-content: center;
-    flex-direction: column;
-	align-items: center;
-	gap: 1rem;
-	margin-top: 2rem;
 }
 
-/* Individual button wrapper for independent alignment */
-.wpz-video-slider .wpz-slick-button-wrapper {
-	display: flex;
-	width: 100%;
-	justify-content: center; /* Default center alignment */
-}
-
-/* Individual play icon wrapper for independent alignment */
-.wpz-video-slider .wpz-slick-lightbox-wrapper {
-	display: flex;
-	width: 100%;
-	justify-content: center; /* Default center alignment */
-}
-
-.wpz-video-slider .wpz-slick-button {
-	display: inline-flex;
-	align-items: center;
-	padding: 15px 25px;
-	background: none;
-	color: #fff;
+.wpz-slide-button {
+	padding: 15px 30px;
+	background: transparent;
+	border: 2px solid white;
+	color: white;
 	text-decoration: none;
-	border-radius: 0;
-	font-weight: 600;
+	border-radius: 4px;
 	transition: all 0.3s ease;
-	border: 2px solid #fff;
+	font-weight: 500;
 }
 
-.wpz-video-slider .wpz-slick-button:hover {
-	background-color: #fff;
-	border-color: #fff;
-	color: #000;
-	text-decoration: none;
+.wpz-slide-button:hover {
+	background: white;
+	color: #333;
 }
 
-.wpz-video-slider .wpz-slick-lightbox-trigger {
+/* Video lightbox trigger */
+.wpz-slide-lightbox-trigger {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	width: 70px;
 	height: 70px;
-	background-color: rgba(255, 255, 255, 0.1);
-	border: 2px solid rgba(255, 255, 255, 0.8);
+	background: rgba(255, 255, 255, 0.1);
+	border: 2px solid white;
 	border-radius: 50%;
-	color: #fff;
+	color: white;
 	text-decoration: none;
-	font-size: 2rem;
 	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
 }
 
-.wpz-video-slider .wpz-slick-lightbox-trigger:hover {
-	background-color: rgba(255, 255, 255, 0.3);
-	border-color: #fff;
+.wpz-slide-lightbox-trigger:hover {
+	background: rgba(255, 255, 255, 0.2);
 	transform: scale(1.1);
-	/*box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);*/
-	color: #fff;
-	text-decoration: none;
 }
 
-.wpz-video-slider .wpz-slick-lightbox-trigger svg {
-	margin-left: 3px; /* Optical centering for play icon */
-	transition: all 0.3s ease;
+.wpz-slide-lightbox-trigger svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
 }
 
-/* Dots navigation */
-.wpz-video-slider .slick-dots {
-	bottom: 30px;
-	z-index: 999;
-	position: absolute;
-	width: 100%;
-	text-align: center;
-}
-
-.wpz-video-slider .slick-dots li {
-	display: inline-block;
-	margin: 0 5px;
-}
-
-.wpz-video-slider .slick-dots li button:before {
-	color: rgba(255, 255, 255, 0.5);
-	font-size: 12px;
-}
-
-.wpz-video-slider .slick-dots li.slick-active button:before,
-.wpz-video-slider .slick-dots li button:hover:before {
-	color: #fff;
-}
-
-/* Image backgrounds */
-.wpz-video-slider .wpz-slick-item--image {
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.wpz-video-slider .wpz-slick-item--image .wpz-slick-img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-	z-index: 0;
-}
-
-/* Video backgrounds */
-.wpz-video-slider .wpz-slick-item--video {
-	background: #000;
-}
-
-/* Video Background Wrapper */
-.wpz-video-slider .wpz-video-bg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	overflow: hidden;
-    cursor: grab;
-}
-
-/* Handle FitVids plugin interference */
-.wpz-video-slider .wpz-video-bg .fluid-width-video-wrapper {
-	position: absolute !important;
-	top: 0 !important;
-	left: 0 !important;
-	width: 100% !important;
-	height: 100% !important;
-	padding-top: 0 !important;
-}
-
-.wpz-video-slider .wpz-video-bg iframe,
-.wpz-video-slider .wpz-video-bg video {
-	/* Initial positioning - JavaScript will handle dynamic sizing */
+/* Navigation arrows */
+.wpz-video-slider-wrapper .swiper-button-prev,
+.wpz-video-slider-wrapper .swiper-button-next {
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border: none;
-	pointer-events: none;
-	min-width: 100%;
-	min-height: 100%;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 50px;
+	margin-top: 0;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	color: white;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
 }
 
-/* Fallback image for video backgrounds */
-.wpz-video-slider .wpz-video-fallback {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	z-index: 0;
+.wpz-video-slider-wrapper .swiper-button-prev {
+	left: 30px;
 }
 
-/* Hide fallback when video is loaded */
-.wpz-video-slider .wpz-video-bg + .wpz-video-fallback {
+.wpz-video-slider-wrapper .swiper-button-next {
+	right: 30px;
+}
+
+.wpz-video-slider-wrapper .swiper-button-prev:hover,
+.wpz-video-slider-wrapper .swiper-button-next:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: translateY(-50%) scale(1.1);
+}
+
+.wpz-video-slider-wrapper .swiper-button-prev::after,
+.wpz-video-slider-wrapper .swiper-button-next::after {
 	display: none;
 }
 
-/* Legacy video wrapper support */
-.wpz-video-slider .wpz-video-wrapper {
+.wpz-video-slider-wrapper .swiper-button-prev svg,
+.wpz-video-slider-wrapper .swiper-button-next svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
+}
+
+/* Pagination dots */
+.wpz-video-slider-wrapper .swiper-pagination {
+	bottom: 30px;
+	z-index: 999;
+}
+
+.wpz-video-slider-wrapper .swiper-pagination-bullet {
+	background: rgba(255, 255, 255, 0.5);
+	opacity: 1;
+	transition: all 0.3s ease;
+}
+
+.wpz-video-slider-wrapper .swiper-pagination-bullet-active {
+	background: white;
+	transform: scale(1.2);
+}
+
+/* Background overlay */
+.wpz-slide-item::before {
+	content: "";
 	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
-}
-.wpz-video-slider iframe,
-.wpz-video-slider video {
+	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 2;
+	display: none; /* Hidden by default, controlled by Elementor toggle */
 }
 
-/* Video backgrounds and images should stay below overlay */
-.wpz-video-slider .wpz-video-bg,
-.wpz-video-slider .wpz-slick-img,
-.wpz-video-slider .wpz-video-fallback {
-	position: absolute;
-	z-index: 1;
+/* Video lightbox */
+.wpz-lightbox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.9);
+	z-index: 999999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
 }
 
-
-/* Lightox */
-.wpz-video-lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.wpz-video-lightbox.wpz-lightbox-show {
-    opacity: 1;
-    visibility: visible;
+.wpz-lightbox.active {
+	opacity: 1;
+	visibility: visible;
 }
 
 .wpz-lightbox-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	cursor: pointer;
+	z-index: 1;
 }
 
 .wpz-lightbox-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 1200px;
-    height: 80vh;
-    max-height: 675px;
+	position: relative;
+	width: 90%;
+	max-width: 900px;
+	aspect-ratio: 16/9;
+	z-index: 2;
 }
 
 .wpz-lightbox-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    border-radius: 8px;
-    overflow: visible;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
 }
 
 .wpz-lightbox-video {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.wpz-lightbox-video iframe,
-.wpz-lightbox-video video {
-    width: 100%;
-    height: 100%;
-    border: none;
+	width: 100%;
+	height: 100%;
+	border: none;
 }
 
 .wpz-lightbox-close {
-    position: absolute;
-    top: -50px;
-    right: -25px;
-    width: 50px;
-    height: 50px;
-    color: white;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-    background: none;
-    border: none;
-}
-
-.wpz-lightbox-close svg {
-    width: 24px;
-    height: 24px;
-    stroke: currentColor;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: -25px;
+	right: -25px;
+	width: 50px;
+	height: 50px;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: 50%;
+	color: white;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	z-index: 10;
 }
 
 .wpz-lightbox-close:hover {
-    color: #fff;
+	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.1);
 }
 
-body.wpz-lightbox-open {
-    overflow: hidden;
+.wpz-lightbox-close svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
 }
 
-@media (max-width: 768px) {
-    .wpz-lightbox-container {
-        width: 95%;
-        height: 70vh;
-    }
+/* Responsive design */
+@media (max-width: 1024px) {
+	.wpz-slide-title {
+		font-size: 36px;
+	}
 
-    .wpz-lightbox-close {
-        top: -20px;
-        right: -20px;
-        width: 45px;
-        height: 45px;
-    }
+	.wpz-slide-subtitle {
+		font-size: 16px;
+	}
 
-    .wpz-lightbox-close svg {
-        width: 20px;
-        height: 20px;
-    }
+	.wpz-video-slider-wrapper .swiper-button-prev {
+		left: 20px;
+	}
+
+	.wpz-video-slider-wrapper .swiper-button-next {
+		right: 20px;
+	}
 }
 
-/* Dynamic video sizing handled by JavaScript - removing fixed responsive rules */
+@media (max-width: 767px) {
+	.wpz-slide-title {
+		font-size: 26px;
+		margin-bottom: 15px;
+	}
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-	.wpz-video-slider .wpz-slick-content {
-		padding: 2rem 1rem;
+	.wpz-slide-subtitle {
+		font-size: 16px;
+		margin-bottom: 20px;
 	}
 	
-	.wpz-video-slider .wpz-slick-actions {
-		flex-direction: column;
-		gap: 1rem;
+	.wpz-slide-content {
+		max-width: 90%;
 	}
 	
-	.wpz-video-slider .wpz-slick-lightbox-trigger {
+	.wpz-slide-lightbox-trigger {
 		width: 60px;
 		height: 60px;
-		font-size: 1.5rem;
 	}
 	
-	.wpz-video-slider .slick-next,
-	.wpz-video-slider .slick-prev {
-		width: 40px;
-		height: 40px;
-		font-size: 18px;
+	.wpz-slide-lightbox-trigger svg {
+		width: 20px;
+		height: 20px;
 	}
 	
-	.wpz-video-slider .wpz-video-bg[data-mobile-disabled="true"] {
-		display: none !important;
+	.wpz-video-slider-wrapper .swiper-button-prev,
+	.wpz-video-slider-wrapper .swiper-button-next {
+		width: 45px;
+		height: 45px;
 	}
 	
-	.wpz-video-slider .wpz-video-bg[data-mobile-disabled="true"] + .wpz-video-fallback {
-		display: block !important;
-	}
-}
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-	.wpz-video-slider .slick-prev {
+	.wpz-video-slider-wrapper .swiper-button-prev {
 		left: 15px;
 	}
 	
-	.wpz-video-slider .slick-next {
+	.wpz-video-slider-wrapper .swiper-button-next {
 		right: 15px;
+	}
+
+	.wpz-lightbox-close {
+		top: -20px;
+		right: -20px;
+		width: 45px;
+		height: 45px;
 	}
 }
