@@ -699,7 +699,7 @@ class Video_Slider extends Widget_Base {
 				'title' => 'Vimeo Video Integration',
 				'subtitle' => 'Seamlessly integrate Vimeo videos as background elements. Enjoy professional video hosting with advanced customization options.',
 				'show_video_lightbox' => 'yes',
-				'lightbox_video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+				'lightbox_video_url' => 'https://www.youtube.com/watch?v=a3ICNMQW7Ok',
 			],
 			// Slide 3: Image background with link (for self-hosted video upload demo)
 			[

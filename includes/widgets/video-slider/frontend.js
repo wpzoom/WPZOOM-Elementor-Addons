@@ -5,7 +5,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 		
 		constructor() {
 			super(...arguments);
-			this.isProduction = !window.elementorFrontend?.config?.environmentMode?.edit;
 			this.videoEventHandlers = new WeakMap();
 			this.dimensionCache = new Map();
 			this.lastResizeTime = 0;
@@ -68,15 +67,12 @@ jQuery(window).on('elementor/frontend/init', function () {
 				noSwipingSelector: '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
 				on: {
 					init: (swiper) => {
-						this.debugLog('Swiper initialized');
 						this.requestAnimationFrame(() => this.initVideoBackgrounds());
 					},
 					slideChange: (swiper) => {
-						this.debugLog('Slide changed to:', swiper.activeIndex);
 						this.requestAnimationFrame(() => this.handleVideoBackgrounds());
 					},
 					resize: (swiper) => {
-						this.debugLog('Swiper resized');
 						this.throttledResizeHandler();
 					}
 				}
@@ -211,11 +207,8 @@ jQuery(window).on('elementor/frontend/init', function () {
 					const videoType = videoContainer.data('video-type');
 					
 					if (!videoType) {
-						this.debugLog('No video type found for container');
 						return;
 					}
-					
-					this.debugLog('Initializing video background:', videoType);
 					
 					if (videoType === 'hosted') {
 						this.handleHostedVideo(videoContainer);
@@ -265,19 +258,15 @@ jQuery(window).on('elementor/frontend/init', function () {
 		handleHostedVideo(container) {
 			const video = container.find('video')[0];
 			if (!video) {
-				this.debugLog('No video element found in hosted video container');
 				this.handleVideoError(container);
 				return;
 			}
-			
-			this.debugLog('Handling hosted video');
 			
 			const isMobile = window.innerWidth <= 768;
 			const playOnMobile = container.data('play-on-mobile');
 			
 			if (isMobile && !playOnMobile) {
 				video.style.display = 'none';
-				this.debugLog('Video hidden on mobile (play on mobile disabled)');
 				this.handleVideoError(container);
 				return;
 			}
@@ -286,13 +275,11 @@ jQuery(window).on('elementor/frontend/init', function () {
 			if (!this.videoEventHandlers.has(video)) {
 				// Add error handling
 				const errorHandler = () => {
-					this.debugLog('Video failed to load, showing fallback');
 					this.handleVideoError(container);
 				};
 				
 				// Add load handler with dimension detection
 				const loadHandler = () => {
-					this.debugLog('Video metadata loaded, dimensions:', video.videoWidth, 'x', video.videoHeight);
 					this.handleVideoSuccess(container);
 					// Resize with actual video dimensions
 					this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
@@ -317,7 +304,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// If video metadata is already loaded, resize immediately
 			if (video.readyState >= 1 && video.videoWidth && video.videoHeight) {
-				this.debugLog('Video already loaded, resizing');
 				this.resizeVideo(container, video, video.videoWidth / video.videoHeight);
 			} else {
 				// Fallback resize with default ratio while loading
@@ -327,7 +313,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			// Play video if paused
 			if (video.paused) {
 				video.play().catch((error) => {
-					this.debugLog('Video autoplay failed:', error.message);
 					this.handleVideoError(container);
 				});
 			}
@@ -336,24 +321,19 @@ jQuery(window).on('elementor/frontend/init', function () {
 		handleIframeVideo(container) {
 			const iframe = container.find('iframe')[0];
 			if (!iframe) {
-				this.debugLog('No iframe element found in iframe video container');
 				this.handleVideoError(container);
 				return;
 			}
-			
-			this.debugLog('Handling iframe video');
 			
 			// Check if event handlers are already attached
 			if (!this.videoEventHandlers.has(iframe)) {
 				// Add error handling for iframe
 				const errorHandler = () => {
-					this.debugLog('Iframe video failed to load, showing fallback');
 					this.handleVideoError(container);
 				};
 				
 				// Add load handler
 				const loadHandler = () => {
-					this.debugLog('Iframe loaded successfully');
 					this.handleVideoSuccess(container);
 				};
 				
@@ -381,7 +361,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			if (!iframe.dataset.loaded) {
 				iframe.addEventListener('load', () => {
 					iframe.dataset.loaded = 'true';
-					this.debugLog('Iframe loaded, resizing...');
 					this.requestAnimationFrame(() => {
 						this.resizeVideo(container, iframe, 16 / 9);
 					});
@@ -412,7 +391,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 				const { width: containerWidth, height: containerHeight } = containerDimensions;
 				
 				if (containerWidth === 0 || containerHeight === 0) {
-					this.debugLog('Container has zero dimensions, retrying...');
 					// Limit retry attempts to prevent infinite recursion
 					if (!video.dataset.retryCount) {
 						video.dataset.retryCount = '0';
@@ -435,15 +413,11 @@ jQuery(window).on('elementor/frontend/init', function () {
 				
 				if (!actualVideoRatio && video.tagName === 'VIDEO' && video.videoWidth && video.videoHeight) {
 					actualVideoRatio = video.videoWidth / video.videoHeight;
-					this.debugLog('Detected video ratio from video element:', actualVideoRatio);
 				}
 				
 				if (!actualVideoRatio) {
 					actualVideoRatio = 16 / 9; // Default fallback
-					this.debugLog('Using default 16:9 ratio');
 				}
-				
-				this.debugLog('Resizing video with ratio:', actualVideoRatio);
 				
 				const containerRatio = containerWidth / containerHeight;
 				
@@ -476,8 +450,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 					zIndex: '1',
 					pointerEvents: 'none'
 				});
-				
-				this.debugLog('Video resized successfully');
 				
 			} catch (error) {
 				console.error('Error resizing video:', error);
@@ -598,7 +570,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// Add error class to show fallback image
 			slideItem.addClass('video-failed');
-			this.debugLog('Video failed, fallback image should now be visible');
 		}
 
 		handleVideoSuccess(container) {
@@ -607,7 +578,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// Remove error class to hide fallback image
 			slideItem.removeClass('video-failed');
-			this.debugLog('Video loaded successfully, fallback image hidden');
 		}
 
 		preventSliderDragOnInteractiveElements() {
@@ -618,7 +588,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// Prevent all interaction events with single delegation
 			this.elements.$swiperContainer.on('touchstart.preventDrag mousedown.preventDrag', interactiveSelector, (e) => {
-				this.debugLog('Preventing drag on interactive element');
 				e.stopPropagation();
 				e.stopImmediatePropagation();
 				
@@ -654,7 +623,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 				this.throttledResizeHandler = this.throttle(() => {
 					// Check if widget is still active before processing
 					if (this.elements && this.elements.$swiperContainer && this.elements.$swiperContainer.length) {
-						this.debugLog('Window resized, updating video backgrounds');
 						this.resizeAllVideos();
 					}
 				}, 250);
@@ -691,11 +659,9 @@ jQuery(window).on('elementor/frontend/init', function () {
 				if (videoType === 'hosted' && video.tagName === 'VIDEO' && video.videoWidth && video.videoHeight) {
 					// Use actual video dimensions for hosted videos
 					const videoRatio = video.videoWidth / video.videoHeight;
-					this.debugLog('Resizing hosted video on window resize, ratio:', videoRatio);
 					this.resizeVideo(videoContainer, video, videoRatio);
 				} else {
 					// Use default 16:9 for iframe videos
-					this.debugLog('Resizing iframe video on window resize');
 					this.resizeVideo(videoContainer, video, 16 / 9);
 				}
 			});
@@ -723,12 +689,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 			};
 		}
 
-		debugLog(...args) {
-			if (!this.isProduction) {
-				console.log('[VideoSlider]', ...args);
-			}
-		}
-
 		onDestroy() {
 			// Clean up resize handler first
 			if (this.throttledResizeHandler) {
@@ -741,7 +701,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 				try {
 					this.swiper.destroy(true, true);
 				} catch (error) {
-					this.debugLog('Error destroying swiper:', error);
+					// Silent cleanup
 				}
 				this.swiper = null;
 			}
