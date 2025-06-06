@@ -591,6 +591,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Button Text', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Learn More', 'wpzoom-elementor-addons' ),
+                'label_block' => true,
 				'condition' => [
 					'show_button' => 'yes',
 				],
@@ -643,6 +644,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Lightbox Video URL', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => esc_html__( 'YouTube or Vimeo URL', 'wpzoom-elementor-addons' ),
+                'label_block' => true,
 				'condition' => [
 					'show_video_lightbox' => 'yes',
 				],
@@ -1716,6 +1718,7 @@ class Video_Slider extends Widget_Base {
             [
                 'label' => esc_html__( 'Icon Color', 'wpzoom-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
+                'default' => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .wpz-slide-lightbox-trigger' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .wpz-slide-lightbox-trigger svg' => 'fill: {{VALUE}};',

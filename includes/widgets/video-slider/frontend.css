@@ -198,6 +198,7 @@
 	width: 24px;
 	height: 24px;
 	fill: currentColor !important;
+    /*color: #fff;*/
 	color: inherit;
 	pointer-events: none;
 	touch-action: none;
