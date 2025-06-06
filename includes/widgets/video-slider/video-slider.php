@@ -1131,8 +1131,7 @@ class Video_Slider extends Widget_Base {
 					'size' => 0,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .slick-slider:not(.slick-vertical) .slick-slide' => 'padding-right: {{SIZE}}{{UNIT}}; padding-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .slick-slider.slick-vertical .slick-slide' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-slide' => 'padding-right: {{SIZE}}{{UNIT}}; padding-left: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1831,7 +1830,7 @@ class Video_Slider extends Widget_Base {
 					'size' => 40,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; font-size: calc({{SIZE}}{{UNIT}} * 0.4);',
 				],
 			]
 		);
@@ -1840,7 +1839,7 @@ class Video_Slider extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'arrow_border',
-				'selector' => '{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next',
+				'selector' => '{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next',
 			]
 		);
 
@@ -1851,7 +1850,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+					'{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
 				],
 			]
 		);
@@ -1872,7 +1871,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1884,7 +1883,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#00000000',
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev, {{WRAPPER}} .slick-next' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-button-prev, {{WRAPPER}} .swiper-button-next' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1904,7 +1903,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-button-prev:hover, {{WRAPPER}} .swiper-button-next:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1915,7 +1914,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-button-prev:hover, {{WRAPPER}} .swiper-button-next:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1929,7 +1928,7 @@ class Video_Slider extends Widget_Base {
 					'arrow_border_border!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .slick-prev:hover, {{WRAPPER}} .slick-next:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-button-prev:hover, {{WRAPPER}} .swiper-button-next:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1964,7 +1963,7 @@ class Video_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots' => 'bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination' => 'bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1976,7 +1975,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots li' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2);',
+					'{{WRAPPER}} .swiper-pagination .swiper-pagination-bullet' => 'margin-right: calc({{SIZE}}{{UNIT}} / 2); margin-left: calc({{SIZE}}{{UNIT}} / 2);',
 				],
 			]
 		);
@@ -2003,7 +2002,7 @@ class Video_Slider extends Widget_Base {
 				],
 				'toggle' => true,
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots' => 'text-align: {{VALUE}}'
+					'{{WRAPPER}} .swiper-pagination' => 'text-align: {{VALUE}}'
 				]
 			]
 		);
@@ -2023,7 +2022,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots li button:before' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -2034,7 +2033,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots li button:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-pagination-bullet' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -2054,7 +2053,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots li button:hover:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-pagination-bullet:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -2075,7 +2074,7 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots li.slick-active button:before' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -2086,7 +2085,7 @@ class Video_Slider extends Widget_Base {
 				'label' => esc_html__( 'Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slick-dots .slick-active button:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .swiper-pagination-bullet-active' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -2550,7 +2549,7 @@ class Video_Slider extends Widget_Base {
 					$item_tag = 'div';
 					$id = 'wpz-slide-item-' . $slide ['_id' ];
 
-					$this->add_render_attribute( $id, 'class', 'wpz-slide-item swiper-slide' );
+					$this->add_render_attribute( $id, 'class', 'wpz-slide-item swiper-slide elementor-repeater-item-' . esc_attr( $slide['_id'] ) );
 					$this->add_render_attribute( $id, 'class', 'wpz-slide-item--' . $background_type );
 
 					// Only make the slide a link if no button or lightbox is shown and a link is provided
@@ -2564,74 +2563,70 @@ class Video_Slider extends Widget_Base {
 					}
 					?>
 
-					<div class="elementor-repeater-item-<?php echo esc_attr( $slide['_id'] ); ?> swiper-slide">
+					<<?php echo $item_tag; // WPCS: XSS OK. ?> <?php $this->print_render_attribute_string( $id ); ?>>
 
-						<<?php echo $item_tag; // WPCS: XSS OK. ?> <?php $this->print_render_attribute_string( $id ); ?>>
+						<?php if ( 'video' === $background_type ) : ?>
+							<!-- Video Background -->
+							<?php $this->render_video_background( $slide ); ?>
 
-							<?php if ( 'video' === $background_type ) : ?>
-								<!-- Video Background -->
-								<?php $this->render_video_background( $slide ); ?>
-
-								<!-- Fallback Image for Video (hidden by default, shown only when video fails) -->
-								<?php if ( ! empty( $slide['background_fallback']['url'] ) ) : ?>
-									<img class="wpz-video-fallback" src="<?php echo esc_url( $slide['background_fallback']['url'] ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
-								<?php endif; ?>
-
-							<?php else : ?>
-								<!-- Image Background -->
-								<?php
-								$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
-								if ( ! $image ) {
-									$image = $slide[ 'image' ][ 'url' ];
-								}
-								?>
-								<?php if ( $image ) : ?>
-									<div class="wpz-slide-bg" style="background-image: url(<?php echo esc_url( $image ); ?>);"></div>
-								<?php endif; ?>
+							<!-- Fallback Image for Video (hidden by default, shown only when video fails) -->
+							<?php if ( ! empty( $slide['background_fallback']['url'] ) ) : ?>
+								<img class="wpz-video-fallback" src="<?php echo esc_url( $slide['background_fallback']['url'] ); ?>" alt="<?php echo esc_attr( $slide[ 'title' ] ); ?>">
 							<?php endif; ?>
 
-							<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] || $has_button || $has_lightbox ) : ?>
-								<div class="wpz-slide-inner">
-									<div class="wpz-slide-content">
-										<?php if ( $slide[ 'title' ] ) : ?>
-											<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
-										<?php endif; ?>
-										<?php if ( $slide[ 'subtitle' ] ) : ?>
-											<p class="wpz-slide-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
-										<?php endif; ?>
+						<?php else : ?>
+							<!-- Image Background -->
+							<?php
+							$image = wp_get_attachment_image_url( $slide[ 'image' ][ 'id' ], $settings[ 'thumbnail_size' ] );
+							if ( ! $image ) {
+								$image = $slide[ 'image' ][ 'url' ];
+							}
+							?>
+							<?php if ( $image ) : ?>
+								<div class="wpz-slide-bg" style="background-image: url(<?php echo esc_url( $image ); ?>);"></div>
+							<?php endif; ?>
+						<?php endif; ?>
 
-										<?php if ( $has_button || $has_lightbox ) : ?>
-											<div class="wpz-slide-actions">
-												<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
-													<div class="wpz-slide-button-wrapper">
-														<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
-														   class="wpz-slide-button elementor-button"
-														   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
-														   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
-															<?php echo esc_html( $slide['button_text'] ); ?>
-														</a>
-													</div>
-												<?php endif; ?>
+						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] || $has_button || $has_lightbox ) : ?>
+							<div class="wpz-slide-inner">
+								<div class="wpz-slide-content">
+									<?php if ( $slide[ 'title' ] ) : ?>
+										<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+									<?php endif; ?>
+									<?php if ( $slide[ 'subtitle' ] ) : ?>
+										<p class="wpz-slide-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
+									<?php endif; ?>
 
-												<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
-													<div class="wpz-slide-lightbox-wrapper">
-														<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
-														   class="wpz-slide-lightbox-trigger"
-														   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
-			                                               <svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
-															<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
-														</a>
-													</div>
-												<?php endif; ?>
-											</div>
-										<?php endif; ?>
-									</div>
+									<?php if ( $has_button || $has_lightbox ) : ?>
+										<div class="wpz-slide-actions">
+											<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
+												<div class="wpz-slide-button-wrapper">
+													<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
+													   class="wpz-slide-button elementor-button"
+													   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+													   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+														<?php echo esc_html( $slide['button_text'] ); ?>
+													</a>
+												</div>
+											<?php endif; ?>
+
+											<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
+												<div class="wpz-slide-lightbox-wrapper">
+													<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
+													   class="wpz-slide-lightbox-trigger"
+													   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
+				                                               <svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
+														<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
+													</a>
+												</div>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
 								</div>
-							<?php endif; ?>
+							</div>
+						<?php endif; ?>
 
-						</<?php echo $item_tag; // WPCS: XSS OK. ?>>
-
-					</div>
+					</<?php echo $item_tag; // WPCS: XSS OK. ?>>
 
 				<?php endforeach; ?>
 
@@ -2645,10 +2640,10 @@ class Video_Slider extends Widget_Base {
 			<?php if ( count( $slides ) > 1 ) : ?>
 				<?php if ( $show_arrows ) : ?>
 					<div class="swiper-button-prev">
-						<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M353,450a15,15,0,0,1-10.61-4.39L157.5,260.71a15,15,0,0,1,0-21.21L342.39,54.6a15,15,0,1,1,21.22,21.21L189.32,250.1,363.61,424.39A15,15,0,0,1,353,450Z"/></g></svg>
+						<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g data-name="1" id="_1"><path d="M353,450a15,15,0,0,1-10.61-4.39L157.5,260.71a15,15,0,0,1,0-21.21L342.39,54.6a15,15,0,1,1,21.22,21.21L189.32,250.1,363.61,424.39A15,15,0,0,1,353,450Z"/></g></svg>
 					</div>
 					<div class="swiper-button-next">
-						<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="1" id="_1"><path d="M202.1,450a15,15,0,0,1-10.6-25.61L365.79,250.1,191.5,75.81A15,15,0,0,1,212.71,54.6l184.9,184.9a15,15,0,0,1,0,21.21l-184.9,184.9A15,15,0,0,1,202.1,450Z"/></g></svg>
+						<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g data-name="1" id="_1"><path d="M202.1,450a15,15,0,0,1-10.6-25.61L365.79,250.1,191.5,75.81A15,15,0,0,1,212.71,54.6l184.9,184.9a15,15,0,0,1,0,21.21l-184.9,184.9A15,15,0,0,1,202.1,450Z"/></g></svg>
 					</div>
 				<?php endif; ?>
 
