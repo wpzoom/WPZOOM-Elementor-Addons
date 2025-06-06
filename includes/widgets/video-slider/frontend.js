@@ -9,6 +9,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			this.videoEventHandlers = new WeakMap();
 			this.dimensionCache = new Map();
 			this.lastResizeTime = 0;
+			this.boundCleanupMethods = new Set(); // Track cleanup methods
 		}
 		
 		getDefaultSettings() {
@@ -648,21 +649,32 @@ jQuery(window).on('elementor/frontend/init', function () {
 		}
 
 		setupResizeHandler() {
-			if (!this.throttledResizeHandler) {
+			// Only create handler if it doesn't exist and widget is still active
+			if (!this.throttledResizeHandler && this.elements.$swiperContainer) {
 				this.throttledResizeHandler = this.throttle(() => {
-					this.debugLog('Window resized, updating video backgrounds');
-					this.resizeAllVideos();
+					// Check if widget is still active before processing
+					if (this.elements && this.elements.$swiperContainer && this.elements.$swiperContainer.length) {
+						this.debugLog('Window resized, updating video backgrounds');
+						this.resizeAllVideos();
+					}
 				}, 250);
+				
+				window.addEventListener('resize', this.throttledResizeHandler);
 			}
-			
-			window.addEventListener('resize', this.throttledResizeHandler);
 		}
 
 		resizeAllVideos() {
-			if (!this.elements.$swiperContainer) return;
+			// Safety check - ensure widget is still active
+			if (!this.elements || !this.elements.$swiperContainer || !this.elements.$swiperContainer.length) {
+				return;
+			}
 			
 			// Clear dimension cache on resize
-			this.dimensionCache.clear();
+			if (this.dimensionCache && typeof this.dimensionCache.clear === 'function') {
+				this.dimensionCache.clear();
+			} else if (this.dimensionCache) {
+				this.dimensionCache = new Map();
+			}
 			
 			const jQuery = window.jQuery;
 			const videoContainers = this.elements.$swiperContainer.find('.wpz-video-bg');
@@ -718,21 +730,49 @@ jQuery(window).on('elementor/frontend/init', function () {
 		}
 
 		onDestroy() {
-			// Clean up resize handler
+			// Clean up resize handler first
 			if (this.throttledResizeHandler) {
 				window.removeEventListener('resize', this.throttledResizeHandler);
+				this.throttledResizeHandler = null;
 			}
 			
-			// Clean up video event handlers
-			this.videoEventHandlers.clear();
+			// Clean up swiper instance
+			if (this.swiper) {
+				try {
+					this.swiper.destroy(true, true);
+				} catch (error) {
+					this.debugLog('Error destroying swiper:', error);
+				}
+				this.swiper = null;
+			}
 			
-			// Clear dimension cache
-			this.dimensionCache.clear();
+			// Clean up video event handlers - WeakMap doesn't need manual cleanup
+			// Just remove references so garbage collection can work
+			if (this.videoEventHandlers) {
+				this.videoEventHandlers = new WeakMap();
+			}
+			
+			// Clear dimension cache manually
+			if (this.dimensionCache && typeof this.dimensionCache.clear === 'function') {
+				this.dimensionCache.clear();
+			} else if (this.dimensionCache) {
+				this.dimensionCache = new Map();
+			}
 			
 			// Clean up event delegation
-			if (this.elements.$swiperContainer) {
+			if (this.elements && this.elements.$swiperContainer) {
 				this.elements.$swiperContainer.off('.preventDrag');
 			}
+			
+			// Clean up lightbox handlers
+			const jQuery = window.jQuery;
+			if (jQuery) {
+				jQuery(document).off('click.wpzLightbox');
+				jQuery(document).off('keydown.wpzLightbox');
+			}
+			
+			// Clear all references
+			this.elements = null;
 			
 			super.onDestroy();
 		}
