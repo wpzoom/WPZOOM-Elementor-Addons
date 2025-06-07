@@ -163,6 +163,10 @@ class License_Manager {
 						<?php endif; ?>
 						
 						<input type="submit" name="check_license" class="button-secondary" value="<?php esc_attr_e( 'Check License Status', 'wpzoom-elementor-addons' ); ?>" style="margin-left: 10px;" />
+						
+						<?php if ( ! empty( $license_key ) ) : ?>
+							<input type="submit" name="clear_license" class="button-secondary" value="<?php esc_attr_e( 'Clear License', 'wpzoom-elementor-addons' ); ?>" style="margin-left: 10px;" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to clear the license key?', 'wpzoom-elementor-addons' ); ?>');" />
+						<?php endif; ?>
 					</p>
 				</form>
 
@@ -198,6 +202,8 @@ class License_Manager {
 			$this->deactivate_license();
 		} elseif ( isset( $_POST['check_license'] ) ) {
 			$this->check_license( $license_key );
+		} elseif ( isset( $_POST['clear_license'] ) ) {
+			$this->clear_license();
 		}
 	}
 
@@ -209,6 +215,9 @@ class License_Manager {
 			$this->set_license_message( __( 'Please enter a license key.', 'wpzoom-elementor-addons' ) );
 			return;
 		}
+
+		// Always save the license key, even if activation fails (so user can edit/correct it)
+		update_option( self::LICENSE_KEY_OPTION, $license_key );
 
 		$api_params = array(
 			'edd_action' => 'activate_license',
@@ -258,7 +267,6 @@ class License_Manager {
 			}
 			$this->set_license_message( $message );
 		} else {
-			update_option( self::LICENSE_KEY_OPTION, $license_key );
 			update_option( self::LICENSE_STATUS_OPTION, $license_data['license'] );
 			update_option( self::LICENSE_DATA_OPTION, $license_data );
 			$this->set_license_message( __( 'License activated successfully!', 'wpzoom-elementor-addons' ), 'success' );
@@ -292,10 +300,21 @@ class License_Manager {
 		$license_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 		if( $license_data['license'] == 'deactivated' ) {
+			delete_option( self::LICENSE_KEY_OPTION );
 			delete_option( self::LICENSE_STATUS_OPTION );
 			delete_option( self::LICENSE_DATA_OPTION );
 			$this->set_license_message( __( 'License deactivated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
+	}
+
+	/**
+	 * Clear license
+	 */
+	private function clear_license() {
+		delete_option( self::LICENSE_KEY_OPTION );
+		delete_option( self::LICENSE_STATUS_OPTION );
+		delete_option( self::LICENSE_DATA_OPTION );
+		$this->set_license_message( __( 'License cleared successfully!', 'wpzoom-elementor-addons' ), 'success' );
 	}
 
 	/**
