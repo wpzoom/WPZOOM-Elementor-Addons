@@ -67,7 +67,13 @@ class Video_Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Video Slideshow', 'wpzoom-elementor-addons' );
+		$title = esc_html__( 'Video Slideshow', 'wpzoom-elementor-addons' );
+		
+		if ( ! $this->has_premium_access() ) {
+			$title .= ' ' . esc_html__( '(Pro)', 'wpzoom-elementor-addons' );
+		}
+		
+		return $title;
 	}
 
 	/**
@@ -80,6 +86,10 @@ class Video_Slider extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
+		if ( ! $this->has_premium_access() ) {
+			return 'eicon-lock';
+		}
+		
 		return 'eicon-media-carousel';
 	}
 
@@ -275,8 +285,54 @@ class Video_Slider extends Widget_Base {
 	 * @return void
 	 */
 	protected function register_controls() {
+		if ( ! $this->has_premium_access() ) {
+			$this->register_premium_upgrade_controls();
+			return;
+		}
+		
 		$this->register_content_controls();
 		$this->register_style_controls();
+	}
+
+	/**
+	 * Register Premium Upgrade Controls.
+	 *
+	 * Shows upgrade notice for non-premium users.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function register_premium_upgrade_controls() {
+		$this->start_controls_section(
+			'_section_premium_upgrade',
+			[
+				'label' => esc_html__( 'Video Slideshow Widget', 'wpzoom-elementor-addons' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'premium_upgrade_notice',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => sprintf(
+					'<div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
+						<div style="font-size: 48px; color: #6c757d; margin-bottom: 15px;">🔒</div>
+						<h3 style="margin: 0 0 10px 0; color: #495057;">%s</h3>
+						<p style="margin: 0 0 20px 0; color: #6c757d; line-height: 1.5;">%s</p>
+						<a href="%s" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 500;">%s</a>
+					</div>',
+					esc_html__( 'Premium Feature', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Use Video Slideshow widget and dozens more pro features to extend your toolbox and build sites faster and better. This widget requires a premium WPZOOM theme.', 'wpzoom-elementor-addons' ),
+					esc_url( 'https://www.wpzoom.com/themes/' ),
+					esc_html__( 'Upgrade Now', 'wpzoom-elementor-addons' )
+				),
+				'content_classes' => 'wpzoom-premium-upgrade-notice',
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -2729,6 +2785,11 @@ class Video_Slider extends Widget_Base {
 	 * @return void
 	 */
 	protected function render() {
+		if ( ! $this->has_premium_access() ) {
+			$this->render_premium_upgrade_notice();
+			return;
+		}
+		
 		$settings = $this->get_settings_for_display();
 		$slides = [];
 
@@ -2899,5 +2960,73 @@ class Video_Slider extends Widget_Base {
 		</div>
 
 		<?php
+	}
+
+	/**
+	 * Render Premium Upgrade Notice.
+	 *
+	 * Shows upgrade notice on frontend for non-premium users.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_premium_upgrade_notice() {
+		if ( Plugin::$instance->editor->is_edit_mode() ) {
+			// Show notice in editor
+			?>
+			<div style="text-align: center; padding: 40px 20px; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; margin: 20px 0;">
+				<div style="font-size: 64px; color: #6c757d; margin-bottom: 20px;">🔒</div>
+				<h3 style="margin: 0 0 15px 0; color: #495057; font-size: 24px;"><?php esc_html_e( 'Video Slideshow Widget (Pro)', 'wpzoom-elementor-addons' ); ?></h3>
+				<p style="margin: 0 0 25px 0; color: #6c757d; line-height: 1.6; font-size: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">
+					<?php esc_html_e( 'This premium widget requires a WPZOOM theme to unlock its full potential. Create stunning video slideshows with advanced customization options.', 'wpzoom-elementor-addons' ); ?>
+				</p>
+				<a href="<?php echo esc_url( 'https://www.wpzoom.com/themes/' ); ?>" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.3s;">
+					<?php esc_html_e( 'Get WPZOOM Theme', 'wpzoom-elementor-addons' ); ?>
+				</a>
+			</div>
+			<?php
+		} else {
+			// Show minimal notice on frontend
+			?>
+			<div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; color: #6c757d;">
+				<span style="font-size: 18px;">🔒</span>
+				<?php esc_html_e( 'Premium Widget - Requires WPZOOM Theme', 'wpzoom-elementor-addons' ); ?>
+			</div>
+			<?php
+		}
+	}
+
+	/**
+	 * Check if user has access to premium features.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 * @return bool True if user has premium access, false otherwise.
+	 */
+	private function has_premium_access() {
+		return class_exists( 'WPZOOM' );
+	}
+
+	/**
+	 * Get widget keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return array Widget keywords.
+	 */
+	public function get_keywords() {
+		return [ 'video', 'slider', 'slideshow', 'carousel', 'media', 'background', 'wpzoom', 'pro' ];
+	}
+
+	/**
+	 * Show in panel.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return bool Whether to show the widget in panel.
+	 */
+	public function show_in_panel() {
+		return true; // Always show in panel, but with restrictions
 	}
 }
