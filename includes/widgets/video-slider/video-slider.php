@@ -67,7 +67,7 @@ class Video_Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Video Slider', 'wpzoom-elementor-addons' );
+		return esc_html__( 'Video Slideshow', 'wpzoom-elementor-addons' );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class Video_Slider extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'wpzoom-elementor-addons' ];
+		return [ 'wpzoom-elementor-addons-pro' ];
 	}
 
 	/**

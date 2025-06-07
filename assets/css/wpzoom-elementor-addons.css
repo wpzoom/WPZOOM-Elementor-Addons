@@ -22,10 +22,13 @@
 #elementor-panel-category-wpzoom-elementor-addons-reel,
 #elementor-panel-category-wpzoom-elementor-addons-foodica,
 #elementor-panel-category-wpzoom-elementor-addons-cookbook {
-    order: -2;
+    order: -3;
 }
 #elementor-panel-category-wpzoom-elementor-addons {
     order: -1
+}
+#elementor-panel-category-wpzoom-elementor-addons-pro {
+    order: -2
 }
 .elementor-add-new-section .elementor-add-wpzoom-templates-button {
     background:url(../images/logo.svg) no-repeat center center;

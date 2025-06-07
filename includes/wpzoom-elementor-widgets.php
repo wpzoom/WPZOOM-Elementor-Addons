@@ -112,15 +112,22 @@ class WPZOOM_Elementor_Widgets {
 		$elements_manager->add_category(
 			'wpzoom-elementor-addons',
 			[
-				'title' => __( 'WPZOOM', 'wpzoom-elementor-addons' ),
+				'title' => __( 'WPZOOM Free', 'wpzoom-elementor-addons' ),
 				'icon' => 'fa fa-plug'
 			]
 		);
-		if( self::is_supported_theme( 'inspiro' ) ) {
+        $elements_manager->add_category(
+            'wpzoom-elementor-addons-pro',
+            [
+                'title' => __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ),
+                'icon' => 'fa fa-plug'
+            ]
+        );
+ 		if( self::is_supported_theme( 'inspiro' ) ) {
 			$elements_manager->add_category(
 				'wpzoom-elementor-addons-inspiro',
 				[
-					'title' => __( 'WPZOOM Inspiro', 'wpzoom-elementor-addons' ),
+					'title' => __( 'Inspiro Widgets', 'wpzoom-elementor-addons' ),
 					'icon' => 'fa fa-plug'
 				]
 			);
