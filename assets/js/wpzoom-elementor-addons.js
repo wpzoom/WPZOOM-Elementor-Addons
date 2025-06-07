@@ -129,6 +129,13 @@ var WPZCached = null;
 		/* INSERT template buttons */
 		$('.wpzoom-btn-template-insert, .elementor-template-library-template-action').unbind('click');
         $('.wpzoom-btn-template-insert, .elementor-template-library-template-action').click(function(){
+			// Check if this is a locked template trying to be inserted
+			if ( $(this).hasClass('wpzoom-locked-template') ) {
+				// Show upgrade notice for locked template insertion
+				elementor.templates.showErrorDialog( 'This template is only available with WPZOOM Elementor Addons Pro license. Please visit wpzoom.com to get your license key.' );
+				return false;
+			}
+
 			var WPZ_selectedElement = this;
             showLoadingView();
 			var filename = $( WPZ_selectedElement ).attr( "data-template-name" ) + ".json";
@@ -156,7 +163,7 @@ var WPZCached = null;
 					windowWPZ.wpzModal.hide();
 			} )
 			.fail( function error(errorData) {
-				elementor.templates.showErrorDialog( 'The template couldn’t be imported. Please try again or get in touch with the WPZOOM team.' );
+				elementor.templates.showErrorDialog( 'The template could not be imported. Please try again or get in touch with the WPZOOM team.' );
 				hideLoadingView();
 			} );
         });
@@ -196,11 +203,34 @@ var WPZCached = null;
 			var jsonData = $(this).attr('data-template');
 			var data = jQuery.parseJSON( jsonData );
 			var slug = data.id;
+			var isLocked = $(this).hasClass('wpzoom-template-thumb-locked');
+
 			//console.log( data );
 			$('.elementor-templates-modal__header__logo').hide();
 			$('#wpzoom-elementor-template-library-toolbar').hide();
 			$('#wpzoom-elementor-template-library-header-preview').show();
 			$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').attr( 'data-template-name', slug );
+
+			// If template is locked, add a class to the insert button to handle it differently
+			if ( isLocked ) {
+				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').addClass('wpzoom-locked-template');
+				// Update button text and style for locked templates
+				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-button-title').text('Unlock with Pro');
+				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').css({
+					'background': '#3496ff',
+					'color': '#fff'
+				});
+			} else {
+				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').removeClass('wpzoom-locked-template');
+				// Reset button text and style for free templates
+				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-button-title').text('Insert');
+				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').css({
+					'background': '',
+					'border-color': '',
+					'color': ''
+				});
+			}
+
 			$('.wpzoom-header-back-button').show();
             showLoadingView();
             $.post( ajaxurl, { action : 'get_wpzoom_preview', data: data}, function(data) {

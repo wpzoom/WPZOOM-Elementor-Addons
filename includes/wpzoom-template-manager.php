@@ -67,6 +67,8 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
 			add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
 			
+			// Clear template cache when license status changes
+			add_action( 'wpzoom_license_status_changed', array( $this, 'clear_template_cache' ) );
 
 			/* Set initial version to the and call update on first use */
 			if( get_option( 'wpz_current_version' ) == false ) {
@@ -112,6 +114,13 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			$thumb_url = '';
 			echo '<script> var WPZ_Index = []; </script>';
 			
+			// Check license and premium theme status
+			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
+			$has_premium_access = $license_manager->is_license_valid() || class_exists( 'WPZOOM' );
+
+			// Define which themes are free for everyone
+			$free_themes = array( 'Foodica', 'Inspiro Lite' );
+
 			//Get libray json from source
 			$response = wp_remote_get( self::$library_source, array( 'timeout' => 60 ) );
 
@@ -133,29 +142,49 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				
 				for( $i = 0; $i < count( $template_list ); $i++ ) {
 					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['id'] ) );
+					$theme = $template_list[$i]['theme'];
+					$is_theme_free = in_array( $theme, $free_themes );
+					$is_restricted = !$has_premium_access && !$is_theme_free;
 
 					if( isset( $template_list[$i]['separator'] ) ) {
-						echo '<h2 class="wpzoom-templates-library-template-category" data-theme="'. esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ) .'">' . esc_html( $template_list[$i]['separator'] ) . '</h2>';
+						$separator_title = $template_list[$i]['separator'];
+						if ( $is_restricted ) {
+							$separator_title .= ' <span class="wpzoom-pro-badge" style="color: #fff; font-weight: 600; font-size: 12px;">PRO</span>';
+						}
+						echo '<h2 class="wpzoom-templates-library-template-category" data-theme="'. esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ) .'">' . wp_kses_post( $separator_title ) . '</h2>';
 					}
 					?>
 					<div 
-						class="wpzoom-templates-library-template wpzoom-item" 
+						class="wpzoom-templates-library-template wpzoom-item <?php echo $is_restricted ? 'wpzoom-template-pro-only' : ''; ?>"
 						data-theme="<?php echo esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ) ?>" 
 						data-category="<?php echo esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['category'] ) ) ) ?>"
 						>
 						<div class="wpzoom-template-title">
 							<?php echo esc_html( $template_list[$i]['name'] ); ?>
+
 						</div>
 						<div 
-							class="wpzoom-template-thumb wpzoom-index-<?php echo esc_attr( $i ); ?>" 
+							class="wpzoom-template-thumb wpzoom-index-<?php echo esc_attr( $i ); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
 							data-index="<?php echo esc_attr( $i ); ?>" 
 							data-template="<?php echo esc_attr( wp_json_encode( $template_list[$i] ) ); ?>"
 							style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>-thumb.png);"
 						>
+							<?php if ( $is_restricted ) : ?>
+								<div class="wpzoom-template-overlay">
+									<div class="wpzoom-template-lock-icon">🔒</div>
+									<div class="wpzoom-template-pro-text"><?php esc_html_e( 'PRO Only', 'wpzoom-elementor-addons' ); ?></div>
+								</div>
+							<?php endif; ?>
 						</div>
 						<div class="wpzoom-action-bar">
 							<div class="wpzoom-grow"> </div>
-							<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template', 'wpzoom-elementor-addons' ); ?></div>
+							<?php if ( $is_restricted ) : ?>
+								<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="wpzoom-btn-template-upgrade">
+									<?php esc_html_e( 'Unlock with Pro', 'wpzoom-elementor-addons' ); ?>
+								</a>
+							<?php else : ?>
+								<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template', 'wpzoom-elementor-addons' ); ?></div>
+							<?php endif; ?>
 						</div>
 					</div>
 				<?php
@@ -232,11 +261,31 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			else {
 				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/' . $data['thumbnail'];
 			}
-		?>
-		<div id="wpzoom-elementor-template-library-preview"> 
-			<img src="<?php echo esc_url( $thumb_url ); ?>-full.png" alt="<?php echo esc_attr( $data['name']); ?>" />
-		</div>
-		<?php
+
+			// Check if this template is restricted
+			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
+			$has_premium_access = $license_manager->is_license_valid() || class_exists( 'WPZOOM' );
+			$free_themes = array( 'Foodica', 'Inspiro Lite' );
+			$theme = $data['theme'];
+			$is_theme_free = in_array( $theme, $free_themes );
+			$is_restricted = !$has_premium_access && !$is_theme_free;
+
+			?>
+			<div id="wpzoom-elementor-template-library-preview">
+				<?php if ( $is_restricted ) : ?>
+					<div class="wpzoom-preview-pro-notice" style="background: #3496ff; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center;">
+						<div style="font-size: 18px; margin-bottom: 5px;">🔒 <?php esc_html_e( 'Premium Template Preview', 'wpzoom-elementor-addons' ); ?></div>
+						<p style="margin: 0; opacity: 0.9; font-size: 14px;">
+							<?php esc_html_e( 'This template requires WPZOOM Elementor Addons Pro license. Get your license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' ); ?>
+						</p>
+						<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 13px; margin-top: 10px; transition: background 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+							<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
+						</a>
+					</div>
+				<?php endif; ?>
+				<img src="<?php echo esc_url( $thumb_url ); ?>-full.png" alt="<?php echo esc_attr( $data['name']); ?>" />
+			</div>
+			<?php
 		}
 
 		/**
@@ -252,6 +301,18 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			WP_Filesystem();
 
 			return $wp_filesystem;
+		}
+
+		/**
+		 * Clear template cache when license status changes
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function clear_template_cache() {
+			// This will force the template library to reload with updated restrictions
+			// The cache is cleared by removing the JavaScript WPZCached variable on next load
+			// We could also delete transients here if we implement server-side caching
 		}
 	}
 

@@ -261,10 +261,13 @@ class License_Manager {
 					// For expired licenses, still save the status but with a different message
 					update_option( self::LICENSE_STATUS_OPTION, 'expired' );
 					update_option( self::LICENSE_DATA_OPTION, $license_data );
-
+					
 					// Cache the expired status for 24 hours
 					set_transient( 'wpzoom_elementor_addons_license_status_cache', 'expired', 24 * HOUR_IN_SECONDS );
-
+					
+					// Trigger action to clear template cache
+					do_action( 'wpzoom_license_status_changed', 'expired' );
+					
 					$message = __( 'Your license has expired! Please renew it to receive Premium features.', 'wpzoom-elementor-addons' );
 					$this->set_license_message( $message, 'success' );
 					return; // Early return to avoid showing error message
@@ -296,6 +299,9 @@ class License_Manager {
 			
 			// Cache the successful activation for 24 hours
 			set_transient( 'wpzoom_elementor_addons_license_status_cache', $license_data['license'], 24 * HOUR_IN_SECONDS );
+			
+			// Trigger action to clear template cache
+			do_action( 'wpzoom_license_status_changed', $license_data['license'] );
 			
 			$this->set_license_message( __( 'License activated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
@@ -335,6 +341,9 @@ class License_Manager {
 			// Clear the license status cache
 			delete_transient( 'wpzoom_elementor_addons_license_status_cache' );
 			
+			// Trigger action to clear template cache
+			do_action( 'wpzoom_license_status_changed', 'deactivated' );
+			
 			$this->set_license_message( __( 'License deactivated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
 	}
@@ -349,6 +358,9 @@ class License_Manager {
 		
 		// Clear the license status cache
 		delete_transient( 'wpzoom_elementor_addons_license_status_cache' );
+		
+		// Trigger action to clear template cache
+		do_action( 'wpzoom_license_status_changed', 'cleared' );
 		
 		$this->set_license_message( __( 'License cleared successfully!', 'wpzoom-elementor-addons' ), 'success' );
 	}
@@ -391,6 +403,9 @@ class License_Manager {
 
 		// Update the cache with fresh data
 		set_transient( 'wpzoom_elementor_addons_license_status_cache', $license_data['license'], 24 * HOUR_IN_SECONDS );
+
+		// Trigger action to clear template cache
+		do_action( 'wpzoom_license_status_changed', $license_data['license'] );
 
 		if ( $license_data['license'] === 'valid' ) {
 			$this->set_license_message( __( 'License is valid and active!', 'wpzoom-elementor-addons' ), 'success' );
@@ -521,6 +536,9 @@ class License_Manager {
 			
 			// Cache the status for 24 hours
 			set_transient( 'wpzoom_elementor_addons_license_status_cache', $license_data['license'], 24 * HOUR_IN_SECONDS );
+			
+			// Trigger action to clear template cache
+			do_action( 'wpzoom_license_status_changed', $license_data['license'] );
 			
 			return $license_data['license'] === 'valid';
 		}

@@ -1,5 +1,55 @@
 [{
     "name": "Homepage",
+    "id": "inspiro-lite-homepage",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro-lite/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Inspiro Lite"
+},{
+    "name": "About",
+    "id": "inspiro-about",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro/about",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Services",
+    "id": "inspiro-services",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro/services",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Contact Page",
+    "id": "inspiro-contact",
+    "theme": "Inspiro Lite",
+    "category": "Inspiro Lite",
+    "thumbnail": "inspiro/contact",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
+    "id": "foodica-home",
+    "theme": "Foodica",
+    "category": "Foodica",
+    "thumbnail": "foodica/home",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"],
+    "separator" : "Foodica"
+},{
+    "name": "Recipe Index",
+    "id": "foodica-index",
+    "theme": "Foodica",
+    "category": "Foodica",
+    "thumbnail": "foodica/index",
+    "requires": ["free"],
+    "contributor": ["WPZOOM"]
+},{
+    "name": "Homepage",
     "id": "cookbook-home",
     "theme": "CookBook",
     "category": "CookBook",
@@ -37,23 +87,6 @@
     "theme": "CookBook",
     "category": "CookBook",
     "thumbnail": "cookbook/contact",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"]
-},{
-    "name": "Homepage",
-    "id": "foodica-home",
-    "theme": "Foodica (PRO)",
-    "category": "Foodica",
-    "thumbnail": "foodica/home",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"],
-    "separator" : "Foodica (PRO)"
-},{
-    "name": "Recipe Index",
-    "id": "foodica-index",
-    "theme": "Foodica (PRO)",
-    "category": "Foodica",
-    "thumbnail": "foodica/index",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 },{
@@ -1028,39 +1061,6 @@
     "theme": "Reel",
     "category": "Reel",
     "thumbnail": "reel/services",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"]
-},{
-    "name": "Homepage",
-    "id": "inspiro-lite-homepage",
-    "theme": "Inspiro Lite",
-    "category": "Inspiro Lite",
-    "thumbnail": "inspiro-lite/home",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"],
-    "separator" : "Inspiro Lite"
-},{
-    "name": "About",
-    "id": "inspiro-about",
-    "theme": "Inspiro Lite",
-    "category": "Inspiro Lite",
-    "thumbnail": "inspiro/about",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"]
-},{
-    "name": "Services",
-    "id": "inspiro-services",
-    "theme": "Inspiro Lite",
-    "category": "Inspiro Lite",
-    "thumbnail": "inspiro/services",
-    "requires": ["free"],
-    "contributor": ["WPZOOM"]
-},{
-    "name": "Contact Page",
-    "id": "inspiro-contact",
-    "theme": "Inspiro Lite",
-    "category": "Inspiro Lite",
-    "thumbnail": "inspiro/contact",
     "requires": ["free"],
     "contributor": ["WPZOOM"]
 }]
