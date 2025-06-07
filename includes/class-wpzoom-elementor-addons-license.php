@@ -56,6 +56,11 @@ class License_Manager {
 		add_action( 'admin_init', array( $this, 'handle_license_actions' ) );
 		add_action( 'admin_notices', array( $this, 'license_activation_notice' ) );
 		add_action( 'wp_ajax_wpzoom_dismiss_license_notice', array( $this, 'dismiss_license_notice' ) );
+		add_action( 'init', array( $this, 'schedule_license_check' ) );
+		add_action( 'wpzoom_daily_license_check', array( $this, 'daily_license_check' ) );
+		
+		// Clean up scheduled events on plugin deactivation
+		register_deactivation_hook( WPZOOM_EL_ADDONS__FILE__, array( $this, 'cleanup_scheduled_events' ) );
 	}
 
 	/**
@@ -269,6 +274,10 @@ class License_Manager {
 		} else {
 			update_option( self::LICENSE_STATUS_OPTION, $license_data['license'] );
 			update_option( self::LICENSE_DATA_OPTION, $license_data );
+			
+			// Cache the successful activation for 24 hours
+			set_transient( 'wpzoom_elementor_addons_license_status_cache', $license_data['license'], 24 * HOUR_IN_SECONDS );
+			
 			$this->set_license_message( __( 'License activated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
 	}
@@ -303,6 +312,10 @@ class License_Manager {
 			delete_option( self::LICENSE_KEY_OPTION );
 			delete_option( self::LICENSE_STATUS_OPTION );
 			delete_option( self::LICENSE_DATA_OPTION );
+			
+			// Clear the license status cache
+			delete_transient( 'wpzoom_elementor_addons_license_status_cache' );
+			
 			$this->set_license_message( __( 'License deactivated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
 	}
@@ -314,6 +327,10 @@ class License_Manager {
 		delete_option( self::LICENSE_KEY_OPTION );
 		delete_option( self::LICENSE_STATUS_OPTION );
 		delete_option( self::LICENSE_DATA_OPTION );
+		
+		// Clear the license status cache
+		delete_transient( 'wpzoom_elementor_addons_license_status_cache' );
+		
 		$this->set_license_message( __( 'License cleared successfully!', 'wpzoom-elementor-addons' ), 'success' );
 	}
 
@@ -353,6 +370,9 @@ class License_Manager {
 		update_option( self::LICENSE_STATUS_OPTION, $license_data['license'] );
 		update_option( self::LICENSE_DATA_OPTION, $license_data );
 
+		// Update the cache with fresh data
+		set_transient( 'wpzoom_elementor_addons_license_status_cache', $license_data['license'], 24 * HOUR_IN_SECONDS );
+
 		if ( $license_data['license'] === 'valid' ) {
 			$this->set_license_message( __( 'License is valid and active!', 'wpzoom-elementor-addons' ), 'success' );
 		} else {
@@ -385,6 +405,13 @@ class License_Manager {
 	 * Check if license is valid
 	 */
 	public function is_license_valid() {
+		// First check if we have a cached status that's still valid
+		$cached_status = get_transient( 'wpzoom_elementor_addons_license_status_cache' );
+		if ( $cached_status !== false ) {
+			return $cached_status === 'valid';
+		}
+
+		// Fall back to stored status if no cache
 		return $this->get_license_status() === 'valid';
 	}
 
@@ -393,6 +420,74 @@ class License_Manager {
 	 */
 	private function has_premium_theme() {
 		return class_exists( 'WPZOOM' );
+	}
+
+	/**
+	 * Schedule daily license check
+	 */
+	public function schedule_license_check() {
+		if ( ! wp_next_scheduled( 'wpzoom_daily_license_check' ) ) {
+			wp_schedule_event( time(), 'daily', 'wpzoom_daily_license_check' );
+		}
+	}
+
+	/**
+	 * Daily license check via cron
+	 */
+	public function daily_license_check() {
+		$license_key = $this->get_license_key();
+		
+		// Only check if we have a license key
+		if ( empty( $license_key ) ) {
+			return;
+		}
+
+		// Perform the license check and cache the result
+		$this->check_license_and_cache( $license_key );
+	}
+
+	/**
+	 * Check license and cache the result
+	 */
+	private function check_license_and_cache( $license_key ) {
+		if ( empty( $license_key ) ) {
+			return false;
+		}
+
+		$api_params = array(
+			'edd_action' => 'check_license',
+			'license'    => $license_key,
+			'item_id'    => self::PRODUCT_ID,
+			'url'        => home_url()
+		);
+
+		$response = wp_remote_post( self::STORE_URL, array(
+			'timeout'   => 15,
+			'sslverify' => false,
+			'body'      => $api_params
+		) );
+
+		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			// On error, extend the current cache for a shorter period (6 hours)
+			$current_status = $this->get_license_status();
+			set_transient( 'wpzoom_elementor_addons_license_status_cache', $current_status, 6 * HOUR_IN_SECONDS );
+			return false;
+		}
+
+		$license_data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( isset( $license_data['license'] ) ) {
+			// Update stored status
+			update_option( self::LICENSE_STATUS_OPTION, $license_data['license'] );
+			update_option( self::LICENSE_DATA_OPTION, $license_data );
+			
+			// Cache the status for 24 hours
+			set_transient( 'wpzoom_elementor_addons_license_status_cache', $license_data['license'], 24 * HOUR_IN_SECONDS );
+			
+			return $license_data['license'] === 'valid';
+		}
+
+		return false;
 	}
 
 	/**
@@ -483,5 +578,13 @@ class License_Manager {
 
 		update_option( 'wpzoom_license_notice_dismissed', true );
 		wp_die();
+	}
+
+	/**
+	 * Clean up scheduled events on plugin deactivation
+	 */
+	public function cleanup_scheduled_events() {
+		wp_clear_scheduled_hook( 'wpzoom_daily_license_check' );
+		delete_transient( 'wpzoom_elementor_addons_license_status_cache' );
 	}
 } 
