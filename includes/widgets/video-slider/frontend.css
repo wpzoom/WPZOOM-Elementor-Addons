@@ -19,6 +19,11 @@
 	justify-content: center;
 	height: 100%;
 	overflow: hidden;
+	/* Safari fix: Force hardware acceleration and proper rendering */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 /* Slide backgrounds */
@@ -32,6 +37,9 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	z-index: 1;
+	/* Safari fix: Ensure background stays at bottom layer */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 /* Video backgrounds */
@@ -43,6 +51,9 @@
 	height: 100%;
 	z-index: 1;
 	overflow: hidden;
+	/* Safari fix: Ensure video background stays at bottom layer */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-video-bg video,
@@ -84,7 +95,12 @@
 	justify-content: center; /* Can be overridden by Elementor control */
 	width: 100%;
 	height: 100%;
-	z-index: 10;
+	z-index: 1;
+	/* Safari fix: Force hardware acceleration and create stacking context */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 /* Content overlay */
@@ -95,16 +111,23 @@
 	justify-content: inherit; /* Inherit from parent slide item */
 	width: 100%;
 	height: 100%;
-	z-index: 10;
+	z-index: 100;
 	pointer-events: none; /* Allow clicks to pass through to children */
+	/* Safari fix: Ensure content stays on top */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-slide-content {
+	position: relative;
 	text-align: center; /* Can be overridden by Elementor control */
 	color: white;
 	max-width: 70%; /* Can be overridden by Elementor control */
-	z-index: 10;
+	z-index: 101;
 	pointer-events: auto; /* Re-enable clicks for content */
+	/* Safari fix: Force content to stay visible */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-slide-title {
@@ -123,16 +146,22 @@
 
 /* Actions */
 .wpz-slide-actions {
+	position: relative;
 	display: flex;
 	gap: 20px;
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
     flex-direction: column;
+	z-index: 102;
+	/* Safari fix: Ensure actions stay on top */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-slide-button-wrapper,
 .wpz-slide-lightbox-wrapper {
+	position: relative;
 	display: flex;
 	justify-content: center; /* Can be overridden by Elementor control */
 	width: 100%;
@@ -140,9 +169,14 @@
 	-webkit-touch-callout: none;
 	-webkit-tap-highlight-color: transparent;
 	pointer-events: auto;
+	z-index: 103;
+	/* Safari fix: Ensure wrappers stay clickable */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-slide-button {
+	position: relative;
 	padding: 15px 30px;
 	background: transparent;
 	border: 2px solid white;
@@ -157,6 +191,10 @@
 	-webkit-touch-callout: none;
 	-webkit-tap-highlight-color: transparent;
 	pointer-events: auto;
+	z-index: 104;
+	/* Safari fix: Ensure button stays clickable */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-slide-button:hover {
@@ -166,6 +204,7 @@
 
 /* Video lightbox trigger */
 .wpz-slide-lightbox-trigger {
+	position: relative;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -187,6 +226,10 @@
 	-webkit-touch-callout: none;
 	-webkit-tap-highlight-color: transparent;
 	pointer-events: auto;
+	z-index: 104;
+	/* Safari fix: Ensure lightbox trigger stays clickable */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .wpz-slide-lightbox-trigger:hover {
@@ -279,8 +322,11 @@
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.5);
-	z-index: 2;
+	z-index: 50;
 	display: none; /* Hidden by default, controlled by Elementor toggle */
+	/* Safari fix: Ensure overlay stays in correct layer */
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 /* Video lightbox */
@@ -429,5 +475,28 @@
 		right: -20px;
 		width: 45px;
 		height: 45px;
+	}
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+	.wpz-slide-item {
+		isolation: isolate;
+	}
+	
+	.wpz-slide-inner,
+	.wpz-slide-content,
+	.wpz-slide-actions,
+	.wpz-slide-button,
+	.wpz-slide-lightbox-trigger {
+		will-change: transform;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+	
+	.wpz-slide-item::before {
+		will-change: transform;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
 	}
 }

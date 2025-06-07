@@ -67,10 +67,16 @@ jQuery(window).on('elementor/frontend/init', function () {
 				noSwipingSelector: '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
 				on: {
 					init: (swiper) => {
-						this.requestAnimationFrame(() => this.initVideoBackgrounds());
+						this.requestAnimationFrame(() => {
+							this.initVideoBackgrounds();
+							this.fixSafariRendering();
+						});
 					},
 					slideChange: (swiper) => {
-						this.requestAnimationFrame(() => this.handleVideoBackgrounds());
+						this.requestAnimationFrame(() => {
+							this.handleVideoBackgrounds();
+							this.fixSafariRendering();
+						});
 					},
 					resize: (swiper) => {
 						this.throttledResizeHandler();
@@ -789,6 +795,48 @@ jQuery(window).on('elementor/frontend/init', function () {
 			this.elements = null;
 			
 			super.onDestroy();
+		}
+
+		fixSafariRendering() {
+			// Safari-specific fixes for z-index and rendering issues
+			const jQuery = window.jQuery;
+			const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			
+			if (!isSafari) {
+				return;
+			}
+			
+			// Force Safari to recalculate z-index stacking contexts
+			const slides = this.elements.$swiperContainer.find('.swiper-slide');
+			
+			slides.each((index, slide) => {
+				const $slide = jQuery(slide);
+				const $content = $slide.find('.wpz-slide-inner');
+				const $overlay = $slide.find('.wpz-slide-item::before');
+				
+				// Force repaint by temporarily changing and restoring transform
+				if ($content.length) {
+					const currentTransform = $content.css('transform');
+					$content.css('transform', 'translateZ(0.1px)');
+					
+					// Use requestAnimationFrame to ensure the change is applied
+					this.requestAnimationFrame(() => {
+						$content.css('transform', currentTransform || 'translateZ(0)');
+					});
+				}
+				
+				// Ensure content visibility
+				$slide.find('.wpz-slide-content, .wpz-slide-actions, .wpz-slide-button, .wpz-slide-lightbox-trigger').each((i, element) => {
+					const $element = jQuery(element);
+					if ($element.css('visibility') === 'hidden' || $element.css('opacity') === '0') {
+						$element.css({
+							'visibility': 'visible',
+							'opacity': '1',
+							'z-index': parseInt($element.css('z-index')) || 100
+						});
+					}
+				});
+			});
 		}
 	}
 
