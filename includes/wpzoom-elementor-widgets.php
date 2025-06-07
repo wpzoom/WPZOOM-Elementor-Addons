@@ -119,10 +119,28 @@ class WPZOOM_Elementor_Widgets {
 				'icon' => 'fa fa-plug'
 			]
 		);
+        // Check license status and premium theme for dynamic category title
+        $license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
+        $is_license_valid = $license_manager->is_license_valid();
+        $has_premium_theme = self::has_premium_wpzoom_theme();
+        
+        if ( $is_license_valid || $has_premium_theme ) {
+            // Show "Active" status with link to license page (for license) or just "Active" (for premium themes)
+            if ( $is_license_valid ) {
+                $pro_title = __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <span class="wpzoom-pro-active" style="color: #46b450; font-weight: 600;">✓ ' . esc_html__( 'Active', 'wpzoom-elementor-addons' ) . '</span> <a href="' . esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ) . '" class="wpzoom-license-link" title="' . esc_attr__( 'Manage License', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'License', 'wpzoom-elementor-addons' ) . '</a>';
+            } else {
+                // Premium theme active, just show "Active" status
+                $pro_title = __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <span class="wpzoom-pro-active" style="color: #46b450; font-weight: 600;">✓ ' . esc_html__( 'Active', 'wpzoom-elementor-addons' ) . '</span>';
+            }
+        } else {
+            // Show "Upgrade" link to plugin page
+            $pro_title = __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Get Pro Version', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'Upgrade', 'wpzoom-elementor-addons' ) . '</a>';
+        }
+        
         $elements_manager->add_category(
             'wpzoom-elementor-addons-pro',
             [
-                'title' => __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <a href="' . esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ) . '" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Enter License Key', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'License', 'wpzoom-elementor-addons' ) . '</a>',
+                'title' => $pro_title,
                 'icon' => 'fa fa-plug'
             ]
         );
@@ -203,6 +221,17 @@ class WPZOOM_Elementor_Widgets {
 
 		return false;
 
+	}
+
+	/**
+	 * Check if a premium WPZOOM theme is active
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return bool
+	 */
+	public static function has_premium_wpzoom_theme() {
+		return class_exists( 'WPZOOM' );
 	}
 
 	/**

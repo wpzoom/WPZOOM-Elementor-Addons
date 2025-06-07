@@ -389,6 +389,13 @@ class License_Manager {
 	}
 
 	/**
+	 * Check if a premium WPZOOM theme is active
+	 */
+	private function has_premium_theme() {
+		return class_exists( 'WPZOOM' );
+	}
+
+	/**
 	 * Display license messages
 	 */
 	private function display_license_messages() {
@@ -414,8 +421,8 @@ class License_Manager {
 	 * Show license activation notice
 	 */
 	public function license_activation_notice() {
-		// Only show on admin pages and if license is not valid
-		if ( ! current_user_can( 'manage_options' ) || $this->is_license_valid() ) {
+		// Only show on admin pages and if license is not valid and no premium theme is active
+		if ( ! current_user_can( 'manage_options' ) || $this->is_license_valid() || $this->has_premium_theme() ) {
 			return;
 		}
 
