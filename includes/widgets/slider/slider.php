@@ -79,7 +79,7 @@ class Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Slider', 'wpzoom-elementor-addons' );
+		return esc_html__( 'Image Slider', 'wpzoom-elementor-addons' );
 	}
 
 	/**
