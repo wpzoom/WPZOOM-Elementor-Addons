@@ -176,11 +176,22 @@ class License_Manager {
 				</form>
 
 				<div class="wpzoom-license-info" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 30px;">
-					<h3><?php esc_html_e( 'Need a License?', 'wpzoom-elementor-addons' ); ?></h3>
-					<p><?php esc_html_e( 'Purchase WPZOOM Elementor Addons Pro to get access to premium widgets including the Video Slideshow widget.', 'wpzoom-elementor-addons' ); ?></p>
-					<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="button button-primary">
-						<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
-					</a>
+					<?php if ( $license_status === 'expired' ) : ?>
+						<h3><?php esc_html_e( 'License Expired', 'wpzoom-elementor-addons' ); ?></h3>
+						<p style="color: #d54e21; margin-bottom: 15px;">
+							<strong><?php esc_html_e( 'Your license has expired! Please renew it to unlock Premium features.', 'wpzoom-elementor-addons' ); ?></strong>
+						</p>
+						<p><?php esc_html_e( 'You can continue using the free version, however, you\'ll need an active license to unlock the Premium features.', 'wpzoom-elementor-addons' ); ?></p>
+						<a href="https://www.wpzoom.com/account/licenses/" target="_blank" class="button button-primary">
+							<?php esc_html_e( 'Renew License', 'wpzoom-elementor-addons' ); ?>
+						</a>
+					<?php else : ?>
+						<h3><?php esc_html_e( 'Need a License?', 'wpzoom-elementor-addons' ); ?></h3>
+						<p><?php esc_html_e( 'Purchase WPZOOM Elementor Addons Pro to get access to premium widgets including the Video Slideshow widget.', 'wpzoom-elementor-addons' ); ?></p>
+						<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="button button-primary">
+							<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
+						</a>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -247,8 +258,16 @@ class License_Manager {
 		if ( false === $license_data['success'] ) {
 			switch( $license_data['error'] ) {
 				case 'expired' :
-					$message = __( 'Your license key expired.', 'wpzoom-elementor-addons' );
-					break;
+					// For expired licenses, still save the status but with a different message
+					update_option( self::LICENSE_STATUS_OPTION, 'expired' );
+					update_option( self::LICENSE_DATA_OPTION, $license_data );
+
+					// Cache the expired status for 24 hours
+					set_transient( 'wpzoom_elementor_addons_license_status_cache', 'expired', 24 * HOUR_IN_SECONDS );
+
+					$message = __( 'Your license has expired! Please renew it to receive Premium features.', 'wpzoom-elementor-addons' );
+					$this->set_license_message( $message, 'success' );
+					return; // Early return to avoid showing error message
 				case 'disabled' :
 				case 'revoked' :
 					$message = __( 'Your license key has been disabled.', 'wpzoom-elementor-addons' );
@@ -375,8 +394,10 @@ class License_Manager {
 
 		if ( $license_data['license'] === 'valid' ) {
 			$this->set_license_message( __( 'License is valid and active!', 'wpzoom-elementor-addons' ), 'success' );
+		} elseif ( $license_data['license'] === 'expired' ) {
+			$this->set_license_message( __( 'License has expired! Please renew it to unlock Premium features.', 'wpzoom-elementor-addons' ), 'success' );
 		} else {
-			$this->set_license_message( __( 'License is not valid or has expired.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'License is not valid.', 'wpzoom-elementor-addons' ) );
 		}
 	}
 
@@ -408,11 +429,28 @@ class License_Manager {
 		// First check if we have a cached status that's still valid
 		$cached_status = get_transient( 'wpzoom_elementor_addons_license_status_cache' );
 		if ( $cached_status !== false ) {
-			return $cached_status === 'valid';
+			// Allow both 'valid' and 'expired' licenses to access premium features
+			return in_array( $cached_status, [ 'valid', 'expired' ] );
 		}
 
 		// Fall back to stored status if no cache
-		return $this->get_license_status() === 'valid';
+		$stored_status = $this->get_license_status();
+		// Allow both 'valid' and 'expired' licenses to access premium features
+		return in_array( $stored_status, [ 'valid', 'expired' ] );
+	}
+
+	/**
+	 * Check if license is expired specifically
+	 */
+	public function is_license_expired() {
+		// First check if we have a cached status
+		$cached_status = get_transient( 'wpzoom_elementor_addons_license_status_cache' );
+		if ( $cached_status !== false ) {
+			return $cached_status === 'expired';
+		}
+
+		// Fall back to stored status if no cache
+		return $this->get_license_status() === 'expired';
 	}
 
 	/**
