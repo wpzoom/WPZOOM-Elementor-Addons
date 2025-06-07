@@ -317,21 +317,35 @@ class Video_Slider extends Widget_Base {
 			[
 				'type' => Controls_Manager::RAW_HTML,
 				'raw' => sprintf(
-					'<div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;">
-						<div style="font-size: 48px; color: #6c757d; margin-bottom: 15px;">🔒</div>
-						<h3 style="margin: 0 0 10px 0; color: #495057;">%s</h3>
-						<p style="margin: 0 0 20px 0; color: #6c757d; line-height: 1.5;">%s</p>
-						<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-							<a href="%s" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 500;">%s</a>
-							<a href="%s" target="_blank" style="display: inline-block; background: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 500;">%s</a>
+					'<div style="text-align: center; padding: 25px 20px; background: linear-gradient(135deg, #667eea 0%%, #764ba2 100%%); border-radius: 12px; color: white; position: relative; overflow: hidden;">
+						<div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%%;"></div>
+						<div style="position: absolute; bottom: -30px; left: -30px; width: 80px; height: 80px; background: rgba(255,255,255,0.05); border-radius: 50%%;"></div>
+						<div style="position: relative; z-index: 2;">
+							<div style="font-size: 48px; margin-bottom: 15px;">🎬</div>
+							<h3 style="margin: 0 0 12px 0; color: white; font-size: 22px; font-weight: 600;">%s</h3>
+							<p style="margin: 0 0 25px 0; color: rgba(255,255,255,0.9); line-height: 1.6; font-size: 15px; max-width: 400px; margin-left: auto; margin-right: auto;">
+								%s
+							</p>
+							<div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+								<a href="%s" target="_blank" style="display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 14px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3);">
+									%s
+								</a>
+								<a href="%s" target="_blank" style="display: inline-block; background: white; color: #667eea; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 14px; transition: all 0.3s ease;">
+									%s
+								</a>
+							</div>
+							<div style="margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.7);">
+								✨ %s
+							</div>
 						</div>
 					</div>',
-					esc_html__( 'Premium Feature', 'wpzoom-elementor-addons' ),
-					esc_html__( 'Use Video Slideshow widget and dozens more pro features. This widget requires either a premium WPZOOM theme or the WPZOOM Elementor Addons Pro plugin.', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Video Slideshow Widget', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Create stunning video slideshows with background videos, custom overlays, and advanced animations. This premium widget requires either a WPZOOM theme or the WPZOOM Elementor Addons Pro plugin.', 'wpzoom-elementor-addons' ),
 					esc_url( 'https://www.wpzoom.com/themes/' ),
-					esc_html__( 'Get WPZOOM Theme', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Browse WPZOOM Themes', 'wpzoom-elementor-addons' ),
 					esc_url( 'https://www.wpzoom.com/plugins/elementor-addons-pro/' ),
-					esc_html__( 'Get Pro Plugin', 'wpzoom-elementor-addons' )
+					esc_html__( 'Get Pro Plugin', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Unlock dozens more premium widgets and features', 'wpzoom-elementor-addons' )
 				),
 				'content_classes' => 'wpzoom-premium-upgrade-notice',
 			]
@@ -2980,30 +2994,46 @@ class Video_Slider extends Widget_Base {
 		if ( Plugin::$instance->editor->is_edit_mode() ) {
 			// Show notice in editor
 			?>
-			<div style="text-align: center; padding: 40px 20px; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; margin: 20px 0;">
-				<div style="font-size: 64px; color: #6c757d; margin-bottom: 20px;">🔒</div>
-				<h3 style="margin: 0 0 15px 0; color: #495057; font-size: 24px;"><?php esc_html_e( 'Video Slideshow Widget (Pro)', 'wpzoom-elementor-addons' ); ?></h3>
-				<p style="margin: 0 0 25px 0; color: #6c757d; line-height: 1.6; font-size: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">
-					<?php esc_html_e( 'This premium widget requires either a WPZOOM theme or the WPZOOM Elementor Addons Pro plugin to unlock its full potential. Create stunning video slideshows with advanced customization options.', 'wpzoom-elementor-addons' ); ?>
-				</p>
-				<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-					<a href="<?php echo esc_url( 'https://www.wpzoom.com/themes/' ); ?>" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.3s;">
-						<?php esc_html_e( 'Get WPZOOM Theme', 'wpzoom-elementor-addons' ); ?>
-					</a>
-					<a href="<?php echo esc_url( 'https://www.wpzoom.com/plugins/elementor-addons-pro/' ); ?>" target="_blank" style="display: inline-block; background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.3s;">
-						<?php esc_html_e( 'Get Pro Plugin', 'wpzoom-elementor-addons' ); ?>
-					</a>
+			<div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; margin: 20px 0; color: white; position: relative; overflow: hidden;">
+				<div style="position: absolute; top: -20px; right: -20px; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+				<div style="position: absolute; bottom: -30px; left: -30px; width: 80px; height: 80px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+				<div style="position: relative; z-index: 2;">
+					<div style="font-size: 64px; margin-bottom: 20px;">🎬</div>
+					<h3 style="margin: 0 0 15px 0; color: white; font-size: 28px; font-weight: 600;"><?php esc_html_e( 'Video Slideshow Widget (Pro)', 'wpzoom-elementor-addons' ); ?></h3>
+					<p style="margin: 0 0 30px 0; color: rgba(255,255,255,0.9); line-height: 1.6; font-size: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">
+						<?php esc_html_e( 'Create stunning video slideshows with background videos, custom overlays, and advanced animations. This premium widget requires either a WPZOOM theme or the WPZOOM Elementor Addons Pro plugin.', 'wpzoom-elementor-addons' ); ?>
+					</p>
+					<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+						<a href="<?php echo esc_url( 'https://www.wpzoom.com/themes/' ); ?>" target="_blank" style="display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3);">
+							<?php esc_html_e( 'Browse WPZOOM Themes', 'wpzoom-elementor-addons' ); ?>
+						</a>
+						<a href="<?php echo esc_url( 'https://www.wpzoom.com/plugins/elementor-addons-pro/' ); ?>" target="_blank" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; transition: all 0.3s ease;">
+							<?php esc_html_e( 'Get Pro Plugin', 'wpzoom-elementor-addons' ); ?>
+						</a>
+					</div>
+					<div style="margin-top: 25px; font-size: 14px; color: rgba(255,255,255,0.7);">
+						✨ <?php esc_html_e( 'Unlock dozens more premium widgets and features', 'wpzoom-elementor-addons' ); ?>
+					</div>
 				</div>
 			</div>
 			<?php
 		} else {
-			// Show minimal notice on frontend
-			?>
-			<div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; color: #6c757d;">
-				<span style="font-size: 18px;">🔒</span>
-				<?php esc_html_e( 'Premium Widget - Requires WPZOOM Theme or Pro Plugin', 'wpzoom-elementor-addons' ); ?>
-			</div>
-			<?php
+			// Show minimal notice on frontend only to administrators
+			if ( current_user_can( 'manage_options' ) ) {
+				?>
+				<div style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; color: white; margin: 20px 0;">
+					<div style="font-size: 24px; margin-bottom: 10px;">🎬</div>
+					<h4 style="margin: 0 0 8px 0; color: white; font-size: 18px;"><?php esc_html_e( 'Video Slideshow Widget', 'wpzoom-elementor-addons' ); ?></h4>
+					<p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 14px;">
+						<?php esc_html_e( 'This premium widget requires a WPZOOM theme or Pro plugin', 'wpzoom-elementor-addons' ); ?>
+					</p>
+					<p style="margin: 10px 0 0 0; color: rgba(255,255,255,0.7); font-size: 12px;">
+						<?php esc_html_e( '(Only visible to administrators)', 'wpzoom-elementor-addons' ); ?>
+					</p>
+				</div>
+				<?php
+			}
+			// For non-admin users, show nothing on frontend
 		}
 	}
 

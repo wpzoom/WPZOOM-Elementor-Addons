@@ -68,6 +68,9 @@ class WPZOOM_Elementor_Widgets {
 		// Add Plugin actions
 		add_action( 'elementor/elements/categories_registered', [ $this, 'add_widget_categories' ] );
 		add_action( 'elementor/widgets/register', [ $this, 'init_widgets' ] );
+
+		// Add editor assets for pro upsell
+		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_assets' ] );
 	}
 
 	/**
@@ -119,7 +122,7 @@ class WPZOOM_Elementor_Widgets {
         $elements_manager->add_category(
             'wpzoom-elementor-addons-pro',
             [
-                'title' => __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ),
+                'title' => __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Upgrade to Pro', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'Upgrade', 'wpzoom-elementor-addons' ) . '</a>',
                 'icon' => 'fa fa-plug'
             ]
         );
@@ -275,5 +278,22 @@ class WPZOOM_Elementor_Widgets {
 	 */
 	public static function custom_kses( $string = '' ) {
 		return wp_kses( $string, self::get_allowed_html_tags() );
+	}
+
+	/**
+	 * Enqueue editor assets for upgrade links
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function enqueue_editor_assets() {
+		// Enqueue editor CSS for upgrade links
+		wp_enqueue_style(
+			'wpzoom-elementor-addons-editor',
+			WPZOOM_EL_ADDONS_URL . 'assets/css/editor.css',
+			[],
+			WPZOOM_EL_ADDONS_VER
+		);
+
 	}
 }
