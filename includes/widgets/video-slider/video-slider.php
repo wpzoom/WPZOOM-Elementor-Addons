@@ -697,7 +697,7 @@ class Video_Slider extends Widget_Base {
 				'show_video_lightbox' => 'yes',
 				'lightbox_video_url' => 'https://www.youtube.com/watch?v=a3ICNMQW7Ok',
 			],
-			// Slide 3: Image background with link (for self-hosted video upload demo)
+			// Slide 3: Image background with clickable title link
 			[
 				'_id' => 'slide_3',
 				'background_type' => 'image',
@@ -707,8 +707,8 @@ class Video_Slider extends Widget_Base {
 				'title' => 'Upload Your Own Videos',
 				'subtitle' => 'Easily upload and use your own video files as stunning backgrounds. Perfect for custom content and branding.',
 				'link' => [
-					'url' => '#',
-					'is_external' => false,
+					'url' => 'https://wpzoom.com/plugins/',
+					'is_external' => true,
 					'nofollow' => false,
 				],
 			],
@@ -1321,6 +1321,17 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpz-slide-title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'title_link_hover_color',
+			[
+				'label' => esc_html__( 'Link Hover Color', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slide-title-link:hover .wpz-slide-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -2555,7 +2566,8 @@ class Video_Slider extends Widget_Base {
 					$has_lightbox = !empty($slide['show_video_lightbox']) && $slide['show_video_lightbox'] === 'yes';
 					$has_slide_link = isset( $slide[ 'link' ] ) && ! empty( $slide[ 'link' ][ 'url' ] );
 
-					if ( $has_slide_link && !$has_button && !$has_lightbox ) {
+					// Make entire slide clickable only if there's a link but no title, button, or lightbox
+					if ( $has_slide_link && !$has_button && !$has_lightbox && empty( $slide[ 'title' ] ) ) {
 						$item_tag = 'a';
 						$this->add_link_attributes( $id, $slide[ 'link' ] );
 					}
@@ -2589,7 +2601,16 @@ class Video_Slider extends Widget_Base {
 							<div class="wpz-slide-inner">
 								<div class="wpz-slide-content">
 									<?php if ( $slide[ 'title' ] ) : ?>
-										<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+										<?php if ( $has_slide_link ) : ?>
+											<a href="<?php echo esc_url( $slide['link']['url'] ); ?>" 
+											   class="wpz-slide-title-link"
+											   <?php echo ( $slide['link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+											   <?php echo ( $slide['link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+												<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+											</a>
+										<?php else : ?>
+											<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+										<?php endif; ?>
 									<?php endif; ?>
 									<?php if ( $slide[ 'subtitle' ] ) : ?>
 										<p class="wpz-slide-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
