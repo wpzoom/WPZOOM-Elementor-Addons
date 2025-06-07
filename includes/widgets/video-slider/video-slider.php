@@ -3005,7 +3005,20 @@ class Video_Slider extends Widget_Base {
 	 * @return bool True if user has premium access, false otherwise.
 	 */
 	private function has_premium_access() {
-		return class_exists( 'WPZOOM' );
+		// Check if WPZOOM theme is active (original method)
+		if ( class_exists( 'WPZOOM' ) ) {
+			return true;
+		}
+		
+		// Check if Pro plugin is active and licensed
+		if ( class_exists( 'WPZOOM_Elementor_Addons_Pro' ) ) {
+			$pro_instance = WPZOOM_Elementor_Addons_Pro::instance();
+			if ( method_exists( $pro_instance, 'is_license_valid' ) && $pro_instance->is_license_valid() ) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	/**
