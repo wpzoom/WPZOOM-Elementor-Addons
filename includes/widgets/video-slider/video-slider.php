@@ -3004,7 +3004,7 @@ class Video_Slider extends Widget_Base {
 						<?php esc_html_e( 'Create stunning video slideshows with background videos, custom overlays, and advanced animations. This premium widget requires a valid license key from WPZOOM Elementor Addons Pro.', 'wpzoom-elementor-addons' ); ?>
 					</p>
 					<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-elementor-license' ) ); ?>" style="display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3);">
+						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ); ?>" style="display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3);">
 							<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
 						</a>
 						<a href="<?php echo esc_url( 'https://www.wpzoom.com/plugins/elementor-addons-pro/' ); ?>" target="_blank" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 16px; transition: all 0.3s ease;">
@@ -3027,7 +3027,7 @@ class Video_Slider extends Widget_Base {
 					<p style="margin: 0 0 15px 0; color: rgba(255,255,255,0.9); font-size: 14px;">
 						<?php esc_html_e( 'This premium widget requires a valid license key', 'wpzoom-elementor-addons' ); ?>
 					</p>
-					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-elementor-license' ) ); ?>" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; text-decoration: none; border-radius: 20px; font-size: 14px; margin-bottom: 10px;">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ); ?>" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; text-decoration: none; border-radius: 20px; font-size: 14px; margin-bottom: 10px;">
 						<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
 					</a>
 					<p style="margin: 10px 0 0 0; color: rgba(255,255,255,0.7); font-size: 12px;">

@@ -54,7 +54,6 @@ class License_Manager {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_license_page' ) );
 		add_action( 'admin_init', array( $this, 'handle_license_actions' ) );
-		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 		add_action( 'admin_notices', array( $this, 'license_activation_notice' ) );
 		add_action( 'wp_ajax_wpzoom_dismiss_license_notice', array( $this, 'dismiss_license_notice' ) );
 	}
@@ -65,10 +64,10 @@ class License_Manager {
 	public function add_license_page() {
 		add_submenu_page(
 			'options-general.php',
-			__( 'WPZOOM Elementor Addons License', 'wpzoom-elementor-addons' ),
-			__( 'WPZOOM Elementor License', 'wpzoom-elementor-addons' ),
+			__( 'WPZOOM Addons License', 'wpzoom-elementor-addons' ),
+			__( 'WPZOOM Addons License', 'wpzoom-elementor-addons' ),
 			'manage_options',
-			'wpzoom-elementor-license',
+			'wpzoom-addons-license',
 			array( $this, 'license_page' )
 		);
 	}
@@ -83,7 +82,9 @@ class License_Manager {
 		
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'WPZOOM Elementor Addons License', 'wpzoom-elementor-addons' ); ?></h1>
+			<h1><?php esc_html_e( 'WPZOOM Addons License', 'wpzoom-elementor-addons' ); ?></h1>
+			
+			<?php $this->display_license_messages(); ?>
 			
 			<div class="wpzoom-license-container" style="max-width: 800px;">
 				<div class="wpzoom-license-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
@@ -205,7 +206,7 @@ class License_Manager {
 	 */
 	private function activate_license( $license_key ) {
 		if ( empty( $license_key ) ) {
-			add_settings_error( 'wpzoom_license', 'empty_key', __( 'Please enter a license key.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'Please enter a license key.', 'wpzoom-elementor-addons' ) );
 			return;
 		}
 
@@ -223,7 +224,7 @@ class License_Manager {
 		) );
 
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
-			add_settings_error( 'wpzoom_license', 'api_error', __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' ) );
 			return;
 		}
 
@@ -255,12 +256,12 @@ class License_Manager {
 					$message = __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' );
 					break;
 			}
-			add_settings_error( 'wpzoom_license', 'activation_failed', $message );
+			$this->set_license_message( $message );
 		} else {
 			update_option( self::LICENSE_KEY_OPTION, $license_key );
 			update_option( self::LICENSE_STATUS_OPTION, $license_data['license'] );
 			update_option( self::LICENSE_DATA_OPTION, $license_data );
-			add_settings_error( 'wpzoom_license', 'license_activated', __( 'License activated successfully!', 'wpzoom-elementor-addons' ), 'success' );
+			$this->set_license_message( __( 'License activated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
 	}
 
@@ -284,7 +285,7 @@ class License_Manager {
 		) );
 
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
-			add_settings_error( 'wpzoom_license', 'api_error', __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' ) );
 			return;
 		}
 
@@ -293,7 +294,7 @@ class License_Manager {
 		if( $license_data['license'] == 'deactivated' ) {
 			delete_option( self::LICENSE_STATUS_OPTION );
 			delete_option( self::LICENSE_DATA_OPTION );
-			add_settings_error( 'wpzoom_license', 'license_deactivated', __( 'License deactivated successfully!', 'wpzoom-elementor-addons' ), 'success' );
+			$this->set_license_message( __( 'License deactivated successfully!', 'wpzoom-elementor-addons' ), 'success' );
 		}
 	}
 
@@ -306,7 +307,7 @@ class License_Manager {
 		}
 
 		if ( empty( $license_key ) ) {
-			add_settings_error( 'wpzoom_license', 'empty_key', __( 'Please enter a license key.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'Please enter a license key.', 'wpzoom-elementor-addons' ) );
 			return;
 		}
 
@@ -324,7 +325,7 @@ class License_Manager {
 		) );
 
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
-			add_settings_error( 'wpzoom_license', 'api_error', __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'An error occurred, please try again.', 'wpzoom-elementor-addons' ) );
 			return;
 		}
 
@@ -334,9 +335,9 @@ class License_Manager {
 		update_option( self::LICENSE_DATA_OPTION, $license_data );
 
 		if ( $license_data['license'] === 'valid' ) {
-			add_settings_error( 'wpzoom_license', 'license_valid', __( 'License is valid and active!', 'wpzoom-elementor-addons' ), 'success' );
+			$this->set_license_message( __( 'License is valid and active!', 'wpzoom-elementor-addons' ), 'success' );
 		} else {
-			add_settings_error( 'wpzoom_license', 'license_invalid', __( 'License is not valid or has expired.', 'wpzoom-elementor-addons' ) );
+			$this->set_license_message( __( 'License is not valid or has expired.', 'wpzoom-elementor-addons' ) );
 		}
 	}
 
@@ -369,10 +370,25 @@ class License_Manager {
 	}
 
 	/**
-	 * Admin notices
+	 * Display license messages
 	 */
-	public function admin_notices() {
-		settings_errors( 'wpzoom_license' );
+	private function display_license_messages() {
+		$message = get_transient( 'wpzoom_license_message' );
+		if ( $message ) {
+			$type = $message['type'] === 'success' ? 'notice-success' : 'notice-error';
+			echo '<div class="notice ' . esc_attr( $type ) . ' is-dismissible"><p>' . esc_html( $message['text'] ) . '</p></div>';
+			delete_transient( 'wpzoom_license_message' );
+		}
+	}
+
+	/**
+	 * Set license message
+	 */
+	private function set_license_message( $text, $type = 'error' ) {
+		set_transient( 'wpzoom_license_message', array(
+			'text' => $text,
+			'type' => $type
+		), 30 );
 	}
 
 	/**
@@ -385,7 +401,7 @@ class License_Manager {
 		}
 
 		// Don't show on the license page itself
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'wpzoom-elementor-license' ) {
+		if ( isset( $_GET['page'] ) && $_GET['page'] === 'wpzoom-addons-license' ) {
 			return;
 		}
 
@@ -404,7 +420,7 @@ class License_Manager {
 						<?php esc_html_e( 'Enter your WPZOOM Elementor Addons Pro license key to unlock the Video Slideshow widget and other premium features.', 'wpzoom-elementor-addons' ); ?>
 					</p>
 					<p style="margin: 10px 0 0 0;">
-						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-elementor-license' ) ); ?>" class="button button-primary">
+						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ); ?>" class="button button-primary">
 							<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
 						</a>
 						<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="button button-secondary" style="margin-left: 10px;">
