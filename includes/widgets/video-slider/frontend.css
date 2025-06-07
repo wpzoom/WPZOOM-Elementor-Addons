@@ -130,10 +130,19 @@
 	transform: translateZ(0);
 }
 
+/* Content element spacing - applies to all direct children */
+.wpz-slide-content > * {
+	margin-bottom: 20px;
+}
+
+.wpz-slide-content > *:last-child {
+	margin-bottom: 0;
+}
+
 .wpz-slide-title {
 	font-size: 50px;
 	font-weight: 600;
-	margin-bottom: 20px;
+	margin-bottom: 0; /* Controlled by parent spacing */
 	line-height: 1.2;
     color: #fff;
 }
@@ -161,7 +170,7 @@
 
 .wpz-slide-subtitle {
 	font-size: 18px;
-	margin-bottom: 30px;
+	margin-bottom: 0; /* Controlled by parent spacing */
 	line-height: 1.5;
 }
 

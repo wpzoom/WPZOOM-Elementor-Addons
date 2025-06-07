@@ -1007,14 +1007,133 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
+
 		$this->add_control(
-			'settings_navigation',
+			'content_order',
 			[
-				'label' => esc_html__( 'Navigation', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( 'Content Order', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before'
 			]
 		);
+
+		$this->add_control(
+			'content_order_description',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( 'Choose the order of content elements in all slides. This affects title, subtitle, and actions (button/lightbox) across all slides.', 'wpzoom-elementor-addons' ),
+				'content_classes' => 'elementor-descriptor',
+			]
+		);
+
+		$this->add_control(
+			'content_order_preset',
+			[
+				'label' => esc_html__( 'Content Order', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'title-subtitle-actions' => esc_html__( '1. Title → Subtitle → Actions', 'wpzoom-elementor-addons' ),
+					'subtitle-title-actions' => esc_html__( '2. Subtitle → Title → Actions', 'wpzoom-elementor-addons' ),
+					'actions-title-subtitle' => esc_html__( '3. Actions → Title → Subtitle', 'wpzoom-elementor-addons' ),
+					'title-actions-subtitle' => esc_html__( '4. Title → Actions → Subtitle', 'wpzoom-elementor-addons' ),
+					'subtitle-actions-title' => esc_html__( '5. Subtitle → Actions → Title', 'wpzoom-elementor-addons' ),
+					'actions-subtitle-title' => esc_html__( '6. Actions → Subtitle → Title', 'wpzoom-elementor-addons' ),
+				],
+				'default' => 'title-subtitle-actions',
+				'description' => esc_html__( 'Select a predefined order for your slide content elements.', 'wpzoom-elementor-addons' ),
+				'condition' => [
+					'content_order_advanced!' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'content_order_notice',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => esc_html__( '💡 Tip: "Actions" includes both buttons and video lightbox triggers when they are enabled in individual slides.', 'wpzoom-elementor-addons' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+			]
+		);
+
+		$this->add_control(
+			'content_order_advanced',
+			[
+				'label' => esc_html__( 'Advanced Ordering', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Custom', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Preset', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => '',
+				'description' => esc_html__( 'Enable to use drag-and-drop custom ordering instead of presets.', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+		// Advanced repeater for custom ordering
+		$content_repeater = new Repeater();
+
+		$content_repeater->add_control(
+			'element_type',
+			[
+				'label' => esc_html__( 'Element', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'title' => esc_html__( '📝 Title', 'wpzoom-elementor-addons' ),
+					'subtitle' => esc_html__( '📄 Subtitle', 'wpzoom-elementor-addons' ),
+					'actions' => esc_html__( '🎬 Actions (Button & Lightbox)', 'wpzoom-elementor-addons' ),
+				],
+				'default' => 'title',
+			]
+		);
+
+		$content_repeater->add_control(
+			'element_enabled',
+			[
+				'label' => esc_html__( 'Show Element', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'content_order_custom',
+			[
+				'label' => esc_html__( 'Custom Content Order', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $content_repeater->get_controls(),
+				'default' => [
+					[
+						'element_type' => 'title',
+						'element_enabled' => 'yes',
+					],
+					[
+						'element_type' => 'subtitle',
+						'element_enabled' => 'yes',
+					],
+					[
+						'element_type' => 'actions',
+						'element_enabled' => 'yes',
+					],
+				],
+				'title_field' => '{{{ element_type.charAt(0).toUpperCase() + element_type.slice(1) }}} {{{ element_enabled === "yes" ? "✅" : "❌" }}}',
+				'condition' => [
+					'content_order_advanced' => 'yes',
+				],
+				'description' => esc_html__( 'Drag and drop to reorder elements. Toggle visibility for each element.', 'wpzoom-elementor-addons' ),
+			]
+		);
+
+        $this->add_control(
+            'settings_navigation',
+            [
+                'label' => esc_html__( 'Navigation', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before'
+            ]
+        );
 
 		$this->add_control(
 			'navigation',
@@ -1278,6 +1397,36 @@ class Video_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .wpz-slide-content' => 'text-align: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'content_elements_spacing',
+			[
+				'label' => esc_html__( 'Elements Spacing', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+						'step' => 1,
+					],
+					'em' => [
+						'min' => 0,
+						'max' => 5,
+						'step' => 0.1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 20,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .wpz-slide-content > *' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .wpz-slide-content > *:last-child' => 'margin-bottom: 0;',
+				],
+				'description' => esc_html__( 'Space between content elements (title, subtitle, actions).', 'wpzoom-elementor-addons' ),
 			]
 		);
 
@@ -2498,6 +2647,79 @@ class Video_Slider extends Widget_Base {
 	}
 
 	/**
+	 * Render slide content element based on type.
+	 *
+	 * @param string $element_type The type of element to render.
+	 * @param array $slide The slide data.
+	 * @param bool $has_slide_link Whether the slide has a link.
+	 * @param bool $has_button Whether the slide has a button.
+	 * @param bool $has_lightbox Whether the slide has a lightbox.
+	 * @since 1.0.0
+	 * @access private
+	 * @return void
+	 */
+	private function render_slide_content_element( $element_type, $slide, $has_slide_link, $has_button, $has_lightbox ) {
+		switch ( $element_type ) {
+			case 'title':
+				if ( $slide[ 'title' ] ) {
+					if ( $has_slide_link ) {
+						?>
+						<a href="<?php echo esc_url( $slide['link']['url'] ); ?>"
+						   class="wpz-slide-title-link"
+						   <?php echo ( $slide['link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+						   <?php echo ( $slide['link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+							<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+						</a>
+						<?php
+					} else {
+						?>
+						<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
+						<?php
+					}
+				}
+				break;
+
+			case 'subtitle':
+				if ( $slide[ 'subtitle' ] ) {
+					?>
+					<p class="wpz-slide-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
+					<?php
+				}
+				break;
+
+			case 'actions':
+				if ( $has_button || $has_lightbox ) {
+					?>
+					<div class="wpz-slide-actions">
+						<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
+							<div class="wpz-slide-button-wrapper">
+								<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
+								   class="wpz-slide-button elementor-button"
+								   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+								   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+									<?php echo esc_html( $slide['button_text'] ); ?>
+								</a>
+							</div>
+						<?php endif; ?>
+
+						<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
+							<div class="wpz-slide-lightbox-wrapper">
+								<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
+								   class="wpz-slide-lightbox-trigger"
+								   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
+									<svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
+									<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
+								</a>
+							</div>
+						<?php endif; ?>
+					</div>
+					<?php
+				}
+				break;
+		}
+	}
+
+	/**
 	 * Render the Widget.
 	 *
 	 * Renders the widget on the frontend.
@@ -2600,47 +2822,50 @@ class Video_Slider extends Widget_Base {
 						<?php if ( $slide[ 'title' ] || $slide[ 'subtitle' ] || $has_button || $has_lightbox ) : ?>
 							<div class="wpz-slide-inner">
 								<div class="wpz-slide-content">
-									<?php if ( $slide[ 'title' ] ) : ?>
-										<?php if ( $has_slide_link ) : ?>
-											<a href="<?php echo esc_url( $slide['link']['url'] ); ?>" 
-											   class="wpz-slide-title-link"
-											   <?php echo ( $slide['link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
-											   <?php echo ( $slide['link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
-												<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
-											</a>
-										<?php else : ?>
-											<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
-										<?php endif; ?>
-									<?php endif; ?>
-									<?php if ( $slide[ 'subtitle' ] ) : ?>
-										<p class="wpz-slide-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
-									<?php endif; ?>
+									<?php
+									// Determine which ordering system to use
+									$use_advanced_ordering = !empty($settings['content_order_advanced']) && $settings['content_order_advanced'] === 'yes';
+									
+									if ($use_advanced_ordering && !empty($settings['content_order_custom'])) {
+										// Use advanced custom ordering from repeater
+										$content_order = [];
+										foreach ($settings['content_order_custom'] as $item) {
+											if (!empty($item['element_enabled']) && $item['element_enabled'] === 'yes') {
+												$content_order[] = $item['element_type'];
+											}
+										}
+										// Fallback to default if no enabled elements
+										if (empty($content_order)) {
+											$content_order = ['title', 'subtitle', 'actions'];
+										}
+									} else {
+										// Use simple preset ordering
+										$content_order_preset = $settings['content_order_preset'] ?? 'title-subtitle-actions';
+										
+										// Map preset to element order
+										$preset_map = [
+											'title-subtitle-actions' => ['title', 'subtitle', 'actions'],
+											'subtitle-title-actions' => ['subtitle', 'title', 'actions'],
+											'actions-title-subtitle' => ['actions', 'title', 'subtitle'],
+											'title-actions-subtitle' => ['title', 'actions', 'subtitle'],
+											'subtitle-actions-title' => ['subtitle', 'actions', 'title'],
+											'actions-subtitle-title' => ['actions', 'subtitle', 'title'],
+										];
+										
+										$content_order = $preset_map[$content_order_preset] ?? ['title', 'subtitle', 'actions'];
+									}
 
-									<?php if ( $has_button || $has_lightbox ) : ?>
-										<div class="wpz-slide-actions">
-											<?php if ( $has_button && !empty( $slide['button_text'] ) ) : ?>
-												<div class="wpz-slide-button-wrapper">
-													<a href="<?php echo esc_url( $slide['button_link']['url'] ?? '#' ); ?>"
-													   class="wpz-slide-button elementor-button"
-													   <?php echo ( $slide['button_link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
-													   <?php echo ( $slide['button_link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
-														<?php echo esc_html( $slide['button_text'] ); ?>
-													</a>
-												</div>
-											<?php endif; ?>
-
-											<?php if ( $has_lightbox && !empty( $slide['lightbox_video_url'] ) ) : ?>
-												<div class="wpz-slide-lightbox-wrapper">
-													<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
-													   class="wpz-slide-lightbox-trigger"
-													   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
-				                                               <svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
-														<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
-													</a>
-												</div>
-											<?php endif; ?>
-										</div>
-									<?php endif; ?>
+									// Render content elements in the specified order
+									foreach ( $content_order as $element_type ) {
+										$this->render_slide_content_element(
+											$element_type,
+											$slide,
+											$has_slide_link,
+											$has_button,
+											$has_lightbox
+										);
+									}
+									?>
 								</div>
 							</div>
 						<?php endif; ?>
