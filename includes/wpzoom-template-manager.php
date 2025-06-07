@@ -148,7 +148,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 
 					if( isset( $template_list[$i]['separator'] ) ) {
 						$separator_title = $template_list[$i]['separator'];
-						if ( $is_restricted ) {
+						if ( !$is_theme_free ) {
 							$separator_title .= ' <span class="wpzoom-pro-badge" style="color: #fff; font-weight: 600; font-size: 12px;">PRO</span>';
 						}
 						echo '<h2 class="wpzoom-templates-library-template-category" data-theme="'. esc_attr( strtolower( str_replace( ' ', '-', $template_list[$i]['theme'] ) ) ) .'">' . wp_kses_post( $separator_title ) . '</h2>';
@@ -273,8 +273,8 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			?>
 			<div id="wpzoom-elementor-template-library-preview">
 				<?php if ( $is_restricted ) : ?>
-					<div class="wpzoom-preview-pro-notice" style="background: #3496ff; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center;">
-						<div style="font-size: 18px; margin-bottom: 5px;">🔒 <?php esc_html_e( 'Premium Template Preview', 'wpzoom-elementor-addons' ); ?></div>
+					<div class="wpzoom-preview-pro-notice" style="background: #222; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center;">
+						<div style="font-size: 18px; font-weight: 500; margin-bottom: 5px;"><?php esc_html_e( 'Premium Template Preview', 'wpzoom-elementor-addons' ); ?></div>
 						<p style="margin: 0; opacity: 0.9; font-size: 14px;">
 							<?php esc_html_e( 'This template requires WPZOOM Elementor Addons Pro license. Get your license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' ); ?>
 						</p>
