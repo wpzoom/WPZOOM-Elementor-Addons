@@ -321,12 +321,17 @@ class Video_Slider extends Widget_Base {
 						<div style="font-size: 48px; color: #6c757d; margin-bottom: 15px;">🔒</div>
 						<h3 style="margin: 0 0 10px 0; color: #495057;">%s</h3>
 						<p style="margin: 0 0 20px 0; color: #6c757d; line-height: 1.5;">%s</p>
-						<a href="%s" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 500;">%s</a>
+						<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+							<a href="%s" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 500;">%s</a>
+							<a href="%s" target="_blank" style="display: inline-block; background: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: 500;">%s</a>
+						</div>
 					</div>',
 					esc_html__( 'Premium Feature', 'wpzoom-elementor-addons' ),
-					esc_html__( 'Use Video Slideshow widget and dozens more pro features to extend your toolbox and build sites faster and better. This widget requires a premium WPZOOM theme.', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Use Video Slideshow widget and dozens more pro features. This widget requires either a premium WPZOOM theme or the WPZOOM Elementor Addons Pro plugin.', 'wpzoom-elementor-addons' ),
 					esc_url( 'https://www.wpzoom.com/themes/' ),
-					esc_html__( 'Upgrade Now', 'wpzoom-elementor-addons' )
+					esc_html__( 'Get WPZOOM Theme', 'wpzoom-elementor-addons' ),
+					esc_url( 'https://www.wpzoom.com/plugins/elementor-addons-pro/' ),
+					esc_html__( 'Get Pro Plugin', 'wpzoom-elementor-addons' )
 				),
 				'content_classes' => 'wpzoom-premium-upgrade-notice',
 			]
@@ -2979,11 +2984,16 @@ class Video_Slider extends Widget_Base {
 				<div style="font-size: 64px; color: #6c757d; margin-bottom: 20px;">🔒</div>
 				<h3 style="margin: 0 0 15px 0; color: #495057; font-size: 24px;"><?php esc_html_e( 'Video Slideshow Widget (Pro)', 'wpzoom-elementor-addons' ); ?></h3>
 				<p style="margin: 0 0 25px 0; color: #6c757d; line-height: 1.6; font-size: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">
-					<?php esc_html_e( 'This premium widget requires a WPZOOM theme to unlock its full potential. Create stunning video slideshows with advanced customization options.', 'wpzoom-elementor-addons' ); ?>
+					<?php esc_html_e( 'This premium widget requires either a WPZOOM theme or the WPZOOM Elementor Addons Pro plugin to unlock its full potential. Create stunning video slideshows with advanced customization options.', 'wpzoom-elementor-addons' ); ?>
 				</p>
-				<a href="<?php echo esc_url( 'https://www.wpzoom.com/themes/' ); ?>" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.3s;">
-					<?php esc_html_e( 'Get WPZOOM Theme', 'wpzoom-elementor-addons' ); ?>
-				</a>
+				<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+					<a href="<?php echo esc_url( 'https://www.wpzoom.com/themes/' ); ?>" target="_blank" style="display: inline-block; background: #007cba; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.3s;">
+						<?php esc_html_e( 'Get WPZOOM Theme', 'wpzoom-elementor-addons' ); ?>
+					</a>
+					<a href="<?php echo esc_url( 'https://www.wpzoom.com/plugins/elementor-addons-pro/' ); ?>" target="_blank" style="display: inline-block; background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; transition: background-color 0.3s;">
+						<?php esc_html_e( 'Get Pro Plugin', 'wpzoom-elementor-addons' ); ?>
+					</a>
+				</div>
 			</div>
 			<?php
 		} else {
@@ -2991,7 +3001,7 @@ class Video_Slider extends Widget_Base {
 			?>
 			<div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; color: #6c757d;">
 				<span style="font-size: 18px;">🔒</span>
-				<?php esc_html_e( 'Premium Widget - Requires WPZOOM Theme', 'wpzoom-elementor-addons' ); ?>
+				<?php esc_html_e( 'Premium Widget - Requires WPZOOM Theme or Pro Plugin', 'wpzoom-elementor-addons' ); ?>
 			</div>
 			<?php
 		}
@@ -3010,12 +3020,9 @@ class Video_Slider extends Widget_Base {
 			return true;
 		}
 		
-		// Check if Pro plugin is active and licensed
+		// Check if Pro plugin is active
 		if ( class_exists( 'WPZOOM_Elementor_Addons_Pro' ) ) {
-			$pro_instance = WPZOOM_Elementor_Addons_Pro::instance();
-			if ( method_exists( $pro_instance, 'is_license_valid' ) && $pro_instance->is_license_valid() ) {
-				return true;
-			}
+			return true;
 		}
 		
 		return false;
