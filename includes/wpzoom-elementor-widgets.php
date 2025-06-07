@@ -122,7 +122,7 @@ class WPZOOM_Elementor_Widgets {
         $elements_manager->add_category(
             'wpzoom-elementor-addons-pro',
             [
-                'title' => __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Upgrade to Pro', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'Upgrade', 'wpzoom-elementor-addons' ) . '</a>',
+                'title' => __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <a href="' . esc_url( admin_url( 'options-general.php?page=wpzoom-elementor-license' ) ) . '" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Enter License Key', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'License', 'wpzoom-elementor-addons' ) . '</a>',
                 'icon' => 'fa fa-plug'
             ]
         );

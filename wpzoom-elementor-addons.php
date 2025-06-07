@@ -135,6 +135,7 @@ final class WPZOOM_Elementor_Addons {
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-elementor-widgets.php';
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-template-manager.php';
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-elementor-ajax-posts-grid.php';
+		include_once WPZOOM_EL_ADDONS_PATH . 'includes/class-wpzoom-elementor-addons-license.php';
 
 	}
 
@@ -230,6 +231,9 @@ final class WPZOOM_Elementor_Addons {
 	 */
 	public function init() {
 		// Add Plugin actions
+		
+		// Initialize license manager
+		License_Manager::instance();
 	}
 
 
