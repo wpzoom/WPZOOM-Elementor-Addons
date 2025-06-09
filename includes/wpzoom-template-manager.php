@@ -116,7 +116,8 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			
 			// Check license and premium theme status
 			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-			$has_premium_access = $license_manager->is_license_valid() || class_exists( 'WPZOOM' );
+			$has_premium_access = $license_manager->is_license_active() || class_exists( 'WPZOOM' );
+			$license_status = $license_manager->get_license_status();
 
 			// Define which themes are free for everyone
 			$free_themes = array( 'Foodica', 'Inspiro Lite' );
@@ -145,6 +146,9 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					$theme = $template_list[$i]['theme'];
 					$is_theme_free = in_array( $theme, $free_themes );
 					$is_restricted = !$has_premium_access && !$is_theme_free;
+					
+					// Get appropriate button data based on license status
+					$button_data = $this->get_license_button_data( $license_status );
 
 					if( isset( $template_list[$i]['separator'] ) ) {
 						$separator_title = $template_list[$i]['separator'];
@@ -179,8 +183,8 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						<div class="wpzoom-action-bar">
 							<div class="wpzoom-grow"> </div>
 							<?php if ( $is_restricted ) : ?>
-								<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="wpzoom-btn-template-upgrade">
-									<?php esc_html_e( 'Unlock with Pro', 'wpzoom-elementor-addons' ); ?>
+								<a href="<?php echo esc_url( $button_data['url'] ); ?>" target="_blank" class="wpzoom-btn-template-upgrade wpzoom-btn-license-<?php echo esc_attr( $license_status ); ?>" title="<?php echo esc_attr( $button_data['text'] ); ?>">
+									<?php echo esc_html( $button_data['text'] ); ?>
 								</a>
 							<?php else : ?>
 								<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template', 'wpzoom-elementor-addons' ); ?></div>
@@ -264,11 +268,16 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 
 			// Check if this template is restricted
 			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-			$has_premium_access = $license_manager->is_license_valid() || class_exists( 'WPZOOM' );
+			$has_premium_access = $license_manager->is_license_active() || class_exists( 'WPZOOM' );
+			$license_status = $license_manager->get_license_status();
 			$free_themes = array( 'Foodica', 'Inspiro Lite' );
 			$theme = $data['theme'];
 			$is_theme_free = in_array( $theme, $free_themes );
 			$is_restricted = !$has_premium_access && !$is_theme_free;
+			
+			// Get appropriate button data and messages based on license status
+			$button_data = $this->get_license_button_data( $license_status );
+			$preview_message = $this->get_preview_message( $license_status );
 
 			?>
 			<div id="wpzoom-elementor-template-library-preview">
@@ -276,10 +285,10 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					<div class="wpzoom-preview-pro-notice" style="background: #222; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center;">
 						<div style="font-size: 18px; font-weight: 500; margin-bottom: 5px;"><?php esc_html_e( 'Premium Template Preview', 'wpzoom-elementor-addons' ); ?></div>
 						<p style="margin: 0; opacity: 0.9; font-size: 14px;">
-							<?php esc_html_e( 'This template requires WPZOOM Elementor Addons Pro license. Get your license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' ); ?>
+							<?php echo esc_html( $preview_message ); ?>
 						</p>
-						<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 13px; margin-top: 10px; transition: background 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-							<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
+						<a href="<?php echo esc_url( $button_data['url'] ); ?>" target="_blank" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 13px; margin-top: 10px; transition: background 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'" title="<?php echo esc_attr( $button_data['text'] ); ?>">
+							<?php echo esc_html( $button_data['text'] ); ?>
 						</a>
 					</div>
 				<?php endif; ?>
@@ -301,6 +310,73 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			WP_Filesystem();
 
 			return $wp_filesystem;
+		}
+
+		/**
+		 * Get appropriate button text and URL based on license status
+		 *
+		 * @param string $license_status Current license status
+		 * @return array Button text and URL
+		 */
+		private function get_license_button_data( $license_status ) {
+			switch ( $license_status ) {
+				case 'expired':
+					return array(
+						'text' => esc_html__( 'Renew License', 'wpzoom-elementor-addons' ),
+						'url' => 'https://www.wpzoom.com/account/licenses/'
+					);
+					
+				case 'inactive':
+				case 'site_inactive':
+					return array(
+						'text' => esc_html__( 'Activate License', 'wpzoom-elementor-addons' ),
+						'url' => admin_url( 'options-general.php?page=wpzoom-addons-license' )
+					);
+					
+				case 'invalid':
+					return array(
+						'text' => esc_html__( 'Enter Valid License', 'wpzoom-elementor-addons' ),
+						'url' => admin_url( 'options-general.php?page=wpzoom-addons-license' )
+					);
+					
+				case 'disabled':
+					return array(
+						'text' => esc_html__( 'Contact Support', 'wpzoom-elementor-addons' ),
+						'url' => 'https://www.wpzoom.com/support/'
+					);
+					
+				default:
+					return array(
+						'text' => esc_html__( 'Unlock with Pro', 'wpzoom-elementor-addons' ),
+						'url' => 'https://www.wpzoom.com/plugins/elementor-addons-pro/'
+					);
+			}
+		}
+
+		/**
+		 * Get appropriate preview message based on license status
+		 *
+		 * @param string $license_status Current license status
+		 * @return string Preview message
+		 */
+		private function get_preview_message( $license_status ) {
+			switch ( $license_status ) {
+				case 'expired':
+					return esc_html__( 'Your license has expired. Renew your license to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
+					
+				case 'inactive':
+				case 'site_inactive':
+					return esc_html__( 'Your license is inactive. Activate your license to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
+					
+				case 'invalid':
+					return esc_html__( 'Your license key is invalid. Enter a valid license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
+					
+				case 'disabled':
+					return esc_html__( 'Your license has been disabled. Contact support to restore access to premium templates.', 'wpzoom-elementor-addons' );
+					
+				default:
+					return esc_html__( 'This template requires WPZOOM Elementor Addons Pro license. Get your license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
+			}
 		}
 
 		/**

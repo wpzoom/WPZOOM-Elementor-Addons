@@ -33,28 +33,137 @@ if ( did_action( 'elementor/loaded' ) ) {
 		public function update_item( $new_data ){}
 		public function export_template( $template_id ){}
 
-		public function get_finalized_data() {
+			public function get_finalized_data() {
 
-			//$url = sprintf( 'https://api.wpzoom.com/elementor/templates/%s', sanitize_text_field( $_POST['filename'] ) );
-			//$response = wp_remote_get( $url, array( 'timeout' => 60 ) );
-			//if( !is_wp_error( $response ) ) {
-			//	$data = json_decode( wp_remote_retrieve_body( $response ), true );
-			//}
-			//else {
-				$local_file = sprintf( WPZOOM_EL_ADDONS_PATH . '/includes/data/json/%s', sanitize_text_field( $_POST['filename'] ) ) ;
-				if( self::get_filesystem()->exists( $local_file ) ) {
-					$data = self::get_filesystem()->get_contents( $local_file );
-					$data = json_decode( $data, true );
-				}
-			//}
-			$content = $data['content'];
-			$content = $this->process_export_import_content( $content, 'on_import' );
-			$content = $this->replace_elements_ids( $content );
-			
-			echo json_encode( $content );
-			wp_die();
-
+		// Check if user has permission to import templates
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( array(
+				'message' => esc_html__( 'Insufficient permissions to import templates.', 'wpzoom-elementor-addons' )
+			) );
 		}
+
+		// Additional security check - ensure we're in Elementor context
+		if ( ! did_action( 'elementor/loaded' ) ) {
+			wp_send_json_error( array(
+				'message' => esc_html__( 'Elementor is required to import templates.', 'wpzoom-elementor-addons' )
+			) );
+		}
+
+		// Validate and sanitize filename
+		if ( ! isset( $_POST['filename'] ) || empty( $_POST['filename'] ) ) {
+			wp_send_json_error( array(
+				'message' => esc_html__( 'Template filename is required.', 'wpzoom-elementor-addons' )
+			) );
+		}
+
+		$filename = sanitize_text_field( $_POST['filename'] );
+		
+		// Additional security: ensure filename has .json extension and no path traversal
+		if ( ! preg_match( '/^[a-zA-Z0-9\-_]+\.json$/', $filename ) ) {
+			wp_send_json_error( array(
+				'message' => esc_html__( 'Invalid template filename format.', 'wpzoom-elementor-addons' )
+			) );
+		}
+		
+		// Check if this is a PRO template and validate license
+		if ( $this->is_pro_template( $filename ) && ! $this->can_import_pro_template() ) {
+			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
+			$error_message = $license_manager->get_license_restriction_message();
+			
+			if ( empty( $error_message ) ) {
+				$error_message = esc_html__( 'This template requires WPZOOM Elementor Addons Pro license. Please activate your license key to import PRO templates.', 'wpzoom-elementor-addons' );
+			}
+			
+			wp_send_json_error( array(
+				'message' => $error_message,
+				'is_license_error' => true
+			) );
+		}
+
+		//$url = sprintf( 'https://api.wpzoom.com/elementor/templates/%s', $filename );
+		//$response = wp_remote_get( $url, array( 'timeout' => 60 ) );
+		//if( !is_wp_error( $response ) ) {
+		//	$data = json_decode( wp_remote_retrieve_body( $response ), true );
+		//}
+		//else {
+			$local_file = sprintf( WPZOOM_EL_ADDONS_PATH . '/includes/data/json/%s', $filename ) ;
+			if( self::get_filesystem()->exists( $local_file ) ) {
+				$data = self::get_filesystem()->get_contents( $local_file );
+				$data = json_decode( $data, true );
+			}
+		//}
+		
+		if ( empty( $data ) || ! isset( $data['content'] ) ) {
+			wp_send_json_error( array(
+				'message' => esc_html__( 'Template data could not be loaded. Please try again or contact support.', 'wpzoom-elementor-addons' )
+			) );
+		}
+		
+		$content = $data['content'];
+		$content = $this->process_export_import_content( $content, 'on_import' );
+		$content = $this->replace_elements_ids( $content );
+		
+		echo json_encode( $content );
+		wp_die();
+
+	}
+
+	/**
+	 * Check if template is a PRO template
+	 *
+	 * @param string $filename Template filename
+	 * @return bool
+	 */
+	private function is_pro_template( $filename ) {
+		// Get template list to check if this template belongs to a PRO theme
+		$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
+		if ( ! self::get_filesystem()->exists( $local_file ) ) {
+			return false;
+		}
+		
+		$data = self::get_filesystem()->get_contents( $local_file );
+		$template_list = json_decode( $data, true );
+		
+		if ( empty( $template_list ) ) {
+			return false;
+		}
+		
+		// Define which themes are free for everyone
+		$free_themes = array( 'Foodica', 'Inspiro Lite' );
+		
+		// Extract template ID from filename (remove .json extension)
+		$template_id = str_replace( '.json', '', $filename );
+		$template_id = str_replace( '-', ' ', $template_id );
+		
+		// Find the template in the list
+		foreach ( $template_list as $template ) {
+			if ( ! isset( $template['id'] ) || ! isset( $template['theme'] ) ) {
+				continue;
+			}
+			
+			$slug = strtolower( str_replace( ' ', '-', $template['id'] ) );
+			if ( $slug === str_replace( '.json', '', $filename ) ) {
+				// Check if this template's theme is not in the free themes list
+				return ! in_array( $template['theme'], $free_themes );
+			}
+		}
+		
+		// If template not found in list, assume it's PRO for safety
+		return true;
+	}
+
+	/**
+	 * Check if user can import PRO templates
+	 *
+	 * @return bool
+	 */
+	private function can_import_pro_template() {
+		$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
+		
+		// For template imports, require an ACTIVE license (not just valid/expired)
+		// OR if premium WPZOOM theme is active
+		return $license_manager->is_license_active() || class_exists( 'WPZOOM' );
+	}
 
 		/**
 		 * Get an instance of WP_Filesystem_Direct.

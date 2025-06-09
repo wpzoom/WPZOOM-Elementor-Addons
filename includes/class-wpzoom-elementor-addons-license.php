@@ -455,6 +455,56 @@ class License_Manager {
 	}
 
 	/**
+	 * Check if license is valid and active (for imports and other strict checks)
+	 */
+	public function is_license_active() {
+		// First check if we have a cached status that's still valid
+		$cached_status = get_transient( 'wpzoom_elementor_addons_license_status_cache' );
+		if ( $cached_status !== false ) {
+			// Only allow 'valid' licenses for imports
+			return $cached_status === 'valid';
+		}
+
+		// Fall back to stored status if no cache
+		$stored_status = $this->get_license_status();
+		// Only allow 'valid' licenses for imports
+		return $stored_status === 'valid';
+	}
+
+	/**
+	 * Get detailed license status for user messaging
+	 */
+	public function get_license_restriction_message() {
+		$license_status = $this->get_license_status();
+		$has_premium_theme = class_exists( 'WPZOOM' );
+		
+		if ( $has_premium_theme ) {
+			return ''; // No restriction if premium theme is active
+		}
+		
+		switch ( $license_status ) {
+			case 'valid':
+				return ''; // No restriction
+				
+			case 'expired':
+				return esc_html__( 'Your license has expired. Please renew your license to import PRO templates.', 'wpzoom-elementor-addons' );
+				
+			case 'inactive':
+			case 'site_inactive':
+				return esc_html__( 'Your license is inactive. Please activate your license to import PRO templates.', 'wpzoom-elementor-addons' );
+				
+			case 'invalid':
+				return esc_html__( 'Your license key is invalid. Please enter a valid license key to import PRO templates.', 'wpzoom-elementor-addons' );
+				
+			case 'disabled':
+				return esc_html__( 'Your license has been disabled. Please contact support for assistance.', 'wpzoom-elementor-addons' );
+				
+			default:
+				return esc_html__( 'This template requires WPZOOM Elementor Addons Pro license. Please activate your license key to import PRO templates.', 'wpzoom-elementor-addons' );
+		}
+	}
+
+	/**
 	 * Check if license is expired specifically
 	 */
 	public function is_license_expired() {

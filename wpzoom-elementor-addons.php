@@ -164,6 +164,13 @@ final class WPZOOM_Elementor_Addons {
 	public function plugin_scripts() {
 		wp_enqueue_script( 'select2', WPZOOM_EL_ADDONS_URL . 'assets/vendors/select2/select2.full.min.js', array( 'jquery' ), WPZOOM_EL_ADDONS_VER, true );
 		wp_enqueue_script( 'wpzoom-elementor-addons', WPZOOM_EL_ADDONS_URL . 'assets/js/wpzoom-elementor-addons.js', array( 'jquery', 'wp-util', 'select2' ), WPZOOM_EL_ADDONS_VER, true );
+		
+		// Localize script with admin URL for license page links
+		wp_localize_script( 'wpzoom-elementor-addons', 'wpzoom_admin_data', array(
+			'admin_url' => admin_url(),
+			'license_page_url' => admin_url( 'options-general.php?page=wpzoom-addons-license' ),
+			'get_license_url' => 'https://www.wpzoom.com/plugins/elementor-addons-pro/'
+		) );
 	}
 
 	/**

@@ -345,3 +345,47 @@
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
+
+/* License-specific button styles */
+.wpzoom-btn-license-expired {
+	background: #e74c3c !important;
+}
+
+.wpzoom-btn-license-expired:hover {
+	background: #c0392b !important;
+}
+
+.wpzoom-btn-license-inactive,
+.wpzoom-btn-license-site_inactive {
+	background: #f39c12 !important;
+}
+
+.wpzoom-btn-license-inactive:hover,
+.wpzoom-btn-license-site_inactive:hover {
+	background: #e67e22 !important;
+}
+
+.wpzoom-btn-license-invalid {
+	background: #95a5a6 !important;
+}
+
+.wpzoom-btn-license-invalid:hover {
+	background: #7f8c8d !important;
+}
+
+.wpzoom-btn-license-disabled {
+	background: #8e44ad !important;
+}
+
+.wpzoom-btn-license-disabled:hover {
+	background: #732d91 !important;
+}
+
+/* Default (no license) keeps the original blue color */
+.wpzoom-btn-license- {
+	background: #3496ff !important;
+}
+
+.wpzoom-btn-license-:hover {
+	background: #000 !important;
+}
