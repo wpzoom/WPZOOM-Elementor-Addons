@@ -2740,12 +2740,14 @@ class Video_Slider extends Widget_Base {
 				if ( $slide[ 'title' ] ) {
 					if ( $has_slide_link ) {
 						?>
-						<a href="<?php echo esc_url( $slide['link']['url'] ); ?>"
-						   class="wpz-slide-title-link"
-						   <?php echo ( $slide['link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
-						   <?php echo ( $slide['link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
-							<h2 class="wpz-slide-title"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?></h2>
-						</a>
+						<h2 class="wpz-slide-title">
+							<a href="<?php echo esc_url( $slide['link']['url'] ); ?>"
+							   class="wpz-slide-title-link"
+							   <?php echo ( $slide['link']['is_external'] ?? false ) ? 'target="_blank"' : ''; ?>
+							   <?php echo ( $slide['link']['nofollow'] ?? false ) ? 'rel="nofollow"' : ''; ?>>
+								<?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'title' ] ); ?>
+							</a>
+						</h2>
 						<?php
 					} else {
 						?>
