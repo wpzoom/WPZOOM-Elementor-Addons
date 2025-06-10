@@ -155,7 +155,7 @@ var WPZCached = null;
 							if (data.data && data.data.is_license_error) {
 								var errorMessage = data.data.message || 'This template requires WPZOOM Elementor Addons Pro license.';
 								var licensePageUrl = (typeof wpzoom_admin_data !== 'undefined' && wpzoom_admin_data.license_page_url) ? wpzoom_admin_data.license_page_url : '/wp-admin/options-general.php?page=wpzoom-addons-license';
-								var getLicenseUrl = (typeof wpzoom_admin_data !== 'undefined' && wpzoom_admin_data.get_license_url) ? wpzoom_admin_data.get_license_url : 'https://www.wpzoom.com/plugins/elementor-addons-pro/';
+								var getLicenseUrl = (typeof wpzoom_admin_data !== 'undefined' && wpzoom_admin_data.get_license_url) ? wpzoom_admin_data.get_license_url : 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/';
 								errorMessage += '<br><br><a href="' + licensePageUrl + '" target="_blank" style="color: #007cba; text-decoration: none;">Enter License Key</a> | <a href="' + getLicenseUrl + '" target="_blank" style="color: #007cba; text-decoration: none;">Get License Key</a>';
 								elementor.templates.showErrorDialog( errorMessage );
 							} else {
@@ -198,7 +198,7 @@ var WPZCached = null;
 			if (errorData.responseJSON && errorData.responseJSON.data && errorData.responseJSON.data.is_license_error) {
 				errorMessage = errorData.responseJSON.data.message || 'This template requires WPZOOM Elementor Addons Pro license.';
 				var licensePageUrl = (typeof wpzoom_admin_data !== 'undefined' && wpzoom_admin_data.license_page_url) ? wpzoom_admin_data.license_page_url : '/wp-admin/options-general.php?page=wpzoom-addons-license';
-				var getLicenseUrl = (typeof wpzoom_admin_data !== 'undefined' && wpzoom_admin_data.get_license_url) ? wpzoom_admin_data.get_license_url : 'https://www.wpzoom.com/plugins/elementor-addons-pro/';
+				var getLicenseUrl = (typeof wpzoom_admin_data !== 'undefined' && wpzoom_admin_data.get_license_url) ? wpzoom_admin_data.get_license_url : 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/';
 				errorMessage += '<br><br><a href="' + licensePageUrl + '" target="_blank" style="color: #007cba; text-decoration: none;">Enter License Key</a> | <a href="' + getLicenseUrl + '" target="_blank" style="color: #007cba; text-decoration: none;">Get License Key</a>';
 			}
 			

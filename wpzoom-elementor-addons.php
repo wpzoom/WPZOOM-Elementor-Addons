@@ -169,7 +169,7 @@ final class WPZOOM_Elementor_Addons {
 		wp_localize_script( 'wpzoom-elementor-addons', 'wpzoom_admin_data', array(
 			'admin_url' => admin_url(),
 			'license_page_url' => admin_url( 'options-general.php?page=wpzoom-addons-license' ),
-			'get_license_url' => 'https://www.wpzoom.com/plugins/elementor-addons-pro/'
+			'get_license_url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
 		) );
 	}
 

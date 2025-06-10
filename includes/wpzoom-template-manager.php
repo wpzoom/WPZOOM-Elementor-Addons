@@ -348,7 +348,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				default:
 					return array(
 						'text' => esc_html__( 'Unlock with Pro', 'wpzoom-elementor-addons' ),
-						'url' => 'https://www.wpzoom.com/plugins/elementor-addons-pro/'
+						'url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
 					);
 			}
 		}

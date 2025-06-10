@@ -127,14 +127,14 @@ class WPZOOM_Elementor_Widgets {
         if ( $is_license_valid || $has_premium_theme ) {
             // Show "Active" status with link to license page (for license) or just "Active" (for premium themes)
             if ( $is_license_valid ) {
-                $pro_title = __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <span class="wpzoom-pro-active" style="color: #46b450; font-weight: 600;">✓ ' . esc_html__( 'Active', 'wpzoom-elementor-addons' ) . '</span> <a href="' . esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ) . '" class="wpzoom-license-link" title="' . esc_attr__( 'Manage License', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'License', 'wpzoom-elementor-addons' ) . '</a>';
+                $pro_title = __( 'Premium Widgets', 'wpzoom-elementor-addons' ) . ' <span class="wpzoom-pro-active" style="color: #46b450; font-weight: 600;">✓ ' . esc_html__( 'Active', 'wpzoom-elementor-addons' ) . '</span> <a href="' . esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ) . '" class="wpzoom-license-link" title="' . esc_attr__( 'Manage License', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'License', 'wpzoom-elementor-addons' ) . '</a>';
             } else {
                 // Premium theme active, just show "Active" status
-                $pro_title = __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <span class="wpzoom-pro-active" style="color: #46b450; font-weight: 600;">✓ ' . esc_html__( 'Active', 'wpzoom-elementor-addons' ) . '</span>';
+                $pro_title = __( 'Premium Widgets', 'wpzoom-elementor-addons' ) . ' <span class="wpzoom-pro-active" style="color: #46b450; font-weight: 600;">✓ ' . esc_html__( 'Active', 'wpzoom-elementor-addons' ) . '</span>';
             }
         } else {
             // Show "Upgrade" link to plugin page
-            $pro_title = __( 'WPZOOM PRO', 'wpzoom-elementor-addons' ) . ' <a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Get Pro Version', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'Upgrade', 'wpzoom-elementor-addons' ) . '</a>';
+            $pro_title = __( 'Premium Widgets', 'wpzoom-elementor-addons' ) . ' <a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="wpzoom-upgrade-link" title="' . esc_attr__( 'Get Pro Version', 'wpzoom-elementor-addons' ) . '">' . esc_html__( 'Upgrade', 'wpzoom-elementor-addons' ) . '</a>';
         }
         
         $elements_manager->add_category(

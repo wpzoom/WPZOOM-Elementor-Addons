@@ -53,6 +53,7 @@ class License_Manager {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_license_page' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		add_action( 'admin_init', array( $this, 'handle_license_actions' ) );
 		add_action( 'admin_notices', array( $this, 'license_activation_notice' ) );
 		add_action( 'wp_ajax_wpzoom_dismiss_license_notice', array( $this, 'dismiss_license_notice' ) );
@@ -70,10 +71,28 @@ class License_Manager {
 		add_submenu_page(
 			'options-general.php',
 			__( 'WPZOOM Addons License', 'wpzoom-elementor-addons' ),
-			__( 'WPZOOM Addons License', 'wpzoom-elementor-addons' ),
+			__( 'Elementor Addons by WPZOOM', 'wpzoom-elementor-addons' ),
 			'manage_options',
 			'wpzoom-addons-license',
 			array( $this, 'license_page' )
+		);
+	}
+
+	/**
+	 * Admin scripts and styles
+	 */
+	public function admin_enqueue_scripts( $hook ) {
+		// Only load on our license page
+		if ( 'settings_page_wpzoom-addons-license' !== $hook ) {
+			return;
+		}
+
+		// Enqueue license page styles
+		wp_enqueue_style(
+			'wpzoom-elementor-addons-license',
+			WPZOOM_EL_ADDONS_URL . 'assets/css/license-page.css',
+			array(),
+			WPZOOM_EL_ADDONS_VER
 		);
 	}
 
@@ -84,113 +103,173 @@ class License_Manager {
 		$license_key = $this->get_license_key();
 		$license_status = $this->get_license_status();
 		$license_data = $this->get_license_data();
+		$is_license_active = $this->is_license_active();
 		
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'WPZOOM Addons License', 'wpzoom-elementor-addons' ); ?></h1>
-			
-			<?php $this->display_license_messages(); ?>
-			
-			<div class="wpzoom-license-container" style="max-width: 800px;">
-				<div class="wpzoom-license-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
-					<h2 style="margin: 0 0 10px 0; color: white;"><?php esc_html_e( 'Unlock Premium Features', 'wpzoom-elementor-addons' ); ?></h2>
-					<p style="margin: 0; opacity: 0.9;"><?php esc_html_e( 'Enter your license key to unlock the Video Slideshow widget and other premium features.', 'wpzoom-elementor-addons' ); ?></p>
+			<div class="wpzoom-elementor-addons-page-header">
+				<div class="wpzoom-header-content">
+					<h1 class="wpzoom-page-title">
+						<span class="wpzoom-logo"><svg width="30" height="30" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 256C0 114.615 114.615 0 256 0V0C397.385 0 512 114.615 512 256V256C512 397.385 397.385 512 256 512V512C114.615 512 0 397.385 0 256V256Z" fill="#2858D1"/><path d="M172.55 385.45L109.55 188.05H85.05V152.7H183.05V188.05H152.6L190.05 309.15L247.1 175.1H268.1L325.15 309.15L360.15 188.05H328.65V152.7H426.65V188.05H402.15L340.2 385.45H318.15L256.55 243.7L194.6 385.45H172.55Z" fill="white"/></svg></span>
+						<?php esc_html_e( 'WPZOOM Elementor Addons', 'wpzoom-elementor-addons' ); ?>
+						<span class="wpzoom-pro-badge-header"><?php esc_html_e( 'PRO', 'wpzoom-elementor-addons' ); ?></span>
+					</h1>
 				</div>
+			</div>
 
-				<form method="post" action="">
-					<?php wp_nonce_field( 'wpzoom_license_nonce', 'wpzoom_license_nonce' ); ?>
-					
-					<table class="form-table">
-						<tbody>
-							<tr>
-								<th scope="row">
-									<label for="license_key"><?php esc_html_e( 'License Key', 'wpzoom-elementor-addons' ); ?></label>
-								</th>
-								<td>
-									<input 
-										type="text" 
-										id="license_key" 
-										name="license_key" 
-										value="<?php echo esc_attr( $license_key ); ?>" 
-										class="regular-text" 
-										placeholder="<?php esc_attr_e( 'Enter your license key...', 'wpzoom-elementor-addons' ); ?>"
-									/>
-									<p class="description">
-										<?php esc_html_e( 'Enter the license key you received when purchasing WPZOOM Elementor Addons Pro.', 'wpzoom-elementor-addons' ); ?>
-									</p>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row"><?php esc_html_e( 'License Status', 'wpzoom-elementor-addons' ); ?></th>
-								<td>
-									<?php if ( $license_status === 'valid' ) : ?>
-										<span style="color: #46b450; font-weight: 600;">
-											✓ <?php esc_html_e( 'Active', 'wpzoom-elementor-addons' ); ?>
-										</span>
-										<?php if ( $license_data && isset( $license_data['expires'] ) ) : ?>
-											<br>
-											<small style="color: #666;">
+			<div class="wpzoom-elementor-addons-wrap wpzoom-elementor-addons-license">
+				<div class="inner-wrap fit-max-content">
+					<h2 class="section-title">
+						<?php esc_html_e( 'Activate Your License Key', 'wpzoom-elementor-addons' ); ?>
+					</h2>
+
+					<p class="section-description">
+						<?php
+						printf(
+							// translators: %1$s = WPZOOM Members Area URL.
+							__( 'Enter your license key to unlock premium features. You can find your license in <a href="%1$s" target="_blank">WPZOOM Members Area &rarr; Licenses</a>.', 'wpzoom-elementor-addons' ), // phpcs:ignore WordPress.Security.EscapeOutput
+							esc_url( 'https://www.wpzoom.com/account/licenses/' )
+						);
+						?>
+					</p>
+
+					<?php $this->display_license_messages(); ?>
+
+					<form id="wpzoom-elementor-addons-license-form" method="POST" autocomplete="off">
+						<?php wp_nonce_field( 'wpzoom_license_nonce', 'wpzoom_license_nonce' ); ?>
+
+						<p class="wide-text-field">
+							<label>
+								<strong><?php esc_html_e( 'License Key', 'wpzoom-elementor-addons' ); ?></strong>
+								<input
+									type="text"
+									name="license_key"
+									id="wpzoom-elementor-addons-license-key"
+									value="<?php echo esc_attr( $license_key ); ?>"
+									minlength="32"
+									maxlength="32"
+									placeholder="<?php esc_attr_e( 'Enter your license key...', 'wpzoom-elementor-addons' ); ?>"
+									class="regular-text"
+									<?php
+									if ( $is_license_active ) {
+										echo sprintf(
+											'title="%s" readonly',
+											esc_html__( 'You must deactivate the current license before you can enter a new one.', 'wpzoom-elementor-addons' )
+										);
+									}
+									?>
+								/>
+								<em class="help-text"><?php esc_html_e( 'Enter your license key for this plugin to unlock premium features.', 'wpzoom-elementor-addons' ); ?></em>
+							</label>
+						</p>
+
+						<?php if ( ! empty( $license_key ) ) : ?>
+							<div class="license-status-display">
+								<?php if ( $license_status === 'valid' ) : ?>
+									<div class="license-status-active">
+										<span class="status-icon">✓</span>
+										<div class="status-content">
+											<strong><?php esc_html_e( 'License key is active!', 'wpzoom-elementor-addons' ); ?></strong>
+											<?php if ( $license_data && isset( $license_data['expires'] ) ) : ?>
+												<small>
+													<?php
+													if ( $license_data['expires'] === 'lifetime' ) {
+														esc_html_e( '— Lifetime License', 'wpzoom-elementor-addons' );
+													} else {
+														printf(
+															esc_html__( '— Expires %s', 'wpzoom-elementor-addons' ),
+															date_i18n( get_option( 'date_format' ), strtotime( $license_data['expires'] ) )
+														);
+													}
+													?>
+												</small>
+											<?php endif; ?>
+										</div>
+									</div>
+								<?php else : ?>
+									<div class="license-status-inactive">
+										<span class="status-icon">⚠</span>
+										<div class="status-content">
+											<strong>
 												<?php 
-												if ( $license_data['expires'] === 'lifetime' ) {
-													esc_html_e( 'Lifetime license', 'wpzoom-elementor-addons' );
-												} else {
-													printf( 
-														esc_html__( 'Expires: %s', 'wpzoom-elementor-addons' ), 
-														date_i18n( get_option( 'date_format' ), strtotime( $license_data['expires'] ) )
-													);
+												switch ( $license_status ) {
+													case 'expired':
+														esc_html_e( 'License key has expired!', 'wpzoom-elementor-addons' );
+														break;
+													case 'invalid':
+														esc_html_e( 'License key does not match!', 'wpzoom-elementor-addons' );
+														break;
+													case 'inactive':
+													case 'site_inactive':
+														esc_html_e( 'License is inactive. Click Activate to enable it.', 'wpzoom-elementor-addons' );
+														break;
+													case 'disabled':
+														esc_html_e( 'License key is disabled!', 'wpzoom-elementor-addons' );
+														break;
+													default:
+														esc_html_e( 'License is not active.', 'wpzoom-elementor-addons' );
+														break;
 												}
 												?>
-											</small>
-										<?php endif; ?>
-									<?php elseif ( $license_status === 'expired' ) : ?>
-										<span style="color: #dc3232; font-weight: 600;">
-											⚠ <?php esc_html_e( 'Expired', 'wpzoom-elementor-addons' ); ?>
-										</span>
-									<?php elseif ( $license_status === 'invalid' ) : ?>
-										<span style="color: #dc3232; font-weight: 600;">
-											✗ <?php esc_html_e( 'Invalid', 'wpzoom-elementor-addons' ); ?>
-										</span>
-									<?php else : ?>
-										<span style="color: #666;">
-											<?php esc_html_e( 'Not activated', 'wpzoom-elementor-addons' ); ?>
-										</span>
-									<?php endif; ?>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-
-					<p class="submit">
-						<?php if ( $license_status === 'valid' ) : ?>
-							<input type="submit" name="deactivate_license" class="button-secondary" value="<?php esc_attr_e( 'Deactivate License', 'wpzoom-elementor-addons' ); ?>" />
-						<?php else : ?>
-							<input type="submit" name="activate_license" class="button-primary" value="<?php esc_attr_e( 'Activate License', 'wpzoom-elementor-addons' ); ?>" />
+											</strong>
+										</div>
+									</div>
+								<?php endif; ?>
+							</div>
 						<?php endif; ?>
-						
-						<input type="submit" name="check_license" class="button-secondary" value="<?php esc_attr_e( 'Check License Status', 'wpzoom-elementor-addons' ); ?>" style="margin-left: 10px;" />
-						
-						<?php if ( ! empty( $license_key ) ) : ?>
-							<input type="submit" name="clear_license" class="button-secondary" value="<?php esc_attr_e( 'Clear License', 'wpzoom-elementor-addons' ); ?>" style="margin-left: 10px;" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to clear the license key?', 'wpzoom-elementor-addons' ); ?>');" />
-						<?php endif; ?>
-					</p>
-				</form>
 
-				<div class="wpzoom-license-info" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 30px;">
-					<?php if ( $license_status === 'expired' ) : ?>
-						<h3><?php esc_html_e( 'License Expired', 'wpzoom-elementor-addons' ); ?></h3>
-						<p style="color: #d54e21; margin-bottom: 15px;">
-							<strong><?php esc_html_e( 'Your license has expired! Please renew it to unlock Premium features.', 'wpzoom-elementor-addons' ); ?></strong>
+						<p class="submit-button">
+							<?php if ( $is_license_active ) : ?>
+								<input
+									type="submit"
+									name="deactivate_license"
+									value="<?php esc_attr_e( 'Deactivate', 'wpzoom-elementor-addons' ); ?>"
+									class="button button-secondary button-negative"
+								/>
+							<?php else : ?>
+								<input
+									type="submit"
+									name="activate_license"
+									value="<?php esc_attr_e( 'Activate', 'wpzoom-elementor-addons' ); ?>"
+									class="button button-primary"
+								/>
+							<?php endif; ?>
+							&ensp;
+							<input
+								type="submit"
+								name="check_license"
+								value="<?php esc_attr_e( 'Check Status', 'wpzoom-elementor-addons' ); ?>"
+								class="button button-secondary"
+							/>
+							<?php if ( ! empty( $license_key ) ) : ?>
+								&ensp;
+								<input
+									type="submit"
+									name="clear_license"
+									value="<?php esc_attr_e( 'Clear', 'wpzoom-elementor-addons' ); ?>"
+									class="button button-secondary"
+									onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to clear the license key?', 'wpzoom-elementor-addons' ); ?>');"
+								/>
+							<?php endif; ?>
 						</p>
-						<p><?php esc_html_e( 'You can continue using the free version, however, you\'ll need an active license to unlock the Premium features.', 'wpzoom-elementor-addons' ); ?></p>
-						<a href="https://www.wpzoom.com/account/licenses/" target="_blank" class="button button-primary">
-							<?php esc_html_e( 'Renew License', 'wpzoom-elementor-addons' ); ?>
-						</a>
-					<?php else : ?>
-						<h3><?php esc_html_e( 'Need a License?', 'wpzoom-elementor-addons' ); ?></h3>
-						<p><?php esc_html_e( 'Purchase WPZOOM Elementor Addons Pro to get access to premium widgets including the Video Slideshow widget.', 'wpzoom-elementor-addons' ); ?></p>
-						<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="button button-primary">
-							<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
-						</a>
+					</form>
+
+					<?php if ( $license_status === 'expired' ) : ?>
+						<div class="wpzoom-license-help-section expired">
+							<h3><?php esc_html_e( 'License Expired', 'wpzoom-elementor-addons' ); ?></h3>
+							<p><?php esc_html_e( 'Your license has expired. Please renew it to continue receiving updates and support.', 'wpzoom-elementor-addons' ); ?></p>
+							<a href="https://www.wpzoom.com/account/licenses/" target="_blank" class="button button-primary">
+								<?php esc_html_e( 'Renew License', 'wpzoom-elementor-addons' ); ?>
+							</a>
+						</div>
+					<?php elseif ( ! $is_license_active && empty( $license_key ) ) : ?>
+						<div class="wpzoom-license-help-section">
+							<h3><?php esc_html_e( 'Need a License?', 'wpzoom-elementor-addons' ); ?></h3>
+							<p><?php esc_html_e( 'Purchase WPZOOM Elementor Addons Pro to get access to premium widgets, templates, and features.', 'wpzoom-elementor-addons' ); ?></p>
+							<a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="button button-primary">
+								<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
+							</a>
+						</div>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -642,15 +721,15 @@ class License_Manager {
 			<div style="display: flex; align-items: center; padding: 10px 0;">
 				<div style="margin-right: 15px; font-size: 24px;">🎬</div>
 				<div>
-					<h3 style="margin: 0 0 5px 0;"><?php esc_html_e( 'Unlock Video Slideshow Widget', 'wpzoom-elementor-addons' ); ?></h3>
+					<h3 style="margin: 0 0 5px 0;"><?php esc_html_e( 'Video Slideshow Widget for Elementor now Available!', 'wpzoom-elementor-addons' ); ?></h3>
 					<p style="margin: 0;">
-						<?php esc_html_e( 'Enter your WPZOOM Elementor Addons Pro license key to unlock the Video Slideshow widget and other premium features.', 'wpzoom-elementor-addons' ); ?>
+						<?php esc_html_e( 'Purchase a WPZOOM Elementor Addons Pro license key to unlock the new Video Slideshow widget and other premium features.', 'wpzoom-elementor-addons' ); ?>
 					</p>
 					<p style="margin: 10px 0 0 0;">
 						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ); ?>" class="button button-primary">
 							<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
 						</a>
-						<a href="https://www.wpzoom.com/plugins/elementor-addons-pro/" target="_blank" class="button button-secondary" style="margin-left: 10px;">
+						<a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="button button-secondary" style="margin-left: 10px;">
 							<?php esc_html_e( 'Get License Key', 'wpzoom-elementor-addons' ); ?>
 						</a>
 					</p>

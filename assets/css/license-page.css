@@ -1,0 +1,381 @@
+/* WPZOOM Elementor Addons License Page Styles */
+
+/* Page Header */
+.wpzoom-elementor-addons-page-header {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .1);
+    color: #242628;
+    padding: 15px 30px;
+}
+
+.wpzoom-header-content .notice {
+    display: none;
+}
+
+.wpzoom-page-title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 600;
+	color: #1d2327;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.wpzoom-logo {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+}
+
+.wpzoom-pro-badge-header {
+	background: #3496ff;
+	color: white;
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.wpzoom-page-title small {
+	color: #646970;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+/* Main Container */
+.wpzoom-elementor-addons-wrap {
+	overflow: hidden;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .1);
+    color: #242628;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+
+.inner-wrap.fit-max-content {
+	max-width: 100%;
+}
+
+/* Section Headers */
+.section-title {
+	margin: 0 0 10px 0;
+	font-size: 28px;
+	font-weight: 600;
+	color: #1d2327;
+	line-height: 1.3;
+}
+
+.section-description {
+	margin: 0 0 30px 0;
+	font-size: 16px;
+	color: #646970;
+	line-height: 1.5;
+}
+
+.section-description a {
+	color: #2271b1;
+	text-decoration: none;
+}
+
+.section-description a:hover {
+	color: #135e96;
+	text-decoration: underline;
+}
+
+/* Form Styling */
+#wpzoom-elementor-addons-license-form {
+	margin-bottom: 30px;
+}
+
+.wide-text-field {
+	margin-bottom: 25px;
+}
+
+.wide-text-field label {
+	display: block;
+}
+
+.wide-text-field strong {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.wide-text-field input[type="text"] {
+	width: 100%;
+	max-width: 500px;
+	padding: 12px 16px;
+	font-size: 16px;
+	border: 2px solid #dcdcde;
+	border-radius: 6px;
+	background: #fff;
+	transition: all 0.2s ease;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.wide-text-field input[type="text"]:focus {
+	border-color: #2271b1;
+	outline: none;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+.wide-text-field input[type="text"][readonly] {
+	background: #f6f7f7;
+	color: #646970;
+	cursor: not-allowed;
+}
+
+.help-text {
+	display: block;
+	margin-top: 8px;
+	font-size: 13px;
+	color: #646970;
+	font-style: normal;
+}
+
+/* License Status Display */
+.license-status-display {
+    max-width: 500px;
+	margin: 20px 0 30px 0;
+}
+
+.license-status-active {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	background: #d7f3d7;
+	padding: 16px;
+	border-radius: 6px;
+	border: 1px solid #00a32a;
+}
+
+.license-status-inactive {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	background: #fcf2e8;
+	padding: 16px;
+	border-radius: 6px;
+	border: 1px solid #dba617;
+}
+
+.status-icon {
+	font-size: 18px;
+	line-height: 1;
+	margin-top: 2px;
+}
+
+.license-status-active .status-icon {
+	color: #00a32a;
+}
+
+.license-status-inactive .status-icon {
+	color: #dba617;
+}
+
+.status-content {
+	flex: 1;
+}
+
+.status-content strong {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.license-status-active .status-content strong {
+	color: #00a32a;
+}
+
+.license-status-inactive .status-content strong {
+	color: #b32d2e;
+}
+
+.status-content small {
+	font-size: 13px;
+	color: #646970;
+}
+
+/* Button Styling */
+.submit-button {
+	margin: 0;
+	padding: 0;
+}
+
+.submit-button .button {
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 6px;
+	text-decoration: none;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: all 0.2s ease;
+}
+
+.submit-button .button-primary {
+	background: #2271b1;
+	color: #fff;
+	border-color: #2271b1;
+}
+
+.submit-button .button-primary:hover {
+	background: #135e96;
+	border-color: #135e96;
+	color: #fff;
+}
+
+.submit-button .button-secondary {
+	background: #f6f7f7;
+	color: #2c3338;
+	border-color: #dcdcde;
+}
+
+.submit-button .button-secondary:hover {
+	background: #f0f0f1;
+	border-color: #8c8f94;
+	color: #2c3338;
+}
+
+.submit-button .button-negative {
+	background: #d63638;
+	color: #fff;
+	border-color: #d63638;
+}
+
+.submit-button .button-negative:hover {
+	background: #b32d2e;
+	border-color: #b32d2e;
+	color: #fff;
+}
+
+/* Help Sections */
+.wpzoom-license-help-section {
+	background: #f6f7f7;
+	padding: 24px;
+	border-radius: 6px;
+	border: 1px solid #dcdcde;
+	margin-top: 30px;
+}
+
+.wpzoom-license-help-section.expired {
+	background: #fcf2e8;
+	border-color: #dba617;
+}
+
+.wpzoom-license-help-section h3 {
+	margin: 0 0 12px 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.wpzoom-license-help-section p {
+	margin: 0 0 20px 0;
+	font-size: 14px;
+	color: #646970;
+	line-height: 1.5;
+}
+
+.wpzoom-license-help-section .button {
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 6px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	transition: all 0.2s ease;
+}
+
+.wpzoom-license-help-section .button-primary {
+	background: #2271b1;
+	color: #fff;
+	border-color: #2271b1;
+}
+
+.wpzoom-license-help-section .button-primary:hover {
+	background: #135e96;
+	border-color: #135e96;
+	color: #fff;
+}
+
+/* Notice Styling */
+.inner-wrap .notice {
+	margin: 0 0 20px 0;
+	padding: 12px 16px;
+	border-left: 4px solid #72aee6;
+	background: #f0f6fc;
+	border-radius: 0 4px 4px 0;
+	border: 1px solid #c3c4c7;
+	border-left: 4px solid #72aee6;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.inner-wrap .notice.notice-success {
+	border-left-color: #00a32a;
+	background: #f0f8f0;
+	border-color: #c6e1c6;
+}
+
+.inner-wrap .notice.notice-error {
+	border-left-color: #d63638;
+	background: #fcf0f1;
+	border-color: #f1c0c0;
+}
+
+.inner-wrap .notice.notice-warning {
+	border-left-color: #dba617;
+	background: #fcf2e8;
+	border-color: #f0d0a0;
+}
+
+.inner-wrap .notice p {
+	margin: 8px 0;
+	font-size: 14px;
+}
+
+.inner-wrap .notice:last-child {
+	margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	
+	.wpzoom-page-title {
+		font-size: 20px;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	
+	.section-title {
+		font-size: 24px;
+	}
+	
+	.wide-text-field input[type="text"] {
+		max-width: 100%;
+	}
+	
+	.submit-button .button {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	
+	.submit-button .button:last-child {
+		margin-bottom: 0;
+	}
+} 
