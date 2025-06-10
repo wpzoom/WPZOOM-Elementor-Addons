@@ -1543,6 +1543,7 @@ class Video_Slider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Text Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
+                'default' => '#fff',
 				'selectors' => [
 					'{{WRAPPER}} .wpz-slide-title' => 'color: {{VALUE}}',
 				],
