@@ -403,6 +403,7 @@ class Video_Slider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Background Type', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::CHOOSE,
+                'description' => 'The overlay can be customized in the Style tab',
 				'options' => [
 					'image' => [
 						'title' => esc_html__( 'Image', 'wpzoom-elementor-addons' ),
@@ -622,6 +623,20 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
+
+        $repeater->add_control(
+            'link',
+            [
+                'label' => esc_html__( 'Title Link', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::URL,
+                'label_block' => true,
+                'placeholder' => 'https://example.com',
+                'dynamic' => [
+                    'active' => true,
+                ]
+            ]
+        );
+
 		$repeater->add_control(
 			'subtitle',
 			[
@@ -635,18 +650,6 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
-			'link',
-			[
-				'label' => esc_html__( 'Link', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::URL,
-				'label_block' => true,
-				'placeholder' => 'https://example.com',
-				'dynamic' => [
-					'active' => true,
-				]
-			]
-		);
 
 		$repeater->add_control(
 			'show_button',
