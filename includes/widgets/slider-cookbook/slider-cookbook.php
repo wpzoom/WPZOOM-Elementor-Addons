@@ -1013,7 +1013,7 @@ class Slider_cookbook extends Widget_Base {
 
 							</div>
 
-							<div class="slide-background" <?php echo $style; ?>><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'wpzoom' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"></a></div>
+							<div class="slide-background" <?php echo $style; ?>><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'wpzoom-elementor-addons' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"></a></div>
 
 						</div>
 					<?php endwhile; ?>

@@ -221,7 +221,7 @@ class Portfolio_Reel extends Widget_Base {
                 'label'       => esc_html__( 'Widget Title', 'wpzoom-elementor-addons' ),
                 'type'        => Controls_Manager::TEXT,
                 'placeholder' => esc_html__( 'Enter your widget title', 'wpzoom-elementor-addons' ),
-                'default'     => esc_html__( 'Our Work', 'wpzoom' ),
+                'default'     => esc_html__( 'Our Work', 'wpzoom-elementor-addons' ),
                 'label_block' => true,
                 'dynamic'     => array(
                     'active' => true,
@@ -576,7 +576,7 @@ class Portfolio_Reel extends Widget_Base {
                 'label'       => esc_html__( 'Text for Load More button', 'wpzoom-elementor-addons' ),
                 'description' => esc_html__( 'Change the text to something like "View All" if you disabled the option to load new posts dynamically.', 'wpzoom-elementor-addons' ),
                 'type'        => Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Load More', 'wpzoom' ),
+                'default'     => esc_html__( 'Load More', 'wpzoom-elementor-addons' ),
                 'label_block' => true,
             )
         );
@@ -626,7 +626,7 @@ class Portfolio_Reel extends Widget_Base {
         $this->add_responsive_control(
             'view_all_width',
             [
-                'label' => esc_html__( 'Width', 'elementor' ),
+                'label' => esc_html__( 'Width', 'wpzoom-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%', 'em' ],
                 'range' => [

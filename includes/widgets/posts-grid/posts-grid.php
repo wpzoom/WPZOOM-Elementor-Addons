@@ -485,7 +485,7 @@ class Posts_Grid extends Widget_Base {
 		$this->add_responsive_control(
 			'load_more_width',
 			[
-				'label' => esc_html__( 'Width', 'elementor' ),
+				'label' => esc_html__( 'Width', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em' ],
 				'range' => [

@@ -218,17 +218,17 @@ class Portfolio_Showcase extends Widget_Base {
         $this->add_control(
             'portfolio_showcase_styles',
             array(
-                'label'              => esc_html__( 'Portfolio Showcase Style', 'recipe-card-blocks-by-wpzoom' ),
+                'label'              => esc_html__( 'Portfolio Showcase Style', 'wpzoom-elementor-addons' ),
                 'label_block'        => true,
                 'type'               => 'wpzoom_image_picker',
                 'default'            => 'default',
                 'options'            => array(
                     'default'             => array(
-                        'label' => esc_html__( 'Default', 'recipe-card-blocks-by-wpzoom' ),
+                        'label' => esc_html__( 'Default', 'wpzoom-elementor-addons' ),
                         'image' => plugins_url( '/assets/images/default.jpg', __FILE__ ),
                     ),
                     'eccentric'              => array(
-                        'label' => esc_html__( 'Eccentric', 'recipe-card-blocks-by-wpzoom' ),
+                        'label' => esc_html__( 'Eccentric', 'wpzoom-elementor-addons' ),
                         'image' => plugins_url( '/assets/images/eccentric.jpg', __FILE__ ),
                     )
                 ),
@@ -703,7 +703,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'label'       => esc_html__( 'Text for View All button', 'wpzoom-elementor-addons' ),
 				'description' => esc_html__( 'Change the text to something like "Load More" if you have enabled the option to load new posts dynamically.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'View All', 'wpzoom' ),
+				'default'     => esc_html__( 'View All', 'wpzoom-elementor-addons' ),
 				'condition' => array(
 					'portfolio_showcase_styles!' => 'eccentric',
 				),
@@ -758,7 +758,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_responsive_control(
 			'view_all_width',
 			[
-				'label' => esc_html__( 'Width', 'elementor' ),
+				'label' => esc_html__( 'Width', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em' ],
 				'range' => [

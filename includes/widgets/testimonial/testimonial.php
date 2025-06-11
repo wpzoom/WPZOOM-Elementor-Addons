@@ -301,10 +301,10 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_is_gradient_background',
 			[
-				'label' => esc_html__( 'Use Gradient Background', 'essential-addons-elementor' ),
+				'label' => esc_html__( 'Use Gradient Background', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'essential-addons-elementor' ),
-				'label_off' => esc_html__( 'Hide', 'essential-addons-elementor' ),
+				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
 				'return_value' => 'yes',
 			]
 		);
@@ -312,7 +312,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'wpz_testimonial_background',
 			[
-				'label' => esc_html__( 'Background Color', 'essential-addons-elementor' ),
+				'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -328,7 +328,7 @@ class Testimonial extends Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => 'wpz_testimonial_gradient_background',
-				'label' => esc_html__( 'Gradient Background', 'essential-addons-elementor' ),
+				'label' => esc_html__( 'Gradient Background', 'wpzoom-elementor-addons' ),
 				'types' => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} .wpz-testimonial-item',
 				'condition' => [
