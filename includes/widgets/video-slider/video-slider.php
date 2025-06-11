@@ -1031,18 +1031,7 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'vertical',
-			[
-				'label' => esc_html__( 'Vertical Mode?', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-				'frontend_available' => true,
-				'style_transfer' => true
-			]
-		);
+
 
 		$this->add_responsive_control(
 			'slides_to_show',
