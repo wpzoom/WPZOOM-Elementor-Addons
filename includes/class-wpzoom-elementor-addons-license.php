@@ -258,7 +258,16 @@ class License_Manager {
 						<div class="wpzoom-license-help-section expired">
 							<h3><?php esc_html_e( 'License Expired', 'wpzoom-elementor-addons' ); ?></h3>
 							<p><?php esc_html_e( 'Your license has expired. Please renew it to continue receiving updates and support.', 'wpzoom-elementor-addons' ); ?></p>
-							<a href="https://www.wpzoom.com/account/licenses/" target="_blank" class="button button-primary">
+							<?php
+							$renewal_url = 'https://www.wpzoom.com/checkout/';
+							if ( ! empty( $license_key ) ) {
+								$renewal_url = add_query_arg( [
+									'edd_license_key' => urlencode( $license_key ),
+									'download_id' => '815383' // WPZOOM Elementor Addons Pro product ID
+								], $renewal_url );
+							}
+							?>
+							<a href="<?php echo esc_url( $renewal_url ); ?>" target="_blank" class="button button-primary">
 								<?php esc_html_e( 'Renew License', 'wpzoom-elementor-addons' ); ?>
 							</a>
 						</div>
@@ -413,7 +422,7 @@ class License_Manager {
 		$license_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 		if( $license_data['license'] == 'deactivated' ) {
-			delete_option( self::LICENSE_KEY_OPTION );
+			// Keep the license key but clear status and data
 			delete_option( self::LICENSE_STATUS_OPTION );
 			delete_option( self::LICENSE_DATA_OPTION );
 			
@@ -423,7 +432,7 @@ class License_Manager {
 			// Trigger action to clear template cache
 			do_action( 'wpzoom_license_status_changed', 'deactivated' );
 			
-			$this->set_license_message( __( 'License deactivated successfully!', 'wpzoom-elementor-addons' ), 'success' );
+			$this->set_license_message( __( 'License deactivated successfully! The license key remains saved for easy reactivation.', 'wpzoom-elementor-addons' ), 'success' );
 		}
 	}
 

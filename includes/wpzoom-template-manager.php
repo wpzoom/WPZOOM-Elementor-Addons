@@ -321,9 +321,18 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		private function get_license_button_data( $license_status ) {
 			switch ( $license_status ) {
 				case 'expired':
+					$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
+					$license_key = $license_manager->get_license_key();
+					$renewal_url = 'https://www.wpzoom.com/checkout/';
+					if ( ! empty( $license_key ) ) {
+						$renewal_url = add_query_arg( [
+							'edd_license_key' => urlencode( $license_key ),
+							'download_id' => '815383' // WPZOOM Elementor Addons Pro product ID
+						], $renewal_url );
+					}
 					return array(
 						'text' => esc_html__( 'Renew License', 'wpzoom-elementor-addons' ),
-						'url' => 'https://www.wpzoom.com/account/licenses/'
+						'url' => $renewal_url
 					);
 					
 				case 'inactive':
