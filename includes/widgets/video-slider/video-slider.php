@@ -1017,19 +1017,7 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'center',
-			[
-				'label' => esc_html__( 'Center Mode?', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-				'description' => esc_html__( 'Best works with odd number of slides (Slides To Show) and loop (Infinite Loop)', 'wpzoom-elementor-addons' ),
-				'frontend_available' => true,
-				'style_transfer' => true
-			]
-		);
+
 
 
 
