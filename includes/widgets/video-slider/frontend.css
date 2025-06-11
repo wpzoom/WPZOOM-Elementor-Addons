@@ -245,7 +245,7 @@
 	border-radius: 50%;
 	color: white;
 	text-decoration: none;
-	transition: all 0.3s ease;
+	transition: all 0.3s ease !important;
 	backdrop-filter: blur(10px);
 	cursor: pointer;
 	user-select: none;

@@ -456,21 +456,7 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
-			'external_url',
-			[
-				'label' => esc_html__( 'External URL', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-				'condition' => [
-					'background_type' => 'video',
-					'video_source' => 'external',
-				],
-			]
-		);
+
 
 		$repeater->add_control(
 			'video_link',
@@ -489,7 +475,6 @@ class Video_Slider extends Widget_Base {
 				'condition' => [
 					'background_type' => 'video',
 					'video_source' => 'external',
-					'external_url' => 'yes',
 				],
 				'frontend_available' => true,
 			]
@@ -521,7 +506,6 @@ class Video_Slider extends Widget_Base {
 				'condition' => [
 					'background_type' => 'video',
 					'video_source' => 'external',
-					'external_url' => 'yes',
 					'video_link!' => '',
 				],
 				'frontend_available' => true,
@@ -537,7 +521,6 @@ class Video_Slider extends Widget_Base {
 				'condition' => [
 					'background_type' => 'video',
 					'video_source' => 'external',
-					'external_url' => 'yes',
 					'video_link!' => '',
 				],
 				'frontend_available' => true,
@@ -577,7 +560,6 @@ class Video_Slider extends Widget_Base {
 				'condition' => [
 					'background_type' => 'video',
 					'video_source' => 'external',
-					'external_url' => 'yes',
 					'video_link!' => '',
 				],
 				'frontend_available' => true,
@@ -749,7 +731,6 @@ class Video_Slider extends Widget_Base {
 				'_id' => 'slide_1',
 				'background_type' => 'video',
 				'video_source' => 'external',
-				'external_url' => 'yes',
 				'video_link' => 'https://wpzoom.s3.amazonaws.com/inspiro-blocks-pro/video/video.mp4',
 				'video_play_on_mobile' => 'yes',
 				'title' => 'External Video Background',
@@ -767,7 +748,6 @@ class Video_Slider extends Widget_Base {
 				'_id' => 'slide_2',
 				'background_type' => 'video',
 				'video_source' => 'external',
-				'external_url' => 'yes',
 				'video_link' => 'https://vimeo.com/729485552',
 				'video_play_on_mobile' => '',
 				'title' => 'Vimeo Video Integration',
@@ -2577,7 +2557,7 @@ class Video_Slider extends Widget_Base {
 			// Self-hosted video
 			$video_url = $slide['video_file']['url'];
 			$video_type = 'hosted';
-		} elseif ( 'external' === $video_source && ! empty( $slide['external_url'] ) && $slide['external_url'] === 'yes' && ! empty( $slide['video_link'] ) ) {
+		} elseif ( 'external' === $video_source && ! empty( $slide['video_link'] ) ) {
 			// External video (YouTube/Vimeo)
 			$video_url = $slide['video_link'];
 			$video_type = $this->detect_video_type( $video_url );
