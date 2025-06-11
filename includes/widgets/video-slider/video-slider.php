@@ -1115,10 +1115,7 @@ class Video_Slider extends Widget_Base {
 					'actions-subtitle-title' => esc_html__( '6. Actions → Subtitle → Title', 'wpzoom-elementor-addons' ),
 				],
 				'default' => 'title-subtitle-actions',
-				'description' => esc_html__( 'Select a predefined order for your slide content elements.', 'wpzoom-elementor-addons' ),
-				'condition' => [
-					'content_order_advanced!' => 'yes',
-				],
+				'description' => esc_html__( 'Select the order for your slide content elements.', 'wpzoom-elementor-addons' ),
 			]
 		);
 
@@ -1128,76 +1125,6 @@ class Video_Slider extends Widget_Base {
 				'type' => Controls_Manager::RAW_HTML,
 				'raw' => esc_html__( '💡 Tip: "Actions" includes both buttons and video lightbox triggers when they are enabled in individual slides.', 'wpzoom-elementor-addons' ),
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
-			]
-		);
-
-		$this->add_control(
-			'content_order_advanced',
-			[
-				'label' => esc_html__( 'Advanced Ordering', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Custom', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'Preset', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-				'default' => '',
-				'description' => esc_html__( 'Enable to use drag-and-drop custom ordering instead of presets.', 'wpzoom-elementor-addons' ),
-			]
-		);
-
-		// Advanced repeater for custom ordering
-		$content_repeater = new Repeater();
-
-		$content_repeater->add_control(
-			'element_type',
-			[
-				'label' => esc_html__( 'Element', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'title' => esc_html__( '📝 Title', 'wpzoom-elementor-addons' ),
-					'subtitle' => esc_html__( '📄 Subtitle', 'wpzoom-elementor-addons' ),
-					'actions' => esc_html__( '🎬 Actions (Button & Lightbox)', 'wpzoom-elementor-addons' ),
-				],
-				'default' => 'title',
-			]
-		);
-
-		$content_repeater->add_control(
-			'element_enabled',
-			[
-				'label' => esc_html__( 'Show Element', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'wpzoom-elementor-addons' ),
-				'label_off' => esc_html__( 'Hide', 'wpzoom-elementor-addons' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
-			'content_order_custom',
-			[
-				'label' => esc_html__( 'Custom Content Order', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $content_repeater->get_controls(),
-				'default' => [
-					[
-						'element_type' => 'title',
-						'element_enabled' => 'yes',
-					],
-					[
-						'element_type' => 'subtitle',
-						'element_enabled' => 'yes',
-					],
-					[
-						'element_type' => 'actions',
-						'element_enabled' => 'yes',
-					],
-				],
-				'title_field' => '{{{ element_type.charAt(0).toUpperCase() + element_type.slice(1) }}} {{{ element_enabled === "yes" ? "✅" : "❌" }}}',
-				'condition' => [
-					'content_order_advanced' => 'yes',
-				],
-				'description' => esc_html__( 'Drag and drop to reorder elements. Toggle visibility for each element.', 'wpzoom-elementor-addons' ),
 			]
 		);
 
@@ -2906,37 +2833,20 @@ class Video_Slider extends Widget_Base {
 							<div class="wpz-slide-inner">
 								<div class="wpz-slide-content">
 									<?php
-									// Determine which ordering system to use
-									$use_advanced_ordering = !empty($settings['content_order_advanced']) && $settings['content_order_advanced'] === 'yes';
+									// Use simple preset ordering
+									$content_order_preset = $settings['content_order_preset'] ?? 'title-subtitle-actions';
 									
-									if ($use_advanced_ordering && !empty($settings['content_order_custom'])) {
-										// Use advanced custom ordering from repeater
-										$content_order = [];
-										foreach ($settings['content_order_custom'] as $item) {
-											if (!empty($item['element_enabled']) && $item['element_enabled'] === 'yes') {
-												$content_order[] = $item['element_type'];
-											}
-										}
-										// Fallback to default if no enabled elements
-										if (empty($content_order)) {
-											$content_order = ['title', 'subtitle', 'actions'];
-										}
-									} else {
-										// Use simple preset ordering
-										$content_order_preset = $settings['content_order_preset'] ?? 'title-subtitle-actions';
-										
-										// Map preset to element order
-										$preset_map = [
-											'title-subtitle-actions' => ['title', 'subtitle', 'actions'],
-											'subtitle-title-actions' => ['subtitle', 'title', 'actions'],
-											'actions-title-subtitle' => ['actions', 'title', 'subtitle'],
-											'title-actions-subtitle' => ['title', 'actions', 'subtitle'],
-											'subtitle-actions-title' => ['subtitle', 'actions', 'title'],
-											'actions-subtitle-title' => ['actions', 'subtitle', 'title'],
-										];
-										
-										$content_order = $preset_map[$content_order_preset] ?? ['title', 'subtitle', 'actions'];
-									}
+									// Map preset to element order
+									$preset_map = [
+										'title-subtitle-actions' => ['title', 'subtitle', 'actions'],
+										'subtitle-title-actions' => ['subtitle', 'title', 'actions'],
+										'actions-title-subtitle' => ['actions', 'title', 'subtitle'],
+										'title-actions-subtitle' => ['title', 'actions', 'subtitle'],
+										'subtitle-actions-title' => ['subtitle', 'actions', 'title'],
+										'actions-subtitle-title' => ['actions', 'subtitle', 'title'],
+									];
+									
+									$content_order = $preset_map[$content_order_preset] ?? ['title', 'subtitle', 'actions'];
 
 									// Render content elements in the specified order
 									foreach ( $content_order as $element_type ) {
