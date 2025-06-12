@@ -1459,7 +1459,8 @@ class Video_Slider extends Widget_Base {
 				],
 				'fields_options' => [
                     'typography' => ['default' => 'yes'],
-                    'font_weight' => ['default' => 600],
+                    'font_family' => ['default' => 'Onest'],
+                    'font_weight' => ['default' => 500],
 					'font_size' => [
 						'default' => [
 							'unit' => 'px',
