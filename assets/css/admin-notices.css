@@ -1,0 +1,525 @@
+/* Modern WordPress Admin Notices */
+.wpzoom-notice {
+    border: 1px solid #ddd;
+    border-left: 4px solid #483082;
+    padding: 16px 20px;
+    margin: 20px 0 16px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Modern notice class for PHP usage */
+.wpzoom-modern-notice {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove default notice styling when using modern class */
+.wpzoom-modern-notice.notice {
+    border-left: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.wpzoom-notice.notice-error,
+.wpzoom-modern-notice.notice-error {
+    border-left-color: #d63638;
+}
+
+.wpzoom-notice.notice-warning,
+.wpzoom-modern-notice.notice-warning {
+    border-left-color: #f56e00;
+}
+
+.wpzoom-notice.notice-success,
+.wpzoom-modern-notice.notice-success {
+    border-left-color: #007cba;
+}
+
+.wpzoom-notice.notice-info,
+.wpzoom-modern-notice.notice-info {
+    border-left-color: #483082;
+}
+
+.wpzoom-modern-notice.notice.is-dismissible {
+    padding-right: 0;
+}
+
+/* Notice Header */
+.wpzoom-notice-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+/* Modern notice header styling */
+.wpzoom-modern-notice .wpzoom-notice-header {
+    background: #483082;
+    color: #fff;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.wpzoom-modern-notice.notice-info .wpzoom-notice-header {
+    background: #483082;
+}
+
+.wpzoom-notice-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* Modern notice icon styling */
+.wpzoom-modern-notice .wpzoom-notice-icon {
+    font-size: 28px;
+    line-height: 1;
+    opacity: 0.9;
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+
+
+.notice-info .wpzoom-notice-icon {
+    background: #483082;
+}
+
+/* Notice Title */
+.wpzoom-notice-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #23282d;
+    margin: 0;
+}
+
+/* Modern notice title styling */
+.wpzoom-modern-notice .wpzoom-notice-title {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+}
+
+/* Notice description for modern notices */
+.wpzoom-notice-description {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* Notice Content */
+.wpzoom-notice-content {
+    flex: 1;
+}
+
+.wpzoom-notice-content p {
+    margin: 0 0 8px 0;
+    color: #fff;
+    opacity: .8;
+}
+
+.wpzoom-notice-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Body section for modern notices */
+.wpzoom-notice-body {
+    padding: 20px;
+}
+
+.wpzoom-notice-body p {
+    margin: 0 0 14px 0;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.wpzoom-notice-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Feature Grid */
+.wpzoom-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.wpzoom-feature-item {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    font-size: 13px;
+}
+
+.wpzoom-feature-item strong {
+    display: block;
+    color: #23282d;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+/* Feature highlight styles for modern notices */
+.wpzoom-notice-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.wpzoom-notice-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.wpzoom-notice-feature-icon {
+    font-size: 18px;
+    color: #483082;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.wpzoom-notice-feature-content h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.wpzoom-notice-feature-content p {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* Buttons */
+.wpzoom-notice-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Action buttons for modern notices */
+.wpzoom-notice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.wpzoom-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+/* Modern notice buttons */
+.wpzoom-notice-btn {
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border: 1px solid;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.wpzoom-btn-primary,
+.wpzoom-notice-btn-primary {
+    background: #483082;
+    border-color: #483082;
+    color: #fff;
+}
+
+.wpzoom-btn-primary:hover,
+.wpzoom-btn-primary:focus,
+.wpzoom-btn-primary:active,
+.wpzoom-notice-btn-primary:hover,
+.wpzoom-notice-btn-primary:focus,
+.wpzoom-notice-btn-primary:active {
+    background: #3a2569;
+    border-color: #3a2569;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.wpzoom-btn-secondary,
+.wpzoom-notice-btn-secondary {
+    background: #fff;
+    border-color: #483082;
+    color: #483082;
+}
+
+.wpzoom-btn-secondary:hover,
+.wpzoom-notice-btn-secondary:hover {
+    background: #483082;
+    border-color: #483082;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.wpzoom-btn-error {
+    background: #d63638;
+    border-color: #d63638;
+    color: #fff;
+}
+
+.wpzoom-btn-error:hover {
+    background: #b32d2e;
+    border-color: #b32d2e;
+    color: #fff;
+}
+
+.wpzoom-notice-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Loading State */
+.wpzoom-btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.wpzoom-btn.loading::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dismiss Button */
+.wpzoom-notice .notice-dismiss {
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+}
+
+.wpzoom-notice .notice-dismiss:hover::before {
+    color: #d63638;
+}
+
+/* Modern notice dismiss button */
+.wpzoom-modern-notice .notice-dismiss,
+.wpzoom-notice-dismiss {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.wpzoom-modern-notice .notice-dismiss:hover,
+.wpzoom-notice-dismiss:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+.wpzoom-notice-dismiss:before {
+    content: "×";
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Custom Dismiss Button */
+.wpzoom-dismiss-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.wpzoom-dismiss-btn:hover {
+    background: #f0f0f0;
+    color: #23282d;
+}
+
+/* Success Message */
+.wpzoom-success-message {
+    font-weight: 500;
+    display: none;
+    margin-left: 8px;
+    font-size: 13px;
+}
+
+/* Badge styling */
+.wpzoom-notice-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.wpzoom-notice-badge-pro {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.wpzoom-notice-badge-new {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Spinner styling */
+.wpzoom-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: wpzoom-spin 1s ease-in-out infinite;
+}
+
+@keyframes wpzoom-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 782px) {
+    .wpzoom-notice {
+        padding: 12px 16px;
+    }
+    
+    .wpzoom-notice-header,
+    .wpzoom-modern-notice .wpzoom-notice-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 16px;
+    }
+    
+    .wpzoom-modern-notice .wpzoom-notice-icon {
+        font-size: 24px;
+    }
+    
+    .wpzoom-modern-notice .wpzoom-notice-title {
+        font-size: 16px;
+    }
+    
+    .wpzoom-notice-body {
+        padding: 16px;
+    }
+    
+    .wpzoom-features-grid,
+    .wpzoom-notice-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .wpzoom-notice-buttons,
+    .wpzoom-notice-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .wpzoom-btn,
+    .wpzoom-notice-btn {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Plugin Status Badge */
+.wpzoom-plugin-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.wpzoom-plugin-status.installed {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.wpzoom-plugin-status.not-installed {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

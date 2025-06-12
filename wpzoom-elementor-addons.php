@@ -109,6 +109,9 @@ final class WPZOOM_Elementor_Addons {
 
 		// Initialize Pro plugin promotion
 		add_action( 'admin_notices', array( $this, 'pro_plugin_promotion_notice' ) );
+
+		// Enqueue admin styles for modern notices
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
 		add_action( 'wp_ajax_wpzoom_dismiss_pro_notice', array( $this, 'dismiss_pro_notice' ) );
 
 	}
@@ -341,15 +344,30 @@ final class WPZOOM_Elementor_Addons {
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 	}
 
-	/**
-	 * Pro plugin promotion notice
-	 *
-	 * Shows a notice promoting the Pro plugin when it's not active.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 */
-	public function pro_plugin_promotion_notice() {
+	        /**
+         * Enqueue admin styles for modern notices
+         *
+         * @since 1.0.0
+         * @access public
+         */
+        public function enqueue_admin_styles() {
+                wp_enqueue_style(
+                        'wpzoom-elementor-addons-admin-notices',
+                        plugins_url( 'assets/css/admin-notices.css', WPZOOM_EL_ADDONS__FILE__ ),
+                        array(),
+                        WPZOOM_EL_ADDONS_VER
+                );
+        }
+
+        /**
+         * Pro plugin promotion notice
+         *
+         * Shows a notice promoting the Pro plugin when it's not active.
+         *
+         * @since 1.0.0
+         * @access public
+         */
+        public function pro_plugin_promotion_notice() {
 		// Only show to administrators
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -389,35 +407,76 @@ final class WPZOOM_Elementor_Addons {
 			return;
 		}
 
-		?>
-		<div class="notice notice-info is-dismissible" data-notice="wpzoom-pro">
-			<div style="display: flex; align-items: center; padding: 10px 0;">
-				<div style="margin-right: 15px; font-size: 24px;">🎬</div>
-				<div>
-					<h3 style="margin: 0 0 5px 0;"><?php esc_html_e( 'Video Slideshow Widget for Elementor now Available!', 'wpzoom-elementor-addons' ); ?></h3>
-					<p style="margin: 0;">
-						<?php esc_html_e( 'Purchase a WPZOOM Elementor Addons Pro license key to unlock the new Video Slideshow widget and access to all premium Elementor templates.', 'wpzoom-elementor-addons' ); ?>
-					</p>
-					<p style="margin: 10px 0 0 0;">
-						<a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="button button-primary">
-							<?php esc_html_e( 'Get Pro Plugin', 'wpzoom-elementor-addons' ); ?>
-						</a>
-						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-pro' ) ); ?>" class="button button-secondary" style="margin-left: 10px;">
-							<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
-						</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<script>
-		jQuery(document).ready(function($) {
-			$(document).on('click', '[data-notice="wpzoom-pro"] .notice-dismiss', function() {
-				$.post(ajaxurl, {
-					action: 'wpzoom_dismiss_pro_notice',
-					nonce: '<?php echo wp_create_nonce( 'wpzoom_dismiss_pro_notice' ); ?>'
-				});
-			});
-		});
+		                ?>
+                <div class="notice notice-info wpzoom-modern-notice is-dismissible" data-notice="wpzoom-pro">
+                        <div class="wpzoom-notice-header notice-info">
+                                <div class="wpzoom-notice-icon"><svg height="40" viewBox="0 0 512 512" width="40" xmlns="http://www.w3.org/2000/svg"><title/><path d="M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z" style="fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:32px"/><path d="M216.32,334.44,330.77,265.3a10.89,10.89,0,0,0,0-18.6L216.32,177.56A10.78,10.78,0,0,0,200,186.87V325.13A10.78,10.78,0,0,0,216.32,334.44Z"/ fill="#fff"></svg></div>
+                                <div class="wpzoom-notice-content">
+                                        <h3 class="wpzoom-notice-title">
+                                                <?php esc_html_e( 'Slideshow with Video Backgrounds for Elementor now Available!', 'wpzoom-elementor-addons' ); ?>
+                                                <span class="wpzoom-notice-badge wpzoom-notice-badge-pro"><?php esc_html_e( 'PRO', 'wpzoom-elementor-addons' ); ?></span>
+                                        </h3>
+                                        <p class="wpzoom-notice-description">
+                                                <?php esc_html_e( 'Unlock the new Video Slideshow widget and get access to all premium Elementor templates.', 'wpzoom-elementor-addons' ); ?>
+                                        </p>
+                                </div>
+                                <button type="button" class="wpzoom-notice-dismiss" aria-label="<?php esc_attr_e( 'Dismiss notice', 'wpzoom-elementor-addons' ); ?>"></button>
+                        </div>
+
+                        <div class="wpzoom-notice-body">
+                                <p>
+                                        <?php esc_html_e( 'Upgrade today to unlock the new Video Slideshow widget and access all premium Elementor templates with advanced features and priority support.', 'wpzoom-elementor-addons' ); ?>
+                                </p>
+
+                                <div class="wpzoom-notice-features">
+                                        <div class="wpzoom-notice-feature">
+                                                <div class="wpzoom-notice-feature-icon">🎥</div>
+                                                <div class="wpzoom-notice-feature-content">
+                                                        <h4><?php esc_html_e( 'Video Slideshow Widget', 'wpzoom-elementor-addons' ); ?></h4>
+                                                        <p><?php esc_html_e( 'Create stunning video slideshows with multiple sources and advanced controls.', 'wpzoom-elementor-addons' ); ?></p>
+                                                </div>
+                                        </div>
+                                        <div class="wpzoom-notice-feature">
+                                                <div class="wpzoom-notice-feature-icon">🎨</div>
+                                                <div class="wpzoom-notice-feature-content">
+                                                        <h4><?php esc_html_e( '130+ Elementor Templates', 'wpzoom-elementor-addons' ); ?></h4>
+                                                        <p><?php esc_html_e( 'Access to exclusive Elementor templates and professional designs.', 'wpzoom-elementor-addons' ); ?></p>
+                                                </div>
+                                        </div>
+                                        <div class="wpzoom-notice-feature">
+                                                <div class="wpzoom-notice-feature-icon">🚀</div>
+                                                <div class="wpzoom-notice-feature-content">
+                                                        <h4><?php esc_html_e( 'Priority Support', 'wpzoom-elementor-addons' ); ?></h4>
+                                                        <p><?php esc_html_e( 'Get priority support and regular updates for your Pro license.', 'wpzoom-elementor-addons' ); ?></p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="wpzoom-notice-actions">
+                                        <a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="wpzoom-notice-btn wpzoom-notice-btn-primary">
+                                                <?php esc_html_e( 'Get the Pro Version', 'wpzoom-elementor-addons' ); ?>
+                                        </a>
+                                        <a href="https://demo.wpzoom.com/inspiro-lite/video-slideshow-demo/" target="_blank" class="wpzoom-notice-btn wpzoom-notice-btn-secondary">
+                                                <?php esc_html_e( 'View Demo', 'wpzoom-elementor-addons' ); ?>
+                                        </a>
+                                </div>
+                        </div>
+                </div>
+		                <script>
+                jQuery(document).ready(function($) {
+                        // Handle both WordPress default dismiss button and custom dismiss button
+                        $(document).on('click', '[data-notice="wpzoom-pro"] .notice-dismiss, [data-notice="wpzoom-pro"] .wpzoom-notice-dismiss', function() {
+                                $.post(ajaxurl, {
+                                        action: 'wpzoom_dismiss_pro_notice',
+                                        nonce: '<?php echo wp_create_nonce( 'wpzoom_dismiss_pro_notice' ); ?>'
+                                });
+
+                                // If custom dismiss button, hide the notice
+                                if ($(this).hasClass('wpzoom-notice-dismiss')) {
+                                        $(this).closest('.wpzoom-modern-notice').fadeOut();
+                                }
+                        });
+                });
 		</script>
 		<?php
 	}
