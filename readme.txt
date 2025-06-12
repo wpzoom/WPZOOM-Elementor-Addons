@@ -1,11 +1,10 @@
 === WPZOOM Addons for Elementor (Templates, Widgets) ===
 Contributors:      WPZOOM, alexus450, ciorici
-Donate link:       http://paypal.me/wpzm/10usd
 Author URI:        https://www.wpzoom.com/
 Requires at least: 6.0
 Requires PHP:      7.4
 Tested up to:      6.8
-Stable tag:        1.1.53
+Stable tag:        1.2.0
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor templates, elementor widgets, page builder templates, templates
@@ -24,6 +23,15 @@ It is very easy to use and you do not need to write any code. To contribute impr
 * Possibility to extend the templates for specific WordPress Themes
 * Advanced Elementor widgets with multiple options and settings
 * Unique layouts for **video & photo professionals**
+
+= ⭐️ PRO FEATURES ⭐️ =
+* **Slideshow with Video Background - 🆕**
+* **130+ Elementor Templates - 🆕**
+* Premium Support
+* and many new features coming soon!
+
+⭐️ **[Get the PRO version!](https://www.wpzoom.com/plugins/wpzoom-elementor-addons/?utm_source=wporg&utm_medium=website&utm_campaign=free_description)** ⭐️
+
 
 == Included modules: ==
 
@@ -106,7 +114,7 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 == Screenshots ==
 
-1. Template Library
+1. Template Library (PRO)
 2. Additional Modules/widgets
 3. Pricing Table widget in Inspiro PRO theme
 4. Team Members module
@@ -114,6 +122,9 @@ Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templ
 
 
 == Changelog ==
+
+= 1.2.0 =
+* Multiple improvements and fixes
 
 = 1.1.53 =
 * Updates to some templates
