@@ -340,7 +340,7 @@ class Video_Slider extends Widget_Base {
 						</div>
 					</div>',
 					esc_html__( 'Video Slideshow Widget', 'wpzoom-elementor-addons' ),
-					esc_html__( 'Create stunning video slideshows with background videos, custom overlays, and advanced animations. This premium widget requires either a WPZOOM theme or the WPZOOM Elementor Addons Pro plugin.', 'wpzoom-elementor-addons' ),
+					esc_html__( 'Create stunning video slideshows with background videos, custom overlays, and advanced animations. This premium widget requires the WPZOOM Elementor Addons Pro plugin to be installed and activated, or you can use it with any premium WPZOOM theme.', 'wpzoom-elementor-addons' ),
 					esc_url( 'https://www.wpzoom.com/themes/' ),
 					esc_html__( 'Browse WPZOOM Themes', 'wpzoom-elementor-addons' ),
 					esc_url( 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/' ),
@@ -2874,7 +2874,7 @@ class Video_Slider extends Widget_Base {
 					<div style="font-size: 64px; margin-bottom: 20px;">🎬</div>
 					<h3 style="margin: 0 0 15px 0; color: white; font-size: 28px; font-weight: 600;"><?php esc_html_e( 'Video Slideshow Widget (Pro)', 'wpzoom-elementor-addons' ); ?></h3>
 					<p style="margin: 0 0 30px 0; color: rgba(255,255,255,0.9); line-height: 1.6; font-size: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">
-						<?php esc_html_e( 'Create stunning video slideshows with background videos and custom overlays. This premium widget requires a valid license key from WPZOOM Elementor Addons Pro.', 'wpzoom-elementor-addons' ); ?>
+						<?php esc_html_e( 'Create stunning video slideshows with background videos and custom overlays. This premium widget requires the WPZOOM Elementor Addons Pro plugin to be installed and activated, or you can use it with any premium WPZOOM theme.', 'wpzoom-elementor-addons' ); ?>
 					</p>
 				</div>
 			</div>
@@ -2887,10 +2887,10 @@ class Video_Slider extends Widget_Base {
 					<div style="font-size: 24px; margin-bottom: 10px;">🎬</div>
 					<h4 style="margin: 0 0 8px 0; color: white; font-size: 18px;"><?php esc_html_e( 'Video Slideshow Widget', 'wpzoom-elementor-addons' ); ?></h4>
 					<p style="margin: 0 0 15px 0; color: rgba(255,255,255,0.9); font-size: 14px;">
-						<?php esc_html_e( 'This premium widget requires a valid license key', 'wpzoom-elementor-addons' ); ?>
+						<?php esc_html_e( 'This premium widget requires the WPZOOM Elementor Addons Pro plugin or a premium WPZOOM theme', 'wpzoom-elementor-addons' ); ?>
 					</p>
-					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-license' ) ); ?>" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; text-decoration: none; border-radius: 20px; font-size: 14px; margin-bottom: 10px;">
-						<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
+					<a href="<?php echo esc_url( 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/' ); ?>" target="_blank" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; text-decoration: none; border-radius: 20px; font-size: 14px; margin-bottom: 10px;">
+						<?php esc_html_e( 'Get Pro Plugin', 'wpzoom-elementor-addons' ); ?>
 					</a>
 					<p style="margin: 10px 0 0 0; color: rgba(255,255,255,0.7); font-size: 12px;">
 						<?php esc_html_e( '(Only visible to administrators)', 'wpzoom-elementor-addons' ); ?>
@@ -2910,21 +2910,13 @@ class Video_Slider extends Widget_Base {
 	 * @return bool True if user has premium access, false otherwise.
 	 */
 	private function has_premium_access() {
-		// Check if valid license is active
-		if ( class_exists( '\WPZOOM_Elementor_Addons\License_Manager' ) ) {
-			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-			if ( $license_manager->is_license_valid() ) {
-				return true;
-			}
+		// Check if Pro plugin is active
+		if ( class_exists( 'WPZOOM_Elementor_Addons_Pro' ) ) {
+			return true;
 		}
 		
 		// Fallback: Check if WPZOOM theme is active (for backward compatibility)
 		if ( class_exists( 'WPZOOM' ) ) {
-			return true;
-		}
-		
-		// Fallback: Check if Pro plugin is active (for backward compatibility)
-		if ( class_exists( 'WPZOOM_Elementor_Addons_Pro' ) ) {
 			return true;
 		}
 		

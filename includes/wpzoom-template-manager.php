@@ -63,12 +63,9 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			//Setup static library_source
 			self::$library_source = 'https://api.wpzoom.com/elementor/templates/';
 
-			add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
-			add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
-			add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
-			
-			// Clear template cache when license status changes
-			add_action( 'wpzoom_license_status_changed', array( $this, 'clear_template_cache' ) );
+					add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
+		add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
+		add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
 
 			/* Set initial version to the and call update on first use */
 			if( get_option( 'wpz_current_version' ) == false ) {
@@ -114,10 +111,9 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			$thumb_url = '';
 			echo '<script> var WPZ_Index = []; </script>';
 			
-			// Check license and premium theme status
-			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-			$has_premium_access = $license_manager->is_license_active() || class_exists( 'WPZOOM' );
-			$license_status = $license_manager->get_license_status();
+			// Check Pro plugin and premium theme status
+			$has_premium_access = class_exists( 'WPZOOM_Elementor_Addons_Pro' ) || class_exists( 'WPZOOM' );
+			$has_pro_plugin = class_exists( 'WPZOOM_Elementor_Addons_Pro' );
 
 			// Define which themes are free for everyone
 			$free_themes = array( 'Foodica', 'Inspiro Lite' );
@@ -147,8 +143,11 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					$is_theme_free = in_array( $theme, $free_themes );
 					$is_restricted = !$has_premium_access && !$is_theme_free;
 					
-					// Get appropriate button data based on license status
-					$button_data = $this->get_license_button_data( $license_status );
+					// Get appropriate button data for Pro templates
+					$button_data = array(
+						'text' => esc_html__( 'Get Pro Plugin', 'wpzoom-elementor-addons' ),
+						'url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
+					);
 
 					if( isset( $template_list[$i]['separator'] ) ) {
 						$separator_title = $template_list[$i]['separator'];
@@ -183,7 +182,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						<div class="wpzoom-action-bar">
 							<div class="wpzoom-grow"> </div>
 							<?php if ( $is_restricted ) : ?>
-								<a href="<?php echo esc_url( $button_data['url'] ); ?>" target="_blank" class="wpzoom-btn-template-upgrade wpzoom-btn-license-<?php echo esc_attr( $license_status ); ?>" title="<?php echo esc_attr( $button_data['text'] ); ?>">
+								<a href="<?php echo esc_url( $button_data['url'] ); ?>" target="_blank" class="wpzoom-btn-template-upgrade wpzoom-btn-pro-required" title="<?php echo esc_attr( $button_data['text'] ); ?>">
 									<?php echo esc_html( $button_data['text'] ); ?>
 								</a>
 							<?php else : ?>
@@ -266,18 +265,16 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/' . $data['thumbnail'];
 			}
 
-			// Check if this template is restricted
-			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-			$has_premium_access = $license_manager->is_license_active() || class_exists( 'WPZOOM' );
-			$license_status = $license_manager->get_license_status();
-			$free_themes = array( 'Foodica', 'Inspiro Lite' );
-			$theme = $data['theme'];
-			$is_theme_free = in_array( $theme, $free_themes );
-			$is_restricted = !$has_premium_access && !$is_theme_free;
-			
-			// Get appropriate button data and messages based on license status
-			$button_data = $this->get_license_button_data( $license_status );
-			$preview_message = $this->get_preview_message( $license_status );
+					// Check if this template is restricted
+		$has_premium_access = class_exists( 'WPZOOM_Elementor_Addons_Pro' ) || class_exists( 'WPZOOM' );
+		$free_themes = array( 'Foodica', 'Inspiro Lite' );
+		$theme = $data['theme'];
+		$is_theme_free = in_array( $theme, $free_themes );
+		$is_restricted = !$has_premium_access && !$is_theme_free;
+		
+		// Get appropriate button data and messages for Pro plugin
+		$button_data = $this->get_pro_button_data();
+		$preview_message = $this->get_pro_preview_message();
 
 			?>
 			<div id="wpzoom-elementor-template-library-preview">
@@ -312,81 +309,26 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			return $wp_filesystem;
 		}
 
-		/**
-		 * Get appropriate button text and URL based on license status
-		 *
-		 * @param string $license_status Current license status
-		 * @return array Button text and URL
-		 */
-		private function get_license_button_data( $license_status ) {
-			switch ( $license_status ) {
-				case 'expired':
-					$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-					$license_key = $license_manager->get_license_key();
-					$renewal_url = 'https://www.wpzoom.com/checkout/';
-					if ( ! empty( $license_key ) ) {
-						$renewal_url = add_query_arg( [
-							'edd_license_key' => urlencode( $license_key ),
-							'download_id' => '815383' // WPZOOM Elementor Addons Pro product ID
-						], $renewal_url );
-					}
-					return array(
-						'text' => esc_html__( 'Renew License', 'wpzoom-elementor-addons' ),
-						'url' => $renewal_url
-					);
-					
-				case 'inactive':
-				case 'site_inactive':
-					return array(
-						'text' => esc_html__( 'Activate License', 'wpzoom-elementor-addons' ),
-						'url' => admin_url( 'options-general.php?page=wpzoom-addons-license' )
-					);
-					
-				case 'invalid':
-					return array(
-						'text' => esc_html__( 'Enter Valid License', 'wpzoom-elementor-addons' ),
-						'url' => admin_url( 'options-general.php?page=wpzoom-addons-license' )
-					);
-					
-				case 'disabled':
-					return array(
-						'text' => esc_html__( 'Contact Support', 'wpzoom-elementor-addons' ),
-						'url' => 'https://www.wpzoom.com/support/'
-					);
-					
-				default:
-					return array(
-						'text' => esc_html__( 'Unlock with Pro', 'wpzoom-elementor-addons' ),
-						'url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
-					);
-			}
-		}
+			/**
+	 * Get appropriate button text and URL for Pro plugin
+	 *
+	 * @return array Button text and URL
+	 */
+	private function get_pro_button_data() {
+		return array(
+			'text' => esc_html__( 'Get Pro Plugin', 'wpzoom-elementor-addons' ),
+			'url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
+		);
+	}
 
-		/**
-		 * Get appropriate preview message based on license status
-		 *
-		 * @param string $license_status Current license status
-		 * @return string Preview message
-		 */
-		private function get_preview_message( $license_status ) {
-			switch ( $license_status ) {
-				case 'expired':
-					return esc_html__( 'Your license has expired. Renew your license to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
-					
-				case 'inactive':
-				case 'site_inactive':
-					return esc_html__( 'Your license is inactive. Activate your license to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
-					
-				case 'invalid':
-					return esc_html__( 'Your license key is invalid. Enter a valid license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
-					
-				case 'disabled':
-					return esc_html__( 'Your license has been disabled. Contact support to restore access to premium templates.', 'wpzoom-elementor-addons' );
-					
-				default:
-					return esc_html__( 'This template requires WPZOOM Elementor Addons Pro license. Get your license key to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
-			}
-		}
+	/**
+	 * Get preview message for Pro plugin requirement
+	 *
+	 * @return string Preview message
+	 */
+	private function get_pro_preview_message() {
+		return esc_html__( 'This template requires WPZOOM Elementor Addons Pro plugin. Get the Pro plugin to unlock this and all premium templates.', 'wpzoom-elementor-addons' );
+	}
 
 		/**
 		 * Clear template cache when license status changes

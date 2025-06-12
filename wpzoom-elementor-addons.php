@@ -107,6 +107,10 @@ final class WPZOOM_Elementor_Addons {
 		add_action( 'elementor/editor/footer', array( $this, 'plugin_scripts' ) );
 		add_action( 'elementor/editor/footer', array( $this, 'insert_js_templates' ) );
 
+		// Initialize Pro plugin promotion
+		add_action( 'admin_notices', array( $this, 'pro_plugin_promotion_notice' ) );
+		add_action( 'wp_ajax_wpzoom_dismiss_pro_notice', array( $this, 'dismiss_pro_notice' ) );
+
 	}
 
 	/**
@@ -135,7 +139,6 @@ final class WPZOOM_Elementor_Addons {
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-elementor-widgets.php';
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-template-manager.php';
 		include_once WPZOOM_EL_ADDONS_PATH . 'includes/wpzoom-elementor-ajax-posts-grid.php';
-		include_once WPZOOM_EL_ADDONS_PATH . 'includes/class-wpzoom-elementor-addons-license.php';
 
 	}
 
@@ -165,11 +168,10 @@ final class WPZOOM_Elementor_Addons {
 		wp_enqueue_script( 'select2', WPZOOM_EL_ADDONS_URL . 'assets/vendors/select2/select2.full.min.js', array( 'jquery' ), WPZOOM_EL_ADDONS_VER, true );
 		wp_enqueue_script( 'wpzoom-elementor-addons', WPZOOM_EL_ADDONS_URL . 'assets/js/wpzoom-elementor-addons.js', array( 'jquery', 'wp-util', 'select2' ), WPZOOM_EL_ADDONS_VER, true );
 		
-		// Localize script with admin URL for license page links
+		// Localize script with admin URL for Pro plugin links
 		wp_localize_script( 'wpzoom-elementor-addons', 'wpzoom_admin_data', array(
 			'admin_url' => admin_url(),
-			'license_page_url' => admin_url( 'options-general.php?page=wpzoom-addons-license' ),
-			'get_license_url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
+			'get_pro_url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
 		) );
 	}
 
@@ -238,9 +240,7 @@ final class WPZOOM_Elementor_Addons {
 	 */
 	public function init() {
 		// Add Plugin actions
-		
-		// Initialize license manager
-		License_Manager::instance();
+		// Pro features are unlocked when WPZOOM Elementor Addons Pro plugin is active
 	}
 
 
@@ -339,5 +339,107 @@ final class WPZOOM_Elementor_Addons {
 			 self::MINIMUM_PHP_VERSION
 		);
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+	}
+
+	/**
+	 * Pro plugin promotion notice
+	 *
+	 * Shows a notice promoting the Pro plugin when it's not active.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function pro_plugin_promotion_notice() {
+		// Only show to administrators
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		// Don't show if Pro plugin is active
+		if ( class_exists( 'WPZOOM_Elementor_Addons_Pro' ) ) {
+			return;
+		}
+
+		// Don't show if WPZOOM premium theme is active (they get access anyway)
+		if ( class_exists( 'WPZOOM' ) ) {
+			return;
+		}
+
+		// Don't show on the Pro plugin license page 
+		if ( isset( $_GET['page'] ) && $_GET['page'] === 'wpzoom-addons-pro' ) {
+			return;
+		}
+
+		// Check if notice was dismissed
+		if ( get_option( 'wpzoom_pro_notice_dismissed', false ) ) {
+			return;
+		}
+
+		// Only show on relevant admin pages
+		$screen = get_current_screen();
+		$allowed_screens = [ 
+			'dashboard', 
+			'plugins', 
+			'elementor_page_elementor-system-info',
+			'toplevel_page_elementor',
+			'edit-elementor_library'
+		];
+		
+		if ( ! $screen || ! in_array( $screen->id, $allowed_screens ) ) {
+			return;
+		}
+
+		?>
+		<div class="notice notice-info is-dismissible" data-notice="wpzoom-pro">
+			<div style="display: flex; align-items: center; padding: 10px 0;">
+				<div style="margin-right: 15px; font-size: 24px;">🎬</div>
+				<div>
+					<h3 style="margin: 0 0 5px 0;"><?php esc_html_e( 'Video Slideshow Widget for Elementor now Available!', 'wpzoom-elementor-addons' ); ?></h3>
+					<p style="margin: 0;">
+						<?php esc_html_e( 'Purchase a WPZOOM Elementor Addons Pro license key to unlock the new Video Slideshow widget and access to all premium Elementor templates.', 'wpzoom-elementor-addons' ); ?>
+					</p>
+					<p style="margin: 10px 0 0 0;">
+						<a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="button button-primary">
+							<?php esc_html_e( 'Get Pro Plugin', 'wpzoom-elementor-addons' ); ?>
+						</a>
+						<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wpzoom-addons-pro' ) ); ?>" class="button button-secondary" style="margin-left: 10px;">
+							<?php esc_html_e( 'Enter License Key', 'wpzoom-elementor-addons' ); ?>
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<script>
+		jQuery(document).ready(function($) {
+			$(document).on('click', '[data-notice="wpzoom-pro"] .notice-dismiss', function() {
+				$.post(ajaxurl, {
+					action: 'wpzoom_dismiss_pro_notice',
+					nonce: '<?php echo wp_create_nonce( 'wpzoom_dismiss_pro_notice' ); ?>'
+				});
+			});
+		});
+		</script>
+		<?php
+	}
+
+	/**
+	 * Dismiss Pro notice
+	 *
+	 * AJAX handler for dismissing the Pro plugin promotion notice.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function dismiss_pro_notice() {
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'wpzoom_dismiss_pro_notice' ) ) {
+			wp_die( 'Security check failed' );
+		}
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( 'Insufficient permissions' );
+		}
+
+		update_option( 'wpzoom_pro_notice_dismissed', true );
+		wp_die();
 	}
 }

@@ -67,8 +67,14 @@ if ( did_action( 'elementor/loaded' ) ) {
 		
 		// Check if this is a PRO template and validate license
 		if ( $this->is_pro_template( $filename ) && ! $this->can_import_pro_template() ) {
-			$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-			$error_message = $license_manager->get_license_restriction_message();
+					// Check if Pro plugin is active for premium templates
+		$has_pro_plugin = class_exists( 'WPZOOM_Elementor_Addons_Pro' );
+		
+		if ( ! $has_pro_plugin && ! class_exists( 'WPZOOM' ) ) {
+			$error_message = esc_html__( 'This template requires WPZOOM Elementor Addons Pro plugin. Please install and activate the Pro plugin to import premium templates.', 'wpzoom-elementor-addons' );
+		} else {
+			$error_message = '';
+		}
 			
 			if ( empty( $error_message ) ) {
 				$error_message = esc_html__( 'This template requires WPZOOM Elementor Addons Pro license. Please activate your license key to import PRO templates.', 'wpzoom-elementor-addons' );
@@ -158,11 +164,9 @@ if ( did_action( 'elementor/loaded' ) ) {
 	 * @return bool
 	 */
 	private function can_import_pro_template() {
-		$license_manager = \WPZOOM_Elementor_Addons\License_Manager::instance();
-		
-		// For template imports, require an ACTIVE license (not just valid/expired)
+		// For template imports, require Pro plugin to be active
 		// OR if premium WPZOOM theme is active
-		return $license_manager->is_license_active() || class_exists( 'WPZOOM' );
+		return class_exists( 'WPZOOM_Elementor_Addons_Pro' ) || class_exists( 'WPZOOM' );
 	}
 
 		/**
