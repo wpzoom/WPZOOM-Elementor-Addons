@@ -623,15 +623,13 @@ class Video_Slider extends Widget_Base {
 			'subtitle',
 			[
 				'label' => esc_html__( 'Subtitle', 'wpzoom-elementor-addons' ),
-				'type' => Controls_Manager::TEXTAREA,
-				'label_block' => true,
+				'type' => Controls_Manager::WYSIWYG,
 				'placeholder' => esc_html__( 'Type subtitle here', 'wpzoom-elementor-addons' ),
 				'dynamic' => [
 					'active' => true,
 				]
 			]
 		);
-
 
 		$repeater->add_control(
 			'show_button',
@@ -734,7 +732,7 @@ class Video_Slider extends Widget_Base {
 				'video_link' => 'https://wpzoom.s3.amazonaws.com/inspiro-blocks-pro/video/video.mp4',
 				'video_play_on_mobile' => 'yes',
 				'title' => 'External Video Background',
-				'subtitle' => 'Experience smooth video playback with our external video support. Perfect for showcasing your content with reliable performance and fast loading times.',
+				'subtitle' => '<p>Experience <strong>smooth video playbook</strong> with our external video support.</p><p>Perfect for showcasing your content with <em>reliable performance</em> and fast loading times.</p>',
 				'show_button' => 'yes',
 				'button_text' => 'Learn More',
 				'button_link' => [
@@ -751,7 +749,7 @@ class Video_Slider extends Widget_Base {
 				'video_link' => 'https://vimeo.com/729485552',
 				'video_play_on_mobile' => '',
 				'title' => 'Vimeo Video Integration',
-				'subtitle' => 'Seamlessly integrate Vimeo videos as background elements. Enjoy professional video hosting with advanced customization options.',
+				'subtitle' => '<p>Seamlessly integrate Vimeo videos as background elements. Enjoy professional video hosting with advanced customization options</p>',
 				'show_video_lightbox' => 'yes',
 				'lightbox_video_url' => 'https://www.youtube.com/watch?v=a3ICNMQW7Ok',
 			],
@@ -763,7 +761,7 @@ class Video_Slider extends Widget_Base {
 					'url' => 'https://demo.wpzoom.com/inspiro/files/2021/09/alexander-popov-vCbKwN2IXT4-unsplash.jpg',
 				],
 				'title' => 'Upload Your Own Videos',
-				'subtitle' => 'Easily upload and use your own video files as stunning backgrounds. Perfect for custom content and branding.',
+				'subtitle' => '<p>Easily upload and use your own video files as stunning backgrounds.</p><p>Perfect for <a href="#custom-content">custom content</a> and branding.</p>',
 				'link' => [
 					'url' => 'https://wpzoom.com/plugins/',
 					'is_external' => true,
@@ -2648,7 +2646,7 @@ class Video_Slider extends Widget_Base {
 			case 'subtitle':
 				if ( $slide[ 'subtitle' ] ) {
 					?>
-					<p class="wpz-slide-subtitle"><?php echo WPZOOM_Elementor_Widgets::custom_kses( $slide[ 'subtitle' ] ); ?></p>
+					<div class="wpz-slide-subtitle"><?php echo wp_kses_post( $slide[ 'subtitle' ] ); ?></div>
 					<?php
 				}
 				break;
