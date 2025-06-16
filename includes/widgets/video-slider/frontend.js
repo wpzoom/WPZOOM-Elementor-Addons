@@ -64,12 +64,13 @@ jQuery(window).on('elementor/frontend/init', function () {
 				handleElementorBreakpoints: true,
 				noSwiping: true,
 				noSwipingClass: 'swiper-no-swiping',
-				noSwipingSelector: '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
+				noSwipingSelector: '.wpz-slide-lightbox-trigger, .background-video-buttons-wrapper, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
 				on: {
 					init: (swiper) => {
 						this.requestAnimationFrame(() => {
 							this.initVideoBackgrounds();
 							this.fixSafariRendering();
+							this.updateVideoControlsVisibility();
 						});
 					},
 					slideChange: (swiper) => {
@@ -135,6 +136,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			this.preventSliderDragOnInteractiveElements();
 			this.setupResizeHandler();
 			this.preventFitVidsConflicts();
+			this.initVideoControls();
 			
 			// Initialize videos after Swiper is ready
 			this.requestAnimationFrame(() => this.initVideoBackgrounds());
@@ -239,6 +241,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			try {
 				this.handleCurrentSlideVideos();
+				this.updateVideoControlsVisibility();
 			} catch (error) {
 				console.error('Error in handleVideoBackgrounds:', error);
 			}
@@ -597,7 +600,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			const jQuery = window.jQuery;
 			
 			// Use single event delegation instead of multiple listeners per element
-			const interactiveSelector = '.wpz-slide-lightbox-trigger, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
+			const interactiveSelector = '.wpz-slide-lightbox-trigger, .background-video-buttons-wrapper, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
 			
 			// Prevent all interaction events with single delegation
 			this.elements.$swiperContainer.on('touchstart.preventDrag mousedown.preventDrag', interactiveSelector, (e) => {
@@ -747,6 +750,196 @@ jQuery(window).on('elementor/frontend/init', function () {
 					setTimeout(() => inThrottle = false, limit);
 				}
 			};
+		}
+
+		initVideoControls() {
+			const elementSettings = this.getElementSettings();
+
+			// Only initialize if video controls are enabled
+			if (elementSettings.show_video_controls !== 'yes') {
+				return;
+			}
+
+			const $ = jQuery;
+			const $sliderElement = this.$element;
+
+			// Handle video control buttons
+			$sliderElement.find('.wpzoom-button-video-background-play').on('click', function(e) {
+				e.preventDefault();
+				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
+				const $videoContainer = $currentSlide.find('.wpz-video-bg');
+				const videoType = $videoContainer.data('video-type');
+
+				if (videoType === 'hosted') {
+					// Handle self-hosted videos
+					const $video = $videoContainer.find('video');
+					if ($video.length) {
+						$video[0].play().catch(error => console.log('Video play failed:', error));
+					}
+				} else if (videoType === 'youtube') {
+					// Handle YouTube videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						const origin = $iframe.attr('src').includes('youtube-nocookie.com') ? 'https://www.youtube-nocookie.com' : 'https://www.youtube.com';
+						$iframe[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', origin);
+						$currentSlide.attr('data-video-state', 'playing');
+					}
+				} else if (videoType === 'vimeo') {
+					// Handle Vimeo videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						$iframe[0].contentWindow.postMessage('{"method":"play"}', 'https://player.vimeo.com');
+						$currentSlide.attr('data-video-state', 'playing');
+					}
+				}
+
+				$currentSlide.find('.wpzoom-button-video-background-pause').removeClass('display-none');
+				$(this).addClass('display-none');
+			});
+
+			$sliderElement.find('.wpzoom-button-video-background-pause').on('click', function(e) {
+				e.preventDefault();
+				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
+				const $videoContainer = $currentSlide.find('.wpz-video-bg');
+				const videoType = $videoContainer.data('video-type');
+
+				if (videoType === 'hosted') {
+					// Handle self-hosted videos
+					const $video = $videoContainer.find('video');
+					if ($video.length) {
+						$video[0].pause();
+					}
+				} else if (videoType === 'youtube') {
+					// Handle YouTube videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						const origin = $iframe.attr('src').includes('youtube-nocookie.com') ? 'https://www.youtube-nocookie.com' : 'https://www.youtube.com';
+						$iframe[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', origin);
+						$currentSlide.attr('data-video-state', 'paused');
+					}
+				} else if (videoType === 'vimeo') {
+					// Handle Vimeo videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						$iframe[0].contentWindow.postMessage('{"method":"pause"}', 'https://player.vimeo.com');
+						$currentSlide.attr('data-video-state', 'paused');
+					}
+				}
+
+				$currentSlide.find('.wpzoom-button-video-background-play').removeClass('display-none');
+				$(this).addClass('display-none');
+			});
+
+			$sliderElement.find('.wpzoom-button-sound-background-mute').on('click', function(e) {
+				e.preventDefault();
+				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
+				const $videoContainer = $currentSlide.find('.wpz-video-bg');
+				const videoType = $videoContainer.data('video-type');
+
+				if (videoType === 'hosted') {
+					// Handle self-hosted videos
+					const $video = $videoContainer.find('video');
+					if ($video.length) {
+						$video[0].muted = true;
+					}
+				} else if (videoType === 'youtube') {
+					// Handle YouTube videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						const origin = $iframe.attr('src').includes('youtube-nocookie.com') ? 'https://www.youtube-nocookie.com' : 'https://www.youtube.com';
+						$iframe[0].contentWindow.postMessage('{"event":"command","func":"mute","args":""}', origin);
+						$currentSlide.attr('data-video-muted', 'true');
+					}
+				} else if (videoType === 'vimeo') {
+					// Handle Vimeo videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						$iframe[0].contentWindow.postMessage('{"method":"setVolume","value":0}', 'https://player.vimeo.com');
+						$currentSlide.attr('data-video-muted', 'true');
+					}
+				}
+
+				$currentSlide.find('.wpzoom-button-sound-background-unmute').removeClass('display-none');
+				$(this).addClass('display-none');
+			});
+
+			$sliderElement.find('.wpzoom-button-sound-background-unmute').on('click', function(e) {
+				e.preventDefault();
+				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
+				const $videoContainer = $currentSlide.find('.wpz-video-bg');
+				const videoType = $videoContainer.data('video-type');
+
+				if (videoType === 'hosted') {
+					// Handle self-hosted videos
+					const $video = $videoContainer.find('video');
+					if ($video.length) {
+						$video[0].muted = false;
+					}
+				} else if (videoType === 'youtube') {
+					// Handle YouTube videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						const origin = $iframe.attr('src').includes('youtube-nocookie.com') ? 'https://www.youtube-nocookie.com' : 'https://www.youtube.com';
+						$iframe[0].contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', origin);
+						$currentSlide.attr('data-video-muted', 'false');
+					}
+				} else if (videoType === 'vimeo') {
+					// Handle Vimeo videos via postMessage API
+					const $iframe = $videoContainer.find('iframe');
+					if ($iframe.length) {
+						$iframe[0].contentWindow.postMessage('{"method":"setVolume","value":1}', 'https://player.vimeo.com');
+						$currentSlide.attr('data-video-muted', 'false');
+					}
+				}
+
+				$currentSlide.find('.wpzoom-button-sound-background-mute').removeClass('display-none');
+				$(this).addClass('display-none');
+			});
+
+			// Initialize button visibility for current slide
+			this.updateVideoControlsVisibility();
+		}
+
+		updateVideoControlsVisibility() {
+			if (!this.swiper) return;
+
+			const $ = jQuery;
+			const currentSlide = $(this.swiper.slides[this.swiper.activeIndex]);
+			const $videoContainer = currentSlide.find('.wpz-video-bg');
+
+			if ($videoContainer.length) {
+				const $buttonsWrapper = currentSlide.find('.background-video-buttons-wrapper');
+
+				if ($buttonsWrapper.length) {
+					const videoType = $videoContainer.data('video-type');
+
+					if (videoType === 'hosted') {
+						// For self-hosted videos, check actual video state
+						const $video = $videoContainer.find('video');
+						if ($video.length) {
+							const isPlaying = !$video[0].paused;
+							const isMuted = $video[0].muted;
+
+							currentSlide.find('.wpzoom-button-video-background-play').toggleClass('display-none', isPlaying);
+							currentSlide.find('.wpzoom-button-video-background-pause').toggleClass('display-none', !isPlaying);
+							currentSlide.find('.wpzoom-button-sound-background-mute').toggleClass('display-none', isMuted);
+							currentSlide.find('.wpzoom-button-sound-background-unmute').toggleClass('display-none', !isMuted);
+						}
+					} else if (videoType === 'youtube' || videoType === 'vimeo') {
+						// For external videos, use tracked state or defaults
+						const videoState = currentSlide.attr('data-video-state') || 'playing';
+						const videoMuted = currentSlide.attr('data-video-muted') || 'true';
+
+						const isPlaying = videoState === 'playing';
+						const isMuted = videoMuted === 'true';
+
+						currentSlide.find('.wpzoom-button-video-background-play').toggleClass('display-none', isPlaying);
+						currentSlide.find('.wpzoom-button-video-background-pause').toggleClass('display-none', !isPlaying);
+						currentSlide.find('.wpzoom-button-sound-background-mute').toggleClass('display-none', isMuted);
+						currentSlide.find('.wpzoom-button-sound-background-unmute').toggleClass('display-none', !isMuted);
+					}
+				}
+			}
 		}
 
 		onDestroy() {

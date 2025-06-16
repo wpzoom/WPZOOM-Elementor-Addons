@@ -1112,6 +1112,29 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'settings_video_controls',
+			[
+				'label' => esc_html__( 'Video Controls', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'show_video_controls',
+			[
+				'label' => esc_html__( 'Show Video Background Controls', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
+				'label_off' => esc_html__( 'No', 'wpzoom-elementor-addons' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'description' => esc_html__( 'Display play/pause and mute/unmute controls for video backgrounds in the bottom right corner.', 'wpzoom-elementor-addons' ),
+				'frontend_available' => true,
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -2467,6 +2490,7 @@ class Video_Slider extends Widget_Base {
 				$params['rel'] = '0';
 				$params['modestbranding'] = '1';
 				$params['playsinline'] = '1';
+				$params['enablejsapi'] = '1'; // Enable JavaScript API for controls
 
 				if ( ! empty( $slide['video_start_time'] ) ) {
 					$params['start'] = $slide['video_start_time'];
@@ -2494,6 +2518,8 @@ class Video_Slider extends Widget_Base {
 				$params['portrait'] = '0';
 				$params['playsinline'] = '1';
 				$params['background'] = '1';
+				$params['api'] = '1'; // Enable JavaScript API for controls
+				$params['player_id'] = 'vimeo_' . $video_id; // Unique player ID for API
 
 				if ( ! empty( $slide['video_start_time'] ) ) {
 					$params['t'] = $slide['video_start_time'] . 's';
@@ -2577,6 +2603,14 @@ class Video_Slider extends Widget_Base {
 			$video_attrs['data-privacy-mode'] = 'true';
 		}
 
+		// Add video control data attributes for external videos
+		if ( 'youtube' === $video_type || 'vimeo' === $video_type ) {
+			$video_id = $this->get_video_id( $video_url, $video_type );
+			if ( $video_id ) {
+				$video_attrs['data-video-id'] = $video_id;
+			}
+		}
+
 		?>
 		<div <?php echo Utils::render_html_attributes( $video_attrs ); ?>>
 			<?php if ( 'hosted' === $video_type ) : ?>
@@ -2605,6 +2639,39 @@ class Video_Slider extends Widget_Base {
 				endif;
 			endif; ?>
 		</div>
+
+		<?php
+		// Add video background controls if enabled
+		$settings = $this->get_settings_for_display();
+		if ( ! empty( $settings['show_video_controls'] ) && 'yes' === $settings['show_video_controls'] ) :
+		?>
+		<div class="background-video-buttons-wrapper">
+			<a class="wpzoom-button-video-background-play display-none" href="#" aria-label="<?php esc_attr_e( 'Play', 'wpzoom-elementor-addons' ); ?>">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+				</svg>
+				<span class="screen-reader-text"><?php esc_html_e( 'Play', 'wpzoom-elementor-addons' ); ?></span>
+			</a>
+			<a class="wpzoom-button-video-background-pause display-none" href="#" aria-label="<?php esc_attr_e( 'Pause', 'wpzoom-elementor-addons' ); ?>">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6 4H10V20H6V4ZM14 4H18V20H14V4Z" fill="currentColor"/>
+				</svg>
+				<span class="screen-reader-text"><?php esc_html_e( 'Pause', 'wpzoom-elementor-addons' ); ?></span>
+			</a>
+			<a class="wpzoom-button-sound-background-unmute display-none" href="#" aria-label="<?php esc_attr_e( 'Unmute', 'wpzoom-elementor-addons' ); ?>">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.48 8.71 14 7.97V16.02C15.48 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z" fill="currentColor"/>
+				</svg>
+				<span class="screen-reader-text"><?php esc_html_e( 'Unmute', 'wpzoom-elementor-addons' ); ?></span>
+			</a>
+			<a class="wpzoom-button-sound-background-mute display-none" href="#" aria-label="<?php esc_attr_e( 'Mute', 'wpzoom-elementor-addons' ); ?>">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M16.5 12C16.5 10.23 15.48 8.71 14 7.97V10.18L16.45 12.63C16.48 12.43 16.5 12.22 16.5 12ZM19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.63 14.91 21 13.5 21 12C21 7.72 18.01 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.52C15.58 18.04 14.83 18.46 14 18.7V20.76C15.38 20.45 16.63 19.82 17.68 18.96L19.73 21L21 19.73L12 10.73L4.27 3ZM12 4L9.91 6.09L12 8.18V4Z" fill="currentColor"/>
+				</svg>
+				<span class="screen-reader-text"><?php esc_html_e( 'Mute', 'wpzoom-elementor-addons' ); ?></span>
+			</a>
+		</div>
+		<?php endif; ?>
 		<?php
 	}
 
