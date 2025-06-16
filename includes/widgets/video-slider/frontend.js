@@ -64,7 +64,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 				handleElementorBreakpoints: true,
 				noSwiping: true,
 				noSwipingClass: 'swiper-no-swiping',
-				noSwipingSelector: '.wpz-slide-lightbox-trigger, .background-video-buttons-wrapper, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
+				noSwipingSelector: '.wpz-slide-lightbox-trigger, .wpz-background-video-buttons-wrapper, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper',
 				on: {
 					init: (swiper) => {
 						this.requestAnimationFrame(() => {
@@ -600,7 +600,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			const jQuery = window.jQuery;
 			
 			// Use single event delegation instead of multiple listeners per element
-			const interactiveSelector = '.wpz-slide-lightbox-trigger, .background-video-buttons-wrapper, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
+			const interactiveSelector = '.wpz-slide-lightbox-trigger, .wpz-background-video-buttons-wrapper, .wpz-slide-button, .wpz-slide-lightbox-wrapper, .wpz-slide-button-wrapper';
 			
 			// Prevent all interaction events with single delegation
 			this.elements.$swiperContainer.on('touchstart.preventDrag mousedown.preventDrag', interactiveSelector, (e) => {
@@ -764,7 +764,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			const $sliderElement = this.$element;
 
 			// Handle video control buttons
-			$sliderElement.find('.wpzoom-button-video-background-play').on('click', function(e) {
+			$sliderElement.find('.wpz-button-video-background-play').on('click', function(e) {
 				e.preventDefault();
 				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
 				const $videoContainer = $currentSlide.find('.wpz-video-bg');
@@ -793,11 +793,11 @@ jQuery(window).on('elementor/frontend/init', function () {
 					}
 				}
 
-				$currentSlide.find('.wpzoom-button-video-background-pause').removeClass('display-none');
+				$currentSlide.find('.wpz-button-video-background-pause').removeClass('display-none');
 				$(this).addClass('display-none');
 			});
 
-			$sliderElement.find('.wpzoom-button-video-background-pause').on('click', function(e) {
+			$sliderElement.find('.wpz-button-video-background-pause').on('click', function(e) {
 				e.preventDefault();
 				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
 				const $videoContainer = $currentSlide.find('.wpz-video-bg');
@@ -826,11 +826,11 @@ jQuery(window).on('elementor/frontend/init', function () {
 					}
 				}
 
-				$currentSlide.find('.wpzoom-button-video-background-play').removeClass('display-none');
+				$currentSlide.find('.wpz-button-video-background-play').removeClass('display-none');
 				$(this).addClass('display-none');
 			});
 
-			$sliderElement.find('.wpzoom-button-sound-background-mute').on('click', function(e) {
+			$sliderElement.find('.wpz-button-sound-background-mute').on('click', function(e) {
 				e.preventDefault();
 				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
 				const $videoContainer = $currentSlide.find('.wpz-video-bg');
@@ -859,11 +859,11 @@ jQuery(window).on('elementor/frontend/init', function () {
 					}
 				}
 
-				$currentSlide.find('.wpzoom-button-sound-background-unmute').removeClass('display-none');
+				$currentSlide.find('.wpz-button-sound-background-unmute').removeClass('display-none');
 				$(this).addClass('display-none');
 			});
 
-			$sliderElement.find('.wpzoom-button-sound-background-unmute').on('click', function(e) {
+			$sliderElement.find('.wpz-button-sound-background-unmute').on('click', function(e) {
 				e.preventDefault();
 				const $currentSlide = $(e.currentTarget).closest('.swiper-slide');
 				const $videoContainer = $currentSlide.find('.wpz-video-bg');
@@ -892,7 +892,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 					}
 				}
 
-				$currentSlide.find('.wpzoom-button-sound-background-mute').removeClass('display-none');
+				$currentSlide.find('.wpz-button-sound-background-mute').removeClass('display-none');
 				$(this).addClass('display-none');
 			});
 
@@ -908,7 +908,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			const $videoContainer = currentSlide.find('.wpz-video-bg');
 
 			if ($videoContainer.length) {
-				const $buttonsWrapper = currentSlide.find('.background-video-buttons-wrapper');
+				const $buttonsWrapper = currentSlide.find('.wpz-background-video-buttons-wrapper');
 
 				if ($buttonsWrapper.length) {
 					const videoType = $videoContainer.data('video-type');
@@ -920,10 +920,10 @@ jQuery(window).on('elementor/frontend/init', function () {
 							const isPlaying = !$video[0].paused;
 							const isMuted = $video[0].muted;
 
-							currentSlide.find('.wpzoom-button-video-background-play').toggleClass('display-none', isPlaying);
-							currentSlide.find('.wpzoom-button-video-background-pause').toggleClass('display-none', !isPlaying);
-							currentSlide.find('.wpzoom-button-sound-background-mute').toggleClass('display-none', isMuted);
-							currentSlide.find('.wpzoom-button-sound-background-unmute').toggleClass('display-none', !isMuted);
+							currentSlide.find('.wpz-button-video-background-play').toggleClass('display-none', isPlaying);
+							currentSlide.find('.wpz-button-video-background-pause').toggleClass('display-none', !isPlaying);
+							currentSlide.find('.wpz-button-sound-background-mute').toggleClass('display-none', isMuted);
+							currentSlide.find('.wpz-button-sound-background-unmute').toggleClass('display-none', !isMuted);
 						}
 					} else if (videoType === 'youtube' || videoType === 'vimeo') {
 						// For external videos, use tracked state or defaults
@@ -933,10 +933,10 @@ jQuery(window).on('elementor/frontend/init', function () {
 						const isPlaying = videoState === 'playing';
 						const isMuted = videoMuted === 'true';
 
-						currentSlide.find('.wpzoom-button-video-background-play').toggleClass('display-none', isPlaying);
-						currentSlide.find('.wpzoom-button-video-background-pause').toggleClass('display-none', !isPlaying);
-						currentSlide.find('.wpzoom-button-sound-background-mute').toggleClass('display-none', isMuted);
-						currentSlide.find('.wpzoom-button-sound-background-unmute').toggleClass('display-none', !isMuted);
+						currentSlide.find('.wpz-button-video-background-play').toggleClass('display-none', isPlaying);
+						currentSlide.find('.wpz-button-video-background-pause').toggleClass('display-none', !isPlaying);
+						currentSlide.find('.wpz-button-sound-background-mute').toggleClass('display-none', isMuted);
+						currentSlide.find('.wpz-button-sound-background-unmute').toggleClass('display-none', !isMuted);
 					}
 				}
 			}

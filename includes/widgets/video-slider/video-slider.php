@@ -2645,29 +2645,23 @@ class Video_Slider extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		if ( ! empty( $settings['show_video_controls'] ) && 'yes' === $settings['show_video_controls'] ) :
 		?>
-		<div class="background-video-buttons-wrapper">
-			<a class="wpzoom-button-video-background-play display-none" href="#" aria-label="<?php esc_attr_e( 'Play', 'wpzoom-elementor-addons' ); ?>">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
-				</svg>
+		<div class="wpz-background-video-buttons-wrapper">
+			<a class="wpz-button-video-background-play display-none" href="#" aria-label="<?php esc_attr_e( 'Play', 'wpzoom-elementor-addons' ); ?>">
+                <svg height="32" version="1.1" viewBox="0 0 512 512" width="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"></path></svg>
 				<span class="screen-reader-text"><?php esc_html_e( 'Play', 'wpzoom-elementor-addons' ); ?></span>
 			</a>
-			<a class="wpzoom-button-video-background-pause display-none" href="#" aria-label="<?php esc_attr_e( 'Pause', 'wpzoom-elementor-addons' ); ?>">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M6 4H10V20H6V4ZM14 4H18V20H14V4Z" fill="currentColor"/>
-				</svg>
+			<a class="wpz-button-video-background-pause display-none" href="#" aria-label="<?php esc_attr_e( 'Pause', 'wpzoom-elementor-addons' ); ?>">
+				<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 4H10V20H6V4ZM14 4H18V20H14V4Z" fill="currentColor"/>
+                </svg>
 				<span class="screen-reader-text"><?php esc_html_e( 'Pause', 'wpzoom-elementor-addons' ); ?></span>
 			</a>
-			<a class="wpzoom-button-sound-background-unmute display-none" href="#" aria-label="<?php esc_attr_e( 'Unmute', 'wpzoom-elementor-addons' ); ?>">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.48 8.71 14 7.97V16.02C15.48 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z" fill="currentColor"/>
-				</svg>
+			<a class="wpz-button-sound-background-unmute display-none" href="#" aria-label="<?php esc_attr_e( 'Unmute', 'wpzoom-elementor-addons' ); ?>">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"  viewBox="0 0 32 32"><path d="M13.333 10.108v13.119l-4.5-3.6c-0.227-0.183-0.517-0.293-0.833-0.293h-4v-5.333h4c0.291 0.001 0.585-0.095 0.833-0.292zM13.833 6.292l-6.301 5.041h-4.865c-0.736 0-1.333 0.597-1.333 1.333v8c0 0.736 0.597 1.333 1.333 1.333h4.865l6.301 5.041c0.575 0.46 1.415 0.367 1.875-0.208 0.197-0.247 0.293-0.543 0.292-0.833v-18.667c0-0.736-0.597-1.333-1.333-1.333-0.316 0-0.607 0.111-0.833 0.292zM21.724 13.609l3.057 3.057-3.057 3.057c-0.521 0.521-0.521 1.365 0 1.885s1.365 0.521 1.885 0l3.057-3.057 3.057 3.057c0.521 0.521 1.365 0.521 1.885 0s0.521-1.365 0-1.885l-3.057-3.057 3.057-3.057c0.521-0.521 0.521-1.365 0-1.885s-1.365-0.521-1.885 0l-3.057 3.057-3.057-3.057c-0.521-0.521-1.365-0.521-1.885 0s-0.521 1.365 0 1.885z" fill="currentColor"></path></svg>
 				<span class="screen-reader-text"><?php esc_html_e( 'Unmute', 'wpzoom-elementor-addons' ); ?></span>
 			</a>
-			<a class="wpzoom-button-sound-background-mute display-none" href="#" aria-label="<?php esc_attr_e( 'Mute', 'wpzoom-elementor-addons' ); ?>">
-				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M16.5 12C16.5 10.23 15.48 8.71 14 7.97V10.18L16.45 12.63C16.48 12.43 16.5 12.22 16.5 12ZM19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.63 14.91 21 13.5 21 12C21 7.72 18.01 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.52C15.58 18.04 14.83 18.46 14 18.7V20.76C15.38 20.45 16.63 19.82 17.68 18.96L19.73 21L21 19.73L12 10.73L4.27 3ZM12 4L9.91 6.09L12 8.18V4Z" fill="currentColor"/>
-				</svg>
+			<a class="wpz-button-sound-background-mute display-none" href="#" aria-label="<?php esc_attr_e( 'Mute', 'wpzoom-elementor-addons' ); ?>">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M13.333 10.108v13.119l-4.5-3.6c-0.227-0.183-0.517-0.293-0.833-0.293h-4v-5.333h4c0.291 0.001 0.585-0.095 0.833-0.292zM13.833 6.292l-6.301 5.041h-4.865c-0.736 0-1.333 0.597-1.333 1.333v8c0 0.736 0.597 1.333 1.333 1.333h4.865l6.301 5.041c0.575 0.46 1.415 0.367 1.875-0.208 0.197-0.247 0.293-0.543 0.292-0.833v-18.667c0-0.736-0.597-1.333-1.333-1.333-0.316 0-0.607 0.111-0.833 0.292zM24.484 8.183c2.343 2.344 3.513 5.412 3.513 8.485 0 3.072-1.171 6.14-3.513 8.483-0.52 0.521-0.52 1.365 0 1.885s1.365 0.52 1.885 0c2.863-2.863 4.293-6.617 4.295-10.368 0-3.751-1.432-7.507-4.295-10.371-0.52-0.521-1.365-0.521-1.885 0s-0.521 1.365 0 1.885zM19.777 12.889c1.041 1.041 1.561 2.404 1.561 3.771s-0.52 2.729-1.561 3.771c-0.52 0.521-0.52 1.365 0 1.885s1.365 0.52 1.885 0c1.561-1.561 2.343-3.611 2.343-5.656s-0.781-4.095-2.343-5.656c-0.52-0.521-1.365-0.521-1.885 0s-0.521 1.365 0 1.885z" fill="currentColor"></path></svg>
 				<span class="screen-reader-text"><?php esc_html_e( 'Mute', 'wpzoom-elementor-addons' ); ?></span>
 			</a>
 		</div>
