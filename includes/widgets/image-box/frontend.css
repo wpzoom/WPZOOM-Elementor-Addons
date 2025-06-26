@@ -47,7 +47,7 @@
 	font-weight: bold;
 	font-style: normal;
 	color: white;
-	aspect-ratio: 16/9;
+	aspect-ratio: 16/9; /* Default fallback, will be overridden by Elementor control */
 	padding: 0;
 	margin: 0;
 	-webkit-transition: all 0.25s ease;
