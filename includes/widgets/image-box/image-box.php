@@ -172,6 +172,33 @@ class Image_Box extends Widget_Base {
 		);
 
 		$this->add_control(
+			'aspect_ratio',
+			array(
+				'label'   => esc_html__( 'Aspect Ratio', 'wpzoom-elementor-addons' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => '16_9',
+				'options' => array(
+					'16_9' => esc_html__( 'Landscape (16:9)', 'wpzoom-elementor-addons' ),
+					'4_3'  => esc_html__( 'Landscape (4:3)', 'wpzoom-elementor-addons' ),
+					'3_4'  => esc_html__( 'Portrait (3:4)', 'wpzoom-elementor-addons' ),
+					'9_16' => esc_html__( 'Portrait (9:16)', 'wpzoom-elementor-addons' ),
+					'1_1'  => esc_html__( 'Square (1:1)', 'wpzoom-elementor-addons' ),
+				),
+				'separator' => 'before',
+				'selectors' => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-image-box > h3 .wpzoom-elementor-addons-image-box-link > span' => 'aspect-ratio: {{VALUE}};',
+				),
+				'selectors_dictionary' => array(
+					'16_9' => '16/9',
+					'4_3'  => '4/3',
+					'3_4'  => '3/4',
+					'9_16' => '9/16',
+					'1_1'  => '1/1',
+				),
+			)
+		);
+
+		$this->add_control(
 			'title_text',
 			array(
 				'label'       => esc_html__( 'Title', 'wpzoom-elementor-addons' ),
