@@ -368,7 +368,7 @@ class Portfolio_Showcase extends Widget_Base {
 			array(
 				'label'    => esc_html__( 'Number of Posts', 'wpzoom-elementor-addons' ),
 				'type'    => Controls_Manager::NUMBER,
-				'default' => 6,
+				'default' => 8,
 				'condition'   =>  array(
 					'single_post!' => 'yes'
 				),
@@ -476,6 +476,7 @@ class Portfolio_Showcase extends Widget_Base {
 					'original' => esc_html__( 'No Cropping', 'wpzoom-elementor-addons' ),
 				),
 				'default' => 'default',
+                'description' => "You'll need to regenerate the Featured Images if you don't see any change after selecting a different aspect ratio",
 				'condition' => array(
 					'portfolio_showcase_styles!' => 'eccentric',
 				),
@@ -484,7 +485,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'show_space',
 			array(
-				'label'       => wp_kses_post( esc_html__( 'Add Margins between Posts (whitespace)', 'wpzoom-elementor-addons' ) ),
+				'label'       => wp_kses_post( esc_html__( 'Add margins between Posts', 'wpzoom-elementor-addons' ) ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -651,6 +652,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'label'     => esc_html__( 'Text for Read More button', 'wpzoom-elementor-addons' ),
 				'type'      => Controls_Manager::TEXT,
 				'default'   => esc_html__( 'Read More', 'wpzoom-elementor-addons' ),
+                'label_block' => true,
 				'condition' => array(
 					'view_all_btn' => 'yes',
 					'portfolio_showcase_styles!' => 'eccentric',
@@ -663,7 +665,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->start_controls_section(
 			'section_view_all_load_more_settings',
 			array(
-				'label' => esc_html__( '"View All" or "Load More" Button at the Bottom', 'wpzoom-elementor-addons' ),
+				'label' => esc_html__( '"Load More" Button', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 				'condition'   =>  array(
 					'single_post!' => 'yes',
@@ -674,7 +676,7 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'view_all_enabled',
 			array(
-				'label'       => esc_html__( 'Display View All button', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Display Load More button', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
@@ -691,7 +693,7 @@ class Portfolio_Showcase extends Widget_Base {
 				'type'        => Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Yes', 'wpzoom-elementor-addons' ),
 				'label_off'   => esc_html__( 'No', 'wpzoom-elementor-addons' ),
-				'default'     => 'no',
+				'default'     => 'yes',
 				'condition' => array(
 					'portfolio_showcase_styles!' => 'eccentric',
 				),
@@ -700,10 +702,11 @@ class Portfolio_Showcase extends Widget_Base {
 		$this->add_control(
 			'view_all_text',
 			array(
-				'label'       => esc_html__( 'Text for View All button', 'wpzoom-elementor-addons' ),
-				'description' => esc_html__( 'Change the text to something like "Load More" if you have enabled the option to load new posts dynamically.', 'wpzoom-elementor-addons' ),
+				'label'       => esc_html__( 'Text for Load More button', 'wpzoom-elementor-addons' ),
+                'description' => esc_html__( 'Change the text to something like "View All" if you disabled the option to load new posts dynamically.', 'wpzoom-elementor-addons' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'View All', 'wpzoom-elementor-addons' ),
+				'default'     => esc_html__( 'Load More', 'wpzoom-elementor-addons' ),
+                'label_block' => true,
 				'condition' => array(
 					'portfolio_showcase_styles!' => 'eccentric',
 				),
