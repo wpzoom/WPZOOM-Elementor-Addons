@@ -1974,6 +1974,13 @@ class Portfolio_Showcase extends Widget_Base {
 		$view_all_text                      = $settings['view_all_text'];
 		$view_all_link                      = !empty( $settings['view_all_link']['url'] ) ? $settings['view_all_link']['url'] : $settings['view_all_link']['url'] = get_page_link( \option::get( 'portfolio_url' ) );
 
+		// Ensure MediaElement.js is always loaded when AJAX loading is enabled
+		// This is crucial for Safari compatibility with self-hosted videos in lightboxes
+		if ( $enable_ajax_items_loading || $view_all_ajax_loading ) {
+			wp_enqueue_script( 'wp-mediaelement' );
+			wp_enqueue_style( 'wp-mediaelement' );
+		}
+
 		if ( ! empty( $view_all_link ) ) {
 			$this->add_link_attributes( 'button', $settings['view_all_link'] );
 			$this->add_render_attribute( 'button', 'class', 'btn' );
