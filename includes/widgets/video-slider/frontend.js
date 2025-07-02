@@ -564,7 +564,15 @@ jQuery(window).on('elementor/frontend/init', function () {
 				}
 			}
 			
-			// Fallback
+			// Check if URL is a direct video file
+			if (this.isDirectVideoFile(url)) {
+				return `<video class="wpz-lightbox-video" controls autoplay muted loop>
+					<source src="${url}" type="${this.getVideoMimeType(url)}">
+					<p>Your browser doesn't support HTML5 video. <a href="${url}" target="_blank">Download the video</a> instead.</p>
+				</video>`;
+			}
+
+			// Fallback for other embeddable content
 			return `<iframe class="wpz-lightbox-video" src="${url}" frameborder="0" allowfullscreen></iframe>`;
 		}
 
@@ -578,6 +586,42 @@ jQuery(window).on('elementor/frontend/init', function () {
 			const regExp = /(?:vimeo\.com\/)([0-9]+)/;
 			const match = url.match(regExp);
 			return match ? match[1] : null;
+		}
+
+		isDirectVideoFile(url) {
+			const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.wmv', '.flv', '.mkv', '.m4v'];
+			const urlLower = url.toLowerCase();
+
+			// Remove query parameters and fragments for checking
+			const cleanUrl = urlLower.split('?')[0].split('#')[0];
+
+			return videoExtensions.some(ext => cleanUrl.endsWith(ext));
+		}
+
+		getVideoMimeType(url) {
+			const urlLower = url.toLowerCase();
+			const cleanUrl = urlLower.split('?')[0].split('#')[0];
+
+			if (cleanUrl.endsWith('.mp4') || cleanUrl.endsWith('.m4v')) {
+				return 'video/mp4';
+			} else if (cleanUrl.endsWith('.webm')) {
+				return 'video/webm';
+			} else if (cleanUrl.endsWith('.ogg')) {
+				return 'video/ogg';
+			} else if (cleanUrl.endsWith('.mov')) {
+				return 'video/quicktime';
+			} else if (cleanUrl.endsWith('.avi')) {
+				return 'video/x-msvideo';
+			} else if (cleanUrl.endsWith('.wmv')) {
+				return 'video/x-ms-wmv';
+			} else if (cleanUrl.endsWith('.flv')) {
+				return 'video/x-flv';
+			} else if (cleanUrl.endsWith('.mkv')) {
+				return 'video/x-matroska';
+			}
+
+			// Default fallback
+			return 'video/mp4';
 		}
 
 		handleVideoError(container) {

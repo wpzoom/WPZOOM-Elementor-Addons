@@ -2000,7 +2000,7 @@ class Video_Slider extends Widget_Base {
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 10,
+                    'size' => 15,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .wpz-slide-lightbox-trigger' => 'gap: {{SIZE}}{{UNIT}};',
