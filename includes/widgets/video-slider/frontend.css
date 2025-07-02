@@ -338,16 +338,11 @@
 	position: relative;
 	display: inline-flex !important;
 	align-items: center;
-	justify-content: center;
-	width: 70px;
-	height: 70px;
-	background: rgba(255, 255, 255, 0.1);
-	border: 2px solid white;
-	border-radius: 50%;
+	justify-content: flex-start;
+	gap: 15px;
 	color: white;
 	text-decoration: none;
 	transition: all 0.3s ease !important;
-	backdrop-filter: blur(10px);
 	cursor: pointer;
 	user-select: none;
 	-webkit-user-select: none;
@@ -364,15 +359,31 @@
 }
 
 .wpz-slide-lightbox-trigger:hover {
+	transform: scale(1.05);
+}
+
+.wpz-lightbox-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 70px;
+	height: 70px;
+	background: rgba(255, 255, 255, 0.1);
+	border: 2px solid white;
+	border-radius: 50%;
+	backdrop-filter: blur(10px);
+	flex-shrink: 0;
+	transition: all 0.3s ease;
+}
+
+.wpz-slide-lightbox-trigger:hover .wpz-lightbox-icon {
 	background: rgba(255, 255, 255, 0.2);
-	transform: scale(1.1);
 }
 
 .wpz-slide-lightbox-trigger svg {
 	width: 24px;
 	height: 24px;
 	fill: currentColor !important;
-    /*color: #fff;*/
 	color: inherit;
 	pointer-events: none;
 	touch-action: none;
@@ -380,6 +391,19 @@
 
 .wpz-slide-lightbox-trigger svg path {
 	fill: currentColor !important;
+}
+
+.wpz-lightbox-text {
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	opacity: 0.9;
+	transition: opacity 0.3s ease;
+}
+
+.wpz-slide-lightbox-trigger:hover .wpz-lightbox-text {
+	opacity: 1;
 }
 
 /* Navigation arrows */
@@ -580,6 +604,10 @@
 
 	
 	.wpz-slide-lightbox-trigger {
+		gap: 12px;
+	}
+
+	.wpz-lightbox-icon {
 		width: 60px;
 		height: 60px;
 	}
@@ -587,6 +615,10 @@
 	.wpz-slide-lightbox-trigger svg {
 		width: 20px;
 		height: 20px;
+	}
+
+	.wpz-lightbox-text {
+		font-size: 14px;
 	}
 	
 	.wpz-video-slider-wrapper .swiper-button-prev,

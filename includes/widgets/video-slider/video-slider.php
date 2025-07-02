@@ -712,6 +712,22 @@ class Video_Slider extends Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'lightbox_text',
+			[
+				'label' => esc_html__( 'Lightbox Text', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Watch Video', 'wpzoom-elementor-addons' ),
+				'label_block' => true,
+				'condition' => [
+					'show_video_lightbox' => 'yes',
+				],
+				'dynamic' => [
+					'active' => true,
+				]
+			]
+		);
+
 		$repeater->end_controls_tab();
 
 		$repeater->end_controls_tabs();
@@ -752,6 +768,7 @@ class Video_Slider extends Widget_Base {
 				'subtitle' => '<p>Seamlessly integrate Vimeo videos as background elements. Enjoy professional video hosting with advanced customization options</p>',
 				'show_video_lightbox' => 'yes',
 				'lightbox_video_url' => 'https://www.youtube.com/watch?v=a3ICNMQW7Ok',
+				'lightbox_text' => 'Play',
 			],
 			// Slide 3: Image background with clickable title link
 			[
@@ -1797,7 +1814,7 @@ class Video_Slider extends Widget_Base {
         $this->add_responsive_control(
             'play_icon_box_size',
             [
-                'label' => esc_html__( 'Box Size', 'wpzoom-elementor-addons' ),
+                'label' => esc_html__( 'Icon Circle Size', 'wpzoom-elementor-addons' ),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => [ 'px' ],
                 'range' => [
@@ -1812,7 +1829,7 @@ class Video_Slider extends Widget_Base {
                     'size' => 70,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpz-slide-lightbox-trigger' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .wpz-lightbox-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1833,7 +1850,7 @@ class Video_Slider extends Widget_Base {
             Group_Control_Border::get_type(),
             [
                 'name' => 'play_icon_border',
-                'selector' => '{{WRAPPER}} .wpz-slide-lightbox-trigger',
+                'selector' => '{{WRAPPER}} .wpz-lightbox-icon',
             ]
         );
 
@@ -1844,7 +1861,7 @@ class Video_Slider extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpz-slide-lightbox-trigger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .wpz-lightbox-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1877,7 +1894,7 @@ class Video_Slider extends Widget_Base {
                 'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .wpz-slide-lightbox-trigger' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .wpz-lightbox-icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1909,7 +1926,7 @@ class Video_Slider extends Widget_Base {
                 'label' => esc_html__( 'Background Color', 'wpzoom-elementor-addons' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .wpz-slide-lightbox-trigger:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .wpz-slide-lightbox-trigger:hover .wpz-lightbox-icon' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1923,7 +1940,7 @@ class Video_Slider extends Widget_Base {
                     'play_icon_border_border!' => '',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpz-slide-lightbox-trigger:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .wpz-slide-lightbox-trigger:hover .wpz-lightbox-icon' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1949,6 +1966,48 @@ class Video_Slider extends Widget_Base {
 
         $this->end_controls_tab();
         $this->end_controls_tabs();
+
+        $this->add_control(
+            'lightbox_text_heading',
+            [
+                'label' => esc_html__( 'Lightbox Text', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'lightbox_text_typography',
+                'label' => esc_html__( 'Typography', 'wpzoom-elementor-addons' ),
+                'selector' => '{{WRAPPER}} .wpz-lightbox-text',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'lightbox_text_spacing',
+            [
+                'label' => esc_html__( 'Text Spacing', 'wpzoom-elementor-addons' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wpz-slide-lightbox-trigger' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+                'description' => esc_html__( 'Space between icon and text.', 'wpzoom-elementor-addons' ),
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -2732,7 +2791,12 @@ class Video_Slider extends Widget_Base {
 								<a href="<?php echo esc_url( $slide['lightbox_video_url'] ); ?>"
 								   class="wpz-slide-lightbox-trigger"
 								   title="<?php esc_attr_e( 'Play Video', 'wpzoom-elementor-addons' ); ?>">
-									<svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
+									<span class="wpz-lightbox-icon">
+										<svg height="32px" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z" fill="#fff"/></svg>
+									</span>
+									<?php if ( !empty( $slide['lightbox_text'] ) ) : ?>
+										<span class="wpz-lightbox-text"><?php echo esc_html( $slide['lightbox_text'] ); ?></span>
+									<?php endif; ?>
 									<span class="elementor-screen-only"><?php esc_html_e( 'Play Video', 'wpzoom-elementor-addons' ); ?></span>
 								</a>
 							</div>
