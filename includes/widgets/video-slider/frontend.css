@@ -540,27 +540,28 @@
 
 
 .wpz-lightbox-close {
-	position: absolute;
-	top: -25px;
-	right: -25px;
+	position: fixed;
+	top: 20px;
+	right: 20px;
 	width: 50px;
 	height: 50px;
-	background: rgba(255, 255, 255, 0.1);
-	border: none;
-	border-radius: 50%;
+ 	border-radius: 50%;
 	color: white;
 	cursor: pointer;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	transition: all 0.3s ease;
-	backdrop-filter: blur(10px);
-	z-index: 10;
+	z-index: 500;
+	opacity: 1;
+	visibility: visible;
+    background: none;
+    border: none;
 }
 
 .wpz-lightbox-close:hover {
-	background: rgba(255, 255, 255, 0.2);
 	transform: scale(1.1);
+    background: none;
+    border: none;
 }
 
 .wpz-lightbox-close svg {
@@ -636,10 +637,15 @@
 	}
 
 	.wpz-lightbox-close {
-		top: -20px;
-		right: -20px;
+		top: 15px;
+		right: 15px;
 		width: 45px;
 		height: 45px;
+	}
+
+	.wpz-lightbox-close svg {
+		width: 20px;
+		height: 20px;
 	}
 
 	/* Video Background Controls - Mobile */

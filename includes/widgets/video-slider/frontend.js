@@ -566,7 +566,7 @@ jQuery(window).on('elementor/frontend/init', function () {
 			
 			// Check if URL is a direct video file
 			if (this.isDirectVideoFile(url)) {
-				return `<video class="wpz-lightbox-video" controls autoplay muted loop>
+				return `<video class="wpz-lightbox-video" controls autoplay loop>
 					<source src="${url}" type="${this.getVideoMimeType(url)}">
 					<p>Your browser doesn't support HTML5 video. <a href="${url}" target="_blank">Download the video</a> instead.</p>
 				</video>`;
