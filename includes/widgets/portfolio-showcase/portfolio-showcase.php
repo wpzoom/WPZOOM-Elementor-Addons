@@ -2175,6 +2175,8 @@ class Portfolio_Showcase extends Widget_Base {
                                     <?php if( has_post_thumbnail() && !\option::is_on('lightbox_video_only') ): ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
                                            href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
+                                    <?php else: ?>
+                                        <a class="wpz-portfolio-link" href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
@@ -2312,6 +2314,8 @@ class Portfolio_Showcase extends Widget_Base {
                                     <?php if( has_post_thumbnail() && !\option::is_on( 'lightbox_video_only' ) ) : ?>
                                         <a class="mfp-image portfolio-popup-video popup_image_insp"
                                            href="<?php echo esc_url( $post_thumbnail ); ?>" aria-label="View Image"></a>
+                                    <?php else: ?>
+                                        <a class="wpz-portfolio-link" href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>"></a>
                                     <?php endif; ?>
                                 <?php endif; ?>
 
