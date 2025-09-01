@@ -1,15 +1,16 @@
 
-includes/data/.DS_Store
-assets/thumbs/inspiro-pro/flow-2/.DS_Store
-assets/thumbs/inspiro-pro/.DS_Store
-assets/thumbs/.DS_Store
-includes/widgets/.DS_Store
-includes/.DS_Store
-assets/vendors/.DS_Store
-assets/.DS_Store
+# Composer dependencies
+/vendor/
+
+# OS Files
 .DS_Store
-assets/thumbs/inspiro-pro/flow-3/.DS_Store
-assets/thumbs/inspiro-pro/flow-3/.DS_Store
-assets/thumbs/inspiro-pro/flow-3/.DS_Store
+
+# IDE Files
+.idea/
+.vscode/
+
+# Build artifacts
 /thumbs
+
+# Documentation
 CLAUDE.md

@@ -19,7 +19,10 @@
 	"config": {
 		"platform": {
 			"php": "7.1"
-		}
+		},
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
 	},
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
