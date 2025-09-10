@@ -43,3 +43,63 @@
 	display: block;
 	margin:50px 0;
 }
+
+/* Layout 7 - List View Styles */
+.grid-list-layout .wpz-post {
+	display: flex !important;
+	align-items: flex-start;
+	gap: 20px;
+	margin-bottom: 30px;
+}
+
+.grid-list-layout .post-grid-inner {
+	display: flex;
+	width: 100%;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+.grid-list-layout .post-grid-thumbnail-wrap {
+	flex-shrink: 0;
+	width: 200px;
+	max-width: 40%;
+}
+
+.grid-list-layout .post-grid-thumbnail {
+	margin-bottom: 0;
+}
+
+.grid-list-layout .post-grid-content-wrap {
+	flex: 1;
+	min-width: 0;
+}
+
+.grid-list-layout .post-grid-content-wrap .title {
+	margin-top: 0;
+}
+
+/* Responsive adjustments for list layout */
+@media (max-width: 768px) {
+	.grid-list-layout .wpz-post {
+		flex-direction: column;
+		gap: 15px;
+	}
+	
+	.grid-list-layout .post-grid-inner {
+		flex-direction: column;
+	}
+	
+	.grid-list-layout .post-grid-thumbnail-wrap {
+		width: 100%;
+		max-width: none;
+	}
+	
+	.grid-list-layout .post-grid-thumbnail {
+		margin-bottom: 15px;
+	}
+}
+
+/* Force single column for list layout */
+.grid-list-layout.wpz-grid-container {
+	grid-template-columns: 1fr !important;
+}

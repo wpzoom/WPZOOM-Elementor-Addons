@@ -220,7 +220,8 @@ class Posts_Grid extends Widget_Base {
 					'3' => esc_html__( 'Layout 3', 'wpzoom-elementor-addons' ),
 					'4' => esc_html__( 'Layout 4', 'wpzoom-elementor-addons' ),
 					'5' => esc_html__( 'Layout 5', 'wpzoom-elementor-addons' ),
-					'6' => esc_html__( 'Layout 6', 'wpzoom-elementor-addons' )
+					'6' => esc_html__( 'Layout 6', 'wpzoom-elementor-addons' ),
+					'7' => esc_html__( 'Layout 7 (List)', 'wpzoom-elementor-addons' )
 				]
 			]
 		);
@@ -243,6 +244,9 @@ class Posts_Grid extends Widget_Base {
 				'frontend_available' => true,
 				'selectors' => [
 					'.elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{SIZE}} )'
+				],
+				'condition' => [
+					'grid_style!' => '7'
 				]
 			]
 		);
@@ -882,6 +886,36 @@ class Posts_Grid extends Widget_Base {
 				'selectors'  => [
 					'{{WRAPPER}} .post-grid-inner .post-grid-thumbnail' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
 				]
+			]
+		);
+
+		$this->add_responsive_control(
+			'grid_list_image_width',
+			[
+				'label' => esc_html__( 'Image Width', 'wpzoom-elementor-addons' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 100,
+						'max' => 400,
+					],
+					'%' => [
+						'min' => 20,
+						'max' => 60,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 200,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .grid-list-layout .post-grid-thumbnail-wrap' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'grid_style' => '7'
+				],
+				'separator' => 'before'
 			]
 		);
 
@@ -1601,13 +1635,17 @@ class Posts_Grid extends Widget_Base {
 
 			if( 5 == $grid_style ){
 				$grid_class = ' grid-meta-bottom';
+			} elseif( 7 == $grid_style ){
+				$grid_class = ' grid-list-layout';
 			}
 
 			?>
 			<div class="wpz-grid-container elementor-grid <?php echo esc_attr( $columns_desktop ); ?> <?php echo esc_attr( $columns_tablet ); ?> <?php echo esc_attr( $columns_mobile ); ?> <?php echo esc_attr( $grid_class ); ?>">
 				<?php
 				if ( $all_posts->have_posts() ) {
-					if ( 6 == $grid_style ) {
+					if ( 7 == $grid_style ) {
+						include( __DIR__ . '/layouts/layout-7.php' );
+					} elseif ( 6 == $grid_style ) {
 						include( __DIR__ . '/layouts/layout-6.php' );
 					} elseif ( 5 == $grid_style ) {
 						include( __DIR__ . '/layouts/layout-5.php' );
