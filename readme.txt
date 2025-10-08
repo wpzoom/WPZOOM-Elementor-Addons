@@ -13,7 +13,7 @@ Tags:              elementor, elementor templates, elementor widgets, page build
 
 == Description ==
 
-This plugin provides a collection of custom **Elementor** templates and widgets that can make your job extremely easy to create a beautiful interface of the pages or posts on your WordPress site.
+This plugin provides a collection of custom templates for **Elementor** and widgets that can make your job extremely easy to create a beautiful interface of the pages or posts on your WordPress site.
 
 It is very easy to use and you do not need to write any code. To contribute improve this plugin, please access the [GitHub repository](https://github.com/wpzoom/wpzoom-elementor-addons).
 
@@ -26,7 +26,7 @@ It is very easy to use and you do not need to write any code. To contribute impr
 
 = ⭐️ PRO FEATURES ⭐️ =
 * **Slideshow with Video Background - 🆕**
-* **130+ Elementor Templates - 🆕**
+* **130+ Templates for Elementor - 🆕**
 * Premium Support
 * and many new features coming soon!
 
