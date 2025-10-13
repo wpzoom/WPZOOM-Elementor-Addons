@@ -92,10 +92,19 @@ if ( did_action( 'elementor/loaded' ) ) {
 		//	$data = json_decode( wp_remote_retrieve_body( $response ), true );
 		//}
 		//else {
-			$local_file = sprintf( WPZOOM_EL_ADDONS_PATH . '/includes/data/json/%s', $filename ) ;
+			// Try templates directory first
+			$local_file = sprintf(WPZOOM_EL_ADDONS_PATH . '/includes/data/templates/json/%s', $filename);
 			if( self::get_filesystem()->exists( $local_file ) ) {
 				$data = self::get_filesystem()->get_contents( $local_file );
 				$data = json_decode( $data, true );
+			}
+			// If not found, try sections directory
+			if (empty($data)) {
+				$local_section_file = sprintf(WPZOOM_EL_ADDONS_PATH . '/includes/data/sections/json/%s', $filename);
+				if (self::get_filesystem()->exists($local_section_file)) {
+					$data = self::get_filesystem()->get_contents($local_section_file);
+					$data = json_decode($data, true);
+				}
 			}
 		//}
 		
@@ -122,7 +131,7 @@ if ( did_action( 'elementor/loaded' ) ) {
 	 */
 	private function is_pro_template( $filename ) {
 		// Get template list to check if this template belongs to a PRO theme
-		$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
+			$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/templates/json/info.json';
 		if ( ! self::get_filesystem()->exists( $local_file ) ) {
 			return false;
 		}

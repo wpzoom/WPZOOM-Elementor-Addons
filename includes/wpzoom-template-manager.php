@@ -63,9 +63,13 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			//Setup static library_source
 			self::$library_source = 'https://api.wpzoom.com/elementor/templates/';
 
-					add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
-		add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
-		add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
+			add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
+			add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
+			add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
+
+			// Sections (patterns) AJAX endpoints
+			add_action('wp_ajax_get_wpzoom_sections_library_view', array($this, 'get_wpzoom_sections_library_view'));
+			add_action('wp_ajax_get_wpzoom_section_preview', array($this, 'ajax_get_wpzoom_section_preview'));
 
 			/* Set initial version to the and call update on first use */
 			if( get_option( 'wpz_current_version' ) == false ) {
@@ -126,7 +130,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			//	$template_list = json_decode( $info_data, true );
 			//}
 			//else {
-				$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
+			$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/templates/json/info.json';
 				if( self::init()->get_filesystem()->exists( $local_file ) ) {
 					$data = self::init()->get_filesystem()->get_contents( $local_file );
 					$template_list = json_decode( $data, true );
@@ -220,7 +224,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$templates = json_decode( $data, true );
 			}
 			else {
-				$localJson = WPZOOM_EL_ADDONS_PATH . '/includes/data/json/info.json';
+				$localJson = WPZOOM_EL_ADDONS_PATH . '/includes/data/templates/json/info.json';
 				if( self::init()->get_filesystem()->exists( $localJson ) ) {
 					$data = self::init()->get_filesystem()->get_contents( $localJson );
 					$templates = json_decode( $data, true );
@@ -292,6 +296,89 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				<img src="<?php echo esc_url( $thumb_url ); ?>-full.png" alt="<?php echo esc_attr( $data['name']); ?>" />
 			</div>
 			<?php
+		}
+
+		/**
+		 * Sections (patterns): List view
+		 *
+		 * Loads section entries from local catalog and renders tiles similarly to templates
+		 */
+		public function get_wpzoom_sections_library_view()
+		{
+			$section_list = array();
+			$thumb_url = '';
+			echo '<script> var WPZ_Sections_Index = []; </script>';
+
+			// Check Pro plugin and premium theme status
+			$has_premium_access = class_exists('WPZOOM_Elementor_Addons_Pro') || class_exists('WPZOOM');
+
+			// Define which themes are free for everyone
+			$free_themes = array('Foodica', 'Inspiro Lite');
+
+			$local_file = WPZOOM_EL_ADDONS_PATH . '/includes/data/sections/json/info.json';
+			if (self::init()->get_filesystem()->exists($local_file)) {
+				$data = self::init()->get_filesystem()->get_contents($local_file);
+				$section_list = json_decode($data, true);
+			}
+			$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/';
+
+			echo '<div class="wpzoom-main-tiled-view">';
+			if (count($section_list) != 0) {
+				for ($i = 0; $i < count($section_list); $i++) {
+					$slug = strtolower(str_replace(' ', '-', $section_list[$i]['id']));
+					$theme = $section_list[$i]['theme'];
+					$is_theme_free = in_array($theme, $free_themes);
+					$is_restricted = !$has_premium_access && !$is_theme_free;
+					?>
+					<div 
+						class="wpzoom-templates-library-template wpzoom-item <?php echo $is_restricted ? 'wpzoom-template-pro-only' : ''; ?>"
+						data-theme="<?php echo esc_attr(strtolower(str_replace(' ', '-', $section_list[$i]['theme']))) ?>" 
+						data-category="<?php echo esc_attr(strtolower(str_replace(' ', '-', isset($section_list[$i]['category']) ? $section_list[$i]['category'] : ''))) ?>"
+					>
+						<div class="wpzoom-template-title">
+							<?php echo esc_html($section_list[$i]['name']); ?>
+						</div>
+						<div 
+							class="wpzoom-template-thumb wpzoom-sections-index-<?php echo esc_attr($i); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
+							data-index="<?php echo esc_attr($i); ?>" 
+							data-template="<?php echo esc_attr(wp_json_encode($section_list[$i])); ?>"
+							style="background-image:url(<?php echo esc_url($thumb_url . $section_list[$i]['thumbnail']); ?>-thumb.png);"
+						>
+							<?php if ($is_restricted): ?>
+										<div class="wpzoom-template-overlay">
+											<div class="wpzoom-template-lock-icon">🔒</div>
+											<div class="wpzoom-template-pro-text"><?php esc_html_e('PRO Only', 'wpzoom-elementor-addons'); ?></div>
+										</div>
+							<?php endif; ?>
+						</div>
+						<div class="wpzoom-action-bar">
+							<div class="wpzoom-grow"> </div>
+							<?php if ($is_restricted): ?>
+								<a href="https://www.wpzoom.com/plugins/wpzoom-elementor-addons/" target="_blank" class="wpzoom-btn-template-upgrade wpzoom-btn-pro-required" title="<?php echo esc_attr__('Get Pro Plugin', 'wpzoom-elementor-addons'); ?>">
+									<?php echo esc_html__('Get Pro Plugin', 'wpzoom-elementor-addons'); ?>
+								</a>
+							<?php else: ?>
+								<div class="wpzoom-btn-template-insert" data-version="WPZ__section-version-<?php echo esc_attr($i); ?>" data-template-name="<?php echo esc_attr($slug); ?>"><?php esc_html_e('Insert Section', 'wpzoom-elementor-addons'); ?></div>
+							<?php endif; ?>
+						</div>
+					</div>
+				<?php
+				}
+			} else {
+				echo '<div class="wpzoom-no-results"> <i class="fa fa-frown-o"></i> ' . esc_html__('No Sections Found!', 'wpzoom-elementor-addons') . ' </div>';
+			}
+
+			echo '</div>';
+			wp_die();
+		}
+
+		/**
+		 * Sections (patterns): Preview handler
+		 */
+		public function ajax_get_wpzoom_section_preview()
+		{
+			$this->get_preview_template($_POST['data']);
+			wp_die();
 		}
 
 		/**
