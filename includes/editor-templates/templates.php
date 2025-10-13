@@ -50,6 +50,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 <script type="text/template" id="tmpl-wpzoom-elementor-template-library-tools">
 	<div id="wpzoom-elementor-template-library-toolbar">
+		<div id="wpzoom-elementor-template-library-tabs" class="wpzoom-template-library-tabs">
+			<button class="wpzoom-library-tab is-active" data-tab="templates"><?php echo __('Templates', 'wpzoom-elementor-addons'); ?></button>
+			<button class="wpzoom-library-tab" data-tab="sections"><?php echo __('Sections', 'wpzoom-elementor-addons'); ?></button>
+		</div>
 		<div id="elementor-template-library-filter-toolbar-remote" class="elementor-template-library-filter-toolbar">				
 			<div id="elementor-template-library-filter">
 				<select id="wpzoom-elementor-template-library-filter-theme" class="elementor-template-library-filter-select" name="theme" data-filter="theme">
