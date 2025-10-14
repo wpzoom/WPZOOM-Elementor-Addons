@@ -255,7 +255,8 @@ var WPZCachedSections = null;
 		$('.wpzoom-template-thumb').click(function () {
 			var jsonData = $(this).attr('data-template');
 			var data = jQuery.parseJSON( jsonData );
-			var slug = data.id;
+			var rawId = data.id || '';
+			var slug = String(rawId).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9_-]/g, '');
 			var isLocked = $(this).hasClass('wpzoom-template-thumb-locked');
 
 			//console.log( data );
