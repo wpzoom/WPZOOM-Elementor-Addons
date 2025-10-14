@@ -68,9 +68,12 @@ var WPZCachedSections = null;
 									header.append( wp.template( 'wpzoom-elementor-templates-modal__header' ) );
 								}
 								const content = windowWPZ.wpzModal.getElements("content");
-								if( !$('#elementor-template-library-filter-toolbar-remote').length ) {
-									content.append( wp.template( 'wpzoom-elementor-template-library-tools' ) );
+								if (!$('#elementor-template-library-filter-toolbar-remote').length) {
+									content.append(wp.template('wpzoom-elementor-template-library-tools'));
 								}
+								// Reset active tab UI to Templates on each open
+								$('#wpzoom-elementor-template-library-tabs .wpzoom-library-tab').removeClass('is-active');
+								$('#wpzoom-elementor-template-library-tabs .wpzoom-library-tab[data-tab="templates"]').addClass('is-active');
 								if( !$('#wpzoom-elementor-templates-header').length ) {
 									content.append('<div id="wpzoom-elementor-templates-header" class="wrap"></div>');
 								}
