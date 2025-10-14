@@ -6,6 +6,14 @@
     "category": "hero",
     "thumbnail": "hero-minimal",
     "filename": "hero-minimal.json"
+},
+{
+    "id": "Features Grid",
+    "name": "Features Grid",
+    "theme": "Inspiro Lite",
+    "category": "features",
+    "thumbnail": "features-grid",
+    "filename": "features-grid.json"
   }
 ]
 
