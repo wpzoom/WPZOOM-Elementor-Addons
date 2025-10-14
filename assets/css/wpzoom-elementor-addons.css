@@ -389,3 +389,27 @@
 .wpzoom-btn-license-:hover {
 	background: #000 !important;
 }
+
+/* WPZOOM Library Tabs (Templates / Sections) */
+.elementor-templates-modal .wpzoom-template-library-tabs {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.elementor-templates-modal .wpzoom-library-tab {
+	cursor: pointer;
+	padding: 6px 10px;
+	border-radius: 4px;
+	background: #f3f4f5;
+	color: #1d2327;
+	border: 1px solid #dcdcde;
+	line-height: 1.2;
+	font-size: 12px;
+}
+
+.elementor-templates-modal .wpzoom-library-tab.is-active {
+	background: #2271b1;
+	color: #fff;
+	border-color: #2271b1;
+}
