@@ -22,11 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<i class="eicon-close" aria-hidden="true" title="Close"></i>
 				<span class="elementor-screen-only">Close</span>
 			</div>
-			<div id="wpzoom-elementor-template-library-header-preview" style="display:none;">
+            <div id="wpzoom-elementor-template-library-header-preview" style="display:none;">
 				<div id="elementor-template-library-header-preview-insert-wrapper" class="elementor-templates-modal__header__item">
-					<a class="elementor-template-library-template-action elementor-template-library-template-insert elementor-button" data-template-name="">
+                    <a class="elementor-template-library-template-action elementor-template-library-template-insert elementor-button" data-template-name="">
 						<i class="eicon-file-download" aria-hidden="true"></i>
-						<span class="elementor-button-title">Insert</span>
+                        <span class="elementor-button-title">Insert Page</span>
 					</a>
 				</div>
 			</div>
@@ -50,8 +50,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 <script type="text/template" id="tmpl-wpzoom-elementor-template-library-tools">
 	<div id="wpzoom-elementor-template-library-toolbar">
-		<div id="wpzoom-elementor-template-library-tabs" class="wpzoom-template-library-tabs">
-			<button class="wpzoom-library-tab is-active" data-tab="templates"><?php echo __('Templates', 'wpzoom-elementor-addons'); ?></button>
+        <div id="wpzoom-elementor-template-library-tabs" class="wpzoom-template-library-tabs">
+            <button class="wpzoom-library-tab is-active" data-tab="templates"><?php echo __('Pages', 'wpzoom-elementor-addons'); ?></button>
 			<button class="wpzoom-library-tab" data-tab="sections"><?php echo __('Sections', 'wpzoom-elementor-addons'); ?></button>
 		</div>
 		<div id="elementor-template-library-filter-toolbar-remote" class="elementor-template-library-filter-toolbar">				
@@ -69,8 +69,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</select>
 			</div>
 		</div>
-		<!-- <div id="elementor-template-library-filter-text-wrapper">
-			<label for="elementor-template-library-filter-text" class="elementor-screen-only">Search Templates:</label>
+        <!-- <div id="elementor-template-library-filter-text-wrapper">
+            <label for="elementor-template-library-filter-text" class="elementor-screen-only">Search Pages:</label>
 			<input id="wpzoom-elementor-template-library-filter-text" placeholder="Search">
 			<div class='wpzoom__search'><i class="eicon-search"></i></div>
 		</div> -->

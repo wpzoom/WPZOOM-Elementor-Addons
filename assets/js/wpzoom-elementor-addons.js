@@ -280,7 +280,7 @@ var WPZCachedSections = null;
 			} else {
 				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').removeClass('wpzoom-locked-template');
 				// Reset button text and style for free templates
-				var insertLabel = (windowWPZ.currentTab === 'sections') ? 'Insert Section' : 'Insert';
+				var insertLabel = (windowWPZ.currentTab === 'sections') ? 'Insert Section' : 'Insert Page';
 				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-button-title').text(insertLabel);
 				$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').css({
 					'background': '',
@@ -322,7 +322,7 @@ var WPZCachedSections = null;
 		$('#wpzoom-elementor-template-library-header-preview').hide();		
 
 		showLoadingView();
-		var action = (tab === 'sections') ? 'get_wpzoom_sections_library_view' : 'get_wpzoom_templates_library_view';
+		var action = (tab === 'sections') ? 'get_wpzoom_sections_library_view' : 'get_wpzoom_pages_library_view';
 		var cached = (tab === 'sections') ? WPZCachedSections : (WPZCachedTemplates || WPZCached || null);
 		if (cached == null) { // If cache not created then load it
 			/* Load library view via Ajax */

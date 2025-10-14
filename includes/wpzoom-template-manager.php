@@ -63,7 +63,9 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			//Setup static library_source
 			self::$library_source = 'https://api.wpzoom.com/elementor/templates/';
 
-			add_action( 'wp_ajax_get_wpzoom_templates_library_view', array( $this, 'get_wpzoom_templates_library_view' ) );
+			add_action('wp_ajax_get_wpzoom_templates_library_view', array($this, 'get_wpzoom_templates_library_view'));
+			// Alias: pages view (same handler)
+			add_action('wp_ajax_get_wpzoom_pages_library_view', array($this, 'get_wpzoom_templates_library_view'));
 			add_action( 'wp_ajax_get_wpzoom_preview', array( $this, 'ajax_get_wpzoom_preview' ) );
 			add_action( 'wp_ajax_get_filter_options', array( $this, 'get_template_filter_options_values' ) );
 
@@ -189,15 +191,18 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 								<a href="<?php echo esc_url( $button_data['url'] ); ?>" target="_blank" class="wpzoom-btn-template-upgrade wpzoom-btn-pro-required" title="<?php echo esc_attr( $button_data['text'] ); ?>">
 									<?php echo esc_html( $button_data['text'] ); ?>
 								</a>
-							<?php else : ?>
-								<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr( $i ); ?>" data-template-name="<?php echo esc_attr( $slug ); ?>"><?php esc_html_e( 'Insert Template', 'wpzoom-elementor-addons' ); ?></div>
+                            <?php else: ?>
+								<div class="wpzoom-btn-template-insert" data-version="WPZ__version-<?php echo esc_attr($i); ?>"
+									data-template-name="<?php echo esc_attr($slug); ?>">
+									<?php esc_html_e('Insert Page', 'wpzoom-elementor-addons'); ?>
+								</div>
 							<?php endif; ?>
 						</div>
 					</div>
 				<?php
 				}  /* Thumbnail Loop */
 			} else {
-				echo '<div class="wpzoom-no-results"> <i class="fa fa-frown-o"></i> ' . esc_html__( 'No Templates Found!', 'wpzoom-elementor-addons' ) . ' </div>';
+				echo '<div class="wpzoom-no-results"> <i class="fa fa-frown-o"></i> ' . esc_html__('No Pages Found!', 'wpzoom-elementor-addons') . ' </div>';
 			}
 			
 			echo '</div>';	
