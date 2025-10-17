@@ -67,6 +67,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <option value ='inspiro-premium'>Inspiro Premium</option>
                     <option value ='reel'>Reel</option>
 				</select>
+				<select id="wpzoom-elementor-template-library-filter-category" class="elementor-template-library-filter-select" name="category" data-filter="category" style="display:none;">
+					<option value = ''>Select a category</option>
+				</select>
 			</div>
 		</div>
         <!-- <div id="elementor-template-library-filter-text-wrapper">

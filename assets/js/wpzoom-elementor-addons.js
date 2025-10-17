@@ -74,6 +74,10 @@ var WPZCachedSections = null;
 								// Reset active tab UI to Templates on each open
 								$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
 								$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item[data-tab="templates"]').addClass('elementor-active').attr('aria-selected', 'true');
+								// Ensure filters show Pages theme by default
+								$('#wpzoom-elementor-template-library-filter-theme').show();
+								$('#wpzoom-elementor-template-library-filter-category').hide();
+								$('#wpzoom-elementor-template-library-filter-category').val(null).trigger('change');
 								if( !$('#wpzoom-elementor-templates-header').length ) {
 									content.append('<div id="wpzoom-elementor-templates-header" class="wrap"></div>');
 								}
@@ -113,16 +117,50 @@ var WPZCachedSections = null;
 										if ($btn.hasClass('elementor-active')) { return; }
 										$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
 										$btn.addClass('elementor-active').attr('aria-selected', 'true');
-									windowWPZ.currentTab = $btn.data('tab') === 'sections' ? 'sections' : 'templates';
-									wpzoom_get_library_view(windowWPZ.currentTab);
+										windowWPZ.currentTab = $btn.data('tab') === 'sections' ? 'sections' : 'templates';
+										// Toggle filter dropdowns per tab
+										if (windowWPZ.currentTab === 'sections') {
+											$('#wpzoom-elementor-template-library-filter-theme').val(null).trigger('change');
+											$('#wpzoom-elementor-template-library-filter-theme').hide();
+											$('#wpzoom-elementor-template-library-filter-theme').next('.select2-container').hide();
+											// Show category only
+											$('#wpzoom-elementor-template-library-filter-category').show();
+											$('#wpzoom-elementor-template-library-filter-category').next('.select2-container').show();
+										} else {
+											$('#wpzoom-elementor-template-library-filter-category').val(null).trigger('change');
+											$('#wpzoom-elementor-template-library-filter-category').hide();
+											$('#wpzoom-elementor-template-library-filter-category').next('.select2-container').hide();
+											// Show theme only
+											$('#wpzoom-elementor-template-library-filter-theme').show();
+											$('#wpzoom-elementor-template-library-filter-theme').next('.select2-container').show();
+										}
+										wpzoom_get_library_view(windowWPZ.currentTab);
 									});
 
 								wpzoom_get_library_view('templates');
-								$('#wpzoom-elementor-template-library-filter-theme').select2({
+								// Initialize select2 only once per select
+								if (!$('#wpzoom-elementor-template-library-filter-theme').hasClass('select2-hidden-accessible')) {
+									$('#wpzoom-elementor-template-library-filter-theme').select2({
 									placeholder: 'Theme',
 									allowClear: true,
 									width: 150,
-								});
+									});
+								}
+								if (!$('#wpzoom-elementor-template-library-filter-category').hasClass('select2-hidden-accessible')) {
+									$('#wpzoom-elementor-template-library-filter-category').select2({
+										placeholder: 'Category',
+										allowClear: true,
+										width: 180,
+									});
+								}
+								// After initialization, enforce correct visibility for containers
+								if (windowWPZ.currentTab === 'sections') {
+									$('#wpzoom-elementor-template-library-filter-theme').hide().next('.select2-container').hide();
+									$('#wpzoom-elementor-template-library-filter-category').show().next('.select2-container').show();
+								} else {
+									$('#wpzoom-elementor-template-library-filter-category').hide().next('.select2-container').hide();
+									$('#wpzoom-elementor-template-library-filter-theme').show().next('.select2-container').show();
+								}
 							},
 							onHide: function() {
 								if( 'dark' !== elementor.settings.editorPreferences.model.get('ui_theme') ) {
@@ -227,9 +265,10 @@ var WPZCachedSections = null;
         });
 
 		/* Filter to show by theme */
-		$('#wpzoom-elementor-template-library-filter-theme').on( 'change', function(e) {
+		$('#wpzoom-elementor-template-library-filter-theme, #wpzoom-elementor-template-library-filter-category').on('change', function (e) {
             var filters = {};
-			$(this).each(function(index, select) {
+			// Collect both filters if visible
+			$('#wpzoom-elementor-template-library-filter select:visible').each(function (index, select) {
 				var value = String( $(select).val() );
 				// if comma separated
 				if (value.indexOf(',') !== -1) {
@@ -241,9 +280,9 @@ var WPZCachedSections = null;
 				var show = true;
 				$.each(filters, function(name, val) {
 					if ( val === null ) { return; }
-					if ( name === 'theme' && $(item).data('theme').indexOf(val) === -1) {
+					if (name === 'theme' && $(item).data('theme').indexOf(val) === -1) {
 						show = false;
-					} else if( $(item).data(name).indexOf(val) === -1) {
+					} else if ($(item).data(name).indexOf(val) === -1) {
 						show = false;
 					}
 				});
