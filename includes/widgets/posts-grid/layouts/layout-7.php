@@ -7,9 +7,12 @@ while ( $all_posts->have_posts() ) :
          
             <div class="post-grid-inner">
             	
-            	<div class="post-grid-thumbnail-wrap">
-            		<?php $this->render_thumbnail(); ?>
-            	</div>
+                <?php $settings = $this->get_settings(); ?>
+                <?php if (isset($settings['show_image']) && 'yes' === $settings['show_image'] && has_post_thumbnail()): ?>
+                <div class="post-grid-thumbnail-wrap">
+                    <?php $this->render_thumbnail(); ?>
+                </div>
+                <?php endif; ?>
 
                 <div class="post-grid-content-wrap">
                		<?php $this->render_title(); ?>
