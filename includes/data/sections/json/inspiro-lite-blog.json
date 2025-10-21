@@ -265,7 +265,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -278,4 +278,3 @@
   "title": "Blog",
   "type": "section"
 }
-

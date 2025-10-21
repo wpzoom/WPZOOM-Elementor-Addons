@@ -164,7 +164,7 @@
                     {
                       "id": "4fcda8da",
                       "settings": {
-                        "editor": "<strong>Inspiro<\/strong>\u00a0is the perfect solution to create a beautiful website for your portfolio or your business. If you're looking to create a captivating presence online, then you've found the right tool. The theme is easy to manage, with a\u00a0<strong>drag-and-drop<\/strong>\u00a0interface and fully customizable using the\u00a0<strong>Theme Customizer<\/strong>.",
+                        "editor": "<strong>Inspiro</strong>\u00a0is the perfect solution to create a beautiful website for your portfolio or your business. If you're looking to create a captivating presence online, then you've found the right tool. The theme is easy to manage, with a\u00a0<strong>drag-and-drop</strong>\u00a0interface and fully customizable using the\u00a0<strong>Theme Customizer</strong>.",
                         "typography_font_size": {
                           "unit": "px",
                           "size": 16,
@@ -291,7 +291,7 @@
               "elType": "container"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -304,4 +304,3 @@
   "title": "About Agency",
   "type": "section"
 }
-

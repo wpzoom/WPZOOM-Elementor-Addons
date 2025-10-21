@@ -96,7 +96,7 @@
               "settings": {
                 "title": "Bill Bolduc",
                 "job_title": "CEO",
-                "bio": "This is some dummy copy. You're not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
+                "bio": "This is some dummy copy. You\u2019re not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
                 "profiles": [
                   {
                     "link": {
@@ -224,7 +224,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         },
         {
@@ -264,7 +264,7 @@
               "settings": {
                 "title": "Peggy Berlin",
                 "job_title": "Lead Designer",
-                "bio": "This is some dummy copy. You're not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
+                "bio": "This is some dummy copy. You\u2019re not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
                 "profiles": [
                   {
                     "link": {
@@ -391,7 +391,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         },
         {
@@ -423,7 +423,7 @@
               "settings": {
                 "title": "Maria Alberts",
                 "job_title": "Designer",
-                "bio": "This is some dummy copy. You're not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
+                "bio": "This is some dummy copy. You\u2019re not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
                 "profiles": [
                   {
                     "link": {
@@ -550,7 +550,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -563,4 +563,3 @@
   "title": "Our Team",
   "type": "section"
 }
-

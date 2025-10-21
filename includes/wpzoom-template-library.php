@@ -33,7 +33,8 @@ if ( did_action( 'elementor/loaded' ) ) {
 		public function update_item( $new_data ){}
 		public function export_template( $template_id ){}
 
-			public function get_finalized_data() {
+		public function get_finalized_data()
+		{
 
 		// Check if user has permission to import templates
 		if ( ! current_user_can( 'edit_posts' ) ) {
@@ -94,6 +95,7 @@ if ( did_action( 'elementor/loaded' ) ) {
 		//else {
 			// Try templates directory first
 			$local_file = sprintf(WPZOOM_EL_ADDONS_PATH . '/includes/data/templates/json/%s', $filename);
+			$data = null;
 			if( self::get_filesystem()->exists( $local_file ) ) {
 				$data = self::get_filesystem()->get_contents( $local_file );
 				$data = json_decode( $data, true );

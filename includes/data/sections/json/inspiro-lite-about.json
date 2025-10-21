@@ -303,7 +303,7 @@
               "elType": "container"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -316,4 +316,3 @@
   "title": "About",
   "type": "section"
 }
-

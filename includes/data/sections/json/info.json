@@ -16,7 +16,7 @@
         "filename": "hero-minimal.json"
     },
     {
-        "id": "About Agency",
+        "id": "inspiro-lite-about-agency",
         "name": "About Agency",
         "theme": "Inspiro Lite",
         "category": "general",
@@ -24,7 +24,7 @@
         "filename": "inspiro-lite-about-agency.json"
     },
     {
-        "id": "Our Services",
+        "id": "inspiro-lite-services",
         "name": "Our Services",
         "theme": "Inspiro Lite",
         "category": "features",
@@ -32,7 +32,7 @@
         "filename": "inspiro-lite-services.json"
     },
     {
-        "id": "Gallery",
+        "id": "inspiro-lite-gallery",
         "name": "Gallery",
         "theme": "Inspiro Lite",
         "category": "gallery",
@@ -40,7 +40,7 @@
         "filename": "inspiro-lite-gallery.json"
     },
     {
-        "id": "Our Team",
+        "id": "inspiro-lite-team",
         "name": "Our Team",
         "theme": "Inspiro Lite",
         "category": "general",
@@ -48,7 +48,7 @@
         "filename": "inspiro-lite-team.json"
     },
     {
-        "id": "Blog",
+        "id": "inspiro-lite-blog",
         "name": "Blog",
         "theme": "Inspiro Lite",
         "category": "general",
@@ -56,7 +56,7 @@
         "filename": "inspiro-lite-blog.json"
     },
     {
-        "id": "Contact with Map",
+        "id": "inspiro-lite-contact",
         "name": "Contact with Map",
         "theme": "Inspiro Lite",
         "category": "contact",
@@ -64,7 +64,7 @@
         "filename": "inspiro-lite-contact.json"
     },
     {
-        "id": "About",
+        "id": "inspiro-lite-about",
         "name": "About",
         "theme": "Inspiro Lite",
         "category": "general",
@@ -72,7 +72,7 @@
         "filename": "inspiro-lite-about.json"
     },
     {
-        "id": "Expertise",
+        "id": "inspiro-lite-expertise",
         "name": "Expertise",
         "theme": "Inspiro Lite",
         "category": "features",

@@ -191,7 +191,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         },
         {
@@ -350,7 +350,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         },
         {
@@ -509,7 +509,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -522,4 +522,3 @@
   "title": "Our Services",
   "type": "section"
 }
-

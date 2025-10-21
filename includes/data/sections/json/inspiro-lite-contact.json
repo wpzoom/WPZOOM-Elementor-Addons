@@ -178,7 +178,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -191,4 +191,3 @@
   "title": "Contact with Map",
   "type": "section"
 }
-

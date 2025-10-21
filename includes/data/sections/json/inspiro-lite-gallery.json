@@ -81,7 +81,7 @@
               "elType": "widget"
             }
           ],
-          "isInner": false,
+          "isInner": true,
           "elType": "container"
         }
       ],
@@ -94,4 +94,3 @@
   "title": "Gallery",
   "type": "section"
 }
-
