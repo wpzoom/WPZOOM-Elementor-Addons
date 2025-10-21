@@ -1,0 +1,566 @@
+{
+  "content": [
+    {
+      "id": "4c79375e",
+      "settings": {
+        "content_width": {
+          "unit": "px",
+          "size": 1200,
+          "sizes": []
+        },
+        "gap": "custom",
+        "gap_columns_custom": {
+          "unit": "px",
+          "size": 20,
+          "sizes": []
+        },
+        "structure": "30",
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "0",
+          "left": 0,
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "30",
+          "bottom": "50",
+          "left": "30",
+          "isLinked": false
+        },
+        "gap_columns_custom_tablet": {
+          "unit": "%",
+          "size": 3,
+          "sizes": []
+        },
+        "gap_columns_custom_mobile": {
+          "unit": "px",
+          "size": 0,
+          "sizes": []
+        },
+        "padding_tablet": {
+          "unit": "%",
+          "top": "3",
+          "right": "3",
+          "bottom": "3",
+          "left": "3",
+          "isLinked": true
+        },
+        "padding_mobile": {
+          "unit": "%",
+          "top": "4",
+          "right": "4",
+          "bottom": "4",
+          "left": "4",
+          "isLinked": true
+        }
+      },
+      "elements": [
+        {
+          "id": "66ba8394",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "space_between_widgets": 0,
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "margin_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "35",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "56fe9513",
+              "settings": {
+                "title": "Bill Bolduc",
+                "job_title": "CEO",
+                "bio": "This is some dummy copy. You're not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
+                "profiles": [
+                  {
+                    "link": {
+                      "url": "https://www.facebook.com/wpzoom",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    },
+                    "name": "facebook",
+                    "_id": "46b7917",
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "link": {
+                      "url": "https://twitter.com/wpzoom",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    },
+                    "name": "twitter",
+                    "_id": "3f91eaa"
+                  }
+                ],
+                "button_text": "Show Details",
+                "image_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "content_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "title_spacing": {
+                  "unit": "px",
+                  "size": 10,
+                  "sizes": []
+                },
+                "title_typography_font_size": {
+                  "unit": "px",
+                  "size": 24,
+                  "sizes": []
+                },
+                "title_typography_font_weight": "600",
+                "job_title_spacing": {
+                  "unit": "px",
+                  "size": 15,
+                  "sizes": []
+                },
+                "job_title_color": "#888888",
+                "job_title_typography_typography": "custom",
+                "job_title_typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "job_title_typography_font_weight": "normal",
+                "bio_spacing": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "bio_typography_typography": "custom",
+                "bio_typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "bio_typography_font_weight": "normal",
+                "links_padding": {
+                  "unit": "px",
+                  "size": 0,
+                  "sizes": []
+                },
+                "links_color": "#0BB4AA",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "image": {
+                  "id": "6524",
+                  "url": "https://demo.wpzoom.com/inspiro-lite/files/2021/10/toa-heftiba-IRRSm7rB38o-unsplash-scaled-1-1.jpg"
+                },
+                "links_spacing": {
+                  "unit": "px",
+                  "size": 15,
+                  "sizes": []
+                },
+                "links_icon_size": {
+                  "unit": "px",
+                  "size": 20,
+                  "sizes": []
+                },
+                "title_typography_font_family": "Onest",
+                "title_typography_typography": "custom",
+                "job_title_typography_text_transform": "uppercase",
+                "job_title_typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 2,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "wpzoom-elementor-addons-team-members",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "container"
+        },
+        {
+          "id": "45b83038",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "space_between_widgets": 0,
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "margin_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "35",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "7f8666d5",
+              "settings": {
+                "title": "Peggy Berlin",
+                "job_title": "Lead Designer",
+                "bio": "This is some dummy copy. You're not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
+                "profiles": [
+                  {
+                    "link": {
+                      "url": "https://twitter.com/wpzoom",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    },
+                    "name": "twitter",
+                    "_id": "3f91eaa"
+                  },
+                  {
+                    "_id": "7faa19b",
+                    "name": "instagram",
+                    "link": {
+                      "url": "https://www.instagram.com/wpzoom/",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    }
+                  }
+                ],
+                "button_text": "Show Details",
+                "image_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "content_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "title_spacing": {
+                  "unit": "px",
+                  "size": 10,
+                  "sizes": []
+                },
+                "title_typography_typography": "custom",
+                "title_typography_font_size": {
+                  "unit": "px",
+                  "size": 24,
+                  "sizes": []
+                },
+                "title_typography_font_weight": "600",
+                "job_title_spacing": {
+                  "unit": "px",
+                  "size": 15,
+                  "sizes": []
+                },
+                "job_title_color": "#888888",
+                "job_title_typography_typography": "custom",
+                "job_title_typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "job_title_typography_font_weight": "normal",
+                "bio_spacing": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "bio_typography_typography": "custom",
+                "bio_typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "bio_typography_font_weight": "normal",
+                "links_padding": {
+                  "unit": "px",
+                  "size": 0,
+                  "sizes": []
+                },
+                "links_color": "#0BB4AA",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "image": {
+                  "id": 6536,
+                  "url": "https://demo.wpzoom.com/inspiro-lite/files/2021/10/dan-senior-G-W-vGMFkW8-unsplash-scaled-1-2.jpg"
+                },
+                "links_spacing": {
+                  "unit": "px",
+                  "size": 15,
+                  "sizes": []
+                },
+                "links_icon_size": {
+                  "unit": "px",
+                  "size": 20,
+                  "sizes": []
+                },
+                "title_typography_font_family": "Onest",
+                "job_title_typography_text_transform": "uppercase",
+                "job_title_typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 2,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "wpzoom-elementor-addons-team-members",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "container"
+        },
+        {
+          "id": "586d94d6",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "space_between_widgets": 0,
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "3150a87d",
+              "settings": {
+                "title": "Maria Alberts",
+                "job_title": "Designer",
+                "bio": "This is some dummy copy. You're not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.",
+                "profiles": [
+                  {
+                    "link": {
+                      "url": "https://facebook.com/wpzoom",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    },
+                    "name": "facebook",
+                    "_id": "46b7917"
+                  },
+                  {
+                    "link": {
+                      "url": "https://twitter.com/wpzoom",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    },
+                    "name": "twitter",
+                    "_id": "3f91eaa"
+                  }
+                ],
+                "button_text": "Show Details",
+                "image_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "content_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "title_spacing": {
+                  "unit": "px",
+                  "size": 10,
+                  "sizes": []
+                },
+                "title_typography_typography": "custom",
+                "title_typography_font_size": {
+                  "unit": "px",
+                  "size": 24,
+                  "sizes": []
+                },
+                "title_typography_font_weight": "600",
+                "job_title_spacing": {
+                  "unit": "px",
+                  "size": 15,
+                  "sizes": []
+                },
+                "job_title_color": "#888888",
+                "job_title_typography_typography": "custom",
+                "job_title_typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "job_title_typography_font_weight": "normal",
+                "bio_spacing": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "bio_typography_typography": "custom",
+                "bio_typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "bio_typography_font_weight": "normal",
+                "links_padding": {
+                  "unit": "px",
+                  "size": 0,
+                  "sizes": []
+                },
+                "links_color": "#0BB4AA",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "image": {
+                  "id": 6537,
+                  "url": "https://demo.wpzoom.com/inspiro-lite/files/2021/10/adi-probo-2F-78YgdK-Y-unsplash-scaled-1-1.jpg"
+                },
+                "links_spacing": {
+                  "unit": "px",
+                  "size": 15,
+                  "sizes": []
+                },
+                "links_icon_size": {
+                  "unit": "px",
+                  "size": 20,
+                  "sizes": []
+                },
+                "title_typography_font_family": "Onest",
+                "job_title_typography_text_transform": "uppercase",
+                "job_title_typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 2,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "wpzoom-elementor-addons-team-members",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "container"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Our Team",
+  "type": "section"
+}
+

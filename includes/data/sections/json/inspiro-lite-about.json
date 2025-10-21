@@ -1,0 +1,319 @@
+{
+  "content": [
+    {
+      "id": "3303009b",
+      "settings": {
+        "gap": "no",
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "0",
+          "left": 0,
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "100",
+          "right": "30",
+          "bottom": "100",
+          "left": "30",
+          "isLinked": false
+        },
+        "content_width": {
+          "unit": "px",
+          "size": 1200,
+          "sizes": []
+        },
+        "padding_tablet": {
+          "unit": "%",
+          "top": "4",
+          "right": "4",
+          "bottom": "4",
+          "left": "4",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "%",
+          "top": "4",
+          "right": "4",
+          "bottom": "4",
+          "left": "4",
+          "isLinked": true
+        }
+      },
+      "elements": [
+        {
+          "id": "319b6211",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null,
+            "space_between_widgets": 0
+          },
+          "elements": [
+            {
+              "id": "52586f3d",
+              "settings": {
+                "title": "About",
+                "title_color": "#202020",
+                "typography_typography": "custom",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 26,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "50",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "align": "center",
+                "typography_font_family": "Montserrat",
+                "typography_text_transform": "uppercase",
+                "__globals__": {
+                  "title_color": ""
+                },
+                "_margin_mobile": {
+                  "unit": "px",
+                  "top": "30",
+                  "right": "30",
+                  "bottom": "30",
+                  "left": "30",
+                  "isLinked": true
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "6c918648",
+              "settings": {
+                "image": {
+                  "id": 6463,
+                  "url": "https://demo.wpzoom.com/inspiro-elementor/files/2021/09/annie-spratt-O-40u5howqw-unsplash.jpg",
+                  "alt": "",
+                  "source": "library"
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "40",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "image_size": "custom",
+                "image_custom_dimension": {
+                  "width": "1000",
+                  "height": "500"
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "image",
+              "elType": "widget"
+            },
+            {
+              "id": "72b46acc",
+              "settings": {
+                "layout": "full_width",
+                "content_width": {
+                  "unit": "px",
+                  "size": 500,
+                  "sizes": []
+                },
+                "gap": "no",
+                "gap_columns_custom": {
+                  "unit": "px",
+                  "size": 100,
+                  "sizes": []
+                }
+              },
+              "elements": [
+                {
+                  "id": "506014f6",
+                  "settings": {
+                    "_column_size": 100,
+                    "_inline_size": 100,
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "padding_tablet": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "40",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "padding_mobile": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "17293b7e",
+                      "settings": {
+                        "editor": "Dummy text is text that is used in the publishing industry or by web designers to occupy the space which will later be filled with real content. This is required when, for example, the final text is not yet available. Dummy text is also known as 'fill text'. It is said that song composers of the past used dummy texts as lyrics when writing melodies in order to have a ready-made text to sing with the melody.",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 16,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "normal",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.75,
+                          "sizes": []
+                        },
+                        "typography_letter_spacing": {
+                          "unit": "px",
+                          "size": 0,
+                          "sizes": []
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "__globals__": {
+                          "text_color": ""
+                        },
+                        "text_color": "#444444",
+                        "align": "center",
+                        "_padding": {
+                          "unit": "%",
+                          "top": "0",
+                          "right": "15",
+                          "bottom": "0",
+                          "left": "15",
+                          "isLinked": false
+                        },
+                        "_padding_tablet": {
+                          "unit": "%",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "elType": "widget"
+                    },
+                    {
+                      "id": "41aeb580",
+                      "settings": {
+                        "text": "Get in Touch",
+                        "size": "md",
+                        "typography_typography": "custom",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "700",
+                        "button_text_color": "#444444",
+                        "background_color": "#00000000",
+                        "border_border": "solid",
+                        "border_width": {
+                          "unit": "px",
+                          "top": "2",
+                          "right": "2",
+                          "bottom": "2",
+                          "left": "2",
+                          "isLinked": true
+                        },
+                        "border_color": "#CFCFCF",
+                        "border_radius": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "20",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "_margin_mobile": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "50",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "hover_color": "#0BB4AA",
+                        "button_hover_border_color": "#0BB4AA",
+                        "typography_font_family": "Montserrat",
+                        "typography_text_transform": "uppercase",
+                        "typography_letter_spacing": {
+                          "unit": "px",
+                          "size": 1,
+                          "sizes": []
+                        },
+                        "align": "center"
+                      },
+                      "elements": [],
+                      "isInner": false,
+                      "widgetType": "button",
+                      "elType": "widget"
+                    }
+                  ],
+                  "isInner": true,
+                  "elType": "container"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            }
+          ],
+          "isInner": false,
+          "elType": "container"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "About",
+  "type": "section"
+}
+

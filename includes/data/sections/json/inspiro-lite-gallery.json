@@ -1,0 +1,97 @@
+{
+  "content": [
+    {
+      "id": "45b7fd50",
+      "settings": {
+        "layout": "full_width",
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "0",
+          "left": 0,
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "70",
+          "right": "40",
+          "bottom": "40",
+          "left": "40",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#101010"
+      },
+      "elements": [
+        {
+          "id": "32451b0b",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null,
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "25dbeba4",
+              "settings": {
+                "title": "Gallery",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 30,
+                  "sizes": []
+                },
+                "typography_font_weight": "600",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "align": "center",
+                "typography_font_family": "Onest",
+                "__globals__": {
+                  "title_color": ""
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "5e8be633",
+              "settings": {
+                "shortcode": "[wpzoom_portfolio_layout id=\"6680\"]"
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "shortcode",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "container"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Gallery",
+  "type": "section"
+}
+

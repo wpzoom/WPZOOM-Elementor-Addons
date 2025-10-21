@@ -14,5 +14,69 @@
         "category": "hero",
         "thumbnail": "inspiro-lite/hero-minimal",
         "filename": "hero-minimal.json"
+    },
+    {
+        "id": "About Agency",
+        "name": "About Agency",
+        "theme": "Inspiro Lite",
+        "category": "general",
+        "thumbnail": "inspiro-lite/about-agency",
+        "filename": "inspiro-lite-about-agency.json"
+    },
+    {
+        "id": "Our Services",
+        "name": "Our Services",
+        "theme": "Inspiro Lite",
+        "category": "features",
+        "thumbnail": "inspiro-lite/services",
+        "filename": "inspiro-lite-services.json"
+    },
+    {
+        "id": "Gallery",
+        "name": "Gallery",
+        "theme": "Inspiro Lite",
+        "category": "gallery",
+        "thumbnail": "inspiro-lite/gallery",
+        "filename": "inspiro-lite-gallery.json"
+    },
+    {
+        "id": "Our Team",
+        "name": "Our Team",
+        "theme": "Inspiro Lite",
+        "category": "general",
+        "thumbnail": "inspiro-lite/team",
+        "filename": "inspiro-lite-team.json"
+    },
+    {
+        "id": "Blog",
+        "name": "Blog",
+        "theme": "Inspiro Lite",
+        "category": "general",
+        "thumbnail": "inspiro-lite/blog",
+        "filename": "inspiro-lite-blog.json"
+    },
+    {
+        "id": "Contact with Map",
+        "name": "Contact with Map",
+        "theme": "Inspiro Lite",
+        "category": "contact",
+        "thumbnail": "inspiro-lite/contact",
+        "filename": "inspiro-lite-contact.json"
+    },
+    {
+        "id": "About",
+        "name": "About",
+        "theme": "Inspiro Lite",
+        "category": "general",
+        "thumbnail": "inspiro-lite/about",
+        "filename": "inspiro-lite-about.json"
+    },
+    {
+        "id": "Expertise",
+        "name": "Expertise",
+        "theme": "Inspiro Lite",
+        "category": "features",
+        "thumbnail": "inspiro-lite/expertise",
+        "filename": "inspiro-lite-expertise.json"
     }
 ]
