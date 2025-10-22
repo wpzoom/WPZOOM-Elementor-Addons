@@ -382,7 +382,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					$category_title = ucwords(str_replace('-', ' ', $category_slug));
 					$themes_for_cat = implode(',', array_keys($category_to_themes[$category_slug]));
 					// Category heading similar to Pages view
-					echo '<h2 class="wpzoom-templates-library-template-category" data-theme="' . esc_attr($themes_for_cat) . '">' . esc_html($category_title) . '</h2>';
+					echo '<h2 class="wpzoom-templates-library-template-category" data-theme="' . esc_attr($themes_for_cat) . '" data-category="' . esc_attr($category_slug) . '">' . esc_html($category_title) . '</h2>';
 					foreach ($items as $index => $entry) {
 						$slug = strtolower(str_replace(' ', '-', $entry['id']));
 						$theme = isset($entry['theme']) ? $entry['theme'] : '';

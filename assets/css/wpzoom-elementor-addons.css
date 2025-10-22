@@ -413,3 +413,8 @@
 	color: #fff;
 	border-color: #2271b1;
 }
+/* Filter dropdowns visibility */
+#wpzoom-elementor-template-library-filter-theme[style*="display: none"]+.select2-container,
+#wpzoom-elementor-template-library-filter-category[style*="display: none"]+.select2-container {
+	display: none !important;
+}
