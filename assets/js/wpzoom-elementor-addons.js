@@ -127,12 +127,19 @@ var WPZCachedSections = null;
 							$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item[data-tab="templates"]').addClass('elementor-active').attr('aria-selected', 'true');
 							// Reset tab state
 							windowWPZ.currentTab = 'templates';
-							// Ensure filters show Pages theme by default (will be properly hidden after select2 init)
+							// Ensure filters show Pages theme by default
 							$('#wpzoom-elementor-template-library-filter-theme').show();
 							$('#wpzoom-elementor-template-library-filter-category').hide();
 							// Also clear any previous filter values
 							$('#wpzoom-elementor-template-library-filter-theme').val('');
 							$('#wpzoom-elementor-template-library-filter-category').val('');
+
+							// Immediately hide category select2 container if it already exists
+							// This handles the case when modal is opened for the 2nd+ time
+							var $categoryContainer = $('#wpzoom-elementor-template-library-filter-category').next('.select2-container');
+							if ($categoryContainer.length) {
+								$categoryContainer.hide();
+							}
 							if (!$('#wpzoom-elementor-templates-header').length) {
 								content.append('<div id="wpzoom-elementor-templates-header" class="wrap"></div>');
 							}
@@ -206,6 +213,10 @@ var WPZCachedSections = null;
 								});
 								// Load section categories from server
 								wpzoom_load_section_categories();
+
+								// Immediately hide category filter since we always start on Templates tab
+								// This prevents race condition with setTimeout visibility update
+								$('#wpzoom-elementor-template-library-filter-category').next('.select2-container').hide();
 							}
 
 							// Bind filter change events (only once)
@@ -271,12 +282,13 @@ var WPZCachedSections = null;
 								windowWPZ.filtersInitialized = true;
 							}
 
-							// Set initial filter visibility after select2 is initialized
+							// Set initial filter visibility after select2 is fully initialized
+							// Small delay ensures select2's DOM manipulation is complete
 							setTimeout(function () {
 								wpzoom_update_filter_visibility();
 								// Load initial content after visibility is set
 								wpzoom_get_library_view('templates');
-							}, 100);
+							}, 150);
 						},
 						onHide: function () {
 							if ('dark' !== elementor.settings.editorPreferences.model.get('ui_theme')) {
