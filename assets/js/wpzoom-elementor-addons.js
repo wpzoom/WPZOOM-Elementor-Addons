@@ -25,6 +25,38 @@ var WPZCachedSections = null;
 			);
 		});
 
+		/* Load section categories from server and populate dropdown */
+		function wpzoom_load_section_categories() {
+			$.post(ajaxurl, { action: 'get_sections_filter_options' }, function (data) {
+				try {
+					var categories = JSON.parse(data);
+					var $categorySelect = $('#wpzoom-elementor-template-library-filter-category');
+
+					// Clear existing options except the first placeholder
+					$categorySelect.find('option:not(:first)').remove();
+
+					// Add categories to dropdown
+					if (categories && categories.length > 0) {
+						categories.forEach(function (category) {
+							var categoryLabel = category.replace(/-/g, ' ').replace(/\b\w/g, function (l) { return l.toUpperCase(); });
+							$categorySelect.append('<option value="' + category + '">' + categoryLabel + '</option>');
+						});
+					}
+
+					// Refresh select2 to show new options
+					if ($categorySelect.hasClass('select2-hidden-accessible')) {
+						$categorySelect.select2('destroy').select2({
+							placeholder: 'Category',
+							allowClear: true,
+							width: 180
+						});
+					}
+				} catch (e) {
+					console.error('Error loading section categories:', e);
+				}
+			});
+		}
+
 		//Show the loading panel
 		function showLoadingView() {
 			$('.dialog-lightbox-loading').show();
@@ -152,6 +184,8 @@ var WPZCachedSections = null;
 										allowClear: true,
 										width: 180,
 									});
+									// Load section categories from server
+									wpzoom_load_section_categories();
 								}
 								// After initialization, enforce correct visibility for containers
 								if (windowWPZ.currentTab === 'sections') {

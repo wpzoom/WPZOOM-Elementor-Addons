@@ -72,6 +72,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			// Sections (patterns) AJAX endpoints
 			add_action('wp_ajax_get_wpzoom_sections_library_view', array($this, 'get_wpzoom_sections_library_view'));
 			add_action('wp_ajax_get_wpzoom_section_preview', array($this, 'ajax_get_wpzoom_section_preview'));
+			add_action('wp_ajax_get_sections_filter_options', array($this, 'get_sections_filter_options_values'));
 
 			/* Set initial version to the and call update on first use */
 			if( get_option( 'wpz_current_version' ) == false ) {
@@ -248,6 +249,38 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 
 		}
 
+		/**
+		 * Get sections categories for filter dropdown
+		 *
+		 * @return void
+		 */
+		public function get_sections_filter_options_values()
+		{
+
+			$categoriesList = $sections = array();
+
+			$localJson = WPZOOM_EL_ADDONS_PATH . '/includes/data/sections/json/info.json';
+			if (self::init()->get_filesystem()->exists($localJson)) {
+				$data = self::init()->get_filesystem()->get_contents($localJson);
+				$sections = json_decode($data, true);
+			}
+
+			if (count($sections) != 0) {
+				foreach ($sections as $key => $section) {
+					if (isset($section['category'])) {
+						$categoriesList[] = strtolower(str_replace(' ', '-', $section['category']));
+					}
+				}
+			}
+			$categoriesList = array_unique($categoriesList);
+			sort($categoriesList);
+
+			echo json_encode($categoriesList);
+
+			wp_die();
+
+		}
+
 
 		/**
 		 * Get  ajax preview template
@@ -255,8 +288,9 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		 * @since 1.0.0
 		 * @return void
 		 */
-		public function ajax_get_wpzoom_preview() {
-			$this->get_preview_template( $_POST['data'] );
+		public function ajax_get_wpzoom_preview()
+		{
+			$this->get_preview_template($_POST['data']);
 			wp_die();
 		}
 
