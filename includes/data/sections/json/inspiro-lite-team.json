@@ -224,8 +224,8 @@
               "elType": "widget"
             }
           ],
-          "isInner": true,
-          "elType": "container"
+          "isInner": false,
+          "elType": "column"
         },
         {
           "id": "45b83038",
@@ -391,8 +391,8 @@
               "elType": "widget"
             }
           ],
-          "isInner": true,
-          "elType": "container"
+          "isInner": false,
+          "elType": "column"
         },
         {
           "id": "586d94d6",
@@ -550,12 +550,12 @@
               "elType": "widget"
             }
           ],
-          "isInner": true,
-          "elType": "container"
+          "isInner": false,
+          "elType": "column"
         }
       ],
       "isInner": false,
-      "elType": "container"
+      "elType": "section"
     }
   ],
   "page_settings": [],

@@ -265,12 +265,12 @@
               "elType": "widget"
             }
           ],
-          "isInner": true,
-          "elType": "container"
+          "isInner": false,
+          "elType": "column"
         }
       ],
       "isInner": false,
-      "elType": "container"
+      "elType": "section"
     }
   ],
   "page_settings": [],

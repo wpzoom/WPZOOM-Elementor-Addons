@@ -191,7 +191,7 @@
                     }
                   ],
                   "isInner": true,
-                  "elType": "container"
+                  "elType": "column"
                 },
                 {
                   "id": "6ab1381a",
@@ -287,11 +287,11 @@
                     }
                   ],
                   "isInner": true,
-                  "elType": "container"
+                  "elType": "column"
                 }
               ],
               "isInner": true,
-              "elType": "container"
+              "elType": "section"
             },
             {
               "id": "7c7b417c",
@@ -486,19 +486,19 @@
                     }
                   ],
                   "isInner": true,
-                  "elType": "container"
+                  "elType": "column"
                 }
               ],
               "isInner": true,
-              "elType": "container"
+              "elType": "section"
             }
           ],
-          "isInner": true,
-          "elType": "container"
+          "isInner": false,
+          "elType": "column"
         }
       ],
       "isInner": false,
-      "elType": "container"
+      "elType": "section"
     }
   ],
   "page_settings": [],

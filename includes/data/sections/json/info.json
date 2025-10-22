@@ -1,19 +1,19 @@
 [
     {
-        "id": "Why Us",
+        "id": "inspiro-lite-why-us",
         "name": "Why Us?",
         "theme": "Inspiro Lite",
         "category": "features",
         "thumbnail": "inspiro-lite/why-us",
-        "filename": "why-us.json"
+        "filename": "inspiro-lite-why-us.json"
     },
     {
-        "id": "Hero Minimal",
+        "id": "inspiro-lite-hero",
         "name": "Hero Minimal",
         "theme": "Inspiro Lite",
         "category": "hero",
         "thumbnail": "inspiro-lite/hero-minimal",
-        "filename": "hero-minimal.json"
+        "filename": "inspiro-lite-hero.json"
     },
     {
         "id": "inspiro-lite-about-agency",
