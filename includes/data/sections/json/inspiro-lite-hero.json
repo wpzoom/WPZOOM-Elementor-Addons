@@ -20,11 +20,7 @@
         "background_color": "#000000",
         "background_play_on_mobile": "yes",
         "background_video_fallback": {
-          "url": "http://demo.wpzoom.com/inspiro-lite-xml/files/2025/06/bg-1.png",
-          "id": 6723,
-          "size": "",
-          "alt": "",
-          "source": "library"
+          "url": "http://demo.wpzoom.com/inspiro-lite-xml/files/2025/06/bg-1.png"
         },
         "min_height_tablet": {
           "unit": "vh",

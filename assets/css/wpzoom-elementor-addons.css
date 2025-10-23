@@ -113,15 +113,25 @@
 	margin-bottom:5px;
 	border:1px solid #ccc;
 	background-size:100% auto;
-	background-position:100% 0;
+	background-position: center top;
+		background-repeat: no-repeat;
 	overflow:hidden;
 	transition:.6s;
     position: relative;
 	transition-timing-function:ease-in-out;
 }
 .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb:hover {
-	background-position:100% 99%;
+	background-position: center bottom;
 	transition-timing-function:linear;
+}
+/* Section templates - disable scroll effect for short/wide images */
+.wpzoom-main-tiled-view .wpzoom-item [class*="wpzoom-sections-index-"] {
+	transition: opacity .3s ease-in-out;
+}
+
+.wpzoom-main-tiled-view .wpzoom-item [class*="wpzoom-sections-index-"]:hover {
+	background-position: center top;
+	opacity: 0.9;
 }
 .wpzoom-main-tiled-view .wpzoom-item:hover  .wpzoom-template-thumb:after {
     position: absolute;

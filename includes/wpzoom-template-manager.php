@@ -126,7 +126,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			$free_themes = array( 'Foodica', 'Inspiro Lite' );
 
 			//Get libray json from source
-			$response = wp_remote_get( self::$library_source, array( 'timeout' => 60 ) );
+			$response = wp_remote_get(self::$library_source, array('timeout' => 60));
 
 			//if( !is_wp_error( $response ) ) {
 			//	$info_data = wp_remote_retrieve_body( $response );
@@ -142,17 +142,17 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			//}
 
 			echo '<div class="wpzoom-main-tiled-view">';
-			if( count( $template_list ) != 0 ) {
-				
-				for( $i = 0; $i < count( $template_list ); $i++ ) {
-					$slug = strtolower( str_replace( ' ', '-', $template_list[$i]['id'] ) );
+			if (count($template_list) != 0) {
+
+				for ($i = 0; $i < count($template_list); $i++) {
+					$slug = strtolower(str_replace(' ', '-', $template_list[$i]['id']));
 					$theme = $template_list[$i]['theme'];
-					$is_theme_free = in_array( $theme, $free_themes );
+					$is_theme_free = in_array($theme, $free_themes);
 					$is_restricted = !$has_premium_access && !$is_theme_free;
-					
+
 					// Get appropriate button data for Pro templates
 					$button_data = array(
-						'text' => esc_html__( 'Get Pro Plugin', 'wpzoom-elementor-addons' ),
+						'text' => esc_html__('Get Pro Plugin', 'wpzoom-elementor-addons'),
 						'url' => 'https://www.wpzoom.com/plugins/wpzoom-elementor-addons/'
 					);
 
@@ -173,12 +173,11 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 							<?php echo esc_html( $template_list[$i]['name'] ); ?>
 
 						</div>
-						<div 
-							class="wpzoom-template-thumb wpzoom-index-<?php echo esc_attr( $i ); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
-							data-index="<?php echo esc_attr( $i ); ?>" 
-							data-template="<?php echo esc_attr( wp_json_encode( $template_list[$i] ) ); ?>"
-							style="background-image:url(<?php echo esc_url( $thumb_url . $template_list[$i]['thumbnail'] ); ?>-thumb.png);"
-						>
+					<div 
+						class="wpzoom-template-thumb wpzoom-index-<?php echo esc_attr($i); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
+						data-index="<?php echo esc_attr($i); ?>"
+						data-template="<?php echo esc_attr(wp_json_encode($template_list[$i])); ?>"
+						style="background-image:url(<?php echo esc_url($thumb_url . $template_list[$i]['thumbnail']); ?>-thumb.png);">
 							<?php if ( $is_restricted ) : ?>
 								<div class="wpzoom-template-overlay">
 									<div class="wpzoom-template-lock-icon">🔒</div>
@@ -281,7 +280,6 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 
 		}
 
-
 		/**
 		 * Get  ajax preview template
 		 *
@@ -299,26 +297,25 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		 *
 		 * @return void
 		 */
-		private function get_preview_template( $data ) {
+		private function get_preview_template($data)
+		{
 
-			if ( wp_http_validate_url( $data['thumbnail'] ) ) {
+			if (wp_http_validate_url($data['thumbnail'])) {
 				$thumb_url = $data['thumbnail'];
-			}
-			else {
+			} else {
 				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/' . $data['thumbnail'];
 			}
 
-					// Check if this template is restricted
-		$has_premium_access = class_exists( 'WPZOOM_Elementor_Addons_Pro' ) || class_exists( 'WPZOOM' );
-		$free_themes = array( 'Foodica', 'Inspiro Lite' );
-		$theme = $data['theme'];
-		$is_theme_free = in_array( $theme, $free_themes );
-		$is_restricted = !$has_premium_access && !$is_theme_free;
-		
-		// Get appropriate button data and messages for Pro plugin
-		$button_data = $this->get_pro_button_data();
-		$preview_message = $this->get_pro_preview_message();
-
+			// Check if this template is restricted
+			$has_premium_access = class_exists( 'WPZOOM_Elementor_Addons_Pro' ) || class_exists( 'WPZOOM' );
+			$free_themes = array( 'Foodica', 'Inspiro Lite' );
+			$theme = $data['theme'];
+			$is_theme_free = in_array( $theme, $free_themes );
+			$is_restricted = !$has_premium_access && !$is_theme_free;
+			
+			// Get appropriate button data and messages for Pro plugin
+			$button_data = $this->get_pro_button_data();
+			$preview_message = $this->get_pro_preview_message();
 			?>
 			<div id="wpzoom-elementor-template-library-preview">
 				<?php if ( $is_restricted ) : ?>
@@ -389,27 +386,22 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						$is_theme_free = in_array($theme, $free_themes);
 						$is_restricted = !$has_premium_access && !$is_theme_free;
 						?>
-						<div
-							class="wpzoom-templates-library-template wpzoom-item <?php echo $is_restricted ? 'wpzoom-template-pro-only' : ''; ?>"
+																		<div class="wpzoom-templates-library-template wpzoom-item <?php echo $is_restricted ? 'wpzoom-template-pro-only' : ''; ?>"
 							data-theme="<?php echo esc_attr(strtolower(str_replace(' ', '-', $theme))); ?>"
-							data-category="<?php echo esc_attr($category_slug); ?>"
-						>
-							<div class="wpzoom-template-title">
-								<?php echo esc_html($entry['name']); ?>
-							</div>
-							<div
-								class="wpzoom-template-thumb wpzoom-sections-index-<?php echo esc_attr($index); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
-								data-index="<?php echo esc_attr($index); ?>"
-								data-template="<?php echo esc_attr(wp_json_encode($entry)); ?>"
-								style="background-image:url(<?php echo esc_url($thumb_url . $entry['thumbnail']); ?>-thumb.png);"
-							>
-								<?php if ($is_restricted): ?>
-									<div class="wpzoom-template-overlay">
-										<div class="wpzoom-template-lock-icon">🔒</div>
-										<div class="wpzoom-template-pro-text"><?php esc_html_e('PRO Only', 'wpzoom-elementor-addons'); ?></div>
-									</div>
-								<?php endif; ?>
-							</div>
+							data-category="<?php echo esc_attr($category_slug); ?>">
+						<div class="wpzoom-template-title">
+							<?php echo esc_html($entry['name']); ?>
+						</div>
+				<div class="wpzoom-template-thumb wpzoom-sections-index-<?php echo esc_attr($index); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
+					data-index="<?php echo esc_attr($index); ?>" data-template="<?php echo esc_attr(wp_json_encode($entry)); ?>"
+					style="background-image:url(<?php echo esc_url($thumb_url . $entry['thumbnail']); ?>-thumb.png);">
+					<?php if ($is_restricted): ?>
+						<div class="wpzoom-template-overlay">
+							<div class="wpzoom-template-lock-icon">🔒</div>
+							<div class="wpzoom-template-pro-text"><?php esc_html_e('PRO Only', 'wpzoom-elementor-addons'); ?></div>
+						</div>
+					<?php endif; ?>
+				</div>
 							<div class="wpzoom-action-bar">
 								<div class="wpzoom-grow"> </div>
 								<?php if ($is_restricted): ?>
