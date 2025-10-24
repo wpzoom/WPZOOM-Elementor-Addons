@@ -32,14 +32,6 @@
         "filename": "inspiro-lite-services.json"
     },
     {
-        "id": "inspiro-lite-gallery",
-        "name": "Gallery",
-        "theme": "Inspiro Lite",
-        "category": "gallery",
-        "thumbnail": "inspiro-lite/gallery",
-        "filename": "inspiro-lite-gallery.json"
-    },
-    {
         "id": "inspiro-lite-team",
         "name": "Our Team",
         "theme": "Inspiro Lite",
