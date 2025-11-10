@@ -1,0 +1,150 @@
+{
+  "content": [
+    {
+      "id": "634854c1",
+      "settings": {
+        "gap": "no",
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "0",
+          "left": 0,
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "100",
+          "right": "0",
+          "bottom": "100",
+          "left": "0",
+          "isLinked": false
+        },
+        "css_classes": "latest-video-section inner-wrap",
+        "padding_tablet": {
+          "unit": "px",
+          "top": "50",
+          "right": "0",
+          "bottom": "50",
+          "left": "0",
+          "isLinked": false
+        },
+        "content_width": {
+          "unit": "px",
+          "size": 1200,
+          "sizes": []
+        }
+      },
+      "elements": [
+        {
+          "id": "53d0467e",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null,
+            "space_between_widgets": 40,
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "4668e52d",
+              "settings": {
+                "title": "Latest Video",
+                "typography_font_weight": "600",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_size_tablet": {
+                  "unit": "px",
+                  "size": 26,
+                  "sizes": []
+                },
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 30,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "6f47ee9d",
+              "settings": {
+                "youtube_url": "https://www.youtube.com/watch?v=ckHbv_CR6SA",
+                "vimeo_url": "https://vimeo.com/235215203",
+                "dailymotion_url": "https://www.dailymotion.com/video/x6tqhqb",
+                "show_image_overlay": "yes",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "image_overlay": {
+                  "url": "https://demo.wpzoom.com/cookbook/files/2022/04/maxresdefault.jpeg",
+                  "id": 6526,
+                  "alt": "",
+                  "source": "library"
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "video",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        }
+      ],
+      "isInner": false,
+      "elType": "section"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Featured Video",
+  "type": "section"
+}

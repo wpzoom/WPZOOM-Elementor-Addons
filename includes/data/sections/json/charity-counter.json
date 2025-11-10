@@ -1,0 +1,568 @@
+{
+  "content": [
+    {
+      "id": "44080658",
+      "settings": {
+        "content_width": {
+          "unit": "px",
+          "size": 1170,
+          "sizes": []
+        },
+        "structure": "30",
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "200",
+          "left": 0,
+          "isLinked": false
+        },
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "_title": "Numbers",
+        "padding_mobile": {
+          "unit": "%",
+          "top": "0",
+          "right": "4",
+          "bottom": "0",
+          "left": "4",
+          "isLinked": false
+        },
+        "custom_height": {
+          "unit": "px",
+          "size": 0,
+          "sizes": []
+        },
+        "gap_columns_custom": {
+          "unit": "%",
+          "size": 0,
+          "sizes": []
+        },
+        "margin_tablet": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "75",
+          "left": 0,
+          "isLinked": false
+        },
+        "padding_tablet": {
+          "unit": "%",
+          "top": "0",
+          "right": "4",
+          "bottom": "0",
+          "left": "4",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "52687203",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "border_border": "solid",
+            "border_width": {
+              "unit": "px",
+              "top": "2",
+              "right": "2",
+              "bottom": "2",
+              "left": "2",
+              "isLinked": true
+            },
+            "border_color": "#50BD4A",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "30",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "30",
+              "right": "30",
+              "bottom": "30",
+              "left": "30",
+              "isLinked": true
+            },
+            "margin_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "30",
+              "left": "0",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "border_radius": {
+              "unit": "px",
+              "top": "4",
+              "right": "4",
+              "bottom": "4",
+              "left": "4",
+              "isLinked": true
+            },
+            "margin_tablet": {
+              "unit": "px",
+              "top": "0",
+              "right": "20",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding_tablet": {
+              "unit": "px",
+              "top": "13",
+              "right": "13",
+              "bottom": "13",
+              "left": "13",
+              "isLinked": true
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": true
+            },
+            "background_color": "#50BD4A24"
+          },
+          "elements": [
+            {
+              "id": "41c318a1",
+              "settings": {
+                "ending_number": 1250,
+                "duration": 1500,
+                "title": "",
+                "number_color": "#50BD4A",
+                "typography_number_typography": "custom",
+                "typography_number_font_family": "Commissioner",
+                "typography_number_font_size": {
+                  "unit": "px",
+                  "size": 64,
+                  "sizes": []
+                },
+                "title_color": "#181A20",
+                "typography_title_typography": "custom",
+                "typography_title_font_family": "Commissioner",
+                "typography_title_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_title_line_height": {
+                  "unit": "em",
+                  "size": 1.3,
+                  "sizes": []
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "counter-title": "Percent of volunteers ages are between 18-24",
+                "typography_number_font_size_tablet": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "counter",
+              "elType": "widget"
+            },
+            {
+              "id": "40bb701e",
+              "settings": {
+                "editor": "<p>Volunteers support our causes</p>",
+                "align": "center",
+                "text_color": "#181A20",
+                "typography_typography": "custom",
+                "typography_font_family": "Commissioner",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "500",
+                "typography_font_size_tablet": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_line_height_tablet": {
+                  "unit": "em",
+                  "size": 1.2,
+                  "sizes": []
+                },
+                "_margin_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "text-editor",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        },
+        {
+          "id": "4128ab11",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "border_border": "solid",
+            "border_width": {
+              "unit": "px",
+              "top": "2",
+              "right": "2",
+              "bottom": "2",
+              "left": "2",
+              "isLinked": true
+            },
+            "border_color": "#50BD4A",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "15",
+              "bottom": "0",
+              "left": "15",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": true
+            },
+            "margin_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "30",
+              "left": "0",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "border_radius": {
+              "unit": "px",
+              "top": "4",
+              "right": "4",
+              "bottom": "4",
+              "left": "4",
+              "isLinked": true
+            },
+            "margin_tablet": {
+              "unit": "px",
+              "top": "0",
+              "right": "10",
+              "bottom": "0",
+              "left": "10",
+              "isLinked": false
+            },
+            "padding_tablet": {
+              "unit": "px",
+              "top": "13",
+              "right": "13",
+              "bottom": "13",
+              "left": "13",
+              "isLinked": true
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": true
+            },
+            "background_color": "#50BD4A24"
+          },
+          "elements": [
+            {
+              "id": "27b3c56d",
+              "settings": {
+                "ending_number": 20000,
+                "suffix": "+",
+                "duration": 1500,
+                "title": "",
+                "number_color": "#50BD4A",
+                "typography_number_typography": "custom",
+                "typography_number_font_family": "Commissioner",
+                "typography_number_font_size": {
+                  "unit": "px",
+                  "size": 64,
+                  "sizes": []
+                },
+                "title_color": "#181A20",
+                "typography_title_typography": "custom",
+                "typography_title_font_family": "Commissioner",
+                "typography_title_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_title_line_height": {
+                  "unit": "em",
+                  "size": 1.3,
+                  "sizes": []
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "counter-title": "Percent of volunteers ages are between 18-24",
+                "typography_number_font_size_tablet": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "counter",
+              "elType": "widget"
+            },
+            {
+              "id": "14e72196",
+              "settings": {
+                "editor": "<p>Donors around the world</p>",
+                "align": "center",
+                "text_color": "#181A20",
+                "typography_typography": "custom",
+                "typography_font_family": "Commissioner",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "500",
+                "typography_font_size_tablet": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_line_height_tablet": {
+                  "unit": "em",
+                  "size": 1.2,
+                  "sizes": []
+                },
+                "_margin_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "text-editor",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        },
+        {
+          "id": "5da3a825",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "border_border": "solid",
+            "border_width": {
+              "unit": "px",
+              "top": "2",
+              "right": "2",
+              "bottom": "2",
+              "left": "2",
+              "isLinked": true
+            },
+            "border_color": "#50BD4A",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "30",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": true
+            },
+            "margin_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "30",
+              "left": "0",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "border_radius": {
+              "unit": "px",
+              "top": "4",
+              "right": "4",
+              "bottom": "4",
+              "left": "4",
+              "isLinked": true
+            },
+            "margin_tablet": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "20",
+              "isLinked": false
+            },
+            "padding_tablet": {
+              "unit": "px",
+              "top": "13",
+              "right": "13",
+              "bottom": "13",
+              "left": "13",
+              "isLinked": true
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": true
+            },
+            "background_color": "#50BD4A24"
+          },
+          "elements": [
+            {
+              "id": "1b05f0d4",
+              "settings": {
+                "ending_number": 500000,
+                "prefix": "$",
+                "duration": 1500,
+                "title": "",
+                "number_color": "#50BD4A",
+                "typography_number_typography": "custom",
+                "typography_number_font_family": "Commissioner",
+                "typography_number_font_size": {
+                  "unit": "px",
+                  "size": 64,
+                  "sizes": []
+                },
+                "title_color": "#181A20",
+                "typography_title_typography": "custom",
+                "typography_title_font_family": "Commissioner",
+                "typography_title_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_title_line_height": {
+                  "unit": "em",
+                  "size": 1.3,
+                  "sizes": []
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "counter-title": "Percent of volunteers ages are between 18-24",
+                "typography_number_font_size_tablet": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "counter",
+              "elType": "widget"
+            },
+            {
+              "id": "f97038d",
+              "settings": {
+                "editor": "<p>Raised by the people who cares</p>",
+                "align": "center",
+                "text_color": "#181A20",
+                "typography_typography": "custom",
+                "typography_font_family": "Commissioner",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "500",
+                "typography_font_size_tablet": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_line_height_tablet": {
+                  "unit": "em",
+                  "size": 1.2,
+                  "sizes": []
+                },
+                "_margin_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "10",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "text-editor",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        }
+      ],
+      "isInner": false,
+      "elType": "section"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Counter Statistics",
+  "type": "section"
+}

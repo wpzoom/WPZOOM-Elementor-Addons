@@ -1,0 +1,339 @@
+{
+  "content": [
+    {
+      "id": "3291ce9f",
+      "settings": {
+        "gap": "no",
+        "background_overlay_image": {
+          "id": 7438,
+          "url": "https://demo.wpzoom.com/inspiro-pro-winery/files/2021/09/kelsey-knight-udj2tD3WKsY-unsplash.jpeg",
+          "alt": "",
+          "source": "library"
+        },
+        "background_overlay_position": "center center",
+        "background_overlay_repeat": "no-repeat",
+        "background_overlay_size": "cover",
+        "css_filters_brightness": {
+          "unit": "px",
+          "size": 80,
+          "sizes": []
+        },
+        "css_filters_contrast": {
+          "unit": "px",
+          "size": 0,
+          "sizes": []
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": 0,
+          "bottom": "100",
+          "left": 0,
+          "isLinked": false
+        },
+        "padding": {
+          "unit": "px",
+          "top": "100",
+          "right": "0",
+          "bottom": "100",
+          "left": "0",
+          "isLinked": false
+        },
+        "layout": "full_width",
+        "padding_tablet": {
+          "unit": "%",
+          "top": "10",
+          "right": "4",
+          "bottom": "10",
+          "left": "4",
+          "isLinked": false
+        },
+        "background_overlay_opacity": {
+          "unit": "px",
+          "size": 1,
+          "sizes": []
+        },
+        "animation": "none",
+        "animation_duration": "fast",
+        "background_background": "classic",
+        "background_image": {
+          "url": "https://demo.wpzoom.com/inspiro-pro-winery/files/2021/09/fantesca-estate-winery-jzrrMkG_YjQ-unsplash.jpeg",
+          "id": 7439,
+          "alt": "",
+          "source": "library"
+        },
+        "background_position": "center center",
+        "padding_mobile": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "4c09fb75",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null,
+            "space_between_widgets": 0,
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "4f013093",
+              "settings": {
+                "gap": "no",
+                "margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": 0,
+                  "bottom": "0",
+                  "left": 0,
+                  "isLinked": true
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "30",
+                  "bottom": "0",
+                  "left": "30",
+                  "isLinked": false
+                },
+                "custom_height_inner": {
+                  "unit": "px",
+                  "size": 95,
+                  "sizes": []
+                },
+                "content_position": "middle",
+                "content_width": {
+                  "unit": "px",
+                  "size": 1170,
+                  "sizes": []
+                },
+                "padding_mobile": {
+                  "unit": "%",
+                  "top": "4",
+                  "right": "4",
+                  "bottom": "4",
+                  "left": "4",
+                  "isLinked": true
+                },
+                "structure": "20"
+              },
+              "elements": [
+                {
+                  "id": "7fe4e652",
+                  "settings": {
+                    "_column_size": 50,
+                    "_inline_size": 34.957,
+                    "space_between_widgets": 0,
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "30",
+                      "right": "30",
+                      "bottom": "30",
+                      "left": "30",
+                      "isLinked": true
+                    },
+                    "_inline_size_tablet": 58,
+                    "background_background": "classic",
+                    "background_color": "#9A8964F2",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": true
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "5502e297",
+                      "settings": {
+                        "title": "Book now your experience",
+                        "typography_typography": "custom",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 40,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "700",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1,
+                          "sizes": []
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "25",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "_padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        },
+                        "_background_background": "classic",
+                        "typography_font_size_mobile": {
+                          "unit": "px",
+                          "size": 30,
+                          "sizes": []
+                        },
+                        "typography_font_size_tablet": {
+                          "unit": "px",
+                          "size": 45,
+                          "sizes": []
+                        },
+                        "title_color": "#FFFFFF",
+                        "typography_font_family": "Cormorant Garamond"
+                      },
+                      "elements": [],
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "elType": "widget"
+                    },
+                    {
+                      "id": "4cbe5994",
+                      "settings": {
+                        "editor": "<p>This is some dummy copy. You’re not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.</p>",
+                        "text_color": "#FFFFFF",
+                        "typography_typography": "custom",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 16,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "normal",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.75,
+                          "sizes": []
+                        },
+                        "_margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "40",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "_padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        }
+                      },
+                      "elements": [],
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "elType": "widget"
+                    },
+                    {
+                      "id": "17a2a425",
+                      "settings": {
+                        "text": "Plan a visit",
+                        "size": "lg",
+                        "icon_indent": {
+                          "unit": "px",
+                          "size": 0,
+                          "sizes": []
+                        },
+                        "typography_typography": "custom",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 16,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "500",
+                        "background_color": "#293142",
+                        "border_radius": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": true
+                        },
+                        "button_text_color": "#FFFFFF"
+                      },
+                      "elements": [],
+                      "isInner": false,
+                      "widgetType": "button",
+                      "elType": "widget"
+                    }
+                  ],
+                  "isInner": true,
+                  "elType": "column"
+                },
+                {
+                  "id": "78d0e1b5",
+                  "settings": {
+                    "_column_size": 50,
+                    "_inline_size": 65.043
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "elType": "column"
+                }
+              ],
+              "isInner": true,
+              "elType": "section"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        }
+      ],
+      "isInner": false,
+      "elType": "section"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Booking CTA",
+  "type": "section"
+}

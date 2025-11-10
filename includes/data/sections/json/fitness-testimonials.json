@@ -1,0 +1,172 @@
+{
+  "content": [
+    {
+      "id": "183bc081",
+      "settings": {
+        "structure": "30",
+        "_title": "Testimonials",
+        "content_width": {
+          "unit": "px",
+          "size": 1170,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "30",
+          "bottom": "0",
+          "left": "30",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "%",
+          "top": "0",
+          "right": "4",
+          "bottom": "0",
+          "left": "4",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "5a87cff2",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "218504ea",
+              "settings": {
+                "title": "Testimonials",
+                "title_color": "#907AD6",
+                "typography_typography": "custom",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 36,
+                  "sizes": []
+                },
+                "typography_font_weight": "600",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "40",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "_padding_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "align_mobile": "center",
+                "typography_font_size_tablet": {
+                  "unit": "px",
+                  "size": 30,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "heading",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        },
+        {
+          "id": "6ca87da6",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": 16.314
+          },
+          "elements": [
+            {
+              "id": "5bab8f2b",
+              "settings": {
+                "image": {
+                  "url": "https://demo.wpzoom.com/inspiro-pro-fitness/files/2014/06/chu-gummies-l1A7eCcaai4-unsplash.jpeg",
+                  "id": 7274,
+                  "alt": "",
+                  "source": "library"
+                },
+                "image_size": "thumbnail",
+                "image_border_radius": {
+                  "unit": "px",
+                  "top": "100",
+                  "right": "100",
+                  "bottom": "100",
+                  "left": "100",
+                  "isLinked": true
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "image",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        },
+        {
+          "id": "61d94b9b",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": 50.018,
+            "_title": "Column"
+          },
+          "elements": [
+            {
+              "id": "4073ee92",
+              "settings": {
+                "wpz_testimonial_enable_avatar": "",
+                "image": {
+                  "url": "https://demo.wpzoom.com/inspiro-pro-fitness/files/2021/09/anastase-maragos-HyvE5SiKMUs-unsplash.jpeg",
+                  "id": 7303,
+                  "alt": "",
+                  "source": "library"
+                },
+                "wpz_testimonial_name": "Valerie Howarth",
+                "wpz_testimonial_company_title": "",
+                "wpz_testimonial_description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "wpz_testimonial_name_color": "#FFFFFF",
+                "wpz_testimonial_name_typography_typography": "custom",
+                "wpz_testimonial_name_typography_font_style": "normal",
+                "wpz_testimonial_quotation_color": "#ED101000",
+                "wpz_testimonial_quotation_typography_typography": "custom",
+                "wpz_testimonial_quotation_top": {
+                  "unit": "%",
+                  "size": 0,
+                  "sizes": []
+                },
+                "wpz_testimonial_quotation_right": {
+                  "unit": "%",
+                  "size": 100,
+                  "sizes": []
+                }
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "wpzoom-elementor-addons-testimonial",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        }
+      ],
+      "isInner": false,
+      "elType": "section"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Testimonials",
+  "type": "section"
+}

@@ -70,5 +70,101 @@
         "category": "features",
         "thumbnail": "inspiro-lite/expertise",
         "filename": "inspiro-lite-expertise.json"
+    },
+    {
+        "id": "charity-counter",
+        "name": "Counter Statistics",
+        "theme": "Inspiro PRO - Charity",
+        "category": "features",
+        "thumbnail": "charity/counter",
+        "filename": "charity-counter.json"
+    },
+    {
+        "id": "events-pricing-tickets",
+        "name": "Pricing / Tickets",
+        "theme": "Inspiro Premium - Events",
+        "category": "pricing",
+        "thumbnail": "events/pricing",
+        "filename": "events-pricing-tickets.json"
+    },
+    {
+        "id": "fitness-testimonials",
+        "name": "Testimonials",
+        "theme": "Inspiro PRO - Fitness",
+        "category": "testimonials",
+        "thumbnail": "fitness/testimonials",
+        "filename": "fitness-testimonials.json"
+    },
+    {
+        "id": "cookbook-newsletter",
+        "name": "Newsletter Signup",
+        "theme": "CookBook",
+        "category": "forms",
+        "thumbnail": "cookbook/newsletter",
+        "filename": "cookbook-newsletter.json"
+    },
+    {
+        "id": "cookbook-video",
+        "name": "Featured Video",
+        "theme": "CookBook",
+        "category": "media",
+        "thumbnail": "cookbook/video",
+        "filename": "cookbook-video.json"
+    },
+    {
+        "id": "cookbook-categories",
+        "name": "Featured Categories",
+        "theme": "CookBook",
+        "category": "general",
+        "thumbnail": "cookbook/categories",
+        "filename": "cookbook-categories.json"
+    },
+    {
+        "id": "business-pricing",
+        "name": "Pricing Table",
+        "theme": "Inspiro PRO - Business",
+        "category": "pricing",
+        "thumbnail": "business/pricing",
+        "filename": "business-pricing.json"
+    },
+    {
+        "id": "cookbook-shop-products",
+        "name": "Shop Products",
+        "theme": "CookBook",
+        "category": "ecommerce",
+        "thumbnail": "cookbook/shop",
+        "filename": "cookbook-shop-products.json"
+    },
+    {
+        "id": "winery-booking-cta",
+        "name": "Booking CTA",
+        "theme": "Inspiro PRO - Winery",
+        "category": "cta",
+        "thumbnail": "winery/booking",
+        "filename": "winery-booking-cta.json"
+    },
+    {
+        "id": "winery-awards",
+        "name": "Awards & Recognition",
+        "theme": "Inspiro PRO - Winery",
+        "category": "general",
+        "thumbnail": "winery/awards",
+        "filename": "winery-awards.json"
+    },
+    {
+        "id": "events-sponsors",
+        "name": "Sponsors",
+        "theme": "Inspiro Premium - Events",
+        "category": "general",
+        "thumbnail": "events/sponsors",
+        "filename": "events-sponsors.json"
+    },
+    {
+        "id": "events-schedule",
+        "name": "Event Schedule",
+        "theme": "Inspiro Premium - Events",
+        "category": "general",
+        "thumbnail": "events/schedule",
+        "filename": "events-schedule.json"
     }
 ]
