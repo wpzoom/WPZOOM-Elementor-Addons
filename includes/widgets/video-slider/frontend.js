@@ -126,8 +126,16 @@ jQuery(window).on('elementor/frontend/init', function () {
 
 		async onInit() {
 			super.onInit();
-			
+
+			// Handle single slide case - still need video initialization
 			if (this.elements.$slides.length <= 1) {
+				this.initVideoLightbox();
+				this.setupResizeHandler();
+				this.preventFitVidsConflicts();
+				this.initVideoControls();
+
+				// Initialize videos for single slide
+				this.requestAnimationFrame(() => this.initVideoBackgroundsForSingleSlide());
 				return;
 			}
 
@@ -207,32 +215,59 @@ jQuery(window).on('elementor/frontend/init', function () {
 		initVideoBackgrounds() {
 			try {
 				const jQuery = window.jQuery;
-				
+
 				// Cache video containers for better performance
 				const videoContainers = this.elements.$swiperContainer.find('.wpz-video-bg');
-				
+
 				videoContainers.each((index, element) => {
 					const videoContainer = jQuery(element);
 					const videoType = videoContainer.data('video-type');
-					
+
 					if (!videoType) {
 						return;
 					}
-					
+
 					if (videoType === 'hosted') {
 						this.handleHostedVideo(videoContainer);
 					} else {
 						this.handleIframeVideo(videoContainer);
 					}
 				});
-				
+
 				// Handle current slide specifically for better initialization
 				if (this.swiper?.slides?.[this.swiper.activeIndex]) {
 					this.requestAnimationFrame(() => this.handleCurrentSlideVideos());
 				}
-				
+
 			} catch (error) {
 				console.error('Error in initVideoBackgrounds:', error);
+			}
+		}
+
+		initVideoBackgroundsForSingleSlide() {
+			try {
+				const jQuery = window.jQuery;
+
+				// For single slide, directly find and initialize video backgrounds
+				const videoContainers = this.elements.$swiperContainer.find('.wpz-video-bg');
+
+				videoContainers.each((index, element) => {
+					const videoContainer = jQuery(element);
+					const videoType = videoContainer.data('video-type');
+
+					if (!videoType) {
+						return;
+					}
+
+					if (videoType === 'hosted') {
+						this.handleHostedVideo(videoContainer);
+					} else {
+						this.handleIframeVideo(videoContainer);
+					}
+				});
+
+			} catch (error) {
+				console.error('Error in initVideoBackgroundsForSingleSlide:', error);
 			}
 		}
 
