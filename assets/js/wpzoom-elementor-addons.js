@@ -324,12 +324,16 @@ var WPZCachedSections = null;
 			var WPZ_selectedElement = this;
 			showLoadingView();
 			var filename = $(WPZ_selectedElement).attr("data-template-name") + ".json";
-			//console.log(filename);
+
+			// Determine import type based on active tab
+			var importType = (windowWPZ.currentTab === 'sections') ? 'section' : 'template';
+
 			$.post(
 				ajaxurl,
 				{
 					action: 'get_content_from_elementor_export_file',
-					filename: filename
+					filename: filename,
+					type: importType
 				},
 				function (data) {
 					try {

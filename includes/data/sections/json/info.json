@@ -120,12 +120,12 @@
         "filename": "cookbook-categories.json"
     },
     {
-        "id": "business-pricing-section",
+        "id": "business-pricing",
         "name": "Pricing Table",
         "theme": "Inspiro PRO - Business",
         "category": "pricing",
         "thumbnail": "business/pricing",
-        "filename": "business-pricing-section.json"
+        "filename": "business-pricing.json"
     },
     {
         "id": "cookbook-shop-products",
@@ -160,11 +160,11 @@
         "filename": "events-sponsors.json"
     },
     {
-        "id": "events-schedule-section",
+        "id": "events-schedule",
         "name": "Event Schedule",
         "theme": "Inspiro Premium - Events",
         "category": "general",
         "thumbnail": "events/schedule",
-        "filename": "events-schedule-section.json"
+        "filename": "events-schedule.json"
     }
 ]
