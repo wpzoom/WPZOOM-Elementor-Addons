@@ -3,7 +3,6 @@
     {
       "id": "4d2d850d",
       "settings": {
-        "structure": "22",
         "padding_tablet": {
           "unit": "%",
           "top": "0",
@@ -17,7 +16,7 @@
         {
           "id": "40eaa709",
           "settings": {
-            "_column_size": 66,
+            "_column_size": 100,
             "_inline_size": null
           },
           "elements": [
@@ -161,7 +160,7 @@
                     {
                       "id": "6fa7107b",
                       "settings": {
-                        "title": "APPETIZERS &amp; Salads",
+                        "title": "APPETIZERS & Salads",
                         "header_size": "h4",
                         "align": "left",
                         "title_color": "#363940",
@@ -211,7 +210,7 @@
                         "meta_separator": "/",
                         "show_excerpt": "",
                         "show_read_more": "",
-                        "read_more_text": "Read More \u00bb",
+                        "read_more_text": "Read More »",
                         "title_tag": "h4",
                         "post_categories": [
                           "appetizers",
@@ -406,7 +405,7 @@
                         "meta_separator": "/",
                         "show_excerpt": "",
                         "show_read_more": "",
-                        "read_more_text": "Read More \u00bb",
+                        "read_more_text": "Read More »",
                         "title_tag": "h4",
                         "post_categories": [
                           "meat-2",
@@ -601,7 +600,7 @@
                         "meta_separator": "/",
                         "show_excerpt": "",
                         "show_read_more": "",
-                        "read_more_text": "Read More \u00bb",
+                        "read_more_text": "Read More »",
                         "title_tag": "h4",
                         "post_categories": [
                           "desserts"
@@ -697,44 +696,6 @@
               ],
               "isInner": true,
               "elType": "section"
-            }
-          ],
-          "isInner": false,
-          "elType": "column"
-        },
-        {
-          "id": "20ba6fb3",
-          "settings": {
-            "_column_size": 33,
-            "_inline_size": null
-          },
-          "elements": [
-            {
-              "id": "7fa2337a",
-              "settings": {
-                "text": "Divider",
-                "color": "#E5E5E5",
-                "weight": {
-                  "unit": "px",
-                  "size": 2,
-                  "sizes": []
-                },
-                "width": {
-                  "unit": "%",
-                  "size": 22,
-                  "sizes": []
-                },
-                "align": "center",
-                "gap": {
-                  "unit": "px",
-                  "size": 22,
-                  "sizes": []
-                }
-              },
-              "elements": [],
-              "isInner": false,
-              "widgetType": "divider",
-              "elType": "widget"
             }
           ],
           "isInner": false,

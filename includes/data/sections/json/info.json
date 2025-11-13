@@ -88,11 +88,11 @@
         "filename": "foodica-latest-posts.json"
     },
     {
-        "id": "foodica-index-recipe",
+        "id": "foodica-recipe-index",
         "name": "Recipe Index",
         "theme": "Foodica",
         "category": "general",
-        "thumbnail": "foodica/index-recipe",
-        "filename": "foodica-index-recipe.json"
+        "thumbnail": "foodica/recipe-index",
+        "filename": "foodica-recipe-index.json"
     }
 ]
