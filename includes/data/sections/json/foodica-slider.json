@@ -1,0 +1,46 @@
+{
+  "content": [
+    {
+      "id": "44b24038",
+      "settings": {
+        "padding_tablet": {
+          "unit": "%",
+          "top": "0",
+          "right": "3",
+          "bottom": "0",
+          "left": "3",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "669a4f8e",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "7ac4a32",
+              "settings": {
+                "slideshow_posts": "5"
+              },
+              "elements": [],
+              "isInner": false,
+              "widgetType": "wpzoom-elementor-addons-slider-foodica",
+              "elType": "widget"
+            }
+          ],
+          "isInner": false,
+          "elType": "column"
+        }
+      ],
+      "isInner": false,
+      "elType": "section"
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Slider",
+  "type": "section"
+}

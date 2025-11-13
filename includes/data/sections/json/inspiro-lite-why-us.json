@@ -47,7 +47,11 @@
         "background_color": "#000000",
         "background_overlay_color": "#000000",
         "background_image": {
-          "url": "https://demo.wpzoom.com/inspiro-lite-xml/files/2021/10/kal-visuals-RCUncjOfNfc-unsplash.jpeg"
+          "id": 6511,
+          "url": "https://demo.wpzoom.com/inspiro-lite-xml/files/2021/10/kal-visuals-RCUncjOfNfc-unsplash.jpeg",
+          "alt": "",
+          "source": "library",
+          "size": ""
         },
         "background_position": "center center",
         "background_size": "cover",
