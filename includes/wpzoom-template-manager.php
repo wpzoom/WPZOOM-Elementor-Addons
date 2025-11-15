@@ -288,22 +288,24 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		 */
 		public function ajax_get_wpzoom_preview()
 		{
-			$this->get_preview_template($_POST['data']);
+			$this->get_preview_template($_POST['data'], 'templates');
 			wp_die();
 		}
 
 		/**
 		 * Print the preview window and make callable through ajax
 		 *
+		 * @param array $data Template/Section data
+		 * @param string $type Type of content: 'templates' or 'sections'
 		 * @return void
 		 */
-		private function get_preview_template($data)
+		private function get_preview_template($data, $type = 'templates')
 		{
 
 			if (wp_http_validate_url($data['thumbnail'])) {
 				$thumb_url = $data['thumbnail'];
 			} else {
-				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/' . $data['thumbnail'];
+				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/' . $type . '/assets/thumbs/' . $data['thumbnail'];
 			}
 
 			// Check if this template is restricted
@@ -356,7 +358,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$data = self::init()->get_filesystem()->get_contents($local_file);
 				$section_list = json_decode($data, true);
 			}
-			$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/';
+			$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/sections/assets/thumbs/';
 
 			echo '<div class="wpzoom-main-tiled-view">';
 			if (count($section_list) != 0) {
@@ -435,7 +437,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 		 */
 		public function ajax_get_wpzoom_section_preview()
 		{
-			$this->get_preview_template($_POST['data']);
+			$this->get_preview_template($_POST['data'], 'sections');
 			wp_die();
 		}
 

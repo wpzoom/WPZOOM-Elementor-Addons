@@ -112,8 +112,8 @@
 	height: 147px;
 	margin-bottom:5px;
 	border:1px solid #ccc;
-	background-size: contain;
-	background-position: center center;
+	background-size: 100% auto;
+	background-position: top center;
 	background-color: #f7f7f7;
 	background-repeat: no-repeat;
 	overflow:hidden;
