@@ -838,6 +838,32 @@ class Portfolio_Showcase extends Widget_Base
             ]
         );
 
+        // Thumbnail Border Radius.
+        $this->add_control(
+            'portfolio_item_thumbnail_border_radius',
+            [
+                'label' => esc_html__('Thumbnail Border Radius', 'wpzoom-elementor-addons'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                        'size' => 0
+                    ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 200
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .portfolio-grid .portfolio_item img' => 'border-radius: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .portfolio-grid .portfolio_item .wp-post-image' => 'border-radius: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .portfolio-grid .portfolio_item video.portfolio-gallery-video-background' => 'border-radius: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-thumbnail-popover' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;',
+                    '{{WRAPPER}} .portfolio-grid .portfolio_item .portfolio_item_top_wrap' => 'border-radius: {{SIZE}}{{UNIT}}; overflow: hidden;'
+                ],
+                'separator' => 'after'
+            ]
+        );
+
         $this->start_controls_tabs('portfolio_item_style');
 
         // Normal tab.
@@ -1242,20 +1268,19 @@ class Portfolio_Showcase extends Widget_Base
 
         $this->end_controls_section();
 
-        //Category Styles
+        //Meta Details Styles (Director Name, Year, Category)
         $this->start_controls_section(
             'section_portfolio_cat_style',
             array(
-            'label' => esc_html__('Category', 'wpzoom-elementor-addons'),
+                'label' => esc_html__('Meta Details', 'wpzoom-elementor-addons'),
             'tab'   => Controls_Manager::TAB_STYLE,
-            'condition' => array(
-            'enable_category' => 'yes',
+                'condition' => array(
             'portfolio_showcase_styles' => 'default',
             )
             )
         );
 
-        //Category typography.
+        //Meta Details typography.
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             array(
@@ -1263,7 +1288,7 @@ class Portfolio_Showcase extends Widget_Base
             'global' => [
             'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
             ],
-            'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a'
+                'selector' => '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta ul li, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta ul li a'
             )
         );
 
@@ -1277,7 +1302,7 @@ class Portfolio_Showcase extends Widget_Base
             )
         );
 
-        //Category color.
+        //Meta Details color.
         $this->add_control(
             'portfolio_cat_style_color',
             array(
@@ -1285,7 +1310,7 @@ class Portfolio_Showcase extends Widget_Base
             'label'     => esc_html__('Color', 'wpzoom-elementor-addons'),
             'default'   => '',
             'selectors' => array(
-            '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a, .clean_skin_wrap_post a' => 'color: {{VALUE}};'
+                        '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta ul li, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta ul li a, {{WRAPPER}} .clean_skin_wrap_post .entry-meta ul li, {{WRAPPER}} .clean_skin_wrap_post .entry-meta ul li a' => 'color: {{VALUE}};'
             )
             )
         );
@@ -1299,7 +1324,7 @@ class Portfolio_Showcase extends Widget_Base
             )
         );
 
-        //Category hover color.
+        //Meta Details hover color.
         $this->add_control(
             'portfolio_cat_style_hover_color',
             array(
@@ -1307,7 +1332,7 @@ class Portfolio_Showcase extends Widget_Base
             'label'     => esc_html__('Color', 'wpzoom-elementor-addons'),
             'default'   => '',
             'selectors' => array(
-            '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta:hover, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta > a:hover,.clean_skin_wrap_post a:hover' => 'color: {{VALUE}};'
+                        '{{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta ul li:hover, {{WRAPPER}} .portfolio-grid .portfolio_item .entry-meta ul li a:hover, {{WRAPPER}} .clean_skin_wrap_post .entry-meta ul li:hover, {{WRAPPER}} .clean_skin_wrap_post .entry-meta ul li a:hover' => 'color: {{VALUE}};'
             )
             )
         );

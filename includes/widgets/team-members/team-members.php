@@ -1419,8 +1419,12 @@ class Team_Members extends Widget_Base {
 
 		<div class="wpz-member-body">
 			<?php if ( $settings['title'] ) :
+				// Security: Validate title_tag against whitelist to prevent XSS
+				$allowed_title_tags = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p' );
+				$title_tag = in_array( $settings['title_tag'], $allowed_title_tags, true ) ? $settings['title_tag'] : 'h2';
+
 				printf( '<%1$s %2$s>%3$s</%1$s>',
-					tag_escape( $settings['title_tag'] ),
+					tag_escape( $title_tag ),
 					$this->get_render_attribute_string( 'title' ),
 					WPZOOM_Elementor_Widgets::custom_kses( $settings[ 'title' ] )
 				);
