@@ -40,7 +40,9 @@
           "bottom": "4",
           "left": "4",
           "isLinked": true
-        }
+        },
+        "name": "About",
+        "_title": "About"
       },
       "elements": [
         {
@@ -308,7 +310,7 @@
         }
       ],
       "isInner": false,
-      "elType": "section"
+      "elType": "container"
     }
   ],
   "page_settings": [],
