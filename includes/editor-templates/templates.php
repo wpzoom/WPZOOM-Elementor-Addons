@@ -17,6 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span><?php echo __( 'Back to Library', 'wpzoom-elementor-addons' ); ?></span>
 			</div>
 		</div>
+		<div id="wpzoom-elementor-template-library-header-tabs" class="elementor-templates-modal__header__item">
+			<div id="wpzoom-elementor-template-library-tabs-wrapper" class="elementor-component-tab elementor-template-library-menu">
+				<div class="elementor-component-tab elementor-template-library-menu-item elementor-active" data-tab="templates"><?php echo __('Pages', 'wpzoom-elementor-addons'); ?></div>
+				<div class="elementor-component-tab elementor-template-library-menu-item" data-tab="sections"><?php echo __('Sections', 'wpzoom-elementor-addons'); ?></div>
+			</div>
+		</div>
 		<div class="elementor-templates-modal__header__items-area">
 			<div class="elementor-templates-modal__header__close elementor-templates-modal__header__close--normal elementor-templates-modal__header__item">
 				<i class="eicon-close" aria-hidden="true" title="Close"></i>
@@ -50,10 +56,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 <script type="text/template" id="tmpl-wpzoom-elementor-template-library-tools">
 	<div id="wpzoom-elementor-template-library-toolbar">
-        <div id="wpzoom-elementor-template-library-tabs" class="elementor-template-library-menu">
-            <div class="elementor-template-library-menu-item elementor-active" role="tab" tabindex="0" aria-selected="true" data-tab="templates"><?php echo __('Pages', 'wpzoom-elementor-addons'); ?></div>
-			<div class="elementor-template-library-menu-item" role="tab" tabindex="0" aria-selected="false" data-tab="sections"><?php echo __('Sections', 'wpzoom-elementor-addons'); ?></div>
-        </div>
 		<div id="elementor-template-library-filter-toolbar-remote" class="elementor-template-library-filter-toolbar">				
 			<div id="elementor-template-library-filter">
 				<select id="wpzoom-elementor-template-library-filter-theme" class="elementor-template-library-filter-select" name="theme" data-filter="theme">

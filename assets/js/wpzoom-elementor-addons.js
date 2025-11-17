@@ -123,8 +123,8 @@ var WPZCachedSections = null;
 								content.append(wp.template('wpzoom-elementor-template-library-tools'));
 							}
 							// Reset active tab UI to Templates on each open
-							$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
-							$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item[data-tab="templates"]').addClass('elementor-active').attr('aria-selected', 'true');
+							$('#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
+							$('#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item[data-tab="templates"]').addClass('elementor-active').attr('aria-selected', 'true');
 							// Reset tab state
 							windowWPZ.currentTab = 'templates';
 							// Ensure filters show Pages theme by default
@@ -170,14 +170,14 @@ var WPZCachedSections = null;
 								return windowWPZ.wpzModal.hide();
 							});
 							// Bind tab switching
-							$('#wpzoom-elementor-template-library-tabs').off('click keypress', '.elementor-template-library-menu-item')
+							$('#wpzoom-elementor-template-library-tabs-wrapper').off('click keypress', '.elementor-template-library-menu-item')
 								.on('click keypress', '.elementor-template-library-menu-item', function (e) {
 									if (e.type === 'keypress' && e.key !== 'Enter' && e.key !== ' ') { return; }
 									var $btn = $(this);
 									if ($btn.hasClass('elementor-active')) { return; }
 
 								// Update UI
-								$('#wpzoom-elementor-template-library-tabs .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
+									$('#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
 								$btn.addClass('elementor-active').attr('aria-selected', 'true');
 
 								// Update current tab
@@ -407,6 +407,7 @@ var WPZCachedSections = null;
 			//console.log( data );
 			$('.elementor-templates-modal__header__logo').hide();
 			$('#wpzoom-elementor-template-library-toolbar').hide();
+			$('#wpzoom-elementor-template-library-header-tabs').hide();
 			$('#wpzoom-elementor-template-library-header-preview').show();
 			$('#wpzoom-elementor-template-library-header-preview').find('.elementor-template-library-template-action').attr('data-template-name', slug);
 
@@ -446,6 +447,7 @@ var WPZCachedSections = null;
 			$(this).hide();
 			$('#wpzoom-elementor-template-library-header-preview').hide();
 			$('#wpzoom-elementor-template-library-toolbar').show();
+			$('#wpzoom-elementor-template-library-header-tabs').show();
 			$('.elementor-templates-modal__header__logo').show();
 			wpzoom_get_library_view();
 		});
@@ -460,6 +462,7 @@ var WPZCachedSections = null;
 
 		$('.elementor-templates-modal__header__logo').show();
 		$('#wpzoom-elementor-template-library-toolbar').show();
+		$('#wpzoom-elementor-template-library-header-tabs').show();
 		$('.wpzoom-header-back-button').hide();
 		$('#wpzoom-elementor-template-library-header-preview').hide();
 

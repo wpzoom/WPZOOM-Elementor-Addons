@@ -51,6 +51,67 @@
 #wpzoom-elementor-template-library-modal .e-logo-wrapper i {
 	visibility: hidden;
 }
+/* Ensure header has positioning context */
+#wpzoom-elementor-template-library-modal .elementor-templates-modal__header {
+	position: relative;
+}
+
+/* Header Tabs Styling - Matching Elementor Native */
+#wpzoom-elementor-template-library-header-tabs {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	height: 100%;
+	z-index: 1;
+	pointer-events: none;
+}
+
+#wpzoom-elementor-template-library-header-tabs * {
+	pointer-events: auto;
+}
+
+#wpzoom-elementor-template-library-tabs-wrapper {
+	display: flex;
+	gap: 0;
+	margin: 0;
+	height: 100%;
+}
+
+#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 0 15px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #a4afb7;
+	background: transparent;
+	border: none;
+	transition: all 0.3s;
+	position: relative;
+	height: 100%;
+	white-space: nowrap;
+}
+
+#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item:hover {
+	color: #6d7882;
+}
+
+#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item.elementor-active {
+	color: #495157;
+}
+
+#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item.elementor-active::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background-color: #d5dadf;
+}
 .elementor-template-library-menu-custom-item {
 	display:inline-block;
 	padding:17px 0;
