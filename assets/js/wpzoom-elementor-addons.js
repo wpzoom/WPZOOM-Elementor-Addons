@@ -434,7 +434,9 @@ var WPZCachedSections = null;
 
 			$('.wpzoom-header-back-button').show();
 			showLoadingView();
-			$.post(ajaxurl, { action: 'get_wpzoom_preview', data: data }, function (data) {
+			// Use different AJAX action based on current tab
+			var previewAction = (windowWPZ.currentTab === 'sections') ? 'get_wpzoom_section_preview' : 'get_wpzoom_preview';
+			$.post(ajaxurl, { action: previewAction, data: data }, function (data) {
 				//console.log( slug );
 				hideLoadingView();
 				$('.wpzoom__main-view').html(data);
@@ -449,7 +451,8 @@ var WPZCachedSections = null;
 			$('#wpzoom-elementor-template-library-toolbar').show();
 			$('#wpzoom-elementor-template-library-header-tabs').show();
 			$('.elementor-templates-modal__header__logo').show();
-			wpzoom_get_library_view();
+			// Return to the currently active tab
+			wpzoom_get_library_view(windowWPZ.currentTab);
 		});
 
 	}
@@ -465,6 +468,10 @@ var WPZCachedSections = null;
 		$('#wpzoom-elementor-template-library-header-tabs').show();
 		$('.wpzoom-header-back-button').hide();
 		$('#wpzoom-elementor-template-library-header-preview').hide();
+
+		// Update tab visual state to match the active tab
+		$('#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item').removeClass('elementor-active').attr('aria-selected', 'false');
+		$('#wpzoom-elementor-template-library-tabs-wrapper .elementor-template-library-menu-item[data-tab="' + tab + '"]').addClass('elementor-active').attr('aria-selected', 'true');
 
 		showLoadingView();
 		var action = (tab === 'sections') ? 'get_wpzoom_sections_library_view' : 'get_wpzoom_pages_library_view';

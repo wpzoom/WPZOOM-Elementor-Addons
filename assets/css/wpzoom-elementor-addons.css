@@ -54,8 +54,12 @@
 /* Header Tabs Styling */
 #wpzoom-elementor-template-library-modal .elementor-templates-modal__header {
 	display: flex;
-		align-items: center;
-		justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#wpzoom-elementor-template-library-modal .elementor-templates-modal__header__items-area {
+	min-width: 160px;
 }
 
 #wpzoom-elementor-template-library-header-tabs {
@@ -121,6 +125,7 @@
 	font-size:14px;
     margin-bottom: 5px;
     font-weight: 500;
+	color: #555;
 }
 .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-title i {
 	color:#D52;
@@ -142,28 +147,23 @@
 	width: 100%;
 	height: 147px;
 	margin-bottom:5px;
-	border:1px solid #ccc;
-	background-size: 100% auto;
-	background-position: top center;
+	border: 1px solid #ccc;
 	background-color: #f7f7f7;
-	background-repeat: no-repeat;
-	overflow:hidden;
-	transition:.6s;
-    position: relative;
-	transition-timing-function:ease-in-out;
+	overflow: hidden;
+		position: relative;
 }
-.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb:hover {
-	background-position: center bottom;
-	transition-timing-function:linear;
-}
-/* Section templates - disable scroll effect for short/wide images */
-.wpzoom-main-tiled-view .wpzoom-item [class*="wpzoom-sections-index-"] {
-	transition: opacity .3s ease-in-out;
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb .wpzoom-thumb-image {
+	width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	transition: object-position .6s ease-in-out;
+	display: block;
 }
 
-.wpzoom-main-tiled-view .wpzoom-item [class*="wpzoom-sections-index-"]:hover {
-	background-position: center top;
-	opacity: 0.9;
+.wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb:hover .wpzoom-thumb-image {
+	object-position: center bottom;
+	transition-timing-function: linear;
 }
 .wpzoom-main-tiled-view .wpzoom-item:hover  .wpzoom-template-thumb:after {
     position: absolute;

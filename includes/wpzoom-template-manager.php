@@ -176,15 +176,17 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					<div 
 						class="wpzoom-template-thumb wpzoom-index-<?php echo esc_attr($i); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
 						data-index="<?php echo esc_attr($i); ?>"
-						data-template="<?php echo esc_attr(wp_json_encode($template_list[$i])); ?>"
-						style="background-image:url(<?php echo esc_url($thumb_url . $template_list[$i]['thumbnail']); ?>-thumb.png);">
+						data-template="<?php echo esc_attr(wp_json_encode($template_list[$i])); ?>">
+						<img src="<?php echo esc_url($thumb_url . $template_list[$i]['thumbnail']); ?>-thumb.png" 
+							alt="<?php echo esc_attr($template_list[$i]['name']); ?>" 
+							class="wpzoom-thumb-image">
 							<?php if ( $is_restricted ) : ?>
 								<div class="wpzoom-template-overlay">
 									<div class="wpzoom-template-lock-icon">🔒</div>
 									<div class="wpzoom-template-pro-text"><?php esc_html_e( 'PRO Only', 'wpzoom-elementor-addons' ); ?></div>
 								</div>
 							<?php endif; ?>
-						</div>
+					</div>
 						<div class="wpzoom-action-bar">
 							<div class="wpzoom-grow"> </div>
 							<?php if ( $is_restricted ) : ?>
@@ -305,7 +307,12 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			if (wp_http_validate_url($data['thumbnail'])) {
 				$thumb_url = $data['thumbnail'];
 			} else {
-				$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/' . $type . '/assets/thumbs/' . $data['thumbnail'];
+				// Use local plugin assets for sections, AWS S3 for templates (pages)
+				if ($type === 'sections') {
+					$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/images/sections/' . $data['thumbnail'];
+				} else {
+					$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/' . $type . '/assets/thumbs/' . $data['thumbnail'];
+				}
 			}
 
 			// Check if this template is restricted
@@ -331,7 +338,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						</a>
 					</div>
 				<?php endif; ?>
-				<img src="<?php echo esc_url( $thumb_url ); ?>-full.png" alt="<?php echo esc_attr( $data['name']); ?>" />
+										<img src="<?php echo esc_url($thumb_url . '-full.png'); ?>" alt="<?php echo esc_attr($data['name']); ?>" />
 			</div>
 			<?php
 		}
@@ -358,7 +365,8 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$data = self::init()->get_filesystem()->get_contents($local_file);
 				$section_list = json_decode($data, true);
 			}
-			$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/sections/assets/thumbs/';
+			// Use local plugin assets for section thumbnails
+			$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/images/sections/';
 
 			echo '<div class="wpzoom-main-tiled-view">';
 			if (count($section_list) != 0) {
@@ -394,9 +402,11 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						<div class="wpzoom-template-title">
 							<?php echo esc_html($entry['name']); ?>
 						</div>
-				<div class="wpzoom-template-thumb wpzoom-sections-index-<?php echo esc_attr($index); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
-					data-index="<?php echo esc_attr($index); ?>" data-template="<?php echo esc_attr(wp_json_encode($entry)); ?>"
-					style="background-image:url(<?php echo esc_url($thumb_url . $entry['thumbnail']); ?>-thumb.png);">
+			<div class="wpzoom-template-thumb wpzoom-sections-index-<?php echo esc_attr($index); ?> <?php echo $is_restricted ? 'wpzoom-template-thumb-locked' : ''; ?>"
+				data-index="<?php echo esc_attr($index); ?>" data-template="<?php echo esc_attr(wp_json_encode($entry)); ?>">
+				<img src="<?php echo esc_url($thumb_url . $entry['thumbnail'] . '-thumb.png'); ?>" 
+					alt="<?php echo esc_attr($entry['name']); ?>" 
+					class="wpzoom-thumb-image">
 					<?php if ($is_restricted): ?>
 						<div class="wpzoom-template-overlay">
 							<div class="wpzoom-template-lock-icon">🔒</div>

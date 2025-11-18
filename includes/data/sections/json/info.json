@@ -78,53 +78,5 @@
         "category": "contact",
         "thumbnail": "inspiro-lite/contact",
         "filename": "inspiro-lite-contact.json"
-    },
-    {
-        "id": "foodica-hero",
-        "name": "Hero Slider",
-        "theme": "Foodica",
-        "category": "hero",
-        "thumbnail": "foodica/slider",
-        "filename": "foodica-hero.json"
-    },
-    {
-        "id": "foodica-latest-posts",
-        "name": "Latest Posts",
-        "theme": "Foodica",
-        "category": "general",
-        "thumbnail": "foodica/latest-posts",
-        "filename": "foodica-latest-posts.json"
-    },
-    {
-        "id": "foodica-recipe-index",
-        "name": "Recipe Index",
-        "theme": "Foodica",
-        "category": "general",
-        "thumbnail": "foodica/recipe-index",
-        "filename": "foodica-recipe-index.json"
-    },
-    {
-        "id": "inspiro-school-contact",
-        "name": "Contact Us",
-        "theme": "Inspiro School",
-        "category": "contact",
-        "thumbnail": "inspiro-school/contact",
-        "filename": "inspiro-school-contact.json"
-    },
-    {
-        "id": "inspiro-school-statistics",
-        "name": "Statistics",
-        "theme": "Inspiro School",
-        "category": "features",
-        "thumbnail": "inspiro-school/statistics",
-        "filename": "inspiro-school-statistics.json"
-    },
-    {
-        "id": "inspiro-school-testimonials",
-        "name": "Testimonials",
-        "theme": "Inspiro School",
-        "category": "general",
-        "thumbnail": "inspiro-school/testimonials",
-        "filename": "inspiro-school-testimonials.json"
     }
 ]
