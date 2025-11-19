@@ -69,15 +69,14 @@ if ( did_action( 'elementor/loaded' ) ) {
 			));
 		}
 
-		if ($this->is_pro_template($filename) && !$this->can_import_pro_template()) {
-		
+		if ('section' !== $import_type && $this->is_pro_template($filename) && !$this->can_import_pro_template()) {
 			$has_pro_plugin = class_exists( 'WPZOOM_Elementor_Addons_Pro' );
-		
-		if ( ! $has_pro_plugin && ! class_exists( 'WPZOOM' ) ) {
-			$error_message = esc_html__( 'This template requires WPZOOM Elementor Addons Pro plugin. Please install and activate the Pro plugin to import premium templates.', 'wpzoom-elementor-addons' );
-		} else {
-			$error_message = '';
-		}
+			
+			if ( ! $has_pro_plugin && ! class_exists( 'WPZOOM' ) ) {
+				$error_message = esc_html__( 'This template requires WPZOOM Elementor Addons Pro plugin. Please install and activate the Pro plugin to import premium templates.', 'wpzoom-elementor-addons' );
+			} else {
+				$error_message = '';
+			}
 			
 			if ( empty( $error_message ) ) {
 				$error_message = esc_html__( 'This template requires WPZOOM Elementor Addons Pro license. Please activate your license key to import PRO templates.', 'wpzoom-elementor-addons' );
