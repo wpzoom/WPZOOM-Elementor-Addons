@@ -1,10 +1,10 @@
 [
     {
         "id": "inspiro-lite-hero",
-        "name": "Hero Minimal",
+        "name": "Hero",
         "theme": "Inspiro Lite",
         "category": "hero",
-        "thumbnail": "inspiro-lite/hero-minimal",
+        "thumbnail": "inspiro-lite/hero",
         "filename": "inspiro-lite-hero.json"
     },
     {

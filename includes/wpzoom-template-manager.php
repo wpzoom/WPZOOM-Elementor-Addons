@@ -273,8 +273,33 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 					}
 				}
 			}
+
 			$categoriesList = array_unique($categoriesList);
-			sort($categoriesList);
+
+			// Custom order for section categories in the dropdown.
+			// Default slugs currently in use: general, hero, features, contact.
+			$desired_order = array('general', 'hero', 'features', 'contact');
+
+			usort(
+				$categoriesList,
+				function ($a, $b) use ($desired_order) {
+					$pos_a = array_search($a, $desired_order, true);
+					$pos_b = array_search($b, $desired_order, true);
+
+					if (false === $pos_a) {
+						$pos_a = PHP_INT_MAX;
+					}
+					if (false === $pos_b) {
+						$pos_b = PHP_INT_MAX;
+					}
+
+					if ($pos_a === $pos_b) {
+						return strcmp($a, $b);
+					}
+
+					return $pos_a <=> $pos_b;
+				}
+			);
 
 			echo json_encode($categoriesList);
 
@@ -384,8 +409,34 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						$category_to_themes[$category][$theme_slug] = true;
 					}
 				}
-				ksort($category_to_items);
-				foreach ($category_to_items as $category_slug => $items) {
+
+				// Custom order for section categories in the grid: General, Hero, Features, Contact.
+				$desired_order = array('general', 'hero', 'features', 'contact');
+
+				$category_slugs = array_keys($category_to_items);
+				usort(
+					$category_slugs,
+					function ($a, $b) use ($desired_order) {
+						$pos_a = array_search($a, $desired_order, true);
+						$pos_b = array_search($b, $desired_order, true);
+
+						if (false === $pos_a) {
+							$pos_a = PHP_INT_MAX;
+						}
+						if (false === $pos_b) {
+							$pos_b = PHP_INT_MAX;
+						}
+
+						if ($pos_a === $pos_b) {
+							return strcmp($a, $b);
+						}
+
+						return $pos_a <=> $pos_b;
+					}
+				);
+
+				foreach ($category_slugs as $category_slug) {
+					$items = $category_to_items[$category_slug];
 					$category_title = ucwords(str_replace('-', ' ', $category_slug));
 					$themes_for_cat = implode(',', array_keys($category_to_themes[$category_slug]));
 					// Category heading similar to Pages view
