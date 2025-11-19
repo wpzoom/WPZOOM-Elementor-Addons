@@ -78,5 +78,93 @@
         "category": "contact",
         "thumbnail": "inspiro-lite/contact",
         "filename": "inspiro-lite-contact.json"
+    },
+    {
+        "id": "eccentric-portfolio-showcase",
+        "name": "Portfolio Showcase",
+        "theme": "Eccentric",
+        "category": "portfolio",
+        "thumbnail": "eccentric/portfolio-showcase",
+        "filename": "eccentric-portfolio-showcase.json"
+    },
+    {
+        "id": "eccentric-about",
+        "name": "About",
+        "theme": "Eccentric",
+        "category": "general",
+        "thumbnail": "eccentric/about",
+        "filename": "eccentric-about.json"
+    },
+    {
+        "id": "eccentric-portfolio-gallery-showcase",
+        "name": "Portfolio Gallery Showcase",
+        "theme": "Eccentric",
+        "category": "portfolio",
+        "thumbnail": "eccentric/portfolio-gallery-showcase",
+        "filename": "eccentric-portfolio-gallery-showcase.json"
+    },
+    {
+        "id": "eccentric-banner",
+        "name": "Hero Banner",
+        "theme": "Eccentric",
+        "category": "hero",
+        "thumbnail": "eccentric/banner",
+        "filename": "eccentric-banner.json"
+    },
+    {
+        "id": "eccentric-price-plans",
+        "name": "Price Plans",
+        "theme": "Eccentric",
+        "category": "pricing",
+        "thumbnail": "eccentric/price-plans",
+        "filename": "eccentric-price-plans.json"
+    },
+    {
+        "id": "eccentric-our-story",
+        "name": "Our Story",
+        "theme": "Eccentric",
+        "category": "general",
+        "thumbnail": "eccentric/our-story",
+        "filename": "eccentric-our-story.json"
+    },
+    {
+        "id": "inspiro-premium-pricing",
+        "name": "Pricing",
+        "theme": "Inspiro Premium",
+        "category": "pricing",
+        "thumbnail": "inspiro-premium/pricing",
+        "filename": "inspiro-premium-pricing.json"
+    },
+    {
+        "id": "inspiro-premium-about",
+        "name": "About",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/about",
+        "filename": "inspiro-premium-about.json"
+    },
+    {
+        "id": "inspiro-premium-banner",
+        "name": "Hero Banner",
+        "theme": "Inspiro Premium",
+        "category": "hero",
+        "thumbnail": "inspiro-premium/banner",
+        "filename": "inspiro-premium-banner.json"
+    },
+    {
+        "id": "inspiro-premium-services",
+        "name": "Our Services",
+        "theme": "Inspiro Premium",
+        "category": "features",
+        "thumbnail": "inspiro-premium/services",
+        "filename": "inspiro-premium-services.json"
+    },
+    {
+        "id": "inspiro-premium-portfolio-showcase",
+        "name": "Portfolio Showcase",
+        "theme": "Inspiro Premium",
+        "category": "portfolio",
+        "thumbnail": "inspiro-premium/portfolio-showcase",
+        "filename": "inspiro-premium-portfolio-showcase.json"
     }
 ]
