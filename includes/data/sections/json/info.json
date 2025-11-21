@@ -166,5 +166,165 @@
         "category": "portfolio",
         "thumbnail": "inspiro-premium/portfolio-showcase",
         "filename": "inspiro-premium-portfolio-showcase.json"
+    },
+    {
+        "id": "inspiro-premium-about-restaurant",
+        "name": "About Restaurant",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/about-restaurant",
+        "filename": "inspiro-premium-about-restaurant.json"
+    },
+    {
+        "id": "inspiro-premium-our-specials",
+        "name": "Our Specials",
+        "theme": "Inspiro Premium",
+        "category": "features",
+        "thumbnail": "inspiro-premium/our-specials",
+        "filename": "inspiro-premium-our-specials.json"
+    },
+    {
+        "id": "inspiro-premium-banner-restaurant",
+        "name": "Hero Banner Restaurant",
+        "theme": "Inspiro Premium",
+        "category": "hero",
+        "thumbnail": "inspiro-premium/banner-restaurant",
+        "filename": "inspiro-premium-banner-restaurant.json"
+    },
+    {
+        "id": "inspiro-premium-banner-hotel",
+        "name": "Hero Banner Hotel",
+        "theme": "Inspiro Premium",
+        "category": "hero",
+        "thumbnail": "inspiro-premium/banner-hotel",
+        "filename": "inspiro-premium-banner-hotel.json"
+    },
+    {
+        "id": "inspiro-premium-booking-form",
+        "name": "Booking Form",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/booking-form",
+        "filename": "inspiro-premium-booking-form.json"
+    },
+    {
+        "id": "inspiro-premium-address",
+        "name": "Address",
+        "theme": "Inspiro Premium",
+        "category": "contact",
+        "thumbnail": "inspiro-premium/address",
+        "filename": "inspiro-premium-address.json"
+    },
+    {
+        "id": "inspiro-premium-tickets",
+        "name": "Tickets",
+        "theme": "Inspiro Premium",
+        "category": "pricing",
+        "thumbnail": "inspiro-premium/tickets",
+        "filename": "inspiro-premium-tickets.json"
+    },
+    {
+        "id": "inspiro-premium-sponsors",
+        "name": "Sponsors",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/sponsors",
+        "filename": "inspiro-premium-sponsors.json"
+    },
+    {
+        "id": "inspiro-premium-schedule",
+        "name": "Schedule",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/schedule",
+        "filename": "inspiro-premium-schedule.json"
+    },
+    {
+        "id": "inspiro-premium-about-event",
+        "name": "About Event",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/about-event",
+        "filename": "inspiro-premium-about-event.json"
+    },
+    {
+        "id": "inspiro-premium-speakers",
+        "name": "Speakers",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/speakers",
+        "filename": "inspiro-premium-speakers.json"
+    },
+    {
+        "id": "inspiro-premium-section-with-button",
+        "name": "Section With Button",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/section-with-button",
+        "filename": "inspiro-premium-section-with-button.json"
+    },
+    {
+        "id": "inspiro-premium-section-with-2-buttons",
+        "name": "Section With 2 Buttons",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/section-with-2-buttons",
+        "filename": "inspiro-premium-section-with-2-buttons.json"
+    },
+    {
+        "id": "inspiro-premium-faq",
+        "name": "FAQ",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/faq",
+        "filename": "inspiro-premium-faq.json"
+    },
+    {
+        "id": "reel-video-hero",
+        "name": "Video Hero",
+        "theme": "Reel",
+        "category": "hero",
+        "thumbnail": "reel/video-hero",
+        "filename": "reel-video-hero.json"
+    },
+    {
+        "id": "reel-about",
+        "name": "About",
+        "theme": "Reel",
+        "category": "general",
+        "thumbnail": "reel/about",
+        "filename": "reel-about.json"
+    },
+    {
+        "id": "reel-hero-banner",
+        "name": "Hero Banner",
+        "theme": "Reel",
+        "category": "hero",
+        "thumbnail": "reel/hero-banner",
+        "filename": "reel-hero-banner.json"
+    },
+    {
+        "id": "reel-blog",
+        "name": "Blog",
+        "theme": "Reel",
+        "category": "general",
+        "thumbnail": "reel/blog",
+        "filename": "reel-blog.json"
+    },
+    {
+        "id": "reel-our-work",
+        "name": "Our Work",
+        "theme": "Reel",
+        "category": "portfolio",
+        "thumbnail": "reel/our-work",
+        "filename": "reel-our-work.json"
+    },
+    {
+        "id": "cookbook-about-us",
+        "name": "About Us",
+        "theme": "CookBook",
+        "category": "general",
+        "thumbnail": "cookbook/about-us",
+        "filename": "cookbook-about-us.json"
     }
 ]
