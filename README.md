@@ -1,31 +1,118 @@
-# [WPZOOM Addons for Elementor](https://wordpress.org/plugins/wpzoom-elementor-addons/) #
+# WPZOOM Addons for Elementor
 
-### Welcome to our GitHub Repository
+A collection of pre-designed templates and advanced widgets for the Elementor page builder. Create beautiful pages in minutes with professional templates and powerful widgets.
 
-A plugin that provides a collection of the Elementor Templates and advanced widgets created by WPZOOM team
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/wpzoom-elementor-addons)](https://wordpress.org/plugins/wpzoom-elementor-addons/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/wpzoom-elementor-addons)](https://wordpress.org/plugins/wpzoom-elementor-addons/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/wpzoom-elementor-addons)](https://wordpress.org/plugins/wpzoom-elementor-addons/)
+[![License](https://img.shields.io/badge/license-GPL--2.0%2B-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
-Did you find this plugin helpful? Please consider leaving a [5-star review](https://wordpress.org/support/view/plugin-reviews/wpzoom-elementor-addons).
+## Features
 
-This plugin provides a collection of custom [**Elementor** page builder](https://elementor.com/) templates and widgets that can make your job extremely easy to create a beautiful interface of the pages or posts on your WordPress site.
+### Free Features
+- **Beautiful Pre-designed Templates** for professionals
+- **Theme-specific Templates** for WPZOOM themes
+- **Advanced Elementor Widgets** with multiple options
+- **Unique Layouts** for video & photo professionals
+- Works with any theme
 
-## Installation ##
+### Included Widgets
+- **Slideshow** - Beautiful fullscreen slideshows
+- **Team Members** - Showcase your team with social icons
+- **Clients Carousel** - Display client logos
+- **Testimonials** - Customer reviews and quotes
+- **WooCommerce Products** - Product showcases
+- **Image Box** - Image with text overlays
+- **Featured Category** - Highlight categories
+- **Latest Posts (Post Grid)** - Blog post displays
+- **Portfolio** - Portfolio showcase (Inspiro themes)
+- **Pricing Table** - Pricing comparisons
+- **Directors** - For video creators
 
-1. You can clone the GitHub repository: `https://github.com/wpzoom/wpzoom-elementor-addons`
-2. Or download it directly as a ZIP file: `https://github.com/wpzoom/wpzoom-elementor-addons/archive/refs/heads/master.zip`
+### PRO Features
+- Slideshow with Video Background
+- 130+ Templates for Elementor
+- Premium Support
 
-This will download the latest developer copy of WPZOOM Addons for Elementor.
+## Installation
 
-## Bugs ##
+### From WordPress.org
+
+1. Go to **Plugins > Add New** in your WordPress admin
+2. Search for "WPZOOM Addons for Elementor"
+3. Click **Install Now** and then **Activate**
+
+### Manual Installation
+
+1. Download the plugin from [WordPress.org](https://wordpress.org/plugins/wpzoom-elementor-addons/)
+2. Upload to `/wp-content/plugins/wpzoom-elementor-addons/`
+3. Activate through the **Plugins** menu
+
+### From GitHub
+
+```bash
+cd wp-content/plugins
+git clone https://github.com/wpzoom/wpzoom-elementor-addons.git
+```
+
+## Usage
+
+### Using Templates
+
+1. Edit any page with Elementor
+2. Click the **WPZOOM** button in the editor
+3. Browse the template library
+4. Click to import a template
+5. Customize to match your design
+
+### Using Widgets
+
+1. Edit a page with Elementor
+2. Search for WPZOOM widgets in the widget panel
+3. Drag and drop to add widgets
+4. Configure options in the settings panel
+
+## Recommended Themes
+
+While the plugin works with any theme, templates are optimized for:
+
+- [Inspiro PRO](https://www.wpzoom.com/themes/inspiro-pro/)
+- [Inspiro Premium](https://www.wpzoom.com/themes/inspiro/)
+- [Reel](https://www.wpzoom.com/themes/reel/)
+- [Inspiro Lite](https://wordpress.org/themes/inspiro/) (Free)
+- [Foodica PRO](https://www.wpzoom.com/themes/foodica/)
+- [CookBook](https://www.wpzoom.com/themes/cookbook/)
+- [Cookely](https://www.wpzoom.com/themes/cookely/)
+- [Gourmand](https://www.wpzoom.com/themes/gourmand/)
+
+## Requirements
+
+- WordPress 6.0 or higher
+- PHP 7.4 or higher
+- Elementor plugin (free or Pro)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Bugs
+
 If you find an issue, let us know [here](https://github.com/wpzoom/wpzoom-elementor-addons/issues)!
 
-## Support ##
+## Support
+
 This is a developer's portal for WPZOOM Addons for Elementor and should _not_ be used for support. Please visit the [support page](https://wordpress.org/support/plugin/wpzoom-elementor-addons/) on WordPress.org if you need to submit a support request.
 
-## Contributions ##
-Anyone is welcome to contribute to WPZOOM Addons for Elementor.
+## License
 
-There are various ways you can contribute:
+This plugin is licensed under the [GPL v2 or later](https://www.gnu.org/licenses/gpl-2.0.html).
 
-1. Raise an [Issue](https://github.com/wpzoom/wpzoom-elementor-addons/issues) on GitHub
-2. Send us a Pull Request with your bug fixes and/or new features
-3. Translate the plugin into [different languages](https://translate.wordpress.org/projects/wp-plugins/wpzoom-elementor-addons/)
+---
+
+**Links:** [WordPress.org](https://wordpress.org/plugins/wpzoom-elementor-addons/) | [WPZOOM](https://www.wpzoom.com/) | [GitHub](https://github.com/wpzoom/wpzoom-elementor-addons)
