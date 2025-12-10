@@ -1,5 +1,13 @@
 [
     {
+        "id": "inspiro-premium-about-restaurant",
+        "name": "Intro Centered",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/intro-center",
+        "filename": "inspiro-premium-about-restaurant.json"
+    },
+    {
         "id": "inspiro-lite-hero",
         "name": "Hero",
         "theme": "Inspiro Lite",
@@ -8,20 +16,20 @@
         "filename": "inspiro-lite-hero.json"
     },
     {
+        "id": "inspiro-lite-about-agency",
+        "name": "Intro with Button",
+        "theme": "Inspiro Lite",
+        "category": "general",
+        "thumbnail": "inspiro-lite/about-agency",
+        "filename": "inspiro-lite-about-agency.json"
+    },
+    {
         "id": "inspiro-lite-about",
         "name": "About",
         "theme": "Inspiro Lite",
         "category": "general",
         "thumbnail": "inspiro-lite/about",
         "filename": "inspiro-lite-about.json"
-    },
-    {
-        "id": "inspiro-lite-about-agency",
-        "name": "About Agency",
-        "theme": "Inspiro Lite",
-        "category": "general",
-        "thumbnail": "inspiro-lite/about-agency",
-        "filename": "inspiro-lite-about-agency.json"
     },
     {
         "id": "inspiro-lite-services",
@@ -80,19 +88,11 @@
         "filename": "inspiro-lite-contact.json"
     },
     {
-        "id": "eccentric-portfolio-showcase",
-        "name": "Portfolio Showcase",
-        "theme": "Eccentric",
-        "category": "portfolio",
-        "thumbnail": "eccentric/portfolio-showcase",
-        "filename": "eccentric-portfolio-showcase.json"
-    },
-    {
         "id": "eccentric-about",
-        "name": "About",
+        "name": "About (Dark)",
         "theme": "Eccentric",
         "category": "general",
-        "thumbnail": "eccentric/about",
+        "thumbnail": "inspiro-premium/eccentric-about",
         "filename": "eccentric-about.json"
     },
     {
@@ -100,23 +100,15 @@
         "name": "Portfolio Gallery Showcase",
         "theme": "Eccentric",
         "category": "portfolio",
-        "thumbnail": "eccentric/portfolio-gallery-showcase",
+        "thumbnail": "inspiro-premium/portfolio-gallery-showcase",
         "filename": "eccentric-portfolio-gallery-showcase.json"
     },
     {
-        "id": "eccentric-banner",
-        "name": "Hero Banner",
-        "theme": "Eccentric",
-        "category": "hero",
-        "thumbnail": "eccentric/banner",
-        "filename": "eccentric-banner.json"
-    },
-    {
         "id": "eccentric-price-plans",
-        "name": "Price Plans",
+        "name": "Pricing Plans (Dark)",
         "theme": "Eccentric",
         "category": "pricing",
-        "thumbnail": "eccentric/price-plans",
+        "thumbnail": "inspiro-premium/pricing-dark",
         "filename": "eccentric-price-plans.json"
     },
     {
@@ -124,7 +116,7 @@
         "name": "Our Story",
         "theme": "Eccentric",
         "category": "general",
-        "thumbnail": "eccentric/our-story",
+        "thumbnail": "inspiro-premium/our-story",
         "filename": "eccentric-our-story.json"
     },
     {
@@ -145,7 +137,7 @@
     },
     {
         "id": "inspiro-premium-banner",
-        "name": "Hero Banner",
+        "name": "Section with Video Lightbox",
         "theme": "Inspiro Premium",
         "category": "hero",
         "thumbnail": "inspiro-premium/banner",
@@ -168,19 +160,11 @@
         "filename": "inspiro-premium-portfolio-showcase.json"
     },
     {
-        "id": "inspiro-premium-about-restaurant",
-        "name": "About Restaurant",
-        "theme": "Inspiro Premium",
-        "category": "general",
-        "thumbnail": "inspiro-premium/about-restaurant",
-        "filename": "inspiro-premium-about-restaurant.json"
-    },
-    {
         "id": "inspiro-premium-our-specials",
-        "name": "Our Specials",
+        "name": "Restaurant Menu",
         "theme": "Inspiro Premium",
         "category": "features",
-        "thumbnail": "inspiro-premium/our-specials",
+        "thumbnail": "inspiro-premium/menu",
         "filename": "inspiro-premium-our-specials.json"
     },
     {
@@ -193,19 +177,11 @@
     },
     {
         "id": "inspiro-premium-banner-hotel",
-        "name": "Hero Banner Hotel",
+        "name": "Section with Button",
         "theme": "Inspiro Premium",
         "category": "hero",
-        "thumbnail": "inspiro-premium/banner-hotel",
+        "thumbnail": "inspiro-premium/banner-button",
         "filename": "inspiro-premium-banner-hotel.json"
-    },
-    {
-        "id": "inspiro-premium-booking-form",
-        "name": "Booking Form",
-        "theme": "Inspiro Premium",
-        "category": "general",
-        "thumbnail": "inspiro-premium/booking-form",
-        "filename": "inspiro-premium-booking-form.json"
     },
     {
         "id": "inspiro-premium-address",
@@ -217,10 +193,10 @@
     },
     {
         "id": "inspiro-premium-tickets",
-        "name": "Tickets",
+        "name": "Pricing Plans v2",
         "theme": "Inspiro Premium",
         "category": "pricing",
-        "thumbnail": "inspiro-premium/tickets",
+        "thumbnail": "inspiro-premium/pricing-tickets",
         "filename": "inspiro-premium-tickets.json"
     },
     {
@@ -233,7 +209,7 @@
     },
     {
         "id": "inspiro-premium-schedule",
-        "name": "Schedule",
+        "name": "Event Schedule",
         "theme": "Inspiro Premium",
         "category": "general",
         "thumbnail": "inspiro-premium/schedule",
@@ -249,7 +225,7 @@
     },
     {
         "id": "inspiro-premium-speakers",
-        "name": "Speakers",
+        "name": "Event Speakers",
         "theme": "Inspiro Premium",
         "category": "general",
         "thumbnail": "inspiro-premium/speakers",
@@ -265,10 +241,10 @@
     },
     {
         "id": "inspiro-premium-section-with-2-buttons",
-        "name": "Section With 2 Buttons",
+        "name": "Team (2 Members)",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/section-with-2-buttons",
+        "thumbnail": "inspiro-premium/team-2",
         "filename": "inspiro-premium-section-with-2-buttons.json"
     },
     {
@@ -281,50 +257,26 @@
     },
     {
         "id": "reel-video-hero",
-        "name": "Video Hero",
+        "name": "Video Slideshow",
         "theme": "Reel",
         "category": "hero",
-        "thumbnail": "reel/video-hero",
+        "thumbnail": "reel/video-slide",
         "filename": "reel-video-hero.json"
     },
     {
-        "id": "reel-about",
-        "name": "About",
-        "theme": "Reel",
-        "category": "general",
-        "thumbnail": "reel/about",
-        "filename": "reel-about.json"
-    },
-    {
         "id": "reel-hero-banner",
-        "name": "Hero Banner",
+        "name": "Video Background Section",
         "theme": "Reel",
         "category": "hero",
         "thumbnail": "reel/hero-banner",
         "filename": "reel-hero-banner.json"
     },
     {
-        "id": "reel-blog",
-        "name": "Blog",
-        "theme": "Reel",
-        "category": "general",
-        "thumbnail": "reel/blog",
-        "filename": "reel-blog.json"
-    },
-    {
-        "id": "reel-our-work",
-        "name": "Our Work",
-        "theme": "Reel",
-        "category": "portfolio",
-        "thumbnail": "reel/our-work",
-        "filename": "reel-our-work.json"
-    },
-    {
         "id": "cookbook-about-us",
-        "name": "About Us",
-        "theme": "CookBook",
+        "name": "Authors/Team",
+        "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "cookbook/about-us",
+        "thumbnail": "cookbook/authors",
         "filename": "cookbook-about-us.json"
     }
 ]
