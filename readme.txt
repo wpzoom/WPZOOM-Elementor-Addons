@@ -4,72 +4,61 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 6.0
 Requires PHP:      7.4
 Tested up to:      6.9
-Stable tag:        1.2.12
+Stable tag:        1.3.0
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor templates, elementor widgets, page builder templates, templates
 
-**WPZOOM Addons for Elementor** contains a collection of pre-designed templates and advanced widgets for the Elementor page builder.
+**WPZOOM Addons for Elementor** contains a collection of pre-designed templates, sections and advanced widgets for the Elementor page builder.
 
 == Description ==
 
-This plugin provides a collection of custom templates for **Elementor** and widgets that can make your job extremely easy to create a beautiful interface of the pages or posts on your WordPress site.
+A collection of professionally designed page templates, sections, and widgets for **Elementor**. Build beautiful pages in minutes without writing any code.
 
-It is very easy to use and you do not need to write any code. To contribute improve this plugin, please access the [GitHub repository](https://github.com/wpzoom/wpzoom-elementor-addons).
 
 = Features =
 
-* Beautiful pre-designed templates for professionals
-* Possibility to extend the templates for specific WordPress Themes
+* **Page Templates** - Import full page layouts with one click
+* **Section Templates** - Insert individual sections (hero, features, contact, etc.) - *NEW in 1.3.0*
 * Advanced Elementor widgets with multiple options and settings
+* Beautiful pre-designed templates for professionals
 * Unique layouts for **video & photo professionals**
 
 = ⭐️ PRO FEATURES ⭐️ =
-* **Slideshow with Video Background - 🆕**
-* **130+ Templates for Elementor - 🆕**
+* **Slideshow with Video Background**
+* **130+ Templates for Elementor**
 * Premium Support
 * and many new features coming soon!
 
 ⭐️ **[Get the PRO version!](https://www.wpzoom.com/plugins/wpzoom-elementor-addons/?utm_source=wporg&utm_medium=website&utm_campaign=free_description)** ⭐️
 
 
-== Included modules: ==
+== Included Widgets ==
 
-* **Slideshow**
-* **Team Members**
-* **Clients Carousel**
-* Testimonials
-* **WooCommerce Products** - *NEW*
-* **Image Box** - *NEW*
-* **Featured Category** - *NEW*
-* Latest Posts (Posts Grid)
-* Portfolio (Inspiro/Inspiro PRO only)
-* Pricing Table
-* Directors (for video creators)
+* **Slideshow** - Fullscreen image slideshows with customizable transitions
+* **Team Members** - Showcase your team with social media icons
+* **Clients Carousel** - Display client/partner logos
+* **Testimonials** - Customer reviews and quotes
+* **WooCommerce Products** - Product showcases for online stores
+* **Image Box** - Images with text overlays and hover effects
+* **Featured Category** - Highlight specific categories
+* **Posts Grid** - Display blog posts in multiple layout styles
+* **Portfolio** - Portfolio showcase (Inspiro/Inspiro PRO themes)
+* **Pricing Table** - Pricing plan comparisons
+* **Directors** - Showcase for video creators and filmmakers
 
 == Recommended Themes & DEMO ==
 
-Even though the plugin works great with any theme, currently, it includes templates that were generated specifically for the following WPZOOM themes:
+Even though the plugin works great with any theme, it includes templates optimized for the following WPZOOM themes:
 
-[**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/)
-[**Inspiro Premium**](https://www.wpzoom.com/themes/inspiro/)
-[**Reel**](https://www.wpzoom.com/themes/reel/) - *NEW*
-[**Inspiro Lite**](https://wordpress.org/themes/inspiro/)
-[**Foodica PRO**](https://www.wpzoom.com/themes/foodica/)
-[**CookBook**](https://www.wpzoom.com/themes/cookbook/) - *NEW*
-[**Cookely**](https://www.wpzoom.com/themes/cookely/) - *NEW*
-[**Gourmand**](https://www.wpzoom.com/themes/gourmand/) - *NEW*
-
-You can see multiple pages created using **Elementor** and this plugin in the following themes:
-
-[**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/starter-sites/)
-[**Inspiro Premium**](https://www.wpzoom.com/themes/inspiro/starter-sites/)
-[**Reel**](https://demo.wpzoom.com/reel-elementor/) - *NEW*
-[**Inspiro Lite**](https://demo.wpzoom.com/inspiro-lite/)
-[**Foodica PRO**](https://demo.wpzoom.com/foodica-elementor/)
-[**CookBook**](https://demo.wpzoom.com/cookbook/) - *NEW*
-[**Cookely**](https://demo.wpzoom.com/cookely/) - *NEW*
-[**Gourmand**](https://demo.wpzoom.com/gourmand/) - *NEW*
+* [**Inspiro PRO**](https://www.wpzoom.com/themes/inspiro-pro/) - [View Demos](https://www.wpzoom.com/themes/inspiro-pro/starter-sites/)
+* [**Inspiro Premium**](https://www.wpzoom.com/themes/inspiro/) - [View Demos](https://www.wpzoom.com/themes/inspiro/starter-sites/)
+* [**Inspiro Lite**](https://wordpress.org/themes/inspiro/) (Free) - [View Demo](https://demo.wpzoom.com/inspiro-lite/)
+* [**Reel**](https://www.wpzoom.com/themes/reel/) - [View Demo](https://demo.wpzoom.com/reel-elementor/)
+* [**Foodica PRO**](https://www.wpzoom.com/themes/foodica/) - [View Demo](https://demo.wpzoom.com/foodica-elementor/)
+* [**CookBook**](https://www.wpzoom.com/themes/cookbook/) - [View Demo](https://demo.wpzoom.com/cookbook/)
+* [**Cookely**](https://www.wpzoom.com/themes/cookely/) - [View Demo](https://demo.wpzoom.com/cookely/)
+* [**Gourmand**](https://www.wpzoom.com/themes/gourmand/) - [View Demo](https://demo.wpzoom.com/gourmand/)
 
 
 = Additional Resources =
@@ -79,49 +68,62 @@ You can see multiple pages created using **Elementor** and this plugin in the fo
 * [WPZOOM website](https://www.wpzoom.com)
 * [GitHub repository](https://github.com/wpzoom/wpzoom-elementor-addons)
 
+To contribute to this plugin, please visit the [GitHub repository](https://github.com/wpzoom/wpzoom-elementor-addons).
+
 
 == Installation ==
 
-1. Install the WPZOOM Addons for Elementor either via the WordPress plugin directory or by uploading the files to your server (see instructions below).
+1. Go to **Plugins > Add New** in your WordPress admin
+2. Search for "WPZOOM Addons for Elementor"
+3. Click **Install Now** and then **Activate**
 
-1. Unzip the plugin download file and upload `wpzoom-elementor-addons` folder into the `/wp-content/plugins/` directory.
-2. Activate the plugin through the *"Plugins"* menu in WordPress.
-3. Now, whenever you edit a page or post with Elementor (you need to have the plugin installed and activated), the page builder interface will contain an additional WPZOOM button, once clicked it will show a pop-up window with the library of the pre-designed templates. ([See how to add a layout template to your page](https://elementor.com/help/adding-templates/))
+**Manual Installation:**
+
+1. Upload the `wpzoom-elementor-addons` folder to `/wp-content/plugins/`
+2. Activate the plugin through the **Plugins** menu
+
+**Usage:**
+
+Once activated, edit any page with Elementor and click the **WPZOOM Library** button to browse and import templates or sections.
 
 
 == Frequently Asked Questions ==
 
 = What to do if a template is not loading? =
 
-Sometimes, it's enough to **try again** to import a template, and in 99% of cases, it will work fine. However, depending on your theme and server configuration, templates that include **many images** might take longer to be imported. This is mainly caused by how Elementor handles importing of templates: it uploads all images to the Media Library and then it generates files for all registered image sizes on your website.
+Try importing again - this works in most cases. Templates with many images may take longer to import because Elementor uploads all images to the Media Library and generates thumbnails for each registered image size.
 
 
-= Who should use the WPZOOM Addons for Elementor? =
+= Who should use this plugin? =
 
-The WPZOOM Addons for Elementor is a collection of unique and creative templates and the widgets, that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Elementor.
+Anyone using Elementor who wants access to professionally designed templates, sections, and widgets to build pages faster.
 
-= What are the requirements to use the WPZOOM Addons for Elementor? =
+= What are the requirements? =
 
-You only need to have the **Elementor** plugin installed and activated.
+You only need the **Elementor** plugin installed and activated.
 
-= What themes does the WPZOOM Addons for Elementor work with? =
+= What themes does it work with? =
 
-The WPZOOM Addons for Elementor is built to work great with all the themes.
+The plugin works with any WordPress theme. Templates are optimized for WPZOOM themes but can be customized for any theme.
 
-= Will the WPZOOM Addons for Elementor slow down my website? =
+= Will it slow down my website? =
 
-Absolutely no! The WPZOOM Addons for Elementor only adds additional custom templates and widgets to Elementor page builder library, so it is not slowing down your website at all. Therefore, it will not affect your website speed and performance in any way.
+No. The plugin only adds templates and widgets to the Elementor editor. It does not affect your website's frontend performance.
 
 == Screenshots ==
 
-1. Template Library (PRO)
-2. Additional Modules/widgets
-3. Pricing Table widget in Inspiro PRO theme
-4. Team Members module
-5. WooCommerce Products module
+1. Template Library with Pages and Sections tabs
+2. Sections Library with category filtering
+3. Additional Widgets
+4. Pricing Table widget in Inspiro PRO theme
+5. Team Members widget
+6. WooCommerce Products widget
 
 
 == Changelog ==
+
+= 1.3.0 =
+* NEW: Added Sections Library - Import individual sections (hero, features, contact, pricing, etc.)
 
 = 1.2.12 =
 * Minor bug fix
