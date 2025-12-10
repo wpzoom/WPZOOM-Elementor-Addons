@@ -334,7 +334,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 			} else {
 				// Use local plugin assets for sections, AWS S3 for templates (pages)
 				if ($type === 'sections') {
-					$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/images/sections/' . $data['thumbnail'];
+                    $thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/sections/' . $data['thumbnail'];
 				} else {
 					$thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/' . $type . '/assets/thumbs/' . $data['thumbnail'];
 				}
@@ -367,7 +367,7 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 						</a>
 					</div>
 				<?php endif; ?>
-										<img src="<?php echo esc_url($thumb_url . '-full.png'); ?>" alt="<?php echo esc_attr($data['name']); ?>" />
+				    <img src="<?php echo esc_url($thumb_url . '-full.png'); ?>" alt="<?php echo esc_attr($data['name']); ?>" />
 			</div>
 			<?php
 		}
@@ -395,7 +395,8 @@ if ( !class_exists( 'WPZOOM_Elementor_Library_Manager' ) ) {
 				$section_list = json_decode($data, true);
 			}
 			// Use local plugin assets for section thumbnails
-			$thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/images/sections/';
+			// $thumb_url = WPZOOM_EL_ADDONS_URL . 'assets/images/sections/';
+            $thumb_url = 'https://wpzoom.s3.us-east-1.amazonaws.com/elementor/templates/assets/thumbs/inspiro/sections/';
 
 			echo '<div class="wpzoom-main-tiled-view">';
 			if (count($section_list) != 0) {

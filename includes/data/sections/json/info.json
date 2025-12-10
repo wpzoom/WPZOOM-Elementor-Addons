@@ -4,7 +4,7 @@
         "name": "Intro Centered",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/intro-center",
+        "thumbnail": "intro-center",
         "filename": "inspiro-premium-about-restaurant.json"
     },
     {
@@ -12,7 +12,7 @@
         "name": "Hero",
         "theme": "Inspiro Lite",
         "category": "hero",
-        "thumbnail": "inspiro-lite/hero",
+        "thumbnail": "hero",
         "filename": "inspiro-lite-hero.json"
     },
     {
@@ -20,7 +20,7 @@
         "name": "Intro with Button",
         "theme": "Inspiro Lite",
         "category": "general",
-        "thumbnail": "inspiro-lite/about-agency",
+        "thumbnail": "about-agency",
         "filename": "inspiro-lite-about-agency.json"
     },
     {
@@ -28,7 +28,7 @@
         "name": "About",
         "theme": "Inspiro Lite",
         "category": "general",
-        "thumbnail": "inspiro-lite/about",
+        "thumbnail": "about2",
         "filename": "inspiro-lite-about.json"
     },
     {
@@ -36,7 +36,7 @@
         "name": "Our Services",
         "theme": "Inspiro Lite",
         "category": "features",
-        "thumbnail": "inspiro-lite/services",
+        "thumbnail": "services2",
         "filename": "inspiro-lite-services.json"
     },
     {
@@ -44,7 +44,7 @@
         "name": "Our Team",
         "theme": "Inspiro Lite",
         "category": "general",
-        "thumbnail": "inspiro-lite/team",
+        "thumbnail": "team",
         "filename": "inspiro-lite-team.json"
     },
     {
@@ -52,7 +52,7 @@
         "name": "Why Us?",
         "theme": "Inspiro Lite",
         "category": "features",
-        "thumbnail": "inspiro-lite/why-us",
+        "thumbnail": "why-us",
         "filename": "inspiro-lite-why-us.json"
     },
     {
@@ -60,7 +60,7 @@
         "name": "Blog",
         "theme": "Inspiro Lite",
         "category": "general",
-        "thumbnail": "inspiro-lite/blog",
+        "thumbnail": "blog",
         "filename": "inspiro-lite-blog.json"
     },
     {
@@ -68,7 +68,7 @@
         "name": "Expertise",
         "theme": "Inspiro Lite",
         "category": "features",
-        "thumbnail": "inspiro-lite/expertise",
+        "thumbnail": "expertise",
         "filename": "inspiro-lite-expertise.json"
     },
     {
@@ -76,7 +76,7 @@
         "name": "Our Address",
         "theme": "Inspiro Lite",
         "category": "contact",
-        "thumbnail": "inspiro-lite/address",
+        "thumbnail": "address2",
         "filename": "inspiro-lite-address.json"
     },
     {
@@ -84,7 +84,7 @@
         "name": "Contact with Map",
         "theme": "Inspiro Lite",
         "category": "contact",
-        "thumbnail": "inspiro-lite/contact",
+        "thumbnail": "contact",
         "filename": "inspiro-lite-contact.json"
     },
     {
@@ -92,7 +92,7 @@
         "name": "About (Dark)",
         "theme": "Eccentric",
         "category": "general",
-        "thumbnail": "inspiro-premium/eccentric-about",
+        "thumbnail": "eccentric-about",
         "filename": "eccentric-about.json"
     },
     {
@@ -100,7 +100,7 @@
         "name": "Portfolio Gallery Showcase",
         "theme": "Eccentric",
         "category": "portfolio",
-        "thumbnail": "inspiro-premium/portfolio-gallery-showcase",
+        "thumbnail": "portfolio-gallery-showcase",
         "filename": "eccentric-portfolio-gallery-showcase.json"
     },
     {
@@ -108,7 +108,7 @@
         "name": "Pricing Plans (Dark)",
         "theme": "Eccentric",
         "category": "pricing",
-        "thumbnail": "inspiro-premium/pricing-dark",
+        "thumbnail": "pricing-dark",
         "filename": "eccentric-price-plans.json"
     },
     {
@@ -116,7 +116,7 @@
         "name": "Our Story",
         "theme": "Eccentric",
         "category": "general",
-        "thumbnail": "inspiro-premium/our-story",
+        "thumbnail": "our-story",
         "filename": "eccentric-our-story.json"
     },
     {
@@ -124,7 +124,7 @@
         "name": "Pricing",
         "theme": "Inspiro Premium",
         "category": "pricing",
-        "thumbnail": "inspiro-premium/pricing",
+        "thumbnail": "pricing",
         "filename": "inspiro-premium-pricing.json"
     },
     {
@@ -132,7 +132,7 @@
         "name": "About",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/about",
+        "thumbnail": "about",
         "filename": "inspiro-premium-about.json"
     },
     {
@@ -140,7 +140,7 @@
         "name": "Section with Video Lightbox",
         "theme": "Inspiro Premium",
         "category": "hero",
-        "thumbnail": "inspiro-premium/banner",
+        "thumbnail": "banner",
         "filename": "inspiro-premium-banner.json"
     },
     {
@@ -148,7 +148,7 @@
         "name": "Our Services",
         "theme": "Inspiro Premium",
         "category": "features",
-        "thumbnail": "inspiro-premium/services",
+        "thumbnail": "services",
         "filename": "inspiro-premium-services.json"
     },
     {
@@ -156,7 +156,7 @@
         "name": "Portfolio Showcase",
         "theme": "Inspiro Premium",
         "category": "portfolio",
-        "thumbnail": "inspiro-premium/portfolio-showcase",
+        "thumbnail": "portfolio-showcase",
         "filename": "inspiro-premium-portfolio-showcase.json"
     },
     {
@@ -164,7 +164,7 @@
         "name": "Restaurant Menu",
         "theme": "Inspiro Premium",
         "category": "features",
-        "thumbnail": "inspiro-premium/menu",
+        "thumbnail": "menu",
         "filename": "inspiro-premium-our-specials.json"
     },
     {
@@ -172,7 +172,7 @@
         "name": "Hero Banner Restaurant",
         "theme": "Inspiro Premium",
         "category": "hero",
-        "thumbnail": "inspiro-premium/banner-restaurant",
+        "thumbnail": "banner-restaurant",
         "filename": "inspiro-premium-banner-restaurant.json"
     },
     {
@@ -180,7 +180,7 @@
         "name": "Section with Button",
         "theme": "Inspiro Premium",
         "category": "hero",
-        "thumbnail": "inspiro-premium/banner-button",
+        "thumbnail": "banner-button",
         "filename": "inspiro-premium-banner-hotel.json"
     },
     {
@@ -188,7 +188,7 @@
         "name": "Address",
         "theme": "Inspiro Premium",
         "category": "contact",
-        "thumbnail": "inspiro-premium/address",
+        "thumbnail": "address",
         "filename": "inspiro-premium-address.json"
     },
     {
@@ -196,7 +196,7 @@
         "name": "Pricing Plans v2",
         "theme": "Inspiro Premium",
         "category": "pricing",
-        "thumbnail": "inspiro-premium/pricing-tickets",
+        "thumbnail": "pricing-tickets",
         "filename": "inspiro-premium-tickets.json"
     },
     {
@@ -204,7 +204,7 @@
         "name": "Sponsors",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/sponsors",
+        "thumbnail": "sponsors",
         "filename": "inspiro-premium-sponsors.json"
     },
     {
@@ -212,7 +212,7 @@
         "name": "Event Schedule",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/schedule",
+        "thumbnail": "schedule",
         "filename": "inspiro-premium-schedule.json"
     },
     {
@@ -220,7 +220,7 @@
         "name": "About Event",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/about-event",
+        "thumbnail": "about-event",
         "filename": "inspiro-premium-about-event.json"
     },
     {
@@ -228,7 +228,7 @@
         "name": "Event Speakers",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/speakers",
+        "thumbnail": "speakers",
         "filename": "inspiro-premium-speakers.json"
     },
     {
@@ -236,7 +236,7 @@
         "name": "Section With Button",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/section-with-button",
+        "thumbnail": "section-with-button",
         "filename": "inspiro-premium-section-with-button.json"
     },
     {
@@ -244,7 +244,7 @@
         "name": "Team (2 Members)",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/team-2",
+        "thumbnail": "team-2",
         "filename": "inspiro-premium-section-with-2-buttons.json"
     },
     {
@@ -252,7 +252,7 @@
         "name": "FAQ",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/faq",
+        "thumbnail": "faq",
         "filename": "inspiro-premium-faq.json"
     },
     {
@@ -260,7 +260,7 @@
         "name": "Video Slideshow",
         "theme": "Reel",
         "category": "hero",
-        "thumbnail": "reel/video-slide",
+        "thumbnail": "video-slide",
         "filename": "reel-video-hero.json"
     },
     {
@@ -268,7 +268,7 @@
         "name": "Video Background Section",
         "theme": "Reel",
         "category": "hero",
-        "thumbnail": "reel/hero-banner",
+        "thumbnail": "hero-banner",
         "filename": "reel-hero-banner.json"
     },
     {
@@ -276,7 +276,7 @@
         "name": "Authors/Team",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "cookbook/authors",
+        "thumbnail": "authors",
         "filename": "cookbook-about-us.json"
     },
     {
@@ -284,7 +284,7 @@
         "name": "Testimonials",
         "theme": "Inspiro Premium",
         "category": "general",
-        "thumbnail": "inspiro-premium/testimonials",
+        "thumbnail": "testimonials",
         "filename": "inspiro-testimonials.json"
     }
 ]
