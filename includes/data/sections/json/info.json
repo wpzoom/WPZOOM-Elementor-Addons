@@ -278,5 +278,13 @@
         "category": "general",
         "thumbnail": "cookbook/authors",
         "filename": "cookbook-about-us.json"
+    },
+    {
+        "id": "inspiro-testimonials",
+        "name": "Testimonials",
+        "theme": "Inspiro Premium",
+        "category": "general",
+        "thumbnail": "inspiro-premium/testimonials",
+        "filename": "inspiro-testimonials.json"
     }
 ]

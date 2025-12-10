@@ -146,7 +146,7 @@
 }
 .wpzoom-main-tiled-view .wpzoom-item .wpzoom-template-thumb {
 	width: 100%;
-	height: 150px;
+	height: 180px;
 	margin-bottom:5px;
 	border: 1px solid #ccc;
 	background-color: #f7f7f7;
@@ -179,7 +179,7 @@
     -o-transition: opacity .5s;
     transition: opacity .5s;
     cursor: pointer;
-	line-height: 150px;
+	line-height: 180px;
     content: '\e92e';
     font-family: eicons;
     font-size: 22px;
