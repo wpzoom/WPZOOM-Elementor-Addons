@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
 /**
  * WPZOOM Elementor Widgets - Portfolio Showcase Widget.
  *
- * Elementor widget that inserts a Porfolio Showcase.
+ * Elementor widget that inserts a Portfolio Showcase.
  *
  * @since 1.0.0
  */

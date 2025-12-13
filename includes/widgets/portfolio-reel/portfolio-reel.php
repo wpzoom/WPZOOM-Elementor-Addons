@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * WPZOOM Elementor Widgets - Portfolio Widget.
  *
- * Elementor widget that inserts a Porfolio widget.
+ * Elementor widget that inserts a Portfolio widget.
  *
  * @since 1.0.0
  */

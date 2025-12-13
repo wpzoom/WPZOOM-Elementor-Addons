@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPZOOM Elementor Addons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/astra-sites\n"
-"POT-Creation-Date: 2025-06-11 12:53+0000\n"
+"POT-Creation-Date: 2025-12-13 12:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,30 +24,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #. 1: Plugin name 2: Elementor
-#: wpzoom-elementor-addons.php:268
+#: wpzoom-elementor-addons.php:271
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" to activated."
 msgstr ""
 
 #. 1: Plugin name 2: Elementor
-#: wpzoom-elementor-addons.php:280
+#: wpzoom-elementor-addons.php:283
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" to be installed."
 msgstr ""
 
 #. 1: Plugin name 2: Elementor 3: Required Elementor version
 #. 1: Plugin name 2: PHP 3: Required PHP version
-#: wpzoom-elementor-addons.php:314 wpzoom-elementor-addons.php:336
+#: wpzoom-elementor-addons.php:317 wpzoom-elementor-addons.php:339
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
 
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:682
 #: includes/widgets/portfolio-reel/portfolio-reel.php:547
 msgid "\"Load More\" Button"
-msgstr ""
-
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:666
-msgid "\"View All\" or \"Load More\" Button at the Bottom"
 msgstr ""
 
 #: includes/widgets/slider-foodica/slider-foodica.php:359
@@ -61,7 +58,7 @@ msgstr ""
 msgid "% Posts"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2896
+#: includes/widgets/video-slider/video-slider.php:3020
 msgid "(Only visible to administrators)"
 msgstr ""
 
@@ -70,7 +67,7 @@ msgid "(Pro)"
 msgstr ""
 
 #: includes/wpzoom-elementor-ajax-posts-grid.php:281
-#: includes/widgets/posts-grid/posts-grid.php:1800
+#: includes/widgets/posts-grid/posts-grid.php:1838
 msgid ", "
 msgstr ""
 
@@ -87,13 +84,17 @@ msgid "1 comment"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:828
-#: includes/widgets/video-slider/video-slider.php:1030
+#: includes/widgets/video-slider/video-slider.php:1045
 #: includes/widgets/carousel/carousel.php:374
 msgid "1 Slide"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1070
+#: includes/widgets/video-slider/video-slider.php:1085
 msgid "1. Title → Subtitle → Actions"
+msgstr ""
+
+#: wpzoom-elementor-addons.php:442
+msgid "130+ Elementor Templates"
 msgstr ""
 
 #: includes/widgets/testimonial/testimonial.php:262
@@ -101,12 +102,12 @@ msgid "2"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:829
-#: includes/widgets/video-slider/video-slider.php:1031
+#: includes/widgets/video-slider/video-slider.php:1046
 #: includes/widgets/carousel/carousel.php:375
 msgid "2 Slides"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1071
+#: includes/widgets/video-slider/video-slider.php:1086
 msgid "2. Subtitle → Title → Actions"
 msgstr ""
 
@@ -115,12 +116,12 @@ msgid "3"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:830
-#: includes/widgets/video-slider/video-slider.php:1032
+#: includes/widgets/video-slider/video-slider.php:1047
 #: includes/widgets/carousel/carousel.php:376
 msgid "3 Slides"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1072
+#: includes/widgets/video-slider/video-slider.php:1087
 msgid "3. Actions → Title → Subtitle"
 msgstr ""
 
@@ -129,12 +130,12 @@ msgid "4"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:831
-#: includes/widgets/video-slider/video-slider.php:1033
+#: includes/widgets/video-slider/video-slider.php:1048
 #: includes/widgets/carousel/carousel.php:377
 msgid "4 Slides"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1073
+#: includes/widgets/video-slider/video-slider.php:1088
 msgid "4. Title → Actions → Subtitle"
 msgstr ""
 
@@ -143,12 +144,12 @@ msgid "5"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:832
-#: includes/widgets/video-slider/video-slider.php:1034
+#: includes/widgets/video-slider/video-slider.php:1049
 #: includes/widgets/carousel/carousel.php:378
 msgid "5 Slides"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1074
+#: includes/widgets/video-slider/video-slider.php:1089
 msgid "5. Subtitle → Actions → Title"
 msgstr ""
 
@@ -157,12 +158,12 @@ msgid "500px"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:833
-#: includes/widgets/video-slider/video-slider.php:1035
+#: includes/widgets/video-slider/video-slider.php:1050
 #: includes/widgets/carousel/carousel.php:379
 msgid "6 Slides"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1075
+#: includes/widgets/video-slider/video-slider.php:1090
 msgid "6. Actions → Subtitle → Title"
 msgstr ""
 
@@ -191,31 +192,26 @@ msgid ""
 "widgets created by the WPZOOM team"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:233
-msgid "Activate"
+#: wpzoom-elementor-addons.php:443
+msgid "Access to exclusive Elementor templates and professional designs."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:273
+#: wpzoom-elementor-addons.php:276
 msgid "Activate Elementor"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:341
-msgid "Activate License"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:123
-msgid "Activate Your License Key"
-msgstr ""
-
-#: includes/wpzoom-elementor-widgets.php:130
-#: includes/wpzoom-elementor-widgets.php:133
+#: includes/wpzoom-elementor-widgets.php:129
+#: includes/wpzoom-elementor-widgets.php:132
 #: includes/widgets/slider/slider.php:1761
-#: includes/widgets/video-slider/video-slider.php:2186
+#: includes/widgets/video-slider/video-slider.php:2267
 #: includes/widgets/carousel/carousel.php:903
 msgid "Active"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:487
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:502
+msgid "Add margins between Posts"
+msgstr ""
+
 #: includes/widgets/portfolio-reel/portfolio-reel.php:400
 msgid "Add Margins between Posts (whitespace)"
 msgstr ""
@@ -232,7 +228,7 @@ msgstr ""
 msgid "Add your profile link"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:570
+#: includes/widgets/posts-grid/posts-grid.php:574
 #: includes/widgets/woo-products/woo-products.php:391
 msgid "Advanced"
 msgstr ""
@@ -245,33 +241,33 @@ msgstr ""
 msgid "After Social Icons"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:274
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:732
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1042
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1187
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1304
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1421
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:288
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:749
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1085
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1230
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1346
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1463
 #: includes/widgets/team-members/team-members.php:311
-#: includes/widgets/image-box/image-box.php:306
-#: includes/widgets/image-box/image-box.php:449
+#: includes/widgets/image-box/image-box.php:333
+#: includes/widgets/image-box/image-box.php:476
 #: includes/widgets/slider/slider.php:1681
-#: includes/widgets/video-slider/video-slider.php:1556
-#: includes/widgets/video-slider/video-slider.php:1724
-#: includes/widgets/video-slider/video-slider.php:2106
+#: includes/widgets/video-slider/video-slider.php:1595
+#: includes/widgets/video-slider/video-slider.php:1763
+#: includes/widgets/video-slider/video-slider.php:2187
 #: includes/widgets/carousel/carousel.php:823
 #: includes/widgets/portfolio-reel/portfolio-reel.php:253
 #: includes/widgets/portfolio-reel/portfolio-reel.php:602
 #: includes/widgets/portfolio-reel/portfolio-reel.php:902
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1011
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1124
-#: includes/widgets/posts-grid/posts-grid.php:405
+#: includes/widgets/posts-grid/posts-grid.php:409
 #: includes/widgets/featured-category/featured-category.php:345
 #: includes/widgets/featured-category/featured-category.php:490
 #: includes/widgets/directors/directors.php:402
 msgid "Alignment"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1898
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1942
 #: includes/widgets/slider-pro/slider-pro.php:922
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1442
 #: includes/widgets/portfolio-reel/filter.php:12
@@ -284,24 +280,17 @@ msgid "All Products"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:696
-#: includes/widgets/video-slider/video-slider.php:921
+#: includes/widgets/video-slider/video-slider.php:936
 msgid "Amount"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:340
-#: includes/class-wpzoom-elementor-addons-license.php:380
-#: includes/class-wpzoom-elementor-addons-license.php:418
-#: includes/class-wpzoom-elementor-addons-license.php:483
-msgid "An error occurred, please try again."
-msgstr ""
-
-#: includes/widgets/image-box/image-box.php:1160
+#: includes/widgets/image-box/image-box.php:1187
 #: includes/widgets/featured-category/featured-category.php:1202
 msgid "Animation"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:741
-#: includes/widgets/video-slider/video-slider.php:966
+#: includes/widgets/video-slider/video-slider.php:981
 #: includes/widgets/carousel/carousel.php:270
 msgid "Animation Speed"
 msgstr ""
@@ -314,18 +303,14 @@ msgstr ""
 msgid "Apple"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:251
-msgid "Are you sure you want to clear the license key?"
-msgstr ""
-
 #: includes/widgets/slider/slider.php:1044
-#: includes/widgets/video-slider/video-slider.php:1107
+#: includes/widgets/video-slider/video-slider.php:1122
 #: includes/widgets/carousel/carousel.php:358
 msgid "Arrow"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:1046
-#: includes/widgets/video-slider/video-slider.php:1109
+#: includes/widgets/video-slider/video-slider.php:1124
 #: includes/widgets/carousel/carousel.php:360
 msgid "Arrow & Dots"
 msgstr ""
@@ -338,23 +323,24 @@ msgstr ""
 msgid "Arrows Color"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:598
+#: includes/widgets/posts-grid/posts-grid.php:602
 #: includes/widgets/woo-products/woo-products.php:435
 msgid "ASC"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:683
-#: includes/widgets/video-slider/video-slider.php:908
+#: includes/widgets/video-slider/video-slider.php:923
 msgid "Ascending"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:469
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:483
+#: includes/widgets/image-box/image-box.php:177
 #: includes/widgets/portfolio-reel/portfolio-reel.php:384
 msgid "Aspect Ratio"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:588
-#: includes/widgets/image-box/image-box.php:683
+#: includes/widgets/image-box/image-box.php:615
+#: includes/widgets/image-box/image-box.php:710
 #: includes/widgets/featured-category/featured-category.php:630
 #: includes/widgets/featured-category/featured-category.php:725
 msgid "Attachment"
@@ -362,8 +348,8 @@ msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:692
 #: includes/widgets/slider/slider.php:601
-#: includes/widgets/video-slider/video-slider.php:826
-#: includes/widgets/posts-grid/posts-grid.php:328
+#: includes/widgets/video-slider/video-slider.php:841
+#: includes/widgets/posts-grid/posts-grid.php:332
 msgid "Author"
 msgstr ""
 
@@ -372,12 +358,12 @@ msgstr ""
 msgid "Author Color"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:329
+#: includes/widgets/posts-grid/posts-grid.php:333
 msgid "Author Picture"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:608
-#: includes/widgets/image-box/image-box.php:703
+#: includes/widgets/image-box/image-box.php:635
+#: includes/widgets/image-box/image-box.php:730
 #: includes/widgets/featured-category/featured-category.php:650
 #: includes/widgets/featured-category/featured-category.php:745
 msgid "Auto"
@@ -390,7 +376,7 @@ msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:371
 #: includes/widgets/slider/slider.php:1144
-#: includes/widgets/video-slider/video-slider.php:1148
+#: includes/widgets/video-slider/video-slider.php:1186
 msgid "Automatic Height Maximum"
 msgstr ""
 
@@ -400,19 +386,19 @@ msgid "Automatic Height Size"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:768
-#: includes/widgets/video-slider/video-slider.php:993
+#: includes/widgets/video-slider/video-slider.php:1008
 #: includes/widgets/carousel/carousel.php:297
 msgid "Autoplay Speed"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:774
-#: includes/widgets/video-slider/video-slider.php:999
+#: includes/widgets/video-slider/video-slider.php:1014
 #: includes/widgets/carousel/carousel.php:303
 msgid "Autoplay speed in milliseconds"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:755
-#: includes/widgets/video-slider/video-slider.php:980
+#: includes/widgets/video-slider/video-slider.php:995
 #: includes/widgets/carousel/carousel.php:284
 msgid "Autoplay?"
 msgstr ""
@@ -451,19 +437,19 @@ msgctxt "Backdrop Filter Control"
 msgid "Saturation"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1738
 #: includes/widgets/portfolio-showcase/portfolio-showcase.php:1780
-#: includes/widgets/image-box/image-box.php:740
-#: includes/widgets/image-box/image-box.php:822
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1822
+#: includes/widgets/image-box/image-box.php:767
+#: includes/widgets/image-box/image-box.php:849
 #: includes/widgets/video-slider/video-slider.php:396
 #: includes/widgets/slider-pro/slider-pro.php:778
 #: includes/widgets/slider-pro/slider-pro.php:821
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1282
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1324
-#: includes/widgets/posts-grid/posts-grid.php:1171
-#: includes/widgets/posts-grid/posts-grid.php:1215
-#: includes/widgets/posts-grid/posts-grid.php:1369
-#: includes/widgets/posts-grid/posts-grid.php:1413
+#: includes/widgets/posts-grid/posts-grid.php:1205
+#: includes/widgets/posts-grid/posts-grid.php:1249
+#: includes/widgets/posts-grid/posts-grid.php:1403
+#: includes/widgets/posts-grid/posts-grid.php:1447
 #: includes/widgets/featured-category/featured-category.php:782
 #: includes/widgets/featured-category/featured-category.php:864
 msgid "Background"
@@ -476,24 +462,24 @@ msgstr ""
 #: includes/widgets/team-members/team-members.php:1086
 #: includes/widgets/team-members/team-members.php:1216
 #: includes/widgets/team-members/team-members.php:1247
-#: includes/widgets/image-box/image-box.php:536
-#: includes/widgets/image-box/image-box.php:631
+#: includes/widgets/image-box/image-box.php:563
+#: includes/widgets/image-box/image-box.php:658
 #: includes/widgets/slider/slider.php:1577
 #: includes/widgets/slider/slider.php:1609
-#: includes/widgets/video-slider/video-slider.php:1655
-#: includes/widgets/video-slider/video-slider.php:1686
-#: includes/widgets/video-slider/video-slider.php:1855
-#: includes/widgets/video-slider/video-slider.php:1887
-#: includes/widgets/video-slider/video-slider.php:2002
-#: includes/widgets/video-slider/video-slider.php:2034
+#: includes/widgets/video-slider/video-slider.php:1694
+#: includes/widgets/video-slider/video-slider.php:1725
+#: includes/widgets/video-slider/video-slider.php:1894
+#: includes/widgets/video-slider/video-slider.php:1926
+#: includes/widgets/video-slider/video-slider.php:2083
+#: includes/widgets/video-slider/video-slider.php:2115
 #: includes/widgets/pricing-table/pricing-table.php:918
 #: includes/widgets/pricing-table/pricing-table.php:949
 #: includes/widgets/pricing-table/pricing-table.php:1009
 #: includes/widgets/carousel/carousel.php:724
 #: includes/widgets/carousel/carousel.php:755
 #: includes/widgets/testimonial/testimonial.php:315
-#: includes/widgets/posts-grid/posts-grid.php:759
-#: includes/widgets/posts-grid/posts-grid.php:806
+#: includes/widgets/posts-grid/posts-grid.php:763
+#: includes/widgets/posts-grid/posts-grid.php:810
 #: includes/widgets/featured-category/featured-category.php:578
 #: includes/widgets/featured-category/featured-category.php:673
 #: includes/widgets/woo-products/woo-products.php:454
@@ -511,7 +497,7 @@ msgstr ""
 msgid "Background Opacity"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2221
+#: includes/widgets/video-slider/video-slider.php:2302
 msgid "Background Overlay"
 msgstr ""
 
@@ -556,11 +542,11 @@ msgstr ""
 msgid "BitBucket"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:786
-#: includes/widgets/image-box/image-box.php:868
-#: includes/widgets/image-box/image-box.php:984
-#: includes/widgets/image-box/image-box.php:1107
-#: includes/widgets/video-slider/video-slider.php:2283
+#: includes/widgets/image-box/image-box.php:813
+#: includes/widgets/image-box/image-box.php:895
+#: includes/widgets/image-box/image-box.php:1011
+#: includes/widgets/image-box/image-box.php:1134
+#: includes/widgets/video-slider/video-slider.php:2364
 #: includes/widgets/featured-category/featured-category.php:828
 #: includes/widgets/featured-category/featured-category.php:910
 #: includes/widgets/featured-category/featured-category.php:1026
@@ -568,11 +554,11 @@ msgstr ""
 msgid "Blend Mode"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:794
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1539
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1695
-#: includes/widgets/image-box/image-box.php:938
-#: includes/widgets/image-box/image-box.php:1061
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:811
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1581
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1737
+#: includes/widgets/image-box/image-box.php:965
+#: includes/widgets/image-box/image-box.php:1088
 #: includes/widgets/testimonial/testimonial.php:471
 #: includes/widgets/portfolio-reel/portfolio-reel.php:660
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1239
@@ -581,19 +567,19 @@ msgstr ""
 msgid "Border"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:839
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:872
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1584
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1605
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1760
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1801
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:882
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:915
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1626
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1647
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1802
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1843
 #: includes/widgets/team-members/team-members.php:484
 #: includes/widgets/team-members/team-members.php:1097
 #: includes/widgets/team-members/team-members.php:1258
 #: includes/widgets/slider/slider.php:1620
-#: includes/widgets/video-slider/video-slider.php:1697
-#: includes/widgets/video-slider/video-slider.php:1898
-#: includes/widgets/video-slider/video-slider.php:2045
+#: includes/widgets/video-slider/video-slider.php:1736
+#: includes/widgets/video-slider/video-slider.php:1937
+#: includes/widgets/video-slider/video-slider.php:2126
 #: includes/widgets/pricing-table/pricing-table.php:960
 #: includes/widgets/carousel/carousel.php:766
 #: includes/widgets/slider-pro/slider-pro.php:836
@@ -601,28 +587,28 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:738
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1304
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1345
-#: includes/widgets/posts-grid/posts-grid.php:773
-#: includes/widgets/posts-grid/posts-grid.php:820
-#: includes/widgets/posts-grid/posts-grid.php:1230
-#: includes/widgets/posts-grid/posts-grid.php:1428
+#: includes/widgets/posts-grid/posts-grid.php:777
+#: includes/widgets/posts-grid/posts-grid.php:824
+#: includes/widgets/posts-grid/posts-grid.php:1264
+#: includes/widgets/posts-grid/posts-grid.php:1462
 #: includes/widgets/woo-products/woo-products.php:961
 msgid "Border Color"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:807
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1552
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1708
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:824
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1594
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1750
 #: includes/widgets/team-members/team-members.php:762
 #: includes/widgets/team-members/team-members.php:1025
 #: includes/widgets/team-members/team-members.php:1167
-#: includes/widgets/image-box/image-box.php:946
-#: includes/widgets/image-box/image-box.php:1069
+#: includes/widgets/image-box/image-box.php:973
+#: includes/widgets/image-box/image-box.php:1096
 #: includes/widgets/slider/slider.php:1212
 #: includes/widgets/slider/slider.php:1544
-#: includes/widgets/video-slider/video-slider.php:1219
-#: includes/widgets/video-slider/video-slider.php:1623
-#: includes/widgets/video-slider/video-slider.php:1821
-#: includes/widgets/video-slider/video-slider.php:1969
+#: includes/widgets/video-slider/video-slider.php:1257
+#: includes/widgets/video-slider/video-slider.php:1662
+#: includes/widgets/video-slider/video-slider.php:1860
+#: includes/widgets/video-slider/video-slider.php:2050
 #: includes/widgets/pricing-table/pricing-table.php:859
 #: includes/widgets/pricing-table/pricing-table.php:1028
 #: includes/widgets/carousel/carousel.php:462
@@ -631,10 +617,10 @@ msgstr ""
 #: includes/widgets/testimonial/testimonial.php:489
 #: includes/widgets/portfolio-reel/portfolio-reel.php:673
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1252
-#: includes/widgets/posts-grid/posts-grid.php:714
-#: includes/widgets/posts-grid/posts-grid.php:867
-#: includes/widgets/posts-grid/posts-grid.php:1257
-#: includes/widgets/posts-grid/posts-grid.php:1455
+#: includes/widgets/posts-grid/posts-grid.php:718
+#: includes/widgets/posts-grid/posts-grid.php:871
+#: includes/widgets/posts-grid/posts-grid.php:1291
+#: includes/widgets/posts-grid/posts-grid.php:1489
 #: includes/widgets/featured-category/featured-category.php:988
 #: includes/widgets/featured-category/featured-category.php:1111
 #: includes/widgets/woo-products/woo-products.php:501
@@ -646,20 +632,20 @@ msgstr ""
 msgid "Border Radius"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:701
+#: includes/widgets/posts-grid/posts-grid.php:705
 msgid "Border Widget"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1328
+#: includes/widgets/video-slider/video-slider.php:1366
 #: includes/widgets/slider-pro/slider-pro.php:456
 #: includes/widgets/slider-pro/slider-pro.php:513
 msgid "Bottom"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:338
-#: includes/widgets/image-box/image-box.php:481
-#: includes/widgets/image-box/image-box.php:558
-#: includes/widgets/image-box/image-box.php:653
+#: includes/widgets/image-box/image-box.php:365
+#: includes/widgets/image-box/image-box.php:508
+#: includes/widgets/image-box/image-box.php:585
+#: includes/widgets/image-box/image-box.php:680
 #: includes/widgets/featured-category/featured-category.php:377
 #: includes/widgets/featured-category/featured-category.php:522
 #: includes/widgets/featured-category/featured-category.php:600
@@ -667,10 +653,10 @@ msgstr ""
 msgid "Bottom Center"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:334
-#: includes/widgets/image-box/image-box.php:477
-#: includes/widgets/image-box/image-box.php:557
-#: includes/widgets/image-box/image-box.php:652
+#: includes/widgets/image-box/image-box.php:361
+#: includes/widgets/image-box/image-box.php:504
+#: includes/widgets/image-box/image-box.php:584
+#: includes/widgets/image-box/image-box.php:679
 #: includes/widgets/featured-category/featured-category.php:373
 #: includes/widgets/featured-category/featured-category.php:518
 #: includes/widgets/featured-category/featured-category.php:599
@@ -678,10 +664,10 @@ msgstr ""
 msgid "Bottom Left"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:342
-#: includes/widgets/image-box/image-box.php:485
-#: includes/widgets/image-box/image-box.php:559
-#: includes/widgets/image-box/image-box.php:654
+#: includes/widgets/image-box/image-box.php:369
+#: includes/widgets/image-box/image-box.php:512
+#: includes/widgets/image-box/image-box.php:586
+#: includes/widgets/image-box/image-box.php:681
 #: includes/widgets/featured-category/featured-category.php:381
 #: includes/widgets/featured-category/featured-category.php:526
 #: includes/widgets/featured-category/featured-category.php:601
@@ -698,8 +684,8 @@ msgstr ""
 #: includes/widgets/slider-cookbook/slider-cookbook.php:700
 #: includes/widgets/slider/slider.php:1266
 #: includes/widgets/slider/slider.php:1310
-#: includes/widgets/video-slider/video-slider.php:1419
-#: includes/widgets/video-slider/video-slider.php:1494
+#: includes/widgets/video-slider/video-slider.php:1457
+#: includes/widgets/video-slider/video-slider.php:1533
 #: includes/widgets/pricing-table/pricing-table.php:501
 #: includes/widgets/pricing-table/pricing-table.php:561
 #: includes/widgets/pricing-table/pricing-table.php:679
@@ -709,21 +695,17 @@ msgstr ""
 msgid "Bottom Spacing"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:900
-#: includes/widgets/posts-grid/posts-grid.php:692
+#: includes/widgets/image-box/image-box.php:927
+#: includes/widgets/posts-grid/posts-grid.php:696
 #: includes/widgets/featured-category/featured-category.php:942
 msgid "Box"
-msgstr ""
-
-#: includes/widgets/video-slider/video-slider.php:1778
-msgid "Box Size"
 msgstr ""
 
 #: includes/widgets/video-slider/video-slider.php:345
 msgid "Browse WPZOOM Themes"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1548
+#: includes/widgets/video-slider/video-slider.php:1587
 #: includes/widgets/pricing-table/pricing-table.php:832
 #: includes/widgets/woo-products/woo-products.php:880
 msgid "Button"
@@ -733,11 +715,11 @@ msgstr ""
 msgid "Button Color"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:667
+#: includes/widgets/video-slider/video-slider.php:665
 msgid "Button Link"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:651
+#: includes/widgets/video-slider/video-slider.php:649
 #: includes/widgets/pricing-table/pricing-table.php:363
 msgid "Button Text"
 msgstr ""
@@ -754,14 +736,13 @@ msgstr ""
 msgid "Cat Filter Rule"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:331
-#: includes/widgets/posts-grid/posts-grid.php:537
-#: includes/widgets/posts-grid/posts-grid.php:556
+#: includes/widgets/posts-grid/posts-grid.php:335
+#: includes/widgets/posts-grid/posts-grid.php:541
+#: includes/widgets/posts-grid/posts-grid.php:560
 msgid "Categories"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:328
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1232
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:342
 #: includes/widgets/slider-cookbook/slider-cookbook.php:474
 #: includes/widgets/portfolio-reel/portfolio-reel.php:284
 #: includes/widgets/featured-category/featured-category.php:190
@@ -778,19 +759,19 @@ msgstr ""
 msgid "Category Image Scale"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:282
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:740
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1050
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1195
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1312
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1429
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:296
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:757
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1093
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1238
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1354
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1471
 #: includes/widgets/team-members/team-members.php:319
 #: includes/widgets/slider/slider.php:1690
-#: includes/widgets/video-slider/video-slider.php:1298
-#: includes/widgets/video-slider/video-slider.php:1350
-#: includes/widgets/video-slider/video-slider.php:1564
-#: includes/widgets/video-slider/video-slider.php:1732
-#: includes/widgets/video-slider/video-slider.php:2115
+#: includes/widgets/video-slider/video-slider.php:1336
+#: includes/widgets/video-slider/video-slider.php:1388
+#: includes/widgets/video-slider/video-slider.php:1603
+#: includes/widgets/video-slider/video-slider.php:1771
+#: includes/widgets/video-slider/video-slider.php:2196
 #: includes/widgets/carousel/carousel.php:832
 #: includes/widgets/slider-pro/slider-pro.php:435
 #: includes/widgets/slider-pro/slider-pro.php:492
@@ -800,18 +781,18 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:910
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1019
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1132
-#: includes/widgets/posts-grid/posts-grid.php:413
-#: includes/widgets/posts-grid/posts-grid.php:468
+#: includes/widgets/posts-grid/posts-grid.php:417
+#: includes/widgets/posts-grid/posts-grid.php:472
 #: includes/widgets/directors/directors.php:411
 #: includes/widgets/woo-products/woo-products.php:218
 #: includes/widgets/woo-products/woo-products.php:473
 msgid "Center"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:326
-#: includes/widgets/image-box/image-box.php:469
-#: includes/widgets/image-box/image-box.php:555
-#: includes/widgets/image-box/image-box.php:650
+#: includes/widgets/image-box/image-box.php:353
+#: includes/widgets/image-box/image-box.php:496
+#: includes/widgets/image-box/image-box.php:582
+#: includes/widgets/image-box/image-box.php:677
 #: includes/widgets/featured-category/featured-category.php:365
 #: includes/widgets/featured-category/featured-category.php:510
 #: includes/widgets/featured-category/featured-category.php:597
@@ -819,10 +800,10 @@ msgstr ""
 msgid "Center Center"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:322
-#: includes/widgets/image-box/image-box.php:465
-#: includes/widgets/image-box/image-box.php:554
-#: includes/widgets/image-box/image-box.php:649
+#: includes/widgets/image-box/image-box.php:349
+#: includes/widgets/image-box/image-box.php:492
+#: includes/widgets/image-box/image-box.php:581
+#: includes/widgets/image-box/image-box.php:676
 #: includes/widgets/featured-category/featured-category.php:361
 #: includes/widgets/featured-category/featured-category.php:506
 #: includes/widgets/featured-category/featured-category.php:596
@@ -835,10 +816,10 @@ msgstr ""
 msgid "Center Mode?"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:330
-#: includes/widgets/image-box/image-box.php:473
-#: includes/widgets/image-box/image-box.php:556
-#: includes/widgets/image-box/image-box.php:651
+#: includes/widgets/image-box/image-box.php:357
+#: includes/widgets/image-box/image-box.php:500
+#: includes/widgets/image-box/image-box.php:583
+#: includes/widgets/image-box/image-box.php:678
 #: includes/widgets/featured-category/featured-category.php:369
 #: includes/widgets/featured-category/featured-category.php:514
 #: includes/widgets/featured-category/featured-category.php:598
@@ -846,25 +827,16 @@ msgstr ""
 msgid "Center Right"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:704
-msgid ""
-"Change the text to something like \"Load More\" if you have enabled the "
-"option to load new posts dynamically."
-msgstr ""
-
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:720
 #: includes/widgets/portfolio-reel/portfolio-reel.php:577
 msgid ""
 "Change the text to something like \"View All\" if you disabled the option to "
 "load new posts dynamically."
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:91
-#: includes/wpzoom-template-manager.php:102
+#: includes/wpzoom-template-manager.php:95
+#: includes/wpzoom-template-manager.php:106
 msgid "Cheatin&#8217; huh?"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:241
-msgid "Check Status"
 msgstr ""
 
 #: includes/widgets/directors/directors.php:214
@@ -878,7 +850,7 @@ msgstr ""
 msgid "Choose Image"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1059
+#: includes/widgets/video-slider/video-slider.php:1074
 msgid ""
 "Choose the order of content elements in all slides. This affects title, "
 "subtitle, and actions (button/lightbox) across all slides."
@@ -888,17 +860,13 @@ msgstr ""
 msgid "Choose Video File"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:473
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:487
 #: includes/widgets/portfolio-reel/portfolio-reel.php:388
 msgid "Cinema"
 msgstr ""
 
 #: includes/widgets/testimonial/testimonial.php:291
 msgid "Classic"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:249
-msgid "Clear"
 msgstr ""
 
 #: includes/widgets/featured-category/category-image.php:114
@@ -914,36 +882,36 @@ msgstr ""
 msgid "Codetic"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:945
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1006
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1028
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1151
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1173
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1268
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1290
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1385
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1407
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1502
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1524
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1658
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1680
-#: includes/widgets/image-box/image-box.php:277
-#: includes/widgets/image-box/image-box.php:420
-#: includes/widgets/image-box/image-box.php:797
-#: includes/widgets/image-box/image-box.php:879
-#: includes/widgets/image-box/image-box.php:995
-#: includes/widgets/image-box/image-box.php:1118
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:988
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1049
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1071
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1194
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1216
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1310
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1332
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1427
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1449
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1544
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1566
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1700
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1722
+#: includes/widgets/image-box/image-box.php:304
+#: includes/widgets/image-box/image-box.php:447
+#: includes/widgets/image-box/image-box.php:824
+#: includes/widgets/image-box/image-box.php:906
+#: includes/widgets/image-box/image-box.php:1022
+#: includes/widgets/image-box/image-box.php:1145
 #: includes/widgets/slider/slider.php:1565
 #: includes/widgets/slider/slider.php:1598
 #: includes/widgets/slider/slider.php:1728
 #: includes/widgets/slider/slider.php:1748
 #: includes/widgets/slider/slider.php:1780
-#: includes/widgets/video-slider/video-slider.php:1990
-#: includes/widgets/video-slider/video-slider.php:2023
-#: includes/widgets/video-slider/video-slider.php:2153
-#: includes/widgets/video-slider/video-slider.php:2173
-#: includes/widgets/video-slider/video-slider.php:2205
-#: includes/widgets/video-slider/video-slider.php:2300
+#: includes/widgets/video-slider/video-slider.php:2071
+#: includes/widgets/video-slider/video-slider.php:2104
+#: includes/widgets/video-slider/video-slider.php:2234
+#: includes/widgets/video-slider/video-slider.php:2254
+#: includes/widgets/video-slider/video-slider.php:2286
+#: includes/widgets/video-slider/video-slider.php:2381
 #: includes/widgets/carousel/carousel.php:712
 #: includes/widgets/carousel/carousel.php:744
 #: includes/widgets/carousel/carousel.php:870
@@ -958,12 +926,12 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1110
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1202
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1224
-#: includes/widgets/posts-grid/posts-grid.php:936
-#: includes/widgets/posts-grid/posts-grid.php:959
-#: includes/widgets/posts-grid/posts-grid.php:1022
-#: includes/widgets/posts-grid/posts-grid.php:1082
-#: includes/widgets/posts-grid/posts-grid.php:1203
-#: includes/widgets/posts-grid/posts-grid.php:1401
+#: includes/widgets/posts-grid/posts-grid.php:970
+#: includes/widgets/posts-grid/posts-grid.php:993
+#: includes/widgets/posts-grid/posts-grid.php:1056
+#: includes/widgets/posts-grid/posts-grid.php:1116
+#: includes/widgets/posts-grid/posts-grid.php:1237
+#: includes/widgets/posts-grid/posts-grid.php:1435
 #: includes/widgets/featured-category/featured-category.php:315
 #: includes/widgets/featured-category/featured-category.php:460
 #: includes/widgets/featured-category/featured-category.php:839
@@ -979,15 +947,15 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2293
+#: includes/widgets/video-slider/video-slider.php:2374
 msgid "Color Burn"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:795
-#: includes/widgets/image-box/image-box.php:877
-#: includes/widgets/image-box/image-box.php:993
-#: includes/widgets/image-box/image-box.php:1116
-#: includes/widgets/video-slider/video-slider.php:2292
+#: includes/widgets/image-box/image-box.php:822
+#: includes/widgets/image-box/image-box.php:904
+#: includes/widgets/image-box/image-box.php:1020
+#: includes/widgets/image-box/image-box.php:1143
+#: includes/widgets/video-slider/video-slider.php:2373
 #: includes/widgets/featured-category/featured-category.php:837
 #: includes/widgets/featured-category/featured-category.php:919
 #: includes/widgets/featured-category/featured-category.php:1035
@@ -999,12 +967,12 @@ msgstr ""
 msgid "Color, Typography &amp; Spacing"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:231
+#: includes/widgets/posts-grid/posts-grid.php:232
 #: includes/widgets/woo-products/woo-products.php:141
 msgid "Columns"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:638
+#: includes/widgets/posts-grid/posts-grid.php:642
 msgid "Columns margin"
 msgstr ""
 
@@ -1013,7 +981,7 @@ msgstr ""
 msgid "Comment Count"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:332
+#: includes/widgets/posts-grid/posts-grid.php:336
 msgid "Comments"
 msgstr ""
 
@@ -1030,12 +998,8 @@ msgstr ""
 msgid "Company Name"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:353
-msgid "Contact Support"
-msgstr ""
-
-#: includes/widgets/image-box/image-box.php:610
-#: includes/widgets/image-box/image-box.php:705
+#: includes/widgets/image-box/image-box.php:637
+#: includes/widgets/image-box/image-box.php:732
 #: includes/widgets/featured-category/featured-category.php:652
 #: includes/widgets/featured-category/featured-category.php:747
 msgid "Contain"
@@ -1049,7 +1013,7 @@ msgstr ""
 #: includes/widgets/slider-cookbook/slider-cookbook.php:237
 #: includes/widgets/slider-cookbook/slider-cookbook.php:622
 #: includes/widgets/video-slider/video-slider.php:591
-#: includes/widgets/posts-grid/posts-grid.php:1060
+#: includes/widgets/posts-grid/posts-grid.php:1094
 #: includes/widgets/featured-category/featured-category.php:182
 #: includes/widgets/woo-products/woo-products.php:599
 msgid "Content"
@@ -1069,15 +1033,15 @@ msgstr ""
 msgid "Content Color"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1049
-#: includes/widgets/video-slider/video-slider.php:1067
+#: includes/widgets/video-slider/video-slider.php:1064
+#: includes/widgets/video-slider/video-slider.php:1082
 msgid "Content Order"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:806
 #: includes/widgets/slider-cookbook/slider-cookbook.php:449
 #: includes/widgets/slider/slider.php:1234
-#: includes/widgets/video-slider/video-slider.php:1241
+#: includes/widgets/video-slider/video-slider.php:1279
 #: includes/widgets/carousel/carousel.php:484
 msgid "Content Padding"
 msgstr ""
@@ -1095,7 +1059,7 @@ msgstr ""
 msgid "Content Top | Icon Title Inline"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1257
+#: includes/widgets/video-slider/video-slider.php:1295
 msgid "Content Width"
 msgstr ""
 
@@ -1112,8 +1076,8 @@ msgstr ""
 msgid "CookBook Slideshow"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:609
-#: includes/widgets/image-box/image-box.php:704
+#: includes/widgets/image-box/image-box.php:636
+#: includes/widgets/image-box/image-box.php:731
 #: includes/widgets/featured-category/featured-category.php:651
 #: includes/widgets/featured-category/featured-category.php:746
 msgid "Cover"
@@ -1124,18 +1088,24 @@ msgstr ""
 msgid "Cover Image"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2877
+#: includes/widgets/video-slider/video-slider.php:3001
 msgid ""
 "Create stunning video slideshows with background videos and custom overlays. "
-"This premium widget requires a valid license key from WPZOOM Elementor "
-"Addons Pro."
+"This premium widget requires the WPZOOM Elementor Addons Pro plugin to be "
+"installed and activated, or you can use it with any premium WPZOOM theme."
 msgstr ""
 
 #: includes/widgets/video-slider/video-slider.php:343
 msgid ""
 "Create stunning video slideshows with background videos, custom overlays, "
-"and advanced animations. This premium widget requires either a WPZOOM theme "
-"or the WPZOOM Elementor Addons Pro plugin."
+"and advanced animations. This premium widget requires the WPZOOM Elementor "
+"Addons Pro plugin to be installed and activated, or you can use it with any "
+"premium WPZOOM theme."
+msgstr ""
+
+#: wpzoom-elementor-addons.php:436
+msgid ""
+"Create stunning video slideshows with multiple sources and advanced controls."
 msgstr ""
 
 #: includes/widgets/pricing-table/pricing-table.php:163
@@ -1242,7 +1212,7 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1139
+#: includes/widgets/video-slider/video-slider.php:1177
 msgid "Custom Height"
 msgstr ""
 
@@ -1254,11 +1224,11 @@ msgstr ""
 msgid "Custom Symbol"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:793
-#: includes/widgets/image-box/image-box.php:875
-#: includes/widgets/image-box/image-box.php:991
-#: includes/widgets/image-box/image-box.php:1114
-#: includes/widgets/video-slider/video-slider.php:2290
+#: includes/widgets/image-box/image-box.php:820
+#: includes/widgets/image-box/image-box.php:902
+#: includes/widgets/image-box/image-box.php:1018
+#: includes/widgets/image-box/image-box.php:1141
+#: includes/widgets/video-slider/video-slider.php:2371
 #: includes/widgets/featured-category/featured-category.php:835
 #: includes/widgets/featured-category/featured-category.php:917
 #: includes/widgets/featured-category/featured-category.php:1033
@@ -1269,8 +1239,8 @@ msgstr ""
 #: includes/widgets/slider-cookbook/slider-cookbook.php:766
 #: includes/widgets/slider/slider.php:249
 #: includes/widgets/video-slider/video-slider.php:246
-#: includes/widgets/posts-grid/posts-grid.php:330
-#: includes/widgets/posts-grid/posts-grid.php:584
+#: includes/widgets/posts-grid/posts-grid.php:334
+#: includes/widgets/posts-grid/posts-grid.php:588
 #: includes/widgets/woo-products/woo-products.php:417
 msgid "Date"
 msgstr ""
@@ -1279,11 +1249,7 @@ msgstr ""
 msgid "Date Color"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:226
-msgid "Deactivate"
-msgstr ""
-
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:227
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:241
 #: includes/widgets/testimonial/testimonial.php:290
 #: includes/widgets/testimonial/testimonial.php:348
 #: includes/widgets/directors/directors.php:166
@@ -1302,13 +1268,13 @@ msgstr ""
 msgid "Delicious"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:599
+#: includes/widgets/posts-grid/posts-grid.php:603
 #: includes/widgets/woo-products/woo-products.php:436
 msgid "DESC"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:684
-#: includes/widgets/video-slider/video-slider.php:909
+#: includes/widgets/video-slider/video-slider.php:924
 msgid "Descending"
 msgstr ""
 
@@ -1316,12 +1282,12 @@ msgstr ""
 msgid "Description Height"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:398
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:412
 #: includes/widgets/portfolio-reel/portfolio-reel.php:344
 msgid "Design & Appearance"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1085
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1128
 msgid "Details Box"
 msgstr ""
 
@@ -1330,7 +1296,7 @@ msgstr ""
 msgid "Details Button"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:576
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:591
 #: includes/widgets/portfolio-reel/portfolio-reel.php:488
 msgid "Details to Show"
 msgstr ""
@@ -1339,11 +1305,11 @@ msgstr ""
 msgid "DeviantArt"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:798
-#: includes/widgets/image-box/image-box.php:880
-#: includes/widgets/image-box/image-box.php:996
-#: includes/widgets/image-box/image-box.php:1119
-#: includes/widgets/video-slider/video-slider.php:2296
+#: includes/widgets/image-box/image-box.php:825
+#: includes/widgets/image-box/image-box.php:907
+#: includes/widgets/image-box/image-box.php:1023
+#: includes/widgets/image-box/image-box.php:1146
+#: includes/widgets/video-slider/video-slider.php:2377
 #: includes/widgets/featured-category/featured-category.php:840
 #: includes/widgets/featured-category/featured-category.php:922
 #: includes/widgets/featured-category/featured-category.php:1038
@@ -1359,6 +1325,10 @@ msgstr ""
 #: includes/widgets/directors/directors.php:155
 #: includes/widgets/directors/directors.php:339
 msgid "Directors"
+msgstr ""
+
+#: wpzoom-elementor-addons.php:423
+msgid "Dismiss notice"
 msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:296
@@ -1378,12 +1348,12 @@ msgstr ""
 msgid "Display Category"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:340
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:354
 #: includes/widgets/portfolio-reel/portfolio-reel.php:294
 msgid "Display Category Filter at the Top (Isotope Effect)"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:613
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:628
 #: includes/widgets/portfolio-reel/portfolio-reel.php:519
 msgid "Display Category Name"
 msgstr ""
@@ -1397,20 +1367,27 @@ msgstr ""
 msgid "Display Date/Time"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:587
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:602
 #: includes/widgets/portfolio-reel/portfolio-reel.php:497
 msgid "Display Director Name"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:623
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:638
 msgid "Display Excerpts"
 msgstr ""
 
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:693
 #: includes/widgets/portfolio-reel/portfolio-reel.php:554
 msgid "Display Load More button"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:454
+#: includes/widgets/video-slider/video-slider.php:1150
+msgid ""
+"Display play/pause and mute/unmute controls for video backgrounds in the "
+"bottom right corner."
+msgstr ""
+
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:468
 msgid "Display Posts in Masonry Layout"
 msgstr ""
 
@@ -1418,7 +1395,7 @@ msgstr ""
 msgid "Display Rating?"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:636
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:651
 #: includes/widgets/portfolio-reel/portfolio-reel.php:530
 msgid "Display Read More button"
 msgstr ""
@@ -1431,11 +1408,7 @@ msgstr ""
 msgid "Display User & Company Block?"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:677
-msgid "Display View All button"
-msgstr ""
-
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:600
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:615
 #: includes/widgets/portfolio-reel/portfolio-reel.php:508
 msgid "Display Year of Production"
 msgstr ""
@@ -1444,15 +1417,15 @@ msgstr ""
 msgid "Distance Between Rating Item"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:574
-#: includes/widgets/image-box/image-box.php:669
+#: includes/widgets/image-box/image-box.php:601
+#: includes/widgets/image-box/image-box.php:696
 #: includes/widgets/featured-category/featured-category.php:616
 #: includes/widgets/featured-category/featured-category.php:711
 msgid "Don&rsquo;t Repeat"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:1045
-#: includes/widgets/video-slider/video-slider.php:1108
+#: includes/widgets/video-slider/video-slider.php:1123
 #: includes/widgets/carousel/carousel.php:359
 msgid "Dots"
 msgstr ""
@@ -1461,29 +1434,28 @@ msgstr ""
 msgid "Dribbble"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:231
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:245
 msgid "Eccentric"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:270 wpzoom-elementor-addons.php:282
-#: wpzoom-elementor-addons.php:316
+#: wpzoom-elementor-addons.php:273 wpzoom-elementor-addons.php:285
+#: wpzoom-elementor-addons.php:319
 msgid "Elementor"
 msgstr ""
 
 #. Name of the plugin
-#: includes/class-wpzoom-elementor-addons-license.php:74
 msgid "Elementor Addons by WPZOOM"
 msgstr ""
 
-#: includes/wpzoom-template-library.php:48
+#: includes/wpzoom-template-library.php:49
 msgid "Elementor is required to import templates."
 msgstr ""
 
-#: wpzoom-elementor-addons.php:315 wpzoom-elementor-addons.php:337
+#: wpzoom-elementor-addons.php:318 wpzoom-elementor-addons.php:340
 msgid "Elementor Test Extension"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1368
+#: includes/widgets/video-slider/video-slider.php:1406
 msgid "Elements Spacing"
 msgstr ""
 
@@ -1495,21 +1467,21 @@ msgstr ""
 msgid "Email Address"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:550
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:565
 #: includes/widgets/portfolio-reel/portfolio-reel.php:466
 msgid "Enable Background Video on hover"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:406
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:420
 msgid "Enable Dark Mode"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:513
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:528
 #: includes/widgets/portfolio-reel/portfolio-reel.php:422
 msgid "Enable Lightbox"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2229
+#: includes/widgets/video-slider/video-slider.php:2310
 msgid "Enable Overlay"
 msgstr ""
 
@@ -1531,33 +1503,7 @@ msgstr ""
 msgid "End Time"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:739
-#: includes/widgets/video-slider/video-slider.php:2893
-msgid "Enter License Key"
-msgstr ""
-
-#: includes/wpzoom-template-manager.php:347
-msgid "Enter Valid License"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:162
-msgid "Enter your license key for this plugin to unlock premium features."
-msgstr ""
-
-#. %1$s = WPZOOM Members Area URL.
-#: includes/class-wpzoom-elementor-addons-license.php:130
-#, php-format
-msgid ""
-"Enter your license key to unlock premium features. You can find your license "
-"in <a href=\"%1$s\" target=\"_blank\">WPZOOM Members Area &rarr; Licenses</a>"
-"."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:151
-msgid "Enter your license key..."
-msgstr ""
-
-#: includes/widgets/image-box/image-box.php:183
+#: includes/widgets/image-box/image-box.php:210
 msgid "Enter your title"
 msgstr ""
 
@@ -1565,7 +1511,7 @@ msgstr ""
 msgid "Enter your URL"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:245
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:259
 #: includes/widgets/portfolio-reel/portfolio-reel.php:223
 msgid "Enter your widget title"
 msgstr ""
@@ -1578,15 +1524,15 @@ msgstr ""
 msgid "Error!"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:356
+#: includes/widgets/posts-grid/posts-grid.php:360
 msgid "Excerpt"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:368
+#: includes/widgets/posts-grid/posts-grid.php:372
 msgid "Excerpt Length"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1349
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1391
 msgid "Excerpts"
 msgstr ""
 
@@ -1596,8 +1542,8 @@ msgid "Exciting Feature"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:639
-#: includes/widgets/video-slider/video-slider.php:864
-#: includes/widgets/posts-grid/posts-grid.php:550
+#: includes/widgets/video-slider/video-slider.php:879
+#: includes/widgets/posts-grid/posts-grid.php:554
 #: includes/widgets/woo-products/woo-products.php:349
 msgid "Exclude"
 msgstr ""
@@ -1614,11 +1560,11 @@ msgstr ""
 msgid "Exclude Tags"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:799
-#: includes/widgets/image-box/image-box.php:881
-#: includes/widgets/image-box/image-box.php:997
-#: includes/widgets/image-box/image-box.php:1120
-#: includes/widgets/video-slider/video-slider.php:2297
+#: includes/widgets/image-box/image-box.php:826
+#: includes/widgets/image-box/image-box.php:908
+#: includes/widgets/image-box/image-box.php:1024
+#: includes/widgets/image-box/image-box.php:1147
+#: includes/widgets/video-slider/video-slider.php:2378
 #: includes/widgets/featured-category/featured-category.php:841
 #: includes/widgets/featured-category/featured-category.php:923
 #: includes/widgets/featured-category/featured-category.php:1039
@@ -1672,7 +1618,7 @@ msgstr ""
 msgid "Fill Color"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:971
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1014
 #: includes/widgets/portfolio-reel/portfolio-reel.php:834
 msgid "Filter"
 msgstr ""
@@ -1681,10 +1627,10 @@ msgstr ""
 msgid "Filter By"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:778
-#: includes/widgets/image-box/image-box.php:860
-#: includes/widgets/image-box/image-box.php:976
-#: includes/widgets/image-box/image-box.php:1099
+#: includes/widgets/image-box/image-box.php:805
+#: includes/widgets/image-box/image-box.php:887
+#: includes/widgets/image-box/image-box.php:1003
+#: includes/widgets/image-box/image-box.php:1126
 #: includes/widgets/featured-category/featured-category.php:820
 #: includes/widgets/featured-category/featured-category.php:902
 #: includes/widgets/featured-category/featured-category.php:1018
@@ -1692,8 +1638,8 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:593
-#: includes/widgets/image-box/image-box.php:688
+#: includes/widgets/image-box/image-box.php:620
+#: includes/widgets/image-box/image-box.php:715
 #: includes/widgets/featured-category/featured-category.php:635
 #: includes/widgets/featured-category/featured-category.php:730
 msgid "Fixed"
@@ -1742,22 +1688,27 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:214
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:228
 #: includes/widgets/portfolio-reel/portfolio-reel.php:214
 msgid "General Settings"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:279
-#: includes/class-wpzoom-elementor-addons-license.php:742
-msgid "Get License Key"
+#: wpzoom-elementor-addons.php:450
+msgid "Get priority support and regular updates for your Pro license."
 msgstr ""
 
+#: includes/wpzoom-template-manager.php:155
+#: includes/wpzoom-template-manager.php:477
+#: includes/wpzoom-template-manager.php:478
+#: includes/wpzoom-template-manager.php:531
+#: includes/wpzoom-elementor-widgets.php:136
 #: includes/widgets/video-slider/video-slider.php:347
+#: includes/widgets/video-slider/video-slider.php:3017
 msgid "Get Pro Plugin"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:137
-msgid "Get Pro Version"
+#: wpzoom-elementor-addons.php:457
+msgid "Get the Pro Version"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:159
@@ -1772,7 +1723,7 @@ msgstr ""
 msgid "Grid Style"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2294
+#: includes/widgets/video-slider/video-slider.php:2375
 msgid "Hard Light"
 msgstr ""
 
@@ -1801,10 +1752,10 @@ msgstr ""
 #: includes/widgets/slider-pro/slider-pro.php:347
 #: includes/widgets/slider-pro/slider-pro.php:540
 #: includes/widgets/testimonial/testimonial.php:307
-#: includes/widgets/posts-grid/posts-grid.php:265
-#: includes/widgets/posts-grid/posts-grid.php:290
-#: includes/widgets/posts-grid/posts-grid.php:359
-#: includes/widgets/posts-grid/posts-grid.php:384
+#: includes/widgets/posts-grid/posts-grid.php:269
+#: includes/widgets/posts-grid/posts-grid.php:294
+#: includes/widgets/posts-grid/posts-grid.php:363
+#: includes/widgets/posts-grid/posts-grid.php:388
 #: includes/widgets/featured-category/featured-category.php:217
 #: includes/widgets/slider-foodica/slider-foodica.php:221
 #: includes/widgets/slider-foodica/slider-foodica.php:232
@@ -1836,7 +1787,7 @@ msgstr ""
 msgid "Hide Product Price?"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:355
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:369
 #: includes/widgets/portfolio-reel/portfolio-reel.php:307
 msgid "Hide sub-categories in filter?"
 msgstr ""
@@ -1846,7 +1797,7 @@ msgstr ""
 msgid "Horizontal"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1290
+#: includes/widgets/video-slider/video-slider.php:1328
 msgid "Horizontal Position"
 msgstr ""
 
@@ -1858,32 +1809,32 @@ msgstr ""
 msgid "Houzz"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:863
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1019
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1164
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1281
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1398
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1515
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1597
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1671
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1773
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:906
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1062
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1207
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1323
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1440
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1557
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1639
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1713
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1815
 #: includes/widgets/team-members/team-members.php:451
 #: includes/widgets/team-members/team-members.php:1068
 #: includes/widgets/team-members/team-members.php:1229
-#: includes/widgets/image-box/image-box.php:371
-#: includes/widgets/image-box/image-box.php:623
-#: includes/widgets/image-box/image-box.php:814
-#: includes/widgets/image-box/image-box.php:1033
+#: includes/widgets/image-box/image-box.php:398
+#: includes/widgets/image-box/image-box.php:650
+#: includes/widgets/image-box/image-box.php:841
+#: includes/widgets/image-box/image-box.php:1060
 #: includes/widgets/slider-cookbook/slider-cookbook.php:516
 #: includes/widgets/slider-cookbook/slider-cookbook.php:590
 #: includes/widgets/slider-cookbook/slider-cookbook.php:734
 #: includes/widgets/slider-cookbook/slider-cookbook.php:826
 #: includes/widgets/slider/slider.php:1591
 #: includes/widgets/slider/slider.php:1741
-#: includes/widgets/video-slider/video-slider.php:1668
-#: includes/widgets/video-slider/video-slider.php:1868
-#: includes/widgets/video-slider/video-slider.php:2016
-#: includes/widgets/video-slider/video-slider.php:2166
+#: includes/widgets/video-slider/video-slider.php:1707
+#: includes/widgets/video-slider/video-slider.php:1907
+#: includes/widgets/video-slider/video-slider.php:2097
+#: includes/widgets/video-slider/video-slider.php:2247
 #: includes/widgets/pricing-table/pricing-table.php:931
 #: includes/widgets/carousel/carousel.php:737
 #: includes/widgets/carousel/carousel.php:883
@@ -1895,10 +1846,10 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1101
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1215
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1317
-#: includes/widgets/posts-grid/posts-grid.php:797
-#: includes/widgets/posts-grid/posts-grid.php:950
-#: includes/widgets/posts-grid/posts-grid.php:1194
-#: includes/widgets/posts-grid/posts-grid.php:1392
+#: includes/widgets/posts-grid/posts-grid.php:801
+#: includes/widgets/posts-grid/posts-grid.php:984
+#: includes/widgets/posts-grid/posts-grid.php:1228
+#: includes/widgets/posts-grid/posts-grid.php:1426
 #: includes/widgets/featured-category/featured-category.php:411
 #: includes/widgets/featured-category/featured-category.php:665
 #: includes/widgets/featured-category/featured-category.php:856
@@ -1913,7 +1864,7 @@ msgstr ""
 msgid "Hover Color"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1912
+#: includes/widgets/video-slider/video-slider.php:1951
 msgid "Hover Transform"
 msgstr ""
 
@@ -1931,7 +1882,7 @@ msgstr ""
 msgid "HR Width"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:255
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:269
 #: includes/widgets/portfolio-reel/portfolio-reel.php:234
 msgid "HTML Tag"
 msgstr ""
@@ -1944,17 +1895,17 @@ msgstr ""
 msgid "https://www.wpzoom.com/plugins/wpzoom-elementor-addons/"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:720
-#: includes/widgets/image-box/image-box.php:197
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:737
+#: includes/widgets/image-box/image-box.php:224
 #: includes/widgets/portfolio-reel/portfolio-reel.php:592
 msgid "https://your-link.com"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:800
-#: includes/widgets/image-box/image-box.php:882
-#: includes/widgets/image-box/image-box.php:998
-#: includes/widgets/image-box/image-box.php:1121
-#: includes/widgets/video-slider/video-slider.php:2298
+#: includes/widgets/image-box/image-box.php:827
+#: includes/widgets/image-box/image-box.php:909
+#: includes/widgets/image-box/image-box.php:1025
+#: includes/widgets/image-box/image-box.php:1148
+#: includes/widgets/video-slider/video-slider.php:2379
 #: includes/widgets/featured-category/featured-category.php:842
 #: includes/widgets/featured-category/featured-category.php:924
 #: includes/widgets/featured-category/featured-category.php:1040
@@ -1966,8 +1917,12 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1842
-#: includes/widgets/video-slider/video-slider.php:1875
+#: includes/widgets/video-slider/video-slider.php:1817
+msgid "Icon Circle Size"
+msgstr ""
+
+#: includes/widgets/video-slider/video-slider.php:1881
+#: includes/widgets/video-slider/video-slider.php:1914
 #: includes/widgets/pricing-table/pricing-table.php:301
 msgid "Icon Color"
 msgstr ""
@@ -1977,7 +1932,7 @@ msgid "Icon Position"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:1005
-#: includes/widgets/video-slider/video-slider.php:1750
+#: includes/widgets/video-slider/video-slider.php:1789
 msgid "Icon Size"
 msgstr ""
 
@@ -1989,7 +1944,7 @@ msgstr ""
 msgid "Icon/Image | Content"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:356
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:370
 #: includes/widgets/portfolio-reel/portfolio-reel.php:308
 msgid "If you select yes, filter will display only top level categories"
 msgstr ""
@@ -2001,7 +1956,7 @@ msgid ""
 "<strong>Featured</strong>:"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:342
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:356
 #: includes/widgets/portfolio-reel/portfolio-reel.php:296
 msgid ""
 "If you've selected to display posts from All categories, then the filter "
@@ -2009,13 +1964,13 @@ msgid ""
 "specific category, then the filter will display its sub-categories."
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:518
+#: includes/widgets/image-box/image-box.php:545
 #: includes/widgets/slider/slider.php:331
 #: includes/widgets/video-slider/video-slider.php:409
 #: includes/widgets/video-slider/video-slider.php:428
 #: includes/widgets/carousel/carousel.php:179
-#: includes/widgets/posts-grid/posts-grid.php:262
-#: includes/widgets/posts-grid/posts-grid.php:858
+#: includes/widgets/posts-grid/posts-grid.php:266
+#: includes/widgets/posts-grid/posts-grid.php:862
 #: includes/widgets/featured-category/featured-category.php:560
 #: includes/widgets/directors/directors.php:179
 #: includes/widgets/woo-products/woo-products.php:548
@@ -2035,15 +1990,16 @@ msgid "Image Slider"
 msgstr ""
 
 #: includes/widgets/testimonial/testimonial.php:398
+#: includes/widgets/posts-grid/posts-grid.php:895
 msgid "Image Width"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:531
+#: includes/widgets/posts-grid/posts-grid.php:535
 msgid "Include"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:785
-#: includes/widgets/video-slider/video-slider.php:1010
+#: includes/widgets/video-slider/video-slider.php:1025
 #: includes/widgets/carousel/carousel.php:314
 msgid "Infinite Loop?"
 msgstr ""
@@ -2052,16 +2008,23 @@ msgstr ""
 msgid "Information"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:190
-msgid "Insert Template"
+#: includes/wpzoom-template-manager.php:199
+msgid "Insert Page"
 msgstr ""
 
-#: includes/widgets/slider-pro/slider-pro.php:86
+#: includes/wpzoom-template-manager.php:484
+msgid "Insert Section"
+msgstr ""
+
 #: includes/widgets/slider-pro/slider-pro.php:204
 msgid "Inspiro Slideshow"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:151
+#: includes/widgets/slider-pro/slider-pro.php:86
+msgid "Inspiro Slideshow (old)"
+msgstr ""
+
+#: includes/wpzoom-elementor-widgets.php:150
 msgid "Inspiro Widgets"
 msgstr ""
 
@@ -2069,23 +2032,19 @@ msgstr ""
 msgid "Instagram"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:285
+#: wpzoom-elementor-addons.php:288
 msgid "Install Elementor"
 msgstr ""
 
-#: includes/wpzoom-template-library.php:41
+#: includes/wpzoom-template-library.php:42
 msgid "Insufficient permissions to import templates."
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:367
-msgid "Invalid license key."
-msgstr ""
-
-#: includes/wpzoom-template-library.php:64
+#: includes/wpzoom-template-library.php:68
 msgid "Invalid template filename format."
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:341
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:355
 #: includes/widgets/portfolio-reel/portfolio-reel.php:295
 msgid "Isotope Effect"
 msgstr ""
@@ -2094,7 +2053,7 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:420
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:434
 #: includes/widgets/portfolio-reel/portfolio-reel.php:352
 msgid "Items Style"
 msgstr ""
@@ -2112,10 +2071,10 @@ msgstr ""
 msgid "JS Fiddle"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:290
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1203
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1320
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1437
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:304
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1246
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1362
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1479
 #: includes/widgets/portfolio-reel/portfolio-reel.php:269
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1027
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1140
@@ -2126,9 +2085,17 @@ msgstr ""
 msgid "Justify"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:472
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:486
 #: includes/widgets/portfolio-reel/portfolio-reel.php:387
 msgid "Landscape"
+msgstr ""
+
+#: includes/widgets/image-box/image-box.php:181
+msgid "Landscape (16:9)"
+msgstr ""
+
+#: includes/widgets/image-box/image-box.php:182
+msgid "Landscape (4:3)"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:250
@@ -2141,7 +2108,7 @@ msgid "Latest Posts"
 msgstr ""
 
 #: includes/widgets/posts-grid/posts-grid.php:207
-#: includes/widgets/posts-grid/posts-grid.php:629
+#: includes/widgets/posts-grid/posts-grid.php:633
 msgid "Layout"
 msgstr ""
 
@@ -2169,27 +2136,31 @@ msgstr ""
 msgid "Layout 6"
 msgstr ""
 
+#: includes/widgets/posts-grid/posts-grid.php:224
+msgid "Layout 7 (List)"
+msgstr ""
+
 #: includes/widgets/testimonial/testimonial.php:343
 msgid "Layout Alignment"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:653
+#: includes/widgets/video-slider/video-slider.php:651
 msgid "Learn More"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:278
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:736
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1046
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1191
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1308
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1425
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:292
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:753
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1089
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1234
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1350
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1467
 #: includes/widgets/team-members/team-members.php:315
 #: includes/widgets/slider/slider.php:1686
-#: includes/widgets/video-slider/video-slider.php:1294
-#: includes/widgets/video-slider/video-slider.php:1346
-#: includes/widgets/video-slider/video-slider.php:1560
-#: includes/widgets/video-slider/video-slider.php:1728
-#: includes/widgets/video-slider/video-slider.php:2111
+#: includes/widgets/video-slider/video-slider.php:1332
+#: includes/widgets/video-slider/video-slider.php:1384
+#: includes/widgets/video-slider/video-slider.php:1599
+#: includes/widgets/video-slider/video-slider.php:1767
+#: includes/widgets/video-slider/video-slider.php:2192
 #: includes/widgets/pricing-table/pricing-table.php:420
 #: includes/widgets/carousel/carousel.php:828
 #: includes/widgets/slider-pro/slider-pro.php:431
@@ -2200,89 +2171,36 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:906
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1015
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1128
-#: includes/widgets/posts-grid/posts-grid.php:409
-#: includes/widgets/posts-grid/posts-grid.php:464
+#: includes/widgets/posts-grid/posts-grid.php:413
+#: includes/widgets/posts-grid/posts-grid.php:468
 #: includes/widgets/directors/directors.php:407
 #: includes/widgets/woo-products/woo-products.php:214
 #: includes/widgets/woo-products/woo-products.php:469
 msgid "Left"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:130
+#: includes/wpzoom-elementor-widgets.php:129
 msgid "License"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:394
-msgid "License activated successfully!"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:453
-msgid "License cleared successfully!"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:435
-msgid ""
-"License deactivated successfully! The license key remains saved for easy "
-"reactivation."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:259
-msgid "License Expired"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:501
-msgid "License has expired! Please renew it to unlock Premium features."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:204
-msgid "License is inactive. Click Activate to enable it."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:210
-msgid "License is not active."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:503
-msgid "License is not valid."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:499
-msgid "License is valid and active!"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:143
-msgid "License Key"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:200
-msgid "License key does not match!"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:197
-msgid "License key has expired!"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:172
-msgid "License key is active!"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:207
-msgid "License key is disabled!"
-msgstr ""
-
-#: includes/widgets/video-slider/video-slider.php:685
+#: includes/widgets/video-slider/video-slider.php:683
 msgid "Lightbox"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:704
+#: includes/widgets/video-slider/video-slider.php:718
+#: includes/widgets/video-slider/video-slider.php:1973
+msgid "Lightbox Text"
+msgstr ""
+
+#: includes/widgets/video-slider/video-slider.php:702
 msgid "Lightbox Video URL"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:794
-#: includes/widgets/image-box/image-box.php:876
-#: includes/widgets/image-box/image-box.php:992
-#: includes/widgets/image-box/image-box.php:1115
-#: includes/widgets/video-slider/video-slider.php:2291
+#: includes/widgets/image-box/image-box.php:821
+#: includes/widgets/image-box/image-box.php:903
+#: includes/widgets/image-box/image-box.php:1019
+#: includes/widgets/image-box/image-box.php:1142
+#: includes/widgets/video-slider/video-slider.php:2372
 #: includes/widgets/featured-category/featured-category.php:836
 #: includes/widgets/featured-category/featured-category.php:918
 #: includes/widgets/featured-category/featured-category.php:1034
@@ -2291,7 +2209,7 @@ msgid "Lighten"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:595
-#: includes/widgets/image-box/image-box.php:192
+#: includes/widgets/image-box/image-box.php:219
 #: includes/widgets/slider/slider.php:534
 #: includes/widgets/pricing-table/pricing-table.php:377
 #: includes/widgets/carousel/carousel.php:218
@@ -2299,12 +2217,12 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:715
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:732
 #: includes/widgets/portfolio-reel/portfolio-reel.php:587
 msgid "Link for View All button"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1443
+#: includes/widgets/video-slider/video-slider.php:1481
 msgid "Link Hover Color"
 msgstr ""
 
@@ -2316,32 +2234,33 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:380
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:394
 #: includes/widgets/portfolio-reel/portfolio-reel.php:329
 msgid "Load Dynamically New Posts in Each Category"
 msgstr ""
 
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:722
 #: includes/widgets/portfolio-reel/portfolio-reel.php:579
-#: includes/widgets/posts-grid/posts-grid.php:450
+#: includes/widgets/posts-grid/posts-grid.php:454
 msgid "Load More"
 msgstr ""
 
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1170
-#: includes/widgets/posts-grid/posts-grid.php:437
-#: includes/widgets/posts-grid/posts-grid.php:1317
+#: includes/widgets/posts-grid/posts-grid.php:441
+#: includes/widgets/posts-grid/posts-grid.php:1351
 msgid "Load More Button"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:447
+#: includes/widgets/posts-grid/posts-grid.php:451
 msgid "Load More Text"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:690
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:706
 #: includes/widgets/portfolio-reel/portfolio-reel.php:565
 msgid "Load new posts dynamically"
 msgstr ""
 
-#: includes/editor-templates/templates.php:47
+#: includes/editor-templates/templates.php:53
 msgid "Loading"
 msgstr ""
 
@@ -2349,11 +2268,11 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:801
-#: includes/widgets/image-box/image-box.php:883
-#: includes/widgets/image-box/image-box.php:999
-#: includes/widgets/image-box/image-box.php:1122
-#: includes/widgets/video-slider/video-slider.php:2301
+#: includes/widgets/image-box/image-box.php:828
+#: includes/widgets/image-box/image-box.php:910
+#: includes/widgets/image-box/image-box.php:1026
+#: includes/widgets/image-box/image-box.php:1149
+#: includes/widgets/video-slider/video-slider.php:2382
 #: includes/widgets/featured-category/featured-category.php:843
 #: includes/widgets/featured-category/featured-category.php:925
 #: includes/widgets/featured-category/featured-category.php:1041
@@ -2361,24 +2280,24 @@ msgstr ""
 msgid "Luminosity"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:130
+#: includes/wpzoom-elementor-widgets.php:129
 msgid "Manage License"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:565
-#: includes/widgets/video-slider/video-slider.php:790
+#: includes/widgets/video-slider/video-slider.php:805
 #: includes/widgets/woo-products/woo-products.php:255
 msgid "Manual Selection"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:956
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1217
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1334
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1451
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1837
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:999
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1260
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1376
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1493
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1879
 #: includes/widgets/team-members/team-members.php:1124
-#: includes/widgets/video-slider/video-slider.php:1603
-#: includes/widgets/video-slider/video-slider.php:1801
+#: includes/widgets/video-slider/video-slider.php:1642
+#: includes/widgets/video-slider/video-slider.php:1840
 #: includes/widgets/slider-pro/slider-pro.php:659
 #: includes/widgets/slider-pro/slider-pro.php:714
 #: includes/widgets/slider-pro/slider-pro.php:897
@@ -2391,12 +2310,12 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1041
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1154
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1381
-#: includes/widgets/posts-grid/posts-grid.php:879
-#: includes/widgets/posts-grid/posts-grid.php:975
-#: includes/widgets/posts-grid/posts-grid.php:1035
-#: includes/widgets/posts-grid/posts-grid.php:1094
-#: includes/widgets/posts-grid/posts-grid.php:1291
-#: includes/widgets/posts-grid/posts-grid.php:1489
+#: includes/widgets/posts-grid/posts-grid.php:883
+#: includes/widgets/posts-grid/posts-grid.php:1009
+#: includes/widgets/posts-grid/posts-grid.php:1069
+#: includes/widgets/posts-grid/posts-grid.php:1128
+#: includes/widgets/posts-grid/posts-grid.php:1325
+#: includes/widgets/posts-grid/posts-grid.php:1523
 #: includes/widgets/directors/directors.php:471
 #: includes/widgets/directors/directors.php:541
 #: includes/widgets/woo-products/woo-products.php:533
@@ -2426,29 +2345,33 @@ msgstr ""
 msgid "Menu Order"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:1000
+#: includes/widgets/posts-grid/posts-grid.php:1034
 msgid "Meta"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:322
+#: includes/widgets/posts-grid/posts-grid.php:326
 msgid "Meta Data"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1324
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1275
+msgid "Meta Details"
+msgstr ""
+
+#: includes/widgets/video-slider/video-slider.php:1362
 #: includes/widgets/slider-pro/slider-pro.php:460
 #: includes/widgets/slider-pro/slider-pro.php:517
 msgid "Middle"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1918
+#: includes/widgets/video-slider/video-slider.php:1957
 msgid "Move Up"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:790
-#: includes/widgets/image-box/image-box.php:872
-#: includes/widgets/image-box/image-box.php:988
-#: includes/widgets/image-box/image-box.php:1111
-#: includes/widgets/video-slider/video-slider.php:2287
+#: includes/widgets/image-box/image-box.php:817
+#: includes/widgets/image-box/image-box.php:899
+#: includes/widgets/image-box/image-box.php:1015
+#: includes/widgets/image-box/image-box.php:1138
+#: includes/widgets/video-slider/video-slider.php:2368
 #: includes/widgets/featured-category/featured-category.php:832
 #: includes/widgets/featured-category/featured-category.php:914
 #: includes/widgets/featured-category/featured-category.php:1030
@@ -2456,6 +2379,8 @@ msgstr ""
 msgid "Multiply"
 msgstr ""
 
+#: includes/widgets/video-slider/video-slider.php:2722
+#: includes/widgets/video-slider/video-slider.php:2724
 #: includes/widgets/slider-pro/slider-pro.php:1214
 msgid "Mute"
 msgstr ""
@@ -2471,8 +2396,8 @@ msgstr ""
 
 #: includes/widgets/slider/slider.php:1031
 #: includes/widgets/slider/slider.php:1040
-#: includes/widgets/video-slider/video-slider.php:1094
-#: includes/widgets/video-slider/video-slider.php:1103
+#: includes/widgets/video-slider/video-slider.php:1109
+#: includes/widgets/video-slider/video-slider.php:1118
 #: includes/widgets/carousel/carousel.php:354
 msgid "Navigation"
 msgstr ""
@@ -2487,16 +2412,12 @@ msgstr ""
 msgid "Navigation :: Dots"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1936
+#: includes/widgets/video-slider/video-slider.php:2017
 msgid "Navigation Arrows"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2064
+#: includes/widgets/video-slider/video-slider.php:2145
 msgid "Navigation Dots"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:276
-msgid "Need a License?"
 msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:1033
@@ -2508,34 +2429,35 @@ msgstr ""
 msgid "Next Icon"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:308
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:345
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:322
 #: includes/widgets/portfolio-showcase/portfolio-showcase.php:359
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:384
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:409
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:457
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:490
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:516
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:529
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:553
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:566
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:590
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:603
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:616
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:626
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:639
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:680
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:693
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:373
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:398
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:423
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:471
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:505
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:531
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:544
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:568
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:581
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:605
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:618
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:631
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:641
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:654
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:696
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:709
 #: includes/widgets/team-members/team-members.php:402
 #: includes/widgets/slider/slider.php:758
 #: includes/widgets/slider/slider.php:788
 #: includes/widgets/slider/slider.php:801
 #: includes/widgets/slider/slider.php:815
-#: includes/widgets/video-slider/video-slider.php:642
-#: includes/widgets/video-slider/video-slider.php:695
-#: includes/widgets/video-slider/video-slider.php:983
-#: includes/widgets/video-slider/video-slider.php:1013
-#: includes/widgets/video-slider/video-slider.php:2232
+#: includes/widgets/video-slider/video-slider.php:640
+#: includes/widgets/video-slider/video-slider.php:693
+#: includes/widgets/video-slider/video-slider.php:998
+#: includes/widgets/video-slider/video-slider.php:1028
+#: includes/widgets/video-slider/video-slider.php:1147
+#: includes/widgets/video-slider/video-slider.php:2313
 #: includes/widgets/carousel/carousel.php:287
 #: includes/widgets/carousel/carousel.php:317
 #: includes/widgets/carousel/carousel.php:330
@@ -2562,9 +2484,13 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:476
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:490
 #: includes/widgets/portfolio-reel/portfolio-reel.php:391
 msgid "No Cropping"
+msgstr ""
+
+#: includes/wpzoom-template-manager.php:207
+msgid "No Pages Found!"
 msgstr ""
 
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1613
@@ -2572,54 +2498,54 @@ msgstr ""
 msgid "No Portfolio Posts Found"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:197
-msgid "No Templates Found!"
+#: includes/wpzoom-template-manager.php:493
+msgid "No Sections Found!"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:1043
 #: includes/widgets/slider/slider.php:1452
-#: includes/widgets/video-slider/video-slider.php:1106
-#: includes/widgets/video-slider/video-slider.php:1915
+#: includes/widgets/video-slider/video-slider.php:1121
+#: includes/widgets/video-slider/video-slider.php:1954
 #: includes/widgets/pricing-table/pricing-table.php:167
 #: includes/widgets/carousel/carousel.php:357
 #: includes/widgets/carousel/carousel.php:607
-#: includes/widgets/posts-grid/posts-grid.php:435
+#: includes/widgets/posts-grid/posts-grid.php:439
 #: includes/widgets/directors/directors.php:194
 #: includes/widgets/woo-products/woo-products.php:403
 msgid "None"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:830
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:997
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1142
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1259
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1376
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1493
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1575
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1649
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1731
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:873
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1040
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1185
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1301
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1418
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1535
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1617
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1691
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1773
 #: includes/widgets/team-members/team-members.php:417
 #: includes/widgets/team-members/team-members.php:1038
 #: includes/widgets/team-members/team-members.php:1197
-#: includes/widgets/image-box/image-box.php:228
-#: includes/widgets/image-box/image-box.php:528
-#: includes/widgets/image-box/image-box.php:732
-#: includes/widgets/image-box/image-box.php:789
-#: includes/widgets/image-box/image-box.php:871
-#: includes/widgets/image-box/image-box.php:910
-#: includes/widgets/image-box/image-box.php:987
-#: includes/widgets/image-box/image-box.php:1110
+#: includes/widgets/image-box/image-box.php:255
+#: includes/widgets/image-box/image-box.php:555
+#: includes/widgets/image-box/image-box.php:759
+#: includes/widgets/image-box/image-box.php:816
+#: includes/widgets/image-box/image-box.php:898
+#: includes/widgets/image-box/image-box.php:937
+#: includes/widgets/image-box/image-box.php:1014
+#: includes/widgets/image-box/image-box.php:1137
 #: includes/widgets/slider-cookbook/slider-cookbook.php:496
 #: includes/widgets/slider-cookbook/slider-cookbook.php:570
 #: includes/widgets/slider-cookbook/slider-cookbook.php:714
 #: includes/widgets/slider-cookbook/slider-cookbook.php:806
 #: includes/widgets/slider/slider.php:1558
 #: includes/widgets/slider/slider.php:1709
-#: includes/widgets/video-slider/video-slider.php:1637
-#: includes/widgets/video-slider/video-slider.php:1835
-#: includes/widgets/video-slider/video-slider.php:1983
-#: includes/widgets/video-slider/video-slider.php:2134
-#: includes/widgets/video-slider/video-slider.php:2286
+#: includes/widgets/video-slider/video-slider.php:1676
+#: includes/widgets/video-slider/video-slider.php:1874
+#: includes/widgets/video-slider/video-slider.php:2064
+#: includes/widgets/video-slider/video-slider.php:2215
+#: includes/widgets/video-slider/video-slider.php:2367
 #: includes/widgets/pricing-table/pricing-table.php:900
 #: includes/widgets/carousel/carousel.php:705
 #: includes/widgets/carousel/carousel.php:851
@@ -2631,10 +2557,10 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1079
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1193
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1275
-#: includes/widgets/posts-grid/posts-grid.php:750
-#: includes/widgets/posts-grid/posts-grid.php:927
-#: includes/widgets/posts-grid/posts-grid.php:1150
-#: includes/widgets/posts-grid/posts-grid.php:1348
+#: includes/widgets/posts-grid/posts-grid.php:754
+#: includes/widgets/posts-grid/posts-grid.php:961
+#: includes/widgets/posts-grid/posts-grid.php:1184
+#: includes/widgets/posts-grid/posts-grid.php:1382
 #: includes/widgets/featured-category/featured-category.php:266
 #: includes/widgets/featured-category/featured-category.php:570
 #: includes/widgets/featured-category/featured-category.php:774
@@ -2648,7 +2574,7 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:436
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:450
 #: includes/widgets/portfolio-reel/portfolio-reel.php:367
 msgid "Number of Columns"
 msgstr ""
@@ -2657,7 +2583,7 @@ msgstr ""
 msgid "Number of post to displace or pass over."
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:369
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:383
 #: includes/widgets/slider-cookbook/slider-cookbook.php:250
 #: includes/widgets/portfolio-reel/portfolio-reel.php:321
 msgid "Number of Posts"
@@ -2667,7 +2593,7 @@ msgstr ""
 msgid "Number of Posts in Slider"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:607
+#: includes/widgets/posts-grid/posts-grid.php:611
 msgid "Number of posts to Offset"
 msgstr ""
 
@@ -2688,15 +2614,15 @@ msgid "Officer"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:655
-#: includes/widgets/video-slider/video-slider.php:880
+#: includes/widgets/video-slider/video-slider.php:895
 #: includes/widgets/woo-products/woo-products.php:323
 msgid "Offset"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:756
-#: includes/widgets/image-box/image-box.php:838
-#: includes/widgets/image-box/image-box.php:1010
-#: includes/widgets/image-box/image-box.php:1133
+#: includes/widgets/image-box/image-box.php:783
+#: includes/widgets/image-box/image-box.php:865
+#: includes/widgets/image-box/image-box.php:1037
+#: includes/widgets/image-box/image-box.php:1160
 #: includes/widgets/featured-category/featured-category.php:798
 #: includes/widgets/featured-category/featured-category.php:880
 #: includes/widgets/featured-category/featured-category.php:1052
@@ -2709,15 +2635,15 @@ msgid "Open Lightbox by Clicking Entire Thumbnail"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:680
-#: includes/widgets/video-slider/video-slider.php:905
-#: includes/widgets/posts-grid/posts-grid.php:594
+#: includes/widgets/video-slider/video-slider.php:920
+#: includes/widgets/posts-grid/posts-grid.php:598
 #: includes/widgets/woo-products/woo-products.php:431
 msgid "Order"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:667
-#: includes/widgets/video-slider/video-slider.php:892
-#: includes/widgets/posts-grid/posts-grid.php:580
+#: includes/widgets/video-slider/video-slider.php:907
+#: includes/widgets/posts-grid/posts-grid.php:584
 msgid "Order By"
 msgstr ""
 
@@ -2729,12 +2655,12 @@ msgstr ""
 msgid "Our Work"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:722
-#: includes/widgets/image-box/image-box.php:792
-#: includes/widgets/image-box/image-box.php:874
-#: includes/widgets/image-box/image-box.php:990
-#: includes/widgets/image-box/image-box.php:1113
-#: includes/widgets/video-slider/video-slider.php:2289
+#: includes/widgets/image-box/image-box.php:749
+#: includes/widgets/image-box/image-box.php:819
+#: includes/widgets/image-box/image-box.php:901
+#: includes/widgets/image-box/image-box.php:1017
+#: includes/widgets/image-box/image-box.php:1140
+#: includes/widgets/video-slider/video-slider.php:2370
 #: includes/widgets/featured-category/featured-category.php:764
 #: includes/widgets/featured-category/featured-category.php:834
 #: includes/widgets/featured-category/featured-category.php:916
@@ -2743,30 +2669,30 @@ msgstr ""
 msgid "Overlay"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:893
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:936
 #: includes/widgets/slider-pro/slider-pro.php:548
 #: includes/widgets/portfolio-reel/portfolio-reel.php:759
 msgid "Overlay Background"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2244
+#: includes/widgets/video-slider/video-slider.php:2325
 msgid "Overlay Color"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2259
+#: includes/widgets/video-slider/video-slider.php:2340
 msgid "Overlay Opacity"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:908
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1070
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1104
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1823
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:951
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1113
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1147
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1865
 #: includes/widgets/team-members/team-members.php:742
 #: includes/widgets/team-members/team-members.php:993
 #: includes/widgets/team-members/team-members.php:1136
-#: includes/widgets/image-box/image-box.php:917
-#: includes/widgets/image-box/image-box.php:1040
-#: includes/widgets/video-slider/video-slider.php:1591
+#: includes/widgets/image-box/image-box.php:944
+#: includes/widgets/image-box/image-box.php:1067
+#: includes/widgets/video-slider/video-slider.php:1630
 #: includes/widgets/pricing-table/pricing-table.php:839
 #: includes/widgets/pricing-table/pricing-table.php:986
 #: includes/widgets/slider-pro/slider-pro.php:883
@@ -2774,9 +2700,9 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:774
 #: includes/widgets/portfolio-reel/portfolio-reel.php:930
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1367
-#: includes/widgets/posts-grid/posts-grid.php:735
-#: includes/widgets/posts-grid/posts-grid.php:1277
-#: includes/widgets/posts-grid/posts-grid.php:1475
+#: includes/widgets/posts-grid/posts-grid.php:739
+#: includes/widgets/posts-grid/posts-grid.php:1311
+#: includes/widgets/posts-grid/posts-grid.php:1509
 #: includes/widgets/featured-category/featured-category.php:959
 #: includes/widgets/featured-category/featured-category.php:1082
 #: includes/widgets/directors/directors.php:482
@@ -2789,13 +2715,17 @@ msgstr ""
 msgid "Padding"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:432
+#: includes/editor-templates/templates.php:22
+msgid "Pages"
+msgstr ""
+
 #: includes/widgets/posts-grid/posts-grid.php:436
+#: includes/widgets/posts-grid/posts-grid.php:440
 #: includes/widgets/woo-products/woo-products.php:201
 msgid "Pagination"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:460
+#: includes/widgets/posts-grid/posts-grid.php:464
 msgid "Pagination Alignment"
 msgstr ""
 
@@ -2808,6 +2738,8 @@ msgstr ""
 msgid "Parent ID"
 msgstr ""
 
+#: includes/widgets/video-slider/video-slider.php:2712
+#: includes/widgets/video-slider/video-slider.php:2716
 #: includes/widgets/slider-pro/slider-pro.php:1208
 msgid "Pause"
 msgstr ""
@@ -2832,7 +2764,7 @@ msgstr ""
 msgid "Photo"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:338
+#: wpzoom-elementor-addons.php:341
 msgid "PHP"
 msgstr ""
 
@@ -2840,16 +2772,18 @@ msgstr ""
 msgid "Pinterest"
 msgstr ""
 
+#: includes/widgets/video-slider/video-slider.php:2708
+#: includes/widgets/video-slider/video-slider.php:2710
 #: includes/widgets/slider-pro/slider-pro.php:1207
 msgid "Play"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:563
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:578
 #: includes/widgets/portfolio-reel/portfolio-reel.php:477
 msgid "Play Always Video Background"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1716
+#: includes/widgets/video-slider/video-slider.php:1755
 msgid "Play Icon"
 msgstr ""
 
@@ -2861,8 +2795,8 @@ msgstr ""
 msgid "Play Once"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2674
-#: includes/widgets/video-slider/video-slider.php:2676
+#: includes/widgets/video-slider/video-slider.php:2793
+#: includes/widgets/video-slider/video-slider.php:2800
 msgid "Play Video"
 msgstr ""
 
@@ -2870,11 +2804,6 @@ msgstr ""
 #: includes/widgets/portfolio-showcase/view/default.php:103
 #, php-format
 msgid "Please add a few Portfolio Posts first <a href=\"%1$s\">here</a>."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:319
-#: includes/class-wpzoom-elementor-addons-license.php:465
-msgid "Please enter a license key."
 msgstr ""
 
 #: includes/widgets/woo-products/woo-products.php:420
@@ -2885,16 +2814,16 @@ msgstr ""
 msgid "Portfolio Details"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:785
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:802
 #: includes/widgets/portfolio-reel/portfolio-reel.php:651
 msgid "Portfolio Item"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:93
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:100
 msgid "Portfolio Showcase"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:221
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:235
 msgid "Portfolio Showcase Style"
 msgstr ""
 
@@ -2902,14 +2831,22 @@ msgstr ""
 msgid "Portfolio Widget"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:475
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:489
 #: includes/widgets/portfolio-reel/portfolio-reel.php:390
 msgid "Portrait"
 msgstr ""
 
+#: includes/widgets/image-box/image-box.php:183
+msgid "Portrait (3:4)"
+msgstr ""
+
+#: includes/widgets/image-box/image-box.php:184
+msgid "Portrait (9:16)"
+msgstr ""
+
 #: includes/widgets/team-members/team-members.php:561
-#: includes/widgets/image-box/image-box.php:547
-#: includes/widgets/image-box/image-box.php:642
+#: includes/widgets/image-box/image-box.php:574
+#: includes/widgets/image-box/image-box.php:669
 #: includes/widgets/slider/slider.php:1450
 #: includes/widgets/pricing-table/pricing-table.php:415
 #: includes/widgets/carousel/carousel.php:605
@@ -2944,28 +2881,22 @@ msgstr ""
 msgid "Posts Grid"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:253
+#: includes/widgets/posts-grid/posts-grid.php:257
 msgid "Posts Per Page"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:503
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:518
 #: includes/widgets/portfolio-reel/portfolio-reel.php:414
 msgid "Posts Settings"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:574
-#: includes/widgets/video-slider/video-slider.php:799
+#: includes/widgets/video-slider/video-slider.php:814
 msgid "Posts Source"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:286
+#: includes/wpzoom-template-manager.php:361
 msgid "Premium Template Preview"
-msgstr ""
-
-#: includes/wpzoom-elementor-widgets.php:130
-#: includes/wpzoom-elementor-widgets.php:133
-#: includes/wpzoom-elementor-widgets.php:137
-msgid "Premium Widgets"
 msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:1025
@@ -2997,15 +2928,20 @@ msgstr ""
 msgid "Pricing Table"
 msgstr ""
 
+#: wpzoom-elementor-addons.php:449
+msgid "Priority Support"
+msgstr ""
+
 #: includes/widgets/video-slider/video-slider.php:557
 msgid "Privacy Mode"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:115
+#: wpzoom-elementor-addons.php:417
 msgid "PRO"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:179
+#: includes/wpzoom-template-manager.php:186
+#: includes/wpzoom-template-manager.php:468
 msgid "PRO Only"
 msgstr ""
 
@@ -3029,19 +2965,7 @@ msgstr ""
 msgid "Profile Name"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:735
-msgid ""
-"Purchase a WPZOOM Elementor Addons Pro license key to unlock the new Video "
-"Slideshow widget and other premium features."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:277
-msgid ""
-"Purchase WPZOOM Elementor Addons Pro to get access to premium widgets, "
-"templates, and features."
-msgstr ""
-
-#: includes/widgets/posts-grid/posts-grid.php:520
+#: includes/widgets/posts-grid/posts-grid.php:524
 #: includes/widgets/woo-products/woo-products.php:241
 msgid "Query"
 msgstr ""
@@ -3065,7 +2989,7 @@ msgstr ""
 #: includes/widgets/slider/slider.php:252
 #: includes/widgets/video-slider/video-slider.php:249
 #: includes/widgets/slider-pro/slider-pro.php:238
-#: includes/widgets/posts-grid/posts-grid.php:586
+#: includes/widgets/posts-grid/posts-grid.php:590
 #: includes/widgets/woo-products/woo-products.php:422
 msgid "Random"
 msgstr ""
@@ -3084,22 +3008,22 @@ msgstr ""
 msgid "Rating Number"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:653
-#: includes/widgets/posts-grid/posts-grid.php:381
-#: includes/widgets/posts-grid/posts-grid.php:1119
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:668
+#: includes/widgets/posts-grid/posts-grid.php:385
+#: includes/widgets/posts-grid/posts-grid.php:1153
 #: includes/widgets/slider-foodica/slider-foodica.php:372
 msgid "Read More"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1466
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1508
 msgid "Read More Button"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:393
+#: includes/widgets/posts-grid/posts-grid.php:397
 msgid "Read More Text"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:395
+#: includes/widgets/posts-grid/posts-grid.php:399
 msgid "Read More »"
 msgstr ""
 
@@ -3111,34 +3035,29 @@ msgstr ""
 msgid "Reddit"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:334
-#: includes/class-wpzoom-elementor-addons-license.php:271
-msgid "Renew License"
-msgstr ""
-
-#: includes/widgets/image-box/image-box.php:570
-#: includes/widgets/image-box/image-box.php:665
+#: includes/widgets/image-box/image-box.php:597
+#: includes/widgets/image-box/image-box.php:692
 #: includes/widgets/featured-category/featured-category.php:612
 #: includes/widgets/featured-category/featured-category.php:707
 msgid "Repeat"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:577
-#: includes/widgets/image-box/image-box.php:672
+#: includes/widgets/image-box/image-box.php:604
+#: includes/widgets/image-box/image-box.php:699
 #: includes/widgets/featured-category/featured-category.php:619
 #: includes/widgets/featured-category/featured-category.php:714
 msgid "Repeat Both"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:575
-#: includes/widgets/image-box/image-box.php:670
+#: includes/widgets/image-box/image-box.php:602
+#: includes/widgets/image-box/image-box.php:697
 #: includes/widgets/featured-category/featured-category.php:617
 #: includes/widgets/featured-category/featured-category.php:712
 msgid "Repeat Horizontally"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:576
-#: includes/widgets/image-box/image-box.php:671
+#: includes/widgets/image-box/image-box.php:603
+#: includes/widgets/image-box/image-box.php:698
 #: includes/widgets/featured-category/featured-category.php:618
 #: includes/widgets/featured-category/featured-category.php:713
 msgid "Repeat Vertically"
@@ -3151,19 +3070,19 @@ msgid ""
 "while editing in Elementor."
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:286
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:744
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1054
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1199
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1316
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1433
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:300
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:761
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1097
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1242
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1358
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1475
 #: includes/widgets/team-members/team-members.php:323
 #: includes/widgets/slider/slider.php:1694
-#: includes/widgets/video-slider/video-slider.php:1302
-#: includes/widgets/video-slider/video-slider.php:1354
-#: includes/widgets/video-slider/video-slider.php:1568
-#: includes/widgets/video-slider/video-slider.php:1736
-#: includes/widgets/video-slider/video-slider.php:2119
+#: includes/widgets/video-slider/video-slider.php:1340
+#: includes/widgets/video-slider/video-slider.php:1392
+#: includes/widgets/video-slider/video-slider.php:1607
+#: includes/widgets/video-slider/video-slider.php:1775
+#: includes/widgets/video-slider/video-slider.php:2200
 #: includes/widgets/pricing-table/pricing-table.php:424
 #: includes/widgets/carousel/carousel.php:836
 #: includes/widgets/slider-pro/slider-pro.php:439
@@ -3174,8 +3093,8 @@ msgstr ""
 #: includes/widgets/portfolio-reel/portfolio-reel.php:914
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1023
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1136
-#: includes/widgets/posts-grid/posts-grid.php:417
-#: includes/widgets/posts-grid/posts-grid.php:472
+#: includes/widgets/posts-grid/posts-grid.php:421
+#: includes/widgets/posts-grid/posts-grid.php:476
 #: includes/widgets/directors/directors.php:415
 #: includes/widgets/woo-products/woo-products.php:222
 #: includes/widgets/woo-products/woo-products.php:477
@@ -3186,7 +3105,7 @@ msgstr ""
 msgid "Right Spacing"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1919
+#: includes/widgets/video-slider/video-slider.php:1958
 msgid "Rotate"
 msgstr ""
 
@@ -3194,7 +3113,7 @@ msgstr ""
 msgid "Rounded Avatar?"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:659
+#: includes/widgets/posts-grid/posts-grid.php:663
 msgid "Rows margin"
 msgstr ""
 
@@ -3202,11 +3121,11 @@ msgstr ""
 msgid "Sale"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:796
-#: includes/widgets/image-box/image-box.php:878
-#: includes/widgets/image-box/image-box.php:994
-#: includes/widgets/image-box/image-box.php:1117
-#: includes/widgets/video-slider/video-slider.php:2299
+#: includes/widgets/image-box/image-box.php:823
+#: includes/widgets/image-box/image-box.php:905
+#: includes/widgets/image-box/image-box.php:1021
+#: includes/widgets/image-box/image-box.php:1144
+#: includes/widgets/video-slider/video-slider.php:2380
 #: includes/widgets/featured-category/featured-category.php:838
 #: includes/widgets/featured-category/featured-category.php:920
 #: includes/widgets/featured-category/featured-category.php:1036
@@ -3214,19 +3133,19 @@ msgstr ""
 msgid "Saturation"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1917
+#: includes/widgets/video-slider/video-slider.php:1956
 msgid "Scale Down"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1916
+#: includes/widgets/video-slider/video-slider.php:1955
 msgid "Scale Up"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:791
-#: includes/widgets/image-box/image-box.php:873
-#: includes/widgets/image-box/image-box.php:989
-#: includes/widgets/image-box/image-box.php:1112
-#: includes/widgets/video-slider/video-slider.php:2288
+#: includes/widgets/image-box/image-box.php:818
+#: includes/widgets/image-box/image-box.php:900
+#: includes/widgets/image-box/image-box.php:1016
+#: includes/widgets/image-box/image-box.php:1139
+#: includes/widgets/video-slider/video-slider.php:2369
 #: includes/widgets/featured-category/featured-category.php:833
 #: includes/widgets/featured-category/featured-category.php:915
 #: includes/widgets/featured-category/featured-category.php:1031
@@ -3234,8 +3153,8 @@ msgstr ""
 msgid "Screen"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:592
-#: includes/widgets/image-box/image-box.php:687
+#: includes/widgets/image-box/image-box.php:619
+#: includes/widgets/image-box/image-box.php:714
 #: includes/widgets/featured-category/featured-category.php:634
 #: includes/widgets/featured-category/featured-category.php:729
 msgid "Scroll"
@@ -3247,8 +3166,12 @@ msgid "Scroll to Content"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:587
-#: includes/widgets/video-slider/video-slider.php:812
+#: includes/widgets/video-slider/video-slider.php:827
 msgid "Search & Select"
+msgstr ""
+
+#: includes/editor-templates/templates.php:23
+msgid "Sections"
 msgstr ""
 
 #. URL to documention on valid values for background position.
@@ -3259,8 +3182,8 @@ msgid ""
 "for valid values."
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:316
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1862
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:330
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1905
 #: includes/widgets/portfolio-reel/portfolio-reel.php:1406
 msgid "Select a Post"
 msgstr ""
@@ -3288,7 +3211,7 @@ msgid ""
 "target='_blank'>here</a>."
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1078
+#: includes/widgets/video-slider/video-slider.php:1093
 msgid "Select the order for your slide content elements."
 msgstr ""
 
@@ -3306,20 +3229,20 @@ msgstr ""
 msgid "Self Hosted"
 msgstr ""
 
-#: includes/widgets/posts-grid/posts-grid.php:341
+#: includes/widgets/posts-grid/posts-grid.php:345
 msgid "Separator Between"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:725
-#: includes/widgets/video-slider/video-slider.php:950
+#: includes/widgets/video-slider/video-slider.php:965
 #: includes/widgets/carousel/carousel.php:262
 msgid "Settings"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:298
-#: includes/widgets/image-box/image-box.php:441
-#: includes/widgets/image-box/image-box.php:967
-#: includes/widgets/image-box/image-box.php:1090
+#: includes/widgets/image-box/image-box.php:325
+#: includes/widgets/image-box/image-box.php:468
+#: includes/widgets/image-box/image-box.php:994
+#: includes/widgets/image-box/image-box.php:1117
 #: includes/widgets/featured-category/featured-category.php:337
 #: includes/widgets/featured-category/featured-category.php:482
 #: includes/widgets/featured-category/featured-category.php:1009
@@ -3349,10 +3272,10 @@ msgstr ""
 #: includes/widgets/slider-pro/slider-pro.php:348
 #: includes/widgets/slider-pro/slider-pro.php:539
 #: includes/widgets/testimonial/testimonial.php:306
-#: includes/widgets/posts-grid/posts-grid.php:264
-#: includes/widgets/posts-grid/posts-grid.php:289
-#: includes/widgets/posts-grid/posts-grid.php:358
-#: includes/widgets/posts-grid/posts-grid.php:383
+#: includes/widgets/posts-grid/posts-grid.php:268
+#: includes/widgets/posts-grid/posts-grid.php:293
+#: includes/widgets/posts-grid/posts-grid.php:362
+#: includes/widgets/posts-grid/posts-grid.php:387
 #: includes/widgets/featured-category/featured-category.php:216
 #: includes/widgets/slider-foodica/slider-foodica.php:220
 #: includes/widgets/slider-foodica/slider-foodica.php:231
@@ -3361,12 +3284,12 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:305
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:319
 msgid "Show a Single Portfolio Post"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:548
-#: includes/widgets/video-slider/video-slider.php:639
+#: includes/widgets/video-slider/video-slider.php:637
 msgid "Show Button"
 msgstr ""
 
@@ -3374,7 +3297,7 @@ msgstr ""
 msgid "Show Details"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:526
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:541
 #: includes/widgets/portfolio-reel/portfolio-reel.php:433
 msgid "Show Lightbox Caption"
 msgstr ""
@@ -3387,7 +3310,11 @@ msgstr ""
 msgid "Show Profiles"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:692
+#: includes/widgets/video-slider/video-slider.php:1144
+msgid "Show Video Background Controls"
+msgstr ""
+
+#: includes/widgets/video-slider/video-slider.php:690
 msgid "Show Video Lightbox"
 msgstr ""
 
@@ -3396,14 +3323,14 @@ msgstr ""
 msgid "Side Spacing"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:604
-#: includes/widgets/image-box/image-box.php:699
+#: includes/widgets/image-box/image-box.php:631
+#: includes/widgets/image-box/image-box.php:726
 #: includes/widgets/slider/slider.php:1520
 #: includes/widgets/slider/slider.php:1716
 #: includes/widgets/slider/slider.php:1768
-#: includes/widgets/video-slider/video-slider.php:1945
-#: includes/widgets/video-slider/video-slider.php:2141
-#: includes/widgets/video-slider/video-slider.php:2193
+#: includes/widgets/video-slider/video-slider.php:2026
+#: includes/widgets/video-slider/video-slider.php:2222
+#: includes/widgets/video-slider/video-slider.php:2274
 #: includes/widgets/carousel/carousel.php:671
 #: includes/widgets/carousel/carousel.php:858
 #: includes/widgets/carousel/carousel.php:910
@@ -3414,7 +3341,7 @@ msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:441
 #: includes/widgets/slider/slider.php:1226
-#: includes/widgets/video-slider/video-slider.php:1233
+#: includes/widgets/video-slider/video-slider.php:1271
 #: includes/widgets/carousel/carousel.php:476
 #: includes/widgets/slider-pro/slider-pro.php:301
 msgid "Slide Content"
@@ -3434,22 +3361,22 @@ msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:422
 #: includes/widgets/slider/slider.php:1195
-#: includes/widgets/video-slider/video-slider.php:1203
+#: includes/widgets/video-slider/video-slider.php:1241
 #: includes/widgets/carousel/carousel.php:445
 msgid "Slide Spacing (px)"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:747
-#: includes/widgets/video-slider/video-slider.php:972
+#: includes/widgets/video-slider/video-slider.php:987
 #: includes/widgets/carousel/carousel.php:276
 msgid "Slide speed in milliseconds"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1486
+#: includes/widgets/video-slider/video-slider.php:1525
 msgid "Slide Text"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1411
+#: includes/widgets/video-slider/video-slider.php:1449
 #: includes/widgets/slider-pro/slider-pro.php:246
 msgid "Slide Title"
 msgstr ""
@@ -3463,7 +3390,7 @@ msgstr ""
 msgid "Slider Button"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1131
+#: includes/widgets/video-slider/video-slider.php:1169
 msgid "Slider Height"
 msgstr ""
 
@@ -3480,7 +3407,7 @@ msgstr ""
 msgid "Slider Item"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1195
+#: includes/widgets/video-slider/video-slider.php:1233
 msgid "Slider Items"
 msgstr ""
 
@@ -3499,7 +3426,7 @@ msgstr ""
 #: includes/widgets/slider/slider.php:306
 #: includes/widgets/slider/slider.php:733
 #: includes/widgets/video-slider/video-slider.php:368
-#: includes/widgets/video-slider/video-slider.php:958
+#: includes/widgets/video-slider/video-slider.php:973
 #: includes/widgets/carousel/carousel.php:168
 msgid "Slides"
 msgstr ""
@@ -3509,13 +3436,17 @@ msgid "Slides Order"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:825
-#: includes/widgets/video-slider/video-slider.php:1027
+#: includes/widgets/video-slider/video-slider.php:1042
 #: includes/widgets/carousel/carousel.php:371
 msgid "Slides To Show"
 msgstr ""
 
 #: includes/widgets/slider-pro/slider-pro.php:212
 msgid "Slideshow Category to show:"
+msgstr ""
+
+#: wpzoom-elementor-addons.php:416
+msgid "Slideshow with Video Backgrounds for Elementor now Available!"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:169
@@ -3530,7 +3461,7 @@ msgstr ""
 msgid "Social Profiles"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2295
+#: includes/widgets/video-slider/video-slider.php:2376
 msgid "Soft Light"
 msgstr ""
 
@@ -3545,12 +3476,16 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1391
+#: includes/widgets/video-slider/video-slider.php:1429
 msgid "Space between content elements (title, subtitle, actions)."
 msgstr ""
 
+#: includes/widgets/video-slider/video-slider.php:2008
+msgid "Space between icon and text."
+msgstr ""
+
 #: includes/widgets/slider/slider.php:1669
-#: includes/widgets/video-slider/video-slider.php:2094
+#: includes/widgets/video-slider/video-slider.php:2175
 #: includes/widgets/carousel/carousel.php:811
 msgid "Spacing"
 msgstr ""
@@ -3571,9 +3506,13 @@ msgstr ""
 msgid "Spotify"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:474
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:488
 #: includes/widgets/portfolio-reel/portfolio-reel.php:389
 msgid "Square"
+msgstr ""
+
+#: includes/widgets/image-box/image-box.php:185
+msgid "Square (1:1)"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:172
@@ -3588,8 +3527,8 @@ msgstr ""
 msgid "Start Time"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:289
-#: includes/widgets/image-box/image-box.php:432
+#: includes/widgets/image-box/image-box.php:316
+#: includes/widgets/image-box/image-box.php:459
 #: includes/widgets/featured-category/featured-category.php:328
 #: includes/widgets/featured-category/featured-category.php:473
 msgid "Stroke"
@@ -3631,11 +3570,11 @@ msgstr ""
 msgid "Team Members"
 msgstr ""
 
-#: includes/wpzoom-template-library.php:98
+#: includes/wpzoom-template-library.php:127
 msgid "Template data could not be loaded. Please try again or contact support."
 msgstr ""
 
-#: includes/wpzoom-template-library.php:55
+#: includes/wpzoom-template-library.php:56
 msgid "Template filename is required."
 msgstr ""
 
@@ -3680,7 +3619,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1342
+#: includes/widgets/video-slider/video-slider.php:1380
 msgid "Text Align"
 msgstr ""
 
@@ -3695,10 +3634,10 @@ msgstr ""
 #: includes/widgets/team-members/team-members.php:1236
 #: includes/widgets/slider/slider.php:1278
 #: includes/widgets/slider/slider.php:1322
-#: includes/widgets/video-slider/video-slider.php:1431
-#: includes/widgets/video-slider/video-slider.php:1506
-#: includes/widgets/video-slider/video-slider.php:1644
-#: includes/widgets/video-slider/video-slider.php:1675
+#: includes/widgets/video-slider/video-slider.php:1469
+#: includes/widgets/video-slider/video-slider.php:1545
+#: includes/widgets/video-slider/video-slider.php:1683
+#: includes/widgets/video-slider/video-slider.php:1714
 #: includes/widgets/pricing-table/pricing-table.php:475
 #: includes/widgets/pricing-table/pricing-table.php:573
 #: includes/widgets/pricing-table/pricing-table.php:616
@@ -3715,23 +3654,24 @@ msgstr ""
 #: includes/widgets/slider-pro/slider-pro.php:643
 #: includes/widgets/slider-pro/slider-pro.php:701
 #: includes/widgets/slider-pro/slider-pro.php:808
-#: includes/widgets/posts-grid/posts-grid.php:1159
-#: includes/widgets/posts-grid/posts-grid.php:1357
+#: includes/widgets/posts-grid/posts-grid.php:1193
+#: includes/widgets/posts-grid/posts-grid.php:1391
 #: includes/widgets/woo-products/woo-products.php:919
 #: includes/widgets/woo-products/woo-products.php:950
 msgid "Text Color"
 msgstr ""
 
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:719
 #: includes/widgets/portfolio-reel/portfolio-reel.php:576
 msgid "Text for Load More button"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:651
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:666
 msgid "Text for Read More button"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:703
-msgid "Text for View All button"
+#: includes/widgets/video-slider/video-slider.php:1991
+msgid "Text Spacing"
 msgstr ""
 
 #: includes/widgets/featured-category/featured-category.php:229
@@ -3740,7 +3680,7 @@ msgid ""
 "replaced with the actual amount of posts when displayed on the frontend."
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:437
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:451
 #: includes/widgets/portfolio-reel/portfolio-reel.php:368
 msgid "The number of columns may vary depending on screen size"
 msgstr ""
@@ -3749,10 +3689,6 @@ msgstr ""
 msgid ""
 "The WooCommerce plugin could not be found. Please install/activate it in "
 "order to use this feature."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:374
-msgid "This appears to be an invalid license key."
 msgstr ""
 
 #: includes/widgets/video-slider/video-slider.php:574
@@ -3766,7 +3702,7 @@ msgstr ""
 msgid "This input field has support for the following HTML tags: %1$s"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:182
+#: includes/widgets/image-box/image-box.php:209
 msgid "This is the heading"
 msgstr ""
 
@@ -3775,7 +3711,7 @@ msgstr ""
 msgid "This option is located either in the Sidebar or below the editor"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:381
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:395
 #: includes/widgets/portfolio-reel/portfolio-reel.php:330
 msgid ""
 "This option will try to display the same number of posts in each category as "
@@ -3788,21 +3724,28 @@ msgid ""
 "click it the page scrolls to the next section located below the slideshow."
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2890
-msgid "This premium widget requires a valid license key"
-msgstr ""
-
-#: includes/wpzoom-template-manager.php:387
+#: includes/widgets/video-slider/video-slider.php:3014
 msgid ""
-"This template requires WPZOOM Elementor Addons Pro license. Get your license "
-"key to unlock this and all premium templates."
+"This premium widget requires the WPZOOM Elementor Addons Pro plugin or a "
+"premium WPZOOM theme"
 msgstr ""
 
-#: includes/wpzoom-template-library.php:74
-#: includes/class-wpzoom-elementor-addons-license.php:591
+#: includes/wpzoom-template-library.php:82
 msgid ""
 "This template requires WPZOOM Elementor Addons Pro license. Please activate "
 "your license key to import PRO templates."
+msgstr ""
+
+#: includes/wpzoom-template-manager.php:542
+msgid ""
+"This template requires WPZOOM Elementor Addons Pro plugin. Get the Pro "
+"plugin to unlock this and all premium templates."
+msgstr ""
+
+#: includes/wpzoom-template-library.php:76
+msgid ""
+"This template requires WPZOOM Elementor Addons Pro plugin. Please install "
+"and activate the Pro plugin to import premium templates."
 msgstr ""
 
 #: includes/widgets/slider-cookbook/slider-cookbook.php:206
@@ -3824,14 +3767,14 @@ msgid ""
 "com/themes/foodica/\">\"Foodica PRO\"</a> theme"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:189
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:202
 msgid ""
 "This widget is supported only by the <a href=\"https://www.wpzoom."
 "com/themes/inspiro/\">\"Inspiro Premium\"</a> and <a href=\"#\">\"Inspiro "
 "PRO\"</a> themes"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1935
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1980
 #: includes/widgets/slider-pro/slider-pro.php:182
 #: includes/widgets/slider-pro/slider-pro.php:959
 msgid ""
@@ -3847,12 +3790,16 @@ msgid ""
 "com/themes/reel/\">\"Reel\"</a> theme"
 msgstr ""
 
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:845
+msgid "Thumbnail Border Radius"
+msgstr ""
+
 #: includes/widgets/team-members/team-members.php:173
 msgid "TikTok"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1119
-#: includes/widgets/image-box/image-box.php:177
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1162
+#: includes/widgets/image-box/image-box.php:204
 #: includes/widgets/slider-cookbook/slider-cookbook.php:257
 #: includes/widgets/slider-cookbook/slider-cookbook.php:548
 #: includes/widgets/slider/slider.php:248
@@ -3865,16 +3812,16 @@ msgstr ""
 #: includes/widgets/pricing-table/pricing-table.php:736
 #: includes/widgets/carousel/carousel.php:194
 #: includes/widgets/carousel/carousel.php:508
-#: includes/widgets/posts-grid/posts-grid.php:287
-#: includes/widgets/posts-grid/posts-grid.php:585
-#: includes/widgets/posts-grid/posts-grid.php:904
+#: includes/widgets/posts-grid/posts-grid.php:291
+#: includes/widgets/posts-grid/posts-grid.php:589
+#: includes/widgets/posts-grid/posts-grid.php:938
 #: includes/widgets/directors/directors.php:265
 #: includes/widgets/woo-products/woo-products.php:418
 #: includes/widgets/woo-products/woo-products.php:660
 msgid "Title"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:424
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:438
 #: includes/widgets/portfolio-reel/portfolio-reel.php:355
 msgid "Title Below"
 msgstr ""
@@ -3886,7 +3833,7 @@ msgid "Title Color"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:291
-#: includes/widgets/posts-grid/posts-grid.php:299
+#: includes/widgets/posts-grid/posts-grid.php:303
 msgid "Title HTML Tag"
 msgstr ""
 
@@ -3902,7 +3849,7 @@ msgstr ""
 msgid "Title Opacity"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:423
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:437
 #: includes/widgets/portfolio-reel/portfolio-reel.php:356
 msgid "Title Overlay"
 msgstr ""
@@ -3911,14 +3858,14 @@ msgstr ""
 msgid "Title to display at the top of the slider."
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:1320
+#: includes/widgets/video-slider/video-slider.php:1358
 msgid "Top"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:314
-#: includes/widgets/image-box/image-box.php:457
-#: includes/widgets/image-box/image-box.php:552
-#: includes/widgets/image-box/image-box.php:647
+#: includes/widgets/image-box/image-box.php:341
+#: includes/widgets/image-box/image-box.php:484
+#: includes/widgets/image-box/image-box.php:579
+#: includes/widgets/image-box/image-box.php:674
 #: includes/widgets/featured-category/featured-category.php:353
 #: includes/widgets/featured-category/featured-category.php:498
 #: includes/widgets/featured-category/featured-category.php:594
@@ -3926,10 +3873,10 @@ msgstr ""
 msgid "Top Center"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:310
-#: includes/widgets/image-box/image-box.php:453
-#: includes/widgets/image-box/image-box.php:551
-#: includes/widgets/image-box/image-box.php:646
+#: includes/widgets/image-box/image-box.php:337
+#: includes/widgets/image-box/image-box.php:480
+#: includes/widgets/image-box/image-box.php:578
+#: includes/widgets/image-box/image-box.php:673
 #: includes/widgets/featured-category/featured-category.php:349
 #: includes/widgets/featured-category/featured-category.php:494
 #: includes/widgets/featured-category/featured-category.php:593
@@ -3945,10 +3892,10 @@ msgstr ""
 msgid "Top Padding"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:318
-#: includes/widgets/image-box/image-box.php:461
-#: includes/widgets/image-box/image-box.php:553
-#: includes/widgets/image-box/image-box.php:648
+#: includes/widgets/image-box/image-box.php:345
+#: includes/widgets/image-box/image-box.php:488
+#: includes/widgets/image-box/image-box.php:580
+#: includes/widgets/image-box/image-box.php:675
 #: includes/widgets/featured-category/featured-category.php:357
 #: includes/widgets/featured-category/featured-category.php:502
 #: includes/widgets/featured-category/featured-category.php:595
@@ -3956,7 +3903,7 @@ msgstr ""
 msgid "Top Right"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:1168
+#: includes/widgets/image-box/image-box.php:1195
 #: includes/widgets/featured-category/featured-category.php:1210
 msgid "Transition Duration"
 msgstr ""
@@ -3987,7 +3934,7 @@ msgid "Type button text here"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:524
-#: includes/widgets/video-slider/video-slider.php:628
+#: includes/widgets/video-slider/video-slider.php:627
 #: includes/widgets/carousel/carousel.php:208
 msgid "Type subtitle here"
 msgstr ""
@@ -3999,9 +3946,9 @@ msgstr ""
 msgid "Type title here"
 msgstr ""
 
-#: includes/widgets/image-box/image-box.php:218
-#: includes/widgets/image-box/image-box.php:236
-#: includes/widgets/image-box/image-box.php:379
+#: includes/widgets/image-box/image-box.php:245
+#: includes/widgets/image-box/image-box.php:263
+#: includes/widgets/image-box/image-box.php:406
 #: includes/widgets/slider-cookbook/slider-cookbook.php:538
 #: includes/widgets/slider-cookbook/slider-cookbook.php:612
 #: includes/widgets/slider-cookbook/slider-cookbook.php:642
@@ -4010,9 +3957,10 @@ msgstr ""
 #: includes/widgets/slider-cookbook/slider-cookbook.php:848
 #: includes/widgets/slider/slider.php:1290
 #: includes/widgets/slider/slider.php:1334
-#: includes/widgets/video-slider/video-slider.php:1455
-#: includes/widgets/video-slider/video-slider.php:1518
-#: includes/widgets/video-slider/video-slider.php:1583
+#: includes/widgets/video-slider/video-slider.php:1493
+#: includes/widgets/video-slider/video-slider.php:1557
+#: includes/widgets/video-slider/video-slider.php:1622
+#: includes/widgets/video-slider/video-slider.php:1983
 #: includes/widgets/pricing-table/pricing-table.php:1049
 #: includes/widgets/carousel/carousel.php:540
 #: includes/widgets/carousel/carousel.php:584
@@ -4031,16 +3979,26 @@ msgstr ""
 msgid "Unlock all Elementor templates"
 msgstr ""
 
-#: includes/wpzoom-template-manager.php:359
-msgid "Unlock with Pro"
+#: wpzoom-elementor-addons.php:420
+msgid ""
+"Unlock the new Video Slideshow widget and get access to all premium "
+"Elementor templates."
 msgstr ""
 
+#: includes/widgets/video-slider/video-slider.php:2718
+#: includes/widgets/video-slider/video-slider.php:2720
 #: includes/widgets/slider-pro/slider-pro.php:1213
 msgid "Unmute"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:137
+#: includes/wpzoom-elementor-widgets.php:136
 msgid "Upgrade"
+msgstr ""
+
+#: wpzoom-elementor-addons.php:428
+msgid ""
+"Upgrade today to unlock the new Video Slideshow widget and access all "
+"premium Elementor templates with advanced features and priority support."
 msgstr ""
 
 #: includes/widgets/directors/directors.php:234
@@ -4071,8 +4029,8 @@ msgid "Vertical Mode?"
 msgstr ""
 
 #: includes/widgets/slider/slider.php:1647
-#: includes/widgets/video-slider/video-slider.php:1316
-#: includes/widgets/video-slider/video-slider.php:2072
+#: includes/widgets/video-slider/video-slider.php:1354
+#: includes/widgets/video-slider/video-slider.php:2153
 #: includes/widgets/carousel/carousel.php:793
 msgid "Vertical Position"
 msgstr ""
@@ -4082,39 +4040,40 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:539
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:554
 #: includes/widgets/portfolio-reel/portfolio-reel.php:457
 msgid "Video Background"
+msgstr ""
+
+#: includes/widgets/video-slider/video-slider.php:1135
+msgid "Video Controls"
 msgstr ""
 
 #: includes/widgets/video-slider/video-slider.php:70
 msgid "Video Slideshow"
 msgstr ""
 
+#: wpzoom-elementor-addons.php:435
 #: includes/widgets/video-slider/video-slider.php:310
 #: includes/widgets/video-slider/video-slider.php:342
-#: includes/widgets/video-slider/video-slider.php:2888
+#: includes/widgets/video-slider/video-slider.php:3012
 msgid "Video Slideshow Widget"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:2875
+#: includes/widgets/video-slider/video-slider.php:2999
 msgid "Video Slideshow Widget (Pro)"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:733
-msgid "Video Slideshow Widget for Elementor now Available!"
 msgstr ""
 
 #: includes/widgets/video-slider/video-slider.php:464
 msgid "Video URL"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:706
-msgid "View All"
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1664
+msgid "View All/Load More Button"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1622
-msgid "View All/Load More Button"
+#: wpzoom-elementor-addons.php:460
+msgid "View Demo"
 msgstr ""
 
 #: includes/widgets/team-members/team-members.php:178
@@ -4129,6 +4088,10 @@ msgstr ""
 msgid "Want To Customize?"
 msgstr ""
 
+#: includes/widgets/video-slider/video-slider.php:720
+msgid "Watch Video"
+msgstr ""
+
 #: includes/widgets/team-members/team-members.php:180
 msgid "Website"
 msgstr ""
@@ -4137,8 +4100,8 @@ msgstr ""
 msgid "WhatsApp"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:183
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1934
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:196
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:1979
 #: includes/widgets/slider-cookbook/slider-cookbook.php:200
 #: includes/widgets/slider-cookbook/slider-cookbook.php:881
 #: includes/widgets/slider-pro/slider-pro.php:176
@@ -4150,17 +4113,17 @@ msgstr ""
 msgid "Widget not available"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:243
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:923
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:257
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:966
 #: includes/widgets/portfolio-reel/portfolio-reel.php:221
 #: includes/widgets/portfolio-reel/portfolio-reel.php:789
 msgid "Widget Title"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:761
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:778
 #: includes/widgets/team-members/team-members.php:690
 #: includes/widgets/portfolio-reel/portfolio-reel.php:629
-#: includes/widgets/posts-grid/posts-grid.php:488
+#: includes/widgets/posts-grid/posts-grid.php:492
 msgid "Width"
 msgstr ""
 
@@ -4178,31 +4141,29 @@ msgid "WordPress Posts"
 msgstr ""
 
 #. Author of the plugin
+#: includes/wpzoom-elementor-widgets.php:118
 msgid "WPZOOM"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:73
-msgid "WPZOOM Addons License"
-msgstr ""
-
-#: includes/wpzoom-elementor-widgets.php:169
+#: includes/wpzoom-elementor-widgets.php:168
 msgid "WPZOOM CookBook"
 msgstr ""
 
-#: wpzoom-elementor-addons.php:269 wpzoom-elementor-addons.php:281
-#: includes/class-wpzoom-elementor-addons-license.php:114
+#: wpzoom-elementor-addons.php:272 wpzoom-elementor-addons.php:284
 msgid "WPZOOM Elementor Addons"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:160
+#: includes/wpzoom-elementor-widgets.php:159
 msgid "WPZOOM Foodica"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:118
-msgid "WPZOOM Free"
+#: includes/wpzoom-elementor-widgets.php:129
+#: includes/wpzoom-elementor-widgets.php:132
+#: includes/wpzoom-elementor-widgets.php:136
+msgid "WPZOOM PRO"
 msgstr ""
 
-#: includes/wpzoom-elementor-widgets.php:178
+#: includes/wpzoom-elementor-widgets.php:177
 msgid "WPZOOM Reel"
 msgstr ""
 
@@ -4222,34 +4183,35 @@ msgstr ""
 msgid "Yelp"
 msgstr ""
 
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:307
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:344
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:321
 #: includes/widgets/portfolio-showcase/portfolio-showcase.php:358
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:383
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:408
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:456
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:489
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:515
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:528
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:552
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:565
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:589
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:602
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:615
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:625
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:638
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:679
-#: includes/widgets/portfolio-showcase/portfolio-showcase.php:692
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:372
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:397
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:422
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:470
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:504
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:530
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:543
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:567
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:580
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:604
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:617
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:630
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:640
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:653
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:695
+#: includes/widgets/portfolio-showcase/portfolio-showcase.php:708
 #: includes/widgets/team-members/team-members.php:401
 #: includes/widgets/slider/slider.php:757
 #: includes/widgets/slider/slider.php:787
 #: includes/widgets/slider/slider.php:800
 #: includes/widgets/slider/slider.php:814
-#: includes/widgets/video-slider/video-slider.php:641
-#: includes/widgets/video-slider/video-slider.php:694
-#: includes/widgets/video-slider/video-slider.php:982
-#: includes/widgets/video-slider/video-slider.php:1012
-#: includes/widgets/video-slider/video-slider.php:2231
+#: includes/widgets/video-slider/video-slider.php:639
+#: includes/widgets/video-slider/video-slider.php:692
+#: includes/widgets/video-slider/video-slider.php:997
+#: includes/widgets/video-slider/video-slider.php:1027
+#: includes/widgets/video-slider/video-slider.php:1146
+#: includes/widgets/video-slider/video-slider.php:2312
 #: includes/widgets/carousel/carousel.php:286
 #: includes/widgets/carousel/carousel.php:316
 #: includes/widgets/carousel/carousel.php:329
@@ -4284,95 +4246,15 @@ msgstr ""
 msgid "You can choose here a category from which slides are shown."
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:157
-msgid "You must deactivate the current license before you can enter a new one."
-msgstr ""
-
-#: includes/wpzoom-template-manager.php:384
-msgid ""
-"Your license has been disabled. Contact support to restore access to premium "
-"templates."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:588
-msgid "Your license has been disabled. Please contact support for assistance."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:359
-msgid "Your license has expired! Please renew it to receive Premium features."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:260
-msgid ""
-"Your license has expired. Please renew it to continue receiving updates and "
-"support."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:578
-msgid ""
-"Your license has expired. Please renew your license to import PRO templates."
-msgstr ""
-
-#: includes/wpzoom-template-manager.php:374
-msgid ""
-"Your license has expired. Renew your license to unlock this and all premium "
-"templates."
-msgstr ""
-
-#: includes/wpzoom-template-manager.php:378
-msgid ""
-"Your license is inactive. Activate your license to unlock this and all "
-"premium templates."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:582
-msgid ""
-"Your license is inactive. Please activate your license to import PRO "
-"templates."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:371
-msgid "Your license is not active for this URL."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:364
-msgid "Your license key has been disabled."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:377
-msgid "Your license key has reached its activation limit."
-msgstr ""
-
-#: includes/wpzoom-template-manager.php:381
-msgid ""
-"Your license key is invalid. Enter a valid license key to unlock this and "
-"all premium templates."
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:585
-msgid ""
-"Your license key is invalid. Please enter a valid license key to import PRO "
-"templates."
-msgstr ""
-
 #: includes/widgets/team-members/team-members.php:186
 msgid "YouTube"
 msgstr ""
 
-#: includes/widgets/video-slider/video-slider.php:706
+#: includes/widgets/video-slider/video-slider.php:704
 msgid "YouTube or Vimeo URL"
 msgstr ""
 
-#: includes/class-wpzoom-elementor-addons-license.php:180
-#, php-format
-msgid "— Expires %s"
-msgstr ""
-
-#: includes/class-wpzoom-elementor-addons-license.php:177
-msgid "— Lifetime License"
-msgstr ""
-
-#: includes/widgets/video-slider/video-slider.php:1086
+#: includes/widgets/video-slider/video-slider.php:1101
 msgid ""
 "💡 Tip: \"Actions\" includes both buttons and video lightbox triggers when "
 "they are enabled in individual slides."
