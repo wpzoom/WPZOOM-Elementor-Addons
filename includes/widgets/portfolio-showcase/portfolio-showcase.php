@@ -2192,6 +2192,7 @@ class Portfolio_Showcase extends Widget_Base
                                             echo wp_video_shortcode(
                                                 array(
                                                     'src'     => $popup_final_external_src,
+                                                    'poster'  => $post_thumbnail,
                                                     'preload' => 'none',
                                                     //'autoplay' => 'on'
                                                 ) 
@@ -2333,6 +2334,7 @@ class Portfolio_Showcase extends Widget_Base
                                             echo wp_video_shortcode(
                                                 array(
                                                     'src'     => $popup_final_external_src,
+                                                    'poster'  => $post_thumbnail,
                                                     'preload' => 'none',
                                                     //'autoplay' => 'on'
                                                 ) 

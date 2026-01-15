@@ -1,20 +1,21 @@
-=== WPZOOM Addons for Elementor (Templates, Widgets) ===
-Contributors:      WPZOOM, alexus450, ciorici
+=== WPZOOM Addons for Elementor - Starter Templates & Widgets ===
+Contributors:      WPZOOM, ciorici
 Author URI:        https://www.wpzoom.com/
 Requires at least: 6.0
 Requires PHP:      7.4
 Tested up to:      6.9
-Stable tag:        1.3.0
+Stable tag:        1.3.1
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-Tags:              elementor, elementor templates, elementor widgets, page builder templates, templates
+Tags:              elementor, elementor templates, starter templates, elementor widgets, elementor addons
 
-**WPZOOM Addons for Elementor** contains a collection of pre-designed templates, sections and advanced widgets for the Elementor page builder.
+Elementor templates and widgets - Import professionally designed page templates, sections, and widgets. Build stunning pages in minutes.
 
 == Description ==
 
-A collection of professionally designed page templates, sections, and widgets for **Elementor**. Build beautiful pages in minutes without writing any code.
+= Elementor Templates & Widgets - Build Pages Faster =
 
+**The best starter templates plugin for Elementor.** Import professionally designed page templates, sections, and widgets with one click. Build beautiful, responsive pages in minutes - no coding required.
 
 = Features =
 
@@ -121,6 +122,9 @@ No. The plugin only adds templates and widgets to the Elementor editor. It does 
 
 
 == Changelog ==
+
+= 1.3.1 =
+* Minor bug fix
 
 = 1.3.0 =
 * NEW: Added Sections Library - Import individual sections (hero, features, contact, pricing, etc.)
