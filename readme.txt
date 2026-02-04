@@ -4,7 +4,7 @@ Author URI:        https://www.wpzoom.com/
 Requires at least: 6.0
 Requires PHP:      7.4
 Tested up to:      6.9
-Stable tag:        1.3.1
+Stable tag:        1.3.2
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              elementor, elementor templates, starter templates, elementor widgets, elementor addons
@@ -122,6 +122,11 @@ No. The plugin only adds templates and widgets to the Elementor editor. It does 
 
 
 == Changelog ==
+
+= 1.3.2 =
+* NEW: Featured Category widget - Added Aspect Ratio control (16:9, 4:3, 1:1 Square, 3:4 Portrait, 9:16 Tall Portrait)
+* NEW: Featured Category widget - Image Position now defaults to focal point set in category settings
+* NEW: Category settings - Added visual focal point picker (click on image to set focus area)
 
 = 1.3.1 =
 * Minor bug fix

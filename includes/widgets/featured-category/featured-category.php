@@ -586,10 +586,12 @@ class Featured_Category extends Widget_Base {
 		$this->add_control(
 			'style_normal_image_position',
 			array(
-				'label'     => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'center center',
-				'options'   => array(
+				'label'       => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
+				'description' => wp_kses_post( __( 'Use "Default" to apply the focal point set in the <a href="edit-tags.php?taxonomy=category" target="_blank">category settings</a>.', 'wpzoom-elementor-addons' ) ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => '',
+				'options'     => array(
+					''              => esc_html__( 'Default (from category)', 'wpzoom-elementor-addons' ),
 					'top left'      => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
 					'top center'    => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
 					'top right'     => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
@@ -600,8 +602,8 @@ class Featured_Category extends Widget_Base {
 					'bottom center' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
 					'bottom right'  => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
 				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-position: {{VALUE}} !important;',
+				'selectors'   => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link' => 'background-position: {{VALUE}};',
 				),
 			)
 		);
@@ -681,10 +683,12 @@ class Featured_Category extends Widget_Base {
 		$this->add_control(
 			'style_hover_image_position',
 			array(
-				'label'     => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'center center',
-				'options'   => array(
+				'label'       => esc_html__( 'Position', 'wpzoom-elementor-addons' ),
+				'description' => wp_kses_post( __( 'Use "Default" to apply the focal point set in the <a href="edit-tags.php?taxonomy=category" target="_blank">category settings</a>.', 'wpzoom-elementor-addons' ) ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => '',
+				'options'     => array(
+					''              => esc_html__( 'Default (from category)', 'wpzoom-elementor-addons' ),
 					'top left'      => esc_html__( 'Top Left', 'wpzoom-elementor-addons' ),
 					'top center'    => esc_html__( 'Top Center', 'wpzoom-elementor-addons' ),
 					'top right'     => esc_html__( 'Top Right', 'wpzoom-elementor-addons' ),
@@ -695,8 +699,8 @@ class Featured_Category extends Widget_Base {
 					'bottom center' => esc_html__( 'Bottom Center', 'wpzoom-elementor-addons' ),
 					'bottom right'  => esc_html__( 'Bottom Right', 'wpzoom-elementor-addons' ),
 				),
-				'selectors' => array(
-					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-position: {{VALUE}} !important;',
+				'selectors'   => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link:hover' => 'background-position: {{VALUE}};',
 				),
 			)
 		);
@@ -941,6 +945,55 @@ class Featured_Category extends Widget_Base {
 			array(
 				'label' => esc_html__( 'Box', 'wpzoom-elementor-addons' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_responsive_control(
+			'style_aspect_ratio',
+			array(
+				'label'       => esc_html__( 'Aspect Ratio', 'wpzoom-elementor-addons' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => '16/9',
+				'options'     => array(
+					'16/9' => esc_html__( '16:9 (Landscape)', 'wpzoom-elementor-addons' ),
+					'4/3'  => esc_html__( '4:3 (Standard)', 'wpzoom-elementor-addons' ),
+					'1/1'  => esc_html__( '1:1 (Square)', 'wpzoom-elementor-addons' ),
+					'3/4'  => esc_html__( '3:4 (Portrait)', 'wpzoom-elementor-addons' ),
+					'9/16' => esc_html__( '9:16 (Tall Portrait)', 'wpzoom-elementor-addons' ),
+					'auto' => esc_html__( 'Auto (use Min Height)', 'wpzoom-elementor-addons' ),
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span' => 'aspect-ratio: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'style_min_height',
+			array(
+				'label'      => esc_html__( 'Min Height', 'wpzoom-elementor-addons' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'vh', 'em' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 100,
+						'max' => 1000,
+					),
+					'vh' => array(
+						'min' => 10,
+						'max' => 100,
+					),
+					'em' => array(
+						'min' => 5,
+						'max' => 50,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .wpzoom-elementor-addons-featured-category > h3 .wpzoom-elementor-addons-featured-category-link > span' => 'min-height: {{SIZE}}{{UNIT}};',
+				),
+				'condition'  => array(
+					'style_aspect_ratio' => 'auto',
+				),
 			)
 		);
 
