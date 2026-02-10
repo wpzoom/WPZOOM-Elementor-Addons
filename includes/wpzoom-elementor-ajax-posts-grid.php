@@ -74,6 +74,7 @@ class WPZOOM_Elementor_Ajax_Post_Grid {
 			self::$settings = $data;
 
 			$args = array(
+				'post_status'         => 'publish',
 				'posts_per_page' 	  => absint( $data['posts_per_page'] ),
 				'post__not_in'        => get_option( 'sticky_posts' ),
 				'ignore_sticky_posts' => true,
