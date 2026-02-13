@@ -1842,11 +1842,13 @@ class Portfolio_Reel extends Widget_Base {
 
                                     <?php if ( $enable_category ) : ?><li>
 
-                                         <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
-                                             <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
-                                                <?php echo $tax_menu_item->name; ?>
-                                             <?php endforeach; ?>
-                                         <?php endif; ?>
+                                         <?php
+                                         $terms = get_the_terms( get_the_ID(), 'portfolio' );
+
+                                         if ( is_array( $terms ) ) {
+                                             echo implode( ' / ', wp_list_pluck( $terms, 'name' ) );
+                                         }
+                                         ?>
                                      </li>
                                      <?php endif; ?>
                                 </ul>
@@ -1876,11 +1878,13 @@ class Portfolio_Reel extends Widget_Base {
 
                                     <?php if ( $enable_category ) : ?><li>
 
-                                         <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
-                                             <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
-                                                <?php echo $tax_menu_item->name; ?>
-                                             <?php endforeach; ?>
-                                         <?php endif; ?>
+                                         <?php
+                                             $terms = get_the_terms( get_the_ID(), 'portfolio' );
+
+                                             if ( is_array( $terms ) ) {
+                                                 echo implode( ' / ', wp_list_pluck( $terms, 'name' ) );
+                                             }
+                                         ?>
                                      </li>
                                      <?php endif; ?>
                                 </ul>
@@ -1912,11 +1916,13 @@ class Portfolio_Reel extends Widget_Base {
 
                                 <?php if ( $enable_category ) : ?><li>
 
-                                     <?php if ( is_array( $tax_menu_items = get_the_terms( get_the_ID(), 'portfolio' ) ) ) : ?>
-                                         <?php foreach ( $tax_menu_items as $tax_menu_item ) : ?>
-                                            <?php echo $tax_menu_item->name; ?>
-                                         <?php endforeach; ?>
-                                     <?php endif; ?>
+                                     <?php
+                                          $terms = get_the_terms( get_the_ID(), 'portfolio' );
+
+                                          if ( is_array( $terms ) ) {
+                                              echo implode( ' / ', wp_list_pluck( $terms, 'name' ) );
+                                          }
+                                      ?>
                                  </li>
                                  <?php endif; ?>
                             </ul>
